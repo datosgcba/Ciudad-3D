@@ -1,0 +1,8 @@
+/build
+/node_modules
+*.pyc
+/env
+.env.development
+.env.production
+.idea/
+.vscode/

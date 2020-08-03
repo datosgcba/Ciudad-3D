@@ -1,0 +1,28 @@
+{
+"type": "FeatureCollection",
+"name": "hoteles",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 1, "nombre": "Hotel Presidente", "barrio": "SAN NICOLAS", "comuna": 1, "domicilio": "CERRITO 856" }, "geometry": { "type": "Point", "coordinates": [ -58.383024, -34.598494 ] } },
+{ "type": "Feature", "properties": { "id": 2, "nombre": "Cyan Americas", "barrio": "RECOLETA", "comuna": 2, "domicilio": "LIBERTAD 1022" }, "geometry": { "type": "Point", "coordinates": [ -58.384521, -34.596607 ] } },
+{ "type": "Feature", "properties": { "id": 3, "nombre": "Grand View", "barrio": "BALVANERA", "comuna": 3, "domicilio": "AZCUENAGA 49" }, "geometry": { "type": "Point", "coordinates": [ -58.400042, -34.609358 ] } },
+{ "type": "Feature", "properties": { "id": 4, "nombre": "Deco Recoleta Hotel", "barrio": "RECOLETA", "comuna": 2, "domicilio": "SUIPACHA 1369" }, "geometry": { "type": "Point", "coordinates": [ -58.379704, -34.591912 ] } },
+{ "type": "Feature", "properties": { "id": 5, "nombre": "Ibis Congreso", "barrio": "MONSERRAT", "comuna": 1, "domicilio": "CEVALLOS, Virrey 122" }, "geometry": { "type": "Point", "coordinates": [ -58.38887, -34.61036 ] } },
+{ "type": "Feature", "properties": { "id": 6, "nombre": "Cyan Americas Tower", "barrio": "RECOLETA", "comuna": 2, "domicilio": "LIBERTAD 1066" }, "geometry": { "type": "Point", "coordinates": [ -58.384304, -34.596074 ] } },
+{ "type": "Feature", "properties": { "id": 7, "nombre": "BA Central", "barrio": "BALVANERA", "comuna": 3, "domicilio": "JUNIN 355" }, "geometry": { "type": "Point", "coordinates": [ -58.396504, -34.605153 ] } },
+{ "type": "Feature", "properties": { "id": 9, "nombre": "Facón Grande", "barrio": "SAN NICOLAS", "comuna": 1, "domicilio": "RECONQUISTA 643" }, "geometry": { "type": "Point", "coordinates": [ -58.37241, -34.600324 ] } },
+{ "type": "Feature", "properties": { "id": 10, "nombre": "Escorial", "barrio": "MONSERRAT", "comuna": 1, "domicilio": "SALTA 82" }, "geometry": { "type": "Point", "coordinates": [ -58.383264, -34.609538 ] } },
+{ "type": "Feature", "properties": { "id": 12, "nombre": "Sarmiento Palace", "barrio": "BALVANERA", "comuna": 3, "domicilio": "SARMIENTO 1949" }, "geometry": { "type": "Point", "coordinates": [ -58.394428, -34.605559 ] } },
+{ "type": "Feature", "properties": { "id": 13, "nombre": "Rochester", "barrio": "SAN NICOLAS", "comuna": 1, "domicilio": "MAIPU 576" }, "geometry": { "type": "Point", "coordinates": [ -58.376917, -34.601464 ] } },
+{ "type": "Feature", "properties": { "id": 14, "nombre": "Ibis Obelisco", "barrio": "SAN NICOLAS", "comuna": 1, "domicilio": "CORRIENTES AV. 1344" }, "geometry": { "type": "Point", "coordinates": [ -58.385721, -34.60435 ] } },
+{ "type": "Feature", "properties": { "id": 15, "nombre": "Argenta Tower", "barrio": "RECOLETA", "comuna": 2, "domicilio": "JUNCAL 868" }, "geometry": { "type": "Point", "coordinates": [ -58.379545, -34.592909 ] } },
+{ "type": "Feature", "properties": { "id": 16, "nombre": "Impala", "barrio": "RECOLETA", "comuna": 2, "domicilio": "LIBERTAD 1209" }, "geometry": { "type": "Point", "coordinates": [ -58.384213, -34.594204 ] } },
+{ "type": "Feature", "properties": { "id": 17, "nombre": "Wilton", "barrio": "PALERMO", "comuna": 14, "domicilio": "CALLAO AV. 1164" }, "geometry": { "type": "Point", "coordinates": [ -58.393656, -34.595196 ] } },
+{ "type": "Feature", "properties": { "id": 18, "nombre": "Buenos Aires", "barrio": "RECOLETA", "comuna": 2, "domicilio": "SUIPACHA 850" }, "geometry": { "type": "Point", "coordinates": [ -58.380104, -34.598375 ] } },
+{ "type": "Feature", "properties": { "id": 19, "nombre": "Luxor", "barrio": "SAN NICOLAS", "comuna": 1, "domicilio": "SAENZ PEÑA, ROQUE, PRES. DIAGONAL NORTE AV. 882" }, "geometry": { "type": "Point", "coordinates": [ -58.379154, -34.605204 ] } },
+{ "type": "Feature", "properties": { "id": 20, "nombre": "Viasui", "barrio": "SAN NICOLAS", "comuna": 1, "domicilio": "VIAMONTE 958" }, "geometry": { "type": "Point", "coordinates": [ -58.380496, -34.600351 ] } },
+{ "type": "Feature", "properties": { "id": 21, "nombre": "Feir's Park", "barrio": "RECOLETA", "comuna": 2, "domicilio": "ESMERALDA 1344" }, "geometry": { "type": "Point", "coordinates": [ -58.378339, -34.591761 ] } },
+{ "type": "Feature", "properties": { "id": 22, "nombre": "Fatsa", "barrio": "SAN CRISTOBAL", "comuna": 3, "domicilio": "DEAN FUNES 1240" }, "geometry": { "type": "Point", "coordinates": [ -58.405397, -34.62482 ] } },
+{ "type": "Feature", "properties": { "id": 26, "nombre": "De Las Luces", "barrio": "MONSERRAT", "comuna": 1, "domicilio": "ALSINA, ADOLFO 527" }, "geometry": { "type": "Point", "coordinates": [ -58.373852, -34.610268 ] } }
+]
+}

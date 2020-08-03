@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "puntos_acceso_bus",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Nombre": "Puente Pueyrredón" }, "geometry": { "type": "Point", "coordinates": [ -58.371456899362393, -34.654850475910393 ] } },
+{ "type": "Feature", "properties": { "Nombre": "Puente Alsina" }, "geometry": { "type": "Point", "coordinates": [ -58.416670702033393, -34.659293981449032 ] } },
+{ "type": "Feature", "properties": { "Nombre": "Avenida Rivadavia" }, "geometry": { "type": "Point", "coordinates": [ -58.529557209356796, -34.639357213516476 ] } },
+{ "type": "Feature", "properties": { "Nombre": "Puente La Noria" }, "geometry": { "type": "Point", "coordinates": [ -58.461810505027337, -34.704567625936519 ] } }
+]
+}

@@ -1,0 +1,7 @@
+.MuiTypography-colorTextSecondary {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.search-input-holder .Mui-focused {
+    width:300px
+}

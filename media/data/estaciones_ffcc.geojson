@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "estaciones_ffcc",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "nombre": "3 de Febrero", "linea": "Mitre" }, "geometry": { "type": "Point", "coordinates": [ -58.4249824, -34.5717485 ] } },
+{ "type": "Feature", "properties": { "nombre": "Coghlan", "linea": "Mitre" }, "geometry": { "type": "Point", "coordinates": [ -58.4753485, -34.5652607 ] } },
+{ "type": "Feature", "properties": { "nombre": "Colegiales", "linea": "Mitre" }, "geometry": { "type": "Point", "coordinates": [ -58.448253, -34.5729746 ] } },
+{ "type": "Feature", "properties": { "nombre": "Rivadavia", "linea": "Mitre" }, "geometry": { "type": "Point", "coordinates": [ -58.4680326, -34.5365204 ] } },
+{ "type": "Feature", "properties": { "nombre": "Presidente Illia", "linea": "Belgrano Sur" }, "geometry": { "type": "Point", "coordinates": [ -58.4502223, -34.6661376 ] } },
+{ "type": "Feature", "properties": { "nombre": "Hipólito Yrigoyen", "linea": "Roca" }, "geometry": { "type": "Point", "coordinates": [ -58.3788878, -34.6536422 ] } },
+{ "type": "Feature", "properties": { "nombre": "Floresta", "linea": "Sarmiento" }, "geometry": { "type": "Point", "coordinates": [ -58.4808913, -34.6323755 ] } },
+{ "type": "Feature", "properties": { "nombre": "Villa Luro", "linea": "Sarmiento" }, "geometry": { "type": "Point", "coordinates": [ -58.5021311, -34.6362494 ] } },
+{ "type": "Feature", "properties": { "nombre": "L. M. Drago", "linea": "Mitre" }, "geometry": { "type": "Point", "coordinates": [ -58.4789912, -34.5684173 ] } },
+{ "type": "Feature", "properties": { "nombre": "Pueyrredón", "linea": "Mitre" }, "geometry": { "type": "Point", "coordinates": [ -58.501898, -34.5804962 ] } },
+{ "type": "Feature", "properties": { "nombre": "LIsandro de la Torre", "linea": "Mitre" }, "geometry": { "type": "Point", "coordinates": [ -58.436749281070071, -34.562538137451078 ] } }
+]
+}

@@ -1,0 +1,54 @@
+
+.titulo-principal {
+    font-weight: bold;
+    font-size: 14px;
+    color: rgb(158, 158, 158);
+    font-family: Chanewei !important;
+    margin-block-start: 1rem;
+    margin-block-end: 0.5rem;
+  }
+  
+  .item-layer,
+  .lista-layers {
+    padding: 0 !important;
+  }
+  
+  .item-layer button:first-child,
+  .item-layer button:last-child {
+    padding: 5px !important;
+    margin: 0 !important;
+  }
+  
+  .item-layer button svg {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+  }
+  
+  .item-layer-radio {
+    color: #333;
+    padding: 5px !important;
+    margin-left: 7px !important;
+  }
+  
+  .item-layer-radio div svg {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  
+  .item-layer-radio .MuiIconButton-label {
+    color: rgba(0, 0, 0, 0.54);
+  }
+  
+  .item-layer-label {
+    margin-right: 5px !important;
+  }
+  
+  .layer-tooltip {
+    min-width: 0 !important;
+    float: right;
+  }
+  
+  .MuiTooltip-tooltip {
+    margin-left: 0 !important;
+  }
+  

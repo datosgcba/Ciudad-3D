@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafico TimeLine</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'grafico/styles.css'%}">
+    <!-- font para despues agregar texto -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap" rel="stylesheet">
+    <!-- js del grafico -->
+    <script src='https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js'></script>
+</head>
+<body>
+    <canvas id=chart>
+        </canvas>
+<script>
+    const chart = document.getElementById('chart').getContext('2d');
+
+    const data = {
+        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre"],
+        // {{ datos_x | safe }},
+        datasets: [
+            {
+                label: "grafico 1",
+                // RELLENO
+                fill: false,
+                lineTension: 0.3,
+                backgroundColor: "rgb(196,196,196)",
+                borderColor: "rgb(196,196,196)",//"rgb(196,196,196)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgb(196,196,196)",
+                pointBackgroundColor: "rgb(196,196,196)",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHitRadius: 0,
+                data: [19,20,38,40,50,60,57,82,98,57,37,26],
+                yAxisID: 'default',
+                order: 3
+            },
+                {
+                label: "grafico 2",
+                // RELLENO
+                fill: false,
+                lineTension: 0.3,
+                backgroundColor: "rgb(199, 66, 66)",
+                borderColor: "rgb(199, 66, 66)",//"rgb(196,196,196)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgb(199, 66, 66)",
+                pointBackgroundColor: "rgb(199, 66, 66)",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHitRadius: 0,
+                data: [10,9,8,7,6,5,4,7,4,5],
+                type: "line",
+                yAxisID: 'second',
+                order: 2
+            },
+            {
+                label: "grafico 3",
+                // RELLENO
+                fill: false,
+                lineTension: 0.3,
+                backgroundColor: "green",
+                borderColor: "green",//"rgb(196,196,196)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "green",
+                pointBackgroundColor: "green",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHitRadius: 0,
+                data: [2,24,4,22,2,3,2,32],
+                yAxisID: 'default',
+                order: 1,
+                type: "bar"
+            },
+            {
+                label: "grafico 4",
+                // RELLENO
+                fill: false,
+                lineTension: 0.3,
+                backgroundColor: "rgb(41,200,240)",
+                borderColor: "rgb(41,200,240)",//"rgb(196,196,196)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgb(41,200,240)",
+                pointBackgroundColor: "rgb(41,200,240)",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHitRadius: 0,
+                data: [2,3,5,3,6,10,5,6,3],
+                yAxisID: 'second',
+                order: 1,
+                type: "bar"
+            }
+        ]}
+
+    const options = {
+        legend: {
+            display: true
+        },
+        scales: {
+            // EJE Y
+            yAxes: [
+                {
+                    id: 'default',
+                    scaleLabel: {
+                        labelString: "EJE Y1",
+                        display:true
+                    },
+                    // REFERENCIAS
+                    ticks: {
+                        display: true
+                        
+                    },
+                    // GRILLA
+                    gridLines: {
+                        display:true,                        
+                    },
+                    position:'left'
+                },
+                {
+                    id: 'second',
+                    scaleLabel: {
+                        labelString: "EJE Y2",
+                        display:true,
+
+                    },
+                    // REFERENCIAS
+                    ticks: {
+                        display: true,
+                        min:0,
+                        
+                    },
+                    // GRILLA
+                    gridLines: {
+                        display:true,
+                    },
+                    position:'right'
+                },
+            ],
+            // EJE X
+            xAxes: [{
+                scaleLabel: {
+                    labelString: "EJE X",
+                    display:true
+                },
+                // REFERENCIAS
+                ticks: {
+                    display: true,
+                    
+                },
+                // GRILLA
+                gridLines: {
+                    display:false,
+                },
+            }],
+        },
+        layout: {
+            padding: {
+                left: 0,
+                right: 7,
+                top: 0,
+                bottom: 0
+            }
+        }
+    }
+
+    let dataChart = new Chart(chart,
+    {
+        type:"bar",
+        data:data,
+        options:options
+    }
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Covid en Datos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/animate.css'%}">
+    <link rel="stylesheet" href="{% static 'tarjeta/css/style.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<!-- font para despues agregar texto -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap" rel="stylesheet">
+    <!-- js del grafico -->
+    <script src='https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js'></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+  <div style="border-top-color: {{color}};" class="services text-center">
+                                <div class="text">
+                                    <h3 style="color: {{color}}; font-size: 25px;">{{ titulo }}</h3>
+                                    <p class="uno" style="font-size: 12px;">Actualizado al {{ fecha | date:"d" }} de {{fecha | date:"F"}}</p>
+                                    <hr>
+                                    
+                                    <p class="cinco" style="font-size:20px; color:#38485C;margin-bottom: 0;">{{ subtitulo1 }}</p>
+                                    <h2 style="font-size:27px; color:{{color}};" class="dos"><b>{{ dato1 }}</b></h2>
+                                    <p class="cinco" style="font-size:20px; color:#38485C;margin-bottom: 0;">{{ subtitulo2 }}</p>
+                                    <h2 style="font-size:27px;color:{{color}};" class="dos"><b>{{ dato2 }}</b></h2>
+
+                                    <div class="cuatro" >
+                                        <a target="_blank" href="{{link_datos}}">
+                                            <div class="boton-descargar-datos">
+                                                <i class="fas fa-download"> </i>
+                                                Descargar datos
+                                            </div></a>
+                                    </div>
+                                </div>
+  </body>
+</html>

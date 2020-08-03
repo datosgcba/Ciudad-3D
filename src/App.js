@@ -9,11 +9,6 @@ import Layout from "./containers/Layout";
 
 
 class App extends Component {
-  componentDidMount() {
-    this.props.onTryAutoSignup();
-  }
-
-
   render() {
 
     return (
@@ -26,19 +21,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    isAuthenticated: state.auth.token !== null
-  };
-};
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onTryAutoSignup: () => dispatch(actions.authCheckState())
-  };
-};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+
+
+export default App;

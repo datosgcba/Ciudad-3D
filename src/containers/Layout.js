@@ -11,21 +11,8 @@ class CustomLayout extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    authenticated: state.auth.token !== null
-  };
-};
 
-const mapDispatchToProps = dispatch => {
-  return {
-    logout: () => dispatch(logout())
-  };
-};
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(CustomLayout)
+  CustomLayout
 );

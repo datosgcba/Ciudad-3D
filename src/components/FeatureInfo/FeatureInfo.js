@@ -24,16 +24,10 @@ const FeatureInfo = (props) =>{
                     : null
                 }) 
             }
-            {/* {datos.fuente ?
-                <div className="metadata">                    
-                    <div className="ultima-actualizacion"> <span>Última Actualización:</span> {datos.fechaUltimaModificacion}</div>
-                    <div className="fuente"><span>Fuente:</span> {datos.fuente}</div>
-                </div>
-                : null} */}
             </div>
             <div>
                 <br/>
-                <a target = "_blank" href= {comoLlegoURL} style = {{color: "#FFCE38"}}>
+                <a target = "_blank" rel="noopener noreferrer" href= {comoLlegoURL} style = {{color: "#FFCE38"}}>
                     <DirectionsIcon />
                 </a>
             </div>

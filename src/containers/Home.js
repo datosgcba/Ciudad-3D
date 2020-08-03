@@ -17,12 +17,6 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "../bastrap.css";
 import "../App.css";
 
-const mapStateToProps = state => {
-  return{
-    token: state.auth.token
-
-  }  
-}
 
 
 const drawerWidth = 440;
@@ -144,4 +138,4 @@ const Home = props => {
 }
 
 
-export default connect(mapStateToProps, null)(Home)
+export default Home

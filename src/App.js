@@ -6,20 +6,9 @@ import * as actions from "./store/actions/auth";
 import Layout from "./containers/Layout";
 
 
-
-
-class App extends Component {
-  render() {
-
-    return (
-      <Router>
-        <Layout {...this.props}>
-          <BaseRouter authed={this.props.isAuthenticated} />
-        </Layout>
-      </Router>
-    );
-  }
-}
+const App = (props) => <Router>
+  <BaseRouter authed={props.isAuthenticated} />
+</Router>
 
 
 

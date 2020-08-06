@@ -2,7 +2,7 @@
 
 const geojson_hoteles = require("./data/hoteles.geojson");
 
-const DJANGO_MEDIA_URL = process.env.REACT_APP_DJANGO_BASEURL + '/media/data/';
+const DJANGO_MEDIA_URL = process.env.REACT_APP_DJANGO_BASEURL + "/media/data/";
 
 // const DJANGO_MEDIA_URL = 'https://bamapas.usig.buenosaires.gob.ar/media/data/';
 
@@ -25,7 +25,6 @@ const DJANGO_MEDIA_URL = process.env.REACT_APP_DJANGO_BASEURL + '/media/data/';
 // const geojson_puntos_comunas = require("./data/puntos_comunas.geojson");
 // const geojson_pacientes_empleados = require("./data/pacientes_empleados.geojson");
 // const geojson_prueba_extrusion = require("./data/prueba_extrusion.geojson");
-
 
 //Imagenes de los logos (en el caso de barrios vulnerables es un rectangulo de color solido)
 const imgUfus = require("./img/ufus.png");
@@ -52,41 +51,47 @@ const imgComerciales = require("./img/comerciales.png");
 
 // Links de descarga BADATA
 const badata = {
-  ufus:"https://data.buenosaires.gob.ar/dataset/unidades-febriles-de-urgencia",
-  hosp_agudos : "https://data.buenosaires.gob.ar/dataset/hospitales",
-  cesac : "https://data.buenosaires.gob.ar/dataset/centros-salud-accion-comunitaria-cesac",
-  centro_vacunacion : "https://data.buenosaires.gob.ar/dataset/vacunatorios-adultos-mayores",
-  hoteles : null, 
-  barrios_vulnerables : null
-}
+  ufus: "https://data.buenosaires.gob.ar/dataset/unidades-febriles-de-urgencia",
+  hosp_agudos: "https://data.buenosaires.gob.ar/dataset/hospitales",
+  cesac:
+    "https://data.buenosaires.gob.ar/dataset/centros-salud-accion-comunitaria-cesac",
+  centro_vacunacion:
+    "https://data.buenosaires.gob.ar/dataset/vacunatorios-adultos-mayores",
+  hoteles: null,
+  barrios_vulnerables: null,
+};
 
 //plantillas de popup para capas custom
 
-  const plantilla_hoteles =
-  "<h3>Hoteles</h3><b>Nombre:</b> {nombre} <br> <b>Domicilio:</b> {domicilio}";  
+const plantilla_hoteles =
+  "<h3>Hoteles</h3><b>Nombre:</b> {nombre} <br> <b>Domicilio:</b> {domicilio}";
 
-  const plantilla_bancos =
-  "<h3>Bancos</h3><b>Nombre:</b> {nombre} <br> <b>Domicilio:</b> {domicilio}";  
+const plantilla_bancos =
+  "<h3>Bancos</h3><b>Nombre:</b> {nombre} <br> <b>Domicilio:</b> {domicilio}";
 
-  const plantilla_analisis =
-  "<h3>Análisis por radio censal</h3><b>Adultos mayores:</b> {pacientes} <br> <b>Empleados GCBA:</b> {empleados}<br><b>Relación Adultos Mayores - Empleados GCBA:</b> {pacientes_empleados}" ;  
+const plantilla_analisis =
+  "<h3>Análisis por radio censal</h3><b>Adultos mayores:</b> {pacientes} <br> <b>Empleados GCBA:</b> {empleados}<br><b>Relación Adultos Mayores - Empleados GCBA:</b> {pacientes_empleados}";
 
-  const plantilla_autoridades =
-  "<h3>Autoridades GCBA</h3><b>Nombre:</b> {nombre} {apellido} <br> <b>Repartición:</b> {reparticion}"; 
-  const plantilla_empleados =
+const plantilla_autoridades =
+  "<h3>Autoridades GCBA</h3><b>Nombre:</b> {nombre} {apellido} <br> <b>Repartición:</b> {reparticion}";
+const plantilla_empleados =
   "<h3>Empleados GCBA</h3><b>Nombre:</b> {nombre} {apellido} <br> <b>Repartición:</b> {reparticion}";
 
-  const plantilla_popup_ufus = "<h3>UFUS</h3><b>Nombre:</b> {nombre}";
-  const plantilla_farmacias_prioritarias = "<h3>Farmacia</h3><b>Nombre:</b> {Cadena}";
-  const plantilla_farmacias = "<h3>Farmacia</h3><b>Nombre:</b> {Nombre}";
-  const plantilla_barrios_vulnerables = "<h3>Barrios vulnerables</h3><b>Nombre:</b> {nombre}";
+const plantilla_popup_ufus = "<h3>UFUS</h3><b>Nombre:</b> {nombre}";
+const plantilla_farmacias_prioritarias =
+  "<h3>Farmacia</h3><b>Nombre:</b> {Cadena}";
+const plantilla_farmacias = "<h3>Farmacia</h3><b>Nombre:</b> {Nombre}";
+const plantilla_barrios_vulnerables =
+  "<h3>Barrios vulnerables</h3><b>Nombre:</b> {nombre}";
 
-  const plantilla_zonas_comerciales = "<h3>Zona comercial {nombre}</h3>";
-  const plantilla_corredores_comerciales = "<h3>Corredor comercial {comercial}</h3><b>";
-  const plantilla_centro_de_trasbordo = "<h3>Centro de Trasbordo {nombre}</h3>";
-  const plantilla_control_accesos_buses = "<h3>Control de acceso a Buses {Nombre}</h3>";
-  const plantilla_estaciones_ffcc = "<h3>Estación de tren clausurada {nombre}</h3><b>Línea:</b> {linea}";
-
+const plantilla_zonas_comerciales = "<h3>Zona comercial {nombre}</h3>";
+const plantilla_corredores_comerciales =
+  "<h3>Corredor comercial {comercial}</h3><b>";
+const plantilla_centro_de_trasbordo = "<h3>Centro de Trasbordo {nombre}</h3>";
+const plantilla_control_accesos_buses =
+  "<h3>Control de acceso a Buses {Nombre}</h3>";
+const plantilla_estaciones_ffcc =
+  "<h3>Estación de tren clausurada {nombre}</h3><b>Línea:</b> {linea}";
 
 //const plantilla_popup_vacunacion = "<h3>Centros de vacunación adultos mayores</h3><br><b>Nombre:</b> {Nombre} //<br> <b>Tipo:</b> {tipo}<br> <b>Domicilio:</b> {domicilio}";
 
@@ -95,57 +100,56 @@ const config = {
   customIcons: [
     {
       id: "imagen_ufus",
-      data: imgUfus        
+      data: imgUfus,
     },
     {
       id: "imagen_hoteles",
-      data: imgHoteles        
+      data: imgHoteles,
     },
     {
       id: "imagen_centro_barrial",
-      data: imgCentro_barrial        
+      data: imgCentro_barrial,
     },
     {
       id: "imagen_vacunacion",
-      data: imgVacunacion        
+      data: imgVacunacion,
     },
     {
       id: "imagen_bancos",
-      data: imgBancos     
-    },    
+      data: imgBancos,
+    },
     {
       id: "imagen_farmacias",
-      data: imgFarmacias     
+      data: imgFarmacias,
     },
     {
       id: "imagen_pago_facil",
-      data: imgPagoFacil    
+      data: imgPagoFacil,
     },
     {
       id: "imagen_puntos_comunas",
-      data: imgPuntosComunas    
+      data: imgPuntosComunas,
     },
     {
       id: "imagen_accesos_buses",
-      data: imgAccesoBuses        
+      data: imgAccesoBuses,
     },
     {
       id: "imagen_estaciones_ffcc",
-      data: imgEstacionesFFCC        
-    }
-
-
+      data: imgEstacionesFFCC,
+    },
   ],
   grupos: [
     {
       title: "Personal GCBA",
-      private:true,
+      private: true,
       color: "#ffffff", //amarillo
-      help: "Personal del GCBA que no está de licencia y no pertenece a un área esencial",
+      help:
+        "Personal del GCBA que no está de licencia y no pertenece a un área esencial",
       layers: [
         {
           id: "autoridades_varones",
-          private:true,
+          private: true,
           type: "custom",
           title: "Autoridades varones",
           displayPopup: true,
@@ -155,7 +159,7 @@ const config = {
             source: {
               type: "geojson",
               // data: geojson_autoridades_varon
-              data:DJANGO_MEDIA_URL + 'autoridades_varon.geojson',
+              data: DJANGO_MEDIA_URL + "autoridades_varon.geojson",
             },
             type: "circle",
             paint: {
@@ -163,11 +167,12 @@ const config = {
               "circle-radius": 3,
               "circle-stroke-color": "black",
               "circle-stroke-width": 1,
-            }
-          }
-        },        {
+            },
+          },
+        },
+        {
           id: "autoridades_mujeres",
-          private:true,
+          private: true,
           type: "custom",
           title: "Autoridades mujeres",
           displayPopup: true,
@@ -177,7 +182,7 @@ const config = {
             source: {
               type: "geojson",
               // data: geojson_autoridades_mujer
-              data: DJANGO_MEDIA_URL+'autoridades_mujer.geojson'
+              data: DJANGO_MEDIA_URL + "autoridades_mujer.geojson",
             },
             type: "circle",
             paint: {
@@ -185,12 +190,12 @@ const config = {
               "circle-radius": 3,
               "circle-stroke-color": "black",
               "circle-stroke-width": 1,
-            }
-          }
+            },
+          },
         },
         {
           id: "empleados_varon",
-          private:true,
+          private: true,
           type: "custom",
           title: "Empleados varones",
           displayPopup: true,
@@ -200,7 +205,7 @@ const config = {
             source: {
               type: "geojson",
               // data: geojson_empleados_varon
-              data: DJANGO_MEDIA_URL + 'empleados_varon.geojson'
+              data: DJANGO_MEDIA_URL + "empleados_varon.geojson",
             },
             type: "circle",
             paint: {
@@ -208,12 +213,12 @@ const config = {
               "circle-radius": 3,
               "circle-stroke-color": "black",
               "circle-stroke-width": 1,
-            }
-          }
+            },
+          },
         },
         {
           id: "empleadas_mujer",
-          private:true,
+          private: true,
           type: "custom",
           title: "Empleadas mujeres",
           displayPopup: true,
@@ -223,7 +228,7 @@ const config = {
             source: {
               type: "geojson",
               // data: geojson_empleadas_mujer
-              data: DJANGO_MEDIA_URL + 'empleadas_mujer.geojson'
+              data: DJANGO_MEDIA_URL + "empleadas_mujer.geojson",
             },
             type: "circle",
             paint: {
@@ -231,12 +236,12 @@ const config = {
               "circle-radius": 3,
               "circle-stroke-color": "black",
               "circle-stroke-width": 1,
-            }
-          }
+            },
+          },
         },
         {
           id: "licencia",
-          private:true,
+          private: true,
           type: "custom",
           title: "Personal bajo licencia",
           displayPopup: true,
@@ -246,7 +251,7 @@ const config = {
             source: {
               type: "geojson",
               // data: geojson_licencia
-              data: DJANGO_MEDIA_URL + 'licencia.geojson'
+              data: DJANGO_MEDIA_URL + "licencia.geojson",
             },
             type: "circle",
             paint: {
@@ -254,10 +259,10 @@ const config = {
               "circle-radius": 3,
               "circle-stroke-color": "black",
               "circle-stroke-width": 1,
-            }
-          }
-        }
-      ]
+            },
+          },
+        },
+      ],
     },
     //1) este grupo usa capas de epok, se agregan según su id y se visualizan de acuerdo a la config de epok
     {
@@ -267,92 +272,93 @@ const config = {
       layers: [
         {
           id: "UFU.UFU",
-          private:false,
+          private: false,
           type: "public",
           title: "UFUS",
           enabled: false,
           icon: imgUfus,
-          link : badata.ufus,
+          link: badata.ufus,
         },
         {
           id: "hospitales.hospitales_generales_de_agudos",
-          private:false,
+          private: false,
           title: "Hospitales",
           type: "geojson",
           options: {
             source: {
               type: "geojson",
               // data: geojson_hospitales
-              data: DJANGO_MEDIA_URL + 'hospitales.geojson'
+              data: DJANGO_MEDIA_URL + "hospitales.geojson",
             },
-            type: 'symbol',
+            type: "symbol",
             layout: {
-              'icon-image': 'imagen_vacunacion', //tiene que coincidir con el id de customIcons
-              'icon-size': 0.6,
-              'icon-allow-overlap':true,
-            }
+              "icon-image": "imagen_vacunacion", //tiene que coincidir con el id de customIcons
+              "icon-size": 0.6,
+              "icon-allow-overlap": true,
+            },
           },
           enabled: false,
-          icon: imgHA
+          icon: imgHA,
         },
         {
           id: "centros_de_salud.centros_de_salud_y_accion_comunitaria",
-          private:false,
+          private: false,
           title: "CESAC",
           type: "public",
           enabled: false,
           icon: imgCesac,
-          link : badata.cesac
+          link: badata.cesac,
         },
         {
-          id: "vacunatorio_adulto_mayor_emergencia.vacunatorio_adulto_mayor_emergencia",
-          private:false,
+          id:
+            "vacunatorio_adulto_mayor_emergencia.vacunatorio_adulto_mayor_emergencia",
+          private: false,
           title: "Centros vacunación adultos mayores",
           type: "public",
           icon: imgVacunacion,
-          link : badata.centro_vacunacion,
+          link: badata.centro_vacunacion,
           options: {
             source: {
               type: "geojson",
               //data: geojson_vacunacion
-              data: DJANGO_MEDIA_URL + 'vacunacion.geojson'
+              data: DJANGO_MEDIA_URL + "vacunacion.geojson",
             },
-            type: 'symbol',
+            type: "symbol",
             layout: {
-              'icon-image': 'imagen_vacunacion', //tiene que coincidir con el id de customIcons
-              'icon-size': 0.6,
-              'icon-allow-overlap':true,
-            }
-          }
+              "icon-image": "imagen_vacunacion", //tiene que coincidir con el id de customIcons
+              "icon-size": 0.6,
+              "icon-allow-overlap": true,
+            },
+          },
         },
-        
-      ]
+      ],
     },
     {
       title: "Análisis",
       color: "#ffffff", //amarillo
-      private:true,
-      help: "Adultos mayores atendidos por el sistema público de salud. Amarillo: mejor relación, rojo: menos empleados para asisitir a adultos mayores",
+      private: true,
+      help:
+        "Adultos mayores atendidos por el sistema público de salud. Amarillo: mejor relación, rojo: menos empleados para asisitir a adultos mayores",
       layers: [
         {
           id: "pacientes_empleados",
-          private:true,
+          private: true,
           type: "custom",
           title: "Relación adultos mayores - empleados",
           displayPopup: true,
           popupContent: plantilla_analisis,
           icon: imgVulnerables,
           options: {
-            type: 'fill',
+            type: "fill",
             source: {
               type: "geojson",
               // data: pacientes_empleados
-              data: DJANGO_MEDIA_URL + 'pacientes_empleados.geojson'
-
+              data: DJANGO_MEDIA_URL + "pacientes_empleados.geojson",
             },
             paint: {
               "fill-color": [
-                "interpolate",['linear'],
+                "interpolate",
+                ["linear"],
                 ["get", "pacientes_empleados"],
                 0,
                 "#ffffb2",
@@ -363,23 +369,23 @@ const config = {
                 17.5,
                 "#f03b20",
                 32,
-                "#bd0026"
+                "#bd0026",
               ],
-              'fill-opacity': 0.8
-            }
-          }
-        }
-      ]
+              "fill-opacity": 0.8,
+            },
+          },
+        },
+      ],
     },
     {
       title: "Equipamientos",
-      private:true,
+      private: true,
       color: "#ffffff", //amarillo
       help: "Establecimientos de servicios esenciales",
       layers: [
         {
           id: "bancos",
-          private:false,
+          private: false,
           type: "custom",
           title: "Bancos",
           displayPopup: true,
@@ -389,19 +395,19 @@ const config = {
             source: {
               type: "geojson",
               // data: geojson_bancos
-              data: DJANGO_MEDIA_URL + 'bancos.geojson'
+              data: DJANGO_MEDIA_URL + "bancos.geojson",
             },
-            type: 'symbol',
+            type: "symbol",
             layout: {
-              'icon-image': 'imagen_bancos', //tiene que coincidir con el id de customIcons
-              'icon-size': 0.6,
-              'icon-allow-overlap':true,
-            }
-          }
+              "icon-image": "imagen_bancos", //tiene que coincidir con el id de customIcons
+              "icon-size": 0.6,
+              "icon-allow-overlap": true,
+            },
+          },
         },
         {
           id: "farmacias_prioritarias",
-          private:true,
+          private: true,
           type: "custom",
           title: "Farmacias prioritarias",
           displayPopup: true,
@@ -411,19 +417,19 @@ const config = {
             source: {
               type: "geojson",
               // data: geojson_farmacias_prioritarias
-              data: DJANGO_MEDIA_URL + 'farmacias_prioritarias.geojson'
+              data: DJANGO_MEDIA_URL + "farmacias_prioritarias.geojson",
             },
-            type: 'symbol',
+            type: "symbol",
             layout: {
-              'icon-image': 'imagen_farmacias', //tiene que coincidir con el id de customIcons
-              'icon-size': 0.6,
-              'icon-allow-overlap':true,
-            }
-          }
+              "icon-image": "imagen_farmacias", //tiene que coincidir con el id de customIcons
+              "icon-size": 0.6,
+              "icon-allow-overlap": true,
+            },
+          },
         },
         {
           id: "otras_farmacias",
-          private:true,
+          private: true,
           type: "custom",
           title: "Otras farmacias",
           displayPopup: true,
@@ -433,19 +439,19 @@ const config = {
             source: {
               type: "geojson",
               // data: geojson_farmacias
-              data: DJANGO_MEDIA_URL + 'farmacias.geojson'
+              data: DJANGO_MEDIA_URL + "farmacias.geojson",
             },
-            type: 'symbol',
+            type: "symbol",
             layout: {
-              'icon-image': 'imagen_farmacias', //tiene que coincidir con el id de customIcons
-              'icon-size': 0.6,
-              'icon-allow-overlap':true,
-            }
-          }
+              "icon-image": "imagen_farmacias", //tiene que coincidir con el id de customIcons
+              "icon-size": 0.6,
+              "icon-allow-overlap": true,
+            },
+          },
         },
         {
           id: "pago_facil",
-          private:false,
+          private: false,
           type: "custom",
           title: "Pago Fácil",
           displayPopup: true,
@@ -455,19 +461,19 @@ const config = {
             source: {
               type: "geojson",
               // data: geojson_pago_facil
-              data: DJANGO_MEDIA_URL + 'pago_facil.geojson'
+              data: DJANGO_MEDIA_URL + "pago_facil.geojson",
             },
-            type: 'symbol',
+            type: "symbol",
             layout: {
-              'icon-image': 'imagen_pago_facil', //tiene que coincidir con el id de customIcons
-              'icon-size': 0.6,
-              'icon-allow-overlap':true,
-            }
-          }
+              "icon-image": "imagen_pago_facil", //tiene que coincidir con el id de customIcons
+              "icon-size": 0.6,
+              "icon-allow-overlap": true,
+            },
+          },
         },
         {
           id: "puntos_comunas",
-          private:true,
+          private: true,
           type: "custom",
           title: "Puntos Comuna",
           displayPopup: true,
@@ -477,26 +483,27 @@ const config = {
             source: {
               type: "geojson",
               // data: geojson_puntos_comunas
-              data: DJANGO_MEDIA_URL + 'puntos_comunas.geojson'
+              data: DJANGO_MEDIA_URL + "puntos_comunas.geojson",
             },
-            type: 'symbol',
+            type: "symbol",
             layout: {
-              'icon-image': 'imagen_puntos_comunas', //tiene que coincidir con el id de customIcons
-              'icon-size': 0.6,
-              'icon-allow-overlap':true,
-            }
-          }
-        }
-      ]
+              "icon-image": "imagen_puntos_comunas", //tiene que coincidir con el id de customIcons
+              "icon-size": 0.6,
+              "icon-allow-overlap": true,
+            },
+          },
+        },
+      ],
     },
     {
       title: "Alojamientos",
       color: "#ffffff", //amarillo
-      help: "Hoteles destinados al alojamiento temporarios de aislamiento preventivo de viajeros",
+      help:
+        "Hoteles destinados al alojamiento temporarios de aislamiento preventivo de viajeros",
       layers: [
         {
           id: "alojamiento",
-          private:false,
+          private: false,
           type: "custom",
           title: "Hoteles",
           displayPopup: true,
@@ -506,19 +513,19 @@ const config = {
             source: {
               type: "geojson",
               // data: geojson_hoteles
-              data: DJANGO_MEDIA_URL + 'hoteles.geojson'
+              data: DJANGO_MEDIA_URL + "hoteles.geojson",
             },
-            type: 'symbol',
+            type: "symbol",
             layout: {
-              'icon-image': 'imagen_hoteles', //tiene que coincidir con el id de customIcons
-              'icon-size': 0.6,
-              'icon-allow-overlap':true,
-            }
-          }
+              "icon-image": "imagen_hoteles", //tiene que coincidir con el id de customIcons
+              "icon-size": 0.6,
+              "icon-allow-overlap": true,
+            },
+          },
         },
         {
           id: "centro_barrial",
-          private:true,
+          private: true,
           type: "custom",
           title: "Centros Barriales",
           displayPopup: true,
@@ -528,17 +535,17 @@ const config = {
             source: {
               type: "geojson",
               // data: geojson_centros_barriales
-              data: DJANGO_MEDIA_URL + 'centros_barriales.geojson'
+              data: DJANGO_MEDIA_URL + "centros_barriales.geojson",
             },
-            type: 'symbol',
+            type: "symbol",
             layout: {
-              'icon-image': 'imagen_centro_barrial', //tiene que coincidir con el id de customIcons
-              'icon-size': 0.6,
-              'icon-allow-overlap':true,
-            }
-          }
-        }
-      ]
+              "icon-image": "imagen_centro_barrial", //tiene que coincidir con el id de customIcons
+              "icon-size": 0.6,
+              "icon-allow-overlap": true,
+            },
+          },
+        },
+      ],
     },
     {
       title: "Comercio",
@@ -557,14 +564,14 @@ const config = {
           options: {
             source: {
               type: "geojson",
-              data: DJANGO_MEDIA_URL + 'zonas_comerciales.geojson'
+              data: DJANGO_MEDIA_URL + "zonas_comerciales.geojson",
             },
             type: "fill",
             paint: {
               "fill-color": "#b37cfa",
-              "fill-opacity": 0.5
+              "fill-opacity": 0.5,
             },
-          }
+          },
         },
         {
           id: "corredores_lineales",
@@ -578,16 +585,16 @@ const config = {
           options: {
             source: {
               type: "geojson",
-              data: DJANGO_MEDIA_URL + 'corredores_lineales.geojson'
+              data: DJANGO_MEDIA_URL + "corredores_lineales.geojson",
             },
             type: "line",
             paint: {
               "line-color": "#b37cfa",
-              "line-width": 4
+              "line-width": 4,
             },
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     ,
     {
@@ -607,14 +614,14 @@ const config = {
           options: {
             source: {
               type: "geojson",
-              data: DJANGO_MEDIA_URL + 'centros_de_trasbordo_poligono.geojson'
+              data: DJANGO_MEDIA_URL + "centros_de_trasbordo_poligono.geojson",
             },
             type: "fill",
             paint: {
               "fill-color": "#faa639",
-              "fill-opacity": 0.5
+              "fill-opacity": 0.5,
             },
-          }
+          },
         },
         {
           id: "estaciones_ffcc_cerradas",
@@ -628,15 +635,15 @@ const config = {
           options: {
             source: {
               type: "geojson",
-              data: DJANGO_MEDIA_URL + 'estaciones_ffcc.geojson'
+              data: DJANGO_MEDIA_URL + "estaciones_ffcc.geojson",
             },
-            type: 'symbol',
+            type: "symbol",
             layout: {
-              'icon-image': 'imagen_estaciones_ffcc', //tiene que coincidir con el id de customIcons
-              'icon-size': 0.6,
-              'icon-allow-overlap':true,
-            }
-          }
+              "icon-image": "imagen_estaciones_ffcc", //tiene que coincidir con el id de customIcons
+              "icon-size": 0.6,
+              "icon-allow-overlap": true,
+            },
+          },
         },
         {
           id: "accesos_bus",
@@ -650,17 +657,17 @@ const config = {
           options: {
             source: {
               type: "geojson",
-              data: DJANGO_MEDIA_URL + 'puntos_acceso_bus.geojson'
+              data: DJANGO_MEDIA_URL + "puntos_acceso_bus.geojson",
             },
-            type: 'symbol',
+            type: "symbol",
             layout: {
-              'icon-image': 'imagen_accesos_buses', //tiene que coincidir con el id de customIcons
-              'icon-size': 0.6,
-              'icon-allow-overlap':true,
-            }
-          }
-        }
-      ]
+              "icon-image": "imagen_accesos_buses", //tiene que coincidir con el id de customIcons
+              "icon-size": 0.6,
+              "icon-allow-overlap": true,
+            },
+          },
+        },
+      ],
     },
     {
       title: "Barrios vulnerables",
@@ -669,29 +676,47 @@ const config = {
       layers: [
         {
           id: "zonas_vulnerables",
-          private:false,
+          private: false,
           type: "custom",
           title: "Barrios vulnerables",
           displayPopup: true,
           popupContent: plantilla_barrios_vulnerables,
           icon: imgVulnerables,
-          link : badata.barrios_vulnerables,
+          link: badata.barrios_vulnerables,
           options: {
             source: {
               type: "geojson",
               // data: geojson_barrios_vulnerables
-              data: DJANGO_MEDIA_URL + 'barrios_vulnerables.geojson'
+              data: DJANGO_MEDIA_URL + "barrios_vulnerables.geojson",
             },
             type: "fill",
             paint: {
               "fill-color": "#f2ac1f",
-              "fill-opacity": 0.6
-            }
-          }
-        }
-      ]
-    }
-  ]
+              "fill-opacity": 0.6,
+            },
+          },
+        },
+      ],
+    },
+  ],
+  categorias: [
+    {
+      title: "Información",
+      path: "icoInfo",
+    },
+    {
+      title: "Capa",
+      path: "icoCapa",
+    },
+    {
+      title: "Explorar",
+      path: "icoExplorar",
+    },
+    {
+      title: "Contacto",
+      img: "icoContacto",
+    },
+  ],
 };
 
 export default config;

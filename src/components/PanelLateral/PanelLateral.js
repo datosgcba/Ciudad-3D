@@ -1,85 +1,37 @@
-import React, { Component } from "react";
-import Container from "@material-ui/core/Container";
+import React from "react";
 import { connect } from "react-redux";
-import config from "../../config";
-import Grupo from "../Grupo/Grupo";
 import { updateMap } from "../../store/actions";
-import "./styles.css";
-import Scrollbar from "react-smooth-scrollbar";
+import config from "../../config";
+import Categories from "../Categories/Categories";
+import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/core/styles";
 
-class ConnectedPanel extends Component {
-
-  render() {
-    let logged = this.props.logged;
-
-    const handlePrivacy = ()=>{
-      if(!logged){
-        return(
-          config.grupos.filter(grupo => !grupo.private)
-          .map((g, index) => (
-            <Grupo
-              logged={logged}
-              key={index}
-              color={g.color}
-              title={g.title}
-              help={g.help}
-              layers={g.layers}
-            />
-          ))
-        )
-      }else{
-        return(config.grupos.map((g, index) => (
-          <Grupo
-            logged={logged}
-            key={index}
-            color={g.color}
-            title={g.title}
-            help={g.help}
-            layers={g.layers}
-          />
-        )))
-
-      }
-      
-      
+const useStyles = makeStyles((theme) => ({
+  container: {
+    marginTop: theme.spacing(4),
     
-      
-    }
-    const grupos = config.grupos.map((g, index) => (
-      <Grupo
-        key={index}
-        color={g.color}
-        title={g.title}
-        help={g.help}
-        layers={g.layers}
-      />
+  },
+}));
+
+const ConnectedPanel = () => {
+  const classes = useStyles();
+
+  const getCategories = () => {
+    return config.categorias.map((c, index) => (
+      <Categories key={index} title={c.title} path={c.path} />
     ));
-
-    return (
-      <Scrollbar style={{marginBottom:'5px'}}>
-        <Container
-          maxWidth="sm"
-          className="contenedor"
-          style={{ paddingLeft: "20px", paddingRight: "26px", marginBottom:'15px' }}>
-            {/* {grupos} */}
-            {handlePrivacy(logged)}
-        </Container>
-      </Scrollbar>
-    );
-  }
-}
-
-
-
+  };
+  return <Container className={classes.container}>{getCategories()}</Container>;
+};
 
 function mapDispatchToProps(dispatch) {
   return {
-    updateMapInstance: map => dispatch(updateMap(map))
+    updateMapInstance: (map) => dispatch(updateMap(map)),
   };
 }
 
-const mapStateToProps = state => {
-    return {}
+const mapStateToProps = (state) => {
+  return {};
 };
 
 const PanelLateral = connect(

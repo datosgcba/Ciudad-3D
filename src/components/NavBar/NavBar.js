@@ -8,30 +8,30 @@ import "./style.css";
 
 const navBar = props => {
   return props.isMobile ? (
-    <AppBar position="static" className="header-marca" style={{position:'absolute'}}> 
+    <AppBar position="static" className="header-marca" style={{ position: 'absolute' }}>
       <Toolbar>
         <IconButton
           color="inherit"
           aria-label="mostrar menú"
           edge="start"
-          onClick={props.handleDrawerToggle}          
+          onClick={props.handleDrawerToggle}
         >
           <MenuIcon />
-        </IconButton>        
+        </IconButton>
         <h1 className="header-title">COVID-19 | Mapa</h1>
-        <Logo isMobile w={55} h={45}/>
+        <Logo isMobile w={55} h={45} />
       </Toolbar>
     </AppBar>
   ) : (
-    <AppBar position="static" className="header-marca">
-      <div className="">
-        <div className="" style={{ display: "flex" }}>
-          <Logo w={110} h={90}/>
-          <h1 className="header-title">COVID-19 | Mapa</h1>
+      <AppBar position="static" className="header-marca">
+        <div className="">
+          <div className="" style={{ display: "flex" }}>
+            <Logo w={110} h={90} />
+            <h1 className="header-title">COVID-19 | Mapa</h1>
+          </div>
         </div>
-      </div>
-    </AppBar>
-  );
+      </AppBar>
+    );
 };
 
 export default navBar;

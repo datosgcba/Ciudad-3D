@@ -1,98 +1,75 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { Autocompleter } from "@usig-gcba/autocompleter";
-import Downshift from "downshift";
-import { makeStyles } from "@material-ui/core/styles";
-import InputBase from "@material-ui/core/InputBase";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
-import StarIcon from "@material-ui/icons/Star";
-import PlaceIcon from "@material-ui/icons/Place";
-import Paper from "@material-ui/core/Paper";
-import MenuItem from "@material-ui/core/MenuItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-import Geocoder from "../../utils/GeoLocation";
-import "./styles.css";
-import {tooltip} from "../../utils/Tooltip";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: "2px 4px",
-    display: "flex",
-    alignItems: "center",
-    maxWidth: 300,
-    borderRadius: 1,
-    height: 40
-  },
-
-  input: {
-    marginLeft: 5,
-    paddingLeft: 5,
-    width: 100
-  },
-
-  iconButton: {
-    padding: 10
-  }
-}));
+import React, { useState } from "react"
+import { connect } from "react-redux"
+import { Autocompleter } from "@usig-gcba/autocompleter"
+import Downshift from "downshift"
+import InputBase from "@material-ui/core/InputBase"
+import IconButton from "@material-ui/core/IconButton"
+import SearchIcon from "@material-ui/icons/Search"
+import StarIcon from "@material-ui/icons/Star"
+import PlaceIcon from "@material-ui/icons/Place"
+import Paper from "@material-ui/core/Paper"
+import MenuItem from "@material-ui/core/MenuItem"
+import ListItemText from "@material-ui/core/ListItemText"
+import ListItemAvatar from "@material-ui/core/ListItemAvatar"
+import Avatar from "@material-ui/core/Avatar"
+import Geocoder from "../../utils/GeoLocation"
+import "./styles.css"
+import {tooltip} from "../../utils/Tooltip"
+import useStyles from "./styles"
 
 const Buscador = props => {
-
-  const classes = useStyles();
-  const { map } = props;
+  const classes = useStyles()
+  const { map } = props
 
   //const [showSuggestions, setShowSuggestions] = useState(true);
-  const showSuggestions = true;
-  const [inputValue, setInputValue] = useState("");
-  const [selectedSuggestion, setSelectedSuggestion] = useState(null);
-  const [suggestions, setSuggestions] = useState([]);
+  const showSuggestions = true
+  const [inputValue, setInputValue] = useState("")
+  const [selectedSuggestion, setSelectedSuggestion] = useState(null)
+  const [suggestions, setSuggestions] = useState([])
   //const [sugerenciasVacias,setSugerenciasVacias]  = useState(false);
   //const [errorSugerencias, setErrorSugerencias] = useState(false);
 
   // Opciones de config del autocomplete
-  const options = { maxSuggestions: 10, debug: false };
-  const buscarDireccionesAmba = false;
+  const options = { maxSuggestions: 10, debug: false }
+  const buscarDireccionesAmba = false
 
   //Callbacks del autocomplete
   const suggestionsCallback = suggestions => {
-    setSuggestions(suggestions);
-  };
+    setSuggestions(suggestions)
+  }
 
   const completeSuggestionsCallback = suggestions => {
     if (suggestions.length === 0) {
       //setSugerenciasVacias(true);
-      setSuggestions([]);
+      setSuggestions([])
     }
-  };
+  }
 
   const errorCallback = error => {
     // Si ya hay sugerencias (por ejemplo de favoritos) no muestro el error
     if (suggestions.length === 0) {
-      //setErrorSugerencias(error);
-      setSuggestions([]);
+      //setErrorSugerencias(error)
+      setSuggestions([])
     }
-  };
+  }
 
   function handleInputChange(event) {
-    const text = event.target.value;
-    autocompleter.updateSuggestions(text);
-    setInputValue(text);
+    const text = event.target.value
+    autocompleter.updateSuggestions(text)
+    setInputValue(text)
   }
 
   function handleSelectItem(item) {
     if (selectedSuggestion) {
       if (selectedSuggestion.type === "CALLE") {
-        setInputValue(selectedSuggestion.title + " ");
-        setSuggestions([]);
+        setInputValue(selectedSuggestion.title + " ")
+        setSuggestions([])
         //this.searchInput.focus()
       } else {
-        setInputValue("");
+        setInputValue("")
         //setShowSuggestions(false);
-        setSuggestions([]);
+        setSuggestions([])
 
-        
         // Geolocaliza el punto y envía la info a tooltip.js
         // que agrega el marker con el popup
 
@@ -100,8 +77,8 @@ const Buscador = props => {
           .then(coords =>  tooltip.addPopup(map, coords,selectedSuggestion.title)
           )
           .catch(err => {
-            console.error(err);
-          });
+            console.error(err)
+          })
       }
     }
   }
@@ -109,12 +86,12 @@ const Buscador = props => {
   function handleInputFocus(event) {}
 
   function handleInputBlur(event) {
-    setInputValue("");
-    setSuggestions([]);
+    setInputValue("")
+    setSuggestions([])
   }
 
   const renderInput = inputProps => {
-    const { InputProps, classes, ref, ...other } = inputProps;
+    const { InputProps, classes, ref, ...other } = inputProps
 
     return (
       <InputBase
@@ -125,21 +102,21 @@ const Buscador = props => {
         }}
         {...other}
       />
-    );
-  };
+    )
+  }
 
   const renderSuggestion = suggestionProps => {
-    const { suggestion, index, itemProps, highlightedIndex } = suggestionProps;
+    const { suggestion, index, itemProps, highlightedIndex } = suggestionProps
 
-    const title = suggestion.alias || suggestion.title || suggestion.nombre;
+    const title = suggestion.alias || suggestion.title || suggestion.nombre
     const subTitle = suggestion.subTitle
       ? suggestion.subTitle
-      : suggestion.descripcion;
-    const Icono = suggestion.title ? PlaceIcon : StarIcon;
+      : suggestion.descripcion
+    const Icono = suggestion.title ? PlaceIcon : StarIcon
 
-    const isHighlighted = highlightedIndex === index;
+    const isHighlighted = highlightedIndex === index
     if (isHighlighted) {
-      setSelectedSuggestion(suggestion);
+      setSelectedSuggestion(suggestion)
     }
 
     return (
@@ -160,8 +137,8 @@ const Buscador = props => {
         </ListItemAvatar>
         <ListItemText primary={title} secondary={subTitle} />
       </MenuItem>
-    );
-  };
+    )
+  }
 
   const autocompleter = new Autocompleter(
     {
@@ -170,12 +147,12 @@ const Buscador = props => {
       onError: errorCallback
     },
     options
-  );
+  )
 
-  autocompleter.addSuggester("Direcciones", { inputPause: 250 });
-  autocompleter.addSuggester("Lugares");
+  autocompleter.addSuggester("Direcciones", { inputPause: 250 })
+  autocompleter.addSuggester("Lugares")
 
-  if (buscarDireccionesAmba) autocompleter.addSuggester("DireccionesAMBA");
+  if (buscarDireccionesAmba) autocompleter.addSuggester("DireccionesAMBA")
 
   return (
     <div className="search-input-holder">
@@ -193,7 +170,7 @@ const Buscador = props => {
         }) => {
           const { onBlur, onFocus, onChange, ...inputProps } = getInputProps({
             placeholder: "Buscar"
-          });
+          })
 
           return (
             <div className={classes.container}>
@@ -221,14 +198,14 @@ const Buscador = props => {
                           itemProps: getItemProps({ item: suggestion.title }),
                           highlightedIndex,
                           selectedItem
-                        });
+                        })
                       })}
                     </Paper>
                   ) : null
                 ) : null}
               </div>
             </div>
-          );
+          )
         }}
       </Downshift>
 
@@ -240,7 +217,7 @@ const Buscador = props => {
 const mapStateToProps = state => {
   return {
     map: state.map.mapaGL
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, null)(Buscador);
+export default connect(mapStateToProps, null)(Buscador)

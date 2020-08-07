@@ -1,15 +1,13 @@
-import React from 'react';
-import './styles.css';
+import React from 'react'
+import './styles.css'
 import DirectionsIcon from '@material-ui/icons/Directions'
 
-const FeatureInfo = (props) =>{
-    
+const FeatureInfo = (props) =>{    
     const datos = props.props; // *chanchada
-    const titulo = datos.contenido.filter((p)=>{return p.nombreId==='nombre'})[0].valor;
+    const titulo = datos.contenido.filter((p)=>{return p.nombreId==='nombre'})[0].valor
     const comoLlegoURL = "https://mapa.buenosaires.gob.ar/comollego/?lat=-34.620866&lng=-58.462780&zl=15&modo=transporte&hasta=" + datos.direccionNormalizada
     
-    return (
-        
+    return (        
         <div className="feature_info">
             <h4>{titulo}</h4>
             <div className="marker-properties">
@@ -31,10 +29,8 @@ const FeatureInfo = (props) =>{
                     <DirectionsIcon />
                 </a>
             </div>
-        </div>
-        
-    )
- 
+        </div>        
+    ) 
 }
 
-export default FeatureInfo;
+export default FeatureInfo

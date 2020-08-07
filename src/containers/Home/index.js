@@ -1,22 +1,15 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React from "react"
+import { useEffect } from "react"
+import { useState } from "react"
 import axios from 'axios'
-
-import { connect } from "react-redux";
-
-import { Paper, Drawer, Box, Container } from "@material-ui/core";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import Hidden from "@material-ui/core/Hidden";
-import Mapa from "components/Mapa/Mapa";
-import PanelLateral from "components/PanelLateral/PanelLateral";
-import NavBar from "components/NavBar/NavBar";
-import "mapbox-gl/dist/mapbox-gl.css";
-import "bastrap.css";
-import "App.css";
-import Explorer from "components/Sections/Explorer";
-import config from "config";
-import useStyles from "./styles";
+import { Paper, Drawer } from "@material-ui/core"
+import PanelLateral from "components/PanelLateral"
+import Mapa from "components/Mapa/Mapa"
+import "mapbox-gl/dist/mapbox-gl.css"
+import "bastrap.css"
+import "App.css"
+import Explorer from "components/Sections/Explorer"
+import useStyles from "./styles"
 
 const Home = (props) => {
   const [data, setData] = useState(null);
@@ -43,7 +36,7 @@ const Home = (props) => {
     Explorer
   }
   const sectionName = 'Explorer'
-  const Section = sectionsOption[sectionName] //<Explorer title="Explorar" />
+  const Section = sectionsOption[sectionName]
   return (
     <Paper className={classes.root}>
       <Drawer

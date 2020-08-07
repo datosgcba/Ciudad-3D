@@ -1,14 +1,17 @@
 import React from "react"
-import { Paper, Card, Typography } from "@material-ui/core"
+import { Paper, CardActionArea, Typography } from "@material-ui/core"
 import config from "../../../config"
 import useStyles from './exploreStyle'
 
 const getItems = (classes) => {
+  const handleGetItem = () => {
+    console.log("getItem ");
+  }
   return config.grupos.map((g, index) => (
-    <Card className={classes.card} key={index}>
+    <CardActionArea className={classes.card} key={index} onClick={handleGetItem}>
       <Typography variant="subtitle1"> {g.title} </Typography>
       <Typography variant="caption"> {g.help} </Typography>
-    </Card>
+    </CardActionArea>
   ))
 }
 

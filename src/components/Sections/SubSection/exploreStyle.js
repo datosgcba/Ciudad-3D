@@ -9,6 +9,7 @@ export default makeStyles((theme) => ({
   card: {
     padding: theme.spacing(1),
     height: theme.spacing(11),
-    marginTop: theme.spacing(3)
+    marginTop: theme.spacing(3),
+    backgroundColor: 'white'
   },
 }));

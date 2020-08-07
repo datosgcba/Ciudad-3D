@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Typography, CardActionArea, SvgIcon } from '@material-ui/core'
-import useStyles from './style'
 import { useDispatch } from 'react-redux'
 import { toggleSection } from '../../store/actions'
+import useStyles from './style'
 
 const Categories = (props) => {
   const classes = useStyles()
@@ -15,19 +15,14 @@ const Categories = (props) => {
       </SvgIcon>
     )
   }
-
-  const dispatch = useDispatch()
-
   const [showSection, setShowSection] = useState(true)
-
   const handleShowSection = () => {
     setShowSection(!showSection)
   }
 
+  const dispatch = useDispatch()
   useEffect(() => {
-    if (!showSection) {
-      dispatch(toggleSection())
-    }
+    dispatch(toggleSection())
   }, [showSection])
 
   return (

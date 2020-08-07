@@ -1,42 +1,32 @@
-import React from "react"
-import { useEffect } from "react"
-import { useState } from "react"
+import { Drawer, Paper } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
+import Explorer from 'components/Sections/Explorer'
+import Mapa from 'components/Mapa/Mapa'
+import PanelLateral from 'components/PanelLateral/PanelLateral'
+import PropTypes from 'prop-types'
 import axios from 'axios'
-import { Paper, Drawer } from "@material-ui/core"
-import PanelLateral from "components/PanelLateral"
-import Mapa from "components/Mapa/Mapa"
-import "mapbox-gl/dist/mapbox-gl.css"
-import "bastrap.css"
-import "App.css"
-import Explorer from "components/Sections/Explorer"
-import useStyles from "./styles"
+import useStyles from './styles'
 
-const Home = (props) => {
-  const [data, setData] = useState(null);
+const Home = ({ token }) => {
+  const [data, setData] = useState(null)
 
   useEffect(() => {
     async function fetchData() {
       const result = await axios(
-        "https://ws.usig.buenosaires.gob.ar/rest/normalizar_direcciones?calle=sarmiento&altura=500&desambiguar=1"
-      );
-      setData(result.data);
+        'https://ws.usig.buenosaires.gob.ar/rest/normalizar_direcciones?calle=sarmiento&altura=500&desambiguar=1',
+      )
+      setData(result.data)
     }
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
-  const classes = useStyles();
-  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const [swipeOpen, setSwipeOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setSwipeOpen(!swipeOpen);
-  };
+  const classes = useStyles()
 
   const sectionsOption = {
-    Explorer
+    Explorer,
   }
   const sectionName = 'Explorer'
-  const Section = sectionsOption[sectionName]
+  const Section = sectionsOption[sectionName] // <Explorer title="Explorar" />
   return (
     <Paper className={classes.root}>
       <Drawer
@@ -46,17 +36,21 @@ const Home = (props) => {
         classes={{
           paper: classes.drawerPaper,
         }}
-        open={true}
+        open
       >
-        <PanelLateral logged={props.token ? true : false} />
+        <PanelLateral logged={!!token} />
       </Drawer>
       <Paper variant="persistent">
         <Section title="Explorar" />
       </Paper>
 
-      <Mapa data={data} logged={props.token ? true : false} />
+      <Mapa data={data} logged={!!token} />
     </Paper>
-  );
-};
+  )
+}
 
-export default Home;
+Home.propTypes = {
+  token: PropTypes.string.isRequired,
+}
+
+export default Home

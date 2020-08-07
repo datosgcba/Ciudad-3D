@@ -1,12 +1,11 @@
 import React from "react";
-import {useEffect} from "react";
-import {useState} from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import axios from 'axios'
 
 import { connect } from "react-redux";
 
-import Drawer from "@material-ui/core/Drawer";
-import Paper from "@material-ui/core/Paper";
+import { Paper, Drawer, Box, Container } from "@material-ui/core";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Hidden from "@material-ui/core/Hidden";
 import Mapa from "components/Mapa/Mapa";
@@ -46,7 +45,7 @@ const Home = (props) => {
   const sectionName = 'Explorer'
   const Section = sectionsOption[sectionName] //<Explorer title="Explorar" />
   return (
-    <div className={classes.root}>
+    <Paper className={classes.root}>
       <Drawer
         id="desktop-drawer"
         variant="persistent"
@@ -58,25 +57,12 @@ const Home = (props) => {
       >
         <PanelLateral logged={props.token ? true : false} />
       </Drawer>
-      <Paper
-        variant="persistent"
-        className={classes.drawerChartPanel}
-        classes={{
-          paper: classes.drawerChartPanelPaper,
-        }}
-      >
-        <Section title="Explorar"/>
+      <Paper variant="persistent">
+        <Section title="Explorar" />
       </Paper>
 
-      <main className={classes.content}>
-        {/* navBar para mobile*/}
-        <Hidden mdUp implementation="css">
-          <NavBar isMobile handleDrawerToggle={handleDrawerToggle} />
-        </Hidden>
-
-        <Mapa data={data} logged={props.token ? true : false} />
-      </main>
-    </div>
+      <Mapa data={data} logged={props.token ? true : false} />
+    </Paper>
   );
 };
 

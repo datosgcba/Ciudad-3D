@@ -9,6 +9,7 @@ import imgCapaBasePrincipal from "../../img/capabase_1.png";
 import imgCapaBaseSecundaria from "../../img/capabase_2.png";
 import LogoutButton from '../LogoutButton/LogoutButton';
 import { useSelector, useDispatch } from 'react-redux'
+import { Container } from "@material-ui/core";
 import "./styles.css";
 
 const Mapa = (props) => {
@@ -36,22 +37,20 @@ const Mapa = (props) => {
 
   useEffect(() => {
     if (!map) {
-      setTimeout(() => {
-        const instanciaMap = new MapaInteractivoGL({
-          onFeatureClick
-        });
+      const instanciaMap = new MapaInteractivoGL({
+        onFeatureClick
+      });
 
-        //dispatch de la accion para guardar la instancia en el store
-        dispatch(updateMap(instanciaMap))
+      //dispatch de la accion para guardar la instancia en el store
+      dispatch(updateMap(instanciaMap))
 
-        //agrego las capas prendidas por default
-        dispatch(initMap())
-      }, 500);
+      //agrego las capas prendidas por default
+      dispatch(initMap())
     }
   }, [map, dispatch])
 
   return (
-    <div id="map">
+    <Container id="map">
       <div className="topMenu">
         <Buscador />
         {logged ? <LogoutButton /> : null}
@@ -72,7 +71,7 @@ const Mapa = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 export default Mapa;

@@ -24,6 +24,9 @@ const Home = ({ token }) => {
 
   return (
     <Paper className={classes.root}>
+      <Paper>
+        <Section />
+      </Paper>
       <Drawer
         id="desktop-drawer"
         variant="persistent"
@@ -35,9 +38,6 @@ const Home = ({ token }) => {
       >
         <PanelLateral />
       </Drawer>
-      <Paper >
-        <Section />
-      </Paper>
 
       <Mapa data={data} logged={!!token} />
     </Paper>

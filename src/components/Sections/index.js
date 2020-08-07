@@ -6,17 +6,12 @@ import Explorer from './SubSection/Explorer'
 const Section = () => {
   const isShow = useSelector((state) => state.map.sectionOpen)
   return (
-
-        <Drawer
+    <Drawer
       variant="persistent"
       open={isShow}
-      style={{ position: 'absolute', paddingLeft: 100 }}
-        >
-    
-    <Explorer title="Explorar" />
-
-        </Drawer>
-     
+    >
+      <Explorer title="Explorar" />
+    </Drawer>
   )
 }
 

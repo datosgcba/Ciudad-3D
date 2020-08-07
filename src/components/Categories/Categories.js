@@ -26,9 +26,13 @@ const Categories = (props) => {
   }, [showSection])
 
   return (
-    <CardActionArea className={classes.card} onClick={handleShowSection} >
+    <CardActionArea className={classes.card} onClick={handleShowSection}>
       {getIcon(props.path)}
-      <Typography variant="subtitle2"> {props.title} </Typography>
+      <Typography variant="subtitle2">
+        {' '}
+        {props.title}
+        {' '}
+      </Typography>
     </CardActionArea>
   )
 }

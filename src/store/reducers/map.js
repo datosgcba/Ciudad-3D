@@ -19,7 +19,7 @@ const initialState = {
   loading: true,
   mapaGL: null,
   data: null,
-  sectionOpen: false
+  sectionOpen: false,
 }
 
 const addLayer = (layer, mapaGL) => {
@@ -111,9 +111,7 @@ const reducer = (state = initialState, action) => { // enviar el config junto al
   }
 
   if (action.type === TOGGLE_SECTION) {
-    return Object.assign({}, state, {
-      sectionOpen: !state.sectionOpen
-    })
+    return { ...state, sectionOpen: !state.sectionOpen }
   }
 
   if (action.type === TEST) {

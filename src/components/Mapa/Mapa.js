@@ -74,7 +74,5 @@ const Mapa = (props) => {
       </div>
     </div>
   );
-
-
 }
 export default Mapa;

@@ -8,11 +8,11 @@ import Mapa from "components/Mapa/Mapa"
 import "mapbox-gl/dist/mapbox-gl.css"
 import "bastrap.css"
 import "App.css"
-import Explorer from "components/Sections/Explorer"
 import useStyles from "./styles"
+import Section from 'components/Sections'
 
 const Home = (props) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(null)
 
   useEffect(() => {
     async function fetchData() {
@@ -21,22 +21,11 @@ const Home = (props) => {
       );
       setData(result.data);
     }
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
-  const classes = useStyles();
-  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const [swipeOpen, setSwipeOpen] = React.useState(false);
+  const classes = useStyles()
 
-  const handleDrawerToggle = () => {
-    setSwipeOpen(!swipeOpen);
-  };
-
-  const sectionsOption = {
-    Explorer
-  }
-  const sectionName = 'Explorer'
-  const Section = sectionsOption[sectionName]
   return (
     <Paper className={classes.root}>
       <Drawer
@@ -48,10 +37,10 @@ const Home = (props) => {
         }}
         open={true}
       >
-        <PanelLateral logged={props.token ? true : false} />
+        <PanelLateral />
       </Drawer>
-      <Paper variant="persistent">
-        <Section title="Explorar" />
+      <Paper >
+        <Section />
       </Paper>
 
       <Mapa data={data} logged={props.token ? true : false} />

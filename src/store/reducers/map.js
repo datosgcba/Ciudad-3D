@@ -3,6 +3,7 @@ import {
   ADD_LAYER,
   TOGGLE_LAYER,
   INIT_MAP,
+  TOGGLE_SECTION,
   TEST
 } from "../constants/action-types";
 import config from "../../config";
@@ -17,8 +18,9 @@ import config from "../../config";
 const initialState = {
   loading: true,
   mapaGL: null,
-  data: null
-};
+  data: null,
+  sectionOpen: false
+}
 
 const addLayer = (layer, mapaGL) => {
   if (layer.type && (layer.type === "vectortile" || layer.type === "custom")) {
@@ -113,9 +115,15 @@ const reducer = (state = initialState, action) => { // enviar el config junto al
     return state;
   }
 
+  if (action.type === TOGGLE_SECTION) {
+    return Object.assign({}, state, {
+      sectionOpen: !state.sectionOpen
+    })
+  }
+
   if (action.type === TEST) {
     return {...state, data: action.payload}
-  }
+  }  
 
   return state;
 };

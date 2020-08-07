@@ -1,25 +1,21 @@
-import React from "react"
-import { useEffect } from "react"
-import { useState } from "react"
-import axios from 'axios'
-import { Paper, Drawer } from "@material-ui/core"
-import PanelLateral from "components/PanelLateral"
-import Mapa from "components/Mapa/Mapa"
-import "mapbox-gl/dist/mapbox-gl.css"
-import "bastrap.css"
-import "App.css"
-import useStyles from "./styles"
+import { Drawer, Paper } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
+import Mapa from 'components/Mapa/Mapa'
+import PanelLateral from 'components/PanelLateral/PanelLateral'
 import Section from 'components/Sections'
+import PropTypes from 'prop-types'
+import axios from 'axios'
+import useStyles from './styles'
 
-const Home = (props) => {
+const Home = ({ token }) => {
   const [data, setData] = useState(null)
 
   useEffect(() => {
     async function fetchData() {
       const result = await axios(
-        "https://ws.usig.buenosaires.gob.ar/rest/normalizar_direcciones?calle=sarmiento&altura=500&desambiguar=1"
-      );
-      setData(result.data);
+        'https://ws.usig.buenosaires.gob.ar/rest/normalizar_direcciones?calle=sarmiento&altura=500&desambiguar=1',
+      )
+      setData(result.data)
     }
     fetchData()
   }, [])
@@ -35,7 +31,7 @@ const Home = (props) => {
         classes={{
           paper: classes.drawerPaper,
         }}
-        open={true}
+        open
       >
         <PanelLateral />
       </Drawer>
@@ -43,9 +39,13 @@ const Home = (props) => {
         <Section />
       </Paper>
 
-      <Mapa data={data} logged={props.token ? true : false} />
+      <Mapa data={data} logged={!!token} />
     </Paper>
-  );
-};
+  )
+}
 
-export default Home;
+Home.propTypes = {
+  token: PropTypes.string.isRequired,
+}
+
+export default Home

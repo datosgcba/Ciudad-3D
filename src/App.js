@@ -1,9 +1,19 @@
-import React from "react"
-import { BrowserRouter as Router } from "react-router-dom"
-import BaseRouter from "./routes"
+import { BrowserRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import React from 'react'
+import Routes from './routes'
 
-const App = (props) => <Router>
-  <BaseRouter authed={props.isAuthenticated} />
-</Router>
+const App = ({ isAuthenticated }) => (
+  <BrowserRouter>
+    <Routes authed={isAuthenticated} />
+  </BrowserRouter>
+)
+
+App.propTypes = {
+  isAuthenticated: PropTypes.bool,
+}
+App.defaultProps = {
+  isAuthenticated: false,
+}
 
 export default App

@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useState } from 'react'
-import { connect, useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { renderToString } from 'react-dom/server'
 import { Container } from '@material-ui/core'
 import MapaInteractivoGL from '../../utils/MapaInteractivoGL'

@@ -12,7 +12,7 @@ const Visualize = () => {
       color={g.color}
       title={g.title}
       help={g.help}
-      layers={g.layers}
+      layers={g.layers} 
     />
   )))
 
@@ -28,7 +28,6 @@ const Visualize = () => {
           marginLeft: 100,
         }}
       >
-        {/* {grupos} */}
         {handlePrivacy()}
       </Container>
     </Scrollbar>

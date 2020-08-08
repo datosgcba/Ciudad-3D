@@ -1,10 +1,14 @@
-import { Drawer, Paper } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
-import Mapa from 'components/Mapa/Mapa'
-import PanelLateral from 'components/PanelLateral/PanelLateral'
-import Section from 'components/Sections'
 import PropTypes from 'prop-types'
+
+import { Paper} from '@material-ui/core'
+
 import axios from 'axios'
+
+import Mapa from 'components/Mapa'
+import Sections from 'components/Sections'
+import SideBar from 'components/SideBar'
+
 import useStyles from './styles'
 
 const Home = ({ token }) => {
@@ -24,21 +28,8 @@ const Home = ({ token }) => {
 
   return (
     <Paper className={classes.root}>
-      <Paper>
-        <Section />
-      </Paper>
-      <Drawer
-        id="desktop-drawer"
-        variant="persistent"
-        className={classes.drawer}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        open
-      >
-        <PanelLateral />
-      </Drawer>
-
+      <Sections />
+      <SideBar />
       <Mapa data={data} logged={!!token} />
     </Paper>
   )

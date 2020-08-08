@@ -1,4 +1,5 @@
-import { red } from '@material-ui/core/colors'
+import { red, yellow, deepOrange } from '@material-ui/core/colors'
+import {colors } from '@material-ui/core'
 import green from '@material-ui/core/colors/green'
 import { createMuiTheme } from '@material-ui/core/styles'
 
@@ -11,9 +12,9 @@ const theme = createMuiTheme({
     },
   },
   palette: {
-    primary: {
+    primary: deepOrange/*{
       main: '#fed304',
-    },
+    }*/,
     secondary: {
       main: '#18b596',
     },

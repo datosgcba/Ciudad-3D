@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { renderToString } from 'react-dom/server'
-import { Container } from '@material-ui/core'
-import MapaInteractivoGL from '../../utils/MapaInteractivoGL'
-import FeatureInfo from '../FeatureInfo/FeatureInfo'
-import Buscador from '../Buscador/Buscador'
-import { initMap, updateMap } from '../../store/actions'
-import imgCapaBasePrincipal from '../../img/capabase_1.png'
-import imgCapaBaseSecundaria from '../../img/capabase_2.png'
-import LogoutButton from '../LogoutButton/LogoutButton'
 
-import './styles.css'
-import 'mapbox-gl/dist/mapbox-gl.css'
+import { Container, Box } from '@material-ui/core'
 
-const Mapa = (props) => {
+import { initMap, updateMap } from 'store/actions'
+import { useDispatch, useSelector } from 'react-redux'
+
+import MapaInteractivoGL from 'utils/MapaInteractivoGL'
+
+import Buscador from 'components/Buscador/Buscador'
+import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
+import LogoutButton from 'components/LogoutButton/LogoutButton'
+
+import imgCapaBasePrincipal from 'img/capabase_1.png'
+import imgCapaBaseSecundaria from 'img/capabase_2.png'
+
+import useStyles from './styles'
+
+const Mapa = ({ logged, updateMapAction, initMapAction }) => {
   const map = useSelector((state) => state.map.mapaGL)
   const dispatch = useDispatch()
   const [capabasePrincipal, setCapabasePrincipal] = useState(true)
-  const { logged, updateMapAction, initMapAction } = props
-  const toogleBaseLayer = () => {
-    map.toggleBaseLayer()
-    setCapabasePrincipal(!capabasePrincipal)
-  }
 
   const onFeatureClick = (lngLat, feature) => {
     map
@@ -37,6 +36,12 @@ const Mapa = (props) => {
   }
 
   useEffect(() => {
+    if (map) {
+      map.toggleBaseLayer()
+    }
+  }, [capabasePrincipal])
+
+  useEffect(() => {
     if (!map) {
       const instanciaMap = new MapaInteractivoGL({
         onFeatureClick,
@@ -50,28 +55,29 @@ const Mapa = (props) => {
     }
   }, [map, dispatch])
 
+  const classes = useStyles()
   return (
-    <Container id="map">
-      <div className="topMenu">
+    <Container id="map" className={classes.container}>
+      <div className={classes.topMenu}>
         <Buscador />
         {logged ? <LogoutButton /> : null}
       </div>
-      <div className="bottomMenu" onClick={toogleBaseLayer}>
+      <Box onClick={() => setCapabasePrincipal(!capabasePrincipal)} className={classes.bottomMenu}>
         <div
-          className="minimap-layer"
+          className={classes.minimapLayer}
           style={{
             backgroundImage: !capabasePrincipal
               ? `url(${imgCapaBasePrincipal})`
               : `url(${imgCapaBaseSecundaria})`,
           }}
         >
-          <div className="minimap-title-container">
-            <div className="minimap-title">
+          <div className={classes.minimapTitleContainer}>
+            <div className={classes.minimapTitle}>
               {!capabasePrincipal ? 'Modo Oscuro' : 'Modo Claro'}
             </div>
           </div>
         </div>
-      </div>
+      </Box>
     </Container>
   )
 }

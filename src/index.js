@@ -1,6 +1,5 @@
 import React from 'react'
 import { render } from 'react-dom'
-import './index.css'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import {
@@ -9,7 +8,7 @@ import {
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import * as serviceWorker from './serviceWorker'
-import theme from './theme'
+import theme from 'theme'
 import App from './App'
 import rootReducer from './store/reducers'
 

@@ -14,7 +14,6 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
 import Geocoder from '../../utils/GeoLocation'
-import './styles.css'
 import { tooltip } from '../../utils/Tooltip'
 
 const useStyles = makeStyles((theme) => ({

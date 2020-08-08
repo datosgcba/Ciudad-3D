@@ -22,16 +22,14 @@ const Categories = (props) => {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(toggleSection())
+    dispatch(toggleSection(props.title))
   }, [showSection])
 
   return (
     <CardActionArea className={classes.card} onClick={handleShowSection}>
       {getIcon(props.path)}
       <Typography variant="subtitle2">
-        {' '}
         {props.title}
-        {' '}
       </Typography>
     </CardActionArea>
   )

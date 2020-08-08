@@ -1,5 +1,8 @@
 // geojson local: es importante que la extension del archivo sea .json
 
+import Explorer from 'components/Sections/SubSection/Explorer'
+import Visualize from 'components/Sections/SubSection/Visualize'
+
 const geojson_hoteles = require('./data/hoteles.geojson')
 
 const DJANGO_MEDIA_URL = `${process.env.REACT_APP_DJANGO_BASEURL}/media/data/`
@@ -692,18 +695,17 @@ const config = {
     {
       title: 'Información',
       path: 'icoInfo',
+      component: Explorer
     },
     {
       title: 'Capa',
       path: 'icoCapa',
+      component: Visualize
     },
     {
       title: 'Explorar',
       path: 'icoExplorar',
-    },
-    {
-      title: 'Contacto',
-      img: 'icoContacto',
+      component: Explorer
     },
   ],
 }

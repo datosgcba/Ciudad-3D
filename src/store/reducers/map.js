@@ -19,7 +19,8 @@ const initialState = {
   loading: true,
   mapaGL: null,
   data: null,
-  sectionOpen: false,
+  sectionOpen: true,
+  sectionName: 'Capa'
 }
 
 const addLayer = (layer, mapaGL) => {
@@ -111,7 +112,13 @@ const reducer = (state = initialState, action) => { // enviar el config junto al
   }
 
   if (action.type === TOGGLE_SECTION) {
-    return { ...state, sectionOpen: !state.sectionOpen }
+    return {
+      ...state,
+      sectionOpen: action.payload === state.sectionName
+        ? !state.sectionOpen
+        : state.sectionOpen,
+      sectionName: action.payload,
+    }
   }
 
   if (action.type === TEST) {

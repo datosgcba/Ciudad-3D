@@ -5,16 +5,21 @@ import { Container, Drawer, makeStyles, Paper } from '@material-ui/core'
 import Categories from '../Categories/Categories'
 import config from '../../config'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => {
+console.log('theme',theme.palette.secondary.main)
+  return ({
   sideBar: {
-    backgroundColor: 'green',
-    width: theme.spacing(10),
-    height:'100%'
+    padding: 100,
+  },
+  sideBarPaper: {
+    width: theme.spacing(9.75),
+    background: theme.palette.secondary.main,
   },
   container: {
     marginTop: theme.spacing(4),
   },
-}))
+})})
+
 
 const ConnectedPanel = () => {
   const classes = useStyles()
@@ -24,7 +29,12 @@ const ConnectedPanel = () => {
   ))
 
   return (
-    <Drawer variant="persistent" open PaperProps={{ elevation: 8 }}>
+    <Drawer
+      variant="persistent"
+      open
+      PaperProps={{ elevation: 8, className: classes.sideBarPaper }}
+      className={classes.sideBar}
+    >
       {getCategories()}
     </Drawer>
   )

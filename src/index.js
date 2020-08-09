@@ -1,16 +1,20 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { ThemeProvider } from '@material-ui/styles'
+
 import CssBaseline from '@material-ui/core/CssBaseline'
-import {
-  applyMiddleware, combineReducers, compose, createStore,
-} from 'redux'
-import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-import * as serviceWorker from './serviceWorker'
+import { ThemeProvider } from '@material-ui/styles'
 import theme from 'theme'
+
+import { applyMiddleware, compose, createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from 'store/reducers'
+import thunk from 'redux-thunk'
+
+import ReactFontLoader from 'react-font-loader'
+
 import App from './App'
-import rootReducer from './store/reducers'
+
+import * as serviceWorker from './serviceWorker'
 
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -20,9 +24,9 @@ render(
     <ThemeProvider theme={theme}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
+      <ReactFontLoader fonts={[{ name: 'Nunito' }]} />
       <App />
     </ThemeProvider>
-    ,
   </Provider>,
   document.getElementById('root'),
 )

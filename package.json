@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.2.1",
     "@material-ui/icons": "^4.2.1",
+    "@material-ui/styles": "^4.10.0",
     "@usig-gcba/autocompleter": "^1.1.19",
     "@usig-gcba/normalizador": "^1.1.12",
     "axios": "^0.19.0",
@@ -19,6 +20,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-font-loader": "0.0.9",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.0.1",

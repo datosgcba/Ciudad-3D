@@ -5,20 +5,22 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/styles'
 import theme from 'theme'
 
-import { applyMiddleware, compose, createStore } from 'redux'
 import { Provider } from 'react-redux'
-import rootReducer from 'store/reducers'
-import thunk from 'redux-thunk'
+// import { applyMiddleware, compose, createStore } from 'redux'
+// import rootReducer from 'store/reducers'
+// import thunk from 'redux-thunk'
 
 import ReactFontLoader from 'react-font-loader'
+
+import store from 'store'
 
 import App from './App'
 
 import * as serviceWorker from './serviceWorker'
 
-const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+// const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)))
+// const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)))
 render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -8,7 +8,6 @@ import Category from './Category'
 import useStyles from './style'
 
 const Categories = ({ data }) => {
-  const [categorySelected, setCategorySelected] = useState('')
   const classes = useStyles()
 
   return (
@@ -16,10 +15,8 @@ const Categories = ({ data }) => {
       {
         data.map(({ path, title }) => (
           <Category
-            onToggle={(isToggleOn) => setCategorySelected(isToggleOn ? title : '')}
             path={path}
             title={title}
-            isSelected={categorySelected === title}
           />
         ))
       }

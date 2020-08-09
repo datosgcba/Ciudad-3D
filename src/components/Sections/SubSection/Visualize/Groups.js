@@ -3,10 +3,12 @@ import Divider from '@material-ui/core/Divider'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
-import { Checkbox, Typography, Container, Avatar } from '@material-ui/core'
+import {
+  Checkbox, Typography, Container, Avatar,
+} from '@material-ui/core'
+import { useDispatch } from 'react-redux'
 import { toggleLayer } from '....//../store/actions'
 import useStyles from './groupStyle'
-import { useDispatch } from 'react-redux'
 
 const Groups = (props) => {
   const classes = useStyles()
@@ -54,14 +56,16 @@ const Groups = (props) => {
   )
 
   return (
-    <Container className={classes.container}>      
+    <Container className={classes.container}>
       <Typography variant="h6">
         {props.title}
         <Divider />
       </Typography>
 
-      <List dense >
-        {handlePrivacy()}  {/*Pasar a componente*/}
+      <List dense>
+        {handlePrivacy()}
+        {' '}
+        {/* Pasar a componente */}
       </List>
     </Container>
   )

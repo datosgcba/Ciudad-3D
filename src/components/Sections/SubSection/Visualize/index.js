@@ -1,10 +1,10 @@
 import React from 'react'
 import { Paper, Typography } from '@material-ui/core'
+import Scrollbar from 'react-smooth-scrollbar'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import config from '../../../../config'
 import Groups from './Groups'
 import useStyles from './styles.js'
-import Scrollbar from 'react-smooth-scrollbar'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const getGroups = () => (config.grupos.map((g, index) => (
   <Groups
@@ -26,7 +26,9 @@ const Visualize = () => {
         <Typography variant="h6">
           Visualizar
         </Typography>
-        {getGroups()}  {/*Pasar a componente*/}
+        {getGroups()}
+        {' '}
+        {/* Pasar a componente */}
       </Paper>
     </Scrollbar>
   )

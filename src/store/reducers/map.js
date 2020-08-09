@@ -2,7 +2,7 @@ import {
   ADD_LAYER,
   INIT_MAP,
   TEST,
-  TOGGLE_SECTION,
+  CATEGORY_SELECTED,
   TOGGLE_LAYER,
   UPDATE_MAP,
 } from '../constants/action-types'
@@ -19,8 +19,8 @@ const initialState = {
   loading: true,
   mapaGL: null,
   data: null,
-  sectionOpen: true,
-  sectionName: 'Capa',
+  sectionOpen: false,
+  sectionName: '',
 }
 
 const addLayer = (layer, mapaGL) => {
@@ -111,12 +111,12 @@ const reducer = (state = initialState, action) => { // enviar el config junto al
     return state
   }
 
-  if (action.type === TOGGLE_SECTION) {
+  if (action.type === CATEGORY_SELECTED) {
     return {
       ...state,
       sectionOpen: action.payload === state.sectionName
         ? !state.sectionOpen
-        : state.sectionOpen,
+        : true,
       sectionName: action.payload,
     }
   }

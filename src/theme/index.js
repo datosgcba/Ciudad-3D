@@ -1,8 +1,5 @@
-import { red, yellow, deepOrange, grey } from '@material-ui/core/colors'
-import { colors } from '@material-ui/core'
-import green from '@material-ui/core/colors/green'
-
 import { createMuiTheme } from '@material-ui/core/styles'
+import { red } from '@material-ui/core/colors'
 
 // A custom theme for this app
 const theme = createMuiTheme({
@@ -27,12 +24,13 @@ const theme = createMuiTheme({
   },
   palette: {
     text: {
-      primary: {
-        main: '#fed304',
-      },
-      secondary: {
-        main: '#f3f3f3',
-      },
+      primary: '#707070',
+      secondary: '#D9D9D9',
+    },
+    action: {
+      active: '#D9D9D9',
+      hoverOpacity: 0.5,
+      selected: 'yellow',
     },
     primary: {
       main: '#fed304',
@@ -45,11 +43,6 @@ const theme = createMuiTheme({
     },
     background: {
       default: '#fff',
-    },
-    text: {
-      secondary: {
-        main: '#FF0000',
-      },
     },
   },
 })

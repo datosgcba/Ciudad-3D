@@ -39,7 +39,7 @@
             "ignoreCase": false,
             "ignoreDeclarationSort": false,
             "ignoreMemberSort": true,
-            "allowSeparatedGroups": true,
+            "allowSeparatedGroups": true
         }]
     }
 }

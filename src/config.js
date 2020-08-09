@@ -695,17 +695,17 @@ const config = {
     {
       title: 'Información',
       path: 'icoInfo',
-      component: Explorer
+      component: Explorer,
     },
     {
       title: 'Capa',
       path: 'icoCapa',
-      component: Visualize
+      component: Visualize,
     },
     {
       title: 'Explorar',
       path: 'icoExplorar',
-      component: Visualize
+      component: Visualize,
     },
   ],
 }

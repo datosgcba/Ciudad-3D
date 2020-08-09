@@ -7,7 +7,7 @@ const Section = () => {
   const isShow = useSelector((state) => state.map.sectionOpen)
 
   const sectionName = useSelector((state) => state.map.sectionName)
-  let SelectedSection = config.categorias.filter(c => c.title === sectionName)[0].component
+  const SelectedSection = config.categorias.filter((c) => c.title === sectionName)[0].component
 
   return (
     <Drawer

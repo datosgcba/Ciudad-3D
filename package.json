@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.2.1",
     "@material-ui/icons": "^4.2.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/styles": "^4.10.0",
     "@usig-gcba/autocompleter": "^1.1.19",
     "@usig-gcba/normalizador": "^1.1.12",

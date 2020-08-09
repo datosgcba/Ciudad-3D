@@ -34,11 +34,12 @@
         "autofix/no-debugger": "error",
         "semi": ["error", "never"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "linebreak-style": 0,
         "sort-imports": ["error", {
             "ignoreCase": false,
             "ignoreDeclarationSort": false,
             "ignoreMemberSort": true,
-            "allowSeparatedGroups": true
+            "allowSeparatedGroups": true,
         }]
     }
 }

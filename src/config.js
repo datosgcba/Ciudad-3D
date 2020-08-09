@@ -705,7 +705,7 @@ const config = {
     {
       title: 'Explorar',
       path: 'icoExplorar',
-      component: Explorer
+      component: Visualize
     },
   ],
 }

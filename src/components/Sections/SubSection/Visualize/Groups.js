@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
 import Divider from '@material-ui/core/Divider'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import List from '@material-ui/core/List'
@@ -7,9 +6,12 @@ import ListItem from '@material-ui/core/ListItem'
 import { Checkbox, Typography, Container, Avatar } from '@material-ui/core'
 import { toggleLayer } from '....//../store/actions'
 import useStyles from './groupStyle'
+import { useDispatch } from 'react-redux'
 
-const Grupo = (props) => {
+const Groups = (props) => {
   const classes = useStyles()
+
+  const dispatch = useDispatch()
 
   const initialState = {}
   props.layers.forEach((layer) => {
@@ -20,31 +22,30 @@ const Grupo = (props) => {
   const [isChecked, setIsChecked] = useState(initialState)
 
   const layerChangeHandler = (layer) => (event) => {
-    const { toggleLayerAction } = props
     const { checked } = event.target
     setIsChecked({ ...isChecked, [layer.id]: checked })
-    toggleLayerAction(layer)
+
     setLayers({ ...layers, [layer.id]: checked })
+    dispatch(toggleLayer(layer))
   }
 
   const handlePrivacy = () => (
     props.layers.filter((layer) => !layer.private)
       .map((layer) => (
-        <ListItem key={layer.id} className="item-layer">
+        <ListItem key={layer.id} className={classes.listItem}>
           <FormControlLabel
-            className="item-layer-label"
+            className={classes.formControl}
             control={(
               <Checkbox
                 checked={layers[layer.id]}
                 onChange={layerChangeHandler(layer)}
+                className={classes.checkBox}
                 name={layer.id}
                 color="text"
               />
             )}
           />
-
-          <Avatar alt="Icon" src={layer.icon} variant="square" className={classes.icon}/>
-          
+          <Avatar alt="Icon" src={layer.icon} variant="square" className={classes.icon} />
           <Typography variant="subtitle1">
             {layer.title}
           </Typography>
@@ -53,27 +54,17 @@ const Grupo = (props) => {
   )
 
   return (
-    <Container>
-      <Typography variant="subtitle1">
+    <Container className={classes.container}>      
+      <Typography variant="h6">
         {props.title}
         <Divider />
       </Typography>
 
       <List dense >
-        {handlePrivacy()}
+        {handlePrivacy()}  {/*Pasar a componente*/}
       </List>
     </Container>
   )
 }
 
-function mapStateToProps(state) {
-  return { ...state.map }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    toggleLayerAction: (layer) => dispatch(toggleLayer(layer)),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Grupo)
+export default Groups

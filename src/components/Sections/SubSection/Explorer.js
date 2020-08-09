@@ -26,7 +26,7 @@ const getItems = (classes) => {
 const Explorer = (props) => {
   const classes = useStyles()
   return (
-    <Paper className={classes.box}>
+    <Paper className={classes.paper}>
       <Typography variant="h5">
         {' '}
         {props.title}

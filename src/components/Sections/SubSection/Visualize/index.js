@@ -1,35 +1,33 @@
 import React from 'react'
-import Container from '@material-ui/core/Container'
+import { Paper, Typography } from '@material-ui/core'
 import config from '../../../../config'
-import Grupo from '../../../Grupo/Grupo'
-import './styles.js'
+import Groups from './Groups'
+import useStyles from './styles.js'
 import Scrollbar from 'react-smooth-scrollbar'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
+const getGroups = () => (config.grupos.map((g, index) => (
+  <Groups
+    key={index}
+    color={g.color}
+    title={g.title}
+    help={g.help}
+    layers={g.layers}
+  />
+)))
 
 const Visualize = () => {
-  const handlePrivacy = () => (config.grupos.map((g, index) => (
-    <Grupo
-      key={index}
-      color={g.color}
-      title={g.title}
-      help={g.help}
-      layers={g.layers} 
-    />
-  )))
+  const classes = useStyles()
 
   return (
-    <Scrollbar style={{ marginBottom: '5px' }}>
-      <Container
-        maxWidth="sm"
-        className="contenedor"
-        style={{
-          paddingLeft: '20px',
-          paddingRight: '26px',
-          marginBottom: '15px',
-          marginLeft: 100,
-        }}
-      >
-        {handlePrivacy()}
-      </Container>
+    <Scrollbar>
+      <Paper className={classes.paper}>
+        <ArrowBackIcon />
+        <Typography variant="h6">
+          Visualizar
+        </Typography>
+        {getGroups()}  {/*Pasar a componente*/}
+      </Paper>
     </Scrollbar>
   )
 }

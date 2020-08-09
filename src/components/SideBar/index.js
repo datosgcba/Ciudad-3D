@@ -8,9 +8,6 @@ import config from '../../config'
 const useStyles = makeStyles((theme) => {
 console.log('theme',theme.palette.secondary.main)
   return ({
-  sideBar: {
-    padding: 100,
-  },
   sideBarPaper: {
     width: theme.spacing(9.75),
     background: theme.palette.secondary.main,
@@ -33,7 +30,6 @@ const ConnectedPanel = () => {
       variant="persistent"
       open
       PaperProps={{ elevation: 8, className: classes.sideBarPaper }}
-      className={classes.sideBar}
     >
       {getCategories()}
     </Drawer>

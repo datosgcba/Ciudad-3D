@@ -1,16 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
-  box: {
-    width: theme.spacing(50),
-    padding: theme.spacing(1),
-    backgroundColor: '#F1F1F3',
-    marginLeft: theme.spacing(12),
-  },
-  card: {
-    padding: theme.spacing(1),
-    height: theme.spacing(11),
-    marginTop: theme.spacing(3),
-    backgroundColor: 'white',
-  },
+  paper: {
+    width: theme.spacing(45),         //45    - 360px
+    paddingTop: theme.spacing(2.25),  // 2.25 -  18px
+    paddingLeft: theme.spacing(3.13), // 3.12 -  25px
+    paddingRight: theme.spacing(4.25),// 4.25 -  34px
+    marginLeft: theme.spacing(9.75),  // 9.75 -  78px
+   // border: '1px solid blue'
+  }
 }))

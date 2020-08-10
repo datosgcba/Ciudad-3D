@@ -23,18 +23,18 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     maxWidth: 300,
     borderRadius: 1,
-    height: 40,
+    height: 40
   },
 
   input: {
     marginLeft: 5,
     paddingLeft: 5,
-    width: 100,
+    width: 100
   },
 
   iconButton: {
-    padding: 10,
-  },
+    padding: 10
+  }
 }))
 
 const Buscador = (props) => {
@@ -119,7 +119,7 @@ const Buscador = (props) => {
         className={classes.input}
         inputProps={{
           inputRef: ref,
-          ...InputProps,
+          ...InputProps
         }}
         {...other}
       />
@@ -128,7 +128,7 @@ const Buscador = (props) => {
 
   const renderSuggestion = (suggestionProps) => {
     const {
-      suggestion, index, itemProps, highlightedIndex,
+      suggestion, index, itemProps, highlightedIndex
     } = suggestionProps
 
     const title = suggestion.alias || suggestion.title || suggestion.nombre
@@ -150,7 +150,7 @@ const Buscador = (props) => {
         component="div"
         style={{
           fontSize: '0.6rem',
-          maxWidth: 300,
+          maxWidth: 300
         }}
       >
         <ListItemAvatar>
@@ -167,9 +167,9 @@ const Buscador = (props) => {
     {
       onCompleteSuggestions: completeSuggestionsCallback,
       onSuggestions: suggestionsCallback,
-      onError: errorCallback,
+      onError: errorCallback
     },
-    options,
+    options
   )
 
   autocompleter.addSuggester('Direcciones', { inputPause: 250 })
@@ -189,12 +189,12 @@ const Buscador = (props) => {
           getItemProps,
           getMenuProps,
           highlightedIndex,
-          selectedItem,
+          selectedItem
         }) => {
           const {
             onBlur, onFocus, onChange, ...inputProps
           } = getInputProps({
-            placeholder: 'Buscar',
+            placeholder: 'Buscar'
           })
 
           return (
@@ -205,7 +205,7 @@ const Buscador = (props) => {
                   inputProps,
                   onChange: handleInputChange,
                   onFocus: handleInputFocus,
-                  onBlur: handleInputBlur,
+                  onBlur: handleInputBlur
                 })}
                 <IconButton className={classes.iconButton} aria-label="search">
                   <SearchIcon />
@@ -221,7 +221,7 @@ const Buscador = (props) => {
                         index,
                         itemProps: getItemProps({ item: suggestion.title }),
                         highlightedIndex,
-                        selectedItem,
+                        selectedItem
                       }))}
                     </Paper>
                   ) : null
@@ -238,7 +238,7 @@ const Buscador = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  map: state.map.mapaGL,
+  map: state.map.mapaGL
 })
 
 export default connect(mapStateToProps, null)(Buscador)

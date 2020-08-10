@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
   options: {
-    paddingTop: theme.spacing(10),
+    paddingTop: theme.spacing(10)
   },
   option: {
     display: 'flex',
@@ -11,9 +11,9 @@ export default makeStyles((theme) => ({
     margin: theme.spacing(0),
     padding: theme.spacing(0),
     textAlign: 'center',
-    color: theme.palette.action.active,
+    color: theme.palette.action.active
   },
   optionSelected: {
-    color: theme.palette.primary.main,
-  },
+    color: theme.palette.primary.main
+  }
 }))

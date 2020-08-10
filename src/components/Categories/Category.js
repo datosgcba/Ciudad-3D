@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, SvgIcon, Typography, CardActionArea,
+  Box, SvgIcon, Typography, CardActionArea
 } from '@material-ui/core'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -45,7 +45,7 @@ const Category = ({ path, title }) => {
 
 Category.propTypes = {
   path: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 }
 
 export default Category

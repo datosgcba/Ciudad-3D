@@ -8,11 +8,11 @@ import config from 'config'
 const useStyles = makeStyles((theme) => ({
   sideBarPaper: {
     width: theme.spacing(9.75),
-    background: theme.palette.secondary.main,
+    background: theme.palette.secondary.main
   },
   container: {
-    marginTop: theme.spacing(4),
-  },
+    marginTop: theme.spacing(4)
+  }
 }))
 
 const ConnectedPanel = () => {

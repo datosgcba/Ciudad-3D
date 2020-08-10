@@ -4,7 +4,7 @@ import {
   TEST,
   CATEGORY_SELECTED,
   TOGGLE_LAYER,
-  UPDATE_MAP,
+  UPDATE_MAP
 } from '../constants/action-types'
 import config from '../../config'
 
@@ -19,8 +19,8 @@ const initialState = {
   loading: true,
   mapaGL: null,
   data: null,
-  sectionOpen: false,
-  sectionName: '',
+  sectionOpen: true,
+  sectionName: 'Capa'
 }
 
 const addLayer = (layer, mapaGL) => {
@@ -32,7 +32,7 @@ const addLayer = (layer, mapaGL) => {
       options,
       null,
       layer.displayPopup,
-      layer.popupContent,
+      layer.popupContent
     )
   } else {
     mapaGL.addPublicLayer(layer.id, { clustering: true })
@@ -117,7 +117,7 @@ const reducer = (state = initialState, action) => { // enviar el config junto al
       sectionOpen: action.payload === state.sectionName
         ? !state.sectionOpen
         : true,
-      sectionName: action.payload,
+      sectionName: action.payload
     }
   }
 

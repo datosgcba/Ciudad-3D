@@ -17,7 +17,7 @@ const Home = ({ token }) => {
   useEffect(() => {
     async function fetchData() {
       const result = await axios(
-        'https://ws.usig.buenosaires.gob.ar/rest/normalizar_direcciones?calle=sarmiento&altura=500&desambiguar=1',
+        'https://ws.usig.buenosaires.gob.ar/rest/normalizar_direcciones?calle=sarmiento&altura=500&desambiguar=1'
       )
       setData(result.data)
     }
@@ -36,7 +36,7 @@ const Home = ({ token }) => {
 }
 
 Home.propTypes = {
-  token: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired
 }
 
 export default Home

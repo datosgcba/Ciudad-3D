@@ -44,7 +44,7 @@ const Mapa = ({ logged, updateMapAction, initMapAction }) => {
   useEffect(() => {
     if (!map) {
       const instanciaMap = new MapaInteractivoGL({
-        onFeatureClick,
+        onFeatureClick
       })
 
       // dispatch de la accion para guardar la instancia en el store
@@ -68,7 +68,7 @@ const Mapa = ({ logged, updateMapAction, initMapAction }) => {
           style={{
             backgroundImage: !capabasePrincipal
               ? `url(${imgCapaBasePrincipal})`
-              : `url(${imgCapaBaseSecundaria})`,
+              : `url(${imgCapaBaseSecundaria})`
           }}
         >
           <div className={classes.minimapTitleContainer}>

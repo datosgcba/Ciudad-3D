@@ -1,54 +1,61 @@
 import React, { useState } from 'react'
+
+import PropTypes from 'prop-types'
+
+import {
+  Avatar, Checkbox, Container, FormControlLabel, Typography
+} from '@material-ui/core'
+import CheckBoxIcon from '@material-ui/icons/CheckBox'
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 import Divider from '@material-ui/core/Divider'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
-import {
-  Checkbox, Typography, Container, Avatar,
-} from '@material-ui/core'
+
+import { toggleLayer } from 'store/actions'
 import { useDispatch } from 'react-redux'
-import { toggleLayer } from '....//../store/actions'
+
 import useStyles from './groupStyle'
 
-const Groups = (props) => {
+const Groups = ({ layers, title }) => {
   const classes = useStyles()
 
   const dispatch = useDispatch()
 
   const initialState = {}
-  props.layers.forEach((layer) => {
+  layers.forEach((layer) => {
     initialState[layer.id] = layer.enabled ? layer.enabled : false
   })
 
-  const [layers, setLayers] = useState(initialState)
+  const [layersState, setLayers] = useState(initialState)
   const [isChecked, setIsChecked] = useState(initialState)
 
   const layerChangeHandler = (layer) => (event) => {
     const { checked } = event.target
     setIsChecked({ ...isChecked, [layer.id]: checked })
 
-    setLayers({ ...layers, [layer.id]: checked })
+    setLayers({ ...layersState, [layer.id]: checked })
     dispatch(toggleLayer(layer))
   }
 
-  const handlePrivacy = () => (
-    props.layers.filter((layer) => !layer.private)
+  const HandlePrivacy = () => (
+    layers.filter((layer) => !layer.private)
       .map((layer) => (
         <ListItem key={layer.id} className={classes.listItem}>
           <FormControlLabel
             className={classes.formControl}
             control={(
               <Checkbox
-                checked={layers[layer.id]}
+                icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                checkedIcon={<CheckBoxIcon fontSize="small" />}
+                checked={layersState[layer.id]}
                 onChange={layerChangeHandler(layer)}
                 className={classes.checkBox}
                 name={layer.id}
-                color="text"
               />
             )}
           />
           <Avatar alt="Icon" src={layer.icon} variant="square" className={classes.icon} />
-          <Typography variant="subtitle1">
+          <Typography variant="subtitle2" className={classes.description}>
             {layer.title}
           </Typography>
         </ListItem>
@@ -57,18 +64,21 @@ const Groups = (props) => {
 
   return (
     <Container className={classes.container}>
-      <Typography variant="h6">
-        {props.title}
-        <Divider />
+      <Typography variant="subtitle1" className={classes.subtitle}>
+        {title.toUpperCase()}
+        <Divider className={classes.divider} />
       </Typography>
-
       <List dense>
-        {handlePrivacy()}
-        {' '}
-        {/* Pasar a componente */}
+        <HandlePrivacy />
       </List>
     </Container>
   )
+}
+
+Groups.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  layers: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired
 }
 
 export default Groups

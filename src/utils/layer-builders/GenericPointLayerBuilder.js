@@ -1,13 +1,13 @@
 function getLayer(source, coordinateConversion, style, icon) {
   const layer = {
     id: source,
-    source,
+    source
   }
   if (icon) {
     layer.type = 'symbol'
     layer.layout = {
       'icon-allow-overlap': true,
-      'icon-image': source,
+      'icon-image': source
     }
   }
 

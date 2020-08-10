@@ -12,18 +12,18 @@ const defaultMapStyle = {
         'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
         'https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
         'https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
-        'https://d.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+        'https://d.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'
       ],
-      tileSize: 256,
+      tileSize: 256
     },
     capabase_2: {
       type: 'raster',
       scheme: 'tms',
       tiles: [
-        'https://servicios.usig.buenosaires.gob.ar/mapcache/tms/1.0.0/amba_con_transporte_3857@GoogleMapsCompatible/{z}/{x}/{y}.png',
+        'https://servicios.usig.buenosaires.gob.ar/mapcache/tms/1.0.0/amba_con_transporte_3857@GoogleMapsCompatible/{z}/{x}/{y}.png'
       ],
-      tileSize: 256,
-    },
+      tileSize: 256
+    }
   },
   layers: [
     {
@@ -31,30 +31,30 @@ const defaultMapStyle = {
       type: 'raster',
       source: 'capabase_1',
       layout: {
-        visibility: 'visible',
+        visibility: 'visible'
       },
-      paint: {},
+      paint: {}
     },
     {
       id: 'baseLayer_secundario',
       type: 'raster',
       source: 'capabase_2',
       layout: {
-        visibility: 'none',
+        visibility: 'none'
       },
-      paint: {},
+      paint: {}
     },
     {
       id: 'emptyLayer',
       type: 'background',
       layout: {
-        visibility: 'none',
+        visibility: 'none'
       },
       paint: {
-        'background-color': 'white',
-      },
-    },
-  ],
+        'background-color': 'white'
+      }
+    }
+  ]
 }
 
 const defaults = {
@@ -67,7 +67,7 @@ const defaults = {
     zoom: 12,
     minzoom: 10,
     maxzoom: 18,
-    style: defaultMapStyle,
+    style: defaultMapStyle
   },
   // activeMarker: mapboxgl.Marker({color:'orange'}),
   // fromMarker: mapboxgl.Marker({color:'green'}),
@@ -76,23 +76,23 @@ const defaults = {
   popup: new mapboxgl.Popup(),
   layers: {
     apiUrl: 'https://epok.buenosaires.gob.ar/',
-    reverseGeocodeUrl: 'reverseGeocoderLugares',
+    reverseGeocodeUrl: 'reverseGeocoderLugares'
   },
   texts: {
     es: {
       loadingLayers: 'Cargando capas...',
       loadingMaps: 'Cargando mapas...',
       loadingInformation: 'Cargando información...',
-      errorLoadingInformation: 'Se produjo un error al acceder a la información. Reintente más tarde.',
+      errorLoadingInformation: 'Se produjo un error al acceder a la información. Reintente más tarde.'
     },
     en: {
       loadingLayers: 'Loading layers...',
       loadingMaps: 'Loading maps...',
       loadingInformation: 'Loading information...',
-      errorLoadingInformation: 'An error ocurred. Please try again later.',
-    },
+      errorLoadingInformation: 'An error ocurred. Please try again later.'
+    }
   },
-  language: 'es',
+  language: 'es'
 }
 
 class MapaInteractivoGL {
@@ -124,7 +124,7 @@ class MapaInteractivoGL {
                     return L.tileLayer(config.url, config.options);
                 }, */
       genericPoint,
-      genericLine,
+      genericLine
       // cortes_de_transito,
       // estaciones_de_servicio,
       // estaciones_de_bicicletas,
@@ -326,7 +326,7 @@ class MapaInteractivoGL {
         render() {
           this.data = this.context.getImageData(0, 0, this.width, this.height).data
           return true
-        },
+        }
       }
       this.map.addImage(id, layerIcon)
     } else {
@@ -345,7 +345,7 @@ class MapaInteractivoGL {
           const source = {
             type: 'geojson',
             data: layer[1].url,
-            cluster: false,
+            cluster: false
           }
           this._addSource(layer[0], source)
           if (layer[1].icon) this._createLayerIcon(layer[0], layer[1].icon)
@@ -427,7 +427,7 @@ class MapaInteractivoGL {
         id,
         display_popup: displayPopup,
         popup_content: popupContent,
-        options,
+        options
       }
 
       this.showMessage(this.config.texts[this.config.language].loadingLayers)

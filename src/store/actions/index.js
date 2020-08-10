@@ -1,5 +1,5 @@
 import {
-  UPDATE_MAP, ADD_LAYER, TOGGLE_LAYER, INIT_MAP, CATEGORY_SELECTED, TEST,
+  UPDATE_MAP, ADD_LAYER, TOGGLE_LAYER, INIT_MAP, CATEGORY_SELECTED, TEST
 } from '../constants/action-types'
 
 export function updateMap(payload) {
@@ -21,7 +21,7 @@ export function initMap(payload) {
 export function selectData(data) {
   return {
     type: TEST,
-    payload: data,
+    payload: data
   }
 }
 

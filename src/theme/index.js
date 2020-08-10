@@ -8,43 +8,43 @@ const theme = createMuiTheme({
       '@global': {
         html: {
           fontSize: 16,
-          backgroundColor: red[500],
-        },
-      },
-    },
+          backgroundColor: red[500]
+        }
+      }
+    }
   },
   typography: {
     fontFamily: [
       'Nunito',
-      'Roboto',
+      'Roboto'
     ].join(','),
     caption: {
-      letterSpacing: 0,
-    },
+      letterSpacing: 0
+    }
   },
   palette: {
     text: {
       primary: '#707070',
-      secondary: '#D9D9D9',
+      secondary: '#D9D9D9'
     },
     action: {
       active: '#D9D9D9',
       hoverOpacity: 0.5,
-      selected: 'yellow',
+      selected: 'yellow'
     },
     primary: {
-      main: '#fed304',
+      main: '#fed304'
     },
     secondary: {
-      main: '#f3f3f3',
+      main: '#f3f3f3'
     },
     error: {
-      main: red.A400,
+      main: red.A400
     },
     background: {
-      default: '#fff',
-    },
-  },
+      default: '#fff'
+    }
+  }
 })
 
 export default theme

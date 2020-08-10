@@ -5,21 +5,21 @@ export default makeStyles(() => ({
     height: '10%',
     minHeight: '100vh',
     margin: 0,
-    maxWidth: '100%',
+    maxWidth: '100%'
   },
   topMenu: {
     position: 'fixed',
     right: '23px',
     top: '10px',
     zIindex: 998,
-    display: 'inline-flex',
+    display: 'inline-flex'
   },
   bottomMenu: {
     position: 'fixed',
     right: '23px',
     bottom: '10px',
     zIndex: 998,
-    display: 'inline-flex',
+    display: 'inline-flex'
   },
   minimapLayer: {
     cursor: 'pointer',
@@ -31,7 +31,7 @@ export default makeStyles(() => ({
     backgroundSize: 'cover',
     textAlign: 'center',
     boxSizing: 'border-box',
-    boxShadow: '0 0 5px #000',
+    boxShadow: '0 0 5px #000'
   },
   minimapTitleContainer: {
     display: 'table',
@@ -42,10 +42,10 @@ export default makeStyles(() => ({
     border: 0,
     position: 'absolute',
     bottom: '5%',
-    transition: 'bottom .35s ease',
+    transition: 'bottom .35s ease'
   },
   minimapTitle: {
     display: 'table-cell',
-    verticalAlign: 'middle',
-  },
+    verticalAlign: 'middle'
+  }
 }))

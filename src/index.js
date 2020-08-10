@@ -1,17 +1,22 @@
 import React from 'react'
 import { render } from 'react-dom'
+
 import './index.css'
 import { ThemeProvider } from '@material-ui/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
+
 import {
   applyMiddleware, combineReducers, compose, createStore,
 } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
+
+import CssBaseline from '@material-ui/core/CssBaseline'
+
 import * as serviceWorker from './serviceWorker'
-import theme from './theme'
+
 import App from './App'
 import rootReducer from './store/reducers'
+import theme from './theme'
 
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -23,7 +28,6 @@ render(
       <CssBaseline />
       <App />
     </ThemeProvider>
-    ,
   </Provider>,
   document.getElementById('root'),
 )

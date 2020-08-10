@@ -1,10 +1,14 @@
-import { Drawer, Paper } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
-import Mapa from 'components/Mapa/Mapa'
-import PanelLateral from 'components/PanelLateral/PanelLateral'
-import Section from 'components/Sections'
 import PropTypes from 'prop-types'
+
+import { Paper } from '@material-ui/core'
+
 import axios from 'axios'
+
+import Mapa from 'components/Mapa'
+import Sections from 'components/Sections'
+import SideBar from 'components/SideBar'
+
 import useStyles from './styles'
 
 const Home = ({ token }) => {
@@ -13,7 +17,7 @@ const Home = ({ token }) => {
   useEffect(() => {
     async function fetchData() {
       const result = await axios(
-        'https://ws.usig.buenosaires.gob.ar/rest/normalizar_direcciones?calle=sarmiento&altura=500&desambiguar=1',
+        'https://ws.usig.buenosaires.gob.ar/rest/normalizar_direcciones?calle=sarmiento&altura=500&desambiguar=1'
       )
       setData(result.data)
     }
@@ -24,28 +28,15 @@ const Home = ({ token }) => {
 
   return (
     <Paper className={classes.root}>
-      <Drawer
-        id="desktop-drawer"
-        variant="persistent"
-        className={classes.drawer}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        open
-      >
-        <PanelLateral />
-      </Drawer>
-      <Paper >
-        <Section />
-      </Paper>
-
+      <Sections />
+      <SideBar />
       <Mapa data={data} logged={!!token} />
     </Paper>
   )
 }
 
 Home.propTypes = {
-  token: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired
 }
 
 export default Home

@@ -1,5 +1,4 @@
 import React from 'react'
-import './styles.css'
 import DirectionsIcon from '@material-ui/icons/Directions'
 
 const FeatureInfo = (props) => {

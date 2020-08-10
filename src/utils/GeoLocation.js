@@ -3,7 +3,7 @@ import { Coords } from './coordinates'
 
 const Geocoder = {
   fetchGeolocation,
-  reverseGeolocation,
+  reverseGeolocation
 }
 
 function reverseGeolocation(coordenadas) {
@@ -48,7 +48,7 @@ const getCoordinatesFromPoint = (pointString) => {
   const parenthesisSplit = pointString.split('(')[1].split(')')[0].split(' ')
   return {
     x: parseFloat(parenthesisSplit[0]),
-    y: parseFloat(parenthesisSplit[1]),
+    y: parseFloat(parenthesisSplit[1])
   }
 }
 
@@ -60,7 +60,7 @@ const prettifyDirection = (direction) => {
     type: 'COORDENADAS',
     alias: lowerName,
     nombre: lowerName,
-    descripcion: direction.nombre_partido === 'CABA' ? 'Ciudad Autónoma de Buenos Aires' : `${direction.nombre_localidad}, ${direction.nombre_partido}`,
+    descripcion: direction.nombre_partido === 'CABA' ? 'Ciudad Autónoma de Buenos Aires' : `${direction.nombre_localidad}, ${direction.nombre_partido}`
   } : direction
 }
 

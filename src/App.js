@@ -10,10 +10,10 @@ const App = ({ isAuthenticated }) => (
 )
 
 App.propTypes = {
-  isAuthenticated: PropTypes.bool,
+  isAuthenticated: PropTypes.bool
 }
 App.defaultProps = {
-  isAuthenticated: false,
+  isAuthenticated: false
 }
 
 export default App

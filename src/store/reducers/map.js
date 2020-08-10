@@ -2,9 +2,9 @@ import {
   ADD_LAYER,
   INIT_MAP,
   TEST,
-  TOGGLE_SECTION,
+  CATEGORY_SELECTED,
   TOGGLE_LAYER,
-  UPDATE_MAP,
+  UPDATE_MAP
 } from '../constants/action-types'
 import config from '../../config'
 
@@ -19,7 +19,8 @@ const initialState = {
   loading: true,
   mapaGL: null,
   data: null,
-  sectionOpen: false
+  sectionOpen: true,
+  sectionName: 'Capa'
 }
 
 const addLayer = (layer, mapaGL) => {
@@ -31,7 +32,7 @@ const addLayer = (layer, mapaGL) => {
       options,
       null,
       layer.displayPopup,
-      layer.popupContent,
+      layer.popupContent
     )
   } else {
     mapaGL.addPublicLayer(layer.id, { clustering: true })
@@ -110,10 +111,14 @@ const reducer = (state = initialState, action) => { // enviar el config junto al
     return state
   }
 
-  if (action.type === TOGGLE_SECTION) {
-    return Object.assign({}, state, {
-      sectionOpen: !state.sectionOpen
-    })
+  if (action.type === CATEGORY_SELECTED) {
+    return {
+      ...state,
+      sectionOpen: action.payload === state.sectionName
+        ? !state.sectionOpen
+        : true,
+      sectionName: action.payload
+    }
   }
 
   if (action.type === TEST) {

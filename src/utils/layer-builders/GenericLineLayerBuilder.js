@@ -6,8 +6,8 @@ function getLayer(source, coordinateConversion, style) {
     paint: {
       'line-width': 6,
       'line-color': style.color ? style.color : '#DD0083',
-      'line-opacity': style.opacity ? style.opacity : 1,
-    },
+      'line-opacity': style.opacity ? style.opacity : 1
+    }
 
   }
 

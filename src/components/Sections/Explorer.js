@@ -7,13 +7,13 @@ const useStyles = makeStyles((theme) => ({
   box: {
     width: theme.spacing(50),
     padding: theme.spacing(1),
-    backgroundColor: '#F1F1F3',
+    backgroundColor: '#F1F1F3'
   },
   card: {
     padding: theme.spacing(1),
     height: theme.spacing(11),
-    marginTop: theme.spacing(3),
-  },
+    marginTop: theme.spacing(3)
+  }
 }))
 const getItems = (classes) => config.grupos.map((g, index) => (
   <Card className={classes.card} borderRight={5}>

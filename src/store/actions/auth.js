@@ -8,17 +8,17 @@ const session_min_duration = (3600 * milisegundos) // media hora
 dotenv.config()
 
 export const authStart = () => ({
-  type: actionTypes.AUTH_START,
+  type: actionTypes.AUTH_START
 })
 
 export const authSuccess = (token) => ({
   type: actionTypes.AUTH_SUCCESS,
-  token,
+  token
 })
 
 export const authFail = (error) => ({
   type: actionTypes.AUTH_FAIL,
-  error,
+  error
 })
 
 export const logout = () => {
@@ -28,7 +28,7 @@ export const logout = () => {
     .post(`${process.env.REACT_APP_DJANGO_BASEURL}/rest-auth/logout/`)
     .then()
   return {
-    type: actionTypes.AUTH_LOGOUT,
+    type: actionTypes.AUTH_LOGOUT
   }
 }
 
@@ -48,7 +48,7 @@ export const authLogin = (username, password) => (dispatch) => {
   axios
     .post(`${process.env.REACT_APP_DJANGO_BASEURL}/rest-auth/login/`, {
       username,
-      password,
+      password
     })
     .then((res) => {
       const token = res.data.key
@@ -70,7 +70,7 @@ export const authSignup = (username, email, password1, password2) => (dispatch) 
       username,
       email,
       password1,
-      password2,
+      password2
     })
     .then((res) => {
       const token = res.data.key
@@ -99,8 +99,8 @@ export const authCheckState = () => {
         dispatch(authSuccess(token))
         dispatch(
           checkAuthTimeout(
-            (expirationDate.getTime() - new Date().getTime()) / milisegundos,
-          ),
+            (expirationDate.getTime() - new Date().getTime()) / milisegundos
+          )
         )
       }
     }

@@ -15,7 +15,7 @@ async function addPopup(map, coords, title) {
   const div = buildHtml(finalObject, title)
   map.addMarker([coords.x, coords.y], true, false, true, true, true, {
     label: div.label,
-    color: div.color,
+    color: div.color
   })
 }
 
@@ -43,7 +43,7 @@ const buildHtml = (data, title) => {
     </div>`
   const popupDiv = {
     label: div,
-    color: config.defaultMarkerColor ? config.defaultMarkerColor : '#3FB1CE',
+    color: config.defaultMarkerColor ? config.defaultMarkerColor : '#3FB1CE'
   }
   return popupDiv
 }
@@ -56,5 +56,5 @@ const buildObject = (epokData, wsData) => {
 
 export const tooltip = {
   getPopUpInfo,
-  addPopup,
+  addPopup
 }

@@ -1,22 +1,24 @@
 import React from 'react'
+
 import { Drawer } from '@material-ui/core'
+
 import { useSelector } from 'react-redux'
-import Explorer from './SubSection/Explorer'
+
+import config from 'config'
 
 const Section = () => {
   const isShow = useSelector((state) => state.map.sectionOpen)
-  return (
+  const sectionName = useSelector((state) => state.map.sectionName)
 
-        <Drawer
+  const { component: Selected } = isShow && config.categorias.find((c) => c.title === sectionName)
+
+  return (
+    <Drawer
       variant="persistent"
       open={isShow}
-      style={{ position: 'absolute', paddingLeft: 100 }}
-        >
-    
-    <Explorer title="Explorar" />
-
-        </Drawer>
-     
+    >
+      {Selected && <Selected /> }
+    </Drawer>
   )
 }
 

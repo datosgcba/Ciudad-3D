@@ -11,17 +11,16 @@ import { CategorySelected } from 'store/actions'
 
 import useStyles from './style'
 
-const Icon = ({path , translate}) => {
-  console.log(translate)
+const Icon = ({path}) => {
+  console.log(path)
   return (
-<SvgIcon fontSize="large">
-      <circle cx="30" cy="30" r="9" />
-      <path transform={translate} color="#d9d9d9" d={path} />
+<SvgIcon fontSize="medium" component="div">
+     {path}
     </SvgIcon>
   )
 }
 
-const Category = ({ path, title, translate }) => {
+const Category = ({ path, title }) => {
   
   const sectionName = useSelector((state) => state.map.sectionName)
 
@@ -34,7 +33,7 @@ const Category = ({ path, title, translate }) => {
   return (
     <CardActionArea onClick={() => dispatch(CategorySelected(title))} className={classes.option}>
       <Box className={isSelected ? classes.optionSelected : classes.optionUnSelected}>
-        <Icon path={path} translate={translate} />
+        <Icon path={path} />
       </Box>
       <Box>
         <Typography variant="caption" color="textPrimary">{title}</Typography>

@@ -1,5 +1,7 @@
 // geojson local: es importante que la extension del archivo sea .json
 
+import X_Barrio from 'components/Sections/SubSection/X_Barrio'
+import X_Capa from 'components/Sections/SubSection/X_Capa'
 import Explorer from 'components/Sections/SubSection/Explorer'
 import Visualize from 'components/Sections/SubSection/Visualize'
 
@@ -588,7 +590,7 @@ const config = {
           }
         }
       ]
-    },,
+    },
     {
       title: 'Transporte',
       color: 'blue',

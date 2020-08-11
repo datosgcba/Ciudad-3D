@@ -7,10 +7,20 @@ import { useSelector } from 'react-redux'
 import config from 'config'
 
 const Section = () => {
+  // todo: cambiar a const
   const isShow = useSelector((state) => state.map.sectionOpen)
   const sectionName = useSelector((state) => state.map.sectionName)
 
-  const { component: Selected } = isShow && config.categorias.find((c) => c.title === sectionName)
+  // Ignorar, es para cargar el panel que estoy trabajando
+  /*
+  if (sectionName === '') {
+    isShow = true
+    sectionName = 'Información'
+  }
+  */
+
+  const { component: Selected } = isShow && (config.categorias.find((c) => c.title === sectionName)
+  || config.subSection.find((c) => c.title === sectionName))
 
   return (
     <Drawer

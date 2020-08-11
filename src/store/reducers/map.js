@@ -19,8 +19,8 @@ const initialState = {
   loading: true,
   mapaGL: null,
   data: null,
-  sectionOpen: true,
-  sectionName: 'Capa'
+  sectionOpen: false,
+  sectionName: ''
 }
 
 const addLayer = (layer, mapaGL) => {

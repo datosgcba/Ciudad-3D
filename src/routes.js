@@ -1,21 +1,12 @@
-import React from "react";
-import { Route , Switch} from "react-router-dom";
-import Hoc from "./hoc/hoc";
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import Home from 'containers/Home'
 
-import Home from "./containers/Home";
+const BaseRouter = (props) => (
+  <Switch>
+    <Route exact path="/" component={Home} />
+    <Route component={() => { window.location = 'https://site-error.buenosaires.gob.ar' }} />
+  </Switch>
+)
 
-
-
-const BaseRouter = (props) => {
-  return (
-    <Hoc>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route component={() => { window.location = 'https://site-error.buenosaires.gob.ar' }} />
-      </Switch>
-    </Hoc>
-  )
-
-};
-
-export default BaseRouter;
+export default BaseRouter

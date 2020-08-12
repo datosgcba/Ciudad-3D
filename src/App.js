@@ -1,28 +1,19 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { connect } from "react-redux";
-import BaseRouter from "./routes";
-import * as actions from "./store/actions/auth";
-import Layout from "./containers/Layout";
+import { BrowserRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import React from 'react'
+import Routes from './routes'
 
+const App = ({ isAuthenticated }) => (
+  <BrowserRouter>
+    <Routes authed={isAuthenticated} />
+  </BrowserRouter>
+)
 
-
-
-class App extends Component {
-  render() {
-
-    return (
-      <Router>
-        <Layout {...this.props}>
-          <BaseRouter authed={this.props.isAuthenticated} />
-        </Layout>
-      </Router>
-    );
-  }
+App.propTypes = {
+  isAuthenticated: PropTypes.bool
+}
+App.defaultProps = {
+  isAuthenticated: false
 }
 
-
-
-
-
-export default App;
+export default App

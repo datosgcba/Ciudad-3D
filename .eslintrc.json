@@ -41,6 +41,10 @@
             "ignoreDeclarationSort": false,
             "ignoreMemberSort": true,
             "allowSeparatedGroups": true
+        }],
+        "no-param-reassign": ["error", {
+            "props": true,
+            "ignorePropertyModificationsFor": ["draftState"]
         }]
     }
 }

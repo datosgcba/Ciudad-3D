@@ -30,11 +30,10 @@ const Home = ({ token }) => {
     <Paper className={classes.root}>
       <Sections />
       <SideBar />
-      <Mapa data={data} logged={!!token} />
     </Paper>
   )
 }
-
+// <Mapa data={data} logged={!!token} />
 Home.propTypes = {
   token: PropTypes.string.isRequired
 }

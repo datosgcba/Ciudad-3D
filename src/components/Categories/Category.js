@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { CategorySelected } from 'store/actions'
+import { categorySelected } from 'state/ducks/categories'
 
 import useStyles from './style'
 
@@ -18,7 +18,7 @@ const Icon = ({ path }) => (
 )
 
 const Category = ({ path, title }) => {
-  const sectionName = useSelector((state) => state.map.sectionName)
+  const sectionName = useSelector((state) => state.categories.sectionName)
 
   const dispatch = useDispatch()
 
@@ -27,7 +27,7 @@ const Category = ({ path, title }) => {
   const isSelected = sectionName === title
 
   return (
-    <CardActionArea onClick={() => dispatch(CategorySelected(title))} className={classes.option}>
+    <CardActionArea onClick={() => dispatch(categorySelected(title))} className={classes.option}>
       <Box className={isSelected ? classes.optionSelected : classes.optionUnSelected}>
         <Icon path={path} />
       </Box>

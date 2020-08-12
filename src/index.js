@@ -1,21 +1,18 @@
 import React from 'react'
 import { render } from 'react-dom'
-import './index.css'
-import { ThemeProvider } from '@material-ui/styles'
+
 import CssBaseline from '@material-ui/core/CssBaseline'
-import {
-  applyMiddleware, combineReducers, compose, createStore
-} from 'redux'
+import { ThemeProvider } from '@material-ui/styles'
+
 import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-import * as serviceWorker from './serviceWorker'
-import theme from './theme'
+
+import store from 'state'
+
 import App from './App'
-import rootReducer from './store/reducers'
+import theme from './theme'
 
-const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+import * as serviceWorker from './serviceWorker'
 
-const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)))
 render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>

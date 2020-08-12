@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -11,17 +11,13 @@ import { CategorySelected } from 'store/actions'
 
 import useStyles from './style'
 
-const Icon = ({path}) => {
-  console.log(path)
-  return (
-<SvgIcon fontSize="medium" component="div">
-     {path}
-    </SvgIcon>
-  )
-}
+const Icon = ({ path }) => (
+  <SvgIcon fontSize="medium" component="div">
+    { path }
+  </SvgIcon>
+)
 
 const Category = ({ path, title }) => {
-  
   const sectionName = useSelector((state) => state.map.sectionName)
 
   const dispatch = useDispatch()
@@ -45,6 +41,10 @@ const Category = ({ path, title }) => {
 Category.propTypes = {
   path: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
+}
+
+Icon.propTypes = {
+  path: PropTypes.string.isRequired
 }
 
 export default Category

@@ -10,6 +10,8 @@ export default makeStyles((theme) => ({
     justifyContent: 'center',
     margin: theme.spacing(0),
     padding: theme.spacing(0),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.action.active
   },

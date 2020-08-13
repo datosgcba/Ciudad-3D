@@ -1,8 +1,20 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
+import { configureStore, getDefaultMiddleware, createImmutableStateInvariantMiddleware } from '@reduxjs/toolkit'
 import rootReducer from './ducks'
 
-// TODO: immutableStateInvariantMiddleware arroja error por referencia circular en el estado
+// TODO: todos las acciones y estados deben ser serializables
+const middleware = getDefaultMiddleware({
+  serializableCheck: {
+    ignoredActions: ['map/updateMap'],
+    ignoredPaths: ['map.mapaGL']
+  }
+})
+
+// TODO: !!! [0] es immutableStateInvariantMiddleware: Se detiene el app por referencia circular
+middleware[0] = createImmutableStateInvariantMiddleware({
+  ignoredPaths: ['map.mapaGL']
+})
+
 export default configureStore({
   reducer: rootReducer,
-  middleware: getDefaultMiddleware().slice(1, 40)
+  middleware
 })

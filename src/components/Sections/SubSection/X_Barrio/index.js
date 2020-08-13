@@ -2,7 +2,7 @@ import React from 'react'
 
 import {
   Container, Paper, Typography, Button, IconButton, Accordion, AccordionSummary, AccordionDetails,
-  ListItem, ListItemIcon, Checkbox, ListItemText, List
+  ListItem, ListItemIcon, Checkbox, ListItemText, List, Grid
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
@@ -72,7 +72,36 @@ const X_Barrio = () => {
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <ListItems />
+            <Grid container spacing={3}>
+              <Grid item xs={6}>
+                <ListItem  role={undefined} dense button onClick={handleToggle()}>
+                  <ListItemIcon>
+                    <Checkbox
+                      edge="start"
+                      checked={checked.indexOf() !== -1}
+                      tabIndex={-1}
+                      disableRipple
+                      inputProps={{ 'aria-labelledby': 'labelId' }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText id={'labelId'} primary={`Line item ${'' + 1}`} />
+                </ListItem>
+              </Grid>
+              <Grid item xs={6}>
+                <ListItem  role={undefined} dense button onClick={handleToggle()}>
+                  <ListItemIcon>
+                    <Checkbox
+                      edge="start"
+                      checked={checked.indexOf() !== -1}
+                      tabIndex={-1}
+                      disableRipple
+                      inputProps={{ 'aria-labelledby': 'labelId' }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText id={'labelId'} primary={`Line item ${'' + 1}`} />
+                </ListItem>
+              </Grid>
+            </Grid>
           </AccordionDetails>
         </Accordion>
         <Button className={classes.button} onClick={() => dispatch(CategorySelected('Visualizar'))}>

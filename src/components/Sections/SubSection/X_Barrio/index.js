@@ -7,7 +7,7 @@ import {
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
-import { CategorySelected } from 'store/actions'
+import { categorySelected } from 'state/ducks/categories'
 import { useDispatch } from 'react-redux'
 
 import useStyles from './styles'
@@ -75,7 +75,7 @@ const X_Barrio = () => {
             <ListItems />
           </AccordionDetails>
         </Accordion>
-        <Button className={classes.button} onClick={() => dispatch(CategorySelected('Visualizar'))}>
+        <Button className={classes.button} onClick={() => dispatch(categorySelected('Visualizar'))}>
           Visualizar
         </Button>
       </Container>

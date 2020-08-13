@@ -11,7 +11,7 @@ import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 
-import { toggleLayer } from 'store/actions'
+import { toggleLayer } from 'state/ducks/map'
 import { useDispatch } from 'react-redux'
 
 import useStyles from './groupStyle'

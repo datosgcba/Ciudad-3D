@@ -5,7 +5,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 import Scrollbar from 'react-smooth-scrollbar'
 
-import { CategorySelected } from 'store/actions'
+import { categorySelected } from 'state/ducks/categories'
 import { useDispatch } from 'react-redux'
 
 import config from 'config'
@@ -30,7 +30,7 @@ const Visualize = () => {
   return (
     <Scrollbar>
       <Paper className={classes.paper}>
-        <IconButton className={classes.button} onClick={() => dispatch(CategorySelected('Información'))}>
+        <IconButton className={classes.button} onClick={() => dispatch(categorySelected('Información'))}>
           <ArrowBackIcon className={classes.arrow} />
         </IconButton>
         <Typography variant="h6" className={classes.title}>

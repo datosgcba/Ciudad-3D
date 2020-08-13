@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server'
 
 import { Container, Box } from '@material-ui/core'
 
-import { initMap, updateMap } from 'store/actions'
+import { initMap, updateMap } from 'state/ducks/map'
 import { useDispatch, useSelector } from 'react-redux'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'

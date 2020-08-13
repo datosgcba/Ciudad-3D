@@ -1,7 +1,9 @@
 import React from 'react'
+
 import { Paper, CardActionArea, Typography } from '@material-ui/core'
-import config from '../../../config'
-import useStyles from './exploreStyle'
+
+import config from 'config'
+import useStyles from './styles'
 
 const getItems = (classes) => {
   const handleGetItem = () => {
@@ -10,20 +12,17 @@ const getItems = (classes) => {
   return config.grupos.map((g, index) => (
     <CardActionArea className={classes.card} key={index} onClick={handleGetItem}>
       <Typography variant="subtitle1">
-        {' '}
         {g.title}
-        {' '}
       </Typography>
       <Typography variant="caption">
-        {' '}
         {g.help}
-        {' '}
       </Typography>
     </CardActionArea>
+
   ))
 }
 
-const Explorer = (props) => {
+const Information = (props) => {
   const classes = useStyles()
   return (
     <Paper className={classes.paper}>
@@ -37,4 +36,4 @@ const Explorer = (props) => {
   )
 }
 
-export default Explorer
+export default Information

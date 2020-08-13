@@ -23,18 +23,14 @@ const GroupsList = () => (config.grupos.map((g, index) => (
   />
 )))
 
-const Visualize = () => {
+const Capa = () => {
   const classes = useStyles()
-  const dispatch = useDispatch()
 
   return (
     <Scrollbar>
       <Paper className={classes.paper}>
-        <IconButton className={classes.button} onClick={() => dispatch(categorySelected('Información'))}>
-          <ArrowBackIcon className={classes.arrow} />
-        </IconButton>
         <Typography variant="h6" className={classes.title}>
-          Visualizar
+          Capas
         </Typography>
         <GroupsList />
       </Paper>
@@ -42,4 +38,4 @@ const Visualize = () => {
   )
 }
 
-export default Visualize
+export default Capa

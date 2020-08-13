@@ -9,7 +9,7 @@ import Scrollbar from 'react-smooth-scrollbar'
 
 import useStyles from './styles'
 
-const X_Capa = () => {
+const Contact = () => {
   const classes = useStyles()
 
   return (
@@ -24,4 +24,4 @@ const X_Capa = () => {
   )
 }
 
-export default X_Capa
+export default Contact

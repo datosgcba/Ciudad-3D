@@ -11,10 +11,10 @@ const getItems = (classes) => {
   }
   return config.grupos.map((g, index) => (
     <CardActionArea className={classes.card} key={index} onClick={handleGetItem}>
-      <Typography variant="subtitle1">
+      <Typography className={classes.cardTitulo}>
         {g.title}
       </Typography>
-      <Typography variant="caption">
+      <Typography className={classes.cardCuerpo}>
         {g.help}
       </Typography>
     </CardActionArea>

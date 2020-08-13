@@ -9,8 +9,26 @@ export default makeStyles((theme) => ({
   },
   card: {
     padding: theme.spacing(1),
-    height: theme.spacing(11),
+    minHeight: theme.spacing(11),
     marginTop: theme.spacing(3),
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    borderLeftStyle: 'solid',
+    borderWidth: 'thick',
+    borderColor: '#C4A1A1',
+    lineHeight: theme.spacing(20)
+  },
+  cardTitulo: {
+    fontWeight: 'bold',
+    fontSize: 21,
+    letterSpacing: theme.spacing(0),
+    fontFamily: 'Nunito'
+  },
+  cardCuerpo: {
+    fontSize: 14,
+    color: '#707070',
+    letterSpacing: theme.spacing(0),
+    fontFamily: 'Open Sans',
+    lineHeight: 1.25
   }
+
 }))

@@ -23,7 +23,7 @@ render(
     <ThemeProvider theme={theme}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
-      <ReactFontLoader fonts={[{ name: 'Nunito' }]} />
+      <ReactFontLoader fonts={[{ name: 'Nunito' }, { name: 'Open Sans' }]} />
       <App />
     </ThemeProvider>
   </Provider>,

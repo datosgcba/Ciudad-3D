@@ -22,13 +22,13 @@ const Mapa = ({ logged, updateMapAction, initMapAction }) => {
   const dispatch = useDispatch()
   const [capabasePrincipal, setCapabasePrincipal] = useState(true)
 
-  const onFeatureClick = (lngLat, feature) => {
-    map
+  const onFeatureClick = (mapGL, lngLat, feature) => {
+    mapGL
       .getFeatureProps(feature.properties.Id)
       .then((res) => res.json())
       .then((props) => {
         const contenido = renderToString(<FeatureInfo props={props} />)
-        map.addPopup(lngLat, contenido)
+        mapGL.addPopup(lngLat, contenido)
       })
       .catch((err) => {
         console.error(err)

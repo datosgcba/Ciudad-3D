@@ -3,6 +3,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     font-size: 13px;
+    line-height: 1.5;
 }
 
 .marker-properties .key{

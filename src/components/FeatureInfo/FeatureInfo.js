@@ -1,6 +1,8 @@
 import React from 'react'
 import DirectionsIcon from '@material-ui/icons/Directions'
 
+import './styles.css'
+
 const FeatureInfo = (props) => {
   const datos = props.props // *chanchada
   const titulo = datos.contenido.filter((p) => p.nombreId === 'nombre')[0].valor

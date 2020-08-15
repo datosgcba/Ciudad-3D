@@ -276,26 +276,29 @@ const config = {
           icon: imgUfus,
           link: badata.ufus
         },
-        { id:"homicidio_doloso", title:"Homicidio Doloso", type:"vectortile",         
-          displayPopup:true,
-          options:{            
-            "source": {
+        {
+          id: 'homicidio_doloso',
+          title: 'Homicidio Doloso',
+          type: 'vectortile',
+          displayPopup: true,
+          options: {
+            source: {
               type: 'vector',
-              tiles: ["http://seguridad.eastus2.cloudapp.azure.com/tiles/delitos/homicidio_doloso/{z}/{x}/{y}.pbf"],  
-              minzoom:10,
-              maxzoom:18,
+              tiles: ['http://seguridad.eastus2.cloudapp.azure.com/tiles/delitos/homicidio_doloso/{z}/{x}/{y}.pbf'],
+              minzoom: 10,
+              maxzoom: 18,
               cluster: false
             },
-            "source-layer": "default",
-            "type": "circle",
-            "paint":{
-              "circle-radius": 5,
-              "circle-color": "#e74c3c",
-              "circle-opacity": 0.5,
-              "circle-stroke-width": 2,
-              "circle-stroke-color":'#e74c3c'        
-            }                      
-          }  
+            'source-layer': 'default',
+            type: 'circle',
+            paint: {
+              'circle-radius': 5,
+              'circle-color': '#e74c3c',
+              'circle-opacity': 0.5,
+              'circle-stroke-width': 2,
+              'circle-stroke-color': '#e74c3c'
+            }
+          }
         },
         {
           id: 'hospitales.hospitales_generales_de_agudos',

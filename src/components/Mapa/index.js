@@ -28,18 +28,18 @@ El token setearlo así
 localStorage.setItem("token", '7b3ea1f12563ee390a13ab885884e4590cf6de26')
 */
 const transformRequest = (url, resourceType) => {
-  const token = localStorage.getItem("token");
-  if(token === undefined){
-    console.log("Token is null");
-  }      
-  if(resourceType === 'Tile' && url.endsWith('pbf')) {         
+  const token = localStorage.getItem('token')
+  if (token === undefined) {
+    console.log('Token is null')
+  }
+  if (resourceType === 'Tile' && url.endsWith('pbf')) {
     return {
-      url: url,
-      headers: { 'Authorization': 'Token '+ token}
-      //credentials: 'include'  // Include cookies for cross-origin requests
+      url,
+      headers: { Authorization: `Token ${token}` }
+      // credentials: 'include'  // Include cookies for cross-origin requests
     }
   }
-}   
+}
 
 const Mapa = ({ logged, updateMapAction, initMapAction }) => {
   const map = useSelector((state) => state.map.mapaGL)
@@ -51,8 +51,9 @@ const Mapa = ({ logged, updateMapAction, initMapAction }) => {
       .getFeatureProps(feature.properties.Id)
       .then((res) => res.json())
       .then((props) => {
-        const contenido = renderToString(<FeatureInfo props={props} />)
-        mapGL.addPopup(lngLat, contenido)
+        const { contenido, direccionNormalizada } = props
+        const featureInfoString = renderToString(<FeatureInfo contenido={contenido} direccionNormalizada={direccionNormalizada} />)
+        mapGL.addPopup(lngLat, featureInfoString)
       })
       .catch((err) => {
         console.error(err)

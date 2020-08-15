@@ -10,7 +10,7 @@ import Sections from 'components/Sections'
 import SideBar from 'components/SideBar'
 
 import useStyles from './styles'
-import "mapbox-gl/dist/mapbox-gl.css";
+import 'mapbox-gl/dist/mapbox-gl.css'
 
 const Home = ({ token }) => {
   const [data, setData] = useState(null)

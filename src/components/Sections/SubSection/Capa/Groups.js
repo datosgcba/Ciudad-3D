@@ -29,8 +29,8 @@ const Groups = ({ layers, title }) => {
   const [layersState, setLayers] = useState(initialState)
   const [isChecked, setIsChecked] = useState(initialState)
 
-  const layerChangeHandler = (layer) => (event) => {
-    const { checked } = event.target
+  const layerChangeHandler = (layer) => ({ target: { checked } }) => {
+    console.log(layer)
     setIsChecked({ ...isChecked, [layer.id]: checked })
 
     setLayers({ ...layersState, [layer.id]: checked })

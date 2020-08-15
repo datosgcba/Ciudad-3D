@@ -17,18 +17,42 @@ import imgCapaBaseSecundaria from 'img/capabase_2.png'
 
 import useStyles from './styles'
 
+// TODO: !Revisar el tema del token
+/*
+Por ahora para usar ingresar obtener el token y setear en local storage
+curl 'http://seguridad.eastus2.cloudapp.azure.com/rest-auth/login/' \
+  -H 'Content-Type: application/json;charset=UTF-8' \
+  --data-binary '{"username":"admin","password":"adminusig1234"}'
+
+El token setearlo así
+localStorage.setItem("token", '7b3ea1f12563ee390a13ab885884e4590cf6de26')
+*/
+const transformRequest = (url, resourceType) => {
+  const token = localStorage.getItem("token");
+  if(token === undefined){
+    console.log("Token is null");
+  }      
+  if(resourceType === 'Tile' && url.endsWith('pbf')) {         
+    return {
+      url: url,
+      headers: { 'Authorization': 'Token '+ token}
+      //credentials: 'include'  // Include cookies for cross-origin requests
+    }
+  }
+}   
+
 const Mapa = ({ logged, updateMapAction, initMapAction }) => {
   const map = useSelector((state) => state.map.mapaGL)
   const dispatch = useDispatch()
   const [capabasePrincipal, setCapabasePrincipal] = useState(true)
 
-  const onFeatureClick = (lngLat, feature) => {
-    map
+  const onFeatureClick = (mapGL, lngLat, feature) => {
+    mapGL
       .getFeatureProps(feature.properties.Id)
       .then((res) => res.json())
       .then((props) => {
         const contenido = renderToString(<FeatureInfo props={props} />)
-        map.addPopup(lngLat, contenido)
+        mapGL.addPopup(lngLat, contenido)
       })
       .catch((err) => {
         console.error(err)
@@ -44,7 +68,8 @@ const Mapa = ({ logged, updateMapAction, initMapAction }) => {
   useEffect(() => {
     if (!map) {
       const instanciaMap = new MapaInteractivoGL({
-        onFeatureClick
+        onFeatureClick,
+        transformRequest
       })
 
       // dispatch de la accion para guardar la instancia en el store

@@ -517,7 +517,7 @@ class MapaInteractivoGL {
 
     if (e && e.features) {
       if (typeof (this.config.onFeatureClick) === 'function') {
-        this.config.onFeatureClick(e.lngLat, e.features[0], layerId, layerName)
+        this.config.onFeatureClick.bind(this)(this, e.lngLat, e.features[0], layerId, layerName)
       }
     }
   }

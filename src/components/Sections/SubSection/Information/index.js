@@ -27,9 +27,7 @@ const Information = (props) => {
   return (
     <Paper className={classes.paper}>
       <Typography variant="h5">
-        {' '}
         {props.title}
-        {' '}
       </Typography>
       {getItems(classes)}
     </Paper>

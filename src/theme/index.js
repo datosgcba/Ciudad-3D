@@ -3,14 +3,33 @@ import { red } from '@material-ui/core/colors'
 import { white } from 'material-ui/styles/colors'
 
 // A custom theme for this app
+const spacing = 8
 const theme = createMuiTheme({
   overrides: {
+    spacing,
     MuiCssBaseline: {
       '@global': {
         html: {
           fontSize: 16,
           backgroundColor: white[500]
         }
+      }
+    },
+    MuiAccordionSummary: {
+      root: {
+        minHeight: 0,
+        border: '1px solid blue',
+        '&$expanded': {
+          minHeight: 0
+        },
+        height: spacing * 3.25
+      }
+    },
+    MuiAccordionDetails: {
+      root: {
+        padding: 0,
+        paddingLeft: 16,
+        paddingBottom: 16
       }
     }
   },
@@ -47,5 +66,4 @@ const theme = createMuiTheme({
     }
   }
 })
-
 export default theme

@@ -3,7 +3,7 @@ import React from 'react'
 
 import Capa from 'components/Sections/SubSection/Capa'
 import Contact from 'components/Sections/SubSection/Contact'
-import Explorar from 'components/Sections/SubSection/Explorar'
+import Explorar from 'components/Sections/SubSection/Explorer'
 import Information from 'components/Sections/SubSection/Information'
 
 const geojson_hoteles = require('./data/hoteles.geojson')
@@ -721,11 +721,13 @@ const config = {
   ],
   categorias: [
     {
+      id: 'Information',
       title: 'Información',
       path: <svg id="info" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><g id="Grupo_45" data-name="Grupo 45"><path id="Trazado_13" data-name="Trazado 13" d="M23.9,4.1A14,14,0,0,0,4.1,23.9,14,14,0,0,0,23.9,4.1ZM14,3.828a3.008,3.008,0,1,1-3.008,3.008A3.011,3.011,0,0,1,14,3.828Zm3.828,19.141H10.172V21.328h1.641v-8.2H10.172V11.484h6.016v9.844h1.641Z" fill="#d9d9d9" /></g></svg>,
       component: Information
     },
     {
+      id: 'Capa',
       title: 'Capa',
       path: <svg xmlns="http://www.w3.org/2000/svg" width="35.333" height="32.266" viewBox="0 0 35.333 32.266">
         <g id="Grupo_50" data-name="Grupo 50" transform="translate(-567.5 -127.979)">
@@ -736,6 +738,7 @@ const config = {
       component: Capa
     },
     {
+      id: 'Explorer',
       title: 'Explorar',
       path: <svg xmlns="http://www.w3.org/2000/svg" width="29.33" height="29.33" viewBox="0 0 29.33 29.33">
         <g id="Grupo_49" data-name="Grupo 49" transform="translate(-638.167 -130.25)">
@@ -747,18 +750,22 @@ const config = {
       component: Explorar,
       options: [
         {
+          id: 'Altura',
           title: 'Altura código urbanístico',
           items: []
         },
         {
+          id: 'Area',
           title: 'Área especial individualizada',
           items: []
         },
         {
+          id: 'Mixtura',
           title: 'Mixtura de uso',
           items: []
         },
         {
+          id: 'Barrio',
           title: 'Barrio',
           items: [
             'Agronomía', 'Almagro', 'Balvanera', 'Barras', 'Belgrano', 'Boca', 'Boedo', 'Cabalito',

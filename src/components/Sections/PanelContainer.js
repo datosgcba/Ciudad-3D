@@ -4,16 +4,23 @@ import { Paper } from '@material-ui/core'
 
 import Scrollbar from 'react-smooth-scrollbar'
 
-import useStyles from './styles'
+import PropTypes from 'prop-types'
 
-const PanelContainer = () => {
+import useStyles from './PanelStyles'
+
+const PanelContainer = ({ children }) => {
   const classes = useStyles()
 
   return (
     <Scrollbar>
-      <Paper className={classes.paper} />
+      <Paper className={classes.paper}>
+        {children}
+      </Paper>
     </Scrollbar>
   )
+}
+PanelContainer.propTypes = {
+  children: PropTypes.string.isRequired
 }
 
 export default PanelContainer

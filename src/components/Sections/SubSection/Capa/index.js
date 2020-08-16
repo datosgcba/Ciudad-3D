@@ -1,12 +1,8 @@
 import React from 'react'
 
-import { Paper, Typography, IconButton } from '@material-ui/core'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import { Typography } from '@material-ui/core'
 
-import Scrollbar from 'react-smooth-scrollbar'
-
-import { categorySelected } from 'state/ducks/categories'
-import { useDispatch } from 'react-redux'
+import PanelContainer from 'components/Sections/PanelContainer'
 
 import config from 'config'
 import useStyles from './styles'
@@ -27,14 +23,12 @@ const Capa = () => {
   const classes = useStyles()
 
   return (
-    <Scrollbar>
-      <Paper className={classes.paper}>
-        <Typography variant="h6" className={classes.title}>
-          Capas
-        </Typography>
-        <GroupsList />
-      </Paper>
-    </Scrollbar>
+    <PanelContainer>
+      <Typography variant="h6" className={classes.title}>
+        Capas
+      </Typography>
+      <GroupsList />
+    </PanelContainer>
   )
 }
 

@@ -1,14 +1,12 @@
 import React from 'react'
 
 import {
-  Box, Paper, Typography,
-  Accordion, AccordionSummary, AccordionDetails
+  Box, Typography, Accordion, AccordionSummary, AccordionDetails
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
-import Scrollbar from 'react-smooth-scrollbar'
-
 import GridTwoColumns from 'components/Sections/SubSection/Explorer/GridTwoColumns'
+import PanelContainer from 'components/Sections/PanelContainer'
 
 import config from 'config'
 
@@ -26,36 +24,34 @@ const Explorer = () => {
 
   const { options } = config.categorias.find((c) => c.id === 'Explorer')
   return (
-    <Scrollbar>
-      <Paper className={classes.paper}>
-        <Typography variant="h6" className={classes.title}>
-          Explorar
-        </Typography>
-        <Box>
-          {
-            options.map(({ id, title, items }) => {
-              const AccordionItem = accordionItems.get(id)
-              return (
-                <Accordion elevation={0}>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                  >
-                    <Typography>
-                      {title}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <AccordionItem
-                      items={items}
-                    />
-                  </AccordionDetails>
-                </Accordion>
-              )
-            })
-          }
-        </Box>
-      </Paper>
-    </Scrollbar>
+    <PanelContainer>
+      <Typography variant="h6" className={classes.title}>
+        Explorar
+      </Typography>
+      <Box>
+        {
+          options.map(({ id, title, items }) => {
+            const AccordionItem = accordionItems.get(id)
+            return (
+              <Accordion elevation={0}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                >
+                  <Typography>
+                    {title}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <AccordionItem
+                    items={items}
+                  />
+                </AccordionDetails>
+              </Accordion>
+            )
+          })
+        }
+      </Box>
+    </PanelContainer>
   )
 }
 

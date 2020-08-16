@@ -30,9 +30,7 @@ const Groups = ({ layers, title }) => {
   const [isChecked, setIsChecked] = useState(initialState)
 
   const layerChangeHandler = (layer) => ({ target: { checked } }) => {
-    console.log(layer)
     setIsChecked({ ...isChecked, [layer.id]: checked })
-
     setLayers({ ...layersState, [layer.id]: checked })
     dispatch(toggleLayer(layer))
   }
@@ -76,8 +74,7 @@ const Groups = ({ layers, title }) => {
 }
 
 Groups.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  layers: PropTypes.array.isRequired,
+  layers: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 }
 

@@ -6,7 +6,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import GridTwoColumns from 'components/Sections/SubSection/Explorer/GridTwoColumns'
-import PanelContainer from 'components/Sections/PanelContainer'
+import ContainerBar from 'components/Sections/ContainerBar'
 
 import config from 'config'
 
@@ -24,7 +24,7 @@ const Explorer = () => {
 
   const { options } = config.categorias.find((c) => c.id === 'Explorer')
   return (
-    <PanelContainer>
+    <ContainerBar>
       <Typography variant="h6" className={classes.title}>
         Explorar
       </Typography>
@@ -51,7 +51,7 @@ const Explorer = () => {
           })
         }
       </Box>
-    </PanelContainer>
+    </ContainerBar>
   )
 }
 

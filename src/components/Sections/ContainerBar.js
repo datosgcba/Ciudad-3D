@@ -6,9 +6,9 @@ import Scrollbar from 'react-smooth-scrollbar'
 
 import PropTypes from 'prop-types'
 
-import useStyles from './PanelStyles'
+import useStyles from './ContainerBarStyles'
 
-const PanelContainer = ({ children }) => {
+const ContainerBar = ({ children }) => {
   const classes = useStyles()
 
   return (
@@ -19,8 +19,8 @@ const PanelContainer = ({ children }) => {
     </Scrollbar>
   )
 }
-PanelContainer.propTypes = {
+ContainerBar.propTypes = {
   children: PropTypes.string.isRequired
 }
 
-export default PanelContainer
+export default ContainerBar

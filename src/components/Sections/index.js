@@ -4,7 +4,7 @@ import { Drawer } from '@material-ui/core'
 
 import { useSelector } from 'react-redux'
 
-import config from 'config'
+import config from 'appConfig'
 
 const Section = () => {
   let isShow = useSelector((state) => state.categories.sectionOpen)

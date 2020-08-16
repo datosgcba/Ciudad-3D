@@ -1,25 +1,19 @@
 import React from 'react'
 
-import { Paper, Typography, IconButton } from '@material-ui/core'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack'
-
+import { Paper, Typography } from '@material-ui/core'
 import Scrollbar from 'react-smooth-scrollbar'
 
-import { categorySelected } from 'state/ducks/categories'
-import { useDispatch } from 'react-redux'
+import { getGroups } from 'utils/configQueries'
 
-import config from 'config'
+import Group from './Group'
+
 import useStyles from './styles'
 
-import Groups from './Groups'
-
-const GroupsList = () => (config.grupos.map((g, index) => (
-  <Groups
+const Groups = () => (getGroups().map(({ index, title }) => (
+  <Group
     key={index}
-    color={g.color}
-    title={g.title}
-    help={g.help}
-    layers={g.layers}
+    index={index}
+    title={title}
   />
 )))
 
@@ -32,7 +26,7 @@ const Capa = () => {
         <Typography variant="h6" className={classes.title}>
           Capas
         </Typography>
-        <GroupsList />
+        <Groups />
       </Paper>
     </Scrollbar>
   )

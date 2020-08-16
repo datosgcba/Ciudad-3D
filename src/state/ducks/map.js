@@ -1,25 +1,42 @@
-import config from 'config'
-import { createSlice } from '@reduxjs/toolkit'
+import config from 'appConfig'
 
-const add = (layer, mapaGL) => {
+import { getFullLayerConfig } from 'utils/configQueries'
+
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+
+let mapGL = null
+
+const loadCustomImages = () => {
+  // mapbox necesita que se agreguen las capas para referenciarlas por id
+  // console.log("Cargando los iconos customizados");
+  const { customIcons } = config
+
+  customIcons.forEach((icon) => {
+    mapGL.map.loadImage(icon.data, (error, image) => {
+      if (error) throw error
+      mapGL.map.addImage(icon.id, image)
+    })
+  })
+}
+
+const add = (layer) => {
   if (layer.type && (layer.type === 'vectortile' || layer.type === 'custom')) {
     const options = { ...layer.options }
     options.id = layer.id
     // console.log(mapaGL);
-    mapaGL.addVectorTileLayer(
+    mapGL.addVectorTileLayer(
       options,
       null,
       layer.displayPopup,
       layer.popupContent
     )
   } else {
-    mapaGL.addPublicLayer(layer.id, { clustering: true })
+    mapGL.addPublicLayer(layer.id, { clustering: true })
   }
 }
 
-const toggle = (layer, mapaGL) => {
-  const { map } = mapaGL
-
+const toggle = (layer) => {
+  const { map } = mapGL
   if (map.getLayer(layer.id)) {
     const visibility = map.getLayoutProperty(layer.id, 'visibility')
     if (typeof visibility === 'undefined' || visibility === 'visible') {
@@ -28,10 +45,59 @@ const toggle = (layer, mapaGL) => {
       map.setLayoutProperty(layer.id, 'visibility', 'visible')
     }
   } else {
-    add(layer, mapaGL)
+    add(layer)
   }
 }
 
+const mapEventPromise = (eventName) => new Promise((resolve, reject) => {
+  try {
+    mapGL.map.on(eventName, () => {
+      resolve()
+    })
+  } catch (error) {
+    reject(error)
+  }
+})
+const initMap = createAsyncThunk(
+  'map/initMap',
+  async (mapInstance) => {
+    mapGL = mapInstance
+    const mapOnLoad = mapEventPromise('load')
+    return mapOnLoad
+      .then(() => {
+        loadCustomImages()
+        return true
+      })
+      .catch(() => false)
+  }, {
+    condition: () => mapGL === null
+  }
+)
+
+const getLayerState = (state, indexGroup, idLayer) => state
+  .groups[indexGroup]
+  .layers[idLayer]
+
+const toggleLayer = createAsyncThunk(
+  'map/toggleLayer',
+  ({ indexGroup, idLayer }) => {
+    const layer = getFullLayerConfig(indexGroup, idLayer)
+    const mapOnLoad = mapEventPromise('idle')
+    toggle(layer)
+    return mapOnLoad
+      .then(() => true)
+      .catch(() => false)
+  },
+  {
+    condition: ({ indexGroup, idLayer }, { getState }) => {
+      const state = getState()
+      const layerState = getLayerState(state.map, indexGroup, idLayer)
+      return state.map.isMapReady && layerState.processingId === null
+    }
+  }
+)
+
+/*
 const loadDefaultLayers = (mapaGL) => {
   // las capas se agregan cuando se termina de crear el mapa
   // console.log("Prendiendo las capas habilitadas por default");
@@ -42,20 +108,6 @@ const loadDefaultLayers = (mapaGL) => {
   }))
 }
 
-const loadCustomImages = (mapaGL) => {
-  // mapbox necesita que se agreguen las capas para referenciarlas por id
-  // console.log("Cargando los iconos customizados");
-  const { customIcons } = config
-  const { map } = mapaGL
-
-  customIcons.map((icon) => {
-    map.loadImage(icon.data, (error, image) => {
-      if (error) throw error
-      map.addImage(icon.id, image)
-    })
-  })
-}
-
 const init = (mapaGL) => {
   const { map } = mapaGL
   map.on('load', () => {
@@ -63,37 +115,75 @@ const init = (mapaGL) => {
     loadDefaultLayers(mapaGL)
   })
 }
-
+*/
 const map = createSlice({
   name: 'map',
   initialState: {
-    loading: true,
-    mapaGL: null,
-    data: null
+    isMapReady: false,
+    groups: config.grupos.map(({ title, layers }) => ({
+      title,
+      layers: layers.reduce((result, { id }) => ({
+        ...result,
+        [id]: {
+          isVisible: false,
+          processingId: null
+        }
+      }), {})
+    }))
   },
   reducers: {
-    updateMap: (draftState, action) => {
-      draftState.mapaGL = action.payload
-    },
-    initMap: (draftState, action) => {
-      const { mapaGL } = draftState
-      init(mapaGL)
-    },
+    setMapReady: (draftState) => {
+      draftState.isMapReady = true
+    }
+    /*
     addLayer: (draftState, action) => {
       const layer = action.payload
-      const { mapaGL } = draftState
-      add(layer, mapaGL)
+      const { getMapGL } = draftState
+      add(layer, getMapGL())
     },
-    toggleLayer: (draftState, action) => {
-      const layer = action.payload
-      const { mapaGL } = draftState
-      toggle(layer, mapaGL)
+      */
+  },
+  extraReducers: {
+    [initMap.fulfilled]: (draftState, action) => {
+      draftState.isMapReady = action.payload
+    },
+    [toggleLayer.pending]: (draftState, {
+      meta: {
+        requestId,
+        arg: { indexGroup, idLayer }
+      }
+    }) => {
+      const layerState = getLayerState(draftState, indexGroup, idLayer)
+      layerState.processingId = requestId
+      layerState.isVisible = !layerState.isVisible
+    },
+    [toggleLayer.fulfilled]: (draftState, {
+      meta: {
+        requestId,
+        arg: { indexGroup, idLayer }
+      }
+    }) => {
+      const layerState = getLayerState(draftState, indexGroup, idLayer)
+      if (layerState.processingId === requestId) {
+        layerState.processingId = null
+      }
+    },
+    [toggleLayer.error]: (draftState, {
+      meta: {
+        requestId,
+        arg: { indexGroup, idLayer }
+      }
+    }) => {
+      const layerState = getLayerState(draftState, indexGroup, idLayer)
+      if (layerState.processingId === requestId) {
+        layerState.processingId = null
+        layerState.isVisible = !layerState.isVisible
+      }
     }
   }
 })
 
 export default map.reducer
 
-export const {
-  updateMap, initMap, addLayer, toggleLayer
-} = map.actions
+const actions = { ...map.actions, initMap, toggleLayer }
+export { actions }

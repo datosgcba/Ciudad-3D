@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Paper, CardActionArea, Typography } from '@material-ui/core'
 
-import config from 'config'
+import config from 'appConfig'
 import useStyles from './styles'
 
 const getItems = (classes) => {

@@ -6,7 +6,7 @@ import {
 
 import AccordionWrapper from 'theme/wrapper/AccordionWrapper'
 
-import config from 'config'
+import config from 'appConfig'
 
 import useStyles from './styles'
 

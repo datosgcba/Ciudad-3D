@@ -1,3 +1,7 @@
+/*
+  Importante acceder a las configuraciones utilizando utils/configQueries
+*/
+
 // geojson local: es importante que la extension del archivo sea .json
 import React from 'react'
 
@@ -6,7 +10,7 @@ import Contact from 'components/Sections/SubSection/Contact'
 import Explorar from 'components/Sections/SubSection/Explorar'
 import Information from 'components/Sections/SubSection/Information'
 
-const geojson_hoteles = require('./data/hoteles.geojson')
+const geojson_hoteles = require('data/hoteles.geojson')
 
 const DJANGO_MEDIA_URL = `${process.env.REACT_APP_DJANGO_BASEURL}/media/data/`
 
@@ -33,27 +37,27 @@ const DJANGO_MEDIA_URL = `${process.env.REACT_APP_DJANGO_BASEURL}/media/data/`
 // const geojson_prueba_extrusion = require("./data/prueba_extrusion.geojson");
 
 // Imagenes de los logos (en el caso de barrios vulnerables es un rectangulo de color solido)
-const imgUfus = require('./img/ufus.png')
-const imgHoteles = require('./img/hoteles.png')
-const imgVacunacion = require('./img/vacunacion.png')
-const imgHA = require('./img/hosp_agudos.png')
-const imgHE = require('./img/hosp_especializados.png')
-const imgHN = require('./img/hosp_ninos.png')
-const imgCesac = require('./img/cesac.png')
-const imgCentro_barrial = require('./img/centro_barrial.png')
-const imgVulnerables = require('./img/vulnerables.png')
-const imgEmpleados_varon = require('./img/empleados_varon.png')
-const imgEmpleadas_mujer = require('./img/empleadas_mujer.png')
-const imgAutoridades_varon = require('./img/autoridades.png')
-const imgAutoridades_mujer = require('./img/autoridades_mujer.png')
-const imgLicencia = require('./img/licencia.png')
-const imgBancos = require('./img/bancos.png')
-const imgFarmacias = require('./img/farmacias.png')
-const imgPagoFacil = require('./img/pago_facil.png')
-const imgPuntosComunas = require('./img/puntos_comunas.png')
-const imgEstacionesFFCC = require('./img/estacion_ffcc.png')
-const imgAccesoBuses = require('./img/acceso_buses.png')
-const imgComerciales = require('./img/comerciales.png')
+const imgUfus = require('img/ufus.png')
+const imgHoteles = require('img/hoteles.png')
+const imgVacunacion = require('img/vacunacion.png')
+const imgHA = require('img/hosp_agudos.png')
+const imgHE = require('img/hosp_especializados.png')
+const imgHN = require('img/hosp_ninos.png')
+const imgCesac = require('img/cesac.png')
+const imgCentro_barrial = require('img/centro_barrial.png')
+const imgVulnerables = require('img/vulnerables.png')
+const imgEmpleados_varon = require('img/empleados_varon.png')
+const imgEmpleadas_mujer = require('img/empleadas_mujer.png')
+const imgAutoridades_varon = require('img/autoridades.png')
+const imgAutoridades_mujer = require('img/autoridades_mujer.png')
+const imgLicencia = require('img/licencia.png')
+const imgBancos = require('img/bancos.png')
+const imgFarmacias = require('img/farmacias.png')
+const imgPagoFacil = require('img/pago_facil.png')
+const imgPuntosComunas = require('img/puntos_comunas.png')
+const imgEstacionesFFCC = require('img/estacion_ffcc.png')
+const imgAccesoBuses = require('img/acceso_buses.png')
+const imgComerciales = require('img/comerciales.png')
 
 // Links de descarga BADATA
 const badata = {

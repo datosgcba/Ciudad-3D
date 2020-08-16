@@ -1,4 +1,4 @@
-import config from '../config'
+import config from 'appConfig'
 
 /**
  * Se hacen consultas a los webServices de USIG y a EPOK, para obtener la informacion del

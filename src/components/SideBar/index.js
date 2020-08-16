@@ -3,7 +3,7 @@ import React from 'react'
 import { Drawer, makeStyles } from '@material-ui/core'
 
 import Categories from 'components/Categories/Categories'
-import config from 'config'
+import config from 'appConfig'
 
 const useStyles = makeStyles((theme) => ({
   sideBarPaper: {

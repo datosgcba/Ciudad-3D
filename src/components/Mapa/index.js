@@ -3,14 +3,14 @@ import { renderToString } from 'react-dom/server'
 
 import { Container, Box } from '@material-ui/core'
 
-import { initMap, updateMap } from 'state/ducks/map'
+import { actions } from 'state/ducks/map'
 import { useDispatch, useSelector } from 'react-redux'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
 import Buscador from 'components/Buscador/Buscador'
 import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
-import LogoutButton from 'components/LogoutButton/LogoutButton'
+// import LogoutButton from 'components/LogoutButton/LogoutButton'
 
 import imgCapaBasePrincipal from 'img/capabase_1.png'
 import imgCapaBaseSecundaria from 'img/capabase_2.png'
@@ -42,7 +42,8 @@ const transformRequest = (url, resourceType) => {
 }
 
 const Mapa = ({ logged, updateMapAction, initMapAction }) => {
-  const map = useSelector((state) => state.map.mapaGL)
+  const isMapReady = useSelector((state) => state.map.isMapReady)
+  const [mapGL, setMapGL] = useState(null)
   const dispatch = useDispatch()
   const [capabasePrincipal, setCapabasePrincipal] = useState(true)
 
@@ -61,33 +62,33 @@ const Mapa = ({ logged, updateMapAction, initMapAction }) => {
   }
 
   useEffect(() => {
-    if (map) {
-      map.toggleBaseLayer()
+    if (mapGL) {
+      mapGL.toggleBaseLayer()
     }
   }, [capabasePrincipal])
 
+  // Se inicializa el mapa
   useEffect(() => {
-    if (!map) {
-      const instanciaMap = new MapaInteractivoGL({
+    if (!isMapReady) {
+      const map = MapaInteractivoGL({
         onFeatureClick,
         transformRequest
       })
+      setMapGL(map)
 
-      // dispatch de la accion para guardar la instancia en el store
-      dispatch(updateMap(instanciaMap))
-
-      // agrego las capas prendidas por default
-      dispatch(initMap())
+      dispatch(actions.initMap(map))
     }
-  }, [map, dispatch])
+  }, [isMapReady, dispatch])
 
   const classes = useStyles()
   return (
     <Container id="map" className={classes.container}>
+      {/*
       <div className={classes.topMenu}>
         <Buscador />
         {logged ? <LogoutButton /> : null}
       </div>
+      */}
       <Box onClick={() => setCapabasePrincipal(!capabasePrincipal)} className={classes.bottomMenu}>
         <div
           className={classes.minimapLayer}

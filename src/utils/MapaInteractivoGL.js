@@ -588,4 +588,16 @@ class MapaInteractivoGL {
   }
 }
 
-export default MapaInteractivoGL
+const Singleton = () => {
+  let instanciaMap = null
+  const getInstance = (options) => {
+    instanciaMap = instanciaMap || (options && new MapaInteractivoGL(options))
+    return instanciaMap
+  }
+
+  return {
+    getInstance
+  }
+}
+
+export default Singleton().getInstance

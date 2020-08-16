@@ -39,7 +39,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Buscador = (props) => {
   const classes = useStyles()
-  const { map } = props
+  const { getMapGL, isMapInitialize } = props
+  const map = getMapGL && getMapGL()
 
   // const [showSuggestions, setShowSuggestions] = useState(true);
   const showSuggestions = true
@@ -238,7 +239,7 @@ const Buscador = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  map: state.map.mapaGL
+  getMapGL: state.map.getMapGL
 })
 
 export default connect(mapStateToProps, null)(Buscador)

@@ -11,8 +11,8 @@ import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 
-import { actions } from 'state/ducks/map'
 import { useDispatch, useSelector } from 'react-redux'
+import { actions } from 'state/ducks/map'
 
 import { getLayersConfigByGroupIndex, getFullLayerConfig } from 'utils/configQueries'
 

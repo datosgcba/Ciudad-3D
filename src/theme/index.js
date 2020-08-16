@@ -15,21 +15,25 @@ const theme = createMuiTheme({
         }
       }
     },
+    MuiAccordion: {
+      root: {
+        marginBottom: spacing,
+        border: '1px solid #D9D9D9'
+      }
+    },
     MuiAccordionSummary: {
       root: {
         minHeight: 0,
-        border: '1px solid blue',
         '&$expanded': {
           minHeight: 0
         },
-        height: spacing * 3.25
+        height: spacing * 4.25
       }
     },
     MuiAccordionDetails: {
       root: {
         padding: 0,
-        paddingLeft: 16,
-        paddingBottom: 16
+        paddingLeft: spacing
       }
     }
   },

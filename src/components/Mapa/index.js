@@ -24,11 +24,22 @@ curl 'http://seguridad.eastus2.cloudapp.azure.com/rest-auth/login/' \
   -H 'Content-Type: application/json;charset=UTF-8' \
   --data-binary '{"username":"admin","password":"adminusig1234"}'
 
-El token setearlo así
+El token setearlo así. Pero ahora siempre retorna el mismo valor
 localStorage.setItem("token", '7b3ea1f12563ee390a13ab885884e4590cf6de26')
+
+Iniciar el navegador sin cors
+osx:
+open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
+
+linux:
+google-chrome --disable-web-security
+
+windows:
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
+
 */
 const transformRequest = (url, resourceType) => {
-  const token = localStorage.getItem('token')
+  const token = '7b3ea1f12563ee390a13ab885884e4590cf6de26'
   if (token === undefined) {
     console.log('Token is null')
   }

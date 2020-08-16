@@ -9,10 +9,10 @@ import { getGroups } from 'utils/configQueries'
 import Group from './Group'
 import useStyles from './styles'
 
-const Groups = () => (getGroups().map(({ index, title }) => (
+const Groups = () => (getGroups().map(({ id, index, title }) => (
   <Group
     key={index}
-    index={index}
+    id={id}
     title={title}
   />
 )))

@@ -14,21 +14,21 @@ import ListItem from '@material-ui/core/ListItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { actions } from 'state/ducks/map'
 
-import { getLayersConfigByGroupIndex, getFullLayerConfig } from 'utils/configQueries'
+import { getLayersConfigByGroupId, getFullLayerConfig } from 'utils/configQueries'
 
 import useStyles from './groupStyle'
 
 const GroupItem = ({
-  id, indexGroup, title, icon, classes
+  idGroup, idLayer, title, icon, classes
 }) => {
   const dispatch = useDispatch()
-  const isVisible = useSelector((state) => state.map.groups[indexGroup].layers[id].isVisible)
+  const isVisible = useSelector((state) => state.map.groups[idGroup].layers[idLayer].isVisible)
 
-  const layerChangeHandler = (id) => ({ target: { checked } }) => {
-    dispatch(actions.toggleLayer({ indexGroup, idLayer: id }))
+  const layerChangeHandler = () => {
+    dispatch(actions.toggleLayer({ idGroup, idLayer }))
   }
   return (
-    <ListItem key={id} className={classes.listItem}>
+    <ListItem key={idLayer} className={classes.listItem}>
       <FormControlLabel
         className={classes.formControl}
         control={(
@@ -36,9 +36,9 @@ const GroupItem = ({
             icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
             checkedIcon={<CheckBoxIcon fontSize="small" />}
             checked={isVisible}
-            onChange={layerChangeHandler(id)}
+            onChange={layerChangeHandler}
             className={classes.checkBox}
-            name={id}
+            name={idLayer}
           />
         )}
       />
@@ -50,17 +50,17 @@ const GroupItem = ({
   )
 }
 
-const GroupItems = ({ index, classes }) => {
-  const layersConfig = getLayersConfigByGroupIndex(index)
+const GroupItems = ({ idGroup, classes }) => {
+  const layersConfig = getLayersConfigByGroupId(idGroup)
   return (
     layersConfig
       .filter(({ isPrivate }) => !isPrivate)
-      .map(({ id }) => getFullLayerConfig(index, id))
+      .map(({ id }) => getFullLayerConfig(idGroup, id))
       .map(({ id, title, icon }) => (
         <GroupItem
           key={id}
-          id={id}
-          indexGroup={index}
+          idGroup={idGroup}
+          idLayer={id}
           title={title}
           icon={icon}
           classes={classes}
@@ -69,7 +69,7 @@ const GroupItems = ({ index, classes }) => {
   )
 }
 
-const Group = ({ index, title }) => {
+const Group = ({ id, title }) => {
   const classes = useStyles()
 
   return (
@@ -79,14 +79,14 @@ const Group = ({ index, title }) => {
         <Divider className={classes.divider} />
       </Typography>
       <List dense>
-        <GroupItems index={index} classes={classes} />
+        <GroupItems idGroup={id} classes={classes} />
       </List>
     </Container>
   )
 }
 
 Group.propTypes = {
-  index: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 }
 

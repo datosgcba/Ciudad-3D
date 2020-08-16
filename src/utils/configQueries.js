@@ -1,19 +1,20 @@
 import config from 'appConfig'
 
-const getFullLayerConfig = (indexGroup, idLayer) => config
-  .grupos[indexGroup]
+const getFullLayerConfig = (idGroup, idLayer) => config
+  .grupos.find((g) => g.id === idGroup)
   .layers.find((l) => l.id === idLayer)
 
-const getGroups = () => config.grupos.map(({ title, private: isPrivate }, index) => ({
-  index,
+const getGroups = () => config.grupos.map(({ id, title, private: isPrivate }) => ({
+  id,
   title,
   isPrivate
 }))
 
-const getLayersConfigByGroupIndex = (index) => config.grupos[index]
+const getLayersConfigByGroupId = (idGroup) => config
+  .grupos.find((g) => g.id === idGroup)
   .layers.map(({ id, private: isPrivate }) => ({
     id,
     isPrivate
   }))
 
-export { getFullLayerConfig, getGroups, getLayersConfigByGroupIndex }
+export { getFullLayerConfig, getGroups, getLayersConfigByGroupId }

@@ -74,14 +74,14 @@ const initMap = createAsyncThunk(
   }
 )
 
-const getLayerState = (state, indexGroup, idLayer) => state
-  .groups[indexGroup]
+const getLayerState = (state, idGroup, idLayer) => state
+  .groups[idGroup]
   .layers[idLayer]
 
 const toggleLayer = createAsyncThunk(
   'map/toggleLayer',
-  ({ indexGroup, idLayer }) => {
-    const layer = getFullLayerConfig(indexGroup, idLayer)
+  ({ idGroup, idLayer }) => {
+    const layer = getFullLayerConfig(idGroup, idLayer)
     const mapOnLoad = mapEventPromise('idle')
     toggle(layer)
     return mapOnLoad
@@ -89,9 +89,9 @@ const toggleLayer = createAsyncThunk(
       .catch(() => false)
   },
   {
-    condition: ({ indexGroup, idLayer }, { getState }) => {
+    condition: ({ idGroup, idLayer }, { getState }) => {
       const state = getState()
-      const layerState = getLayerState(state.map, indexGroup, idLayer)
+      const layerState = getLayerState(state.map, idGroup, idLayer)
       return state.map.isMapReady && layerState.processingId === null
     }
   }
@@ -120,16 +120,19 @@ const map = createSlice({
   name: 'map',
   initialState: {
     isMapReady: false,
-    groups: config.grupos.map(({ title, layers }) => ({
-      title,
-      layers: layers.reduce((result, { id }) => ({
-        ...result,
-        [id]: {
-          isVisible: false,
-          processingId: null
-        }
-      }), {})
-    }))
+    groups: config.grupos.reduce((result, { id, title, layers }) => ({
+      ...result,
+      [id]: {
+        title,
+        layers: layers.reduce((result, { id }) => ({
+          ...result,
+          [id]: {
+            isVisible: false,
+            processingId: null
+          }
+        }), {})
+      }
+    }), {})
   },
   reducers: {
     setMapReady: (draftState) => {
@@ -150,20 +153,20 @@ const map = createSlice({
     [toggleLayer.pending]: (draftState, {
       meta: {
         requestId,
-        arg: { indexGroup, idLayer }
+        arg: { idGroup, idLayer }
       }
     }) => {
-      const layerState = getLayerState(draftState, indexGroup, idLayer)
+      const layerState = getLayerState(draftState, idGroup, idLayer)
       layerState.processingId = requestId
       layerState.isVisible = !layerState.isVisible
     },
     [toggleLayer.fulfilled]: (draftState, {
       meta: {
         requestId,
-        arg: { indexGroup, idLayer }
+        arg: { idGroup, idLayer }
       }
     }) => {
-      const layerState = getLayerState(draftState, indexGroup, idLayer)
+      const layerState = getLayerState(draftState, idGroup, idLayer)
       if (layerState.processingId === requestId) {
         layerState.processingId = null
       }
@@ -171,10 +174,10 @@ const map = createSlice({
     [toggleLayer.error]: (draftState, {
       meta: {
         requestId,
-        arg: { indexGroup, idLayer }
+        arg: { idGroup, idLayer }
       }
     }) => {
-      const layerState = getLayerState(draftState, indexGroup, idLayer)
+      const layerState = getLayerState(draftState, idGroup, idLayer)
       if (layerState.processingId === requestId) {
         layerState.processingId = null
         layerState.isVisible = !layerState.isVisible

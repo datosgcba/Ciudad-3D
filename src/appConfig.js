@@ -141,6 +141,7 @@ const config = {
   ],
   grupos: [
     {
+      id: 'PersonalGCBA',
       title: 'Personal GCBA',
       private: true,
       color: '#ffffff', // amarillo
@@ -267,6 +268,7 @@ const config = {
     // 1) este grupo usa capas de epok, se agregan según su id y
     // se visualizan de acuerdo a la config de epok
     {
+      id: 'Salud',
       title: 'Salud',
       color: 'red',
       help: 'Establecimientos de salud',
@@ -359,6 +361,7 @@ const config = {
       ]
     },
     {
+      id: 'Análisis',
       title: 'Análisis',
       color: '#ffffff', // amarillo
       private: true,
@@ -403,6 +406,7 @@ const config = {
       ]
     },
     {
+      id: 'Equipamientos',
       title: 'Equipamientos',
       private: true,
       color: '#ffffff', // amarillo
@@ -521,6 +525,7 @@ const config = {
       ]
     },
     {
+      id: 'Alojamientos',
       title: 'Alojamientos',
       color: '#ffffff', // amarillo
       help:
@@ -573,6 +578,7 @@ const config = {
       ]
     },
     {
+      id: 'Comercio',
       title: 'Comercio',
       color: 'blue',
       help: 'Villas, asentamientos y barrios vulnerables',
@@ -622,6 +628,7 @@ const config = {
       ]
     },
     {
+      id: 'Transporte',
       title: 'Transporte',
       color: 'blue',
       help: 'Villas, asentamientos y barrios vulnerables',
@@ -694,6 +701,7 @@ const config = {
       ]
     },
     {
+      id: 'Barriosvulnerables',
       title: 'Barrios vulnerables',
       color: 'blue',
       help: 'Villas, asentamientos y barrios vulnerables',
@@ -780,6 +788,7 @@ const config = {
       ]
     },
     {
+      id: 'Contact',
       title: 'Contacto',
       path: <svg xmlns="http://www.w3.org/2000/svg" width="19.547" height="20.787" viewBox="0 0 19.547 20.787">
         <g id="Grupo_48" data-name="Grupo 48" transform="translate(-51.076 -679.996)">
@@ -793,6 +802,7 @@ const config = {
   ],
   subSection: [
     {
+      id: 'Visualizer',
       title: 'Visualizar',
       component: Contact
     }

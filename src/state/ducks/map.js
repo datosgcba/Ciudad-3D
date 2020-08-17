@@ -3,8 +3,6 @@ import {
 } from 'utils/configQueries'
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { promisify } from 'util'
-import { promises } from 'fs'
 
 let mapGL = null
 

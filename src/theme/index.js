@@ -15,6 +15,11 @@ const theme = createMuiTheme({
         }
       }
     },
+    MuiSvgIcon: {
+      root: {
+        colorPrimary: '#fed304'
+      }
+    },
     MuiAccordion: {
       root: {
         marginBottom: spacing,

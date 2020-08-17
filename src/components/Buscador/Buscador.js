@@ -14,7 +14,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
 import Geocoder from 'utils/GeoLocation'
-import { tooltip } from 'utils/Tooltip'
+//import { tooltip } from 'utils/Tooltip'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -93,12 +93,13 @@ const Buscador = (props) => {
 
         // Geolocaliza el punto y envía la info a tooltip.js
         // que agrega el marker con el popup
-
+/*
         Geocoder.fetchGeolocation(selectedSuggestion)
           .then((coords) => tooltip.addPopup(map, coords, selectedSuggestion.title))
           .catch((err) => {
             console.error(err)
           })
+          */
       }
     }
   }

@@ -11,8 +11,8 @@ import { actions } from 'state/ducks/categories'
 
 import useStyles from './style'
 
-const Icon = ({ path }) => (
-  <SvgIcon fontSize="medium" component="div">
+const Icon = ({ path, isSelected }) => (
+  <SvgIcon fontSize="medium" component="div" color={isSelected ? 'primary' : 'disabled'}>
     { path }
   </SvgIcon>
 )
@@ -31,8 +31,8 @@ const Category = ({ path, title }) => {
       onClick={() => dispatch(actions.categorySelected(title))}
       className={classes.option}
     >
-      <Box className={isSelected ? classes.optionSelected : classes.optionUnSelected}>
-        <Icon path={path} />
+      <Box>
+        <Icon path={path} isSelected={isSelected} />
       </Box>
       <Box>
         <Typography variant="caption" color="textPrimary">{title}</Typography>
@@ -47,7 +47,8 @@ Category.propTypes = {
 }
 
 Icon.propTypes = {
-  path: PropTypes.string.isRequired
+  path: PropTypes.string.isRequired,
+  isSelected: PropTypes.bool.isRequired
 }
 
 export default Category

@@ -1,3 +1,5 @@
+// TODO: Corregir errores lint ¿tal vez migrar a componente funcional?
+/* eslint-disable */
 import * as mapboxgl from 'mapbox-gl'
 import genericPoint from './layer-builders/GenericPointLayerBuilder'
 import genericLine from './layer-builders/GenericLineLayerBuilder'
@@ -31,7 +33,7 @@ const defaultMapStyle = {
       type: 'raster',
       source: 'capabase_1',
       layout: {
-        visibility: 'visible'
+        visibility: 'none'
       },
       paint: {}
     },
@@ -40,7 +42,7 @@ const defaultMapStyle = {
       type: 'raster',
       source: 'capabase_2',
       layout: {
-        visibility: 'none'
+        visibility: 'visible'
       },
       paint: {}
     },
@@ -359,7 +361,7 @@ class MapaInteractivoGL {
     })
   }
 
-  addPublicLayer(layerName, options = {}) {
+  async addPublicLayer(layerName, options = {}) {
     if (!this._layers[layerName]) {
       this.inactivateMarker()
       if (this.layersDefs) {
@@ -377,7 +379,7 @@ class MapaInteractivoGL {
         // console.log('Must load layers defs');
         const self = this
         this.showMessage(this.config.texts[this.config.language].loadingLayers)
-        this._loadLayerDefs().then(() => {
+        await this._loadLayerDefs().then(() => {
           // self.msgControl.hide();
           // console.log("Falta poner animación de loading!")
           self.addPublicLayer(layerName, options)

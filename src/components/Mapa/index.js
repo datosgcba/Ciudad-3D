@@ -3,8 +3,8 @@ import { renderToString } from 'react-dom/server'
 
 import { Container, Box } from '@material-ui/core'
 
-import { actions } from 'state/ducks/map'
 import { useDispatch, useSelector } from 'react-redux'
+import { actions } from 'state/ducks/map'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
@@ -58,14 +58,14 @@ const Mapa = ({ logged, updateMapAction, initMapAction }) => {
   const dispatch = useDispatch()
   const [capabasePrincipal, setCapabasePrincipal] = useState(true)
 
-  const onFeatureClick = (mapGL, lngLat, feature) => {
-    mapGL
+  const onFeatureClick = (mapInstance, lngLat, feature) => {
+    mapInstance
       .getFeatureProps(feature.properties.Id)
       .then((res) => res.json())
-      .then((props) => {
-        const { contenido, direccionNormalizada } = props
+      .then((data) => {
+        const { contenido, direccionNormalizada } = data
         const featureInfoString = renderToString(<FeatureInfo contenido={contenido} direccionNormalizada={direccionNormalizada} />)
-        mapGL.addPopup(lngLat, featureInfoString)
+        mapInstance.addPopup(lngLat, featureInfoString)
       })
       .catch((err) => {
         console.error(err)
@@ -94,27 +94,27 @@ const Mapa = ({ logged, updateMapAction, initMapAction }) => {
   const classes = useStyles()
   return (
     <Container id="map" className={classes.container}>
-      {/*
-      <div className={classes.topMenu}>
-        <Buscador />
-        {logged ? <LogoutButton /> : null}
-      </div>
-      */}
-      <Box onClick={() => setCapabasePrincipal(!capabasePrincipal)} className={classes.bottomMenu}>
-        <div
+      <Box className={classes.bottomMenu}>
+        <Box
           className={classes.minimapLayer}
           style={{
-            backgroundImage: !capabasePrincipal
+            backgroundImage: capabasePrincipal
               ? `url(${imgCapaBasePrincipal})`
               : `url(${imgCapaBaseSecundaria})`
           }}
+          onClick={() => setCapabasePrincipal(!capabasePrincipal)}
         >
-          <div className={classes.minimapTitleContainer}>
-            <div className={classes.minimapTitle}>
-              {!capabasePrincipal ? 'Modo Oscuro' : 'Modo Claro'}
-            </div>
-          </div>
-        </div>
+          <Box className={classes.minimapTitleContainer}>
+            <Box className={classes.minimapTitle}>
+              {capabasePrincipal ? 'Modo Oscuro' : 'Modo Claro'}
+            </Box>
+          </Box>
+        </Box>
+        <Box className={classes.topMenu}>
+          <Buscador />
+          {//logged ? <LogoutButton /> : null
+          }
+        </Box>
       </Box>
     </Container>
   )

@@ -13,8 +13,8 @@ import MenuItem from '@material-ui/core/MenuItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
-import Geocoder from '../../utils/GeoLocation'
-import { tooltip } from '../../utils/Tooltip'
+import Geocoder from 'utils/GeoLocation'
+import { tooltip } from 'utils/Tooltip'
 
 const useStyles = makeStyles((theme) => ({
   root: {

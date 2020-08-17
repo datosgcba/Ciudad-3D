@@ -1,53 +1,12 @@
-import config from 'appConfig'
-
-import { getFullLayerConfig } from 'utils/configQueries'
+import {
+  getGroups, getLayersConfigByGroupId, getFullLayerConfig, getCustomsIcons
+} from 'utils/configQueries'
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { promisify } from 'util'
+import { promises } from 'fs'
 
 let mapGL = null
-
-const loadCustomImages = () => {
-  // mapbox necesita que se agreguen las capas para referenciarlas por id
-  // console.log("Cargando los iconos customizados");
-  const { customIcons } = config
-
-  customIcons.forEach((icon) => {
-    mapGL.map.loadImage(icon.data, (error, image) => {
-      if (error) throw error
-      mapGL.map.addImage(icon.id, image)
-    })
-  })
-}
-
-const add = (layer) => {
-  if (layer.type && (layer.type === 'vectortile' || layer.type === 'custom')) {
-    const options = { ...layer.options }
-    options.id = layer.id
-    // console.log(mapaGL);
-    mapGL.addVectorTileLayer(
-      options,
-      null,
-      layer.displayPopup,
-      layer.popupContent
-    )
-  } else {
-    mapGL.addPublicLayer(layer.id, { clustering: true })
-  }
-}
-
-const toggle = (layer) => {
-  const { map } = mapGL
-  if (map.getLayer(layer.id)) {
-    const visibility = map.getLayoutProperty(layer.id, 'visibility')
-    if (typeof visibility === 'undefined' || visibility === 'visible') {
-      map.setLayoutProperty(layer.id, 'visibility', 'none')
-    } else {
-      map.setLayoutProperty(layer.id, 'visibility', 'visible')
-    }
-  } else {
-    add(layer)
-  }
-}
 
 const mapEventPromise = (eventName) => new Promise((resolve, reject) => {
   try {
@@ -58,14 +17,62 @@ const mapEventPromise = (eventName) => new Promise((resolve, reject) => {
     reject(error)
   }
 })
+
+// DUDAS: ¿Para que sirve esto?
+const loadCustomImages = async () => {
+  // mapbox necesita que se agreguen las capas para referenciarlas por id
+  const loadImagePromise = (data) => new Promise(
+    (resolve, reject) => mapGL.map.loadImage(data, (error, image) => {
+      if (error) reject(error)
+      resolve(image)
+    })
+  )
+  await Promise.all(
+    getCustomsIcons().map(({ id, data }) => loadImagePromise(data)
+      .then((image) => {
+        mapGL.map.addImage(id, image)
+      }))
+  )
+}
+
+const add = async (layer) => {
+  if (layer.type && (layer.type === 'vectortile' || layer.type === 'custom')) {
+    const options = { ...layer.options }
+    options.id = layer.id
+    // console.log(mapaGL);
+    await mapGL.addVectorTileLayer(
+      options,
+      null,
+      layer.displayPopup,
+      layer.popupContent
+    )
+  } else {
+    await mapGL.addPublicLayer(layer.id, { clustering: true })
+  }
+}
+
+const toggle = async (layer) => {
+  const { map } = mapGL
+  if (map.getLayer(layer.id)) {
+    const visibility = map.getLayoutProperty(layer.id, 'visibility')
+    if (typeof visibility === 'undefined' || visibility === 'visible') {
+      map.setLayoutProperty(layer.id, 'visibility', 'none')
+    } else {
+      map.setLayoutProperty(layer.id, 'visibility', 'visible')
+    }
+  } else {
+    await add(layer)
+  }
+}
+
 const initMap = createAsyncThunk(
   'map/initMap',
   async (mapInstance) => {
     mapGL = mapInstance
     const mapOnLoad = mapEventPromise('load')
     return mapOnLoad
-      .then(() => {
-        loadCustomImages()
+      .then(async () => {
+        await loadCustomImages()
         return true
       })
       .catch(() => false)
@@ -80,11 +87,11 @@ const getLayerState = (state, idGroup, idLayer) => state
 
 const toggleLayer = createAsyncThunk(
   'map/toggleLayer',
-  ({ idGroup, idLayer }) => {
+  async ({ idGroup, idLayer }) => {
     const layer = getFullLayerConfig(idGroup, idLayer)
-    const mapOnLoad = mapEventPromise('idle')
-    toggle(layer)
-    return mapOnLoad
+    const mapOnIdle = mapEventPromise('idle')
+    await toggle(layer)
+    return mapOnIdle
       .then(() => true)
       .catch(() => false)
   },
@@ -97,36 +104,17 @@ const toggleLayer = createAsyncThunk(
   }
 )
 
-/*
-const loadDefaultLayers = (mapaGL) => {
-  // las capas se agregan cuando se termina de crear el mapa
-  // console.log("Prendiendo las capas habilitadas por default");
-  config.grupos.map((g) => g.layers.forEach((layer) => {
-    if (layer.enabled) {
-      add(layer, mapaGL)
-    }
-  }))
-}
-
-const init = (mapaGL) => {
-  const { map } = mapaGL
-  map.on('load', () => {
-    loadCustomImages(mapaGL)
-    loadDefaultLayers(mapaGL)
-  })
-}
-*/
 const map = createSlice({
   name: 'map',
   initialState: {
     isMapReady: false,
-    groups: config.grupos.reduce((result, { id, title, layers }) => ({
+    groups: getGroups().reduce((result, { id, title }) => ({
       ...result,
       [id]: {
         title,
-        layers: layers.reduce((result, { id }) => ({
-          ...result,
-          [id]: {
+        layers: getLayersConfigByGroupId(id).reduce((resultLayer, { id: idLayer }) => ({
+          ...resultLayer,
+          [idLayer]: {
             isVisible: false,
             processingId: null
           }
@@ -138,13 +126,6 @@ const map = createSlice({
     setMapReady: (draftState) => {
       draftState.isMapReady = true
     }
-    /*
-    addLayer: (draftState, action) => {
-      const layer = action.payload
-      const { getMapGL } = draftState
-      add(layer, getMapGL())
-    },
-      */
   },
   extraReducers: {
     [initMap.fulfilled]: (draftState, action) => {

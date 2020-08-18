@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+
 import { Autocompleter } from '@usig-gcba/autocompleter'
+import Avatar from '@material-ui/core/Avatar'
 import Downshift from 'downshift'
-import { makeStyles } from '@material-ui/core/styles'
-import InputBase from '@material-ui/core/InputBase'
 import IconButton from '@material-ui/core/IconButton'
+import InputBase from '@material-ui/core/InputBase'
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import ListItemText from '@material-ui/core/ListItemText'
+import MenuItem from '@material-ui/core/MenuItem'
+import Paper from '@material-ui/core/Paper'
+import PlaceIcon from '@material-ui/icons/Place'
 import SearchIcon from '@material-ui/icons/Search'
 import StarIcon from '@material-ui/icons/Star'
-import PlaceIcon from '@material-ui/icons/Place'
-import Paper from '@material-ui/core/Paper'
-import MenuItem from '@material-ui/core/MenuItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-import Avatar from '@material-ui/core/Avatar'
-import Geocoder from 'utils/GeoLocation'
+import { makeStyles } from '@material-ui/core/styles'
+
+// import Geocoder from 'utils/GeoLocation'
 // import { tooltip } from 'utils/Tooltip'
 
 const useStyles = makeStyles((theme) => ({
@@ -97,7 +99,6 @@ const Buscador = (props) => {
         Geocoder.fetchGeolocation(selectedSuggestion)
           .then((coords) => tooltip.addPopup(map, coords, selectedSuggestion.title))
           .catch((err) => {
-            console.error(err)
           })
           */
       }

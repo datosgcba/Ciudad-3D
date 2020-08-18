@@ -29,20 +29,19 @@ localStorage.setItem("token", '7b3ea1f12563ee390a13ab885884e4590cf6de26')
 
 Iniciar el navegador sin cors
 osx:
-open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
+open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+--args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
 
 linux:
 google-chrome --disable-web-security
 
 windows:
-"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+--disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
 
 */
 const transformRequest = (url, resourceType) => {
   const token = '7b3ea1f12563ee390a13ab885884e4590cf6de26'
-  if (token === undefined) {
-    console.log('Token is null')
-  }
   if (resourceType === 'Tile' && url.endsWith('pbf')) {
     return {
       url,
@@ -64,11 +63,9 @@ const Mapa = ({ logged, updateMapAction, initMapAction }) => {
       .then((res) => res.json())
       .then((data) => {
         const { contenido, direccionNormalizada } = data
+        // eslint-disable-next-line max-len
         const featureInfoString = renderToString(<FeatureInfo contenido={contenido} direccionNormalizada={direccionNormalizada} />)
         mapInstance.addPopup(lngLat, featureInfoString)
-      })
-      .catch((err) => {
-        console.error(err)
       })
   }
 

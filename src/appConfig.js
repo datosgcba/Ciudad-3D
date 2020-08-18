@@ -5,7 +5,7 @@
 // geojson local: es importante que la extension del archivo sea .json
 import React from 'react'
 
-const geojson_hoteles = require('data/hoteles.geojson')
+// const geojsonHoteles = require('data/hoteles.geojson')
 
 const DJANGO_MEDIA_URL = `${process.env.REACT_APP_DJANGO_BASEURL}/media/data/`
 
@@ -36,15 +36,15 @@ const imgUfus = require('img/ufus.png')
 const imgHoteles = require('img/hoteles.png')
 const imgVacunacion = require('img/vacunacion.png')
 const imgHA = require('img/hosp_agudos.png')
-const imgHE = require('img/hosp_especializados.png')
-const imgHN = require('img/hosp_ninos.png')
+// const imgHE = require('img/hosp_especializados.png')
+// const imgHN = require('img/hosp_ninos.png')
 const imgCesac = require('img/cesac.png')
-const imgCentro_barrial = require('img/centro_barrial.png')
+const imgCentroBarrial = require('img/centro_barrial.png')
 const imgVulnerables = require('img/vulnerables.png')
-const imgEmpleados_varon = require('img/empleados_varon.png')
-const imgEmpleadas_mujer = require('img/empleadas_mujer.png')
-const imgAutoridades_varon = require('img/autoridades.png')
-const imgAutoridades_mujer = require('img/autoridades_mujer.png')
+const imgEmpleadosVaron = require('img/empleados_varon.png')
+const imgEmpleadasMujer = require('img/empleadas_mujer.png')
+const imgAutoridadesVaron = require('img/autoridades.png')
+const imgAutoridadesMujer = require('img/autoridades_mujer.png')
 const imgLicencia = require('img/licencia.png')
 const imgBancos = require('img/bancos.png')
 const imgFarmacias = require('img/farmacias.png')
@@ -68,27 +68,29 @@ const badata = {
 
 // plantillas de popup para capas custom
 
-const plantilla_hoteles = '<h3>Hoteles</h3><b>Nombre:</b> {nombre} <br> <b>Domicilio:</b> {domicilio}'
+const plantillaHoteles = '<h3>Hoteles</h3><b>Nombre:</b> {nombre} <br> <b>Domicilio:</b> {domicilio}'
 
-const plantilla_bancos = '<h3>Bancos</h3><b>Nombre:</b> {nombre} <br> <b>Domicilio:</b> {domicilio}'
+const plantillaBancos = '<h3>Bancos</h3><b>Nombre:</b> {nombre} <br> <b>Domicilio:</b> {domicilio}'
 
-const plantilla_analisis = '<h3>Análisis por radio censal</h3><b>Adultos mayores:</b> {pacientes} <br> <b>Empleados GCBA:</b> {empleados}<br><b>Relación Adultos Mayores - Empleados GCBA:</b> {pacientes_empleados}'
+const plantillaAnalisis = '<h3>Análisis por radio censal</h3><b>Adultos mayores:</b> {pacientes} <br> <b>Empleados GCBA:</b> {empleados}<br><b>Relación Adultos Mayores - Empleados GCBA:</b> {pacientes_empleados}'
 
-const plantilla_autoridades = '<h3>Autoridades GCBA</h3><b>Nombre:</b> {nombre} {apellido} <br> <b>Repartición:</b> {reparticion}'
-const plantilla_empleados = '<h3>Empleados GCBA</h3><b>Nombre:</b> {nombre} {apellido} <br> <b>Repartición:</b> {reparticion}'
+const plantillaAutoridades = '<h3>Autoridades GCBA</h3><b>Nombre:</b> {nombre} {apellido} <br> <b>Repartición:</b> {reparticion}'
+const plantillaEmpleados = '<h3>Empleados GCBA</h3><b>Nombre:</b> {nombre} {apellido} <br> <b>Repartición:</b> {reparticion}'
 
-const plantilla_popup_ufus = '<h3>UFUS</h3><b>Nombre:</b> {nombre}'
-const plantilla_farmacias_prioritarias = '<h3>Farmacia</h3><b>Nombre:</b> {Cadena}'
-const plantilla_farmacias = '<h3>Farmacia</h3><b>Nombre:</b> {Nombre}'
-const plantilla_barrios_vulnerables = '<h3>Barrios vulnerables</h3><b>Nombre:</b> {nombre}'
+// const plantillaPopupUfus = '<h3>UFUS</h3><b>Nombre:</b> {nombre}'
+const plantillaFarmaciasPrioritarias = '<h3>Farmacia</h3><b>Nombre:</b> {Cadena}'
+const plantillaFarmacias = '<h3>Farmacia</h3><b>Nombre:</b> {Nombre}'
+const plantillaBarriosVulnerables = '<h3>Barrios vulnerables</h3><b>Nombre:</b> {nombre}'
 
-const plantilla_zonas_comerciales = '<h3>Zona comercial {nombre}</h3>'
-const plantilla_corredores_comerciales = '<h3>Corredor comercial {comercial}</h3><b>'
-const plantilla_centro_de_trasbordo = '<h3>Centro de Trasbordo {nombre}</h3>'
-const plantilla_control_accesos_buses = '<h3>Control de acceso a Buses {Nombre}</h3>'
-const plantilla_estaciones_ffcc = '<h3>Estación de tren clausurada {nombre}</h3><b>Línea:</b> {linea}'
+const plantillaZonasComerciales = '<h3>Zona comercial {nombre}</h3>'
+const plantillaCorredoresComerciales = '<h3>Corredor comercial {comercial}</h3><b>'
+const plantillaCentroDeTrasbordo = '<h3>Centro de Trasbordo {nombre}</h3>'
+const plantillaControlAccesosBuses = '<h3>Control de acceso a Buses {Nombre}</h3>'
+const plantillaEstacionesFfcc = '<h3>Estación de tren clausurada {nombre}</h3><b>Línea:</b> {linea}'
 
-// const plantilla_popup_vacunacion = "<h3>Centros de vacunación adultos mayores</h3><br><b>Nombre:</b> {Nombre} //<br> <b>Tipo:</b> {tipo}<br> <b>Domicilio:</b> {domicilio}";
+// const plantilla_popup_vacunacion = "<h3>Centros de vacunación adultos
+// mayores</h3><br><b>Nombre:</b> {Nombre} //<br> <b>Tipo:</b>
+// {tipo}<br> <b>Domicilio:</b> {domicilio}";
 
 const config = {
   defaultMarkerColor: '#FF9A17', // color del marker del buscador
@@ -103,7 +105,7 @@ const config = {
     },
     {
       id: 'imagen_centro_barrial',
-      data: imgCentro_barrial
+      data: imgCentroBarrial
     },
     {
       id: 'imagen_vacunacion',
@@ -149,8 +151,8 @@ const config = {
           type: 'custom',
           title: 'Autoridades varones',
           displayPopup: true,
-          popupContent: plantilla_autoridades,
-          icon: imgAutoridades_varon,
+          popupContent: plantillaAutoridades,
+          icon: imgAutoridadesVaron,
           options: {
             source: {
               type: 'geojson',
@@ -172,8 +174,8 @@ const config = {
           type: 'custom',
           title: 'Autoridades mujeres',
           displayPopup: true,
-          popupContent: plantilla_autoridades,
-          icon: imgAutoridades_mujer,
+          popupContent: plantillaAutoridades,
+          icon: imgAutoridadesMujer,
           options: {
             source: {
               type: 'geojson',
@@ -195,8 +197,8 @@ const config = {
           type: 'custom',
           title: 'Empleados varones',
           displayPopup: true,
-          popupContent: plantilla_empleados,
-          icon: imgEmpleados_varon,
+          popupContent: plantillaEmpleados,
+          icon: imgEmpleadosVaron,
           options: {
             source: {
               type: 'geojson',
@@ -218,8 +220,8 @@ const config = {
           type: 'custom',
           title: 'Empleadas mujeres',
           displayPopup: true,
-          popupContent: plantilla_empleados,
-          icon: imgEmpleadas_mujer,
+          popupContent: plantillaEmpleados,
+          icon: imgEmpleadasMujer,
           options: {
             source: {
               type: 'geojson',
@@ -241,7 +243,7 @@ const config = {
           type: 'custom',
           title: 'Personal bajo licencia',
           displayPopup: true,
-          popupContent: plantilla_empleados,
+          popupContent: plantillaEmpleados,
           icon: imgLicencia,
           options: {
             source: {
@@ -369,7 +371,7 @@ const config = {
           type: 'custom',
           title: 'Relación adultos mayores - empleados',
           displayPopup: true,
-          popupContent: plantilla_analisis,
+          popupContent: plantillaAnalisis,
           icon: imgVulnerables,
           options: {
             type: 'fill',
@@ -413,7 +415,7 @@ const config = {
           type: 'custom',
           title: 'Bancos',
           displayPopup: true,
-          popupContent: plantilla_bancos,
+          popupContent: plantillaBancos,
           icon: imgBancos,
           options: {
             source: {
@@ -435,7 +437,7 @@ const config = {
           type: 'custom',
           title: 'Farmacias prioritarias',
           displayPopup: true,
-          popupContent: plantilla_farmacias_prioritarias,
+          popupContent: plantillaFarmaciasPrioritarias,
           icon: imgFarmacias,
           options: {
             source: {
@@ -457,7 +459,7 @@ const config = {
           type: 'custom',
           title: 'Otras farmacias',
           displayPopup: true,
-          popupContent: plantilla_farmacias,
+          popupContent: plantillaFarmacias,
           icon: imgFarmacias,
           options: {
             source: {
@@ -479,7 +481,7 @@ const config = {
           type: 'custom',
           title: 'Pago Fácil',
           displayPopup: true,
-          popupContent: plantilla_hoteles,
+          popupContent: plantillaHoteles,
           icon: imgPagoFacil,
           options: {
             source: {
@@ -501,7 +503,7 @@ const config = {
           type: 'custom',
           title: 'Puntos Comuna',
           displayPopup: true,
-          popupContent: plantilla_hoteles,
+          popupContent: plantillaHoteles,
           icon: imgPuntosComunas,
           options: {
             source: {
@@ -532,7 +534,7 @@ const config = {
           type: 'custom',
           title: 'Hoteles',
           displayPopup: true,
-          popupContent: plantilla_hoteles,
+          popupContent: plantillaHoteles,
           icon: imgHoteles,
           options: {
             source: {
@@ -554,8 +556,8 @@ const config = {
           type: 'custom',
           title: 'Centros Barriales',
           displayPopup: true,
-          popupContent: plantilla_hoteles,
-          icon: imgCentro_barrial,
+          popupContent: plantillaHoteles,
+          icon: imgCentroBarrial,
           options: {
             source: {
               type: 'geojson',
@@ -585,7 +587,7 @@ const config = {
           title: 'Zonas comerciales restringidas',
           enabled: false,
           displayPopup: true,
-          popupContent: plantilla_zonas_comerciales,
+          popupContent: plantillaZonasComerciales,
           icon: imgComerciales,
           options: {
             source: {
@@ -606,7 +608,7 @@ const config = {
           title: 'Corredores comerciales restringidos',
           enabled: false,
           displayPopup: true,
-          popupContent: plantilla_corredores_comerciales,
+          popupContent: plantillaCorredoresComerciales,
           icon: imgComerciales,
           options: {
             source: {
@@ -635,7 +637,7 @@ const config = {
           title: 'Centros de Trasbordo',
           enabled: false,
           displayPopup: true,
-          popupContent: plantilla_centro_de_trasbordo,
+          popupContent: plantillaCentroDeTrasbordo,
           icon: imgVulnerables,
           options: {
             source: {
@@ -656,7 +658,7 @@ const config = {
           title: 'Estaciones FFCC cerradas',
           enabled: false,
           displayPopup: true,
-          popupContent: plantilla_estaciones_ffcc,
+          popupContent: plantillaEstacionesFfcc,
           icon: imgEstacionesFFCC,
           options: {
             source: {
@@ -678,7 +680,7 @@ const config = {
           title: 'Control accesos buses',
           enabled: false,
           displayPopup: true,
-          popupContent: plantilla_control_accesos_buses,
+          popupContent: plantillaControlAccesosBuses,
           icon: imgAccesoBuses,
           options: {
             source: {
@@ -707,7 +709,7 @@ const config = {
           type: 'custom',
           title: 'Barrios vulnerables',
           displayPopup: true,
-          popupContent: plantilla_barrios_vulnerables,
+          popupContent: plantillaBarriosVulnerables,
           icon: imgVulnerables,
           link: badata.barrios_vulnerables,
           options: {
@@ -736,24 +738,26 @@ const config = {
     {
       id: 'Capa',
       title: 'Capa',
-      path: <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="35.333" height="32.266" viewBox="0 0 35.333 32.266">
-        <g id="Grupo_50" data-name="Grupo 50" transform="translate(-567.5 -127.979)">
-          <circle id="Elipse_3" data-name="Elipse 3" cx="1.458" cy="1.458" r="1.458" transform="translate(583.708 134.708)" fill="#d9d9d9" />
-          <path id="Trazado_16" data-name="Trazado 16" d="M590.75,142.594l-.742-.364a12.77,12.77,0,0,0,2.659-7.179c0-5.45-5.092-7.009-7.831-7.072-2.692.063-7.784,1.622-7.784,7.072a9.669,9.669,0,0,0,.363,2.54l-9.915,4.957v17.7l11.512-4.671,11.81,4.491,12.011-4.276V137.774Zm-5.917-12.615c.239.006,5.834.22,5.834,5.072,0,4.347-4.215,8.487-5.827,9.91-1.6-1.422-5.788-5.552-5.788-9.91C579.052,130.2,584.647,129.985,584.833,129.979Zm-7,23.915-8.333,3.381v-13.49l8.333-4.167ZM590,157.613l-10.167-3.866V142.429a25.059,25.059,0,0,0,4.391,4.629l.613.481.616-.479a25.166,25.166,0,0,0,3.3-3.219l1.25.613Zm10.833-3.235L592,157.523V144.249l8.833-3.523Z" />
-        </g>
-      </svg>,
+      path:
+  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="35.333" height="32.266" viewBox="0 0 35.333 32.266">
+    <g id="Grupo_50" data-name="Grupo 50" transform="translate(-567.5 -127.979)">
+      <circle id="Elipse_3" data-name="Elipse 3" cx="1.458" cy="1.458" r="1.458" transform="translate(583.708 134.708)" fill="#d9d9d9" />
+      <path id="Trazado_16" data-name="Trazado 16" d="M590.75,142.594l-.742-.364a12.77,12.77,0,0,0,2.659-7.179c0-5.45-5.092-7.009-7.831-7.072-2.692.063-7.784,1.622-7.784,7.072a9.669,9.669,0,0,0,.363,2.54l-9.915,4.957v17.7l11.512-4.671,11.81,4.491,12.011-4.276V137.774Zm-5.917-12.615c.239.006,5.834.22,5.834,5.072,0,4.347-4.215,8.487-5.827,9.91-1.6-1.422-5.788-5.552-5.788-9.91C579.052,130.2,584.647,129.985,584.833,129.979Zm-7,23.915-8.333,3.381v-13.49l8.333-4.167ZM590,157.613l-10.167-3.866V142.429a25.059,25.059,0,0,0,4.391,4.629l.613.481.616-.479a25.166,25.166,0,0,0,3.3-3.219l1.25.613Zm10.833-3.235L592,157.523V144.249l8.833-3.523Z" />
+    </g>
+  </svg>,
       component: 'Capa'
     },
     {
       id: 'Explorer',
       title: 'Explorar',
-      path: <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="29.33" height="29.33" viewBox="0 0 29.33 29.33">
-        <g id="Grupo_49" data-name="Grupo 49" transform="translate(-638.167 -130.25)">
-          <circle id="Elipse_2" data-name="Elipse 2" cx="1.458" cy="1.458" r="1.458" transform="translate(651.374 143.606)" fill="#d9d9d9" />
-          <g id="Grupo_46" data-name="Grupo 46" transform="translate(638.167 130.25)"><path id="Trazado_14" data-name="Trazado 14" d="M652.832,159.58A14.665,14.665,0,1,1,667.5,144.915,14.681,14.681,0,0,1,652.832,159.58Zm0-27.516a12.851,12.851,0,1,0,12.851,12.851A12.865,12.865,0,0,0,652.832,132.064Z" transform="translate(-638.167 -130.25)" /></g>
-          <g id="Grupo_47" data-name="Grupo 47" transform="translate(644.613 136.984)"><path id="Trazado_15" data-name="Trazado 15" d="M647.083,154.5a1,1,0,0,1-.94-1.34l3.917-10.833a1,1,0,0,1,.645-.616l10.25-3.167a1,1,0,0,1,1.252,1.245l-3.167,10.5a1,1,0,0,1-.654.664l-11,3.5A.987.987,0,0,1,647.083,154.5Zm4.688-11.025-3.058,8.457,8.564-2.725,2.473-8.2Z" transform="translate(-646.083 -138.5)" /></g>
-        </g>
-      </svg>,
+      path:
+  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="29.33" height="29.33" viewBox="0 0 29.33 29.33">
+    <g id="Grupo_49" data-name="Grupo 49" transform="translate(-638.167 -130.25)">
+      <circle id="Elipse_2" data-name="Elipse 2" cx="1.458" cy="1.458" r="1.458" transform="translate(651.374 143.606)" fill="#d9d9d9" />
+      <g id="Grupo_46" data-name="Grupo 46" transform="translate(638.167 130.25)"><path id="Trazado_14" data-name="Trazado 14" d="M652.832,159.58A14.665,14.665,0,1,1,667.5,144.915,14.681,14.681,0,0,1,652.832,159.58Zm0-27.516a12.851,12.851,0,1,0,12.851,12.851A12.865,12.865,0,0,0,652.832,132.064Z" transform="translate(-638.167 -130.25)" /></g>
+      <g id="Grupo_47" data-name="Grupo 47" transform="translate(644.613 136.984)"><path id="Trazado_15" data-name="Trazado 15" d="M647.083,154.5a1,1,0,0,1-.94-1.34l3.917-10.833a1,1,0,0,1,.645-.616l10.25-3.167a1,1,0,0,1,1.252,1.245l-3.167,10.5a1,1,0,0,1-.654.664l-11,3.5A.987.987,0,0,1,647.083,154.5Zm4.688-11.025-3.058,8.457,8.564-2.725,2.473-8.2Z" transform="translate(-646.083 -138.5)" /></g>
+    </g>
+  </svg>,
       component: 'Explorar',
       options: [
         {
@@ -785,13 +789,14 @@ const config = {
     {
       id: 'Contact',
       title: 'Contacto',
-      path: <svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" width="19.547" height="20.787" viewBox="0 0 19.547 20.787">
-        <g id="Grupo_48" data-name="Grupo 48" transform="translate(-51.076 -679.996)">
-          <line id="Línea_4" data-name="Línea 4" x1="9.202" transform="translate(56.248 686.855)" fill="none" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="1.688" />
-          <line id="Línea_5" data-name="Línea 5" x1="9.202" transform="translate(56.248 690.654)" fill="none" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="1.688" />
-          <path id="Trazado_12" data-name="Trazado 12" d="M51.919,699.94l5.791-4.186H69.779V680.84H51.919Z" fill="none" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="1.688" />
-        </g>
-      </svg>,
+      path:
+  <svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" width="19.547" height="20.787" viewBox="0 0 19.547 20.787">
+    <g id="Grupo_48" data-name="Grupo 48" transform="translate(-51.076 -679.996)">
+      <line id="Línea_4" data-name="Línea 4" x1="9.202" transform="translate(56.248 686.855)" fill="none" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="1.688" />
+      <line id="Línea_5" data-name="Línea 5" x1="9.202" transform="translate(56.248 690.654)" fill="none" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="1.688" />
+      <path id="Trazado_12" data-name="Trazado 12" d="M51.919,699.94l5.791-4.186H69.779V680.84H51.919Z" fill="none" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="1.688" />
+    </g>
+  </svg>,
       component: 'Edificabilidad'
     }
   ],

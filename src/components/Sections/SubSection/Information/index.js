@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Paper, CardActionArea, Typography } from '@material-ui/core'
-
+import { CardActionArea, Typography } from '@material-ui/core'
+import ContainerBar from 'components/Sections/ContainerBar'
 import config from 'appConfig'
 import useStyles from './styles'
 
@@ -25,12 +25,12 @@ const getItems = (classes) => {
 const Information = (props) => {
   const classes = useStyles()
   return (
-    <Paper className={classes.paper}>
+    <ContainerBar>
       <Typography variant="h5">
         {props.title}
       </Typography>
       {getItems(classes)}
-    </Paper>
+    </ContainerBar>
   )
 }
 

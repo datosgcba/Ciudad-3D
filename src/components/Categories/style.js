@@ -16,7 +16,7 @@ export default makeStyles((theme) => ({
     color: theme.palette.action.active
   },
   optionSelected: {
-    color: 'yellow',//theme.palette.primary.main,
+    color: 'yellow', // theme.palette.primary.main,
     backgroundColor: 'red'
   }
 }))

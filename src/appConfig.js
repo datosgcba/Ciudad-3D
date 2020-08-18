@@ -5,11 +5,6 @@
 // geojson local: es importante que la extension del archivo sea .json
 import React from 'react'
 
-import Capa from 'components/Sections/SubSection/Capa'
-import Contact from 'components/Sections/SubSection/Contact'
-import Explorar from 'components/Sections/SubSection/Explorer'
-import Information from 'components/Sections/SubSection/Information'
-
 const geojson_hoteles = require('data/hoteles.geojson')
 
 const DJANGO_MEDIA_URL = `${process.env.REACT_APP_DJANGO_BASEURL}/media/data/`
@@ -736,7 +731,7 @@ const config = {
       id: 'Information',
       title: 'Información',
       path: <svg id="info" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" width="28" height="28" viewBox="0 0 28 28"><g id="Grupo_45" data-name="Grupo 45"><path id="Trazado_13" data-name="Trazado 13" d="M23.9,4.1A14,14,0,0,0,4.1,23.9,14,14,0,0,0,23.9,4.1ZM14,3.828a3.008,3.008,0,1,1-3.008,3.008A3.011,3.011,0,0,1,14,3.828Zm3.828,19.141H10.172V21.328h1.641v-8.2H10.172V11.484h6.016v9.844h1.641Z" /></g></svg>,
-      component: Information
+      component: 'Information'
     },
     {
       id: 'Capa',
@@ -747,7 +742,7 @@ const config = {
           <path id="Trazado_16" data-name="Trazado 16" d="M590.75,142.594l-.742-.364a12.77,12.77,0,0,0,2.659-7.179c0-5.45-5.092-7.009-7.831-7.072-2.692.063-7.784,1.622-7.784,7.072a9.669,9.669,0,0,0,.363,2.54l-9.915,4.957v17.7l11.512-4.671,11.81,4.491,12.011-4.276V137.774Zm-5.917-12.615c.239.006,5.834.22,5.834,5.072,0,4.347-4.215,8.487-5.827,9.91-1.6-1.422-5.788-5.552-5.788-9.91C579.052,130.2,584.647,129.985,584.833,129.979Zm-7,23.915-8.333,3.381v-13.49l8.333-4.167ZM590,157.613l-10.167-3.866V142.429a25.059,25.059,0,0,0,4.391,4.629l.613.481.616-.479a25.166,25.166,0,0,0,3.3-3.219l1.25.613Zm10.833-3.235L592,157.523V144.249l8.833-3.523Z" />
         </g>
       </svg>,
-      component: Capa
+      component: 'Capa'
     },
     {
       id: 'Explorer',
@@ -759,7 +754,7 @@ const config = {
           <g id="Grupo_47" data-name="Grupo 47" transform="translate(644.613 136.984)"><path id="Trazado_15" data-name="Trazado 15" d="M647.083,154.5a1,1,0,0,1-.94-1.34l3.917-10.833a1,1,0,0,1,.645-.616l10.25-3.167a1,1,0,0,1,1.252,1.245l-3.167,10.5a1,1,0,0,1-.654.664l-11,3.5A.987.987,0,0,1,647.083,154.5Zm4.688-11.025-3.058,8.457,8.564-2.725,2.473-8.2Z" transform="translate(-646.083 -138.5)" /></g>
         </g>
       </svg>,
-      component: Explorar,
+      component: 'Explorar',
       options: [
         {
           id: 'Altura',
@@ -797,14 +792,19 @@ const config = {
           <path id="Trazado_12" data-name="Trazado 12" d="M51.919,699.94l5.791-4.186H69.779V680.84H51.919Z" fill="none" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="1.688" />
         </g>
       </svg>,
-      component: Contact
+      component: 'Edificabilidad'
     }
   ],
   subSection: [
     {
-      id: 'Visualizer',
-      title: 'Visualizar',
-      component: Contact
+      id: 'Edificabilidad',
+      title: 'Edificabilidad',
+      component: 'Edificabilidad',
+      data: {
+        'Sup máx edificable: ': 322,
+        'Altura máxima: ': '22,80 + dos retiros',
+        'tipos de unidad: ': 'USAB1'
+      }
     }
   ]
 }

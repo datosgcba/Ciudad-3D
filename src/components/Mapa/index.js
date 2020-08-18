@@ -112,7 +112,7 @@ const Mapa = ({ logged, updateMapAction, initMapAction }) => {
         </Box>
         <Box className={classes.topMenu}>
           <Buscador />
-          {//logged ? <LogoutButton /> : null
+          {// logged ? <LogoutButton /> : null
           }
         </Box>
       </Box>

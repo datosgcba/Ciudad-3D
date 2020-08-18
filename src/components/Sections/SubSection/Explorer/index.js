@@ -5,8 +5,8 @@ import {
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
-import GridTwoColumns from 'components/Sections/SubSection/Explorer/GridTwoColumns'
 import ContainerBar from 'components/Sections/ContainerBar'
+import GridTwoColumns from 'components/Sections/SubSection/Explorer/GridTwoColumns'
 
 import config from 'appConfig'
 

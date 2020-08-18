@@ -35,8 +35,7 @@ const FeatureInfo = ({ contenido, direccionNormalizada }) => {
       </Box>
       <Box className={classes.goContainer}>
         <Icon color="primary"><DirectionsIcon /></Icon>
-        <a target="_blank" rel="noopener noreferrer" href={comoLlegoURL} style={{ color: '#FFCE38' }}>
-        </a>
+        <a target="_blank" rel="noopener noreferrer" href={comoLlegoURL} style={{ color: '#FFCE38' }} />
       </Box>
     </Box>
 

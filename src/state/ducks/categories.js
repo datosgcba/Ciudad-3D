@@ -4,7 +4,7 @@ const categories = createSlice({
   name: 'categories',
   initialState: {
     sectionOpen: true,
-    sectionName: 'Capa'
+    sectionName: 'Edificabilidad'
   },
   reducers: {
     categorySelected: (draftState, action) => {

@@ -1,4 +1,5 @@
 import fetchJsonp from 'fetch-jsonp'
+
 import { Coords } from './coordinates'
 
 const Geocoder = {
@@ -33,12 +34,18 @@ function fetchGeolocation(lugar) {
       return fetch(contentUrl)
         .then((response) => response.json())
         .then((json) => {
-          const calleNormalizada = json.direccionesNormalizadas.filter((calle) => calle.cod_calle === lugar.direccion.calle.cod_calle || calle.cod_calle === lugar.direccion.calle.codigo)[0]
+          const calleNormalizada = json.direccionesNormalizadas.filter((calle) => calle.cod_calle
+          === lugar.direccion.calle.cod_calle || calle.cod_calle
+          === lugar.direccion.calle.codigo)[0]
           if (calleNormalizada && calleNormalizada.coordenadas) {
-            return { x: parseFloat(calleNormalizada.coordenadas.x), y: parseFloat(calleNormalizada.coordenadas.y) }
+            return {
+              x: parseFloat(calleNormalizada.coordenadas.x),
+              y: parseFloat(calleNormalizada.coordenadas.y)
+            }
           }
         })
     default:
+      // eslint-disable-next-line no-console
       console.log('unknow suggestion.TYPE')
   }
 }

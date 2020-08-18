@@ -9,7 +9,7 @@ proj4.defs([
 const wgs84 = 'WGS84'
 const origin = proj4('EPSG:7433')
 
-export const Coords = {
+const Coords = {
   /**
    Convierte coordenadas GKBA en coordenadas geográficas WGS84
    @param {Array|usig.Punto|usig.Location|geolocation|Object} coords Coordenadas GKBA
@@ -32,3 +32,5 @@ export const Coords = {
     return p
   }
 }
+
+export default Coords

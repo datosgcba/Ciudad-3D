@@ -18,7 +18,7 @@ import { makeStyles } from '@material-ui/core/styles'
 // import Geocoder from 'utils/GeoLocation'
 // import { tooltip } from 'utils/Tooltip'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((/* theme */) => ({
   root: {
     padding: '2px 4px',
     display: 'flex',
@@ -41,8 +41,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Buscador = (props) => {
   const classes = useStyles()
-  const { getMapGL, isMapInitialize } = props
-  const map = getMapGL && getMapGL()
+  const { getMapGL } = props
+  // const map = getMapGL && getMapGL()
 
   // const [showSuggestions, setShowSuggestions] = useState(true);
   const showSuggestions = true
@@ -68,7 +68,7 @@ const Buscador = (props) => {
     }
   }
 
-  const errorCallback = (error) => {
+  const errorCallback = (/* error */) => {
     // Si ya hay sugerencias (por ejemplo de favoritos) no muestro el error
     if (suggestions.length === 0) {
       // setErrorSugerencias(error);
@@ -76,13 +76,22 @@ const Buscador = (props) => {
     }
   }
 
+  const autocompleter = new Autocompleter(
+    {
+      onCompleteSuggestions: completeSuggestionsCallback,
+      onSuggestions: suggestionsCallback,
+      onError: errorCallback
+    },
+    options
+  )
+
   function handleInputChange(event) {
     const text = event.target.value
     autocompleter.updateSuggestions(text)
     setInputValue(text)
   }
 
-  function handleSelectItem(item) {
+  function handleSelectItem(/* item */) {
     if (selectedSuggestion) {
       if (selectedSuggestion.type === 'CALLE') {
         setInputValue(`${selectedSuggestion.title} `)
@@ -105,9 +114,9 @@ const Buscador = (props) => {
     }
   }
 
-  function handleInputFocus(event) {}
+  function handleInputFocus(/* event */) {}
 
-  function handleInputBlur(event) {
+  function handleInputBlur(/* event */) {
     setInputValue('')
     setSuggestions([])
   }
@@ -165,15 +174,6 @@ const Buscador = (props) => {
       </MenuItem>
     )
   }
-
-  const autocompleter = new Autocompleter(
-    {
-      onCompleteSuggestions: completeSuggestionsCallback,
-      onSuggestions: suggestionsCallback,
-      onError: errorCallback
-    },
-    options
-  )
 
   autocompleter.addSuggester('Direcciones', { inputPause: 250 })
   autocompleter.addSuggester('Lugares')

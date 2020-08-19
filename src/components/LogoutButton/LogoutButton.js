@@ -1,11 +1,11 @@
 import React from 'react'
 
 import Button from '@material-ui/core/Button'
-import { logout } from 'store_/actions/auth'
+// import { logout } from 'store_/actions/auth'
 
 const LogoutButton = () => {
   const handleLogout = () => {
-    logout()
+  //  logout()
     window.location.reload(false)
   }
 

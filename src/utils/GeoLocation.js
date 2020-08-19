@@ -7,10 +7,32 @@ const Geocoder = {
   reverseGeolocation
 }
 
+// The getObjectContent API returns a POINT string with the coordinates in it.
+const getCoordinatesFromPoint = (pointString) => {
+  const parenthesisSplit = pointString.split('(')[1].split(')')[0].split(' ')
+  return {
+    x: parseFloat(parenthesisSplit[0]),
+    y: parseFloat(parenthesisSplit[1])
+  }
+}
+
+const prettifyDirection = (direction) => {
+  const name = direction.tipo === 'calle_y_calle' ? `${direction.nombre_calle} y ${direction.nombre_calle_cruce}` : direction.direccion
+  const lowerName = name ? name.split(' ').map((word) => (word.length === 1 ? word.toLowerCase() : word[0] + word.substr(1, word.length).toLowerCase())).join(' ') : undefined
+  return lowerName ? {
+    direccion: { ...direction, coordenadas: direction.coordenadas },
+    type: 'COORDENADAS',
+    alias: lowerName,
+    nombre: lowerName,
+    descripcion: direction.nombre_partido === 'CABA' ? 'Ciudad Autónoma de Buenos Aires' : `${direction.nombre_localidad}, ${direction.nombre_partido}`
+  } : direction
+}
+
 function reverseGeolocation(coordenadas) {
   const contentUrl = `https://servicios.usig.buenosaires.gob.ar/normalizar/?lng=${coordenadas[0] || coordenadas.x}&lat=${coordenadas[1] || coordenadas.y}&minusculas=1`
   return fetch(contentUrl).then((response) => response.json()).then((direction) => prettifyDirection(direction))
 }
+
 function fetchGeolocation(lugar) {
   switch (lugar.type) {
     case 'LUGAR':
@@ -48,27 +70,6 @@ function fetchGeolocation(lugar) {
       // eslint-disable-next-line no-console
       console.log('unknow suggestion.TYPE')
   }
-}
-
-// The getObjectContent API returns a POINT string with the coordinates in it.
-const getCoordinatesFromPoint = (pointString) => {
-  const parenthesisSplit = pointString.split('(')[1].split(')')[0].split(' ')
-  return {
-    x: parseFloat(parenthesisSplit[0]),
-    y: parseFloat(parenthesisSplit[1])
-  }
-}
-
-const prettifyDirection = (direction) => {
-  const name = direction.tipo === 'calle_y_calle' ? `${direction.nombre_calle} y ${direction.nombre_calle_cruce}` : direction.direccion
-  const lowerName = name ? name.split(' ').map((word) => (word.length === 1 ? word.toLowerCase() : word[0] + word.substr(1, word.length).toLowerCase())).join(' ') : undefined
-  return lowerName ? {
-    direccion: { ...direction, coordenadas: direction.coordenadas },
-    type: 'COORDENADAS',
-    alias: lowerName,
-    nombre: lowerName,
-    descripcion: direction.nombre_partido === 'CABA' ? 'Ciudad Autónoma de Buenos Aires' : `${direction.nombre_localidad}, ${direction.nombre_partido}`
-  } : direction
 }
 
 export default Geocoder

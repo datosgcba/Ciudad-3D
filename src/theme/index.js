@@ -62,7 +62,7 @@ const theme = createMuiTheme({
       selected: 'yellow'
     },
     primary: {
-      main: '#fed304'
+      main: '#fed304!important'
     },
     secondary: {
       main: '#f3f3f3'

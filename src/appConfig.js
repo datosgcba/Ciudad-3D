@@ -797,7 +797,37 @@ const config = {
       <path id="Trazado_12" data-name="Trazado 12" d="M51.919,699.94l5.791-4.186H69.779V680.84H51.919Z" fill="none" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="1.688" />
     </g>
   </svg>,
-      component: 'Edificabilidad'
+      component: 'Contact'
+    }
+  ],
+  Information: [
+    {
+      id: 'Edificabilidad',
+      title: 'Edificabilidad',
+      color: '#ffffff', // amarillo
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'
+    },
+    {
+      id: 'BasicDates',
+      title: 'Datos básicos',
+      color: '#ffffff', // amarillo
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'
+    },
+    {
+      id: 'Use',
+      title: 'Usos',
+      color: '#ffffff', // amarillo
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'
+    },
+    {
+      id: 'Obras',
+      title: 'Obras',
+      color: '#ffffff', // amarillo
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'
     }
   ],
   subSection: [

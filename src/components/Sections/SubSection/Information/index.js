@@ -1,36 +1,31 @@
 import React from 'react'
 
-import { CardActionArea, Typography } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
+
 import ContainerBar from 'components/Sections/ContainerBar'
-import config from 'appConfig'
-import useStyles from './styles'
 
-const getItems = (classes) => {
-  const handleGetItem = () => {
-    console.log('getItem ')
-  }
-  return config.grupos.map((g, index) => (
-    <CardActionArea className={classes.card} key={index} onClick={handleGetItem}>
-      <Typography className={classes.cardTitulo}>
-        {g.title}
-      </Typography>
-      <Typography className={classes.cardCuerpo}>
-        {g.help}
-      </Typography>
-    </CardActionArea>
+import { getInformation } from 'utils/configQueries'
 
-  ))
-}
+import InfoCard from './InfoCard'
 
-const Information = (props) => {
-  const classes = useStyles()
+import styles from './styles'
+
+const ListCard = () => (getInformation().map(({ title, description }) => (
+  <InfoCard
+    title={title}
+    description={description}
+  />
+)))
+
+const Information = () => {
+  const classes = styles()
   return (
-    <ContainerBar>
-      <Typography variant="h5">
-        {props.title}
-      </Typography>
-      {getItems(classes)}
-    </ContainerBar>
+  <ContainerBar>
+    <Typography variant="h5" className={classes.title}>
+      Información
+    </Typography>
+    <ListCard />
+  </ContainerBar>
   )
 }
 

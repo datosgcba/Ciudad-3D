@@ -25,7 +25,7 @@ const Explorer = () => {
   const { options } = config.categorias.find((c) => c.id === 'Explorer')
   return (
     <ContainerBar>
-      <Typography variant="h6" className={classes.title}>
+      <Typography variant="h5" className={classes.title}>
         Explorar
       </Typography>
       <Box>

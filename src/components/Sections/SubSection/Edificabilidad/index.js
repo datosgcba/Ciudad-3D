@@ -40,7 +40,7 @@ const Edificabilidad = () => {
 
   return (
     <ContainerBar>
-      <Typography variant="h5">
+      <Typography variant="h5" className={classes.title}>
         Información
       </Typography>
       <Container className={classes.container}>

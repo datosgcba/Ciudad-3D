@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const categories = createSlice({
   name: 'categories',
   initialState: {
-    sectionOpen: true,
-    sectionName: 'Edificabilidad'
+    sectionOpen: false,
+    sectionName: ''
   },
   reducers: {
     categorySelected: (draftState, action) => {

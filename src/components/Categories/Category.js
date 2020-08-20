@@ -18,13 +18,13 @@ const Icon = ({ path, isSelected }) => (
 )
 
 const Category = ({ id, path, title }) => {
-  const sectionName = useSelector((state) => state.categories.sectionName)
+  const sectionName = useSelector((state) => state.categories.sectionId)
 
   const dispatch = useDispatch()
 
   const classes = useStyles()
 
-  const isSelected = sectionName === title
+  const isSelected = sectionName === id
 
   return (
     <CardActionArea

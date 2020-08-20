@@ -1,11 +1,9 @@
 import React from 'react'
 
 import { Paper } from '@material-ui/core'
-
 import Scrollbar from 'react-smooth-scrollbar'
 
 import PropTypes from 'prop-types'
-
 import useStyles from './ContainerBarStyles'
 
 const ContainerBar = ({ children }) => {

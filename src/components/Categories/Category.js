@@ -17,7 +17,7 @@ const Icon = ({ path, isSelected }) => (
   </SvgIcon>
 )
 
-const Category = ({ path, title }) => {
+const Category = ({ id, path, title }) => {
   const sectionName = useSelector((state) => state.categories.sectionName)
 
   const dispatch = useDispatch()
@@ -28,7 +28,7 @@ const Category = ({ path, title }) => {
 
   return (
     <CardActionArea
-      onClick={() => dispatch(actions.categorySelected(title))}
+      onClick={() => dispatch(actions.categorySelected(id))}
       className={classes.option}
     >
       <Box>
@@ -42,6 +42,7 @@ const Category = ({ path, title }) => {
 }
 
 Category.propTypes = {
+  id: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 }

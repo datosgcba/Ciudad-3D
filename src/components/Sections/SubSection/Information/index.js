@@ -3,15 +3,14 @@ import React from 'react'
 import { Typography } from '@material-ui/core'
 
 import ContainerBar from 'components/Sections/ContainerBar'
-
 import { getInformation } from 'utils/configQueries'
 
 import InfoCard from './InfoCard'
-
 import styles from './styles'
 
-const ListCard = () => (getInformation().map(({ title, description }) => (
+const ListCard = () => (getInformation().map(({ id, title, description }) => (
   <InfoCard
+    id={id}
     title={title}
     description={description}
   />
@@ -20,12 +19,12 @@ const ListCard = () => (getInformation().map(({ title, description }) => (
 const Information = () => {
   const classes = styles()
   return (
-  <ContainerBar>
-    <Typography variant="h5" className={classes.title}>
-      Información
-    </Typography>
-    <ListCard />
-  </ContainerBar>
+    <ContainerBar>
+      <Typography variant="h5" className={classes.title}>
+        Información
+      </Typography>
+      <ListCard />
+    </ContainerBar>
   )
 }
 

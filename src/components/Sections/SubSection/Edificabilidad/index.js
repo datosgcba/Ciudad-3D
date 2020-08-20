@@ -1,19 +1,15 @@
 import React from 'react'
 
 import {
-  Container, Box, Typography, IconButton, List, ListItem, ListItemText
+  Container, Box, Typography, List, ListItem, ListItemText
 } from '@material-ui/core'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack'
-
-// import PropTypes from 'prop-types'
+// import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 import ContainerBar from 'components/Sections/ContainerBar'
-
-import { getDetails } from 'utils/configQueries'
-
+import PropTypes from 'prop-types'
 import useStyles from './styles'
 
-const Details = ({ classes }) => (getDetails().map(({ data }) => (
+const Details = ({ classes }) => (
   <Box className={classes.details}>
     <List dense>
       <ListItem>
@@ -33,7 +29,7 @@ const Details = ({ classes }) => (getDetails().map(({ data }) => (
       </ListItem>
     </List>
   </Box>
-)))
+)
 
 const Edificabilidad = () => {
   const classes = useStyles()
@@ -53,9 +49,8 @@ const Edificabilidad = () => {
   )
 }
 
-/*
-Edificabilidad.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired
+Details.propTypes = {
+  classes: PropTypes.arrayOf(PropTypes.object).isRequired
 }
-*/
+
 export default Edificabilidad

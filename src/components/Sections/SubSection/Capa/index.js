@@ -2,11 +2,11 @@ import React from 'react'
 
 import { Typography } from '@material-ui/core'
 
-import ContainerBar from 'components/Sections/ContainerBar'
-
 import { getGroups } from 'utils/configQueries'
 
+import ContainerBar from 'components/Sections/ContainerBar'
 import Group from './Group'
+
 import useStyles from './styles'
 
 const Groups = () => (getGroups().map(({ id, index, title }) => (

@@ -20,13 +20,11 @@ const getLayersConfigByGroupId = (idGroup) => config
 
 const getCustomsIcons = () => config.customIcons.map(({ id, data }) => ({ id, data }))
 
-const getInformation = () => config.Information.map(({ title, description }) => ({
-  title, description
+const getInformation = () => config.Information.map(({ id, title, description }) => ({
+  id, title, description
 }))
-
-const getDetails = () => config.subSection.map(({ data }) => ({ data }))
 
 export {
   getFullLayerConfig, getGroups, getLayersConfigByGroupId,
-  getCustomsIcons, getInformation, getDetails
+  getCustomsIcons, getInformation
 }

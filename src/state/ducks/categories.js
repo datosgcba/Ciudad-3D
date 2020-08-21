@@ -8,10 +8,14 @@ const categories = createSlice({
   },
   reducers: {
     categorySelected: (draftState, action) => {
-      draftState.sectionOpen = action.payload === draftState.sectionId
-        ? !draftState.sectionOpen
-        : true
-      draftState.sectionId = action.payload
+      draftState.sectionOpen = action.payload
+      if (draftState.sectionOpen === draftState.sectionId) {
+        draftState.sectionOpen = !draftState.sectionOpen
+        draftState.sectionId = ''
+      } else {
+        draftState.sectionOpen = true
+        draftState.sectionId = action.payload
+      }
     }
   }
 })

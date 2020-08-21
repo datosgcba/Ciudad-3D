@@ -35,7 +35,7 @@ const Category = ({ id, path, title }) => {
         <Icon path={path} isSelected={isSelected} />
       </Box>
       <Box>
-        <Typography variant="caption" color="textPrimary">{title}</Typography>
+        <Typography variant="caption">{title}</Typography>
       </Box>
     </CardActionArea>
   )

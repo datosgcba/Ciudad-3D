@@ -2,7 +2,6 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import { red } from '@material-ui/core/colors'
 import { white } from 'material-ui/styles/colors'
 
-// A custom theme for this app
 const spacing = 8
 const theme = createMuiTheme({
   overrides: {
@@ -49,6 +48,12 @@ const theme = createMuiTheme({
     ].join(','),
     caption: {
       letterSpacing: 0
+    },
+    h5: {
+      marginTop: spacing,
+      marginBottom: spacing * 3.35 // 3.35 -  27px
+    },
+    h6: {
     }
   },
   palette: {
@@ -57,9 +62,8 @@ const theme = createMuiTheme({
       secondary: '#D9D9D9'
     },
     action: {
-      active: '#D9D9D9',
-      hoverOpacity: 0.5,
-      selected: 'yellow'
+      active: '#707070',
+      hoverOpacity: 0.1
     },
     primary: {
       main: '#fed304!important'

@@ -43,7 +43,7 @@ const GroupItem = ({
         )}
       />
       <Avatar alt="Icon" src={icon} variant="square" className={classes.icon} />
-      <Typography variant="subtitle2" className={classes.description}>
+      <Typography variant="subtitle2">
         {title}
       </Typography>
     </ListItem>

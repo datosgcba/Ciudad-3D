@@ -4,12 +4,14 @@ import { CardActionArea, Typography } from '@material-ui/core'
 
 import { actions } from 'state/ducks/categories'
 import { useDispatch } from 'react-redux'
+import useFontsStyles from 'theme/fontsDecorators'
 
 import PropTypes from 'prop-types'
 import styles from './styles'
 
 const InfoCard = ({ id, title, description }) => {
   const classes = styles()
+  const decorators = useFontsStyles()
   const dispatch = useDispatch()
 
   return (
@@ -17,10 +19,10 @@ const InfoCard = ({ id, title, description }) => {
       className={classes.card}
       onClick={() => dispatch(actions.categorySelected(id))}
     >
-      <Typography className={classes.cardTitulo}>
+      <Typography variant="h5" className={decorators.bold}>
         {title}
       </Typography>
-      <Typography className={classes.cardCuerpo}>
+      <Typography className={decorators.openSans}>
         {description}
       </Typography>
     </CardActionArea>

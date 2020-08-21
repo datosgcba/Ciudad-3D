@@ -3,6 +3,7 @@ import React from 'react'
 import {
   Grid, FormControlLabel, Checkbox, Typography
 } from '@material-ui/core'
+import useFontsStyles from 'theme/fontsDecorators'
 
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
@@ -13,6 +14,7 @@ import useStyles from './styles'
 
 const GridTwoColumns = ({ items }) => {
   const classes = useStyles()
+  const decorators = useFontsStyles()
 
   return (
     <Grid container spacing={0}>
@@ -28,7 +30,7 @@ const GridTwoColumns = ({ items }) => {
               />
             )}
           />
-          <Typography variant="caption" className={classes.title}>
+          <Typography variant="caption" className={`${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
             {item}
           </Typography>
         </Grid>

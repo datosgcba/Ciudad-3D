@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { Typography } from '@material-ui/core'
+import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 import { getInformation } from 'utils/configQueries'
 
 import InfoCard from './InfoCard'
-import styles from './styles'
 
 const ListCard = () => (getInformation().map(({ id, title, description }) => (
   <InfoCard
@@ -17,10 +17,10 @@ const ListCard = () => (getInformation().map(({ id, title, description }) => (
 )))
 
 const Information = () => {
-  const classes = styles()
+  const decorators = useFontsStyles()
   return (
     <ContainerBar>
-      <Typography variant="h5" className={classes.title}>
+      <Typography variant="h5" className={`${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
         Información
       </Typography>
       <ListCard />

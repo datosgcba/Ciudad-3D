@@ -4,16 +4,15 @@ import {
   Box, Typography, Accordion, AccordionSummary, AccordionDetails
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 import GridTwoColumns from 'components/Sections/SubSection/Explorer/GridTwoColumns'
 
 import config from 'appConfig'
 
-import useStyles from './styles'
-
 const Explorer = () => {
-  const classes = useStyles()
+  const decorators = useFontsStyles()
 
   const accordionItems = new Map([
     ['Altura', GridTwoColumns],
@@ -25,7 +24,7 @@ const Explorer = () => {
   const { options } = config.categorias.find((c) => c.id === 'Explorer')
   return (
     <ContainerBar>
-      <Typography variant="h5" className={classes.title}>
+      <Typography variant="h5" className={`${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
         Explorar
       </Typography>
       <Box>

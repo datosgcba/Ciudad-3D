@@ -287,7 +287,7 @@ const config = {
           options: {
             source: {
               type: 'vector',
-              tiles: ['http://seguridad.eastus2.cloudapp.azure.com/tiles/delitos/homicidio_doloso/{z}/{x}/{y}.pbf'],
+              tiles: ['https://vectortiles.usig.buenosaires.gob.ar/tiles/delitos/homicidio_doloso/{z}/{x}/{y}.pbf'],
               minzoom: 10,
               maxzoom: 18,
               cluster: false

@@ -1,13 +1,12 @@
 import React from 'react'
 
 import { Typography } from '@material-ui/core'
+import useFontsStyles from 'theme/fontsDecorators'
 
 import { getGroups } from 'utils/configQueries'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 import Group from './Group'
-
-import useStyles from './styles'
 
 const Groups = () => (getGroups().map(({ id, index, title }) => (
   <Group
@@ -18,11 +17,11 @@ const Groups = () => (getGroups().map(({ id, index, title }) => (
 )))
 
 const Capa = () => {
-  const classes = useStyles()
+  const decorators = useFontsStyles()
 
   return (
     <ContainerBar>
-      <Typography variant="h5" className={classes.title}>
+      <Typography variant="h5" className={`${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
         Capas
       </Typography>
       <Groups />

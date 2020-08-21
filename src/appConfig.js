@@ -785,7 +785,7 @@ const config = {
     },
     {
       id: 'Contact',
-      title: 'Contacto',
+      title: 'Ayudanos a mejorar',
       path:
   <svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" width="19.547" height="20.787" viewBox="0 0 19.547 20.787">
     <g id="Grupo_48" data-name="Grupo 48" transform="translate(-51.076 -679.996)">

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import PropTypes from 'prop-types'
+
 import {
   Grid, FormControlLabel, Checkbox, Typography
 } from '@material-ui/core'
@@ -7,8 +9,6 @@ import useFontsStyles from 'theme/fontsDecorators'
 
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
-
-import PropTypes from 'prop-types'
 
 import useStyles from './styles'
 

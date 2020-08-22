@@ -5,7 +5,7 @@ export default makeStyles(({ spacing }) => ({
     fontWeight: 'bold'
   },
   openSans: {
-    fontFaamily: 'Open Sans'
+    fontFamily: 'Open Sans'
   },
   marginTop_md: {
     marginTop: spacing(1)

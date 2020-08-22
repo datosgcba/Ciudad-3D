@@ -8,6 +8,7 @@ import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 import GridTwoColumns from 'components/Sections/SubSection/Explorer/GridTwoColumns'
+import ListWrapper from 'theme/wrapper/ListWrapper'
 
 import config from 'appConfig'
 
@@ -15,9 +16,9 @@ const Explorer = () => {
   const decorators = useFontsStyles()
 
   const accordionItems = new Map([
-    ['Altura', GridTwoColumns],
-    ['Area', GridTwoColumns],
-    ['Mixtura', GridTwoColumns],
+    ['Altura', ListWrapper],
+    ['Area', ListWrapper],
+    ['Mixtura', ListWrapper],
     ['Barrio', GridTwoColumns]
   ])
 
@@ -42,6 +43,8 @@ const Explorer = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <AccordionItem
+                    id={id}
+                    title={title}
                     items={items}
                   />
                 </AccordionDetails>

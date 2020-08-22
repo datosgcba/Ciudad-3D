@@ -36,8 +36,7 @@ const theme = createMuiTheme({
     },
     MuiAccordionDetails: {
       root: {
-        padding: 0,
-        paddingLeft: spacing
+        padding: 0
       }
     }
   },

@@ -760,17 +760,100 @@ const config = {
         {
           id: 'Altura',
           title: 'Altura código urbanístico',
-          items: []
+          items: [
+            {
+              subTitle: '38 m',
+              details: 'Corredores Altos',
+              color: '#557e8d'
+            },
+            {
+              subTitle: '31.2 m',
+              details: 'Corredores Medios',
+              color: '#85adb1'
+            },
+            {
+              subTitle: '22.8 m',
+              details: 'Unidades de Sustentabilidad de Altura Alta',
+              color: '#ea9e82'
+            },
+            {
+              subTitle: '16.5 m',
+              details: 'Unidades de Sustentabilidad de Altura Media',
+              color: '#f5c294'
+            },
+            {
+              subTitle: '11.2 m',
+              details: 'Unidades de Sustentabilidad de Altura Baja 2',
+              color: '#c9c2ab'
+            },
+            {
+              subTitle: '9 m',
+              details: 'Unidades de Sustentabilidad de Altura Baja 1',
+              color: '#f0e6cc'
+            }
+          ]
         },
         {
           id: 'Area',
           title: 'Área especial individualizada',
-          items: []
+          items: [
+            {
+              subTitle: 'AE',
+              details: 'Área de Arquitectura Especial',
+              color: '#CCADAD'
+            },
+            {
+              subTitle: 'APH',
+              details: 'Área de Arqquitectura Especial',
+              color: '#F9BCB4'
+            },
+            {
+              subTitle: 'ARE',
+              details: 'Área de Reserva Ecológica',
+              color: '#BCC489'
+            },
+            {
+              subTitle: 'Área de Renovación',
+              details: 'Área de renovación urbana Riachuelo',
+              color: '#efefef'
+            },
+            {
+              subTitle: 'EE',
+              details: 'Equipamentos Especiales',
+              color: '#AAB4C7'
+            },
+            {
+              subTitle: 'Espacio Público',
+              details: 'Espacio Público',
+              color: '#c2ccb7'
+            }
+          ]
         },
         {
           id: 'Mixtura',
           title: 'Mixtura de uso',
-          items: []
+          items: [
+            {
+              subTitle: 'Mixtura 1',
+              details: 'Área de Baja Mixtura de Usos de Suelo 1',
+              color: 'white'
+            },
+            {
+              subTitle: 'Mixtura 2',
+              details: 'Área de Media Mixtura de Usos de Suelo 2',
+              color: 'white'
+            },
+            {
+              subTitle: 'Mixtura 3',
+              details: 'Área de Media Mixtura de Usos de Suelo 3',
+              color: 'white'
+            },
+            {
+              subTitle: 'Mixtura 4',
+              details: 'Área de Alta Mixtura de Usos de Suelo 4',
+              color: 'white'
+            }
+          ]
         },
         {
           id: 'Barrio',

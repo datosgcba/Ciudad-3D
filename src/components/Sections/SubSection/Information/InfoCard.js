@@ -22,7 +22,7 @@ const InfoCard = ({ id, title, description }) => {
       <Typography variant="h5" className={decorators.bold}>
         {title}
       </Typography>
-      <Typography className={decorators.openSans}>
+      <Typography variant="body1" className={decorators.openSans}>
         {description}
       </Typography>
     </CardActionArea>

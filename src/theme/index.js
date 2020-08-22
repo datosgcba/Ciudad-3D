@@ -9,7 +9,7 @@ const theme = createMuiTheme({
     MuiCssBaseline: {
       '@global': {
         html: {
-          fontSize: 16,
+          fontSize: 14,
           backgroundColor: white[500]
         }
       }
@@ -44,16 +44,15 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: [
       'Nunito',
-      'Roboto'
+      'Open Sans'
     ].join(','),
     caption: {
       letterSpacing: 0
     },
     h5: {
-      marginTop: spacing,
-      marginBottom: spacing * 3.35 // 3.35 -  27px
+      fontSize: '1.5rem'
     },
-    h6: {
+    body1: {
     }
   },
   palette: {

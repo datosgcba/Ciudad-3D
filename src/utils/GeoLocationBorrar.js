@@ -1,6 +1,8 @@
+// TODO: ¿Borar este archivo?
+/*
 import fetchJsonp from 'fetch-jsonp'
 
-import { Coords } from './coordinates'
+import { Coords } from './coordinatesBorrar'
 
 const Geocoder = {
   fetchGeolocation,
@@ -17,20 +19,27 @@ const getCoordinatesFromPoint = (pointString) => {
 }
 
 const prettifyDirection = (direction) => {
-  const name = direction.tipo === 'calle_y_calle' ? `${direction.nombre_calle} y ${direction.nombre_calle_cruce}` : direction.direccion
-  const lowerName = name ? name.split(' ').map((word) => (word.length === 1 ? word.toLowerCase() : word[0] + word.substr(1, word.length).toLowerCase())).join(' ') : undefined
+  const name = direction.tipo === 'calle_y_calle'
+  ? `${direction.nombre_calle} y ${direction.nombre_calle_cruce}`
+  : direction.direccion
+  const lowerName = name ? name.split(' ').map((word) => (word.length === 1
+    ? word.toLowerCase()
+    : word[0] + word.substr(1, word.length).toLowerCase())).join(' ') : undefined
   return lowerName ? {
     direccion: { ...direction, coordenadas: direction.coordenadas },
     type: 'COORDENADAS',
     alias: lowerName,
     nombre: lowerName,
-    descripcion: direction.nombre_partido === 'CABA' ? 'Ciudad Autónoma de Buenos Aires' : `${direction.nombre_localidad}, ${direction.nombre_partido}`
+    descripcion: direction.nombre_partido === 'CABA'
+    ? 'Ciudad Autónoma de Buenos Aires'
+    : `${direction.nombre_localidad}, ${direction.nombre_partido}`
   } : direction
 }
 
 function reverseGeolocation(coordenadas) {
   const contentUrl = `https://servicios.usig.buenosaires.gob.ar/normalizar/?lng=${coordenadas[0] || coordenadas.x}&lat=${coordenadas[1] || coordenadas.y}&minusculas=1`
-  return fetch(contentUrl).then((response) => response.json()).then((direction) => prettifyDirection(direction))
+  return fetch(contentUrl).then((response) =>
+    response.json()).then((direction) => prettifyDirection(direction))
 }
 
 function fetchGeolocation(lugar) {
@@ -73,3 +82,4 @@ function fetchGeolocation(lugar) {
 }
 
 export default Geocoder
+*/

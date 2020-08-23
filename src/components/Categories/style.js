@@ -18,6 +18,7 @@ export default makeStyles((theme) => ({
     paddingBottom: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.action.active,
+    alignSelf: 'center',
     '&:last-child': {
       marginTop: 'auto'
     }

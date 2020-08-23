@@ -1,5 +1,7 @@
 import React from 'react'
 
+import PropTypes from 'prop-types'
+
 import {
   Box, Checkbox, FormControlLabel, Typography
 } from '@material-ui/core'
@@ -7,13 +9,12 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 import ListItem from '@material-ui/core/ListItem'
 
-import ListWapperStyles from 'theme/wrapper/ListWrapperStyles'
 import useFontsStyles from 'theme/fontsDecorators'
 
-import PropTypes from 'prop-types'
+import styles from './styles'
 
-const ListWrapper = ({ items }) => {
-  const classes = ListWapperStyles()
+const List = ({ items }) => {
+  const classes = styles()
   const decorators = useFontsStyles()
 
   return (
@@ -47,10 +48,8 @@ const ListWrapper = ({ items }) => {
   )
 }
 
-ListWrapper.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+List.propTypes = {
   items: PropTypes.string.isRequired
 }
 
-export default ListWrapper
+export default List

@@ -49,9 +49,10 @@ const transformRequest = (url, resourceType) => {
       // credentials: 'include'  // Include cookies for cross-origin requests
     }
   }
+  return { url }
 }
 
-const Mapa = ({ logged, updateMapAction, initMapAction }) => {
+const Mapa = () => {
   const isMapReady = useSelector((state) => state.map.isMapReady)
   const [mapGL, setMapGL] = useState(null)
   const dispatch = useDispatch()
@@ -116,4 +117,5 @@ const Mapa = ({ logged, updateMapAction, initMapAction }) => {
     </Container>
   )
 }
+
 export default Mapa

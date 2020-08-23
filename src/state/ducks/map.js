@@ -1,37 +1,11 @@
 import {
   getGroups, getLayersConfigByGroupId, getFullLayerConfig, getCustomsIcons
 } from 'utils/configQueries'
+import { loadImages, mapOnPromise } from 'utils/mapboxUtils'
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 let mapGL = null
-
-const mapEventPromise = (eventName) => new Promise((resolve, reject) => {
-  try {
-    mapGL.map.on(eventName, () => {
-      resolve()
-    })
-  } catch (error) {
-    reject(error)
-  }
-})
-
-// DUDAS: ¿Para que sirve esto?
-const loadCustomImages = async () => {
-  // mapbox necesita que se agreguen las capas para referenciarlas por id
-  const loadImagePromise = (data) => new Promise(
-    (resolve, reject) => mapGL.map.loadImage(data, (error, image) => {
-      if (error) reject(error)
-      resolve(image)
-    })
-  )
-  await Promise.all(
-    getCustomsIcons().map(({ id, data }) => loadImagePromise(data)
-      .then((image) => {
-        mapGL.map.addImage(id, image)
-      }))
-  )
-}
 
 const add = async (layer) => {
   if (layer.type && (layer.type === 'vectortile' || layer.type === 'custom')) {
@@ -67,10 +41,10 @@ const initMap = createAsyncThunk(
   'map/initMap',
   async (mapInstance) => {
     mapGL = mapInstance
-    const mapOnLoad = mapEventPromise('load')
+    const mapOnLoad = mapOnPromise(mapInstance.map)('load')
     return mapOnLoad
       .then(async () => {
-        await loadCustomImages()
+        await loadImages(mapInstance.map, getCustomsIcons())
         return true
       })
       .catch(() => false)
@@ -87,7 +61,7 @@ const toggleLayer = createAsyncThunk(
   'map/toggleLayer',
   async ({ idGroup, idLayer }) => {
     const layer = getFullLayerConfig(idGroup, idLayer)
-    const mapOnIdle = mapEventPromise('idle')
+    const mapOnIdle = mapOnPromise(mapGL.map)('idle')
     await toggle(layer)
     return mapOnIdle
       .then(() => true)

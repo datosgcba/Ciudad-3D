@@ -2,7 +2,7 @@ import React from 'react'
 
 import PropTypes from 'prop-types'
 
-import { Box, Icon } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 import DirectionsIcon from '@material-ui/icons/Directions'
 
 import useStyles from './styles'
@@ -34,8 +34,9 @@ const FeatureInfo = ({ contenido, direccionNormalizada }) => {
         }
       </Box>
       <Box className={classes.goContainer}>
-        <Icon color="primary"><DirectionsIcon /></Icon>
-        <a target="_blank" rel="noopener noreferrer" href={comoLlegoURL} style={{ color: '#FFCE38' }} />
+        <a target="_blank" rel="noopener noreferrer" href={comoLlegoURL} style={{ color: '#FFCE38' }}>
+          <DirectionsIcon />
+        </a>
       </Box>
     </Box>
 

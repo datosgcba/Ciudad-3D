@@ -192,11 +192,11 @@ Otras extensiones útiles:
 * **appConfig.json**: Actualmente es principalmente un json que contiene toda la información necesaria que la aplicación pueda ser fácilmente adaptada. Se recomienda fuertemente que solo acceda a estas configuraciones a través de **configQueries** con el objetivo de mantener desacoplado la configuración de los componentes y así sea algo relativamente sencillo en un futuro migrar para obtener la configuración desde un api y que esta pueda ser almacenada en memoria o en el sessionStorage según sea conveniente. 
 
 
-### Sobre la librería .**Mapbox GL JS** el componente **Map** y las utilidades **mapBoxUtils** y **MapaInteractivoGL**
+### Sobre la librería **Mapbox GL JS** el componente **Map** y las utilidades **mapboxUtils** y **MapaInteractivoGL**
 
 Como se dijo el corazón de la aplicación es **Mapbox GL JS** esta es una excelente librería para el uso de mapas, lamentablemente está librería está orientada a un paradigma de eventos y objetos donde cada uno mantiene su propia fuente de estado. Mientras por otro lado la aplicación se basa en el principio de redux en mantener una única fuente de datos. Para lograr acoplar estos dos tan diferentes estilos de desarrollo se opta por realizar llamadas a promesas desde el middleware que invoquen los eventos ofrecidos y métodos ofrecidos por mapbox y al terminar el middleware actualizara el estado para que los componentes puedan utilizarlo. Esto se realiza se realiza a través de **mapBoxUtils** y **MapaInteractivoGL**. Claramente esto puede ser una muy posible fuente de bugs, por eso se analizaron las alternativas [react-mapbox-gl](https://github.com/alex3165/react-mapbox-gl) y [react-map-gl](https://github.com/visgl/react-map-gl) ambas ofrecen un wrapper de mapbox gl js, que en principio parecieran permitir una mejor integración entre ambos mundos, pero al entrar en detalle se puede ver que ambas están lejos de ofrece un wrapper del 100% de la funcionalidad de mapbox gl js y si llegáramos a necesitar algún comportamiento especifico, lo cual es altamente probable, la adaptación podría obligarnos a modificar el wrapper directamente, y mencionar que podríamos tener que llegar a resolver bugs internos que pudiera tener el wrapper. Tomando en cuenta esta importante limitación se opta por una integración en la manera antes mencionada a través de llamadas a promesas desde el middleware.
 
-
+![Arquitectura de la aplicación](architecture.svg)
 ---
 ## Entorno
 Para poder hacer un build de producción es necesario tener creado el .env.prod con la misma estructura que el archivo

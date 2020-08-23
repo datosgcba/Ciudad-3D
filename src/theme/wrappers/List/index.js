@@ -11,10 +11,7 @@ import ListItem from '@material-ui/core/ListItem'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
-import styles from './styles'
-
 const List = ({ items }) => {
-  const classes = styles()
   const decorators = useFontsStyles()
 
   return (
@@ -23,7 +20,6 @@ const List = ({ items }) => {
         items.map(({ subTitle, details, color }) => (
           <ListItem style={{ backgroundColor: `${color}`, paddingBottom: 0, paddingTop: 0 }}>
             <FormControlLabel
-              className={classes.formControl}
               control={(
                 <Checkbox
                   icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
@@ -34,9 +30,9 @@ const List = ({ items }) => {
                 />
               )}
             />
-            <Typography variant="subtitle2" className={`${decorators.bold} ${decorators.grey1}`}>
+            <Typography variant="subtitle2" className={`${decorators.bold} ${decorators.grey333}`}>
               {subTitle}
-              <Typography variant="subtitle2" className={`${decorators.grey1}`}>
+              <Typography variant="subtitle2" className={`${decorators.grey333}`}>
                 {details}
               </Typography>
             </Typography>

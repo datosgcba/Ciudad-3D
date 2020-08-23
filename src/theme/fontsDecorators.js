@@ -13,7 +13,7 @@ export default makeStyles(({ spacing }) => ({
   marginBottom_xl: {
     marginBottom: spacing(3.35) // 3.35 -  27px
   },
-  grey1: {
-    color: 'rgb(51, 51, 51)'
+  grey333: {
+    color: '#333333'
   }
 }))

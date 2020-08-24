@@ -20,7 +20,7 @@ const Information = () => {
   const decorators = useFontsStyles()
   return (
     <ContainerBar>
-      <Typography variant="h5" className={`${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
+      <Typography variant="h5" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
         Información
       </Typography>
       <ListCard />

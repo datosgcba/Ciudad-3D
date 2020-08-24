@@ -21,7 +21,7 @@ const Capa = () => {
 
   return (
     <ContainerBar>
-      <Typography variant="h5" className={`${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
+      <Typography variant="h5" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
         Capas
       </Typography>
       <Groups />

@@ -14,6 +14,8 @@ import ListItem from '@material-ui/core/ListItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { actions } from 'state/ducks/map'
 
+import useFontsStyles from 'theme/fontsDecorators'
+
 import { getLayersConfigByGroupId, getFullLayerConfig } from 'utils/configQueries'
 
 import useStyles from './groupStyle'
@@ -71,10 +73,11 @@ const GroupItems = ({ idGroup, classes }) => {
 
 const Group = ({ id, title }) => {
   const classes = useStyles()
+  const decorators = useFontsStyles()
 
   return (
     <Container className={classes.container}>
-      <Typography variant="subtitle1">
+      <Typography variant="subtitle1" className={decorators.bold}>
         {title.toUpperCase()}
         <Divider className={classes.divider} />
       </Typography>

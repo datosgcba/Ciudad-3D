@@ -15,7 +15,7 @@ import Usos from 'components/Sections/SubSection/Usos'
 
 const Section = () => {
   const isShow = useSelector((state) => state.categories.sectionOpen)
-  const sectionId = useSelector((state) => state.categories.sectionId)
+  const sectionId = useSelector((state) => state.categories.sectionId[0])
 
   const sectionComponents = new Map([
     ['Information', Information],

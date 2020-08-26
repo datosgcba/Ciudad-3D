@@ -26,7 +26,7 @@ const Details = ({ classes }) => (
       </ListItem>
       <ListItem>
         <ListItemText
-          primary="Altura máxima: 22,80 + dos retiros"
+          primary="Altura máxima: 22,80 + dos s"
         />
       </ListItem>
       <ListItem>

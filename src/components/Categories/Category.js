@@ -18,7 +18,9 @@ const Icon = ({ path, isSelected }) => (
 )
 
 const Category = ({ id, path, title }) => {
-  const sectionName = useSelector((state) => state.categories.sectionId.length === 0 ? null : state.categories.sectionId[0])
+  const sectionName = useSelector((state) => (state.categories.sectionId.length === 0
+    ? null
+    : state.categories.sectionId[0]))
 
   const dispatch = useDispatch()
 

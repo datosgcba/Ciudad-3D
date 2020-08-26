@@ -52,7 +52,7 @@ const Buildable = () => {
       <Box className={classes.box}>
         <Typography variant="h6" className={decorators.bold}>
           <Button
-            onClick={() => dispatch(actions.categorySelected('Information'))}
+            onClick={() => dispatch(actions.sectionBack())}
             className={classes.button}
             startIcon={<ArrowBackIcon />}
           />

@@ -17,7 +17,7 @@ const InfoCard = ({ id, title, description }) => {
   return (
     <CardActionArea
       className={classes.card}
-      onClick={() => dispatch(actions.categorySelected(id))}
+      onClick={() => dispatch(actions.sectionSelected(id))}
     >
       <Typography variant="h5" className={decorators.bold}>
         {title}

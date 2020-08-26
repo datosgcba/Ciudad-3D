@@ -13,9 +13,14 @@ import LayerGroup from 'components/Sections/SubSection/LayerGroup'
 import Uses from 'components/Sections/SubSection/Uses'
 import Works from 'components/Sections/SubSection/Works'
 
+// En este archivo vemos cuál será la sección abierta del panel,
+// siempre será el último elemento del array
+
 const Section = () => {
   const isShow = useSelector((state) => state.categories.sectionOpen)
-  const sectionId = useSelector((state) => state.categories.sectionId[0])
+  const sectionId = useSelector((state) => state.categories.sectionId)
+  const lastIndex = sectionId.length - 1
+  const sectionSelected = sectionId[lastIndex]
 
   const sectionComponents = new Map([
     ['Information', Information],
@@ -28,8 +33,12 @@ const Section = () => {
     ['Works', Works]
   ])
 
-  const Selected = isShow && sectionComponents.get(sectionId)
-
+  // Acá busco el que voy a usar
+  const Selected = isShow && sectionComponents.get(sectionSelected)
+  // Acá se renderiza el elemento seleccionado.
+  // Tiene dos elementos, uno es un booleano (open),
+  // si está en false no se muestra y el otro
+  // es el elemento a mostrar
   return (
     <Drawer
       variant="persistent"

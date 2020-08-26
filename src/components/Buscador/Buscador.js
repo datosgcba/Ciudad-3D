@@ -19,12 +19,12 @@ import { makeStyles } from '@material-ui/core/styles'
 // import Geocoder from 'utils/GeoLocation'
 // import { tooltip } from 'utils/Tooltip'
 
-const useStyles = makeStyles((/* theme */) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    maxWidth: 300,
+    maxWidth: 600,
     borderRadius: 1,
     height: 40
   },
@@ -32,7 +32,7 @@ const useStyles = makeStyles((/* theme */) => ({
   input: {
     marginLeft: 5,
     paddingLeft: 5,
-    width: 100
+    width: 400
   },
 
   iconButton: {
@@ -97,8 +97,10 @@ const Buscador = (props) => {
       if (selectedSuggestion.type === 'CALLE') {
         setInputValue(`${selectedSuggestion.title} `)
         setSuggestions([])
+        console.log(selectedSuggestion.title + ' calle')
         // this.searchInput.focus()
       } else {
+        console.log(selectedSuggestion.title + ' lugar')
         setInputValue('')
         // setShowSuggestions(false);
         setSuggestions([])
@@ -163,7 +165,7 @@ const Buscador = (props) => {
         component="div"
         style={{
           fontSize: '0.6rem',
-          maxWidth: 300
+          maxWidth: 600
         }}
       >
         <ListItemAvatar>
@@ -187,7 +189,7 @@ const Buscador = (props) => {
         id="usig-autocomplete"
         inputValue={inputValue}
         onChange={handleSelectItem}
-      >
+      > 
         {({
           getInputProps,
           getItemProps,

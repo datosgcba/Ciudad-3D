@@ -893,7 +893,7 @@ const config = {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'
     },
     {
-      id: 'Use',
+      id: 'Uses',
       title: 'Usos',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'

@@ -4,11 +4,11 @@ import { Drawer } from '@material-ui/core'
 
 import { useSelector } from 'react-redux'
 
-import Capa from 'components/Sections/SubSection/Capa'
+import Buildable from 'components/Sections/SubSection/Buildable'
 import Contact from 'components/Sections/SubSection/Contact'
-import Edificabilidad from 'components/Sections/SubSection/Edificabilidad'
 import Explorer from 'components/Sections/SubSection/Explorer'
 import Information from 'components/Sections/SubSection/Information'
+import LayerGroup from 'components/Sections/SubSection/LayerGroup'
 
 const Section = () => {
   const isShow = useSelector((state) => state.categories.sectionOpen)
@@ -16,10 +16,10 @@ const Section = () => {
 
   const sectionComponents = new Map([
     ['Information', Information],
-    ['Capa', Capa],
+    ['LayerGroup', LayerGroup],
     ['Explorer', Explorer],
     ['Contact', Contact],
-    ['Buildable', Edificabilidad]
+    ['Buildable', Buildable]
   ])
 
   const Selected = isShow && sectionComponents.get(sectionId)

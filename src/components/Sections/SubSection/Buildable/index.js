@@ -38,7 +38,7 @@ const Details = ({ classes }) => (
   </Box>
 )
 
-const Edificabilidad = () => {
+const Buildable = () => {
   const classes = useStyles()
   const decorators = useFontsStyles()
 
@@ -68,4 +68,4 @@ Details.propTypes = {
   classes: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
-export default Edificabilidad
+export default Buildable

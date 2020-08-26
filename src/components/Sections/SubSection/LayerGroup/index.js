@@ -16,7 +16,7 @@ const Groups = () => (getGroups().map(({ id, index, title }) => (
   />
 )))
 
-const Capa = () => {
+const LayerGroup = () => {
   const decorators = useFontsStyles()
 
   return (
@@ -29,4 +29,4 @@ const Capa = () => {
   )
 }
 
-export default Capa
+export default LayerGroup

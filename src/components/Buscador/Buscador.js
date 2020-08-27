@@ -15,6 +15,8 @@ import PlaceIcon from '@material-ui/icons/Place'
 import SearchIcon from '@material-ui/icons/Search'
 import StarIcon from '@material-ui/icons/Star'
 import { makeStyles } from '@material-ui/core/styles'
+import { actions } from 'state/ducks/seeker'
+import { useDispatch } from 'react-redux'
 
 // import Geocoder from 'utils/GeoLocation'
 // import { tooltip } from 'utils/Tooltip'
@@ -44,7 +46,7 @@ const Buscador = (props) => {
   const classes = useStyles()
   const { getMapGL } = props
   // const map = getMapGL && getMapGL()
-
+  const dispatch = useDispatch()
   // const [showSuggestions, setShowSuggestions] = useState(true);
   const showSuggestions = true
   const [inputValue, setInputValue] = useState('')
@@ -92,15 +94,15 @@ const Buscador = (props) => {
     setInputValue(text)
   }
 
+  // TODO: Tal vez reveer como hacer los dispatch
   function handleSelectItem(/* item */) {
     if (selectedSuggestion) {
+      dispatch(actions.placeSelected(selectedSuggestion))
       if (selectedSuggestion.type === 'CALLE') {
         setInputValue(`${selectedSuggestion.title} `)
         setSuggestions([])
-        console.log(selectedSuggestion.title + ' calle')
         // this.searchInput.focus()
       } else {
-        console.log(selectedSuggestion.title + ' lugar')
         setInputValue('')
         // setShowSuggestions(false);
         setSuggestions([])

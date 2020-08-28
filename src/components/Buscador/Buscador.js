@@ -15,16 +15,18 @@ import PlaceIcon from '@material-ui/icons/Place'
 import SearchIcon from '@material-ui/icons/Search'
 import StarIcon from '@material-ui/icons/Star'
 import { makeStyles } from '@material-ui/core/styles'
+import { actions } from 'state/ducks/seeker'
+import { useDispatch } from 'react-redux'
 
 // import Geocoder from 'utils/GeoLocation'
 // import { tooltip } from 'utils/Tooltip'
 
-const useStyles = makeStyles((/* theme */) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    maxWidth: 300,
+    maxWidth: 600,
     borderRadius: 1,
     height: 40
   },
@@ -32,7 +34,7 @@ const useStyles = makeStyles((/* theme */) => ({
   input: {
     marginLeft: 5,
     paddingLeft: 5,
-    width: 100
+    width: 400
   },
 
   iconButton: {
@@ -44,7 +46,7 @@ const Buscador = (props) => {
   const classes = useStyles()
   const { getMapGL } = props
   // const map = getMapGL && getMapGL()
-
+  const dispatch = useDispatch()
   // const [showSuggestions, setShowSuggestions] = useState(true);
   const showSuggestions = true
   const [inputValue, setInputValue] = useState('')
@@ -92,8 +94,10 @@ const Buscador = (props) => {
     setInputValue(text)
   }
 
+  // TODO: Tal vez reveer como hacer los dispatch
   function handleSelectItem(/* item */) {
     if (selectedSuggestion) {
+      dispatch(actions.placeSelected(selectedSuggestion))
       if (selectedSuggestion.type === 'CALLE') {
         setInputValue(`${selectedSuggestion.title} `)
         setSuggestions([])
@@ -163,7 +167,7 @@ const Buscador = (props) => {
         component="div"
         style={{
           fontSize: '0.6rem',
-          maxWidth: 300
+          maxWidth: 600
         }}
       >
         <ListItemAvatar>
@@ -187,7 +191,7 @@ const Buscador = (props) => {
         id="usig-autocomplete"
         inputValue={inputValue}
         onChange={handleSelectItem}
-      >
+      > 
         {({
           getInputProps,
           getItemProps,

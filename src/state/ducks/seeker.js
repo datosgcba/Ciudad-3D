@@ -3,12 +3,17 @@ import { createSlice } from '@reduxjs/toolkit'
 const seeker = createSlice({
   name: 'seeker',
   initialState: {
-    place: ''
+    place: '',
+    coordinates: ''
   },
   reducers: {
     placeSelected: (draftState, action) => {
       draftState.place = action.payload
       console.log(draftState.place)
+    },
+    coordinatesSelected: (draftState, action) => {
+      draftState.coordinates = action.payload
+      console.log(draftState.coordinates)
     }
   }
 })

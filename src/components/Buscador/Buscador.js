@@ -17,9 +17,8 @@ import StarIcon from '@material-ui/icons/Star'
 import { makeStyles } from '@material-ui/core/styles'
 import { actions } from 'state/ducks/seeker'
 import { useDispatch } from 'react-redux'
-
 // import Geocoder from 'utils/GeoLocation'
-// import { tooltip } from 'utils/Tooltip'
+// import { tooltip } from 'utils/Tooltip' 
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -97,7 +96,8 @@ const Buscador = (props) => {
   // TODO: Tal vez reveer como hacer los dispatch
   function handleSelectItem(/* item */) {
     if (selectedSuggestion) {
-      dispatch(actions.placeSelected(selectedSuggestion))
+      dispatch(actions.placeSelected(selectedSuggestion.title))
+      dispatch(actions.coordinatesSelected(selectedSuggestion.data.coordenadas))
       if (selectedSuggestion.type === 'CALLE') {
         setInputValue(`${selectedSuggestion.title} `)
         setSuggestions([])
@@ -109,13 +109,13 @@ const Buscador = (props) => {
 
         // Geolocaliza el punto y envía la info a tooltip.js
         // que agrega el marker con el popup
-        /*
-        Geocoder.fetchGeolocation(selectedSuggestion)
+        
+     /*   Geocoder.fetchGeolocation(selectedSuggestion)
           .then((coords) => tooltip.addPopup(map, coords, selectedSuggestion.title))
           .catch((err) => {
-          })
-          */
-      }
+          }) */
+          
+      } 
     }
   }
 

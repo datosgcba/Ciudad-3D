@@ -4,12 +4,14 @@ import { renderToString } from 'react-dom/server'
 import { Container, Box } from '@material-ui/core'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { actions } from 'state/ducks/map'
+import { actions as mapActions } from 'state/ducks/map'
+import { actions as seekerActions } from 'state/ducks/seeker'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
 import Buscador from 'components/Buscador/Buscador'
 import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
+import Marker from 'components/Marker'
 // import LogoutButton from 'components/LogoutButton/LogoutButton'
 
 import imgCapaBasePrincipal from 'img/capabase_1.png'
@@ -54,6 +56,7 @@ const transformRequest = (url, resourceType) => {
 
 const Mapa = () => {
   const isMapReady = useSelector((state) => state.map.isMapReady)
+  const place = useSelector((state) => state.seeker.place)
   const [mapGL, setMapGL] = useState(null)
   const dispatch = useDispatch()
   const [capabasePrincipal, setCapabasePrincipal] = useState(true)
@@ -85,7 +88,7 @@ const Mapa = () => {
       })
       setMapGL(map)
 
-      dispatch(actions.initMap(map))
+      dispatch(mapActions.initMap(map))
     }
   }, [isMapReady, dispatch])
 
@@ -109,10 +112,17 @@ const Mapa = () => {
           </Box>
         </Box>
         <Box className={classes.topMenu}>
-          <Buscador />
+          <Buscador onSelectItem={(selectedSuggestion) => {
+            dispatch(seekerActions.placeSelected(selectedSuggestion))
+            dispatch(seekerActions.coordinatesSelected(selectedSuggestion.data.coordenadas))
+          }}
+          />
           {// logged ? <LogoutButton /> : null
           }
         </Box>
+        {isMapReady && place &&
+          <Marker place={place} />
+        }
       </Box>
     </Container>
   )

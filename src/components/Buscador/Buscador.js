@@ -15,10 +15,7 @@ import PlaceIcon from '@material-ui/icons/Place'
 import SearchIcon from '@material-ui/icons/Search'
 import StarIcon from '@material-ui/icons/Star'
 import { makeStyles } from '@material-ui/core/styles'
-import { actions } from 'state/ducks/seeker'
-import { useDispatch } from 'react-redux'
-// import Geocoder from 'utils/GeoLocation'
-// import { tooltip } from 'utils/Tooltip' 
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,9 +40,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Buscador = (props) => {
   const classes = useStyles()
-  const { getMapGL } = props
-  // const map = getMapGL && getMapGL()
-  const dispatch = useDispatch()
+  const { getMapGL, onSelectItem } = props
+  const map = getMapGL && getMapGL()
   // const [showSuggestions, setShowSuggestions] = useState(true);
   const showSuggestions = true
   const [inputValue, setInputValue] = useState('')
@@ -96,8 +92,7 @@ const Buscador = (props) => {
   // TODO: Tal vez reveer como hacer los dispatch
   function handleSelectItem(/* item */) {
     if (selectedSuggestion) {
-      dispatch(actions.placeSelected(selectedSuggestion.title))
-      dispatch(actions.coordinatesSelected(selectedSuggestion.data.coordenadas))
+      onSelectItem(selectedSuggestion)
       if (selectedSuggestion.type === 'CALLE') {
         setInputValue(`${selectedSuggestion.title} `)
         setSuggestions([])
@@ -110,10 +105,6 @@ const Buscador = (props) => {
         // Geolocaliza el punto y envía la info a tooltip.js
         // que agrega el marker con el popup
         
-     /*   Geocoder.fetchGeolocation(selectedSuggestion)
-          .then((coords) => tooltip.addPopup(map, coords, selectedSuggestion.title))
-          .catch((err) => {
-          }) */
           
       } 
     }

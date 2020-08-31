@@ -535,6 +535,7 @@ class MapaInteractivoGL {
   }
 
   addMarker(latlng, visible = true, draggable = false, goTo, activate = true, clickable = true, options = {}) {
+    console.log("Entró a addMarker")
     const self = this
 
     const marker = new mapboxgl.Marker(options)

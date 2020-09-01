@@ -9,9 +9,9 @@ import { tooltip } from 'utils/Tooltip'
 export default ({ place }) => {
   const map = MapaInteractivoGL()
   useEffect(() => {
-    console.log('place', place)
+    console.log('place', place.data)
     Geocoder.fetchGeolocation(place)
-      .then((coords) => tooltip.addPopup(map, coords, place.title))
+      .then((coords) => tooltip.addPopup(map, coords, place))
   }, [place, Geocoder, map])
 
   return null

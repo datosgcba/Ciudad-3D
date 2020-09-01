@@ -124,7 +124,7 @@ const Mapa = () => {
           {// logged ? <LogoutButton /> : null
           }
         </Box>
-        {isMapReady && place
+        {isMapReady && place && place.type !== 'CALLE'
           && <Marker place={place} />}
       </Box>
     </Container>

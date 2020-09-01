@@ -13,20 +13,17 @@ function reverseGeolocation(coordenadas) {
 function fetchGeolocation(lugar) {
   switch (lugar.type) {
     case 'LUGAR':
-      console.log(lugar.type)
+      console.log(lugar)
       const contentPlaceUrl = `https://epok.buenosaires.gob.ar/getObjectContent/?id=${lugar.idEpok}&srid=4326`
       return fetch(contentPlaceUrl)
         .then((response) => response.json())
         .then((json) => getCoordinatesFromPoint(json.ubicacion.centroide))
     case 'DIRECCION':
-      console.log(lugar.type)
+      console.log(lugar.data)
       // if (!lugar.direccion || !lugar.direccion.calle) return;
-      if (!lugar.direccion || !lugar.direccion.calle) {
-        lugar.direccion = lugar.data
-      }
-      if (lugar.direccion.descripcion === 'Ciudad Autónoma de Buenos Aires') {
-        const contentUrl = lugar.direccion.calleCruce ? `https://ws.usig.buenosaires.gob.ar/geocoder/2.2/geocoding/?cod_calle1=${lugar.direccion.calle.cod_calle || lugar.direccion.calle.codigo}&cod_calle2=${lugar.direccion.calleCruce.cod_calle || lugar.direccion.calleCruce.codigo}`
-          : `https://ws.usig.buenosaires.gob.ar/geocoder/2.2/geocoding/?cod_calle=${lugar.direccion.calle.cod_calle || lugar.direccion.calle.codigo}&altura=${lugar.direccion.altura}`
+      if (lugar.data.descripcion === 'Ciudad Autónoma de Buenos Aires') {
+        const contentUrl = lugar.data.calleCruce ? `https://ws.usig.buenosaires.gob.ar/geocoder/2.2/geocoding/?cod_calle1=${lugar.data.calle.cod_calle || lugar.data.calle.codigo}&cod_calle2=${lugar.data.calleCruce.cod_calle || lugar.data.calleCruce.codigo}`
+          : `https://ws.usig.buenosaires.gob.ar/geocoder/2.2/geocoding/?cod_calle=${lugar.data.calle.cod_calle || lugar.data.calle.codigo}&altura=${lugar.data.altura}`
         return fetchJsonp(contentUrl)
           .then((response) => response.json())
           .then((json) => Coords.toLngLat(json, true))
@@ -35,12 +32,13 @@ function fetchGeolocation(lugar) {
       return fetch(contentUrl)
         .then((response) => response.json())
         .then((json) => {
-          const calleNormalizada = json.direccionesNormalizadas.filter((calle) => calle.cod_calle === lugar.direccion.calle.cod_calle || calle.cod_calle === lugar.direccion.calle.codigo)[0]
+          const calleNormalizada = json.direccionesNormalizadas.filter((calle) => calle.cod_calle === lugar.data.calle.cod_calle || calle.cod_calle === lugar.data.calle.codigo)[0]
           if (calleNormalizada && calleNormalizada.coordenadas) {
             return { x: parseFloat(calleNormalizada.coordenadas.x), y: parseFloat(calleNormalizada.coordenadas.y) }
           }
         })
     default:
+      console.log(lugar.type)
       console.log('unknow suggestion.TYPE')
   }
 }

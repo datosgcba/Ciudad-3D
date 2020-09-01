@@ -4,6 +4,7 @@ import { renderToString } from 'react-dom/server'
 import { Container, Box } from '@material-ui/core'
 
 import { useDispatch, useSelector } from 'react-redux'
+import { actions as basicDataActions } from 'state/ducks/basicData'
 import { actions as mapActions } from 'state/ducks/map'
 import { actions as seekerActions } from 'state/ducks/seeker'
 
@@ -115,14 +116,16 @@ const Mapa = () => {
           <Buscador onSelectItem={(selectedSuggestion) => {
             dispatch(seekerActions.placeSelected(selectedSuggestion))
             dispatch(seekerActions.coordinatesSelected(selectedSuggestion.data.coordenadas))
+
+            // TODO: sacar de acá
+            dispatch(basicDataActions.smpSelected(selectedSuggestion.data.smp))
           }}
           />
           {// logged ? <LogoutButton /> : null
           }
         </Box>
-        {isMapReady && place &&
-          <Marker place={place} />
-        }
+        {isMapReady && place
+          && <Marker place={place} />}
       </Box>
     </Container>
   )

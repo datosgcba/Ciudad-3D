@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -12,31 +12,52 @@ import useFontsStyles from 'theme/fontsDecorators'
 import ContainerBar from 'components/Sections/ContainerBar'
 
 import { actions } from 'state/ducks/categories'
-import { useDispatch } from 'react-redux'
+import { actions as basicDataActions } from 'state/ducks/basicData'
+
+import { useDispatch, useSelector } from 'react-redux'
 
 import useStyles from './styles'
 
-const Details = ({ classes }) => (
-  <Box className={classes.details}>
-    <List dense>
-      <ListItem>
-        <ListItemText
-          primary="Sup máx edificable: 322 m2"
-        />
-      </ListItem>
-      <ListItem>
-        <ListItemText
-          primary="Altura máxima: 22,80 + dos retiros"
-        />
-      </ListItem>
-      <ListItem>
-        <ListItemText
-          primary="Tipo de unidad: USAB1"
-        />
-      </ListItem>
-    </List>
-  </Box>
-)
+const Details = ({ classes }) => {
+  const dispatch = useDispatch()
+
+  const smp = useSelector((state) => state.basicData.smp)
+
+  // TODO: traer datos por separado
+  const data = useSelector((state) => state.basicData.data)
+
+  useEffect(() => {
+    dispatch(basicDataActions.getData(smp))
+  }, [smp])
+
+  // TODO: desHardCodear :D
+  return (
+    <Box className={classes.details}>
+      <List dense>
+        <ListItem>
+          <ListItemText
+            primary={`SMP:  ${smp}`}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary={`DIRECCIÓN:  ${data.direccion}`}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary={`DIRECCIÓN:  ${data.manzana}`}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary={`SECCIÓN:  ${data.seccion}`}
+          />
+        </ListItem>
+      </List>
+    </Box>
+  )
+}
 
 const BasicData = () => {
   const classes = useStyles()

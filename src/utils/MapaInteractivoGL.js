@@ -120,10 +120,10 @@ class MapaInteractivoGL {
     this.map.on('zoomend', this._onZoomEnd.bind(this))
     this.map.on('dragend', this._onDragEnd.bind(this))
     this.map.on('dataloading', function() {
-      console.log('dataloading:', Date.now());
+      // console.log('dataloading:', Date.now());
       });
     this.map.on('data', function() {
-      console.log('data:', Date.now());
+      // console.log('data:', Date.now());
       });
     this.mapsDefs = null
     this.layersDefs = null

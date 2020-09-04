@@ -535,42 +535,18 @@ class MapaInteractivoGL {
     return fetch(`${this.config.layers.apiUrl}getObjectContent/?id=${fid}`)
   }
 
-  addMarker(latlng, visible = true, draggable = false, goTo, activate = true, clickable = true, options = {}) {
+  addMarker(latlng, flag, visible = true, draggable = false, goTo, activate = true, clickable = true, options = {}) {
    /* TO DO */ console.log("Entró a addMarker")
     const self = this
+   /* TO DO */ console.log(flag)
+
+    if (flag===0){
 
     const marker = new mapboxgl.Marker(options)
-      .setLngLat(latlng).addTo(this.map)
-
-    if (clickable) {
-      // content
-      const { label } = options
-      // const removeBtn = `<button class="mapbox-remove-marker" aria-label="Quitar Marker" onClick=this.bind(marker.remove)>  eliminar</button>`;
-
-      // create the popup
-      const popup = new mapboxgl.Popup({ offset: 25 })
-        .setHTML(` ${label} `)
-      marker.setPopup(popup).togglePopup()
-
-      // remove marker button
-      const removeBtn = document.createElement('button')
-      removeBtn.innerHTML = 'Eliminar'
-      removeBtn.classList.add('mapbox-remove-marker')
-      removeBtn.addEventListener('click', () => {
-        marker.remove()
-      })
-      popup._content.appendChild(removeBtn)
-
-      // Change the cursor to a pointer when the mouse is over the places layer.
-      self.map.on('mouseenter', marker, () => {
-        self.map.getCanvas().style.cursor = 'pointer'
-      })
-
-      // Change it back to a pointer when it leaves.
-      self.map.on('mouseleave', marker, () => {
-        self.map.getCanvas().style.cursor = ''
-      })
-    }
+      .setLngLat(latlng).addTo(this.map); flag=1 } else {
+        const marker = new mapboxgl.Marker(options)
+        .setLngLat(latlng);
+      }
 
     if (goTo) {
       this.map.flyTo({ center: latlng, zoom: this.config.markerZoomInLevel })

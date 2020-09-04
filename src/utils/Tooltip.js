@@ -10,10 +10,11 @@ const epokUrl = 'https://epok.buenosaires.gob.ar/saludcomunitaria/getAreasDeSalu
 const wsUrl = 'https://ws.usig.buenosaires.gob.ar/datos_utiles/?'
 
 // Agrega el marker al mapa con el popup creado a partir de las consultas
-async function addPopup(map, coords, title) {
+async function addPopup(map, coords, title, flag) {
+/* TO DO */  console.log(flag)
   const finalObject = await getPopUpInfo([coords.x, coords.y])
   const div = buildHtml(finalObject, title)
-  map.addMarker([coords.x, coords.y], true, false, true, true, true, {
+  map.addMarker([coords.x, coords.y], flag, true, false, true, true, true, {
     label: div.label,
     color: div.color
   })

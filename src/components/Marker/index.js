@@ -6,11 +6,12 @@ import Geocoder from 'utils/GeoLocation'
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 import { tooltip } from 'utils/Tooltip'
 
-export default ({ place }) => {
+export default ({ place, flag }) => {
+/* TO DO */  console.log(flag)
   const map = MapaInteractivoGL()
   useEffect(() => {
     Geocoder.fetchGeolocation(place)
-      .then((coords) => tooltip.addPopup(map, coords, place.title))
+      .then((coords) => tooltip.addPopup(map, coords, place.title, flag))
   }, [place, Geocoder, map])
 
   return null

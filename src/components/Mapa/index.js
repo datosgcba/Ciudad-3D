@@ -57,6 +57,7 @@ const transformRequest = (url, resourceType) => {
 const Mapa = () => {
   const isMapReady = useSelector((state) => state.map.isMapReady)
   const place = useSelector((state) => state.seeker.place)
+  const flag = 0
   const [mapGL, setMapGL] = useState(null)
   const dispatch = useDispatch()
   const [capabasePrincipal, setCapabasePrincipal] = useState(true)
@@ -127,7 +128,7 @@ const Mapa = () => {
           }
         </Box>
         {isMapReady && place && place.type !== 'CALLE'
-          && <Marker place={place} />}
+          && <Marker place={place} flag={flag} />}
       </Box>
     </Container>
   )

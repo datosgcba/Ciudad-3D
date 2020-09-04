@@ -76,8 +76,8 @@ const toggleLayer = createAsyncThunk(
   }
 )
 
-const getGeomCoords = createAsyncThunk(
-  'map/getGeomCoords',
+const smpSelected = createAsyncThunk(
+  'map/smpSelected',
   async (smp) => {
     const response = await fetch(`https://epok.buenosaires.gob.ar/catastro/geometria/?smp=${smp}`)
     const data = (await response.json())
@@ -153,7 +153,7 @@ const map = createSlice({
         layerState.isVisible = !layerState.isVisible
       }
     },
-    [getGeomCoords.fulfilled]: (draftState, action) => {
+    [smpSelected.fulfilled]: (draftState, action) => {
       draftState.parcel.geomCoords = action.payload
     }
   }
@@ -162,6 +162,6 @@ const map = createSlice({
 export default map.reducer
 
 const actions = {
-  ...map.actions, initMap, toggleLayer, getGeomCoords
+  ...map.actions, initMap, toggleLayer, smpSelected
 }
 export { actions }

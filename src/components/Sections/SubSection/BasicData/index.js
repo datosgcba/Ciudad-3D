@@ -24,12 +24,12 @@ const Details = ({ classes }) => {
 
   const coord = useSelector((state) => state.map.parcel.coord)
   useEffect(() => {
-    dispatch(basicDataActions.getData(coord))
+    dispatch(basicDataActions.clickOnParcel(coord))
   }, [coord])
 
   const smp = useSelector((state) => state.basicData.data.smp)
   useEffect(() => {
-    dispatch(mapActions.getGeomCoords(smp))
+    dispatch(mapActions.smpSelected(smp))
   }, [smp])
 
   const data = useSelector((state) => state.basicData.data)

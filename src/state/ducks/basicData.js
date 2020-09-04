@@ -1,11 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 const getData = createAsyncThunk(
-  'https://epok.buenosaires.gob.ar/catastro/parcela',
-  async (smp) => {
-    const response = await fetch(`https://epok.buenosaires.gob.ar/catastro/parcela/?smp=${smp}`)
+  'basicData/getData',
+  async ({ lng, lat }) => {
+    const response = await fetch(`https://epok.buenosaires.gob.ar/catastro/parcela/?lng=${lng}&lat=${lat}`)
     const data = (await response.json())
-    // TODO desestructurar la data o traerla en limpio
     return data
   }
 )
@@ -13,9 +12,6 @@ const getData = createAsyncThunk(
 const basicData = createSlice({
   name: 'basicdata',
   initialState: {
-    smp: '',
-    adress: '',
-    section: '',
     data: ''
   },
   reducers: {

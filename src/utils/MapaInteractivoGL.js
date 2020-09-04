@@ -167,6 +167,7 @@ class MapaInteractivoGL {
       this.inactivateMarker()
       this.config.onClick(ev)
     }
+    this.config.onClicked(ev.lngLat)
   }
 
   _onContextMenu(ev) {

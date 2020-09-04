@@ -11,8 +11,9 @@ import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 
-import { actions } from 'state/ducks/categories'
 import { actions as basicDataActions } from 'state/ducks/basicData'
+import { actions as categoriesActions } from 'state/ducks/categories'
+import { actions as mapActions } from 'state/ducks/map'
 
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -21,24 +22,21 @@ import useStyles from './styles'
 const Details = ({ classes }) => {
   const dispatch = useDispatch()
 
-  const smp = useSelector((state) => state.basicData.smp)
-
-  // TODO: traer datos por separado
-  const data = useSelector((state) => state.basicData.data)
-
+  const coord = useSelector((state) => state.map.parcel.coord)
   useEffect(() => {
-    dispatch(basicDataActions.getData(smp))
+    dispatch(basicDataActions.getData(coord))
+  }, [coord])
+
+  const smp = useSelector((state) => state.basicData.data.smp)
+  useEffect(() => {
+    dispatch(mapActions.getGeomCoords(smp))
   }, [smp])
 
-  // TODO: desHardCodear :D
+  const data = useSelector((state) => state.basicData.data)
+
   return (
     <Box className={classes.details}>
       <List dense>
-        <ListItem>
-          <ListItemText
-            primary={`SMP:  ${smp}`}
-          />
-        </ListItem>
         <ListItem>
           <ListItemText
             primary={`DIRECCIÓN:  ${data.direccion}`}
@@ -73,7 +71,7 @@ const BasicData = () => {
       <Box className={classes.box}>
         <Typography variant="h6" className={decorators.bold}>
           <Button
-            onClick={() => dispatch(actions.sectionBack())}
+            onClick={() => dispatch(categoriesActions.sectionBack())}
             className={classes.button}
             startIcon={<ArrowBackIcon />}
           />

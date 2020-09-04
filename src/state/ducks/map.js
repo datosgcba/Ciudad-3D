@@ -11,7 +11,6 @@ const add = async (layer) => {
   if (layer.type && (layer.type === 'vectortile' || layer.type === 'custom')) {
     const options = { ...layer.options }
     options.id = layer.id
-    // console.log(mapaGL);
     await mapGL.addVectorTileLayer(
       options,
       null,

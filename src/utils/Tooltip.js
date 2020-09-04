@@ -13,7 +13,6 @@ const wsUrl = 'https://ws.usig.buenosaires.gob.ar/datos_utiles/?'
 async function addPopup(map, coords, title) {
   const finalObject = await getPopUpInfo([coords.x, coords.y])
   const div = buildHtml(finalObject, title)
-  console.log('Pasa por acá? sí', map)
   map.addMarker([coords.x, coords.y], true, false, true, true, true, {
     label: div.label,
     color: div.color
@@ -32,7 +31,6 @@ async function getPopUpInfo(point) {
 // construye el html que va a ir dentro de el popup, con la informacion obtenida
 // de las api de EPOK y UsigWebServices
 const buildHtml = (data, title) => {
-  console.log(data.barrio)
   const div = `<div class="feature_info">
         <h4>${title}</h4>
         <p><b>Área Hospitalaria: </b>${data.area_hospitalaria}</p>

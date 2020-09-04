@@ -9,11 +9,9 @@ const seeker = createSlice({
   reducers: {
     placeSelected: (draftState, action) => {
       draftState.place = action.payload
-      console.log(draftState.place)
     },
     coordinatesSelected: (draftState, action) => {
       draftState.coordinates = action.payload
-      console.log(draftState.coordinates)
     }
   }
 })

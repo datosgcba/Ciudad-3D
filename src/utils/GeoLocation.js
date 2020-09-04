@@ -11,15 +11,14 @@ function reverseGeolocation(coordenadas) {
   return fetch(contentUrl).then((response) => response.json()).then((direction) => prettifyDirection(direction))
 }
 function fetchGeolocation(lugar) {
+ /* TO DO */ console.log("PASA POR GEOLOCATION")
   switch (lugar.type) {
     case 'LUGAR':
-      console.log(lugar)
       const contentPlaceUrl = `https://epok.buenosaires.gob.ar/getObjectContent/?id=${lugar.idEpok}&srid=4326`
       return fetch(contentPlaceUrl)
         .then((response) => response.json())
         .then((json) => getCoordinatesFromPoint(json.ubicacion.centroide))
     case 'DIRECCION':
-      console.log(lugar.data)
       // if (!lugar.direccion || !lugar.direccion.calle) return;
       if (lugar.data.descripcion === 'Ciudad Autónoma de Buenos Aires') {
         const contentUrl = lugar.data.calleCruce ? `https://ws.usig.buenosaires.gob.ar/geocoder/2.2/geocoding/?cod_calle1=${lugar.data.calle.cod_calle || lugar.data.calle.codigo}&cod_calle2=${lugar.data.calleCruce.cod_calle || lugar.data.calleCruce.codigo}`
@@ -38,8 +37,6 @@ function fetchGeolocation(lugar) {
           }
         })
     default:
-      console.log(lugar.type)
-      console.log('unknow suggestion.TYPE')
   }
 }
 

@@ -11,7 +11,7 @@ export default ({ place }) => {
   useEffect(() => {
     console.log('place', place.data)
     Geocoder.fetchGeolocation(place)
-      .then((coords) => tooltip.addPopup(map, coords, place))
+      .then((coords) => tooltip.addPopup(map, coords, place.title))
   }, [place, Geocoder, map])
 
   return null

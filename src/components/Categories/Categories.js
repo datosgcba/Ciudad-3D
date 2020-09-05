@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { actions } from 'state/ducks/categories'
 import { actions as basicDataActions } from 'state/ducks/basicData'
 
-
 import { Box } from '@material-ui/core'
 
 import { useDispatch, useSelector } from 'react-redux'

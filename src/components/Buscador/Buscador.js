@@ -89,7 +89,6 @@ const Buscador = (props) => {
     setInputValue(text)
   }
 
-  // TODO: Tal vez reveer como hacer los dispatch
   function handleSelectItem(/* item */) {
     if (selectedSuggestion) {
       onSelectItem(selectedSuggestion)

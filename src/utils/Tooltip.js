@@ -9,15 +9,10 @@ import config from '../appConfig'
 const epokUrl = 'https://epok.buenosaires.gob.ar/saludcomunitaria/getAreasDeSalud/?'
 const wsUrl = 'https://ws.usig.buenosaires.gob.ar/datos_utiles/?'
 
-// Agrega el marker al mapa con el popup creado a partir de las consultas
-async function addPopup(map, coords, title, flag) {
-/* TO DO */  console.log(flag)
-  const finalObject = await getPopUpInfo([coords.x, coords.y])
-  const div = buildHtml(finalObject, title)
-  map.addMarker([coords.x, coords.y], flag, true, false, true, true, true, {
-    label: div.label,
-    color: div.color
-  })
+// Une las 2 consultas en un solo objeto.
+const buildObject = (epokData, wsData) => {
+  const popUpInfo = { ...wsData, ...epokData.resultado }
+  return (popUpInfo)
 }
 
 // Consulta a los servicios
@@ -49,13 +44,21 @@ const buildHtml = (data, title) => {
   return popupDiv
 }
 
-// Une las 2 consultas en un solo objeto.
-const buildObject = (epokData, wsData) => {
-  const popUpInfo = { ...wsData, ...epokData.resultado }
-  return (popUpInfo)
+// Agrega el marker al mapa con el popup creado a partir de las consultas
+async function addPopup(map, coords, title, flag) {
+  /* TODO */
+  // console.log(flag)
+  const finalObject = await getPopUpInfo([coords.x, coords.y])
+  const div = buildHtml(finalObject, title)
+  map.addMarker([coords.x, coords.y], flag, true, false, true, true, true, {
+    label: div.label,
+    color: div.color
+  })
 }
 
-export const tooltip = {
+const tooltip = {
   getPopUpInfo,
   addPopup
 }
+
+export default tooltip

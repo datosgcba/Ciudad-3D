@@ -8,9 +8,9 @@ import { getGroups } from 'utils/configQueries'
 import ContainerBar from 'components/Sections/ContainerBar'
 import Group from './Group'
 
-const Groups = () => (getGroups().map(({ id, index, title }) => (
+const Groups = () => (getGroups().map(({ id, title }) => (
   <Group
-    key={index}
+    key={id}
     id={id}
     title={title}
   />

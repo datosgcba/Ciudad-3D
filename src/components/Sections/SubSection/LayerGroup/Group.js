@@ -97,8 +97,11 @@ GroupItem.propTypes = {
   idGroup: PropTypes.string.isRequired,
   idLayer: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
-  classes: PropTypes.string.isRequired
+  icon: PropTypes.string,
+  classes: PropTypes.objectOf(PropTypes.any).isRequired
+}
+GroupItem.defaultProps = {
+  icon: ''
 }
 
 export default Group

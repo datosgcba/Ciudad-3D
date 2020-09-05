@@ -37,6 +37,7 @@ const Categories = ({ data }) => {
       {
         data.map(({ id, path, title }) => (
           <Category
+            key={id}
             id={id}
             path={path}
             title={title}

@@ -10,6 +10,7 @@ import InfoCard from './InfoCard'
 
 const ListCard = () => (getInformation().map(({ id, title, description }) => (
   <InfoCard
+    key={id}
     id={id}
     title={title}
     description={description}

@@ -18,7 +18,7 @@ const ContainerBar = ({ children }) => {
   )
 }
 ContainerBar.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.arrayOf(PropTypes.any).isRequired
 }
 
 export default ContainerBar

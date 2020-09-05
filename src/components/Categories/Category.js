@@ -12,7 +12,7 @@ import { actions } from 'state/ducks/categories'
 import useStyles from './style'
 
 const Icon = ({ path, isSelected }) => (
-  <SvgIcon fontSize="medium" component="div" color={isSelected ? 'primary' : 'disabled'}>
+  <SvgIcon component="div" color={isSelected ? 'primary' : 'disabled'}>
     { path }
   </SvgIcon>
 )
@@ -45,12 +45,12 @@ const Category = ({ id, path, title }) => {
 
 Category.propTypes = {
   id: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired,
+  path: PropTypes.objectOf(PropTypes.any).isRequired,
   title: PropTypes.string.isRequired
 }
 
 Icon.propTypes = {
-  path: PropTypes.string.isRequired,
+  path: PropTypes.objectOf(PropTypes.any).isRequired,
   isSelected: PropTypes.bool.isRequired
 }
 

@@ -134,6 +134,8 @@ const Mapa = () => {
         {isMapReady && place && place.type !== 'CALLE'
           && <Marker place={place} flag={flag} />}
 
+        {// TODO: Cannot update a component (`ConnectFunction`)
+        }
         <Parcel
           smp={smp}
         />

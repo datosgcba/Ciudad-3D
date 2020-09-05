@@ -5,6 +5,7 @@ const clickOnParcel = createAsyncThunk(
   async ({ lng, lat }) => {
     const response = await fetch(`https://epok.buenosaires.gob.ar/catastro/parcela/?lng=${lng}&lat=${lat}`)
     const data = (await response.json())
+    // TODO: traer sólo lo necesario
     return data
   }
 )

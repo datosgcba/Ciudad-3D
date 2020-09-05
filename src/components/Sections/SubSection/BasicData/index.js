@@ -11,27 +11,13 @@ import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 
-import { actions as basicDataActions } from 'state/ducks/basicData'
 import { actions as categoriesActions } from 'state/ducks/categories'
-import { actions as mapActions } from 'state/ducks/map'
 
 import { useDispatch, useSelector } from 'react-redux'
 
 import useStyles from './styles'
 
 const Details = ({ classes }) => {
-  const dispatch = useDispatch()
-
-  const coord = useSelector((state) => state.map.parcel.coord)
-  useEffect(() => {
-    dispatch(basicDataActions.clickOnParcel(coord))
-  }, [coord])
-
-  const smp = useSelector((state) => state.basicData.data.smp)
-  useEffect(() => {
-    dispatch(mapActions.smpSelected(smp))
-  }, [smp])
-
   const data = useSelector((state) => state.basicData.data)
 
   return (

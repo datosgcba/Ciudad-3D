@@ -9,7 +9,7 @@ const categories = createSlice({
   reducers: {
     categorySelected: (draftState, action) => {
       if (action.payload === draftState.sectionId[0]) {
-        draftState.sectionOpen = true
+        draftState.sectionOpen = false
         draftState.sectionId = ['']
       } else {
         draftState.sectionOpen = true
@@ -22,6 +22,10 @@ const categories = createSlice({
     },
     sectionBack: (draftState) => {
       draftState.sectionId.pop()
+    },
+    parcelSelected: (draftState, action) => {
+      draftState.sectionOpen = true
+      draftState.sectionId = action.payload
     }
   }
 })

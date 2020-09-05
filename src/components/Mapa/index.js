@@ -12,6 +12,7 @@ import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 import Buscador from 'components/Buscador/Buscador'
 import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
 import Marker from 'components/Marker'
+import Parcel from 'components/Parcel'
 // import LogoutButton from 'components/LogoutButton/LogoutButton'
 
 import imgCapaBasePrincipal from 'img/capabase_1.png'
@@ -99,6 +100,9 @@ const Mapa = () => {
     }
   }, [isMapReady, dispatch])
 
+  // TODO: cambiar el state de basicData a map o mover ésto a otro lado
+  const smp = useSelector((state) => state.basicData.data.smp)
+
   const classes = useStyles()
   return (
     <Container id="map" className={classes.container}>
@@ -129,6 +133,10 @@ const Mapa = () => {
         </Box>
         {isMapReady && place && place.type !== 'CALLE'
           && <Marker place={place} flag={flag} />}
+
+        <Parcel
+          smp={smp}
+        />
       </Box>
     </Container>
   )

@@ -75,16 +75,6 @@ const toggleLayer = createAsyncThunk(
   }
 )
 
-const smpSelected = createAsyncThunk(
-  'map/smpSelected',
-  async (smp) => {
-    const response = await fetch(`https://epok.buenosaires.gob.ar/catastro/geometria/?smp=${smp}`)
-    const data = (await response.json())
-    const geomCoords = data.features[0].geometry.coordinates[0][0]
-    return geomCoords
-  }
-)
-
 const map = createSlice({
   name: 'map',
   initialState: {
@@ -102,17 +92,14 @@ const map = createSlice({
         }), {})
       }
     }), {}),
-    parcel: {
-      coord: '',
-      geomCoords: ''
-    }
+    coord: ''
   },
   reducers: {
     setMapReady: (draftState) => {
       draftState.isMapReady = true
     },
     clickOnMap: (draftState, action) => {
-      draftState.parcel.coord = action.payload
+      draftState.coord = action.payload
     }
   },
   extraReducers: {
@@ -151,9 +138,6 @@ const map = createSlice({
         layerState.processingId = null
         layerState.isVisible = !layerState.isVisible
       }
-    },
-    [smpSelected.fulfilled]: (draftState, action) => {
-      draftState.parcel.geomCoords = action.payload
     }
   }
 })
@@ -161,6 +145,6 @@ const map = createSlice({
 export default map.reducer
 
 const actions = {
-  ...map.actions, initMap, toggleLayer, smpSelected
+  ...map.actions, initMap, toggleLayer
 }
 export { actions }

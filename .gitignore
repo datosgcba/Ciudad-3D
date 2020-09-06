@@ -5,3 +5,5 @@
 .env.production
 .idea/
 .vscode/
+.yalc/
+yalc.lock

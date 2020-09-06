@@ -540,17 +540,22 @@ class MapaInteractivoGL {
     const self = this
    /* TO DO */ console.log(flag)
 
-    if (flag===0){
+    //if (flag===0){
 
     const marker = new mapboxgl.Marker(options)
-      .setLngLat(latlng).addTo(this.map); flag=1 } else {
+    marker
+      .setLngLat(latlng).addTo(this.map)
+
+      /*
+      flag=1 } else {
         const marker = new mapboxgl.Marker(options)
         .setLngLat(latlng);
       }
-
+*/
     if (goTo) {
       this.map.flyTo({ center: latlng, zoom: this.config.markerZoomInLevel })
     }
+    return marker
   }
 
   removeMarker(id) {

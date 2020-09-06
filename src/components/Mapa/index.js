@@ -131,15 +131,14 @@ const Mapa = () => {
           {// logged ? <LogoutButton /> : null
           }
         </Box>
-        {isMapReady && place && place.type !== 'CALLE'
-          && <Marker place={place} flag={flag} />}
-
         {// TODO: Cannot update a component (`ConnectFunction`)
         }
         <Parcel
           smp={smp}
         />
       </Box>
+      {isMapReady && place && place.type !== 'CALLE'
+        && <Marker place={place} />}
     </Container>
   )
 }

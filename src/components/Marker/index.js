@@ -3,18 +3,20 @@ import { useEffect } from 'react'
 
 // import PropTypes from 'prop-types'
 
-import Geocoder from 'utils/GeoLocation'
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 import tooltip from 'utils/Tooltip'
 
 export default ({ place, flag }) => {
-  /* TODO */
+  /* TODO: Trabajando en este archivo */
   // console.log(flag)
   const map = MapaInteractivoGL()
+  //const markerJSX = marker => `<>${}</>`
   useEffect(() => {
-    Geocoder.fetchGeolocation(place)
-      .then((coords) => tooltip.addPopup(map, coords, place.title, flag))
-  }, [place, Geocoder, map])
+    if(place && place.data && place.data.coordenadas) {
+      const coords = place.data.coordenadas
+      tooltip.addPopup(map, coords, place.title)
+    }
+  }, [place, map])
 
   return null
 }

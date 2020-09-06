@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import { Autocompleter } from '@usig-gcba/autocompleter'
+import { Autocompleter, Suggester } from '@usig-gcba/autocompleter'
 import Avatar from '@material-ui/core/Avatar'
 import Downshift from 'downshift'
 import IconButton from '@material-ui/core/IconButton'
@@ -91,13 +91,13 @@ const Buscador = (props) => {
 
   function handleSelectItem(/* item */) {
     if (selectedSuggestion) {
-      onSelectItem(selectedSuggestion)
+      setInputValue(`${selectedSuggestion.title} `)
       if (selectedSuggestion.type === 'CALLE') {
         setInputValue(`${selectedSuggestion.title} `)
         setSuggestions([])
         // this.searchInput.focus()
       } else {
-        setInputValue('')
+        //setInputValue('')
         // setShowSuggestions(false);
         setSuggestions([])
 
@@ -106,13 +106,14 @@ const Buscador = (props) => {
         
           
       } 
+      Promise.all(Suggester.getSuggestionPromises(selectedSuggestion))
+        .then(_ => onSelectItem(selectedSuggestion))
     }
   }
 
   function handleInputFocus(/* event */) {}
 
   function handleInputBlur(/* event */) {
-    setInputValue('')
     setSuggestions([])
   }
 

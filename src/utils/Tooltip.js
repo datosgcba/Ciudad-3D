@@ -50,7 +50,7 @@ async function addPopup(map, coords, title, flag) {
   // console.log(flag)
   const finalObject = await getPopUpInfo([coords.x, coords.y])
   const div = buildHtml(finalObject, title)
-  map.addMarker([coords.x, coords.y], flag, true, false, true, true, true, {
+  map.addMarker([coords.x, coords.y], 0, true, false, true, true, true, {
     label: div.label,
     color: div.color
   })

@@ -1,12 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
+import { getGeometricalApi } from 'utils/apiCongif'
+
 const smpSelected = createAsyncThunk(
   'parcel/smpSelected',
   async (smp) => {
-    const response = await fetch(`https://epok.buenosaires.gob.ar/catastro/geometria/?smp=${smp}`)
+    const urlApi = getGeometricalApi(smp)
+    const response = await fetch(urlApi)
     const data = (await response.json())
-    const geomCoords = data.features[0].geometry.coordinates[0][0]
-    return geomCoords
+    return data.features[0].geometry.coordinates[0][0]
   }
 )
 

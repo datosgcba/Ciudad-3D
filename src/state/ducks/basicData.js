@@ -1,9 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
+import { getParcelApi } from 'utils/apiCongif'
+
 const clickOnParcel = createAsyncThunk(
   'basicData/clickOnParcel',
-  async ({ lng, lat }) => {
-    const response = await fetch(`https://epok.buenosaires.gob.ar/catastro/parcela/?lng=${lng}&lat=${lat}`)
+  async (coord) => {
+    const urlApi = getParcelApi(coord)
+    const response = await fetch(urlApi)
     const data = (await response.json())
     // TODO: traer sólo lo necesario
     return data

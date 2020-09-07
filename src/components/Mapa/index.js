@@ -100,9 +100,6 @@ const Mapa = () => {
     }
   }, [isMapReady, dispatch])
 
-  // TODO: cambiar el state de basicData a map o mover ésto a otro lado
-  const smp = useSelector((state) => state.basicData.data.smp)
-
   const classes = useStyles()
   return (
     <Container id="map" className={classes.container}>
@@ -133,9 +130,7 @@ const Mapa = () => {
         </Box>
         {// TODO: Cannot update a component (`ConnectFunction`)
         }
-        <Parcel
-          smp={smp}
-        />
+        {isMapReady && <Parcel mapGL={mapGL} />}
       </Box>
       {isMapReady && place && place.type !== 'CALLE'
         && <Marker place={place} />}

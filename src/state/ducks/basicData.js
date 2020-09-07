@@ -16,10 +16,14 @@ const clickOnParcel = createAsyncThunk(
 const basicData = createSlice({
   name: 'basicdata',
   initialState: {
-    data: ''
+    data: {
+      smp: ''
+    },
+    previousSmp: ''
   },
   extraReducers: {
     [clickOnParcel.fulfilled]: (draftState, action) => {
+      draftState.previousSmp = draftState.data.smp
       draftState.data = action.payload
     }
   }

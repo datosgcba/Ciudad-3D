@@ -11,13 +11,12 @@ import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
 import Buscador from 'components/Buscador/Buscador'
 import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
-import Marker from 'components/Marker'
-import Parcel from 'components/Parcel'
 // import LogoutButton from 'components/LogoutButton/LogoutButton'
 
 import imgCapaBasePrincipal from 'img/capabase_1.png'
 import imgCapaBaseSecundaria from 'img/capabase_2.png'
 
+import PropTypes from 'prop-types'
 import useStyles from './styles'
 
 // TODO: !Revisar el tema del token
@@ -55,10 +54,8 @@ const transformRequest = (url, resourceType) => {
   return { url }
 }
 
-const Mapa = () => {
+const Mapa = ({ children }) => {
   const isMapReady = useSelector((state) => state.map.isMapReady)
-  const place = useSelector((state) => state.seeker.place)
-  const flag = 0
   const [mapGL, setMapGL] = useState(null)
   const dispatch = useDispatch()
   const [capabasePrincipal, setCapabasePrincipal] = useState(true)
@@ -128,14 +125,15 @@ const Mapa = () => {
           {// logged ? <LogoutButton /> : null
           }
         </Box>
-        {// TODO: Cannot update a component (`ConnectFunction`)
-        }
-        {isMapReady && <Parcel mapGL={mapGL} />}
+        {isMapReady && children[0] }
       </Box>
-      {isMapReady && place && place.type !== 'CALLE'
-        && <Marker place={place} />}
+      {isMapReady && children[1] }
     </Container>
   )
+}
+
+Mapa.propTypes = {
+  children: PropTypes.shape(PropTypes.any).isRequired
 }
 
 export default Mapa

@@ -15,7 +15,7 @@ const smpSelected = createAsyncThunk(
 const parcel = createSlice({
   name: 'parcel',
   initialState: {
-    data: ''
+    data: null
   },
   extraReducers: {
     [smpSelected.fulfilled]: (draftState, action) => {

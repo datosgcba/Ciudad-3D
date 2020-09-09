@@ -899,8 +899,20 @@ const config = {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'
     },
     {
+      id: 'Affectations',
+      title: 'Afectaciones',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'
+    },
+    {
       id: 'Works',
       title: 'Obras',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'
+    },
+    {
+      id: 'Inspections',
+      title: 'Inspecciones',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'
     }

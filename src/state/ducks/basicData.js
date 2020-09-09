@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getParcelApi } from 'utils/apiCongif'
+import { getParcelApi } from 'utils/apiConfig'
 
 const clickOnParcel = createAsyncThunk(
   'basicData/clickOnParcel',

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getGeometricalApi } from 'utils/apiCongif'
+import { getGeometricalApi } from 'utils/apiConfig'
 
 const smpSelected = createAsyncThunk(
   'parcel/smpSelected',

@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getBoundariesParcels } from 'utils/apiCongif'
+import { getBoundariesParcelsApi } from 'utils/apiConfig'
 
 const clickOnParcel = createAsyncThunk(
   'buildable/clickOnParcel',
   async (coord) => {
-    const urlApi = getBoundariesParcels(coord)
+    const urlApi = getBoundariesParcelsApi(coord)
     const response = await fetch(urlApi)
     const data = (await response.json())
     // TODO: traer sólo lo necesario

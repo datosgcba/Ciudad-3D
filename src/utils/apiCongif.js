@@ -2,7 +2,7 @@ const getParcelApi = ({ lng, lat }) => `https://epok.buenosaires.gob.ar/catastro
 
 const getGeometricalApi = (smp) => `https://epok.buenosaires.gob.ar/catastro/geometria/?smp=${smp}`
 
-const getBuildableApi = (smp) => `https://epok.buenosaires.gob.ar/catastro/seccion_edificabilidad/?smp=${smp}`
+const getBuildableApi = ({ lng, lat, smp }) => `https://epok.buenosaires.gob.ar/catastro/seccion_edificabilidad/?smp=${smp}&lng=${lng}&lat=${lat}`
 
 const getBoundariesParcels = ({ lng, lat }) => `https://epok.buenosaires.gob.ar/catastro/consultar_parcelas_linderas/?lng=${lng}&lat=${lat}`
 

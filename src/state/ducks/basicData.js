@@ -9,6 +9,7 @@ const clickOnParcel = createAsyncThunk(
     const response = await fetch(urlApi)
     const data = (await response.json())
     // TODO: traer sólo lo necesario
+    console.log(data)
     return data
   }
 )

@@ -4,4 +4,8 @@ const getGeometricalApi = (smp) => `https://epok.buenosaires.gob.ar/catastro/geo
 
 const getBuildableApi = (smp) => `https://epok.buenosaires.gob.ar/catastro/seccion_edificabilidad/?smp=${smp}`
 
-export { getParcelApi, getGeometricalApi, getBuildableApi }
+const getBoundariesParcels = ({ lng, lat }) => `https://epok.buenosaires.gob.ar/catastro/consultar_parcelas_linderas/?lng=${lng}&lat=${lat}`
+
+export {
+  getParcelApi, getGeometricalApi, getBuildableApi, getBoundariesParcels
+}

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import { actions } from 'state/ducks/categories'
 import { actions as basicDataActions } from 'state/ducks/basicData'
+import { actions as buildableActions } from 'state/ducks/buildable'
 
 import { Box } from '@material-ui/core'
 
@@ -20,7 +21,7 @@ const Categories = ({ data }) => {
   // Se obtienen los datos básicos de la parcela seleccionada
   const coord = useSelector((state) => state.map.coord)
   useEffect(() => {
-    dispatch(basicDataActions.clickOnParcel(coord))
+    dispatch(basicDataActions.clickOnParcel(coord), buildableActions.clickOnParcel(coord))
   }, [coord])
 
   // Se abre el panel BasicData al seleccionar una parcela

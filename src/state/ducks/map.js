@@ -127,6 +127,7 @@ const map = createSlice({
         layerState.processingId = null
       }
     },
+    // TODO: Revisar porque error ¿será rejected?
     [toggleLayer.error]: (draftState, {
       meta: {
         requestId,

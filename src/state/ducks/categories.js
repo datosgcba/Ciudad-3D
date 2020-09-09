@@ -22,10 +22,6 @@ const categories = createSlice({
     },
     sectionBack: (draftState) => {
       draftState.sectionId.pop()
-    },
-    parcelSelected: (draftState, action) => {
-      draftState.sectionOpen = true
-      draftState.sectionId = action.payload
     }
   }
 })

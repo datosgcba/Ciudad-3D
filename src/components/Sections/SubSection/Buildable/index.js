@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -11,8 +11,10 @@ import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 
-import { actions } from 'state/ducks/categories'
-import { useDispatch } from 'react-redux'
+import { actions as buildableActions } from 'state/ducks/buildable'
+import { actions as categoriesActions } from 'state/ducks/categories'
+
+import { useDispatch, useSelector } from 'react-redux'
 
 import useStyles from './styles'
 
@@ -43,7 +45,10 @@ const Buildable = () => {
   const decorators = useFontsStyles()
 
   const dispatch = useDispatch()
-
+  const smp = useSelector((state) => state.basicData.data.smp)
+  useEffect(() => {
+    dispatch(buildableActions.clickOnParcel(smp))
+  }, [dispatch, smp])
   return (
     <ContainerBar>
       <Typography variant="h5" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
@@ -52,7 +57,7 @@ const Buildable = () => {
       <Box className={classes.box}>
         <Typography variant="h6" className={decorators.bold}>
           <Button
-            onClick={() => dispatch(actions.sectionBack())}
+            onClick={() => dispatch(categoriesActions.sectionBack())}
             className={classes.button}
             startIcon={<ArrowBackIcon />}
           />

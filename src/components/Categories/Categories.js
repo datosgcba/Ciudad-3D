@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 import { actions } from 'state/ducks/categories'
 import { actions as basicDataActions } from 'state/ducks/basicData'
-import { actions as buildableActions } from 'state/ducks/buildable'
 
 import { Box } from '@material-ui/core'
 
@@ -21,17 +20,18 @@ const Categories = ({ data }) => {
   // Se obtienen los datos básicos de la parcela seleccionada
   const coord = useSelector((state) => state.map.coord)
   useEffect(() => {
-    dispatch(basicDataActions.clickOnParcel(coord), buildableActions.clickOnParcel(coord))
+    dispatch(basicDataActions.clickOnParcel(coord))
   }, [coord])
 
   // Se abre el panel BasicData al seleccionar una parcela
   const isMapReady = useSelector((state) => state.map.isMapReady)
+  const sectionIds = useSelector((state) => state.categories.sectionId)
   useEffect(() => {
-    if (isMapReady) {
-      const openBasicData = ['Information', 'BasicData']
-      dispatch(actions.parcelSelected(openBasicData))
+    if (isMapReady && coord !== '' && sectionIds[0] === '') {
+      const openPanel = 'Information'
+      dispatch(actions.categorySelected(openPanel))
     }
-  }, [coord])
+  }, [isMapReady, coord])
 
   return (
     <Box className={classes.options}>

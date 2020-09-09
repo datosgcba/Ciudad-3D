@@ -6,6 +6,10 @@ const getBuildableApi = (smp) => `https://epok.buenosaires.gob.ar/catastro/secci
 
 const getBoundariesParcels = ({ lng, lat }) => `https://epok.buenosaires.gob.ar/catastro/consultar_parcelas_linderas/?lng=${lng}&lat=${lat}`
 
+const getCapitalGain = ({
+  lng, lat, area_edificar, smp
+}) => `https://epok.buenosaires.gob.ar/catastro/calcular_plusvalia/?lng=${lng}&lat=${lat}&smp=${smp}&ae=${area_edificar}`
+
 export {
-  getParcelApi, getGeometricalApi, getBuildableApi, getBoundariesParcels
+  getParcelApi, getGeometricalApi, getBuildableApi, getBoundariesParcels, getCapitalGain
 }

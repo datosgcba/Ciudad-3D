@@ -25,17 +25,32 @@ const Details = ({ classes }) => {
       <List dense>
         <ListItem>
           <ListItemText
-            primary={`DIRECCIÓN:  ${data.direccion}`}
+            primary={`Superficie Edificada:  ${data.superficie_cubierta}`}
           />
         </ListItem>
         <ListItem>
           <ListItemText
-            primary={`DIRECCIÓN:  ${data.manzana}`}
+            primary={`Superficie de Parcela:  ${data.superficie_total}`}
           />
         </ListItem>
         <ListItem>
           <ListItemText
-            primary={`SECCIÓN:  ${data.seccion}`}
+            primary={`Cantidad Total de Pisos:  ${data.seccion}`}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary={`Cantidad de Unidades Funcionales:  ${data.seccion}`}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary={`Cantidad de Pisos Sobre Rasante:  ${data.seccion}`}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary={`Cantidad de Pisos Bajo Rasante:  ${data.seccion}`}
           />
         </ListItem>
       </List>

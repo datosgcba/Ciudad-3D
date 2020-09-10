@@ -45,9 +45,8 @@ const buildHtml = (data, title) => {
 }
 
 // Agrega el marker al mapa con el popup creado a partir de las consultas
-async function addPopup(map, coords, title, flag) {
+async function addPopup(map, coords, title) {
   /* TODO */
-  // console.log(flag)
   const finalObject = await getPopUpInfo([coords.x, coords.y])
   const div = buildHtml(finalObject, title)
   const marker = map.addMarker([coords.x, coords.y], 0, true, false, true, true, true, {

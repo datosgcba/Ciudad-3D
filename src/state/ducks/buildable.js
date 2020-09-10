@@ -14,7 +14,16 @@ const clickOnParcel = createAsyncThunk(
     // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
     let data = (await response.json())
-    data = { AltMax: 20, Plusvalia: 500 }
+    data = {
+      supMaxEdi: 20,
+      supEdiPla: 500,
+      altMax: 6000,
+      altMaxPlaLim: 400,
+      uniEdi: 900,
+      plu: 900,
+      facOcuTot: 300,
+      lisSMPParLin: 400
+    }
     // TODO: traer sólo lo necesario
     return data
   }

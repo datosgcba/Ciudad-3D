@@ -18,27 +18,94 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import useStyles from './styles'
 
-const Details = ({ classes }) => (
-  <Box className={classes.details}>
-    <List dense>
-      <ListItem>
-        <ListItemText
-          primary="Sup máx edificable: 322 m2"
-        />
-      </ListItem>
-      <ListItem>
-        <ListItemText
-          primary="Altura máxima: 22,80 + dos s"
-        />
-      </ListItem>
-      <ListItem>
-        <ListItemText
-          primary="Tipo de unidad: USAB1"
-        />
-      </ListItem>
-    </List>
-  </Box>
-)
+const Details = ({ classes }) => {
+  const data = useSelector((state) => state.buildable.data)
+
+  return (
+    <div>
+      <Box className={classes.subDetails}>
+        <List dense>
+          <ListItem>
+            <ListItemText
+              primary={`Superficie Máxima Edificable  ${data.supMaxEdi}`}
+            />
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box className={classes.subDetails}>
+        <List dense>
+          <ListItem>
+            <ListItemText
+              primary={`Superficie edificable en planta (pisada)  ${data.supEdiPla}`}
+            />
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box className={classes.subDetails}>
+        <List dense>
+          <ListItem>
+            <ListItemText
+              primary={`Altura Máxima  ${data.altMax}`}
+            />
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box className={classes.subDetails}>
+        <List dense>
+          <ListItem>
+            <ListItemText
+              primary={`Altura Máxima Plano Límite  ${data.altMaxPlaLim}`}
+            />
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box className={classes.subDetails}>
+        <List dense>
+          <ListItem>
+            <ListItemText
+              primary={`Unidad de Edificabilidad  ${data.uniEdi}`}
+            />
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box className={classes.subDetails}>
+        <List dense>
+          <ListItem>
+            <ListItemText
+              primary={`Plusvalía  ${data.plu}`}
+            />
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box className={classes.subDetails}>
+        <List dense>
+          <ListItem>
+            <ListItemText
+              primary={`Factor Ocupacional Total  ${data.facOcuTot}`}
+            />
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box className={classes.subDetails}>
+        <List dense>
+          <ListItem>
+            <ListItemText
+              primary={`Listado SMP de Parcelas Linderas  ${data.lisSMPParLin}`}
+            />
+          </ListItem>
+        </List>
+      </Box>
+
+    </div>
+  )
+}
 
 const Buildable = () => {
   const classes = useStyles()

@@ -9,7 +9,8 @@ import { actions as seekerActions } from 'state/ducks/seeker'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
-import Buscador from 'components/Buscador/Buscador'
+import Seeker from 'components/Seeker/Seeker'
+
 import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
 // import LogoutButton from 'components/LogoutButton/LogoutButton'
 
@@ -134,7 +135,7 @@ const Mapa = ({ children }) => {
           </Box>
         </Box>
         <Box className={classes.topMenu}>
-          <Buscador onSelectItem={(selectedSuggestion) => {
+          <Seeker onSelectItem={(selectedSuggestion) => {
             dispatch(seekerActions.placeSelected(selectedSuggestion))
             dispatch(seekerActions.coordinatesSelected(selectedSuggestion.data.coordenadas))
           }}

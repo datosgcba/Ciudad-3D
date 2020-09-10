@@ -3,42 +3,16 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
 import { Autocompleter, Suggester } from '@usig-gcba/autocompleter'
-import Avatar from '@material-ui/core/Avatar'
-import Downshift from 'downshift'
-import IconButton from '@material-ui/core/IconButton'
-import InputBase from '@material-ui/core/InputBase'
-import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-import ListItemText from '@material-ui/core/ListItemText'
-import MenuItem from '@material-ui/core/MenuItem'
-import Paper from '@material-ui/core/Paper'
+import { Avatar, IconButton, InputBase, ListItemAvatar, ListItemText, MenuItem, Paper,  } from '@material-ui/core/'
 import PlaceIcon from '@material-ui/icons/Place'
 import SearchIcon from '@material-ui/icons/Search'
 import StarIcon from '@material-ui/icons/Star'
-import { makeStyles } from '@material-ui/core/styles'
 
+import Downshift from 'downshift'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: '2px 4px',
-    display: 'flex',
-    alignItems: 'center',
-    maxWidth: 600,
-    borderRadius: 1,
-    height: 40
-  },
+import useStyles from './styles'
 
-  input: {
-    marginLeft: 5,
-    paddingLeft: 5,
-    width: 400
-  },
-
-  iconButton: {
-    padding: 10
-  }
-}))
-
-const Buscador = (props) => {
+const Seeker = (props) => {
   const classes = useStyles()
   const { getMapGL, onSelectItem } = props
   const map = getMapGL && getMapGL()
@@ -240,4 +214,4 @@ const mapStateToProps = (state) => ({
   getMapGL: state.map.getMapGL
 })
 
-export default connect(mapStateToProps, null)(Buscador)
+export default connect(mapStateToProps, null)(Seeker)

@@ -65,8 +65,6 @@ const defaults = {
   params: {
     container: 'map',
     hash: true,
-    center: [-58.44, -34.62],
-    zoom: 12,
     minzoom: 10,
     maxzoom: 18,
     style: defaultMapStyle
@@ -99,7 +97,7 @@ const defaults = {
 
 class MapaInteractivoGL {
   constructor(options) {
-    this.config = { ...defaults, ...options }
+    this.config = { ...defaults,  ...options, params: { ...defaults.params, ...options.params }}
     this.config.supportedLanguages = Object.keys(this.config.texts)
     if (this.config.supportedLanguages.length === 0) {
       this.config.texts = defaults.texts

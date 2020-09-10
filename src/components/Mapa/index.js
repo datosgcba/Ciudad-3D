@@ -56,9 +56,22 @@ const transformRequest = (url, resourceType) => {
 
 const Mapa = ({ children }) => {
   const isMapReady = useSelector((state) => state.map.isMapReady)
+  const cameraLat = useSelector((state) => state.map.camera.lat)
+  const cameraLng = useSelector((state) => state.map.camera.lng)
+  const cameraZoom = useSelector((state) => state.map.camera.zoom)
+  const cameraPitch = useSelector((state) => state.map.camera.pitch)
+  const cameraBearing = useSelector((state) => state.map.camera.bearing)
   const [mapGL, setMapGL] = useState(null)
   const dispatch = useDispatch()
   const [capabasePrincipal, setCapabasePrincipal] = useState(true)
+
+  useEffect(() => {
+    if (isMapReady) {
+      mapGL.map.flyTo({
+        center: [cameraLng, cameraLat], zoom: cameraZoom, pitch: cameraPitch, bearing: cameraBearing
+      })
+    }
+  }, [isMapReady, mapGL, cameraLat, cameraLng, cameraZoom])
 
   const onFeatureClick = (mapInstance, lngLat, feature) => {
     mapInstance
@@ -87,6 +100,10 @@ const Mapa = ({ children }) => {
   useEffect(() => {
     if (!isMapReady) {
       const map = MapaInteractivoGL({
+        params: {
+          center: [cameraLng, cameraLat],
+          zoom: cameraZoom
+        },
         onFeatureClick,
         transformRequest,
         onClicked

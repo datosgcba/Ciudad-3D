@@ -92,9 +92,32 @@ const map = createSlice({
         }), {})
       }
     }), {}),
+    camera: {
+      lat: -34.62,
+      lng: -58.44,
+      zoom: 16,
+      pitch: 0,
+      bearing: 0
+    },
     coord: ''
   },
   reducers: {
+    cameraUpdated: (draftState, {
+      payload: {
+        lat: newLat, lng: newLng, zoom: newZoom, pitch: newPitch, bearing: newBearing
+      }
+    }) => {
+      const {
+        lat, lng, zoom, pitch, bearing
+      } = draftState.camera
+      draftState.camera = {
+        lat: newLat || lat,
+        lng: newLng || lng,
+        zoom: newZoom || zoom,
+        pitch: newPitch || pitch,
+        bearing: newBearing || bearing
+      }
+    },
     setMapReady: (draftState) => {
       draftState.isMapReady = true
     },

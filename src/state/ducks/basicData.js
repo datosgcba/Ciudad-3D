@@ -1,15 +1,23 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import { getParcelApi } from 'utils/apiConfig'
+import { actions as mapActions } from 'state/ducks/map'
 
 const clickOnParcel = createAsyncThunk(
   'basicData/clickOnParcel',
-  async (coord) => {
+  async (coord, { dispatch }) => {
     const urlApi = getParcelApi(coord)
     const response = await fetch(urlApi)
     const data = (await response.json())
+    const [lng, lat] = data.centroide
+    dispatch(mapActions.cameraUpdated({
+      lat, lng, zoom: 16, pitch: 60, bearing: 0
+    }))
     // TODO: traer sólo lo necesario
     return data
+  },
+  {
+    condition: ({ lat, lng }) => lat !== undefined && lng !== undefined
   }
 )
 

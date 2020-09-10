@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
 import { Autocompleter, Suggester } from '@usig-gcba/autocompleter'
-import { Avatar, IconButton, InputBase, ListItemAvatar, ListItemText, MenuItem, Paper,  } from '@material-ui/core/'
+import { Box, Avatar, IconButton, InputBase, ListItemAvatar, ListItemText, MenuItem, Paper,  } from '@material-ui/core/'
 import PlaceIcon from '@material-ui/icons/Place'
 import SearchIcon from '@material-ui/icons/Search'
 import StarIcon from '@material-ui/icons/Star'
@@ -180,9 +180,11 @@ const Seeker = (props) => {
                   onFocus: handleInputFocus,
                   onBlur: handleInputBlur
                 })}
+                
                 <IconButton className={classes.iconButton} aria-label="search">
-                  <SearchIcon />
-                </IconButton>
+                    <SearchIcon />
+                  </IconButton>
+                
               </Paper>
 
               <div {...getMenuProps()}>

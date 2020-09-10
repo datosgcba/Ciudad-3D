@@ -2,7 +2,6 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
   root: {
-    padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
     maxWidth: 600,
@@ -17,6 +16,8 @@ export default makeStyles((theme) => ({
   },
 
   iconButton: {
-    padding: 10
+    height: '100%',
+    borderRadius: 0,
+    backgroundColor: '#EECD30'
   }
 }))

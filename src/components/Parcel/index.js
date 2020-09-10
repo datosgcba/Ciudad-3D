@@ -40,9 +40,9 @@ const Parcel = ({ smp }) => {
         source: smp,
         layout: {},
         paint: {
-          'fill-color': 'green',
-          'fill-outline-color': 'blue',
-          'fill-opacity': 0.2
+          'fill-color': '#DD0083',
+          'fill-outline-color': '#DD0093',
+          'fill-opacity': 0.5
         }
       })
       setPreviousSmp(smp)

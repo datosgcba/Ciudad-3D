@@ -10,7 +10,7 @@ import { Box } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Category from './Category'
-import useStyles from './style'
+import useStyles from './styles'
 
 const Categories = ({ data }) => {
   const classes = useStyles()

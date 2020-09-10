@@ -1,23 +1,21 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getGeometricalApi as getBuildableApi } from 'utils/apiConfig'
+import { getGeometrical as getBuildable } from 'utils/apiConfig'
 
 const clickOnParcel = createAsyncThunk(
   'buildable/clickOnParcel',
   async (smp) => {
-    console.log('buildable/clickOnParcel smp', smp)
-    if(smp.length === undefined) {
-      return {smp: 'Invalido'}
+    if (smp.length === undefined) {
+      return { smp: 'Invalido' }
     }
-    //console.log('buildable/clickOnParcel async', rejectWithValue)
-    const urlApi = getBuildableApi(smp)
-    const response = await fetch(urlApi)
-      //.catch(() => rejectWithValue('algo salio mal'))
+
+    const url = getBuildable(smp)
+    const response = await fetch(url)
+    // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
     let data = (await response.json())
-    data = {AltMax:20, Plusvalia:500}
+    data = { AltMax: 20, Plusvalia: 500 }
     // TODO: traer sólo lo necesario
-    console.log('buildable/clickOnParcel', data)
     return data
   }
 )
@@ -40,7 +38,6 @@ const buildable = createSlice({
       draftState.isLoading = false
     },
     [clickOnParcel.rejected]: (draftState, action) => {
-      console.log('clickOnParcel error:', action)
       draftState.isLoading = false
       draftState.data = action.payload
     }

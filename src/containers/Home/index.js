@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { Paper } from '@material-ui/core'
 
-import Mapa from 'components/Mapa'
+import Map from 'components/Map'
 import Marker from 'components/Marker'
 import Parcel from 'components/Parcel'
 import Sections from 'components/Sections'
@@ -25,10 +25,10 @@ const Home = ({ token }) => {
     <Paper className={classes.root}>
       <Sections />
       <SideBar />
-      <Mapa logged={!!token}>
+      <Map logged={!!token}>
         <Parcel smp={smp} />
         {place && place.type !== 'CALLE' && <Marker place={place} />}
-      </Mapa>
+      </Map>
     </Paper>
   )
 }

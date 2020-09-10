@@ -9,7 +9,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { actions } from 'state/ducks/categories'
 
-import useStyles from './style'
+import useStyles from './styles'
 
 const Icon = ({ path, isSelected }) => (
   <SvgIcon component="div" color={isSelected ? 'primary' : 'disabled'}>

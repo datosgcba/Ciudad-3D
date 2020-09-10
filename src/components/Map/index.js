@@ -55,7 +55,7 @@ const transformRequest = (url, resourceType) => {
   return { url }
 }
 
-const Mapa = ({ children }) => {
+const Map = ({ children }) => {
   const isMapReady = useSelector((state) => state.map.isMapReady)
   const cameraLat = useSelector((state) => state.map.camera.lat)
   const cameraLng = useSelector((state) => state.map.camera.lng)
@@ -150,8 +150,8 @@ const Mapa = ({ children }) => {
   )
 }
 
-Mapa.propTypes = {
+Map.propTypes = {
   children: PropTypes.shape(PropTypes.any).isRequired
 }
 
-export default Mapa
+export default Map

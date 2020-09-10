@@ -16,8 +16,6 @@ export default makeStyles((theme) => ({
   },
 
   iconButton: {
-    height: '100%',
-    borderRadius: 0,
-    backgroundColor: '#EECD30'
+    padding: 10
   }
 }))

@@ -41,31 +41,15 @@ const Details = ({ classes }) => {
           </ListItem>
         </List>
       </Box>
-      {data && data.supEdiPla !== undefined && (
-        <Box className={classes.subDetails}>
-          <List dense>
-            <ListItem>
-              <ListItemText
-                primary={`Superficie edificable en planta (pisada)  ${data.supEdiPla}`}
-              />
-            </ListItem>
-          </List>
-        </Box>
-      )}
-
-      <Box className={classes.subDetails}>
-        <List dense>
-          <ListItem>
-            <ListItemText primary={`Altura Máxima  ${data.altMax}`} />
-          </ListItem>
-        </List>
-      </Box>
-
       <Box className={classes.subDetails}>
         <List dense>
           <ListItem>
             <ListItemText
-              primary={`Altura Máxima Plano Límite  ${data.altMaxPlaLim}`}
+              primary={
+                data
+                && data.supMaxEdi !== undefined
+                && `Superficie edificable en planta (pisada)  ${data.supEdiPla}`
+              }
             />
           </ListItem>
         </List>
@@ -74,8 +58,11 @@ const Details = ({ classes }) => {
       <Box className={classes.subDetails}>
         <List dense>
           <ListItem>
-            <ListItemText
-              primary={`Unidad de Edificabilidad  ${data.uniEdi}`}
+            <ListItemText primary={
+                data
+                && data.supMaxEdi !== undefined
+                && `Altura Máxima  ${data.altMax}`
+              }
             />
           </ListItem>
         </List>
@@ -84,16 +71,11 @@ const Details = ({ classes }) => {
       <Box className={classes.subDetails}>
         <List dense>
           <ListItem>
-            <ListItemText primary={`Plusvalía  ${data.plu}`} />
-          </ListItem>
-        </List>
-      </Box>
-
-      <Box className={classes.subDetails}>
-        <List dense>
-          <ListItem>
-            <ListItemText
-              primary={`Factor Ocupacional Total  ${data.facOcuTot}`}
+            <ListItemText primary={
+                data
+                && data.supMaxEdi !== undefined
+                && `Altura Máxima Plano Límite  ${data.altMaxPlaLim}`
+              }
             />
           </ListItem>
         </List>
@@ -102,8 +84,51 @@ const Details = ({ classes }) => {
       <Box className={classes.subDetails}>
         <List dense>
           <ListItem>
-            <ListItemText
-              primary={`Listado SMP de Parcelas Linderas  ${data.lisSMPParLin}`}
+            <ListItemText primary={
+                data
+                && data.supMaxEdi !== undefined
+                && `Unidad de Edificabilidad  ${data.uniEdi}`
+              }
+            />
+
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box className={classes.subDetails}>
+        <List dense>
+          <ListItem>
+            <ListItemText primary={
+                data
+                && data.supMaxEdi !== undefined
+                && `Plusvalía  ${data.plu}`
+              }
+            />
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box className={classes.subDetails}>
+        <List dense>
+          <ListItem>
+            <ListItemText primary={
+                data
+                && data.supMaxEdi !== undefined
+                && `Factor Ocupacional Total  ${data.facOcuTot}`
+              }
+            />
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box className={classes.subDetails}>
+        <List dense>
+          <ListItem>
+            <ListItemText primary={
+                data
+                && data.supMaxEdi !== undefined
+                && `Listado SMP de Parcelas Linderas  ${data.lisSMPParLin}`
+              }
             />
           </ListItem>
         </List>

@@ -8,7 +8,6 @@ const clickOnParcel = createAsyncThunk(
     if (smp.length === undefined) {
       return { smp: 'Invalido' }
     }
-    await new Promise(resolve => setTimeout(resolve, 5000))
     const url = getBuildable(smp)
     const response = await fetch(url)
     // .catch(() => rejectWithValue('algo salio mal'))

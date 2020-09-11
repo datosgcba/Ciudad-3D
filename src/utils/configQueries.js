@@ -24,7 +24,11 @@ const getInformation = () => config.Information.map(({ id, title, description })
   id, title, description
 }))
 
+const getBasicData = () => config.BasicData.map(({ title, fill, format }) => ({
+  title, fill, format
+}))
+
 export {
   getFullLayerConfig, getGroups, getLayersConfigByGroupId,
-  getCustomsIcons, getInformation
+  getCustomsIcons, getInformation, getBasicData
 }

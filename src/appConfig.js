@@ -916,6 +916,38 @@ const config = {
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'
     }
+  ],
+  BasicData: [
+    {
+      title: 'Superficie edificada',
+      fill: 'superficie_cubierta',
+      format: 'm²'
+    },
+    {
+      title: 'Superficie de parcela',
+      fill: 'superficie_total',
+      format: 'm'
+    },
+    {
+      title: 'Cantidad total de pisos',
+      fill: '',
+      format: ''
+    },
+    {
+      title: 'Cantidad total de unidades funcionales',
+      fill: 'unidades_funcionales',
+      format: ''
+    },
+    {
+      title: 'Cantidad de pisos sobre rasantes',
+      fill: 'pisos_sobre_rasante',
+      format: ''
+    },
+    {
+      title: 'Cantidad de pisos bajo rasantes',
+      fill: 'pisos_bajo_rasante',
+      format: ''
+    }
   ]
 }
 

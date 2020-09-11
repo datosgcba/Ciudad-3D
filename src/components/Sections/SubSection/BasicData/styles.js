@@ -1,17 +1,20 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
-  box: {
-    border: '1px solid #D9D9D9',
-    borderLeftWidth: 3,
-    borderLeftColor: '#C4A1A1',
+  subTitle: {
     marginBottom: theme.spacing(2)
   },
-  details: {
-    border: '1px solid #D9D9D9'
-  },
   button: {
-    // padding: 0,
+    padding: 0,
+    paddingRight: theme.spacing(0.5),
+    // border: '1px solid blue',
     minWidth: '0px !important'
+  },
+  card: {
+    height: '63px',
+    backgroundColor: '#F5F5F5',
+    paddingLeft: theme.spacing(1.5),
+    paddingTop: theme.spacing(1.5),
+    marginBottom: theme.spacing(2)
   }
 }))

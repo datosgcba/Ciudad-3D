@@ -8,7 +8,7 @@ const clickOnParcel = createAsyncThunk(
     if (smp.length === undefined) {
       return { smp: 'Invalido' }
     }
-
+    await new Promise(resolve => setTimeout(resolve, 5000))
     const url = getBuildable(smp)
     const response = await fetch(url)
     // .catch(() => rejectWithValue('algo salio mal'))
@@ -41,6 +41,7 @@ const buildable = createSlice({
     // TODO: clickOnParcel.pending
     [clickOnParcel.pending]: (draftState) => {
       draftState.isLoading = true
+      draftState.data = ''
     },
     [clickOnParcel.fulfilled]: (draftState, action) => {
       draftState.data = action.payload

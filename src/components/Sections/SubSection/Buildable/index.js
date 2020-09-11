@@ -3,7 +3,12 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, List, ListItem, ListItemText, IconButton
+  Box,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  IconButton
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
@@ -27,28 +32,31 @@ const Details = ({ classes }) => {
         <List dense>
           <ListItem>
             <ListItemText
-              primary={`Superficie Máxima Edificable  ${data.supMaxEdi}`}
+              primary={
+                data
+                && data.supMaxEdi !== undefined
+                && `Superficie Máxima Edificable ${data.supMaxEdi}`
+              }
             />
           </ListItem>
         </List>
       </Box>
+      {data && data.supEdiPla !== undefined && (
+        <Box className={classes.subDetails}>
+          <List dense>
+            <ListItem>
+              <ListItemText
+                primary={`Superficie edificable en planta (pisada)  ${data.supEdiPla}`}
+              />
+            </ListItem>
+          </List>
+        </Box>
+      )}
 
       <Box className={classes.subDetails}>
         <List dense>
           <ListItem>
-            <ListItemText
-              primary={`Superficie edificable en planta (pisada)  ${data.supEdiPla}`}
-            />
-          </ListItem>
-        </List>
-      </Box>
-
-      <Box className={classes.subDetails}>
-        <List dense>
-          <ListItem>
-            <ListItemText
-              primary={`Altura Máxima  ${data.altMax}`}
-            />
+            <ListItemText primary={`Altura Máxima  ${data.altMax}`} />
           </ListItem>
         </List>
       </Box>
@@ -76,9 +84,7 @@ const Details = ({ classes }) => {
       <Box className={classes.subDetails}>
         <List dense>
           <ListItem>
-            <ListItemText
-              primary={`Plusvalía  ${data.plu}`}
-            />
+            <ListItemText primary={`Plusvalía  ${data.plu}`} />
           </ListItem>
         </List>
       </Box>
@@ -102,7 +108,6 @@ const Details = ({ classes }) => {
           </ListItem>
         </List>
       </Box>
-
     </div>
   )
 }
@@ -118,7 +123,10 @@ const Buildable = () => {
   }, [dispatch, smp])
   return (
     <ContainerBar>
-      <Typography variant="h5" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
+      <Typography
+        variant="h5"
+        className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_xl}`}
+      >
         Información
       </Typography>
       <Box className={classes.subTitle}>

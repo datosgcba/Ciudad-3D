@@ -64,10 +64,10 @@ const theme = createMuiTheme({
       hoverOpacity: 0.1
     },
     primary: {
-      main: '#fed304!important'
+      main: '#EECE2F!important'
     },
     secondary: {
-      main: '#f3f3f3'
+      main: '#F3F3F3'
     },
     error: {
       main: red.A400

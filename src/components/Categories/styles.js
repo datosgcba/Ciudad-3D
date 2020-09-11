@@ -26,5 +26,9 @@ export default makeStyles((theme) => ({
   optionSelected: {
     color: 'yellow', // theme.palette.primary.main,
     backgroundColor: 'red'
+  },
+  icon: {
+    width: '100%',
+    height: 'auto'
   }
 }))

@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, SvgIcon, Typography, CardActionArea
+  SvgIcon, Typography, CardActionArea
 } from '@material-ui/core'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,8 +11,8 @@ import { actions } from 'state/ducks/categories'
 
 import useStyles from './styles'
 
-const Icon = ({ path, isSelected }) => (
-  <SvgIcon component="div" color={isSelected ? 'primary' : 'disabled'}>
+const Icon = ({ className, path, isSelected }) => (
+  <SvgIcon className={className} component="div" color={isSelected ? 'primary' : 'disabled'}>
     { path }
   </SvgIcon>
 )
@@ -33,12 +33,8 @@ const Category = ({ id, path, title }) => {
       onClick={() => dispatch(actions.categorySelected(id))}
       className={classes.option}
     >
-      <Box>
-        <Icon path={path} isSelected={isSelected} />
-      </Box>
-      <Box>
-        <Typography variant="caption">{title}</Typography>
-      </Box>
+      <Icon className={classes.icon} path={path} isSelected={isSelected} />
+      <Typography variant="caption">{title}</Typography>
     </CardActionArea>
   )
 }
@@ -50,6 +46,7 @@ Category.propTypes = {
 }
 
 Icon.propTypes = {
+  className: PropTypes.string.isRequired,
   path: PropTypes.objectOf(PropTypes.any).isRequired,
   isSelected: PropTypes.bool.isRequired
 }

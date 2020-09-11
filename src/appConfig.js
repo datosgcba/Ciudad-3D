@@ -736,7 +736,7 @@ const config = {
     },
     {
       id: 'LayerGroup',
-      title: 'Capa',
+      title: 'Capas',
       path:
   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="35.333" height="32.266" viewBox="0 0 35.333 32.266">
     <g id="Grupo_50" data-name="Grupo 50" transform="translate(-567.5 -127.979)">

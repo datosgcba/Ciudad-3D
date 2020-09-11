@@ -40,7 +40,7 @@ const buildable = createSlice({
     // TODO: clickOnParcel.pending
     [clickOnParcel.pending]: (draftState) => {
       draftState.isLoading = true
-      draftState.data = ''
+      draftState.data = {}
     },
     [clickOnParcel.fulfilled]: (draftState, action) => {
       draftState.data = action.payload

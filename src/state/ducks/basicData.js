@@ -32,7 +32,7 @@ const basicData = createSlice({
   extraReducers: {
     [clickOnParcel.pending]: (draftState) => {
       draftState.isLoading = true
-      draftState.data = ''
+      draftState.data = {}
     },
     [clickOnParcel.fulfilled]: (draftState, action) => {
       draftState.previousSmp = draftState.data.smp

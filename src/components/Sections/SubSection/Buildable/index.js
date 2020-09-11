@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, List, ListItem, ListItemText, Button
+  Box, Typography, List, ListItem, ListItemText, IconButton
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
@@ -121,17 +121,19 @@ const Buildable = () => {
       <Typography variant="h5" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
         Información
       </Typography>
-      <Box className={classes.box}>
+      <Box className={classes.subTitle}>
         <Typography variant="h6" className={decorators.bold}>
-          <Button
+          <IconButton
             onClick={() => dispatch(categoriesActions.sectionBack())}
             className={classes.button}
             startIcon={<ArrowBackIcon />}
-          />
+          >
+            <ArrowBackIcon />
+          </IconButton>
           Edificabilidad
         </Typography>
       </Box>
-      <Details classes={classes} />
+      <Details classes={classes} decorators={decorators} />
     </ContainerBar>
   )
 }

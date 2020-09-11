@@ -888,7 +888,7 @@ const config = {
     },
     {
       id: 'BasicData',
-      title: 'Datos básicos',
+      title: 'Datos Básicos',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'
     },

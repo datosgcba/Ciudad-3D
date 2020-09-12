@@ -8,14 +8,16 @@ import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
 const Parcel = ({ smp }) => {
   const mapGL = MapaInteractivoGL()
-
   const dispatch = useDispatch()
+
   useEffect(() => {
-    dispatch(parcelActions.smpSelected(smp))
+    if (smp !== null) {
+      dispatch(parcelActions.smpSelected(smp))
+    }
   }, [smp])
 
   const [previousSmp, setPreviousSmp] = useState(null)
-  const coords = useSelector((state) => state.parcel.data)
+  const geomCoords = useSelector((state) => state.parcel.geomCoords)
 
   useEffect(() => {
     if (previousSmp !== null) {
@@ -23,14 +25,14 @@ const Parcel = ({ smp }) => {
       mapGL.map.removeSource(previousSmp)
     }
 
-    if (coords !== null) {
+    if (geomCoords !== null) {
       mapGL.map.addSource(smp, {
         type: 'geojson',
         data: {
           type: 'Feature',
           geometry: {
             type: 'Polygon',
-            coordinates: [coords]
+            coordinates: [geomCoords]
           }
         }
       })
@@ -47,7 +49,7 @@ const Parcel = ({ smp }) => {
       })
       setPreviousSmp(smp)
     }
-  }, [coords])
+  }, [geomCoords])
 
   return null
 }

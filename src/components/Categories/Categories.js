@@ -18,20 +18,20 @@ const Categories = ({ data }) => {
   const dispatch = useDispatch()
 
   // Se obtienen los datos básicos de la parcela seleccionada
-  const coord = useSelector((state) => state.map.coord)
+  const parcelCoords = useSelector((state) => state.map.selectedCoords)
   useEffect(() => {
-    dispatch(basicDataActions.clickOnParcel(coord))
-  }, [coord])
+    dispatch(basicDataActions.selectedParcel(parcelCoords))
+  }, [parcelCoords])
 
   // Se abre el panel BasicData al seleccionar una parcela
   const isMapReady = useSelector((state) => state.map.isMapReady)
   const sectionIds = useSelector((state) => state.categories.sectionId)
   useEffect(() => {
-    if (isMapReady && coord !== '' && sectionIds[0] === '') {
+    if (isMapReady && parcelCoords !== null && sectionIds[0] === '') {
       const openPanel = 'Information'
       dispatch(actions.categorySelected(openPanel))
     }
-  }, [isMapReady, coord])
+  }, [isMapReady, parcelCoords])
 
   return (
     <Box className={classes.options}>

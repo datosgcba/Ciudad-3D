@@ -3,8 +3,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getParcel } from 'utils/apiConfig'
 import { actions as mapActions } from 'state/ducks/map'
 
-const clickOnParcel = createAsyncThunk(
-  'basicData/clickOnParcel',
+const selectedParcel = createAsyncThunk(
+  'basicData/selectedParcel',
   async (coord, { dispatch }) => {
     const url = getParcel(coord)
     const response = await fetch(url)
@@ -22,26 +22,34 @@ const clickOnParcel = createAsyncThunk(
 )
 
 const basicData = createSlice({
-  name: 'basicdata',
+  name: 'basicData',
   initialState: {
     data: {
-      smp: ''
+      smp: null
     },
-    previousSmp: ''
+    isLoading: false
   },
   extraReducers: {
-    [clickOnParcel.pending]: (draftState) => {
+    [selectedParcel.pending]: (draftState) => {
+      // TODO: Tooltip cargando (?)
       draftState.isLoading = true
-      draftState.data = {}
     },
-    [clickOnParcel.fulfilled]: (draftState, action) => {
+    [selectedParcel.fulfilled]: (draftState, action) => {
+      // eslint-disable-next-line no-console
+      console.log('BasicData fulfilled')
       draftState.previousSmp = draftState.data.smp
       draftState.data = action.payload
+    },
+    [selectedParcel.rejected]: (draftState) => {
+      // eslint-disable-next-line no-console
+      console.log('BasicData rejected')
+      // TODO: Mostrar mensaje de error al usuario (?)
+      draftState.data = { smp: null }
     }
   }
 })
 
 export default basicData.reducer
 
-const actions = { ...basicData.actions, clickOnParcel }
+const actions = { ...basicData.actions, selectedParcel }
 export { actions }

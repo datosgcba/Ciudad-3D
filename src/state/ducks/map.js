@@ -99,7 +99,7 @@ const map = createSlice({
       pitch: 0,
       bearing: 0
     },
-    coord: ''
+    selectedCoords: null
   },
   reducers: {
     cameraUpdated: (draftState, {
@@ -122,7 +122,7 @@ const map = createSlice({
       draftState.isMapReady = true
     },
     clickOnMap: (draftState, action) => {
-      draftState.coord = action.payload
+      draftState.selectedCoords = action.payload
     }
   },
   extraReducers: {

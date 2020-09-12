@@ -19,6 +19,8 @@ const Home = ({ token }) => {
   const classes = useStyles()
 
   const smp = useSelector((state) => state.basicData.data.smp)
+  // eslint-disable-next-line no-console
+  console.log('Home smp: ', smp)
   const place = useSelector((state) => state.seeker.place)
 
   return (

@@ -35,14 +35,10 @@ const basicData = createSlice({
       draftState.isLoading = true
     },
     [selectedParcel.fulfilled]: (draftState, action) => {
-      // eslint-disable-next-line no-console
-      console.log('BasicData fulfilled')
       draftState.previousSmp = draftState.data.smp
       draftState.data = action.payload
     },
     [selectedParcel.rejected]: (draftState) => {
-      // eslint-disable-next-line no-console
-      console.log('BasicData rejected')
       // TODO: Mostrar mensaje de error al usuario (?)
       draftState.data = { smp: null }
     }

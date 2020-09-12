@@ -1,43 +1,34 @@
-import { useState, useEffect } from 'react'
-
-import { actions as parcelActions } from 'state/ducks/parcel'
-
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
-const Parcel = ({ smp }) => {
+const Parcel = ({ smp, geomCoords }) => {
   const mapGL = MapaInteractivoGL()
-  const dispatch = useDispatch()
+
+  const layer = mapGL.map.getLayer('Parcel')
+  const source = mapGL.map.getSource(smp)
+
+  if (layer !== undefined) {
+    mapGL.map.removeLayer('Parcel')
+  }
 
   useEffect(() => {
-    if (smp !== null) {
-      dispatch(parcelActions.smpSelected(smp))
-    }
-  }, [smp])
-
-  const [previousSmp, setPreviousSmp] = useState(null)
-  const geomCoords = useSelector((state) => state.parcel.geomCoords)
-
-  useEffect(() => {
-    if (previousSmp !== null) {
-      mapGL.map.removeLayer(previousSmp)
-      mapGL.map.removeSource(previousSmp)
-    }
-
     if (geomCoords !== null) {
-      mapGL.map.addSource(smp, {
-        type: 'geojson',
-        data: {
-          type: 'Feature',
-          geometry: {
-            type: 'Polygon',
-            coordinates: [geomCoords]
+      if (source === undefined) {
+        mapGL.map.addSource(smp, {
+          type: 'geojson',
+          data: {
+            type: 'Feature',
+            geometry: {
+              type: 'Polygon',
+              coordinates: [geomCoords]
+            }
           }
-        }
-      })
+        })
+      }
+
       mapGL.map.addLayer({
-        id: smp,
+        id: 'Parcel',
         type: 'fill',
         source: smp,
         layout: {},
@@ -47,7 +38,6 @@ const Parcel = ({ smp }) => {
           'fill-opacity': 0.5
         }
       })
-      setPreviousSmp(smp)
     }
   }, [geomCoords])
 

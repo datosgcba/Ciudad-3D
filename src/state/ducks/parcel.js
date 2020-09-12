@@ -19,14 +19,9 @@ const parcel = createSlice({
   },
   extraReducers: {
     [smpSelected.fulfilled]: (draftState, action) => {
-      // eslint-disable-next-line no-console
-      console.log('parcel Fullfilled: ', action.payload)
       draftState.geomCoords = action.payload
-    },
-    [smpSelected.rejected]: (draftState, action) => {
-      // eslint-disable-next-line no-console
-      console.log('parcel Rejected: ', action.payload)
     }
+    // TODO: rejected y pending
   }
 })
 

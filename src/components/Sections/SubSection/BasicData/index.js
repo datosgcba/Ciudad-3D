@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, IconButton
+  Box, Typography, IconButton, Grid
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
@@ -26,10 +26,18 @@ const Details = ({ classes, decorators }) => {
       {
         getBasicData().map(({ title, fill, format }) => (
           <Box className={classes.card}>
-            <Typography variant="subtitle1" className={decorators.bold}>
-              {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-              {title} {data[fill]} {format}
-            </Typography>
+            <Grid container>
+              <Grid item xs={7}>
+                <Typography variant="subtitle1" className={decorators.bold}>
+                  {title}
+                </Typography>
+              </Grid>
+              <Grid xs={5} className={classes.gridItem}>
+                <Typography variant="subtitle1" className={`${decorators.bold} ${classes.value}`}>
+                  {`${data[fill]} ${format}`}
+                </Typography>
+              </Grid>
+            </Grid>
           </Box>
         ))
       }

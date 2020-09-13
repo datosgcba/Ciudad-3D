@@ -2,8 +2,15 @@ import { useEffect } from 'react'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
-const Parcel = ({ smp, geomCoords }) => {
+import { actions as parcelActions } from 'state/ducks/parcel'
+
+import { useSelector, useDispatch } from 'react-redux'
+
+const Parcel = () => {
+  const dispatch = useDispatch()
   const mapGL = MapaInteractivoGL()
+  const smp = useSelector((state) => state.parcel.smp)
+  const geomCoords = useSelector((state) => state.parcel.geomCoords)
 
   const layer = mapGL.map.getLayer('Parcel')
   const source = mapGL.map.getSource(smp)
@@ -11,6 +18,10 @@ const Parcel = ({ smp, geomCoords }) => {
   if (layer !== undefined) {
     mapGL.map.removeLayer('Parcel')
   }
+
+  useEffect(() => {
+    dispatch(parcelActions.smpSelected(smp))
+  }, [smp])
 
   useEffect(() => {
     if (geomCoords !== null) {

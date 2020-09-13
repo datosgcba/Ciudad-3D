@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const seeker = createSlice({
   name: 'seeker',
   initialState: {
-    place: '',
+    place: { data: { smp: null } },
     coordinates: ''
   },
   reducers: {

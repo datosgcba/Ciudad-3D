@@ -15,7 +15,13 @@ const smpSelected = createAsyncThunk(
 const parcel = createSlice({
   name: 'parcel',
   initialState: {
-    geomCoords: null
+    geomCoords: null,
+    smp: null
+  },
+  reducers: {
+    updateSmp: (draftState, action) => {
+      draftState.smp = action.payload
+    }
   },
   extraReducers: {
     [smpSelected.fulfilled]: (draftState, action) => {

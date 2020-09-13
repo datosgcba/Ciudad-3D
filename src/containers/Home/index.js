@@ -22,21 +22,23 @@ const Home = ({ token }) => {
   const dispatch = useDispatch()
 
   const place = useSelector((state) => state.seeker.place)
-  const smp = useSelector((state) => state.basicData.data.smp)
-  const geomCoords = useSelector((state) => state.parcel.geomCoords)
+  const smpPlace = place.data.smp
+  const smpBasicData = useSelector((state) => state.basicData.data.smp)
 
   useEffect(() => {
-    if (smp !== null) {
-      dispatch(parcelActions.smpSelected(smp))
-    }
-  }, [smp])
+    dispatch(parcelActions.updateSmp(smpBasicData))
+  }, [smpBasicData])
+
+  useEffect(() => {
+    dispatch(parcelActions.updateSmp(smpPlace))
+  }, [smpPlace])
 
   return (
     <Paper className={classes.root}>
       <Sections />
       <SideBar />
       <Map logged={!!token}>
-        <Parcel smp={smp} geomCoords={geomCoords} />
+        <Parcel />
         {place && place.type !== 'CALLE' && <Marker place={place} />}
       </Map>
     </Paper>

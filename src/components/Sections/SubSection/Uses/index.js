@@ -65,7 +65,7 @@ const Uses = () => {
 }
 
 Details.propTypes = {
-  classes: PropTypes.arrayOf(PropTypes.object).isRequired
+  classes: PropTypes.objectOf(PropTypes.any).isRequired
 }
 
 export default Uses

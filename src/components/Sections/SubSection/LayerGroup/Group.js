@@ -88,14 +88,13 @@ Group.propTypes = {
 }
 
 GroupItem.propTypes = {
-  idGroup: PropTypes.string.isRequired,
-  idLayer: PropTypes.string.isRequired,
+  idGroup: PropTypes.string,
   title: PropTypes.string.isRequired,
-  color: PropTypes.string,
+  color: PropTypes.string.isRequired,
   classes: PropTypes.objectOf(PropTypes.any).isRequired
 }
 GroupItem.defaultProps = {
-  color: ''
+  idGroup: ''
 }
 
 export default Group

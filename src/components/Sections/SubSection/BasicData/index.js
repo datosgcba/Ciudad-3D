@@ -19,36 +19,29 @@ import { getBasicData } from 'utils/configQueries'
 
 import useStyles from './styles'
 
-const Details = ({ classes, decorators }) => {
-  const data = useSelector((state) => state.basicData.data)
-  return (
-    <Box className={classes.details}>
-      {
-        getBasicData().map(({ title, fill, format }) => (
-          <Box className={classes.card}>
-            <Grid container>
-              <Grid item xs={7}>
-                <Typography variant="subtitle1" className={decorators.bold}>
-                  {title}
-                </Typography>
-              </Grid>
-              <Grid xs={5} className={classes.gridItem}>
-                <Typography variant="subtitle1" className={`${decorators.bold} ${classes.value}`}>
-                  {`${data[fill]} ${format}`}
-                </Typography>
-              </Grid>
-            </Grid>
-          </Box>
-        ))
-      }
-    </Box>
-  )
-}
+const Details = ({
+  classes, decorators, title, fill, format
+}) => (
+  <Box className={classes.card}>
+    <Grid container>
+      <Grid item xs={7}>
+        <Typography variant="subtitle1" className={decorators.bold}>
+          {title}
+        </Typography>
+      </Grid>
+      <Grid item xs={5} className={classes.gridItem}>
+        <Typography variant="subtitle1" className={`${decorators.bold} ${classes.value}`}>
+          {`${fill} ${format}`}
+        </Typography>
+      </Grid>
+    </Grid>
+  </Box>
+)
 
 const BasicData = () => {
   const classes = useStyles()
   const decorators = useFontsStyles()
-
+  const data = useSelector((state) => state.basicData.data)
   const dispatch = useDispatch()
 
   return (
@@ -62,21 +55,40 @@ const BasicData = () => {
           <IconButton
             onClick={() => dispatch(categoriesActions.sectionBack())}
             className={classes.button}
-            startIcon={<ArrowBackIcon />}
           >
             <ArrowBackIcon />
           </IconButton>
           Datos Básicos
         </Typography>
       </Box>
-      <Details classes={classes} decorators={decorators} />
+      <Box className={classes.details}>
+        {
+          getBasicData().map(({ title, fill, format }) => (
+            <Details
+              key={title}
+              classes={classes}
+              decorators={decorators}
+              title={title}
+              fill={data[fill]}
+              format={format}
+            />
+          ))
+        }
+      </Box>
     </ContainerBar>
   )
 }
 
 Details.propTypes = {
-  classes: PropTypes.shape(PropTypes.object).isRequired,
-  decorators: PropTypes.shape(PropTypes.object).isRequired
+  classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  decorators: PropTypes.objectOf(PropTypes.any).isRequired,
+  title: PropTypes.string.isRequired,
+  fill: PropTypes.string,
+  format: PropTypes.string.isRequired
+}
+
+Details.defaultProps = {
+  fill: ''
 }
 
 export default BasicData

@@ -159,7 +159,6 @@ const Buildable = () => {
           <IconButton
             onClick={() => dispatch(categoriesActions.sectionBack())}
             className={classes.button}
-            startIcon={<ArrowBackIcon />}
           >
             <ArrowBackIcon />
           </IconButton>
@@ -172,7 +171,7 @@ const Buildable = () => {
 }
 
 Details.propTypes = {
-  classes: PropTypes.arrayOf(PropTypes.object).isRequired
+  classes: PropTypes.objectOf(PropTypes.any).isRequired
 }
 
 export default Buildable

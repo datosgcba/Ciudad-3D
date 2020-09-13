@@ -151,7 +151,7 @@ const Map = ({ children }) => {
 }
 
 Map.propTypes = {
-  children: PropTypes.shape(PropTypes.any).isRequired
+  children: PropTypes.arrayOf(PropTypes.any).isRequired
 }
 
 export default Map

@@ -3,12 +3,12 @@ import React from 'react'
 import { Typography } from '@material-ui/core'
 import useFontsStyles from 'theme/fontsDecorators'
 
-import { getGroups } from 'utils/configQueries'
+import { getLayersGroups } from 'utils/configQueries'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 import Group from './Group'
 
-const Groups = () => (getGroups().map(({ id, title }) => (
+const Groups = () => (getLayersGroups().map(({ id, title }) => (
   <Group
     key={id}
     id={id}

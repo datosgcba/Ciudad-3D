@@ -917,6 +917,92 @@ const config = {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua'
     }
   ],
+  layersGroup: [
+    {
+      id: 'basePlane',
+      title: 'Plano base',
+      layers: [
+        {
+          title: 'Alturas Código Urbanístico',
+          color: '#EBCFEE'
+        },
+        {
+          title: 'Incidencia Ley 6.062 mod. y comp.',
+          color: '#EEB3AE'
+        },
+        {
+          title: 'Alícuotas ley 6.062 mod. y comp.',
+          color: '#EEB3AE'
+        },
+        {
+          title: 'Foto aérea 2017',
+          color: ''
+        },
+        {
+          title: 'Nombres de calles y avenidas',
+          color: ''
+        },
+        {
+          title: 'División de Lotes',
+          color: ''
+        }
+      ]
+    },
+    {
+      id: 'buildableStrip',
+      title: 'Franja edificable',
+      layers: [
+        {
+          title: 'Líneas de Frente Interno (L.F.I)',
+          color: '#E87167'
+        },
+        {
+          title: 'Líneas Internas de Basamento (L.I.B)',
+          color: '#EDBD77'
+        }
+      ]
+    },
+    {
+      id: 'listedBuildings',
+      title: 'Edificios catalogados',
+      layers: [
+        {
+          title: 'Lotes con Edificios Catalogados',
+          color: '#F1D9B6'
+        }
+      ]
+    },
+    {
+      id: 'lotsAffected',
+      title: 'Lotes con afectaciones',
+      layers: [
+        {
+          title: 'Riesgo Hídrico',
+          color: '#8292F0'
+        },
+        {
+          title: 'Cono Aproimación Aeroparque',
+          color: '#EDBD77'
+        },
+        {
+          title: 'Línea de Edificación Particularizada',
+          color: '#8EB283'
+        },
+        {
+          title: 'Ensanche',
+          color: '#EA92F1'
+        },
+        {
+          title: 'Apertura',
+          color: '#B299BC'
+        },
+        {
+          title: 'Cinturón Digital',
+          color: '#E9E1BC'
+        }
+      ]
+    }
+  ],
   BasicData: [
     {
       title: 'Superficie edificada',

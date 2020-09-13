@@ -14,9 +14,10 @@ export default makeStyles((theme) => ({
     padding: 0
   },
   icon: {
-    width: theme.spacing(2.5),
-    height: theme.spacing(2.5),
-    marginRight: theme.spacing(0.5)
+    width: theme.spacing(1.5),
+    height: theme.spacing(1.5),
+    marginRight: theme.spacing(0.5),
+    border: '1px solid grey'
   },
   divider: {
     height: theme.spacing(0.2)

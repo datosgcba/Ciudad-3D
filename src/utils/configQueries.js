@@ -18,6 +18,18 @@ const getLayersConfigByGroupId = (idGroup) => config
     isPrivate
   }))
 
+const getLayersGroups = () => config.layersGroup.map(({ id, title }) => ({
+  id,
+  title
+}))
+
+const getLayersByLayersGroupId = (layersGroupId) => config
+  .layersGroup.find((l) => l.id === layersGroupId)
+  .layers.map(({ title, color }) => ({
+    title,
+    color
+  }))
+
 const getCustomsIcons = () => config.customIcons.map(({ id, data }) => ({ id, data }))
 
 const getInformation = () => config.Information.map(({ id, title, description }) => ({
@@ -30,5 +42,6 @@ const getBasicData = () => config.BasicData.map(({ title, fill, format }) => ({
 
 export {
   getFullLayerConfig, getGroups, getLayersConfigByGroupId,
-  getCustomsIcons, getInformation, getBasicData
+  getCustomsIcons, getInformation, getBasicData,
+  getLayersGroups, getLayersByLayersGroupId
 }

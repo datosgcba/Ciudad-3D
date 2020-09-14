@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Checkbox, Container, FormControlLabel, Typography, Box
+  Checkbox, Container, FormControlLabel, Typography, Box, makeStyles
 } from '@material-ui/core'
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
@@ -89,12 +89,14 @@ Group.propTypes = {
 
 GroupItem.propTypes = {
   idGroup: PropTypes.string,
+  idLayer: PropTypes.string,
   title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  classes: PropTypes.objectOf(PropTypes.any).isRequired
+  classes: PropTypes.objectOf(makeStyles).isRequired
 }
 GroupItem.defaultProps = {
-  idGroup: ''
+  idGroup: '',
+  idLayer: ''
 }
 
 export default Group

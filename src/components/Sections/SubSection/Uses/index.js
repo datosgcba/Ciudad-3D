@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, List, ListItem, ListItemText, Button
+  Box, Typography, List, ListItem, ListItemText, Button, makeStyles
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
@@ -65,7 +65,7 @@ const Uses = () => {
 }
 
 Details.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.any).isRequired
+  classes: PropTypes.objectOf(makeStyles).isRequired
 }
 
 export default Uses

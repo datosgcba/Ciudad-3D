@@ -8,7 +8,7 @@ import {
   List,
   ListItem,
   ListItemText,
-  IconButton
+  IconButton, makeStyles
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
@@ -171,7 +171,7 @@ const Buildable = () => {
 }
 
 Details.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.any).isRequired
+  classes: PropTypes.objectOf(makeStyles).isRequired
 }
 
 export default Buildable

@@ -14,6 +14,7 @@ import ContainerBar from 'components/Sections/ContainerBar'
 import { actions } from 'state/ducks/categories'
 import { useDispatch } from 'react-redux'
 
+import { makeStyles } from '@material-ui/styles'
 import useStyles from './styles'
 
 const Details = ({ classes }) => (
@@ -65,7 +66,7 @@ const Works = () => {
 }
 
 Details.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.any).isRequired
+  classes: PropTypes.objectOf(makeStyles).isRequired
 }
 
 export default Works

@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, IconButton, Grid
+  Box, Typography, IconButton, Grid, makeStyles
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
@@ -80,8 +80,8 @@ const BasicData = () => {
 }
 
 Details.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  decorators: PropTypes.objectOf(PropTypes.any).isRequired,
+  classes: PropTypes.objectOf(makeStyles).isRequired,
+  decorators: PropTypes.objectOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   fill: PropTypes.string,
   format: PropTypes.string.isRequired

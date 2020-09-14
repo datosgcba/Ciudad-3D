@@ -143,9 +143,8 @@ const Map = ({ children }) => {
           {// logged ? <LogoutButton /> : null
           }
         </Box>
-        {isMapReady && children[0] }
       </Box>
-      {isMapReady && children[1] }
+      {isMapReady && children }
     </Container>
   )
 }

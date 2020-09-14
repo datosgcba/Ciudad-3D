@@ -11,6 +11,25 @@ import ListItem from '@material-ui/core/ListItem'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
+const ListItems = ({
+  decorators, subTitle, details, color
+}) => (
+  <ListItem style={{ backgroundColor: `${color}`, paddingBottom: 0, paddingTop: 0 }}>
+    <FormControlLabel
+      control={(
+        <Checkbox
+          icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
+          checkedIcon={<CheckBoxIcon fontSize="large" />}
+          name={subTitle}
+        />
+      )}
+    />
+    <Typography variant="subtitle2" className={`${decorators.grey333}`}>
+      {details}
+    </Typography>
+  </ListItem>
+)
+
 const List = ({ items }) => {
   const decorators = useFontsStyles()
 
@@ -18,26 +37,13 @@ const List = ({ items }) => {
     <Box>
       {
         items.map(({ subTitle, details, color }) => (
-          <ListItem style={{ backgroundColor: `${color}`, paddingBottom: 0, paddingTop: 0 }}>
-            <FormControlLabel
-              control={(
-                <Checkbox
-                  icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
-                  checkedIcon={<CheckBoxIcon fontSize="large" />}
-                  // checked={isVisible}
-                  // onChange={layerChangeHandler}
-                  name={subTitle}
-                />
-              )}
-            />
-            <Typography variant="subtitle2" className={`${decorators.bold} ${decorators.grey333}`}>
-              {subTitle}
-              <Typography variant="subtitle2" className={`${decorators.grey333}`}>
-                {details}
-              </Typography>
-            </Typography>
-
-          </ListItem>
+          <ListItems
+            key={subTitle}
+            decorators={decorators}
+            subTItle={subTitle}
+            details={details}
+            color={color}
+          />
         ))
       }
     </Box>
@@ -45,7 +51,16 @@ const List = ({ items }) => {
 }
 
 List.propTypes = {
-  items: PropTypes.string.isRequired
+  items: PropTypes.arrayOf(PropTypes.object).isRequired
+}
+ListItems.propTypes = {
+  decorators: PropTypes.objectOf(PropTypes.string).isRequired,
+  subTitle: PropTypes.string,
+  details: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired
+}
+ListItems.defaultProps = {
+  subTitle: ''
 }
 
 export default List

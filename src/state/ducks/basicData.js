@@ -11,7 +11,7 @@ const selectedParcel = createAsyncThunk(
     const data = (await response.json())
     const [lng, lat] = data.centroide
     dispatch(mapActions.cameraUpdated({
-      lat, lng, zoom: 16, pitch: 60, bearing: 0
+      lat, lng, zoom: 17, pitch: 60, bearing: 0
     }))
     // TODO: traer sólo lo necesario
     return data

@@ -23,7 +23,7 @@ const Categories = ({ data }) => {
     dispatch(basicDataActions.selectedParcel(parcelCoords))
   }, [parcelCoords])
 
-  // Se abre el panel BasicData al seleccionar una parcela
+  // Se abre el panel Information al seleccionar una parcela
   const isMapReady = useSelector((state) => state.map.isMapReady)
   const sectionIds = useSelector((state) => state.categories.sectionId)
   useEffect(() => {

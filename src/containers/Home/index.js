@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -10,28 +10,16 @@ import Parcel from 'components/Parcel'
 import Sections from 'components/Sections'
 import SideBar from 'components/SideBar'
 
-import { actions as parcelActions } from 'state/ducks/parcel'
-
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
 import useStyles from './styles'
 
 const Home = ({ token }) => {
   const classes = useStyles()
-  const dispatch = useDispatch()
 
   const place = useSelector((state) => state.seeker.place)
-  const smpPlace = place.data.smp
-  const smpBasicData = useSelector((state) => state.basicData.data.smp)
-
-  useEffect(() => {
-    dispatch(parcelActions.updateSmp(smpBasicData))
-  }, [smpBasicData])
-
-  useEffect(() => {
-    dispatch(parcelActions.updateSmp(smpPlace))
-  }, [smpPlace])
+  const mapCoords = useSelector((state) => state.map.selectedCoords)
 
   return (
     <Paper className={classes.root}>
@@ -39,7 +27,7 @@ const Home = ({ token }) => {
       <SideBar />
       <Map logged={!!token}>
         <Parcel />
-        {place && place.type !== 'CALLE' && <Marker place={place} />}
+        {mapCoords && <Marker place={place} />}
       </Map>
     </Paper>
   )

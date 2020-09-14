@@ -40,8 +40,12 @@ const getBasicData = () => config.BasicData.map(({ title, fill, format }) => ({
   title, fill, format
 }))
 
+const getBuildable = () => config.Buildable.map(({ title, fill, format }) => ({
+  title, fill, format
+}))
+
 export {
   getFullLayerConfig, getGroups, getLayersConfigByGroupId,
   getCustomsIcons, getInformation, getBasicData,
-  getLayersGroups, getLayersByLayersGroupId
+  getLayersGroups, getLayersByLayersGroupId, getBuildable
 }

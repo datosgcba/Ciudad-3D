@@ -1034,6 +1034,43 @@ const config = {
       fill: 'pisos_bajo_rasante',
       format: ''
     }
+  ],
+  Buildable: [
+    {
+      title: 'Superficie Máxima Edificable',
+      fill: 'supMaxEdi',
+      format: ' m²'
+    },
+    {
+      title: 'Superficie Edificable en Planta (Pisada)',
+      fill: 'supEdiPla',
+      format: ' m²'
+    },
+    {
+      title: 'Altura Máxima',
+      fill: 'altMax',
+      format: ' m'
+    },
+    {
+      title: 'Altura Máxima Plano Límite',
+      fill: 'altMaxPlaLim',
+      format: ' m'
+    },
+    {
+      title: 'Plusvalía',
+      fill: 'plu',
+      format: ''
+    },
+    {
+      title: 'Factor Ocupacional Total',
+      fill: 'facOcuTot',
+      format: ''
+    },
+    {
+      title: 'Listado de SMP de Parcelas Linderas',
+      fill: 'lisSMPParLin',
+      format: ''
+    }
   ]
 }
 

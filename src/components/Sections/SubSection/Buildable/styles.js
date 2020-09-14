@@ -15,7 +15,11 @@ export default makeStyles((theme) => ({
     margin: theme.spacing(0.5),
     width: theme.spacing(18),
     height: theme.spacing(10),
-    float: 'left'
+    padding: theme.spacing(1),
+    float: 'left',
+    '&:last-child': {
+      width: theme.spacing(37)
+    }
   },
   button: {
     // padding: 0,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { renderToString } from 'react-dom/server'
 
 import { Container, Box } from '@material-ui/core'
@@ -72,7 +72,7 @@ const Map = ({ children }) => {
         center: [cameraLng, cameraLat], zoom: cameraZoom, pitch: cameraPitch, bearing: cameraBearing
       })
     }
-  }, [isMapReady, mapGL, cameraLat, cameraLng, cameraZoom])
+  }, [isMapReady, mapGL, cameraLat, cameraLng, cameraZoom, cameraBearing, cameraPitch])
 
   const onFeatureClick = (mapInstance, lngLat, feature) => {
     mapInstance
@@ -86,16 +86,16 @@ const Map = ({ children }) => {
       })
   }
 
-  const onClicked = ({ lng, lat }) => {
+  const onClicked = useCallback(({ lng, lat }) => {
     const coord = { lng, lat }
     dispatch(mapActions.clickOnMap(coord))
-  }
+  }, [dispatch])
 
   useEffect(() => {
-    if (mapGL) {
+    if (isMapReady && mapGL.isVisibleBaseLayerPrincipal() === capabasePrincipal) {
       mapGL.toggleBaseLayer()
     }
-  }, [capabasePrincipal])
+  }, [capabasePrincipal, mapGL, isMapReady])
 
   // Se inicializa el mapa
   useEffect(() => {
@@ -113,7 +113,7 @@ const Map = ({ children }) => {
 
       dispatch(mapActions.initMap(map))
     }
-  }, [isMapReady, dispatch])
+  }, [isMapReady, cameraLat, cameraLng, cameraZoom, onClicked, dispatch])
 
   const classes = useStyles()
   return (

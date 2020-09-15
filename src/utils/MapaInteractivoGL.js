@@ -138,10 +138,12 @@ class MapaInteractivoGL {
     }
   }
 
+  isVisibleBaseLayerPrincipal() {
+    return this.map.getLayoutProperty('baseLayer_principal', 'visibility') === 'visible'
+  }
+
   toggleBaseLayer() {
-    // todo: mejorar esto
-    const visibility = this.map.getLayoutProperty('baseLayer_principal', 'visibility')
-    if (visibility === 'visible') {
+    if (this.isVisibleBaseLayerPrincipal()) {
       this.map.setLayoutProperty('baseLayer_principal', 'visibility', 'none')
       this.map.setLayoutProperty('baseLayer_secundario', 'visibility', 'visible')
     } else {

@@ -65,7 +65,6 @@ const Buildable = () => {
           <IconButton
             onClick={() => dispatch(categoriesActions.sectionBack())}
             className={classes.button}
-            startIcon={<ArrowBackIcon />}
           >
             <ArrowBackIcon />
           </IconButton>

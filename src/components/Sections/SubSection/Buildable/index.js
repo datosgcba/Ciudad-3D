@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from 'react'
 
 import PropTypes from 'prop-types'
@@ -72,9 +73,9 @@ const Buildable = () => {
         </Typography>
       </Box>
       {
-          getBuildable().map(({ title, fill, format }) => (
+          getBuildable().map(({ title, fill, format }, index) => (
             <Details
-              key={title}
+              key={index}
               classes={classes}
               decorators={decorators}
               title={title}

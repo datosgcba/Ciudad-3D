@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 
 import PropTypes from 'prop-types'
@@ -63,9 +64,9 @@ const BasicData = () => {
       </Box>
       <Box className={classes.details}>
         {
-          getBasicData().map(({ title, fill, format }) => (
+          getBasicData().map(({ title, fill, format }, index) => (
             <Details
-              key={title}
+              key={index}
               classes={classes}
               decorators={decorators}
               title={title}

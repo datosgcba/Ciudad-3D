@@ -1,24 +1,23 @@
-// TODO: proptypes y tooltip
+// TODO: proptypes
 /* eslint-disable react/prop-types */
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 // import PropTypes from 'prop-types'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
-import tooltip from 'utils/Tooltip'
 
-export default ({ place }) => {
+export default ({ coords }) => {
   const refMarker = useRef(null)
-  const map = MapaInteractivoGL()
+  const mapUtils = MapaInteractivoGL()
+  const engine = mapUtils.getMapEngine()
+  const [marker] = useState(new engine.Marker())
+
   useEffect(() => {
-    if (place && place.data && place.data.coordenadas) {
-      const coords = place.data.coordenadas
-      tooltip.addPopup(map, coords, place.title)
-        .then((markerMap) => {
-          refMarker.current.innerHTML = null
-          refMarker.current.appendChild(markerMap.getElement())
-        })
-    }
-  }, [place, map])
+    marker
+      .setLngLat([coords.lng, coords.lat])
+      .addTo(mapUtils.map)
+    refMarker.current.innerHTML = null
+    refMarker.current.appendChild(marker.getElement())
+  }, [coords, mapUtils.map, marker, refMarker])
 
   return (<div ref={refMarker} />)
 }

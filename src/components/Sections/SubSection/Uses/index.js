@@ -17,8 +17,6 @@ import { actions as categoriesActions } from 'state/ducks/categories'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getUses } from 'utils/configQueries'
-
 import useStyles from './styles'
 
 const Details = ({ classes, title, fill, decorators }) => (
@@ -38,35 +36,6 @@ const Details = ({ classes, title, fill, decorators }) => (
       </Grid>
       </Grid> 
     </Box>
-    <Grid container style={{textAlign: 'center'}}>
-        <Grid item xs={4}>
-          <Typography variant="subtitle3" className={classes.gridTituloCategoria}>
-          Residencia
-          </Typography><br></br>
-          <Typography variant="subtitle3">
-          Afluencia<br></br>
-          Mediana
-          </Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Typography variant="subtitle3" className={classes.gridTituloCategoria}>
-          Comercio
-          </Typography><br></br>
-          <Typography variant="subtitle3">
-          Afluencia<br></br>
-          Mediana
-          </Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Typography variant="subtitle3"  className={classes.gridTituloCategoria}>
-          Servicio
-          </Typography><br></br>
-          <Typography variant="subtitle3">
-          Afluencia<br></br>
-          Mediana
-          </Typography>
-        </Grid>
-      </Grid> 
   </Box>
 )
 
@@ -95,18 +64,46 @@ const Uses = () => {
           Usos
         </Typography>
       </Box>
-      {
-          getUses().map(({ title, fill, format }, index) => (
+      {data &&
+          data.map(({ id, title, desc }) => (
             <Details
-              key={index}
+              key={id}
               classes={classes}
               decorators={decorators}
               title={title}
-              fill={data[fill]}
-              format={format}
+              fill={desc}
             />
           ))
         }
+        <Grid container style={{textAlign: 'center'}}>
+        <Grid item xs={4}>
+          <Typography variant="subtitle3" className={classes.gridTituloCategoria}>
+          Residencia
+          </Typography><br></br>
+          <Typography variant="subtitle3">
+          Afluencia<br></br>
+          Mediana
+          </Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Typography variant="subtitle3" className={classes.gridTituloCategoria}>
+          Comercio
+          </Typography><br></br>
+          <Typography variant="subtitle3">
+          Afluencia<br></br>
+          Mediana
+          </Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Typography variant="subtitle3"  className={classes.gridTituloCategoria}>
+          Servicio
+          </Typography><br></br>
+          <Typography variant="subtitle3">
+          Afluencia<br></br>
+          Mediana
+          </Typography>
+        </Grid>
+      </Grid> 
     </ContainerBar>
   )
 }

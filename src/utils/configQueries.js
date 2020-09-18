@@ -44,12 +44,12 @@ const getBuildable = () => config.Buildable.map(({ title, fill, format }) => ({
   title, fill, format
 }))
 
-const getUses = () => config.Uses.map(({ title, fill, format }) => ({
-  title, fill, format
+const getUsesTable = async () => config.Uses.map(({ id, title, desc }) => ({
+  id, title, desc
 }))
 
 export {
   getFullLayerConfig, getGroups, getLayersConfigByGroupId,
   getCustomsIcons, getInformation, getBasicData,
-  getLayersGroups, getLayersByLayersGroupId, getBuildable, getUses
+  getLayersGroups, getLayersByLayersGroupId, getBuildable, getUsesTable
 }

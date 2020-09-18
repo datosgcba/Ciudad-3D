@@ -1074,8 +1074,19 @@ const config = {
   ],
   Uses: [
     {
+      id: 2,
       title: 'Área de Baja Mixtura del Usos de Suelo 1:',
-      fill: 'texto'
+      desc: 'El Área de Baja Mixtura de Usos del Suelo corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia.'
+    },
+    {
+      id: 4,
+      title: 'Área de Baja Mixtura del Usos de Suelo 2:',
+      desc: 'El Área de Baja Mixtura de Usos del Suelo corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia.'
+    },
+    {
+      id: 6,
+      title: 'Área de Baja Mixtura del Usos de Suelo 3:',
+      desc: 'El Área de Baja Mixtura de Usos del Suelo corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia.'
     }
   ]
 }

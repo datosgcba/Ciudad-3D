@@ -1071,6 +1071,12 @@ const config = {
       fill: 'lisSMPParLin',
       format: ''
     }
+  ],
+  Uses: [
+    {
+      title: 'Área de Baja Mixtura del Usos de Suelo 1:',
+      fill: 'texto'
+    }
   ]
 }
 

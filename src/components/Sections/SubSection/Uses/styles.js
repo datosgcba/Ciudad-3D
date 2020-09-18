@@ -12,6 +12,26 @@ export default makeStyles((theme) => ({
   },
   button: {
     // padding: 0,
-    minWidth: '0px !important'
+    minWidth: '0 !important'
+  },
+  card: {
+    height: '103px',
+    backgroundColor: '#F5F5F5',
+    padding: theme.spacing(1.5),
+    marginBottom: theme.spacing(2)
+  },
+  gridCategoria: {
+    TextAlign: 'center',
+    justifyContent: 'center'
+  },
+  gridText: {
+    TextAlign: 'center',
+    lineHeight: '17px',
+    fontSize: '11.5px'
+  },
+  gridTituloCategoria: {
+    fontWeight: 'bold',
+    lineHeight: '17px',
+    fontSize: '11.5px'
   }
 }))

@@ -6,7 +6,8 @@ import categories from './categories'
 import map from './map'
 import parcel from './parcel'
 import seeker from './seeker'
+import uses from './uses'
 
 export default combineReducers({
-  categories, map, seeker, basicData, buildable, parcel
+  categories, map, seeker, basicData, buildable, uses, parcel
 })

@@ -11,7 +11,7 @@ const Polygon = ({ smp, geomCoords }) => {
       mapGL.map.removeLayer('Parcel')
     }
 
-    if (geomCoords !== null && smp !== null) {
+    if (geomCoords !== null) {
       const source = mapGL.map.getSource(smp)
       if (source === undefined) {
         mapGL.map.addSource(smp, {
@@ -37,8 +37,9 @@ const Polygon = ({ smp, geomCoords }) => {
         }
       })
     }
-  // TODO: Agregar smp a las variables del useEffect sin perder funcionalidad
-  }, [geomCoords])
+  // TODO: Agregar smp a las dependencias del useEffect sin perder funcionalidad
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [geomCoords, mapGL])
 
   return null
 }

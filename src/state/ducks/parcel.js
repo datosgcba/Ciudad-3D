@@ -18,6 +18,7 @@ const smpSelected = createAsyncThunk(
 const parcel = createSlice({
   name: 'parcel',
   initialState: {
+    isVisible: true,
     geomCoords: null,
     smp: null
   },

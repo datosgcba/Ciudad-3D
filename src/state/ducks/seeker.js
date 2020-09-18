@@ -4,7 +4,7 @@ const seeker = createSlice({
   name: 'seeker',
   initialState: {
     place: { data: { smp: null } },
-    coordinates: ''
+    coordinates: null
   },
   reducers: {
     placeSelected: (draftState, action) => {

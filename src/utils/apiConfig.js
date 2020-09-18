@@ -1,5 +1,7 @@
 const getParcel = ({ lng, lat }) => `https://epok.buenosaires.gob.ar/catastro/parcela/?lng=${lng}&lat=${lat}`
 
+const getParcelBySmp = (smp) => `https://epok.buenosaires.gob.ar/catastro/parcela/?smp=${smp}`
+
 const getGeometrical = (smp) => `https://epok.buenosaires.gob.ar/catastro/geometria/?smp=${smp}`
 
 const getBuildable = (smp) => `https://epok.buenosaires.gob.ar/catastro/seccion_edificabilidad/?smp=${smp}`
@@ -7,5 +9,5 @@ const getBuildable = (smp) => `https://epok.buenosaires.gob.ar/catastro/seccion_
 const getUses = (smp) => `https://epok.buenosaires.gob.ar/catastro/mixtura_usos/?smp=${smp}`
 
 export {
-  getParcel, getGeometrical, getBuildable, getUses
+  getParcel, getParcelBySmp, getGeometrical, getBuildable, getUses
 }

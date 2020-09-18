@@ -43,6 +43,7 @@ const BasicData = () => {
   const classes = useStyles()
   const decorators = useFontsStyles()
   const data = useSelector((state) => state.basicData.data)
+  const isSelected = useSelector((state) => state.basicData.isSelected)
   const dispatch = useDispatch()
 
   return (
@@ -62,20 +63,29 @@ const BasicData = () => {
           Datos Básicos
         </Typography>
       </Box>
-      <Box className={classes.details}>
-        {
-          getBasicData().map(({ title, fill, format }, index) => (
-            <Details
-              key={index}
-              classes={classes}
-              decorators={decorators}
-              title={title}
-              fill={data[fill]}
-              format={format}
-            />
-          ))
-        }
-      </Box>
+      { isSelected && (
+        <Box className={classes.details}>
+          {
+            getBasicData().map(({ title, fill, format }, index) => (
+              <Details
+                key={index}
+                classes={classes}
+                decorators={decorators}
+                title={title}
+                fill={data[fill]}
+                format={format}
+              />
+            ))
+          }
+        </Box>
+      )}
+      { !isSelected && (
+        <Box className={classes.details}>
+          <Typography variant="h5" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
+            seleccione una parcela
+          </Typography>
+        </Box>
+      )}
     </ContainerBar>
   )
 }

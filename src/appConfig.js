@@ -1005,6 +1005,16 @@ const config = {
   ],
   BasicData: [
     {
+      title: 'Sección-Manzana-Parcela',
+      fill: 'smp',
+      format: ''
+    },
+    {
+      title: 'Dirección',
+      fill: 'direccion',
+      format: ''
+    },
+    {
       title: 'Superficie edificada',
       fill: 'superficie_cubierta',
       format: 'm²'

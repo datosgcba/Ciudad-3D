@@ -20,21 +20,28 @@ const selectedParcel = createAsyncThunk(
     return data
   },
   {
-    condition: ({ lat, lng }) => lat !== undefined && lng !== undefined
+    condition: ({ lat, lng }, { getState }) => lat !== undefined
+      && lng !== undefined
+      && !getState().basicData.isLoading
   }
 )
 
 const seekerParcel = createAsyncThunk(
   'basicData/seekerParcel',
   async (smp, { dispatch }) => {
-    const url = getParcelBySmp(smp)
-    const response = await fetch(url)
-    const data = (await response.json())
-    cameraUpdated(data, dispatch)
-    // TODO: traer sólo lo necesario
-    return data
+    if (smp !== null && smp !== undefined) {
+      const url = getParcelBySmp(smp)
+      const response = await fetch(url)
+      const data = (await response.json())
+      cameraUpdated(data, dispatch)
+      // TODO: traer sólo lo necesario
+      return data
+    }
+    throw new Error()
+  },
+  {
+    condition: (_, { getState }) => !getState().basicData.isLoading
   }
-  // TODO: condition lat y lng
 )
 
 const basicData = createSlice({
@@ -48,25 +55,34 @@ const basicData = createSlice({
   },
   extraReducers: {
     [selectedParcel.pending]: (draftState) => {
-      // TODO: Tooltip cargando (?)
+      // TODO: Spinner cargando (?)
       draftState.isLoading = true
     },
     [selectedParcel.fulfilled]: (draftState, action) => {
+      draftState.isLoading = false
       draftState.isSelected = true
       draftState.data = action.payload
     },
-    [selectedParcel.rejected]: () => {
+    [selectedParcel.rejected]: (draftState) => {
       // TODO: Mostrar mensaje de error al usuario (?)
-      // draftState.isSelected = false
-      // draftState.data = { smp: null }
+      draftState.isLoading = false
+      draftState.isSelected = false
+      draftState.data = { smp: null }
     },
     [seekerParcel.pending]: (draftState) => {
-      // TODO: Tooltip cargando (?)
+      // TODO: Spinner cargando (?)
       draftState.isLoading = true
     },
     [seekerParcel.fulfilled]: (draftState, action) => {
+      draftState.isLoading = false
       draftState.isSelected = true
       draftState.data = action.payload
+    },
+    [seekerParcel.rejected]: (draftState) => {
+      // TODO: Mostrar mensaje de error al usuario (?)
+      draftState.isLoading = false
+      draftState.isSelected = false
+      draftState.data = { smp: null }
     }
   }
 })

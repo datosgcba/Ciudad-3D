@@ -1,4 +1,5 @@
 /* eslint-disable */
+// TOOO: Corregir errores lint
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 

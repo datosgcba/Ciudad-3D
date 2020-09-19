@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, IconButton, Grid, makeStyles
+  Paper, Box, Typography, IconButton, Grid, makeStyles
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
@@ -80,11 +80,11 @@ const BasicData = () => {
         </Box>
       )}
       { !isSelected && (
-        <Box className={classes.details}>
-          <Typography variant="h5" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
-            seleccione una parcela
+        <Paper className={classes.paper}>
+          <Typography variant="body1" className={classes.body1}>
+            Seleccione una parcela
           </Typography>
-        </Box>
+        </Paper>
       )}
     </ContainerBar>
   )

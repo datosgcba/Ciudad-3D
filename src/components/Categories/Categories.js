@@ -22,7 +22,7 @@ const Categories = ({ data }) => {
 
   // parcelCoords son las coordenadas donde se hace click
   const parcelCoords = useSelector((state) => state.map.selectedCoords)
-  // seekerCoords son las coordenadas obtenidas por el buscador
+  // seekerSmp es el smp obtenido por el buscador
   const seekerSmp = useSelector((state) => state.seeker.place.data.smp)
 
   // Se obtienen los datos básicos de la parcela seleccionada
@@ -31,9 +31,7 @@ const Categories = ({ data }) => {
   }, [parcelCoords, dispatch])
 
   useEffect(() => {
-    if (seekerSmp !== null && seekerSmp !== undefined) {
-      dispatch(basicDataActions.seekerParcel(seekerSmp))
-    }
+    dispatch(basicDataActions.seekerParcel(seekerSmp))
   }, [seekerSmp, dispatch])
 
   // Se abre el panel Information al seleccionar una parcela o hacer una busqueda

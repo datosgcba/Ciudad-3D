@@ -3,13 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, List, ListItem, ListItemText, Button
+  Box, Paper, Typography, List, ListItem, ListItemText, IconButton
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 import useFontsStyles from 'theme/fontsDecorators'
-
-import ContainerBar from 'components/Sections/ContainerBar'
 
 import { actions } from 'state/ducks/categories'
 import { useDispatch } from 'react-redux'
@@ -46,22 +44,25 @@ const Works = () => {
   const dispatch = useDispatch()
 
   return (
-    <ContainerBar>
-      <Typography variant="h5" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
-        Información
-      </Typography>
-      <Box className={classes.box}>
-        <Typography variant="h6" className={decorators.bold}>
-          <Button
-            onClick={() => dispatch(actions.sectionBack())}
-            className={classes.button}
-            startIcon={<ArrowBackIcon />}
-          />
-          Obras
+    <Box className={classes.box}>
+      <Paper className={classes.paper}>
+        <Typography variant="h5" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
+          Información
         </Typography>
-      </Box>
+        <Box className={classes.subTitle}>
+          <Typography variant="h6" className={decorators.bold}>
+            <IconButton
+              onClick={() => dispatch(actions.sectionBack())}
+              className={classes.button}
+            >
+              <ArrowBackIcon />
+            </IconButton>
+            Obras
+          </Typography>
+        </Box>
+      </Paper>
       <Details classes={classes} />
-    </ContainerBar>
+    </Box>
   )
 }
 

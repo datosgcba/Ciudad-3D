@@ -2,16 +2,19 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
   box: {
-    border: '1px solid #D9D9D9',
-    borderLeftWidth: 3,
-    borderLeftColor: '#C4A1A1',
-    marginBottom: theme.spacing(2)
+    marginLeft: theme.spacing(9.75), // 9.75 - 78px
+    minHeight: '100vh',
+    width: theme.spacing(86) // 45 - 360px
   },
-  details: {
-    border: '1px solid #D9D9D9'
+  paper: {
+    height: theme.spacing(13.62),
+    paddingTop: theme.spacing(2.25), // 2.25 - 18px
+    paddingLeft: theme.spacing(3.26), // 3.12 - 26px
+    borderRadius: 0
   },
   button: {
-    // padding: 0,
+    padding: 0,
+    paddingRight: theme.spacing(0.5),
     minWidth: '0px !important'
   }
 }))

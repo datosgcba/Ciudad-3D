@@ -30,6 +30,14 @@ const getLayersByLayersGroupId = (layersGroupId) => config
     color
   }))
 
+const getWorksGroups = () => config.Works.map(({ id, title }) => ({
+  id,
+  title
+}))
+
+const getColumnsWorksByWorksId = (WorkId) => config
+  .Works.find((w) => w.id === WorkId).columns
+
 const getCustomsIcons = () => config.customIcons.map(({ id, data }) => ({ id, data }))
 
 const getInformation = () => config.Information.map(({ id, title, description }) => ({
@@ -51,5 +59,6 @@ const getUsesTable = async () => config.Uses.map(({ id, title, desc }) => ({
 export {
   getFullLayerConfig, getGroups, getLayersConfigByGroupId,
   getCustomsIcons, getInformation, getBasicData,
-  getLayersGroups, getLayersByLayersGroupId, getBuildable, getUsesTable
+  getLayersGroups, getLayersByLayersGroupId, getBuildable, getUsesTable,
+  getWorksGroups, getColumnsWorksByWorksId
 }

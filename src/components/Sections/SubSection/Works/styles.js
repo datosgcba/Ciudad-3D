@@ -16,5 +16,9 @@ export default makeStyles((theme) => ({
     padding: 0,
     paddingRight: theme.spacing(0.5),
     minWidth: '0px !important'
+  },
+  boxContainer: {
+    padding: theme.spacing(2),
+    maxHeight: `calc(100vh - ${theme.spacing(13.62)}px)`
   }
 }))

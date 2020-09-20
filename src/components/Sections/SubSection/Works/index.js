@@ -3,38 +3,71 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Paper, Typography, List, ListItem, ListItemText, IconButton
+  Box, Paper, Typography, IconButton,
+  TableContainer, Table, TableHead, TableRow,
+  TableCell, TableBody
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+
+import Scrollbar from 'react-smooth-scrollbar'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
 import { actions } from 'state/ducks/categories'
 import { useDispatch } from 'react-redux'
 
-import { makeStyles } from '@material-ui/styles'
+import { getWorksGroups, getColumnsWorksByWorksId } from 'utils/configQueries'
+
 import useStyles from './styles'
 
-const Details = ({ classes }) => (
-  <Box className={classes.details}>
-    <List dense>
-      <ListItem>
-        <ListItemText
-          primary="Sup máx edificable: 322 m2"
-        />
-      </ListItem>
-      <ListItem>
-        <ListItemText
-          primary="Altura máxima: 22,80 + dos retiros"
-        />
-      </ListItem>
-      <ListItem>
-        <ListItemText
-          primary="Tipo de unidad: USAB1"
-        />
-      </ListItem>
-    </List>
-  </Box>
+function createData(name, calories, fat, carbs, protein) {
+  return {
+    name, calories, fat, carbs, protein
+  }
+}
+
+const rows = [
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Gingerbread', 356, 16.0, 49, 3.9)
+]
+
+const Data = () => (
+  <TableBody>
+    {rows.map((row) => (
+      <TableRow key={row.name}>
+        <TableCell>{row.name}</TableCell>
+        <TableCell>{row.calories}</TableCell>
+        <TableCell>{row.fat}</TableCell>
+        <TableCell>{row.carbs}</TableCell>
+        <TableCell>{row.protein}</TableCell>
+      </TableRow>
+    ))}
+  </TableBody>
+)
+
+const Columns = ({ id, decorators }) => (
+  <TableContainer>
+    <Table>
+      <TableHead>
+        <TableRow>
+          {
+            getColumnsWorksByWorksId(id).map((column, idx) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <TableCell key={idx} style={{ width: '20%' }}>
+                <Typography variant="subtitle2" className={decorators.bold}>
+                  {column}
+                </Typography>
+              </TableCell>
+            ))
+          }
+        </TableRow>
+      </TableHead>
+      <Data />
+    </Table>
+  </TableContainer>
 )
 
 const Works = () => {
@@ -61,13 +94,27 @@ const Works = () => {
           </Typography>
         </Box>
       </Paper>
-      <Details classes={classes} />
+      <Scrollbar>
+        <Box className={classes.boxContainer}>
+          {
+            getWorksGroups().map(({ id, title }) => (
+              <Box key={id}>
+                <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
+                  {title}
+                </Typography>
+                <Columns id={id} decorators={decorators} />
+              </Box>
+            ))
+          }
+        </Box>
+      </Scrollbar>
     </Box>
   )
 }
 
-Details.propTypes = {
-  classes: PropTypes.objectOf(makeStyles).isRequired
+Columns.propTypes = {
+  id: PropTypes.string.isRequired,
+  decorators: PropTypes.objectOf(PropTypes.string).isRequired
 }
 
 export default Works

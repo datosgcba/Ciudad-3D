@@ -1099,11 +1099,23 @@ const config = {
       desc: 'El Área de Baja Mixtura de Usos del Suelo corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia.'
     }
   ],
-  Works: {
-    id: 'worksStarted',
-    title: 'Obras iniciadas',
-    columns: ['Expte', 'Fecha', 'Tipo de obra', 'Superficie']
-  }
+  Works: [
+    {
+      id: 'worksStarted',
+      title: 'Obras iniciadas',
+      columns: ['Expte', 'Fecha', 'Tipo de obra', 'Superficie', 'Destino']
+    },
+    {
+      id: 'worksRegisters',
+      title: 'Obras registradas',
+      columns: ['Expte', 'Fecha', 'Tipo de obra', 'Superficie', '']
+    },
+    {
+      id: 'urbanCertificates',
+      title: 'Certificados urbanísticos',
+      columns: ['Año', 'Repartición', 'Nº SADE', 'Dirección', '']
+    }
+  ]
 }
 
 export default config

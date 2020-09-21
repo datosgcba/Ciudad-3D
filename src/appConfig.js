@@ -1084,19 +1084,24 @@ const config = {
   ],
   Uses: [
     {
-      id: 2,
+      id: 1,
       title: 'Área de Baja Mixtura del Usos de Suelo 1:',
-      desc: 'El Área de Baja Mixtura de Usos del Suelo corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia.'
+      desc: 'Corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia.'
+    },
+    {
+      id: 2,
+      title: 'Área de Baja Mixtura del Usos de Suelo 2:',
+      desc: 'Corresponde a las áreas y corredores destinados a residencia, servicios y comercios de mediana afluencia.'
+    },
+    {
+      id: 3,
+      title: 'Área de Media Mixtura de Usos del Suelo 3:',
+      desc: 'Corresponde a las áreas y corredores destinados a residencia, depósitos siempre que incluyan local de venta y servicios y comercios de mediana afluencia.'
     },
     {
       id: 4,
-      title: 'Área de Baja Mixtura del Usos de Suelo 2:',
-      desc: 'El Área de Baja Mixtura de Usos del Suelo corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia.'
-    },
-    {
-      id: 6,
-      title: 'Área de Baja Mixtura del Usos de Suelo 3:',
-      desc: 'El Área de Baja Mixtura de Usos del Suelo corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia.'
+      title: 'Área de Alta Mixtura de Usos del Suelo 4:',
+      desc: 'Corresponde a las áreas y corredores destinados a residencia, depósitos siempre que incluyan local de venta y servicios y comercios de afluencia metropolitana.'
     }
   ],
   Works: [

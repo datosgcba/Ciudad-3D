@@ -34,8 +34,38 @@ const Details = ({ classes, title, fill, decorators }) => (
         {fill}
         </Typography>
       </Grid>
+      </Grid>
+      </Box>
+      <Grid container style={{textAlign: 'center', marginBottom:10}}>
+        <Grid item xs={4}>
+          <Typography variant="subtitle3" className={classes.gridTituloCategoria}>
+          Residencia
+          </Typography><br></br>
+          <Typography variant="subtitle3">
+          Afluencia<br></br>
+          Mediana
+          </Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Typography variant="subtitle3" className={classes.gridTituloCategoria}>
+          Comercio
+          </Typography><br></br>
+          <Typography variant="subtitle3">
+          Afluencia<br></br>
+          Mediana
+          </Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Typography variant="subtitle3"  className={classes.gridTituloCategoria}>
+          Servicio
+          </Typography><br></br>
+          <Typography variant="subtitle3">
+          Afluencia<br></br>
+          Mediana
+          </Typography>
+        </Grid>
       </Grid> 
-    </Box>
+    
   </Box>
 )
 
@@ -75,35 +105,7 @@ const Uses = () => {
             />
           ))
         }
-        <Grid container style={{textAlign: 'center'}}>
-        <Grid item xs={4}>
-          <Typography variant="subtitle3" className={classes.gridTituloCategoria}>
-          Residencia
-          </Typography><br></br>
-          <Typography variant="subtitle3">
-          Afluencia<br></br>
-          Mediana
-          </Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Typography variant="subtitle3" className={classes.gridTituloCategoria}>
-          Comercio
-          </Typography><br></br>
-          <Typography variant="subtitle3">
-          Afluencia<br></br>
-          Mediana
-          </Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Typography variant="subtitle3"  className={classes.gridTituloCategoria}>
-          Servicio
-          </Typography><br></br>
-          <Typography variant="subtitle3">
-          Afluencia<br></br>
-          Mediana
-          </Typography>
-        </Grid>
-      </Grid> 
+       
     </ContainerBar>
   )
 }

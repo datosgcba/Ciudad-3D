@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import useStyles from './styles'
 
-const Details = ({ classes, title, fill, decorators }) => (
+const Details = ({ classes, title, fill, afluencia, decorators }) => (
 
   <Box>
     <Box className={classes.card}>
@@ -43,7 +43,7 @@ const Details = ({ classes, title, fill, decorators }) => (
           </Typography><br></br>
           <Typography variant="subtitle3">
           Afluencia<br></br>
-          Mediana
+          {afluencia}
           </Typography>
         </Grid>
         <Grid item xs={4}>
@@ -52,7 +52,7 @@ const Details = ({ classes, title, fill, decorators }) => (
           </Typography><br></br>
           <Typography variant="subtitle3">
           Afluencia<br></br>
-          Mediana
+          {afluencia}
           </Typography>
         </Grid>
         <Grid item xs={4}>
@@ -61,7 +61,7 @@ const Details = ({ classes, title, fill, decorators }) => (
           </Typography><br></br>
           <Typography variant="subtitle3">
           Afluencia<br></br>
-          Mediana
+          {afluencia}
           </Typography>
         </Grid>
       </Grid> 
@@ -95,13 +95,14 @@ const Uses = () => {
         </Typography>
       </Box>
       {data &&
-          data.map(({ id, title, desc }) => (
+          data.map(({ id, title, desc, afluencia }) => (
             <Details
               key={id}
               classes={classes}
               decorators={decorators}
               title={title}
               fill={desc}
+              afluencia={afluencia}
             />
           ))
         }

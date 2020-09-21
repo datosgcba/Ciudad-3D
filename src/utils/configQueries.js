@@ -52,7 +52,9 @@ const getBuildable = () => config.Buildable.map(({ title, fill, format }) => ({
   title, fill, format
 }))
 
-const getUsesTable = async () => config.Uses.map(({ id, title, desc, afluencia }) => ({
+const getUsesTable = async () => config.Uses.map(({
+  id, title, desc, afluencia
+}) => ({
   id, title, desc, afluencia
 }))
 

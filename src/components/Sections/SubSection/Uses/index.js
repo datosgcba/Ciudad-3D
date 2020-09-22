@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import useStyles from './styles'
 
-const Details = ({ classes, title, fill, afluencia, decorators }) => (
+const Details = ({ classes, title, fill, afluencia, iconoResidencia, iconoComercio, iconoServicio, decorators }) => (
 
   <Box>
     <Box className={classes.card}>
@@ -38,28 +38,32 @@ const Details = ({ classes, title, fill, afluencia, decorators }) => (
       </Box>
       <Grid container style={{textAlign: 'center', marginBottom:10}}>
         <Grid item xs={4}>
-          <Typography variant="subtitle3" className={classes.gridTituloCategoria}>
+        {iconoResidencia}
+          <Typography variant="body2" className={classes.gridTituloCategoria}>
+          
           Residencia
-          </Typography><br></br>
-          <Typography variant="subtitle3">
+          </Typography>
+          <Typography variant="body2">
           Afluencia<br></br>
           {afluencia}
           </Typography>
         </Grid>
         <Grid item xs={4}>
-          <Typography variant="subtitle3" className={classes.gridTituloCategoria}>
+        {iconoComercio}
+          <Typography variant="body2" className={classes.gridTituloCategoria}>
           Comercio
-          </Typography><br></br>
-          <Typography variant="subtitle3">
+          </Typography>
+          <Typography variant="body2">
           Afluencia<br></br>
           {afluencia}
           </Typography>
         </Grid>
         <Grid item xs={4}>
-          <Typography variant="subtitle3"  className={classes.gridTituloCategoria}>
+        {iconoServicio}
+          <Typography variant="body2"  className={classes.gridTituloCategoria}>
           Servicio
-          </Typography><br></br>
-          <Typography variant="subtitle3">
+          </Typography>
+          <Typography variant="body2">
           Afluencia<br></br>
           {afluencia}
           </Typography>
@@ -95,7 +99,7 @@ const Uses = () => {
         </Typography>
       </Box>
       {data &&
-          data.map(({ id, title, desc, afluencia }) => (
+          data.map(({ id, title, desc, afluencia, iconoResidencia, iconoComercio, iconoServicio }) => (
             <Details
               key={id}
               classes={classes}
@@ -103,6 +107,9 @@ const Uses = () => {
               title={title}
               fill={desc}
               afluencia={afluencia}
+              iconoResidencia={iconoResidencia}
+              iconoComercio={iconoComercio}
+              iconoServicio={iconoServicio}
             />
           ))
         }

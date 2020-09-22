@@ -53,9 +53,9 @@ const getBuildable = () => config.Buildable.map(({ title, fill, format }) => ({
 }))
 
 const getUsesTable = async () => config.Uses.map(({
-  id, title, desc, afluencia
+  id, title, desc, afluencia, iconoResidencia, iconoComercio, iconoServicio
 }) => ({
-  id, title, desc, afluencia
+  id, title, desc, afluencia, iconoResidencia, iconoComercio, iconoServicio
 }))
 
 export {

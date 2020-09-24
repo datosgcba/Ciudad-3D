@@ -14,7 +14,7 @@ const clickOnParcel = createAsyncThunk(
     // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
     let usos = (await response.json())
-    usos = [1, 2, 4]
+    usos = [1, 2, 3]
 
     const usesTable = await getUsesTable()
     const data = usos

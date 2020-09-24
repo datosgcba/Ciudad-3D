@@ -39,7 +39,7 @@ const Details = ({ classes, title, fill, afluencia, iconsData, decorators }) => 
       <Grid container style={{textAlign: 'center', marginBottom:10}}>
         {iconsData.map(({iconTitle, svg}) =>(
           <Grid item xs={Math.trunc(12 / iconsData.length)}>
-            {svg}
+          <Box className={classes.icon}> {svg} </Box>
             <Typography variant="body2" className={classes.gridTituloCategoria}>{iconTitle}</Typography>
             <Typography variant="body2">
               Afluencia<br></br>

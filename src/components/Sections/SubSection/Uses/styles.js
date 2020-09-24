@@ -33,5 +33,14 @@ export default makeStyles((theme) => ({
     fontWeight: 'bold',
     lineHeight: '17px',
     fontSize: '11.5px'
+  },
+  icon: {
+    borderRadius: '50%',
+    margin: '0 auto',
+    width: '50px',
+    height: '50px',
+    padding: '9px',
+    marginBottom: '10px',
+    backgroundColor: '#F5F5F5'
   }
 }))

@@ -53,9 +53,15 @@ const getBuildable = () => config.Buildable.map(({ title, fill, format }) => ({
 }))
 
 const getUsesTable = async () => config.Uses.map(({
-  id, title, desc, afluencia, iconoResidencia, iconoComercio, iconoServicio
+  id, title, desc, afluencia, icons
 }) => ({
-  id, title, desc, afluencia, iconoResidencia, iconoComercio, iconoServicio
+  id,
+  title,
+  desc,
+  afluencia,
+  iconsData: icons.map(({ title: iconTitle, svgId }) => (
+    { iconTitle, svg: config.Icons[svgId] }
+  ))
 }))
 
 export {

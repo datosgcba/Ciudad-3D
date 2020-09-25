@@ -4,7 +4,7 @@ import { getGeometrical as getAffectations } from 'utils/apiConfig'
 import { getAffectationsTable } from 'utils/configQueries'
 
 const clickOnParcel = createAsyncThunk(
-  'uses/clickOnParcel',
+  'affectations/clickOnParcel',
   async (smp) => {
     if (smp.length === undefined) {
       return { smp: 'Invalido' }

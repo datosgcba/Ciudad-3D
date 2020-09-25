@@ -47,7 +47,7 @@ const Details = ({ classes, title, subtitle, fill, decorators }) => (
 const Affectations = () => {
   const classes = useStyles()
   const decorators = useFontsStyles()
-  const data = useSelector((state) => state.uses.data)
+  const data = useSelector((state) => state.affectations.data)
   const dispatch = useDispatch()
   const smp = useSelector((state) => state.basicData.data.smp)
   useEffect(() => {

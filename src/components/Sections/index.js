@@ -4,6 +4,7 @@ import { Drawer } from '@material-ui/core'
 
 import { useSelector } from 'react-redux'
 
+import Affectations from 'components/Sections/SubSection/Affectations'
 import BasicData from 'components/Sections/SubSection/BasicData'
 import Buildable from 'components/Sections/SubSection/Buildable'
 import Contact from 'components/Sections/SubSection/Contact'
@@ -30,7 +31,8 @@ const Section = () => {
     ['Buildable', Buildable],
     ['BasicData', BasicData],
     ['Uses', Uses],
-    ['Works', Works]
+    ['Works', Works],
+    ['Affectations', Affectations]
   ])
 
   // Acá busco el que voy a usar

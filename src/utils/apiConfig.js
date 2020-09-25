@@ -8,6 +8,8 @@ const getBuildable = (smp) => `https://epok.buenosaires.gob.ar/catastro/seccion_
 
 const getUses = (smp) => `https://epok.buenosaires.gob.ar/catastro/mixtura_usos/?smp=${smp}`
 
+const getAffectations = (smp) => `https://epok.buenosaires.gob.ar/catastro/afectaciones/?smp=${smp}`
+
 export {
-  getParcel, getParcelBySmp, getGeometrical, getBuildable, getUses
+  getParcel, getParcelBySmp, getGeometrical, getBuildable, getUses, getAffectations
 }

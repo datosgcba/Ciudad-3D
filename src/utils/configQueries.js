@@ -64,9 +64,17 @@ const getUsesTable = async () => config.Uses.map(({
   ))
 }))
 
+const getAffectationsTable = async () => config.Uses.map(({
+  id, title, desc
+}) => ({
+  id,
+  title,
+  desc
+}))
+
 export {
   getFullLayerConfig, getGroups, getLayersConfigByGroupId,
   getCustomsIcons, getInformation, getBasicData,
   getLayersGroups, getLayersByLayersGroupId, getBuildable, getUsesTable,
-  getWorksGroups, getColumnsWorksByWorksId
+  getWorksGroups, getColumnsWorksByWorksId, getAffectationsTable
 }

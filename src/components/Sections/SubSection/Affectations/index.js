@@ -19,14 +19,19 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import useStyles from './styles'
 
-const Details = ({ classes, title, fill, decorators }) => (
+const Details = ({ classes, title, subtitle, fill, decorators }) => (
 
   <Box>
     <Box className={classes.card}>
       <Grid container>
         <Grid item xs={12}>
-          <Typography variant="subtitle3" className={decorators.bold}>
+          <Typography variant="subtitle1" className={decorators.bold}>
           {title}
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="subtitle2" className={decorators.bold}>
+          {subtitle}
           </Typography>
         </Grid>
         <Grid item xs={12} className={classes.gridItem}>
@@ -65,11 +70,12 @@ const Affectations = () => {
         </Typography>
       </Box>
       {data &&
-          data.map(({ id, title, desc }) => (
+          data.map(({ id, title, subtitle, desc }) => (
             <Details
               key={id}
               classes={classes}
               decorators={decorators}
+              subtitle={subtitle}
               title={title}
               fill={desc}
             />

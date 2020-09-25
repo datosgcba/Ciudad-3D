@@ -25,7 +25,7 @@ const Details = ({ classes, title, fill, afluencia, iconsData, decorators }) => 
     <Box className={classes.card}>
       <Grid container>
         <Grid item xs={12}>
-          <Typography variant="subtitle3" className={decorators.bold}>
+          <Typography className={decorators.bold}>
           {title}
           </Typography>
         </Grid>

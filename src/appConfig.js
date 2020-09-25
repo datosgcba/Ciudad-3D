@@ -1156,6 +1156,44 @@ const config = {
       title: 'Certificados urbanísticos',
       columns: ['Año', 'Repartición', 'Nº SADE', 'Dirección', '']
     }
+  ],
+  Affectations: [
+    {
+      id: 'riesgo_hidrico',
+      title: 'Riesgo Hídrico',
+      subtitle: 'La parcela se encuentra afectada por riesgo hídrico',
+      desc: 'La parcela se encuentra afectada a riesgo hídrico.'
+    },
+    {
+      id: 'aprox_aeroparque',
+      title: 'Aproximación Aeroparque',
+      subtitle: 'La parcela se encuentra afectada por aproximación a Aeroparque',
+      desc: 'La parcela se encuentra afectada por aproximación a Aeroparque.'
+    },
+    {
+      id: 'lep',
+      title: 'LEP',
+      subtitle: 'La parcela se encuentra afectada a línea de edificación particularizada (LEP)',
+      desc: 'En las nuevas construcciones que se ejecuten con posterioridad a la afectación de L.E. Particularizada con frente a las calles enumeradas en el Cuadro N° 5.4 deberá respetarse el retiro de frente al eje de calle que en el mismo se indica. La franja de terreno comprendida entre la L.O. y la L.E. resultante del retiro previsto deberá ajustarse a lo dispuesto en el artículo 4.3.1 de este Código.'
+    },
+    {
+      id: 'ensanche',
+      title: 'Ensanche',
+      subtitle: 'La parcela se encuentra afectada a ensanche.',
+      desc: 'La parcela se encuentra afectada a ensanche con declaración de utilidad pública y sujeción a expropiación.'
+    },
+    {
+      id: 'apertura',
+      title: 'Apertura',
+      subtitle: 'La parcela se encuentra afectada a apertura de calle.',
+      desc: 'La parcela se encuentra afectada a apertura de calle con declaración de utilidad pública y sujeción a expropiación.'
+    },
+    {
+      id: 'ci_digital',
+      title: 'Cinturón Digital',
+      subtitle: 'La parcela se encuentra afectada a cinturón digital.',
+      desc: 'La parcela se encuentra afectada a cinturón digital.'
+    }
   ]
 }
 

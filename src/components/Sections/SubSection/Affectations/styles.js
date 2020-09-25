@@ -15,7 +15,7 @@ export default makeStyles((theme) => ({
     minWidth: '0 !important'
   },
   card: {
-    height: '103px',
+    minHeight: '103px',
     backgroundColor: '#F5F5F5',
     padding: theme.spacing(1.5),
     marginBottom: theme.spacing(2)

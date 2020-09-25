@@ -64,11 +64,12 @@ const getUsesTable = async () => config.Uses.map(({
   ))
 }))
 
-const getAffectationsTable = async () => config.Uses.map(({
-  id, title, desc
+const getAffectationsTable = async () => config.Affectations.map(({
+  id, title, subtitle, desc
 }) => ({
   id,
   title,
+  subtitle,
   desc
 }))
 

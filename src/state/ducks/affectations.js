@@ -14,10 +14,20 @@ const clickOnParcel = createAsyncThunk(
     // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
     let afectaciones = (await response.json())
-    afectaciones = [1, 2, 3]
+    afectaciones = {
+      riesgo_hidrico: 0,
+      aprox_aeroparque: 1,
+      lep: 1,
+      ensanche: 0,
+      apertura: 1,
+      ci_digital: 1
+    }
+
+    const afectacionesFiltrado = Object.entries(afectaciones).filter(([, value]) => value
+    === 1).map(([key]) => key)
 
     const affectationsTable = await getAffectationsTable()
-    const data = afectaciones
+    const data = afectacionesFiltrado
       .map((id) => affectationsTable.find((at) => at.id === id))
       // TODO: controlar con google si find devuelve null o undefined
       .filter((d) => d !== undefined)

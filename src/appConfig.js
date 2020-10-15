@@ -1048,37 +1048,37 @@ const config = {
   Buildable: [
     {
       title: 'Superficie Máxima Edificable',
-      fill: 'supMaxEdi',
+      fill: 'sup_max_edificable',
       format: ' m²'
     },
     {
       title: 'Superficie Edificable en Planta (Pisada)',
-      fill: 'supEdiPla',
+      fill: 'sup_edificable_planta',
       format: ' m²'
     },
     {
       title: 'Altura Máxima',
-      fill: 'altMax',
+      fill: 'altura_max',
       format: ' m'
     },
     {
       title: 'Altura Máxima Plano Límite',
-      fill: 'altMaxPlaLim',
+      fill: 'altura_max_plano_limite',
       format: ' m'
     },
     {
       title: 'Plusvalía',
-      fill: 'plu',
+      fill: 'plusvalia',
       format: ''
     },
     {
       title: 'Factor Ocupacional Total',
-      fill: 'facOcuTot',
+      fill: 'fot_medianera',
       format: ''
     },
     {
       title: 'Listado de SMP de Parcelas Linderas',
-      fill: 'lisSMPParLin',
+      fill: 'parcelas_linderas.aph_linderas',
       format: ''
     }
   ],

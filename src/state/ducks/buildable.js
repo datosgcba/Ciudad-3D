@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getGeometrical as getBuildable } from 'utils/apiConfig'
+import { getBuildable } from 'utils/apiConfig'
 
 const clickOnParcel = createAsyncThunk(
   'buildable/clickOnParcel',
@@ -12,17 +12,7 @@ const clickOnParcel = createAsyncThunk(
     const response = await fetch(url)
     // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
-    let data = (await response.json())
-    data = {
-      supMaxEdi: 20,
-      supEdiPla: 500,
-      altMax: 6000,
-      altMaxPlaLim: 400,
-      uniEdi: 900,
-      plu: 900,
-      facOcuTot: 300,
-      lisSMPParLin: 400
-    }
+    const data = (await response.json())
     // TODO: traer sólo lo necesario
     return data
   }
@@ -34,6 +24,7 @@ const buildable = createSlice({
     isLoading: false,
     lastIDCAll: '',
     data: {
+      smp: null
     }
   },
   extraReducers: {
@@ -44,6 +35,7 @@ const buildable = createSlice({
     },
     [clickOnParcel.fulfilled]: (draftState, action) => {
       draftState.data = action.payload
+      console.log(draftState.data)
       draftState.isLoading = false
     },
     [clickOnParcel.rejected]: (draftState) => {

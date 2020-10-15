@@ -35,6 +35,7 @@ const seekerParcel = createAsyncThunk(
       const data = (await response.json())
       cameraUpdated(data, dispatch)
       // TODO: traer sólo lo necesario
+      console.log(data)
       return data
     }
     throw new Error()

@@ -35,7 +35,6 @@ const buildable = createSlice({
     },
     [clickOnParcel.fulfilled]: (draftState, action) => {
       draftState.data = action.payload
-      console.log(draftState.data)
       draftState.isLoading = false
     },
     [clickOnParcel.rejected]: (draftState) => {

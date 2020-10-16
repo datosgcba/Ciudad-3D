@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getGeometrical as getUses } from 'utils/apiConfig'
+import { getUses } from 'utils/apiConfig'
 import { getUsesTable } from 'utils/configQueries'
 
 const clickOnParcel = createAsyncThunk(
@@ -13,9 +13,7 @@ const clickOnParcel = createAsyncThunk(
     const response = await fetch(url)
     // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
-    let usos = (await response.json())
-    usos = [1, 2, 3]
-
+    const { usos } = await response.json()
     const usesTable = await getUsesTable()
     const data = usos
       .map((id) => usesTable.find((ut) => ut.id === id))

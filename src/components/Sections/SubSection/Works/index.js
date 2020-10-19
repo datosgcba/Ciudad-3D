@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import {
   Box, Paper, Typography, IconButton,
   TableContainer, Table, TableHead, TableRow,
-  TableCell, TableBody
+  TableCell, TableBody, makeStyles
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
@@ -34,21 +34,21 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9)
 ]
 
-const Data = () => (
+const Data = ({ styles: { tableCell } }) => (
   <TableBody>
     {rows.map((row) => (
       <TableRow key={row.name}>
-        <TableCell>{row.name}</TableCell>
-        <TableCell>{row.calories}</TableCell>
-        <TableCell>{row.fat}</TableCell>
-        <TableCell>{row.carbs}</TableCell>
-        <TableCell>{row.protein}</TableCell>
+        <TableCell className={tableCell}>{row.name}</TableCell>
+        <TableCell className={tableCell}>{row.calories}</TableCell>
+        <TableCell className={tableCell}>{row.fat}</TableCell>
+        <TableCell className={tableCell}>{row.carbs}</TableCell>
+        <TableCell className={tableCell}>{row.protein}</TableCell>
       </TableRow>
     ))}
   </TableBody>
 )
 
-const Columns = ({ id, decorators }) => (
+const Columns = ({ id, styles: { bold, tableCell } }) => (
   <TableContainer>
     <Table>
       <TableHead>
@@ -56,8 +56,8 @@ const Columns = ({ id, decorators }) => (
           {
             getColumnsWorksByWorksId(id).map((column, idx) => (
               // eslint-disable-next-line react/no-array-index-key
-              <TableCell key={idx} style={{ width: '20%' }}>
-                <Typography variant="subtitle2" className={decorators.bold}>
+              <TableCell key={idx} className={tableCell}>
+                <Typography variant="subtitle2" className={bold}>
                   {column}
                 </Typography>
               </TableCell>
@@ -65,7 +65,7 @@ const Columns = ({ id, decorators }) => (
           }
         </TableRow>
       </TableHead>
-      <Data />
+      <Data styles={{ tableCell }} />
     </Table>
   </TableContainer>
 )
@@ -102,7 +102,7 @@ const Works = () => {
                 <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
                   {title}
                 </Typography>
-                <Columns id={id} decorators={decorators} />
+                <Columns id={id} styles={{ ...decorators, ...classes }} />
               </Box>
             ))
           }
@@ -114,7 +114,14 @@ const Works = () => {
 
 Columns.propTypes = {
   id: PropTypes.string.isRequired,
-  decorators: PropTypes.objectOf(PropTypes.string).isRequired
+  bold: PropTypes.string.isRequired,
+  tableCell: PropTypes.string.isRequired,
+  styles: PropTypes.objectOf(makeStyles).isRequired
+}
+
+Data.propTypes = {
+  tableCell: PropTypes.string.isRequired,
+  styles: PropTypes.objectOf(makeStyles).isRequired
 }
 
 export default Works

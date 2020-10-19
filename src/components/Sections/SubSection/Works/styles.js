@@ -4,7 +4,10 @@ export default makeStyles((theme) => ({
   box: {
     marginLeft: theme.spacing(9.75), // 9.75 - 78px
     minHeight: '100vh',
-    width: theme.spacing(86) // 45 - 360px
+    width: theme.spacing(86),
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: theme.spacing(35)
+    } // 45 - 360px
   },
   paper: {
     height: theme.spacing(13.62),
@@ -17,8 +20,10 @@ export default makeStyles((theme) => ({
     paddingRight: theme.spacing(0.5),
     minWidth: '0px !important'
   },
-  boxContainer: {
-    padding: theme.spacing(2),
-    maxHeight: `calc(100vh - ${theme.spacing(13.62)}px)`
+  tableCell: {
+    [theme.breakpoints.down('sm')]: {
+      padding: 0,
+      textAlign: 'center'
+    }
   }
 }))

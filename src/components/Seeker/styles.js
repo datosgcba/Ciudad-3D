@@ -6,7 +6,10 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     maxWidth: 600,
     borderRadius: 1,
-    height: 40
+    height: 40,
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: 200
+    }
   },
 
   input: {

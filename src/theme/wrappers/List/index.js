@@ -10,6 +10,7 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 import ListItem from '@material-ui/core/ListItem'
 
 import useFontsStyles from 'theme/fontsDecorators'
+import useStyles from './styles'
 
 const ListItems = ({
   decorators, subTitle, details, color
@@ -20,27 +21,32 @@ const ListItems = ({
         <Checkbox
           icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
           checkedIcon={<CheckBoxIcon fontSize="large" />}
-          name={subTitle}
         />
       )}
     />
-    <Typography variant="subtitle2" className={`${decorators.grey333}`}>
-      {details}
+    <Typography variant="subtitle2" className={`${decorators.grey333} ${decorators.bold}`}>
+      {`${subTitle}`}
+      <Box>
+        <Typography variant="subtitle2" className={`${decorators.grey333}`}>
+          {details}
+        </Typography>
+      </Box>
     </Typography>
   </ListItem>
 )
 
 const List = ({ items }) => {
   const decorators = useFontsStyles()
-
+  const classes = useStyles()
   return (
-    <Box>
+    <Box className={classes.options}>
       {
-        items.map(({ subTitle, details, color }) => (
+        items.map(({ subTitle, details, color }, idx) => (
           <ListItems
-            key={subTitle}
+            // eslint-disable-next-line react/no-array-index-key
+            key={idx}
             decorators={decorators}
-            subTItle={subTitle}
+            subTitle={subTitle}
             details={details}
             color={color}
           />

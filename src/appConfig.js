@@ -759,6 +759,7 @@ const config = {
       options: [
         {
           id: 'Altura',
+          filters: 'Height',
           title: 'Altura código urbanístico',
           items: [
             {
@@ -795,6 +796,7 @@ const config = {
         },
         {
           id: 'Area',
+          filters: 'Height',
           title: 'Área especial individualizada',
           items: [
             {
@@ -831,6 +833,7 @@ const config = {
         },
         {
           id: 'Mixtura',
+          filters: 'Height',
           title: 'Mixtura de uso',
           items: [
             {
@@ -857,11 +860,101 @@ const config = {
         },
         {
           id: 'Barrio',
+          filters: 'Height',
           title: 'Barrio',
           items: [
             'Agronomía', 'Almagro', 'Balvanera', 'Barras', 'Belgrano', 'Boca', 'Boedo', 'Cabalito',
             'Chacarita', 'Coghlan', 'Colegiales', 'Constitución', 'Flores', 'Floresta', 'Liniers',
             'Mataderos', 'Monserrat', 'Monte Castro', 'Nueva Pompeya', 'Nuñez', 'Palermo', 'Parque Avellaneda'
+          ]
+        },
+        {
+          id: 'Incidence',
+          filters: 'Incidence',
+          title: 'Incidencia Ley 6.062',
+          items: [
+            {
+              subTitle: '',
+              details: 'N/A',
+              color: '#686868'
+            },
+            {
+              subTitle: '',
+              details: '< 300',
+              color: '#8f9ebf'
+            },
+            {
+              subTitle: '',
+              details: '300-400',
+              color: '#9ebbd7'
+            },
+            {
+              subTitle: '',
+              details: '400-500',
+              color: '#9cd6c4'
+            },
+            {
+              subTitle: '',
+              details: '500-600',
+              color: '#deedb8'
+            },
+            {
+              subTitle: '',
+              details: '600-700',
+              color: '#ffffbe'
+            },
+            {
+              subTitle: '',
+              details: '700-800',
+              color: '#ffe3a1'
+            },
+            {
+              subTitle: '',
+              details: '800-900',
+              color: '#ffc473'
+            },
+            {
+              subTitle: '',
+              details: '900-1000',
+              color: '#ff9e63'
+            },
+            {
+              subTitle: '',
+              details: '1000-1500',
+              color: '#f2786b'
+            },
+            {
+              subTitle: '',
+              details: '>= 1500',
+              color: '#c44a4a'
+            }
+          ]
+        },
+        {
+          id: 'Aliquot',
+          filters: 'Incidence',
+          title: 'Alícuota Ley 6.062',
+          items: [
+            {
+              subTitle: 'Zona 1',
+              details: '',
+              color: '#ffbfbf'
+            },
+            {
+              subTitle: 'Zona 2',
+              details: '',
+              color: '#d69090'
+            },
+            {
+              subTitle: 'Zona 3',
+              details: '',
+              color: '#b06868'
+            },
+            {
+              subTitle: 'Zona 4',
+              details: '',
+              color: '#8a4545'
+            }
           ]
         }
       ]
@@ -922,18 +1015,6 @@ const config = {
       id: 'basePlane',
       title: 'Plano base',
       layers: [
-        {
-          title: 'Alturas Código Urbanístico',
-          color: '#EBCFEE'
-        },
-        {
-          title: 'Incidencia Ley 6.062 mod. y comp.',
-          color: '#EEB3AE'
-        },
-        {
-          title: 'Alícuotas ley 6.062 mod. y comp.',
-          color: '#EEB3AE'
-        },
         {
           title: 'Foto aérea 2017',
           color: ''
@@ -1001,6 +1082,20 @@ const config = {
           color: '#E9E1BC'
         }
       ]
+    }
+  ],
+  explorerFilters: [
+    {
+      id: 'Height',
+      title: 'Alturas Código Urbanístico'
+    },
+    {
+      id: 'Incidence',
+      title: 'Incidencia Ley 6.062 mod. y comp.'
+    },
+    {
+      id: 'Aliquot',
+      title: 'Alícuotas ley 6.062 mod. y comp.'
     }
   ],
   BasicData: [

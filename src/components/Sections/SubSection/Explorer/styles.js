@@ -4,8 +4,8 @@ export default makeStyles((theme) => ({
   combo: {
     marginBottom: theme.spacing(3)
   },
-  // GridTwoColumns
-  formControl: {
-    margin: 0
+  unFiltered: {
+    textAlign: 'center',
+    marginTop: '30px'
   }
 }))

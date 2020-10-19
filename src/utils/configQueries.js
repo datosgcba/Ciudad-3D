@@ -73,11 +73,22 @@ const getAffectationsTable = async () => config.Affectations.map(({
   desc
 }))
 
-const getExplorerOptions = () => config.categorias.find((c) => c.id === 'Explorer')
+const getExplorerFilters = () => config.explorerFilters.map(({
+  id, title
+}) => ({
+  id, title
+}))
+
+const getExplorerOptions = (filter) => config.categorias.find(
+  (c) => c.id === 'Explorer'
+).options.filter(
+  (o) => o.filters === filter
+)
 
 export {
   getFullLayerConfig, getGroups, getLayersConfigByGroupId,
   getCustomsIcons, getInformation, getBasicData,
-  getLayersGroups, getLayersByLayersGroupId, getBuildable, getUsesTable,
-  getWorksGroups, getColumnsWorksByWorksId, getAffectationsTable, getExplorerOptions
+  getLayersGroups, getLayersByLayersGroupId, getBuildable,
+  getUsesTable, getWorksGroups, getColumnsWorksByWorksId,
+  getAffectationsTable, getExplorerOptions, getExplorerFilters
 }

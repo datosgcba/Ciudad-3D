@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -12,10 +12,14 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
-import GridTwoColumns from 'components/Sections/SubSection/Explorer/GridTwoColumns'
-import { List } from 'theme/wrappers'
 
-import { getLayersGroups, getLayersByLayersGroupId, getExplorerOptions } from 'utils/configQueries'
+import { List, GridTwoColumns } from 'theme/wrappers'
+
+import { actions } from 'state/ducks/explorer'
+
+import { useDispatch, useSelector } from 'react-redux'
+
+import { getExplorerOptions, getExplorerFilters } from 'utils/configQueries'
 
 import useStyles from './styles'
 
@@ -24,6 +28,8 @@ const AccordionOptions = ({ id, title, items }) => {
     ['Altura', List],
     ['Area', List],
     ['Mixtura', List],
+    ['Incidence', List],
+    ['Aliquot', List],
     ['Barrio', GridTwoColumns]
   ])
   const AccordionItem = accordionItems.get(id)
@@ -48,26 +54,28 @@ const AccordionOptions = ({ id, title, items }) => {
 const Explorer = () => {
   const decorators = useFontsStyles()
   const classes = useStyles()
-  const groupLayers = (getLayersGroups().map(({ id, title }) => (
-    { id, title }
-  )))
+  const dispatch = useDispatch()
 
-  const groupOptions = groupLayers.map(({ id }) => (
-    getLayersByLayersGroupId(id)
-  ))
+  const filterHeighOptions = useSelector((state) => state.explorer.filterHeighOptions)
+  const filterIncidenceOptions = useSelector((state) => state.explorer.filterIncidenceOptions)
 
-  const filtersOptions = []
-  groupOptions.forEach((group) => (
-    group.forEach((options) => (
-      filtersOptions.push(options)
-    ))
-  ))
+  // Filtros
+  const filters = getExplorerFilters()
 
-  const { options } = getExplorerOptions()
-  const [explorerOptions] = useState(options)
+  const handleComboChange = (value) => {
+    const showHeight = !!value.find((c) => c.id === 'Height')
+    const showIncidence = !!value.find((c) => c.id === 'Incidence' || c.id === 'Aliquot')
 
-  const handleComboChange = () => {
-    // TODO: filtrar
+    // TODO: habilitar eslint sin perder funcionalidad
+    // eslint-disable-next-line no-unused-expressions
+    showHeight
+      ? dispatch(actions.filterHeighOptions(true))
+      : dispatch(actions.filterHeighOptions(false))
+
+    // eslint-disable-next-line no-unused-expressions
+    showIncidence
+      ? dispatch(actions.filterIncidenceOptions(true))
+      : dispatch(actions.filterIncidenceOptions(false))
   }
 
   return (
@@ -80,7 +88,7 @@ const Explorer = () => {
         multiple
         limitTags={3}
         onChange={(_, value) => { handleComboChange(value) }}
-        options={filtersOptions}
+        options={filters}
         disableCloseOnSelect
         getOptionLabel={(option) => option.title}
         renderInput={(params) => (
@@ -88,16 +96,53 @@ const Explorer = () => {
           <TextField {...params} variant="outlined" label="Filtros" placeholder="Capas" />
         )}
       />
-      <Box>
-        {explorerOptions.map(({ id, title, items }) => (
-          <AccordionOptions
-            key={id}
-            id={id}
-            title={title}
-            items={items}
-          />
-        ))}
-      </Box>
+      {
+        !filterHeighOptions && !filterIncidenceOptions && (
+          <Box className={classes.unFiltered}>
+            <Typography variant="h6" className={decorators.bold}>
+              Seleccione un filtro
+            </Typography>
+          </Box>
+        )
+      }
+      {
+        filterHeighOptions && (
+          <Box>
+            <Typography variant="body2" className={`${decorators.marginTop_xl} ${decorators.marginBottom_ml}`}>
+              Alturas Código Urbanístico
+            </Typography>
+            {
+              getExplorerOptions('Height').map(({ id, title, items }) => (
+                <AccordionOptions
+                  key={id}
+                  id={id}
+                  title={title}
+                  items={items}
+                />
+              ))
+            }
+          </Box>
+        )
+      }
+      {
+        filterIncidenceOptions && (
+          <Box>
+            <Typography variant="body2" className={`${decorators.marginTop_xl} ${decorators.marginBottom_ml}`}>
+              Incidencia Ley 6.062, Alícuotas Ley 6.062
+            </Typography>
+            {
+              getExplorerOptions('Incidence').map(({ id, title, items }) => (
+                <AccordionOptions
+                  key={id}
+                  id={id}
+                  title={title}
+                  items={items}
+                />
+              ))
+            }
+          </Box>
+        )
+      }
     </ContainerBar>
   )
 }

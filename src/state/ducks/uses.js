@@ -14,7 +14,6 @@ const clickOnParcel = createAsyncThunk(
     // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
     const { usos } = await response.json()
-    console.log(usos)
     const usesTable = await getUsesTable()
     const data = usos
       .map((id) => usesTable.find((ut) => ut.id === id))

@@ -17,7 +17,7 @@ export default makeStyles((theme) => ({
     height: theme.spacing(10),
     padding: theme.spacing(1),
     float: 'left',
-    '&:last-child': {
+    '&:nth-last-child(-n+3)': {
       width: theme.spacing(37)
     }
   },

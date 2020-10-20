@@ -58,13 +58,15 @@ const Explorer = () => {
 
   const filterHeighOptions = useSelector((state) => state.explorer.filterHeighOptions)
   const filterIncidenceOptions = useSelector((state) => state.explorer.filterIncidenceOptions)
+  const value = useSelector((state) => state.explorer.autoCompleteValue)
 
   // Filtros
   const filters = getExplorerFilters()
 
-  const handleComboChange = (value) => {
-    const showHeight = !!value.find((c) => c.id === 'Height')
-    const showIncidence = !!value.find((c) => c.id === 'Incidence' || c.id === 'Aliquot')
+  const handleComboChange = (nextValue) => {
+    dispatch(actions.selectedValue(nextValue))
+    const showHeight = !!nextValue.find((c) => c.id === 'Height')
+    const showIncidence = !!nextValue.find((c) => c.id === 'Incidence' || c.id === 'Aliquot')
 
     // TODO: habilitar eslint sin perder funcionalidad
     // eslint-disable-next-line no-unused-expressions
@@ -87,10 +89,12 @@ const Explorer = () => {
         className={classes.combo}
         multiple
         limitTags={3}
-        onChange={(_, value) => { handleComboChange(value) }}
         options={filters}
+        value={value}
         disableCloseOnSelect
+        filterSelectedOptions
         getOptionLabel={(option) => option.title}
+        onChange={(_, nextValue) => handleComboChange(nextValue)}
         renderInput={(params) => (
           // eslint-disable-next-line react/jsx-props-no-spreading
           <TextField {...params} variant="outlined" label="Filtros" placeholder="Capas" />

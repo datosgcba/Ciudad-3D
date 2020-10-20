@@ -3,8 +3,14 @@ import { createSlice } from '@reduxjs/toolkit'
 const explorer = createSlice({
   name: 'explorer',
   initialState: {
+    autoCompleteValue: [
+      {
+        id: 'Height',
+        title: 'Alturas Código Urbanístico'
+      }
+    ],
     filterHeighOptions: true,
-    filterIncidenceOptions: true
+    filterIncidenceOptions: false
   },
   reducers: {
     filterHeighOptions: (draftState, action) => {
@@ -12,6 +18,9 @@ const explorer = createSlice({
     },
     filterIncidenceOptions: (draftState, action) => {
       draftState.filterIncidenceOptions = action.payload
+    },
+    selectedValue: (draftState, action) => {
+      draftState.autoCompleteValue = action.payload
     }
   }
 })

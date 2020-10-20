@@ -22,9 +22,11 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.0.1",
     "react-smooth-scrollbar": "^8.0.6",
+    "reactour": "^1.18.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "smooth-scrollbar": "^8.5.2"
+    "smooth-scrollbar": "^8.5.2",
+    "styled-components": "^4.0.0"
   },
   "scripts": {
     "start": "env-cmd -f .env.development react-scripts start",

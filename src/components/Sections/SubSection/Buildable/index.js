@@ -25,7 +25,7 @@ import { getBuildable } from 'utils/configQueries'
 import useStyles from './styles'
 
 const Details = ({
-  classes, title, fill, format, decorators
+  classes, title, fill, fillDos, fillTres, format, decorators
 }) => (
   <Box className={classes.subDetails}>
     <Grid container>
@@ -37,6 +37,8 @@ const Details = ({
       <Grid item xs={12} className={classes.gridItem}>
         <Typography variant="subtitle1" className={`${classes.value}`}>
           {fill}
+          {fillDos} 
+          {fillTres}
           {format}
         </Typography>
       </Grid>
@@ -73,13 +75,15 @@ const Buildable = () => {
         </Typography>
       </Box>
       {
-          getBuildable().map(({ title, fill, format }, index) => (
+          getBuildable().map(({ title, fill, fillDos, fillTres, format }, index) => (
             <Details
               key={index}
               classes={classes}
               decorators={decorators}
               title={title}
               fill={data[fill]}
+              fillDos={data[fillDos]}
+              fillTres={data[fillTres]}
               format={format}
             />
           ))
@@ -93,11 +97,15 @@ Details.propTypes = {
   decorators: PropTypes.objectOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   fill: PropTypes.string,
+  fillDos: PropTypes.string,
+  fillTres: PropTypes.string,
   format: PropTypes.string.isRequired
 }
 
 Details.defaultProps = {
-  fill: ''
+  fill: '',
+  fillDos: '',
+  fillTres:''
 }
 
 export default Buildable

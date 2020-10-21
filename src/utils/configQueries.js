@@ -48,8 +48,10 @@ const getBasicData = () => config.BasicData.map(({ title, fill, format }) => ({
   title, fill, format
 }))
 
-const getBuildable = () => config.Buildable.map(({ title, fill, format }) => ({
-  title, fill, format
+const getBuildable = () => config.Buildable.map(({
+  title, fill, fillDos, fillTres, format
+}) => ({
+  title, fill, fillDos, fillTres, format
 }))
 
 const getUsesTable = async () => config.Uses.map(({

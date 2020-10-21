@@ -1177,14 +1177,18 @@ const config = {
     },
     {
       title: 'Factor Ocupacional Total',
+      subtitle: 'Medianera: ',
       fill: 'fot_medianera',
-      fillDos: 'fot_perim_libre',
-      fillTres: 'fot_semi_libre',
+      subtitlePL: 'Perímetro Libre: ',
+      fillPL: 'fot_perim_libre',
+      subtitleSL: 'Perímetro Semi-Libre: ',
+      fillSL: 'fot_semi_libre',
       format: ''
     },
     {
       title: 'Listado de SMP de Parcelas Linderas',
-      fill: 'parcelas_linderas.smp_linderas',
+      fill: 'parcelas_linderas',
+      field: 'smp_linderas',
       format: ''
     }
   ],

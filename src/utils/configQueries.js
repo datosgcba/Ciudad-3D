@@ -49,9 +49,9 @@ const getBasicData = () => config.BasicData.map(({ title, fill, format }) => ({
 }))
 
 const getBuildable = () => config.Buildable.map(({
-  title, fill, fillDos, fillTres, format
+  title, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format
 }) => ({
-  title, fill, fillDos, fillTres, format
+  title, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format
 }))
 
 const getUsesTable = async () => config.Uses.map(({

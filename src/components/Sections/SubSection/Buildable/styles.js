@@ -18,11 +18,15 @@ export default makeStyles((theme) => ({
     padding: theme.spacing(1),
     float: 'left',
     '&:nth-last-child(-n+3)': {
-      width: theme.spacing(37)
+      width: theme.spacing(37),
+      height: 'auto'
     }
   },
   button: {
     // padding: 0,
     minWidth: '0px !important'
+  },
+  listado: {
+    paddingLeft: 0
   }
 }))

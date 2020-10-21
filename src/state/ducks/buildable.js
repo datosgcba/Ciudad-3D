@@ -13,6 +13,8 @@ const clickOnParcel = createAsyncThunk(
     // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
     const data = (await response.json())
+    data.parcelas_linderas.smp_linderas = ['0001', '45466', '222']
+    console.log(data)
     // TODO: traer sólo lo necesario
     return data
   }

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useEffect } from 'react'
 
 import PropTypes from 'prop-types'
@@ -7,7 +6,9 @@ import {
   Box,
   Typography,
   Grid,
-  IconButton
+  IconButton,
+  List,
+  ListItem
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
@@ -25,7 +26,7 @@ import { getBuildable } from 'utils/configQueries'
 import useStyles from './styles'
 
 const Details = ({
-  classes, title, fill, fillDos, fillTres, format, decorators
+  classes, title, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format, decorators
 }) => (
   <Box className={classes.subDetails}>
     <Grid container>
@@ -35,12 +36,37 @@ const Details = ({
         </Typography>
       </Grid>
       <Grid item xs={12} className={classes.gridItem}>
-        <Typography variant="subtitle1" className={`${classes.value}`}>
-          {fill}
-          {fillDos} 
-          {fillTres}
-          {format}
-        </Typography>
+        {
+          // eslint-disable-next-line no-nested-ternary
+          typeof fill === 'object' ? (
+            fill[field].map((smp) => (
+              <ListItem className={classes.listado}>
+                {smp}
+              </ListItem>
+            )))
+            : (title === 'Factor Ocupacional Total' ? (
+              <List>
+                <ListItem className={classes.listado}>
+                  {subtitle}
+                  {fill}
+                </ListItem>
+                <ListItem className={classes.listado}>
+                  {subtitlePL}
+                  {fillPL}
+                </ListItem>
+                <ListItem className={classes.listado}>
+                  {subtitleSL}
+                  {fillSL}
+                </ListItem>
+              </List>
+            ) : (
+              <Typography variant="subtitle1" className={`${classes.value}`}>
+                {fill}
+                {format}
+              </Typography>
+            )
+            )
+        }
       </Grid>
     </Grid>
   </Box>
@@ -52,6 +78,7 @@ const Buildable = () => {
   const data = useSelector((state) => state.buildable.data)
   const dispatch = useDispatch()
   const smp = useSelector((state) => state.basicData.data.smp)
+
   useEffect(() => {
     dispatch(buildableActions.clickOnParcel(smp))
   }, [dispatch, smp])
@@ -75,19 +102,26 @@ const Buildable = () => {
         </Typography>
       </Box>
       {
-          getBuildable().map(({ title, fill, fillDos, fillTres, format }, index) => (
-            <Details
-              key={index}
-              classes={classes}
-              decorators={decorators}
-              title={title}
-              fill={data[fill]}
-              fillDos={data[fillDos]}
-              fillTres={data[fillTres]}
-              format={format}
-            />
-          ))
-        }
+        getBuildable().map(({
+          title, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format
+        }, index) => (
+          <Details
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+            classes={classes}
+            decorators={decorators}
+            title={title}
+            fill={data[fill]}
+            field={field}
+            subtitle={subtitle}
+            subtitlePL={subtitlePL}
+            subtitleSL={subtitleSL}
+            fillPL={data[fillPL]}
+            fillSL={data[fillSL]}
+            format={format}
+          />
+        ))
+      }
     </ContainerBar>
   )
 }
@@ -97,15 +131,23 @@ Details.propTypes = {
   decorators: PropTypes.objectOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   fill: PropTypes.string,
-  fillDos: PropTypes.string,
-  fillTres: PropTypes.string,
+  field: PropTypes.string,
+  fillPL: PropTypes.string,
+  fillSL: PropTypes.string,
+  subtitle: PropTypes.string,
+  subtitlePL: PropTypes.string,
+  subtitleSL: PropTypes.string,
   format: PropTypes.string.isRequired
 }
 
 Details.defaultProps = {
   fill: '',
-  fillDos: '',
-  fillTres:''
+  field: '',
+  fillPL: '',
+  fillSL: '',
+  subtitle: '',
+  subtitlePL: '',
+  subtitleSL: ''
 }
 
 export default Buildable

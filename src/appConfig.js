@@ -756,204 +756,210 @@ const config = {
       <g id="Grupo_47" data-name="Grupo 47" transform="translate(644.613 136.984)"><path id="Trazado_15" data-name="Trazado 15" d="M647.083,154.5a1,1,0,0,1-.94-1.34l3.917-10.833a1,1,0,0,1,.645-.616l10.25-3.167a1,1,0,0,1,1.252,1.245l-3.167,10.5a1,1,0,0,1-.654.664l-11,3.5A.987.987,0,0,1,647.083,154.5Zm4.688-11.025-3.058,8.457,8.564-2.725,2.473-8.2Z" transform="translate(-646.083 -138.5)" /></g>
     </g>
   </svg>,
-      options: [
+      categories: [
         {
-          id: 'Altura',
-          filters: 'Height',
-          title: 'Altura código urbanístico',
-          items: [
+          id: 'Height',
+          title: 'Capa Altura',
+          options: [
             {
-              subTitle: '38 m',
-              details: 'Corredores Altos',
-              color: '#557e8d'
+              id: 'Altura',
+              title: 'Altura código urbanístico',
+              items: [
+                {
+                  subTitle: '38 m',
+                  details: 'Corredores Altos',
+                  color: '#557e8d'
+                },
+                {
+                  subTitle: '31.2 m',
+                  details: 'Corredores Medios',
+                  color: '#85adb1'
+                },
+                {
+                  subTitle: '22.8 m',
+                  details: 'Unidades de Sustentabilidad de Altura Alta',
+                  color: '#ea9e82'
+                },
+                {
+                  subTitle: '16.5 m',
+                  details: 'Unidades de Sustentabilidad de Altura Media',
+                  color: '#f5c294'
+                },
+                {
+                  subTitle: '11.2 m',
+                  details: 'Unidades de Sustentabilidad de Altura Baja 2',
+                  color: '#c9c2ab'
+                },
+                {
+                  subTitle: '9 m',
+                  details: 'Unidades de Sustentabilidad de Altura Baja 1',
+                  color: '#f0e6cc'
+                }
+              ]
             },
             {
-              subTitle: '31.2 m',
-              details: 'Corredores Medios',
-              color: '#85adb1'
+              id: 'Area',
+              title: 'Área especial individualizada',
+              items: [
+                {
+                  subTitle: 'AE',
+                  details: 'Área de Arquitectura Especial',
+                  color: '#CCADAD'
+                },
+                {
+                  subTitle: 'APH',
+                  details: 'Área de Arqquitectura Especial',
+                  color: '#F9BCB4'
+                },
+                {
+                  subTitle: 'ARE',
+                  details: 'Área de Reserva Ecológica',
+                  color: '#BCC489'
+                },
+                {
+                  subTitle: 'Área de Renovación',
+                  details: 'Área de renovación urbana Riachuelo',
+                  color: '#efefef'
+                },
+                {
+                  subTitle: 'EE',
+                  details: 'Equipamentos Especiales',
+                  color: '#AAB4C7'
+                },
+                {
+                  subTitle: 'Espacio Público',
+                  details: 'Espacio Público',
+                  color: '#c2ccb7'
+                }
+              ]
             },
             {
-              subTitle: '22.8 m',
-              details: 'Unidades de Sustentabilidad de Altura Alta',
-              color: '#ea9e82'
+              id: 'Mixtura',
+              title: 'Mixtura de uso',
+              items: [
+                {
+                  subTitle: 'Mixtura 1',
+                  details: 'Área de Baja Mixtura de Usos de Suelo 1',
+                  color: 'white'
+                },
+                {
+                  subTitle: 'Mixtura 2',
+                  details: 'Área de Media Mixtura de Usos de Suelo 2',
+                  color: 'white'
+                },
+                {
+                  subTitle: 'Mixtura 3',
+                  details: 'Área de Media Mixtura de Usos de Suelo 3',
+                  color: 'white'
+                },
+                {
+                  subTitle: 'Mixtura 4',
+                  details: 'Área de Alta Mixtura de Usos de Suelo 4',
+                  color: 'white'
+                }
+              ]
             },
             {
-              subTitle: '16.5 m',
-              details: 'Unidades de Sustentabilidad de Altura Media',
-              color: '#f5c294'
-            },
-            {
-              subTitle: '11.2 m',
-              details: 'Unidades de Sustentabilidad de Altura Baja 2',
-              color: '#c9c2ab'
-            },
-            {
-              subTitle: '9 m',
-              details: 'Unidades de Sustentabilidad de Altura Baja 1',
-              color: '#f0e6cc'
+              id: 'Barrio',
+              title: 'Barrio',
+              items: [
+                'Agronomía', 'Almagro', 'Balvanera', 'Barras', 'Belgrano', 'Boca', 'Boedo', 'Cabalito',
+                'Chacarita', 'Coghlan', 'Colegiales', 'Constitución', 'Flores', 'Floresta', 'Liniers',
+                'Mataderos', 'Monserrat', 'Monte Castro', 'Nueva Pompeya', 'Nuñez', 'Palermo', 'Parque Avellaneda'
+              ]
             }
           ]
         },
         {
-          id: 'Area',
-          filters: 'Height',
-          title: 'Área especial individualizada',
-          items: [
+          id: 'IncidenceAliquot',
+          title: 'Capa Incidencia y Alícuota',
+          options: [
             {
-              subTitle: 'AE',
-              details: 'Área de Arquitectura Especial',
-              color: '#CCADAD'
+              id: 'Incidence',
+              title: 'Incidencia Ley 6.062',
+              items: [
+                {
+                  subTitle: '',
+                  details: 'N/A',
+                  color: '#686868'
+                },
+                {
+                  subTitle: '',
+                  details: '< 300',
+                  color: '#8f9ebf'
+                },
+                {
+                  subTitle: '',
+                  details: '300-400',
+                  color: '#9ebbd7'
+                },
+                {
+                  subTitle: '',
+                  details: '400-500',
+                  color: '#9cd6c4'
+                },
+                {
+                  subTitle: '',
+                  details: '500-600',
+                  color: '#deedb8'
+                },
+                {
+                  subTitle: '',
+                  details: '600-700',
+                  color: '#ffffbe'
+                },
+                {
+                  subTitle: '',
+                  details: '700-800',
+                  color: '#ffe3a1'
+                },
+                {
+                  subTitle: '',
+                  details: '800-900',
+                  color: '#ffc473'
+                },
+                {
+                  subTitle: '',
+                  details: '900-1000',
+                  color: '#ff9e63'
+                },
+                {
+                  subTitle: '',
+                  details: '1000-1500',
+                  color: '#f2786b'
+                },
+                {
+                  subTitle: '',
+                  details: '>= 1500',
+                  color: '#c44a4a'
+                }
+              ]
             },
             {
-              subTitle: 'APH',
-              details: 'Área de Arqquitectura Especial',
-              color: '#F9BCB4'
-            },
-            {
-              subTitle: 'ARE',
-              details: 'Área de Reserva Ecológica',
-              color: '#BCC489'
-            },
-            {
-              subTitle: 'Área de Renovación',
-              details: 'Área de renovación urbana Riachuelo',
-              color: '#efefef'
-            },
-            {
-              subTitle: 'EE',
-              details: 'Equipamentos Especiales',
-              color: '#AAB4C7'
-            },
-            {
-              subTitle: 'Espacio Público',
-              details: 'Espacio Público',
-              color: '#c2ccb7'
-            }
-          ]
-        },
-        {
-          id: 'Mixtura',
-          filters: 'Height',
-          title: 'Mixtura de uso',
-          items: [
-            {
-              subTitle: 'Mixtura 1',
-              details: 'Área de Baja Mixtura de Usos de Suelo 1',
-              color: 'white'
-            },
-            {
-              subTitle: 'Mixtura 2',
-              details: 'Área de Media Mixtura de Usos de Suelo 2',
-              color: 'white'
-            },
-            {
-              subTitle: 'Mixtura 3',
-              details: 'Área de Media Mixtura de Usos de Suelo 3',
-              color: 'white'
-            },
-            {
-              subTitle: 'Mixtura 4',
-              details: 'Área de Alta Mixtura de Usos de Suelo 4',
-              color: 'white'
-            }
-          ]
-        },
-        {
-          id: 'Barrio',
-          filters: 'Height',
-          title: 'Barrio',
-          items: [
-            'Agronomía', 'Almagro', 'Balvanera', 'Barras', 'Belgrano', 'Boca', 'Boedo', 'Cabalito',
-            'Chacarita', 'Coghlan', 'Colegiales', 'Constitución', 'Flores', 'Floresta', 'Liniers',
-            'Mataderos', 'Monserrat', 'Monte Castro', 'Nueva Pompeya', 'Nuñez', 'Palermo', 'Parque Avellaneda'
-          ]
-        },
-        {
-          id: 'Incidence',
-          filters: 'Incidence',
-          title: 'Incidencia Ley 6.062',
-          items: [
-            {
-              subTitle: '',
-              details: 'N/A',
-              color: '#686868'
-            },
-            {
-              subTitle: '',
-              details: '< 300',
-              color: '#8f9ebf'
-            },
-            {
-              subTitle: '',
-              details: '300-400',
-              color: '#9ebbd7'
-            },
-            {
-              subTitle: '',
-              details: '400-500',
-              color: '#9cd6c4'
-            },
-            {
-              subTitle: '',
-              details: '500-600',
-              color: '#deedb8'
-            },
-            {
-              subTitle: '',
-              details: '600-700',
-              color: '#ffffbe'
-            },
-            {
-              subTitle: '',
-              details: '700-800',
-              color: '#ffe3a1'
-            },
-            {
-              subTitle: '',
-              details: '800-900',
-              color: '#ffc473'
-            },
-            {
-              subTitle: '',
-              details: '900-1000',
-              color: '#ff9e63'
-            },
-            {
-              subTitle: '',
-              details: '1000-1500',
-              color: '#f2786b'
-            },
-            {
-              subTitle: '',
-              details: '>= 1500',
-              color: '#c44a4a'
-            }
-          ]
-        },
-        {
-          id: 'Aliquot',
-          filters: 'Incidence',
-          title: 'Alícuota Ley 6.062',
-          items: [
-            {
-              subTitle: 'Zona 1',
-              details: '',
-              color: '#ffbfbf'
-            },
-            {
-              subTitle: 'Zona 2',
-              details: '',
-              color: '#d69090'
-            },
-            {
-              subTitle: 'Zona 3',
-              details: '',
-              color: '#b06868'
-            },
-            {
-              subTitle: 'Zona 4',
-              details: '',
-              color: '#8a4545'
+              id: 'Aliquot',
+              title: 'Alícuota Ley 6.062',
+              items: [
+                {
+                  subTitle: 'Zona 1',
+                  details: '',
+                  color: '#ffbfbf'
+                },
+                {
+                  subTitle: 'Zona 2',
+                  details: '',
+                  color: '#d69090'
+                },
+                {
+                  subTitle: 'Zona 3',
+                  details: '',
+                  color: '#b06868'
+                },
+                {
+                  subTitle: 'Zona 4',
+                  details: '',
+                  color: '#8a4545'
+                }
+              ]
             }
           ]
         }
@@ -970,6 +976,23 @@ const config = {
       <path id="Trazado_12" data-name="Trazado 12" d="M51.919,699.94l5.791-4.186H69.779V680.84H51.919Z" fill="none" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="1.688" />
     </g>
   </svg>
+    }
+  ],
+  explorerFilters: [
+    {
+      id: 'Height',
+      filterId: 'Height',
+      title: 'Alturas Código Urbanístico'
+    },
+    {
+      id: 'Incidence',
+      filterId: 'IncidenceAliquot',
+      title: 'Incidencia Ley 6.062 mod. y comp.'
+    },
+    {
+      id: 'Aliquot',
+      filterId: 'IncidenceAliquot',
+      title: 'Alícuotas ley 6.062 mod. y comp.'
     }
   ],
   Information: [
@@ -1082,20 +1105,6 @@ const config = {
           color: '#E9E1BC'
         }
       ]
-    }
-  ],
-  explorerFilters: [
-    {
-      id: 'Height',
-      title: 'Alturas Código Urbanístico'
-    },
-    {
-      id: 'Incidence',
-      title: 'Incidencia Ley 6.062 mod. y comp.'
-    },
-    {
-      id: 'Aliquot',
-      title: 'Alícuotas ley 6.062 mod. y comp.'
     }
   ],
   BasicData: [

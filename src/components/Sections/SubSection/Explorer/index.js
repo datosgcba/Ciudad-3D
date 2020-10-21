@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -56,28 +56,29 @@ const Explorer = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
 
-  const filterHeighOptions = useSelector((state) => state.explorer.filterHeighOptions)
-  const filterIncidenceOptions = useSelector((state) => state.explorer.filterIncidenceOptions)
   const value = useSelector((state) => state.explorer.autoCompleteValue)
 
+  // Se eliminan los valores repetidos por tener el mismo filtro
+  const categories = []
+  const auxObj = {}
+  const explorerOptions = value.map(({ filterId }) => getExplorerOptions(filterId))
+  explorerOptions.forEach((arrayOpt) => {
+    if (!(arrayOpt[0].id in auxObj)) {
+      auxObj[arrayOpt[0].id] = true
+      categories.push(arrayOpt)
+    }
+  })
+
   // Filtros
-  const filters = getExplorerFilters()
+  const [filters, setFilters] = useState([])
+  const [focusFilter, setFocusFilter] = useState(false)
 
-  const handleComboChange = (nextValue) => {
+  useEffect(() => {
+    setFilters(getExplorerFilters().filter((f) => !value || !value.map((v) => v.id).includes(f.id)))
+  }, [value])
+
+  const handleComboChange = (_, nextValue) => {
     dispatch(actions.selectedValue(nextValue))
-    const showHeight = !!nextValue.find((c) => c.id === 'Height')
-    const showIncidence = !!nextValue.find((c) => c.id === 'Incidence' || c.id === 'Aliquot')
-
-    // TODO: habilitar eslint sin perder funcionalidad
-    // eslint-disable-next-line no-unused-expressions
-    showHeight
-      ? dispatch(actions.filterHeighOptions(true))
-      : dispatch(actions.filterHeighOptions(false))
-
-    // eslint-disable-next-line no-unused-expressions
-    showIncidence
-      ? dispatch(actions.filterIncidenceOptions(true))
-      : dispatch(actions.filterIncidenceOptions(false))
   }
 
   return (
@@ -91,17 +92,17 @@ const Explorer = () => {
         limitTags={3}
         options={filters}
         value={value}
-        disableCloseOnSelect
-        filterSelectedOptions
+        onOpen={() => setFocusFilter(true)}
+        onClose={() => setFocusFilter(false)}
         getOptionLabel={(option) => option.title}
-        onChange={(_, nextValue) => handleComboChange(nextValue)}
+        onChange={handleComboChange}
         renderInput={(params) => (
           // eslint-disable-next-line react/jsx-props-no-spreading
           <TextField {...params} variant="outlined" label="Filtros" placeholder="Capas" />
         )}
       />
       {
-        !filterHeighOptions && !filterIncidenceOptions && (
+        value.length === 0 && (
           <Box className={classes.unFiltered}>
             <Typography variant="h6" className={decorators.bold}>
               Seleccione un filtro
@@ -110,42 +111,24 @@ const Explorer = () => {
         )
       }
       {
-        filterHeighOptions && (
-          <Box>
-            <Typography variant="body2" className={`${decorators.marginTop_xl} ${decorators.marginBottom_ml}`}>
-              Alturas Código Urbanístico
-            </Typography>
-            {
-              getExplorerOptions('Height').map(({ id, title, items }) => (
-                <AccordionOptions
-                  key={id}
-                  id={id}
-                  title={title}
-                  items={items}
-                />
-              ))
-            }
-          </Box>
-        )
-      }
-      {
-        filterIncidenceOptions && (
-          <Box>
-            <Typography variant="body2" className={`${decorators.marginTop_xl} ${decorators.marginBottom_ml}`}>
-              Incidencia Ley 6.062, Alícuotas Ley 6.062
-            </Typography>
-            {
-              getExplorerOptions('Incidence').map(({ id, title, items }) => (
-                <AccordionOptions
-                  key={id}
-                  id={id}
-                  title={title}
-                  items={items}
-                />
-              ))
-            }
-          </Box>
-        )
+        !focusFilter && categories
+          .map((cat) => cat.map(({ title, id, options }) => (
+            <Box key={id}>
+              <Typography variant="body2" className={`${decorators.marginTop_xl} ${decorators.marginBottom_ml}`}>
+                {title}
+              </Typography>
+              {
+                options.map(({ id: idx, title: t, items }) => (
+                  <AccordionOptions
+                    key={idx}
+                    id={idx}
+                    title={t}
+                    items={items}
+                  />
+                ))
+              }
+            </Box>
+          )))
       }
     </ContainerBar>
   )

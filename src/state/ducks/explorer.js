@@ -6,6 +6,7 @@ const explorer = createSlice({
     autoCompleteValue: [
       {
         id: 'Height',
+        filterId: 'Height',
         title: 'Alturas Código Urbanístico'
       }
     ],

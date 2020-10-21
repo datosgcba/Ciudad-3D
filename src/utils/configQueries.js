@@ -74,16 +74,14 @@ const getAffectationsTable = async () => config.Affectations.map(({
 }))
 
 const getExplorerFilters = () => config.explorerFilters.map(({
-  id, title
+  id, filterId, title
 }) => ({
-  id, title
+  id, filterId, title
 }))
 
 const getExplorerOptions = (filter) => config.categorias.find(
   (c) => c.id === 'Explorer'
-).options.filter(
-  (o) => o.filters === filter
-)
+).categories.filter((c) => c.id === filter)
 
 export {
   getFullLayerConfig, getGroups, getLayersConfigByGroupId,

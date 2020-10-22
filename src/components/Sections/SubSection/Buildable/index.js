@@ -37,18 +37,18 @@ const Details = ({
       </Grid>
       <Grid item xs={12} className={classes.gridItem}>
         {
-          // eslint-disable-next-line no-nested-ternary
           typeof fill === 'object' ? (
             fill[field].map((smp) => (
               <ListItem className={classes.listado}>
-                {smp}
+                {`${smp}`}
               </ListItem>
             )))
-            : (title === 'Factor Ocupacional Total' ? (
+            : (
               <List>
                 <ListItem className={classes.listado}>
                   {subtitle}
                   {fill}
+                  {format}
                 </ListItem>
                 <ListItem className={classes.listado}>
                   {subtitlePL}
@@ -59,12 +59,6 @@ const Details = ({
                   {fillSL}
                 </ListItem>
               </List>
-            ) : (
-              <Typography variant="subtitle1" className={`${classes.value}`}>
-                {fill}
-                {format}
-              </Typography>
-            )
             )
         }
       </Grid>

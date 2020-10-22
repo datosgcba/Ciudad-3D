@@ -48,6 +48,10 @@ const getBasicData = () => config.BasicData.map(({ title, fill, format }) => ({
   title, fill, format
 }))
 
+const getCapitalGain = () => config.CapitalGain.map(({ title, fill, format }) => ({
+  title, fill, format
+}))
+
 const getBuildable = () => config.Buildable.map(({
   title, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format
 }) => ({
@@ -90,5 +94,5 @@ export {
   getCustomsIcons, getInformation, getBasicData,
   getLayersGroups, getLayersByLayersGroupId, getBuildable,
   getUsesTable, getWorksGroups, getColumnsWorksByWorksId,
-  getAffectationsTable, getExplorerOptions, getExplorerFilters
+  getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain
 }

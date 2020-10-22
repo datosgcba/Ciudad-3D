@@ -6,10 +6,12 @@ const getGeometrical = (smp) => `https://epok.buenosaires.gob.ar/catastro/geomet
 
 const getBuildable = (smp) => `https://epok.buenosaires.gob.ar/cur3d/seccion_edificabilidad/?smp=${smp}`
 
+const getCapitalGain = (smp) => `https://epok.buenosaires.gob.ar/cur3d/calcular_plusvalia/?smp=${smp}`
+
 const getUses = (smp) => `https://epok.buenosaires.gob.ar/cur3d/mixtura_usos/?smp=${smp}`
 
 const getAffectations = (smp) => `https://epok.buenosaires.gob.ar/catastro/afectaciones/?smp=${smp}`
 
 export {
-  getParcel, getParcelBySmp, getGeometrical, getBuildable, getUses, getAffectations
+  getParcel, getParcelBySmp, getGeometrical, getBuildable, getCapitalGain, getUses, getAffectations
 }

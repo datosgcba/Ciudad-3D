@@ -1149,6 +1149,20 @@ const config = {
       format: ''
     }
   ],
+  CapitalGain: [
+    {
+      title: 'Plusvalía Medianera',
+      fill: 'plusvalia_em'
+    },
+    {
+      title: 'Plusvalía Perímetro Libre',
+      fill: 'plusvalia_pl'
+    },
+    {
+      title: 'Plusvalía Perímetro Semi-Libre',
+      fill: 'plusvalia_sl'
+    }
+  ],
   Buildable: [
     {
       title: 'Superficie Máxima Edificable',

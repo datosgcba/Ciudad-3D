@@ -1172,7 +1172,7 @@ const config = {
     },
     {
       title: 'Plusvalía',
-      fill: 'plusvalia',
+      fill: '',
       format: ''
     },
     {

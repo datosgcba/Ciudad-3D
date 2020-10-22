@@ -10,7 +10,7 @@ const getCapitalGain = (smp) => `https://epok.buenosaires.gob.ar/cur3d/calcular_
 
 const getUses = (smp) => `https://epok.buenosaires.gob.ar/cur3d/mixtura_usos/?smp=${smp}`
 
-const getAffectations = (smp) => `https://epok.buenosaires.gob.ar/catastro/afectaciones/?smp=${smp}`
+const getAffectations = (smp) => `https://epok.buenosaires.gob.ar/cur3d/afectaciones/?smp=${smp}`
 
 export {
   getParcel, getParcelBySmp, getGeometrical, getBuildable, getCapitalGain, getUses, getAffectations

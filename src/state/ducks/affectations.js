@@ -13,15 +13,7 @@ const clickOnParcel = createAsyncThunk(
     const response = await fetch(url)
     // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
-    let afectaciones = (await response.json())
-    afectaciones = {
-      riesgo_hidrico: 0,
-      aprox_aeroparque: 1,
-      lep: 1,
-      ensanche: 0,
-      apertura: 1,
-      ci_digital: 1
-    }
+    const afectaciones = (await response.json())
 
     const afectacionesFiltrado = Object.entries(afectaciones).filter(([, value]) => value
     === 1).map(([key]) => key)

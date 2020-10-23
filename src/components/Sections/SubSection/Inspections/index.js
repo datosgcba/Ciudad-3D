@@ -8,7 +8,7 @@ import {
   TableCell, TableBody, makeStyles
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
-import ContainerBarWorks from 'components/Sections/ContainerBarWorks'
+import ContainerBar from 'components/Sections/ContainerBar'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
@@ -17,13 +17,13 @@ import { actions as worksActions } from 'state/ducks/works'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getWorksGroups, getColumnsWorksByWorksId } from 'utils/configQueries'
+import { getInspectionsGroups, getColumnsInspectionsByInspectionsId } from 'utils/configQueries'
 
 import useStyles from './styles'
 
-function createData(expte, fecha, tipoObra, superficie, destino) {
+function createData(area, direccion, fechaInspeccion) {
   return {
-    expte, fecha, tipoObra, superficie, destino
+    area, direccion, fechaInspeccion
   }
 }
 
@@ -39,11 +39,9 @@ const Data = ({ styles: { tableCell } }) => (
   <TableBody>
     {rows.map((row) => (
       <TableRow key={row.name}>
-        <TableCell className={tableCell}>{row.expte}</TableCell>
-        <TableCell className={tableCell}>{row.fecha}</TableCell>
-        <TableCell className={tableCell}>{row.tipoObra}</TableCell>
-        <TableCell className={tableCell}>{row.superficie}</TableCell>
-        <TableCell className={tableCell}>{row.destino}</TableCell>
+        <TableCell className={tableCell}>{row.area}</TableCell>
+        <TableCell className={tableCell}>{row.direccion}</TableCell>
+        <TableCell className={tableCell}>{row.fechaInspeccion}</TableCell>
       </TableRow>
     ))}
   </TableBody>
@@ -55,7 +53,7 @@ const Columns = ({ id, styles: { bold, tableCell } }) => (
       <TableHead>
         <TableRow>
           {
-            getColumnsWorksByWorksId(id).map((column, idx) => (
+            getColumnsInspectionsByInspectionsId(id).map((column, idx) => (
               // eslint-disable-next-line react/no-array-index-key
               <TableCell key={idx} className={tableCell}>
                 <Typography variant="subtitle2" className={bold}>
@@ -71,7 +69,7 @@ const Columns = ({ id, styles: { bold, tableCell } }) => (
   </TableContainer>
 )
 
-const Works = () => {
+const Inspections = () => {
   const classes = useStyles()
   const decorators = useFontsStyles()
   // const data = useSelector((state) => state.works.data)
@@ -83,7 +81,7 @@ const Works = () => {
   }, [dispatch, smp])
 
   return (
-    <ContainerBarWorks>
+    <ContainerBar>
       <Typography
         variant="h5"
         className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_xl}`}
@@ -98,12 +96,12 @@ const Works = () => {
           >
             <ArrowBackIcon />
           </IconButton>
-          Obras
+          Inspecciones
         </Typography>
       </Box>
       <Box className={classes.boxContainer}>
         {
-            getWorksGroups().map(({ id, title }) => (
+            getInspectionsGroups().map(({ id, title }) => (
               <Box className={classes.boxSubContainer} key={id}>
                 <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
                   {title}
@@ -113,7 +111,7 @@ const Works = () => {
             ))
           }
       </Box>
-    </ContainerBarWorks>
+    </ContainerBar>
   )
 }
 
@@ -129,4 +127,4 @@ Data.propTypes = {
   styles: PropTypes.objectOf(makeStyles).isRequired
 }
 
-export default Works
+export default Inspections

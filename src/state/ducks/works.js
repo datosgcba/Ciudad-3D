@@ -1,26 +1,26 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getBuildable } from 'utils/apiConfig'
+// import { getWorks } from 'utils/apiConfig'
 
 const clickOnParcel = createAsyncThunk(
-  'buildable/clickOnParcel',
+  'works/clickOnParcel',
   async (smp) => {
     if (smp.length === undefined) {
       return { smp: 'Invalido' }
     }
-    const url = getBuildable(smp)
-    const response = await fetch(url)
+    // const url = getBuildable(smp)
+    // const response = await fetch(url)
     // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
-    const data = (await response.json())
-    data.parcelas_linderas.smp_linderas = ['0001', '45466', '222']
+    // const data = (await response.json())
+    const data = ['0001', '45466', '222', '222', '222']
     // TODO: traer sólo lo necesario
     return data
   }
 )
 
-const buildable = createSlice({
-  name: 'buildable',
+const works = createSlice({
+  name: 'works',
   initialState: {
     isLoading: false,
     lastIDCAll: '',
@@ -45,7 +45,7 @@ const buildable = createSlice({
   }
 })
 
-export default buildable.reducer
+export default works.reducer
 
-const actions = { ...buildable.actions, clickOnParcel }
+const actions = { ...works.actions, clickOnParcel }
 export { actions }

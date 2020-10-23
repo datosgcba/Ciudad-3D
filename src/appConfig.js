@@ -1316,6 +1316,18 @@ const config = {
       subtitle: 'La parcela se encuentra afectada a cinturón digital.',
       desc: 'La parcela se encuentra afectada a cinturón digital.'
     }
+  ],
+  Inspections: [
+    {
+      id: 'worksStarted',
+      title: 'Inspecciones',
+      columns: ['Area', 'Dirección', 'Fecha de Inspección']
+    },
+    {
+      id: 'worksRegisters',
+      title: 'Certificados de Fachada',
+      columns: ['Area', 'Dirección', 'Fecha de Inspección']
+    }
   ]
 }
 

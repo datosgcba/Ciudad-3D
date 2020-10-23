@@ -4,10 +4,10 @@ export default makeStyles((theme) => ({
   box: {
     marginLeft: theme.spacing(9.75), // 9.75 - 78px
     minHeight: '100vh',
-    width: theme.spacing(86),
+    width: theme.spacing(46),
     [theme.breakpoints.down('sm')]: {
       maxWidth: theme.spacing(35)
-    } // 45 - 360px padding-left: 35px;
+    } // 45 - 360px
   },
   boxSubContainer: {
     paddingTop: theme.spacing(4)

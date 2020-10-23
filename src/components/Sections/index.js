@@ -10,6 +10,7 @@ import Buildable from 'components/Sections/SubSection/Buildable'
 import Contact from 'components/Sections/SubSection/Contact'
 import Explorer from 'components/Sections/SubSection/Explorer'
 import Information from 'components/Sections/SubSection/Information'
+import Inspections from 'components/Sections/SubSection/Inspections'
 import LayerGroup from 'components/Sections/SubSection/LayerGroup'
 import Uses from 'components/Sections/SubSection/Uses'
 import Works from 'components/Sections/SubSection/Works'
@@ -32,7 +33,8 @@ const Section = () => {
     ['BasicData', BasicData],
     ['Uses', Uses],
     ['Works', Works],
-    ['Affectations', Affectations]
+    ['Affectations', Affectations],
+    ['Inspections', Inspections]
   ])
 
   // Acá busco el que voy a usar

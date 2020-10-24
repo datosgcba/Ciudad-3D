@@ -5,8 +5,9 @@ import { Drawer, makeStyles } from '@material-ui/core'
 import Categories from 'components/Categories/Categories'
 import Logo from 'components/Logo/Logo'
 
-import config from 'appConfig'
+import { getCategories } from 'utils/configQueries'
 
+const data = getCategories()
 const useStyles = makeStyles((theme) => ({
   sideBarPaper: {
     width: theme.spacing(9.75),
@@ -29,7 +30,7 @@ const ConnectedPanel = () => {
       <div className={classes.logo}>
         <Logo />
       </div>
-      <Categories data={config.categorias} />
+      <Categories data={data} />
     </Drawer>
   )
 }

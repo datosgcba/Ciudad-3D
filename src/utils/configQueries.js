@@ -1,22 +1,14 @@
-import config from 'appConfig'
+import config from 'appConfig.json'
 // Métodos que devuelven mucha data y puede no ser serializable
 const getFullLayerConfig = (idGroup, idLayer) => config
   .grupos.find((g) => g.id === idGroup)
   .layers.find((l) => l.id === idLayer)
 
 // Métodos que retornan data acotada y segura de serializar
-const getGroups = () => config.grupos.map(({ id, title, private: isPrivate }) => ({
-  id,
-  title,
-  isPrivate
-}))
-
-const getLayersConfigByGroupId = (idGroup) => config
-  .grupos.find((g) => g.id === idGroup)
-  .layers.map(({ id, private: isPrivate }) => ({
-    id,
-    isPrivate
-  }))
+const getCategories = () => config.categories.map(
+  // TODO: agregar path al appConfig,json
+  ({ id, title }) => ({ id, title })
+)
 
 const getLayersGroups = () => config.layersGroup.map(({ id, title }) => ({
   id,
@@ -30,43 +22,44 @@ const getLayersByLayersGroupId = (layersGroupId) => config
     color
   }))
 
-const getWorksGroups = () => config.Works.map(({ id, title }) => ({
+const getWorksGroups = () => config.works.map(({ id, title }) => ({
   id,
   title
 }))
 
-const getColumnsWorksByWorksId = (WorkId) => config
-  .Works.find((w) => w.id === WorkId).columns
+const getColumnsWorksByWorksId = (workId) => config
+  .works.find((w) => w.id === workId).columns
 
-const getInspectionsGroups = () => config.Inspections.map(({ id, title }) => ({
+const getInspectionsGroups = () => config.inspections.map(({ id, title }) => ({
   id,
   title
 }))
 
-const getColumnsInspectionsByInspectionsId = (InspectionId) => config
-  .Inspections.find((i) => i.id === InspectionId).columns
+const getColumnsInspectionsByInspectionsId = (inspectionId) => config
+  .inspections.find((i) => i.id === inspectionId).columns
 
 const getCustomsIcons = () => config.customIcons.map(({ id, data }) => ({ id, data }))
 
-const getInformation = () => config.Information.map(({ id, title, description }) => ({
+const getInformation = () => config.information.map(({ id, title, description }) => ({
   id, title, description
 }))
 
-const getBasicData = () => config.BasicData.map(({ title, fill, format }) => ({
+const getBasicData = () => config.basicData.map(({ title, fill, format }) => ({
   title, fill, format
 }))
 
-const getCapitalGain = () => config.CapitalGain.map(({ title, fill, format }) => ({
+const getCapitalGain = () => config.capitalGain.map(({ title, fill, format }) => ({
   title, fill, format
 }))
 
-const getBuildable = () => config.Buildable.map(({
+const getBuildable = () => config.buildable.map(({
   title, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format
 }) => ({
   title, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format
 }))
 
-const getUsesTable = async () => config.Uses.map(({
+// TODO: agregar iconos al appConfig,json
+const getUsesTable = async () => config.uses.map(({
   id, title, desc, afluencia, icons
 }) => ({
   id,
@@ -78,7 +71,7 @@ const getUsesTable = async () => config.Uses.map(({
   ))
 }))
 
-const getAffectationsTable = async () => config.Affectations.map(({
+const getAffectationsTable = async () => config.affectations.map(({
   id, title, subtitle, desc
 }) => ({
   id,
@@ -93,13 +86,10 @@ const getExplorerFilters = () => config.explorerFilters.map(({
   id, filterId, title
 }))
 
-const getExplorerOptions = (filter) => config.categorias.find(
-  (c) => c.id === 'Explorer'
-).categories.filter((c) => c.id === filter)
+const getExplorerOptions = (filter) => config.explorer.filter((c) => c.id === filter)
 
 export {
-  getFullLayerConfig, getGroups, getLayersConfigByGroupId,
-  getCustomsIcons, getInformation, getBasicData,
+  getCategories, getFullLayerConfig, getCustomsIcons, getInformation, getBasicData,
   getLayersGroups, getLayersByLayersGroupId, getBuildable,
   getUsesTable, getWorksGroups, getColumnsWorksByWorksId,
   getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain,

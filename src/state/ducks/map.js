@@ -1,5 +1,5 @@
 import {
-  getGroups, getLayersConfigByGroupId, getFullLayerConfig, getCustomsIcons
+  getGroups, getFullLayerConfig, getCustomsIcons
 } from 'utils/configQueries'
 import { loadImages, mapOnPromise } from 'utils/mapboxUtils'
 
@@ -79,19 +79,6 @@ const map = createSlice({
   name: 'map',
   initialState: {
     isMapReady: false,
-    groups: getGroups().reduce((result, { id, title }) => ({
-      ...result,
-      [id]: {
-        title,
-        layers: getLayersConfigByGroupId(id).reduce((resultLayer, { id: idLayer }) => ({
-          ...resultLayer,
-          [idLayer]: {
-            isVisible: false,
-            processingId: null
-          }
-        }), {})
-      }
-    }), {}),
     camera: {
       lat: -34.62,
       lng: -58.44,

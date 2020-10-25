@@ -1,4 +1,6 @@
 import config from 'appConfig.json'
+import icons from 'utils/svgIcons'
+
 // Métodos que devuelven mucha data y puede no ser serializable
 const getFullLayerConfig = (idGroup, idLayer) => config
   .grupos.find((g) => g.id === idGroup)
@@ -6,8 +8,7 @@ const getFullLayerConfig = (idGroup, idLayer) => config
 
 // Métodos que retornan data acotada y segura de serializar
 const getCategories = () => config.categories.map(
-  // TODO: agregar path al appConfig,json
-  ({ id, title }) => ({ id, title })
+  ({ id, title, path }) => ({ id, title, path: icons.find((i) => i.id === path).path })
 )
 
 const getLayersGroups = () => config.layersGroup.map(({ id, title }) => ({
@@ -38,8 +39,6 @@ const getInspectionsGroups = () => config.inspections.map(({ id, title }) => ({
 const getColumnsInspectionsByInspectionsId = (inspectionId) => config
   .inspections.find((i) => i.id === inspectionId).columns
 
-const getCustomsIcons = () => config.customIcons.map(({ id, data }) => ({ id, data }))
-
 const getInformation = () => config.information.map(({ id, title, description }) => ({
   id, title, description
 }))
@@ -58,16 +57,15 @@ const getBuildable = () => config.buildable.map(({
   title, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format
 }))
 
-// TODO: agregar iconos al appConfig,json
 const getUsesTable = async () => config.uses.map(({
-  id, title, desc, afluencia, icons
+  id, title, desc, afluencia, icons: icon
 }) => ({
   id,
   title,
   desc,
   afluencia,
-  iconsData: icons.map(({ title: iconTitle, svgId }) => (
-    { iconTitle, svg: config.Icons[svgId] }
+  iconsData: icon.map(({ title: iconTitle, svgId }) => (
+    { iconTitle, svg: icons.find((i) => i.id === svgId).path }
   ))
 }))
 
@@ -89,7 +87,7 @@ const getExplorerFilters = () => config.explorerFilters.map(({
 const getExplorerOptions = (filter) => config.explorer.filter((c) => c.id === filter)
 
 export {
-  getCategories, getFullLayerConfig, getCustomsIcons, getInformation, getBasicData,
+  getCategories, getFullLayerConfig, getInformation, getBasicData,
   getLayersGroups, getLayersByLayersGroupId, getBuildable,
   getUsesTable, getWorksGroups, getColumnsWorksByWorksId,
   getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain,

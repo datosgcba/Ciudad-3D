@@ -1,32 +1,25 @@
 {
   "defaultMarkerColor": "#FF9A17",
-  "customIcons": [],
-  "icons": {
-    "iconoResidencia": "Link o img en base 64",
-    "iconoComercio": "Link o img en base 64",
-    "iconoServicio": "Link o img en base 64",
-    "iconoDepositos": "Link o img en base 64"
-  },
   "categories": [
     {
       "id": "Information",
       "title": "Información",
-      "path": "informationPath"
+      "path": "information"
     },
     {
       "id": "LayerGroup",
       "title": "Capas",
-      "path": "layerGroupsPath"
+      "path": "layerGroups"
     },
     {
       "id": "Explorer",
       "title": "Explorar",
-      "path": "explorerPath"
+      "path": "explorer"
     },
     {
       "id": "Contact",
       "title": "Ayudanos a mejorar",
-      "path": "contactPath"
+      "path": "contact"
     }
   ],
   "explorer": [

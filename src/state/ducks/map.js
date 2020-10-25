@@ -1,7 +1,5 @@
-import {
-  getGroups, getFullLayerConfig, getCustomsIcons
-} from 'utils/configQueries'
-import { loadImages, mapOnPromise } from 'utils/mapboxUtils'
+import { getFullLayerConfig } from 'utils/configQueries'
+import { mapOnPromise } from 'utils/mapboxUtils'
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
@@ -42,10 +40,7 @@ const initMap = createAsyncThunk(
     mapGL = mapInstance
     const mapOnLoad = mapOnPromise(mapInstance.map)('load')
     return mapOnLoad
-      .then(async () => {
-        await loadImages(mapInstance.map, getCustomsIcons())
-        return true
-      })
+      .then(async () => true)
       .catch(() => false)
   }, {
     condition: () => mapGL === null

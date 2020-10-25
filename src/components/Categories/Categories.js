@@ -44,12 +44,11 @@ const Categories = ({ data }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMapReady, parcelCoords, dispatch])
 
-  const path = <svg id="info" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" width="28" height="28" viewBox="0 0 28 28"><g id="Grupo_45" data-name="Grupo 45"><path id="Trazado_13" data-name="Trazado 13" d="M23.9,4.1A14,14,0,0,0,4.1,23.9,14,14,0,0,0,23.9,4.1ZM14,3.828a3.008,3.008,0,1,1-3.008,3.008A3.011,3.011,0,0,1,14,3.828Zm3.828,19.141H10.172V21.328h1.641v-8.2H10.172V11.484h6.016v9.844h1.641Z" /></g></svg>
   return (
     <Box className={classes.options}>
       {
         // TODO: agregar path
-        data.map(({ id, title }) => (
+        data.map(({ id, title, path }) => (
           <Category
             key={id}
             id={id}

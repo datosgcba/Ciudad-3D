@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect } from 'react'
 
 import PropTypes from 'prop-types'
@@ -21,33 +22,174 @@ import { getWorksGroups, getColumnsWorksByWorksId } from 'utils/configQueries'
 
 import useStyles from './styles'
 
-function createData(expte, fecha, tipoObra, superficie, destino) {
-  return {
-    expte, fecha, tipoObra, superficie, destino
+// Éste ejemplo es sólo a modo de prueba, la respuesta de la Api puede ser totalmente diferente
+const dataState = [
+  {
+    type: 'worksStarted',
+    data: [
+      {
+        id: 'Obra100',
+        workData: [
+          {
+            column: 'expte',
+            value: '1'
+          },
+          {
+            column: 'date',
+            value: '20-10-20'
+          },
+          {
+            column: 'workType',
+            value: '---'
+          },
+          {
+            column: 'sup',
+            value: '475 m²'
+          },
+          {
+            column: 'dest',
+            value: 'Comercio'
+          }
+        ]
+      },
+      {
+        id: 'Obra200',
+        workData: [
+          {
+            column: 'expte',
+            value: '2'
+          },
+          {
+            column: 'date',
+            value: '24-10-20'
+          },
+          {
+            column: 'workType',
+            value: '---'
+          },
+          {
+            column: 'sup',
+            value: '175 m²'
+          },
+          {
+            column: 'dest',
+            value: 'Local'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    type: 'worksRegisters',
+    data: [
+      {
+        id: 'Obra300',
+        workData: [
+          {
+            column: 'expte',
+            value: '3'
+          },
+          {
+            column: 'date',
+            value: '24-10-20'
+          },
+          {
+            column: 'workType',
+            value: '---'
+          },
+          {
+            column: 'sup',
+            value: '80 m²'
+          },
+          {
+            column: 'dest',
+            value: 'Vivienda'
+          }
+        ]
+      },
+      {
+        id: 'Obra200',
+        workData: [
+          {
+            column: 'expte',
+            value: '4'
+          },
+          {
+            column: 'date',
+            value: '28-10-20'
+          },
+          {
+            column: 'workType',
+            value: '---'
+          },
+          {
+            column: 'sup',
+            value: '175 m²'
+          },
+          {
+            column: 'dest',
+            value: 'Comercio'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    type: 'urbanCertificates',
+    data: [
+      {
+        id: 'Obra300',
+        workData: [
+          {
+            column: 'expte',
+            value: '5'
+          },
+          {
+            column: 'date',
+            value: '24-10-20'
+          },
+          {
+            column: 'workType',
+            value: '---'
+          },
+          {
+            column: 'sup',
+            value: '80 m²'
+          },
+          {
+            column: 'dest',
+            value: 'Vivienda'
+          }
+        ]
+      },
+      {
+        id: 'Obra200',
+        workData: [
+          {
+            column: 'expte',
+            value: '6'
+          },
+          {
+            column: 'date',
+            value: '28-10-20'
+          },
+          {
+            column: 'workType',
+            value: '---'
+          },
+          {
+            column: 'sup',
+            value: '175 m²'
+          },
+          {
+            column: 'dest',
+            value: 'Comercio'
+          }
+        ]
+      }
+    ]
   }
-}
-
-const rows = [
-  createData('---', 159, 6.0, 24, 4.0),
-  createData('---', 237, 9.0, 37, 4.3),
-  createData('---', 262, 16.0, 24, 6.0),
-  createData('---', 305, 3.7, 67, 4.3),
-  createData('---', 356, 16.0, 49, 3.9)
 ]
-
-const Data = ({ styles: { tableCell } }) => (
-  <TableBody>
-    {rows.map((row) => (
-      <TableRow key={row.name}>
-        <TableCell className={tableCell}>{row.expte}</TableCell>
-        <TableCell className={tableCell}>{row.fecha}</TableCell>
-        <TableCell className={tableCell}>{row.tipoObra}</TableCell>
-        <TableCell className={tableCell}>{row.superficie}</TableCell>
-        <TableCell className={tableCell}>{row.destino}</TableCell>
-      </TableRow>
-    ))}
-  </TableBody>
-)
 
 const Columns = ({ id, styles: { bold, tableCell } }) => (
   <TableContainer>
@@ -56,7 +198,6 @@ const Columns = ({ id, styles: { bold, tableCell } }) => (
         <TableRow>
           {
             getColumnsWorksByWorksId(id).map((column, idx) => (
-              // eslint-disable-next-line react/no-array-index-key
               <TableCell key={idx} className={tableCell}>
                 <Typography variant="subtitle2" className={bold}>
                   {column}
@@ -66,7 +207,29 @@ const Columns = ({ id, styles: { bold, tableCell } }) => (
           }
         </TableRow>
       </TableHead>
-      <Data styles={{ tableCell }} />
+      <TableBody styles={{ tableCell }}>
+        {
+          // Se busca la tabla correspondiente
+          dataState.find(
+            (type) => type.type === id
+          ).data.map(
+            ({ workData }) => ({ workData })
+          // Se mapea cada una de las obras para dicha tabla
+          // Por lo tanto se crea una nueva TableRow por cada obra
+          ).map(({ workData }, idx) => (
+            <TableRow key={idx}>
+              {
+                // Se mapean los valores de cada obra para cada columna
+                workData.map(
+                  ({ value }, indx) => (
+                    <TableCell key={indx} className={tableCell}>{value}</TableCell>
+                  )
+                )
+              }
+            </TableRow>
+          ))
+        }
+      </TableBody>
     </Table>
   </TableContainer>
 )
@@ -103,29 +266,28 @@ const Works = () => {
       </Box>
       <Box className={classes.boxContainer}>
         {
-            getWorksGroups().map(({ id, title }) => (
-              <Box className={classes.boxSubContainer} key={id}>
-                <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
-                  {title}
-                </Typography>
-                <Columns id={id} styles={{ ...decorators, ...classes }} />
-              </Box>
-            ))
-          }
+          getWorksGroups().map(({ id, title }) => (
+            <Box className={classes.boxSubContainer} key={id}>
+              <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
+                {title}
+              </Typography>
+              <Columns id={id} styles={{ ...decorators, ...classes }} />
+            </Box>
+          ))
+        }
       </Box>
     </ContainerBarWorks>
   )
 }
 
+Columns.defaultProps = {
+  bold: '',
+  tableCell: ''
+}
 Columns.propTypes = {
   id: PropTypes.string.isRequired,
-  bold: PropTypes.string.isRequired,
-  tableCell: PropTypes.string.isRequired,
-  styles: PropTypes.objectOf(makeStyles).isRequired
-}
-
-Data.propTypes = {
-  tableCell: PropTypes.string.isRequired,
+  bold: PropTypes.string,
+  tableCell: PropTypes.string,
   styles: PropTypes.objectOf(makeStyles).isRequired
 }
 

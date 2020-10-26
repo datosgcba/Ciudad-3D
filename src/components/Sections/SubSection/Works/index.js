@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -23,216 +23,56 @@ import { getWorksGroups, getColumnsWorksByWorksId } from 'utils/configQueries'
 import useStyles from './styles'
 
 // Éste ejemplo es sólo a modo de prueba, la respuesta de la Api puede ser totalmente diferente
-const dataState = [
-  {
-    type: 'worksStarted',
-    data: [
-      {
-        id: 'Obra100',
-        workData: [
-          {
-            column: 'expte',
-            value: '1'
-          },
-          {
-            column: 'date',
-            value: '20-10-20'
-          },
-          {
-            column: 'workType',
-            value: '---'
-          },
-          {
-            column: 'sup',
-            value: '475 m²'
-          },
-          {
-            column: 'dest',
-            value: 'Comercio'
-          }
-        ]
-      },
-      {
-        id: 'Obra200',
-        workData: [
-          {
-            column: 'expte',
-            value: '2'
-          },
-          {
-            column: 'date',
-            value: '24-10-20'
-          },
-          {
-            column: 'workType',
-            value: '---'
-          },
-          {
-            column: 'sup',
-            value: '175 m²'
-          },
-          {
-            column: 'dest',
-            value: 'Local'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    type: 'worksRegisters',
-    data: [
-      {
-        id: 'Obra300',
-        workData: [
-          {
-            column: 'expte',
-            value: '3'
-          },
-          {
-            column: 'date',
-            value: '24-10-20'
-          },
-          {
-            column: 'workType',
-            value: '---'
-          },
-          {
-            column: 'sup',
-            value: '80 m²'
-          },
-          {
-            column: 'dest',
-            value: 'Vivienda'
-          }
-        ]
-      },
-      {
-        id: 'Obra200',
-        workData: [
-          {
-            column: 'expte',
-            value: '4'
-          },
-          {
-            column: 'date',
-            value: '28-10-20'
-          },
-          {
-            column: 'workType',
-            value: '---'
-          },
-          {
-            column: 'sup',
-            value: '175 m²'
-          },
-          {
-            column: 'dest',
-            value: 'Comercio'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    type: 'urbanCertificates',
-    data: [
-      {
-        id: 'Obra300',
-        workData: [
-          {
-            column: 'expte',
-            value: '5'
-          },
-          {
-            column: 'date',
-            value: '24-10-20'
-          },
-          {
-            column: 'workType',
-            value: '---'
-          },
-          {
-            column: 'sup',
-            value: '80 m²'
-          },
-          {
-            column: 'dest',
-            value: 'Vivienda'
-          }
-        ]
-      },
-      {
-        id: 'Obra200',
-        workData: [
-          {
-            column: 'expte',
-            value: '6'
-          },
-          {
-            column: 'date',
-            value: '28-10-20'
-          },
-          {
-            column: 'workType',
-            value: '---'
-          },
-          {
-            column: 'sup',
-            value: '175 m²'
-          },
-          {
-            column: 'dest',
-            value: 'Comercio'
-          }
-        ]
-      }
-    ]
-  }
-]
 
-const Columns = ({ id, styles: { bold, tableCell } }) => (
-  <TableContainer>
-    <Table>
-      <TableHead>
-        <TableRow>
+const Columns = ({ id, styles: { bold, tableCell } }) => {
+  const dataState = useSelector((state) => state.works.data)
+  const [data, setData] = useState(null)
+  useEffect(() => {
+    const work = dataState.find((type) => type.type === id) || {}
+    setData(work.data)
+  }, [id, dataState])
+
+  return (
+    <TableContainer>
+      <Table>
+        <TableHead>
+          <TableRow>
+            {
+              getColumnsWorksByWorksId(id).map((column, idx) => (
+                <TableCell key={idx} className={tableCell}>
+                  <Typography variant="subtitle2" className={bold}>
+                    {column}
+                  </Typography>
+                </TableCell>
+              ))
+            }
+          </TableRow>
+        </TableHead>
+        <TableBody styles={{ tableCell }}>
           {
-            getColumnsWorksByWorksId(id).map((column, idx) => (
-              <TableCell key={idx} className={tableCell}>
-                <Typography variant="subtitle2" className={bold}>
-                  {column}
-                </Typography>
-              </TableCell>
+            // Se busca la tabla correspondiente
+            data && data.map(
+              ({ workData }) => ({ workData })
+            // Se mapea cada una de las obras para dicha tabla
+            // Por lo tanto se crea una nueva TableRow por cada obra
+            ).map(({ workData }, idx) => (
+              <TableRow key={idx}>
+                {
+                  // Se mapean los valores de cada obra para cada columna
+                  workData.map(
+                    ({ value }, indx) => (
+                      <TableCell key={indx} className={tableCell}>{value}</TableCell>
+                    )
+                  )
+                }
+              </TableRow>
             ))
           }
-        </TableRow>
-      </TableHead>
-      <TableBody styles={{ tableCell }}>
-        {
-          // Se busca la tabla correspondiente
-          dataState.find(
-            (type) => type.type === id
-          ).data.map(
-            ({ workData }) => ({ workData })
-          // Se mapea cada una de las obras para dicha tabla
-          // Por lo tanto se crea una nueva TableRow por cada obra
-          ).map(({ workData }, idx) => (
-            <TableRow key={idx}>
-              {
-                // Se mapean los valores de cada obra para cada columna
-                workData.map(
-                  ({ value }, indx) => (
-                    <TableCell key={indx} className={tableCell}>{value}</TableCell>
-                  )
-                )
-              }
-            </TableRow>
-          ))
-        }
-      </TableBody>
-    </Table>
-  </TableContainer>
-)
+        </TableBody>
+      </Table>
+    </TableContainer>
+  )
+}
 
 const Works = () => {
   const classes = useStyles()

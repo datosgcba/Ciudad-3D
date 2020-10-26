@@ -13,9 +13,177 @@ const clickOnParcel = createAsyncThunk(
     // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
     // const data = (await response.json())
-    const data = ['0001', '45466', '222', '222', '222']
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+    await delay(1000)
+    const dataState = [
+      {
+        type: 'worksStarted',
+        data: [
+          {
+            id: 'Obra100',
+            workData: [
+              {
+                column: 'expte',
+                value: '1'
+              },
+              {
+                column: 'date',
+                value: '20-10-20'
+              },
+              {
+                column: 'workType',
+                value: '---'
+              },
+              {
+                column: 'sup',
+                value: '475 m²'
+              },
+              {
+                column: 'dest',
+                value: 'Comercio'
+              }
+            ]
+          },
+          {
+            id: 'Obra200',
+            workData: [
+              {
+                column: 'expte',
+                value: '2'
+              },
+              {
+                column: 'date',
+                value: '24-10-20'
+              },
+              {
+                column: 'workType',
+                value: '---'
+              },
+              {
+                column: 'sup',
+                value: '175 m²'
+              },
+              {
+                column: 'dest',
+                value: 'Local'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        type: 'worksRegisters',
+        data: [
+          {
+            id: 'Obra300',
+            workData: [
+              {
+                column: 'expte',
+                value: '3'
+              },
+              {
+                column: 'date',
+                value: '24-10-20'
+              },
+              {
+                column: 'workType',
+                value: '---'
+              },
+              {
+                column: 'sup',
+                value: '80 m²'
+              },
+              {
+                column: 'dest',
+                value: 'Vivienda'
+              }
+            ]
+          },
+          {
+            id: 'Obra200',
+            workData: [
+              {
+                column: 'expte',
+                value: '4'
+              },
+              {
+                column: 'date',
+                value: '28-10-20'
+              },
+              {
+                column: 'workType',
+                value: '---'
+              },
+              {
+                column: 'sup',
+                value: '175 m²'
+              },
+              {
+                column: 'dest',
+                value: 'Comercio'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        type: 'urbanCertificates',
+        data: [
+          {
+            id: 'Obra300',
+            workData: [
+              {
+                column: 'expte',
+                value: '5'
+              },
+              {
+                column: 'date',
+                value: '24-10-20'
+              },
+              {
+                column: 'workType',
+                value: '---'
+              },
+              {
+                column: 'sup',
+                value: '80 m²'
+              },
+              {
+                column: 'dest',
+                value: 'Vivienda'
+              }
+            ]
+          },
+          {
+            id: 'Obra200',
+            workData: [
+              {
+                column: 'expte',
+                value: '6'
+              },
+              {
+                column: 'date',
+                value: '28-10-20'
+              },
+              {
+                column: 'workType',
+                value: '---'
+              },
+              {
+                column: 'sup',
+                value: '175 m²'
+              },
+              {
+                column: 'dest',
+                value: 'Comercio'
+              }
+            ]
+          }
+        ]
+      }
+    ]
     // TODO: traer sólo lo necesario
-    return data
+    return dataState
   }
 )
 
@@ -23,16 +191,13 @@ const works = createSlice({
   name: 'works',
   initialState: {
     isLoading: false,
-    lastIDCAll: '',
-    data: {
-      smp: null
-    }
+    data: []
   },
   extraReducers: {
     // TODO: clickOnParcel.pending
     [clickOnParcel.pending]: (draftState) => {
       draftState.isLoading = true
-      draftState.data = {}
+      draftState.data = []
     },
     [clickOnParcel.fulfilled]: (draftState, action) => {
       draftState.data = action.payload
@@ -40,7 +205,7 @@ const works = createSlice({
     },
     [clickOnParcel.rejected]: (draftState) => {
       draftState.isLoading = false
-      draftState.data = {}
+      draftState.data = []
     }
   }
 })

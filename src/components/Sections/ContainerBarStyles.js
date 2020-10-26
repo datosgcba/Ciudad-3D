@@ -8,6 +8,7 @@ export default makeStyles((theme) => ({
     paddingTop: theme.spacing(2.25), // 2.25 - 18px
     paddingLeft: theme.spacing(3.26), // 3.12 - 26px
     paddingRight: theme.spacing(3.12), // 3.62 - 25px
+    boxShadow: '0 0 black',
     [theme.breakpoints.down('sm')]: {
       width: theme.spacing(35) // 45 - 360px
     }

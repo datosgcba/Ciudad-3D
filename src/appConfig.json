@@ -539,14 +539,14 @@
   ],
   "inspections": [
     {
-      "id": "worksStarted",
+      "id": "ins",
       "title": "Inspecciones",
-      "columns": ["Area", "Dirección", "Fecha de Inspección"]
+      "columns": ["Tipo de Inspección", "Dirección", "Fecha de Inspección"]
     },
     {
-      "id": "worksRegisters",
+      "id": "certified",
       "title": "Certificados de Fachada",
-      "columns": ["Area", "Dirección", "Fecha de Inspección"]
+      "columns": ["Tipo de Inspección", "Dirección", "Fecha de Inspección"]
     }
   ]
 }

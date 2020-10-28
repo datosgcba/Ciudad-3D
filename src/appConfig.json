@@ -375,11 +375,6 @@
       "format": "m"
     },
     {
-      "title": "Cantidad total de pisos",
-      "fill": "",
-      "format": ""
-    },
-    {
       "title": "Cantidad total de unidades funcionales",
       "fill": "unidades_funcionales",
       "format": ""
@@ -412,44 +407,63 @@
   "buildable": [
     {
       "title": "Superficie Máxima Edificable",
-      "fill": "sup_max_edificable",
-      "format": " m²"
+      "items": [{
+        "field": "sup_max_edificable",
+        "unidad": " m²"
+      }]
     },
     {
       "title": "Superficie Edificable en Planta (Pisada)",
-      "fill": "sup_edificable_planta",
-      "format": " m²"
+      "items": [{
+        "field": "sup_edificable_planta",
+        "unidad": " m"
+      }]
     },
     {
       "title": "Altura Máxima",
-      "fill": "altura_max",
-      "format": " m"
+      "items": [{
+        "field": "altura_max",
+        "unidad": " m"
+      }]
     },
     {
       "title": "Altura Máxima Plano Límite",
-      "fill": "altura_max_plano_limite",
-      "format": " m"
+      "items": [{
+        "field": "altura_max_plano_limite",
+        "unidad": " m"
+      }]
     },
     {
       "title": "Plusvalía",
-      "fill": "",
-      "format": ""
+      "items": [{
+        "label": "Medianera: ",
+        "field": "plusvalia.plusvalia_em"
+      },{
+        "label": "Perímetro Libre: ",
+        "field": "plusvalia.plusvalia_pl"
+      },{
+        "label": "Perímetro Semi-Libre: ",
+        "field": "plusvalia.plusvalia_sl"
+      }]
     },
     {
       "title": "Factor Ocupacional Total",
-      "subtitle": "Medianera: ",
-      "fill": "fot_medianera",
-      "subtitlePL": "Perímetro Libre: ",
-      "fillPL": "fot_perim_libre",
-      "subtitleSL": "Perímetro Semi-Libre: ",
-      "fillSL": "fot_semi_libre",
-      "format": ""
+      "items": [{
+        "label": "Medianera: ",
+        "field": "fot.fot_medianera"
+      },{
+        "label": "Perímetro Libre: ",
+        "field": "fot.fot_perim_libre"
+      },{
+        "label": "Perímetro Semi-Libre: ",
+        "field": "fot.fot_semi_libre"
+      }]
     },
     {
       "title": "Listado de SMP de Parcelas Linderas",
-      "fill": "parcelas_linderas",
-      "field": "smp_linderas",
-      "format": ""
+      "items": [{
+        "field": "parcelas_linderas.smp_linderas"
+      }]
     }
   ],
   "uses": [

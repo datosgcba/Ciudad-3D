@@ -13,6 +13,7 @@ const clickOnParcel = createAsyncThunk(
     // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
     // const data = (await response.json())
+    // TODO: ! integrar con API
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
     await delay(1000)
     const dataState = [

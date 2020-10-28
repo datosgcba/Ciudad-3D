@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getGeometrical as getAffectations } from 'utils/apiConfig'
+import { getAffectations } from 'utils/apiConfig'
 import { getAffectationsTable } from 'utils/configQueries'
 
 const clickOnParcel = createAsyncThunk(
@@ -21,7 +21,6 @@ const clickOnParcel = createAsyncThunk(
     const affectationsTable = await getAffectationsTable()
     const data = afectacionesFiltrado
       .map((id) => affectationsTable.find((at) => at.id === id))
-      // TODO: controlar con google si find devuelve null o undefined
       .filter((d) => d !== undefined)
     return data
   }
@@ -35,7 +34,6 @@ const affectations = createSlice({
     data: []
   },
   extraReducers: {
-    // TODO: clickOnParcel.pending
     [clickOnParcel.pending]: (draftState) => {
       draftState.isLoading = true
       draftState.data = []

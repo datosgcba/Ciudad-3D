@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, Grid, IconButton, makeStyles
+  Box, Typography, Grid, IconButton, makeStyles, Paper
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
@@ -50,6 +50,8 @@ const Affectations = () => {
   const data = useSelector((state) => state.affectations.data)
   const dispatch = useDispatch()
   const smp = useSelector((state) => state.basicData.data.smp)
+  const isLoading = useSelector((state) => state.affectations.isLoading)
+
   useEffect(() => {
     dispatch(affectationsActions.clickOnParcel(smp))
   }, [dispatch, smp])
@@ -69,7 +71,7 @@ const Affectations = () => {
           Afectaciones
         </Typography>
       </Box>
-      {data &&
+      { data &&
           data.map(({ id, title, subtitle, desc }) => (
             <Details
               key={id}
@@ -80,8 +82,19 @@ const Affectations = () => {
               fill={desc}
             />
           ))
-        }
-       
+         }
+         { data.length===0 && !isLoading && (
+      <Typography variant="body1" className={classes.body1}>
+      <Paper className={classes.paper}>
+        No hay datos disponibles
+      </Paper>
+      </Typography>
+      )}
+      { isLoading && (
+      <Typography variant="body1" className={classes.body1}>
+        Cargando...
+      </Typography>
+      )}
     </ContainerBar>
   )
 }

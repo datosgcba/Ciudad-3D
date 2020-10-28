@@ -42,5 +42,14 @@ export default makeStyles((theme) => ({
     padding: '9px',
     marginBottom: '10px',
     backgroundColor: '#F5F5F5'
+  },
+  paper: {
+    marginTop: theme.spacing(6),
+    height: theme.spacing(25),
+    width: '100%',
+    border: '1px solid grey',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 }))

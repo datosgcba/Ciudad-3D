@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import {
   Box,
   Typography,
+  Paper,
   Grid,
   IconButton,
-  List,
   ListItem
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
@@ -25,8 +25,14 @@ import { getBuildable } from 'utils/configQueries'
 
 import useStyles from './styles'
 
+const ItemValues = ({ children }) => {
+  const values = children instanceof Array ? children : [children]
+  return values.map((v) => (
+    `${v} `
+  ))
+}
 const Details = ({
-  classes, title, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format, decorators
+  classes, title, data, items, decorators
 }) => (
   <Box className={classes.subDetails}>
     <Grid container>
@@ -37,29 +43,13 @@ const Details = ({
       </Grid>
       <Grid item xs={12} className={classes.gridItem}>
         {
-          typeof fill === 'object' ? (
-            fill[field].map((smp) => (
+            items && items.map(({ label, field, unidad }) => (
               <ListItem className={classes.listado}>
-                {`${smp}`}
+                {label}
+                <ItemValues>{field.split('.').reduce((p, c) => p && p[c], data)}</ItemValues>
+                {unidad}
               </ListItem>
-            )))
-            : (
-              <List>
-                <ListItem className={classes.listado}>
-                  {subtitle}
-                  {fill}
-                  {format}
-                </ListItem>
-                <ListItem className={classes.listado}>
-                  {subtitlePL}
-                  {fillPL}
-                </ListItem>
-                <ListItem className={classes.listado}>
-                  {subtitleSL}
-                  {fillSL}
-                </ListItem>
-              </List>
-            )
+            ))
         }
       </Grid>
     </Grid>
@@ -72,6 +62,8 @@ const Buildable = () => {
   const data = useSelector((state) => state.buildable.data)
   const dispatch = useDispatch()
   const smp = useSelector((state) => state.basicData.data.smp)
+  const isSelected = useSelector((state) => state.buildable.isSelected)
+  const isLoading = useSelector((state) => state.buildable.isLoading)
 
   useEffect(() => {
     dispatch(buildableActions.clickOnParcel(smp))
@@ -97,25 +89,41 @@ const Buildable = () => {
       </Box>
       {
         getBuildable().map(({
-          title, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format
+          title, items, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format
         }, index) => (
-          <Details
+          isSelected && (
+            <Details
             // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            classes={classes}
-            decorators={decorators}
-            title={title}
-            fill={data[fill]}
-            field={field}
-            subtitle={subtitle}
-            subtitlePL={subtitlePL}
-            subtitleSL={subtitleSL}
-            fillPL={data[fillPL]}
-            fillSL={data[fillSL]}
-            format={format}
-          />
+              key={index}
+              classes={classes}
+              decorators={decorators}
+              title={title}
+              items={items}
+              data={data}
+              fill={data[fill]}
+              field={field}
+              subtitle={subtitle}
+              subtitlePL={subtitlePL}
+              subtitleSL={subtitleSL}
+              fillPL={data[fillPL]}
+              fillSL={data[fillSL]}
+              format={format}
+            />
+          )
         ))
       }
+      { !isSelected && !isLoading && (
+        <Paper className={classes.paper}>
+          <Typography variant="body1" className={classes.body1}>
+            Seleccione una parcela
+          </Typography>
+        </Paper>
+      )}
+      { isLoading && (
+      <Typography variant="body1" className={classes.body1}>
+        Cargando...
+      </Typography>
+      )}
     </ContainerBar>
   )
 }
@@ -124,24 +132,8 @@ Details.propTypes = {
   classes: PropTypes.arrayOf(PropTypes.object).isRequired,
   decorators: PropTypes.objectOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
-  fill: PropTypes.string,
-  field: PropTypes.string,
-  fillPL: PropTypes.string,
-  fillSL: PropTypes.string,
-  subtitle: PropTypes.string,
-  subtitlePL: PropTypes.string,
-  subtitleSL: PropTypes.string,
-  format: PropTypes.string.isRequired
-}
-
-Details.defaultProps = {
-  fill: '',
-  field: '',
-  fillPL: '',
-  fillSL: '',
-  subtitle: '',
-  subtitlePL: '',
-  subtitleSL: ''
+  data: PropTypes.objectOf(PropTypes.object).isRequired,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default Buildable

@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, Grid, IconButton, makeStyles
+  Box, Typography, Grid, IconButton, makeStyles, Paper
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
@@ -58,6 +58,8 @@ const Uses = () => {
   const data = useSelector((state) => state.uses.data)
   const dispatch = useDispatch()
   const smp = useSelector((state) => state.basicData.data.smp)
+  const isLoading = useSelector((state) => state.uses.isLoading)
+
   useEffect(() => {
     dispatch(usesActions.clickOnParcel(smp))
   }, [dispatch, smp])
@@ -90,7 +92,18 @@ const Uses = () => {
             />
           ))
         }
-       
+        { data.length===0 && !isLoading && (
+      <Typography variant="body1" className={classes.body1}>
+      <Paper className={classes.paper}>
+        No hay datos disponibles
+      </Paper>
+      </Typography>
+      )}
+      { isLoading && (
+      <Typography variant="body1" className={classes.body1}>
+        Cargando...
+      </Typography>
+      )}
     </ContainerBar>
   )
 }

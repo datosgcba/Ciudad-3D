@@ -13,6 +13,7 @@ const clickOnParcel = createAsyncThunk(
     // .catch(() => rejectWithValue('algo salio mal'))
     // rejectWithValue
     const data = (await response.json())
+    // TODO: !remover smp_linderas ahora es un string
     data.parcelas_linderas.smp_linderas = ['0001', '45466', '222']
     // TODO: traer sólo lo necesario
     return data
@@ -26,21 +27,24 @@ const buildable = createSlice({
     lastIDCAll: '',
     data: {
       smp: null
-    }
+    },
+    isSelected: false
   },
   extraReducers: {
-    // TODO: clickOnParcel.pending
     [clickOnParcel.pending]: (draftState) => {
       draftState.isLoading = true
       draftState.data = {}
+      draftState.isSelected = false
     },
     [clickOnParcel.fulfilled]: (draftState, action) => {
       draftState.data = action.payload
       draftState.isLoading = false
+      draftState.isSelected = true
     },
     [clickOnParcel.rejected]: (draftState) => {
       draftState.isLoading = false
       draftState.data = {}
+      draftState.isSelected = false
     }
   }
 })

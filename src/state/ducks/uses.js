@@ -11,13 +11,10 @@ const clickOnParcel = createAsyncThunk(
     }
     const url = getUses(smp)
     const response = await fetch(url)
-    // .catch(() => rejectWithValue('algo salio mal'))
-    // rejectWithValue
     const { usos } = await response.json()
     const usesTable = await getUsesTable()
     const data = usos
       .map((id) => usesTable.find((ut) => ut.id === id))
-      // TODO: controlar con google si find devuelve null o undefined
       .filter((d) => d !== undefined)
     return data
   }
@@ -31,7 +28,6 @@ const uses = createSlice({
     data: []
   },
   extraReducers: {
-    // TODO: clickOnParcel.pending
     [clickOnParcel.pending]: (draftState) => {
       draftState.isLoading = true
       draftState.data = []

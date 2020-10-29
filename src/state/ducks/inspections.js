@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-// import { getWorks } from 'utils/apiConfig'
+import { getInspections } from 'utils/apiConfig'
 
 const clickOnParcel = createAsyncThunk(
   'inspections/clickOnParcel',
@@ -8,61 +8,10 @@ const clickOnParcel = createAsyncThunk(
     if (smp.length === undefined) {
       return { smp: 'Invalido' }
     }
-    // const url = getBuildable(smp)
-    // const response = await fetch(url)
-    // .catch(() => rejectWithValue('algo salio mal'))
-    // rejectWithValue
-    // const data = (await response.json())
-    // TODO: ! integrar con API
-    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
-    await delay(1000)
-    const dataState = [
-      {
-        type: 'ins',
-        data: [
-          {
-            id: 'Obra100',
-            inspectionData: [
-              {
-                column: 'workType',
-                value: 'Establecimientos y Productos Alimenticios'
-              },
-              {
-                column: 'sup',
-                value: 'USPALLATA 3150'
-              },
-              {
-                column: 'dest',
-                value: '10/04/2018'
-              }
-            ]
-          }
-        ]
-      },
-      {
-        type: 'certified',
-        data: [
-          {
-            id: 'Obra300',
-            inspectionData: [
-              {
-                column: 'workType',
-                value: 'Establecimientos y Productos Alimenticios'
-              },
-              {
-                column: 'sup',
-                value: 'USPALLATA 3150'
-              },
-              {
-                column: 'dest',
-                value: '10/04/2018'
-              }
-            ]
-          }
-        ]
-      }
-    ]
-    // TODO: traer sólo lo necesario
+    // TODO: ! usar getInspections(smp)
+    const url = 'https://epok.buenosaires.gob.ar/cur3d/inspecciones/?smp=72-099B-21'
+    const response = await fetch(url)
+    const dataState = (await response.json())
     return dataState
   }
 )
@@ -74,7 +23,6 @@ const inspections = createSlice({
     data: []
   },
   extraReducers: {
-    // TODO: clickOnParcel.pending
     [clickOnParcel.pending]: (draftState) => {
       draftState.isLoading = true
       draftState.data = []

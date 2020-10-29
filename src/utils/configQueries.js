@@ -31,13 +31,11 @@ const getWorksGroups = () => config.works.map(({ id, title }) => ({
 const getColumnsWorksByWorksId = (workId) => config
   .works.find((w) => w.id === workId).columns
 
-const getInspectionsGroups = () => config.inspections.map(({ id, title }) => ({
+const getInspectionsGroups = () => config.inspections.map(({ id, title, columns }) => ({
   id,
-  title
+  title,
+  columns
 }))
-
-const getColumnsInspectionsByInspectionsId = (inspectionId) => config
-  .inspections.find((i) => i.id === inspectionId).columns
 
 const getInformation = () => config.information.map(({ id, title, description }) => ({
   id, title, description
@@ -91,5 +89,5 @@ export {
   getLayersGroups, getLayersByLayersGroupId, getBuildable,
   getUsesTable, getWorksGroups, getColumnsWorksByWorksId,
   getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain,
-  getInspectionsGroups, getColumnsInspectionsByInspectionsId
+  getInspectionsGroups
 }

@@ -553,14 +553,32 @@
   ],
   "inspections": [
     {
-      "id": "ins",
+      "id": "inspecciones",
       "title": "Inspecciones",
-      "columns": ["Tipo de Inspección", "Dirección", "Fecha de Inspección"]
+      "columns": [
+        {
+          "label": "Tipo de Inspección",
+          "field": "tipo_inspeccion"
+        }, {
+          "label": "Dirección",
+          "field": "direccion"
+        }, {
+          "label": "Fecha de Inspección",
+          "field": "fecha"
+        }
+      ]
     },
     {
-      "id": "certified",
+      "id": "cer_fachadas",
       "title": "Certificados de Fachada",
-      "columns": ["Tipo de Inspección", "Dirección", "Fecha de Inspección"]
+      "columns": [{
+          "label": "Dirección",
+          "field": "direccion"
+        }, {
+          "label": "Fecha de Inspección",
+          "field": "fecha_venc"
+        }
+      ]
     }
   ]
 }

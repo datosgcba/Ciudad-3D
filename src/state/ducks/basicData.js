@@ -66,8 +66,6 @@ const basicData = createSlice({
     [selectedParcel.rejected]: (draftState) => {
       // TODO: Mostrar mensaje de error al usuario (?)
       draftState.isLoading = false
-      draftState.isSelected = false
-      draftState.data = { smp: null }
     },
     [seekerParcel.pending]: (draftState) => {
       // TODO: Spinner cargando (?)

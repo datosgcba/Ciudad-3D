@@ -10,7 +10,7 @@ export default makeStyles((theme) => ({
     } // 45 - 360px
   },
   boxSubContainer: {
-    paddingTop: theme.spacing(4)
+    paddingBottom: theme.spacing(4)
   },
   paper: {
     height: theme.spacing(13.62),

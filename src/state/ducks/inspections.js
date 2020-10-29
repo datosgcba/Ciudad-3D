@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
+// eslint-disable-next-line no-unused-vars
 import { getInspections } from 'utils/apiConfig'
 
 const clickOnParcel = createAsyncThunk(

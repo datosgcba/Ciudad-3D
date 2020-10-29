@@ -14,6 +14,7 @@ import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 
+import { actions as alertsActions } from 'state/ducks/alerts'
 import { actions as buildableActions } from 'state/ducks/buildable'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -40,13 +41,13 @@ const Details = ({
       </Grid>
       <Grid item xs={12} className={classes.gridItem}>
         {
-            items && items.map(({ label, field, unidad }) => (
-              <ListItem className={classes.listado}>
-                {label}
-                <ItemValues>{field.split('.').reduce((p, c) => p && p[c], data)}</ItemValues>
-                {unidad}
-              </ListItem>
-            ))
+          items && items.map(({ label, field, unidad }) => (
+            <ListItem className={classes.listado}>
+              {label}
+              <ItemValues>{field.split('.').reduce((p, c) => p && p[c], data)}</ItemValues>
+              {unidad}
+            </ListItem>
+          ))
         }
       </Grid>
     </Grid>
@@ -62,6 +63,12 @@ const Buildable = () => {
   const isSelected = useSelector((state) => state.buildable.isSelected)
   const isLoading = useSelector((state) => state.buildable.isLoading)
 
+  // Prueba de alerta, suponiendo que es una esquina y tiene rivolta
+  if (data.rivolta === 0) {
+    dispatch(alertsActions.clear())
+    dispatch(alertsActions.addId('C'))
+  }
+
   useEffect(() => {
     dispatch(buildableActions.clickOnParcel(smp))
   }, [dispatch, smp])
@@ -73,7 +80,7 @@ const Buildable = () => {
         }, index) => (
           isSelected && (
             <Details
-            // eslint-disable-next-line react/no-array-index-key
+              // eslint-disable-next-line react/no-array-index-key
               key={index}
               classes={classes}
               decorators={decorators}
@@ -91,7 +98,7 @@ const Buildable = () => {
             />
           )
         ))
-      }
+    }
       { !isSelected && !isLoading && (
         <Paper className={classes.paper}>
           <Typography variant="body1" className={classes.body1}>
@@ -100,9 +107,9 @@ const Buildable = () => {
         </Paper>
       )}
       { isLoading && (
-      <Typography variant="body1" className={classes.body1}>
-        Cargando...
-      </Typography>
+        <Typography variant="body1" className={classes.body1}>
+          Cargando...
+        </Typography>
       )}
     </ContainerBar>
   )

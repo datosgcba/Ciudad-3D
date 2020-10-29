@@ -1,20 +1,16 @@
-/* eslint-disable */
 import React from 'react'
 
 import PropTypes from 'prop-types'
 
 import {
-  Paper, Box, Typography, IconButton, Grid, makeStyles
+  Paper, Box, Typography, Grid, makeStyles
 } from '@material-ui/core'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 
-import { actions as categoriesActions } from 'state/ducks/categories'
-
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { getBasicData } from 'utils/configQueries'
 
@@ -44,30 +40,15 @@ const BasicData = () => {
   const decorators = useFontsStyles()
   const data = useSelector((state) => state.basicData.data)
   const isSelected = useSelector((state) => state.basicData.isSelected)
-  const dispatch = useDispatch()
 
   return (
     <ContainerBar>
-      <Typography variant="h5" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
-        Información
-      </Typography>
-
-      <Box className={classes.subTitle}>
-        <Typography variant="h6" className={decorators.bold}>
-          <IconButton
-            onClick={() => dispatch(categoriesActions.sectionBack())}
-            className={classes.button}
-          >
-            <ArrowBackIcon />
-          </IconButton>
-          Datos Básicos
-        </Typography>
-      </Box>
       { isSelected && (
         <Box className={classes.details}>
           {
             getBasicData().map(({ title, fill, format }, index) => (
               <Details
+                // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 classes={classes}
                 decorators={decorators}

@@ -84,10 +84,16 @@ const getExplorerFilters = () => config.explorerFilters.map(({
 
 const getExplorerOptions = (filter) => config.explorer.filter((c) => c.id === filter)
 
+const getAlert = (idAlert) => config.alerts.find(({ id }) => id === idAlert).text
+
+const getCategoryTitle = (idCategory) => config.categories.find(({ id }) => id === idCategory).title
+
+const getSectionTitle = (idTitle) => config.information.find(({ id }) => id === idTitle).title
+
 export {
   getCategories, getFullLayerConfig, getInformation, getBasicData,
   getLayersGroups, getLayersByLayersGroupId, getBuildable,
   getUsesTable, getWorksGroups, getColumnsWorksByWorksId,
   getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain,
-  getInspectionsGroups
+  getInspectionsGroups, getAlert, getCategoryTitle, getSectionTitle
 }

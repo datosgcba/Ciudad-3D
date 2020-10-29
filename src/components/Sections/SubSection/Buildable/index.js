@@ -7,17 +7,14 @@ import {
   Typography,
   Paper,
   Grid,
-  IconButton,
   ListItem
 } from '@material-ui/core'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 
 import { actions as buildableActions } from 'state/ducks/buildable'
-import { actions as categoriesActions } from 'state/ducks/categories'
 
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -70,23 +67,6 @@ const Buildable = () => {
   }, [dispatch, smp])
   return (
     <ContainerBar>
-      <Typography
-        variant="h5"
-        className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_xl}`}
-      >
-        Información
-      </Typography>
-      <Box className={classes.subTitle}>
-        <Typography variant="h6" className={decorators.bold}>
-          <IconButton
-            onClick={() => dispatch(categoriesActions.sectionBack())}
-            className={classes.button}
-          >
-            <ArrowBackIcon />
-          </IconButton>
-          Edificabilidad
-        </Typography>
-      </Box>
       {
         getBuildable().map(({
           title, items, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format

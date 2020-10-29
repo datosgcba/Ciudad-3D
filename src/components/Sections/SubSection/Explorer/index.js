@@ -83,9 +83,6 @@ const Explorer = () => {
 
   return (
     <ContainerBar>
-      <Typography variant="h5" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_xl}`}>
-        Explorar
-      </Typography>
       <Autocomplete
         className={classes.combo}
         multiple

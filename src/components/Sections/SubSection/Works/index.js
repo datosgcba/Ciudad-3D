@@ -4,16 +4,13 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, IconButton,
-  TableContainer, Table, TableHead, TableRow,
+  Box, Typography, TableContainer, Table, TableHead, TableRow,
   TableCell, TableBody, makeStyles
 } from '@material-ui/core'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ContainerBarWorks from 'components/Sections/ContainerBarWorks'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
-import { actions as categoriesActions } from 'state/ducks/categories'
 import { actions as worksActions } from 'state/ducks/works'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -87,23 +84,6 @@ const Works = () => {
 
   return (
     <ContainerBarWorks>
-      <Typography
-        variant="h5"
-        className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_xl}`}
-      >
-        Información
-      </Typography>
-      <Box className={classes.subTitle}>
-        <Typography variant="h6" className={decorators.bold}>
-          <IconButton
-            onClick={() => dispatch(categoriesActions.sectionBack())}
-            className={classes.button}
-          >
-            <ArrowBackIcon />
-          </IconButton>
-          Obras
-        </Typography>
-      </Box>
       <Box className={classes.boxContainer}>
         {
           getWorksGroups().map(({ id, title }) => (

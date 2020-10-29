@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 
 import affectations from './affectations'
+import alerts from './alerts'
 import basicData from './basicData'
 import buildable from './buildable'
 import categories from './categories'
@@ -13,6 +14,7 @@ import uses from './uses'
 import works from './works'
 
 export default combineReducers({
+  alerts,
   categories,
   map,
   seeker,

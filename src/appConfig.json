@@ -580,5 +580,15 @@
         }
       ]
     }
+  ],
+  "alerts": [
+    {
+      "id": "A",
+      "text": "Este lote tiene más de una unidad de edificabilidad y/o área especial individualizada. Requiere de un estudio específico."
+    },
+    {
+      "id": "B",
+      "text": "Este lote tiene afectaciones adicionales."
+    }
   ]
 }

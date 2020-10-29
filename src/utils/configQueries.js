@@ -23,13 +23,11 @@ const getLayersByLayersGroupId = (layersGroupId) => config
     color
   }))
 
-const getWorksGroups = () => config.works.map(({ id, title }) => ({
+const getWorksGroups = () => config.works.map(({ id, title, columns }) => ({
   id,
-  title
+  title,
+  columns
 }))
-
-const getColumnsWorksByWorksId = (workId) => config
-  .works.find((w) => w.id === workId).columns
 
 const getInspectionsGroups = () => config.inspections.map(({ id, title, columns }) => ({
   id,
@@ -93,7 +91,7 @@ const getSectionTitle = (idTitle) => config.information.find(({ id }) => id === 
 export {
   getCategories, getFullLayerConfig, getInformation, getBasicData,
   getLayersGroups, getLayersByLayersGroupId, getBuildable,
-  getUsesTable, getWorksGroups, getColumnsWorksByWorksId,
+  getUsesTable, getWorksGroups,
   getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain,
   getInspectionsGroups, getAlert, getCategoryTitle, getSectionTitle
 }

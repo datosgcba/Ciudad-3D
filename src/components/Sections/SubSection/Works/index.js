@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -15,19 +15,12 @@ import { actions as worksActions } from 'state/ducks/works'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getWorksGroups, getColumnsWorksByWorksId } from 'utils/configQueries'
+import { getWorksGroups } from 'utils/configQueries'
 
 import useStyles from './styles'
 
-// Éste ejemplo es sólo a modo de prueba, la respuesta de la Api puede ser totalmente diferente
-
-const Columns = ({ id, styles: { bold, tableCell } }) => {
-  const dataState = useSelector((state) => state.works.data)
-  const [data, setData] = useState(null)
-  useEffect(() => {
-    const work = dataState.find((type) => type.type === id) || {}
-    setData(work.data)
-  }, [id, dataState])
+const GridPanel = ({ id, columns, styles: { bold, tableCell } }) => {
+  const data = useSelector((state) => state.works.data[id])
 
   return (
     <TableContainer>
@@ -35,10 +28,10 @@ const Columns = ({ id, styles: { bold, tableCell } }) => {
         <TableHead>
           <TableRow>
             {
-              getColumnsWorksByWorksId(id).map((column, idx) => (
-                <TableCell key={idx} className={tableCell}>
+              columns.map(({ label, field }) => (
+                <TableCell key={field} className={tableCell}>
                   <Typography variant="subtitle2" className={bold}>
-                    {column}
+                    {label}
                   </Typography>
                 </TableCell>
               ))
@@ -47,20 +40,15 @@ const Columns = ({ id, styles: { bold, tableCell } }) => {
         </TableHead>
         <TableBody styles={{ tableCell }}>
           {
-            // Se busca la tabla correspondiente
-            data && data.map(
-              ({ workData }) => ({ workData })
             // Se mapea cada una de las obras para dicha tabla
             // Por lo tanto se crea una nueva TableRow por cada obra
-            ).map(({ workData }, idx) => (
+            data && data.map((row, idx) => (
               <TableRow key={idx}>
                 {
                   // Se mapean los valores de cada obra para cada columna
-                  workData.map(
-                    ({ value }, indx) => (
-                      <TableCell key={indx} className={tableCell}>{value}</TableCell>
-                    )
-                  )
+                  columns.map(({ field }) => (
+                    <TableCell key={field} className={tableCell}>{row[field]}</TableCell>
+                  ))
                 }
               </TableRow>
             ))
@@ -86,12 +74,12 @@ const Works = () => {
     <ContainerBarWorks>
       <Box className={classes.boxContainer}>
         {
-          getWorksGroups().map(({ id, title }) => (
+          getWorksGroups().map(({ id, title, columns }) => (
             <Box className={classes.boxSubContainer} key={id}>
               <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
                 {title}
               </Typography>
-              <Columns id={id} styles={{ ...decorators, ...classes }} />
+              <GridPanel id={id} columns={columns} styles={{ ...decorators, ...classes }} />
             </Box>
           ))
         }
@@ -100,12 +88,13 @@ const Works = () => {
   )
 }
 
-Columns.defaultProps = {
+GridPanel.defaultProps = {
   bold: '',
   tableCell: ''
 }
-Columns.propTypes = {
+GridPanel.propTypes = {
   id: PropTypes.string.isRequired,
+  columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   bold: PropTypes.string,
   tableCell: PropTypes.string,
   styles: PropTypes.objectOf(makeStyles).isRequired

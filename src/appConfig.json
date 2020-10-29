@@ -498,19 +498,66 @@
   ],
   "works": [
     {
-      "id": "worksStarted",
-      "title": "Obras iniciadas",
-      "columns": ["Expte", "Fecha", "Tipo de obra", "Superficie", "Destino"]
+      "id": "obras_iniciadas",
+      "title": "Obras Iniciadas",
+      "columns": [
+        {
+          "label": "Expediente",
+          "field": "expediente"
+        }, {
+          "label": "Fecha",
+          "field": "fecha_inicio"
+        }, {
+          "label": "Dirección",
+          "field": "direccion"
+        }, {
+          "label": "Tipo Obra",
+          "field": "tipo_obra"
+        }, {
+          "label": "Superficie",
+          "field": "superficie_ini"
+        }
+      ]
     },
     {
-      "id": "worksRegisters",
-      "title": "Obras registradas",
-      "columns": ["Expte", "Fecha", "Tipo de obra", "Superficie", ""]
-    },
-    {
-      "id": "urbanCertificates",
-      "title": "Certificados urbanísticos",
-      "columns": ["Año", "Repartición", "Nº SADE", "Dirección", ""]
+      "id": "obras_registradas",
+      "title": "Obras Registradas",
+      "columns": [
+        {
+          "label": "Expediente",
+          "field": "expediente"
+        }, {
+          "label": "Fecha",
+          "field": "fecha_reg"
+        }, {
+          "label": "Dirección",
+          "field": "direccion"
+        }, {
+          "label": "Tipo Obra",
+          "field": "tipo_obra"
+        }, {
+          "label": "Superficie",
+          "field": "superficie_reg"
+        }
+      ]
+    },{
+      "id": "cer_urbanistico",
+      "title": "Certificados Urbanísticos",
+      "columns": [
+        {
+          "label": "Fecha",
+          "field": "fecha"
+        }, {
+          "label": "Expediente",
+          "field": "expediente"
+        }, {
+          "label": "N°SADE",
+          "field": "sade"
+        }, {
+          "label": "Dirección",
+          "field": "direccion"
+        }
+      ]
     }
   ],
   "affectations": [

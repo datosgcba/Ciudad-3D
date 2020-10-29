@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, Grid, makeStyles
+  Box, Typography, Grid, makeStyles, Paper
 } from '@material-ui/core'
 
 import useFontsStyles from 'theme/fontsDecorators'
@@ -49,6 +49,7 @@ const Affectations = () => {
   const data = useSelector((state) => state.affectations.data)
   const dispatch = useDispatch()
   const smp = useSelector((state) => state.basicData.data.smp)
+  const isLoading = useSelector((state) => state.affectations.isLoading)
 
   useEffect(() => {
     dispatch(affectationsActions.clickOnParcel(smp))
@@ -68,6 +69,18 @@ const Affectations = () => {
             fill={desc}
           />
         ))}
+      { data.length === 0 && !isLoading && (
+        <Typography variant="body1" className={classes.body1}>
+          <Paper className={classes.paper}>
+            No hay datos disponibles
+          </Paper>
+        </Typography>
+      )}
+      { isLoading && (
+        <Typography variant="body1" className={classes.body1}>
+          Cargando...
+        </Typography>
+      )}
     </ContainerBar>
   )
 }

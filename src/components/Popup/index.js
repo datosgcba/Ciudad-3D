@@ -1,12 +1,11 @@
-// TODO: proptypes
-/* eslint-disable react/prop-types */
 import React, {
   useEffect, useRef, useState, cloneElement
 } from 'react'
+import PropTypes from 'prop-types'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
-export default ({ coords, children }) => {
+const Popup = ({ coords, children }) => {
   const refPopup = useRef(null)
   const refPopupContent = useRef(null)
   const [popup, setPopup] = useState(null)
@@ -50,3 +49,10 @@ export default ({ coords, children }) => {
     </div>
   )
 }
+
+Popup.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.object).isRequired,
+  coords: PropTypes.objectOf(PropTypes.number).isRequired
+}
+
+export default Popup

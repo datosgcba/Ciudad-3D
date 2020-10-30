@@ -34,7 +34,6 @@ const parcel = createSlice({
     [smpSelected.rejected]: (draftState) => {
       draftState.geomCoords = null
     }
-    // TODO: pending
   }
 })
 

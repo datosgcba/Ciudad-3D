@@ -47,7 +47,6 @@ const Categories = ({ data }) => {
   return (
     <Box className={classes.options}>
       {
-        // TODO: agregar path
         data.map(({ id, title, path }) => (
           <Category
             key={id}

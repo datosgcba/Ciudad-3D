@@ -1,8 +1,9 @@
 // TODO: Corregir errores lint ¿tal vez migrar a componente funcional?
 /* eslint-disable */
+
 import * as mapboxgl from 'mapbox-gl'
-import genericPoint from './layer-builders/GenericPointLayerBuilder'
 import genericLine from './layer-builders/GenericLineLayerBuilder'
+import genericPoint from './layer-builders/GenericPointLayerBuilder'
 
 const defaultMapStyle = {
   version: 8,
@@ -97,14 +98,16 @@ const defaults = {
 
 class MapaInteractivoGL {
   constructor(options) {
-    this.config = { ...defaults,  ...options, params: { ...defaults.params, ...options.params }}
+    this.config = { ...defaults, ...options, params: { ...defaults.params, ...options.params } }
     this.config.supportedLanguages = Object.keys(this.config.texts)
     if (this.config.supportedLanguages.length === 0) {
       this.config.texts = defaults.texts
       this.config.language = defaults.language
       this.config.supportedLanguages = Object.keys(this.config.texts)
     }
-    if (this.config.supportedLanguages.indexOf(this.config.language) === -1) this.config.language = this.config.supportedLanguages[0]
+    if (this.config.supportedLanguages.indexOf(this.config.language) === -1) {
+      this.config.language = this.config.supportedLanguages[0]
+    }
     const params = { ...this.config.params, ...options }
 
     this.map = new mapboxgl.Map(params)
@@ -117,12 +120,12 @@ class MapaInteractivoGL {
     this.map.on('moveend', this._onMoveEnd.bind(this))
     this.map.on('zoomend', this._onZoomEnd.bind(this))
     this.map.on('dragend', this._onDragEnd.bind(this))
-    this.map.on('dataloading', function() {
+    this.map.on('dataloading', function () {
       // console.log('dataloading:', Date.now());
-      });
-    this.map.on('data', function() {
+    })
+    this.map.on('data', function () {
       // console.log('data:', Date.now());
-      });
+    })
     this.mapsDefs = null
     this.layersDefs = null
     this._layerBuilders = {
@@ -546,11 +549,11 @@ class MapaInteractivoGL {
     marker
       .setLngLat(latlng).addTo(this.map)
 
-      /*
-      flag=1 } else {
-        const marker = new mapboxgl.Marker(options)
-        .setLngLat(latlng);
-      }
+    /*
+    flag=1 } else {
+      const marker = new mapboxgl.Marker(options)
+      .setLngLat(latlng);
+    }
 */
     if (goTo) {
       this.map.flyTo({ center: latlng, zoom: this.config.markerZoomInLevel })
@@ -564,11 +567,11 @@ class MapaInteractivoGL {
     delete this._markers[id]
   }
 
-  inactivateMarker() {}
+  inactivateMarker() { }
 
-  showMessage(text) {}
+  showMessage(text) { }
 
-  hideMessage() {}
+  hideMessage() { }
 
   getMapa() {
     return this.map

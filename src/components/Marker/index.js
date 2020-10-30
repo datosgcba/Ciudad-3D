@@ -1,11 +1,9 @@
-// TODO: proptypes
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState, useRef } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
-export default ({ coords }) => {
+const Marker = ({ coords }) => {
   const refMarker = useRef(null)
   const mapUtils = MapaInteractivoGL()
   const engine = mapUtils.getMapEngine()
@@ -21,3 +19,9 @@ export default ({ coords }) => {
 
   return (<div ref={refMarker} />)
 }
+
+Marker.propTypes = {
+  coords: PropTypes.objectOf(PropTypes.number).isRequired
+}
+
+export default Marker

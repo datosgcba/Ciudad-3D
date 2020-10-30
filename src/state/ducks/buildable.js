@@ -1,6 +1,36 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getBuildable } from 'utils/apiConfig'
+import { getBuildable, getPlusvalia } from 'utils/apiConfig'
+
+const areaChanged = createAsyncThunk(
+  'buildable/areaChanged',
+  async ({ smp, text }) => {
+    // TODO: remove default value
+    if (!smp) {
+      // eslint-disable-next-line no-param-reassign
+      smp = '08-017-011'
+    }
+    smp = '0' + smp
+    const area = Number.parseFloat(text)
+    if (Number.isNaN(area) || !smp || smp.length === 0) {
+      return {
+        plusvalia: {
+          plusvalia_em: '-',
+          plusvalia_pl: '-',
+          plusvalia_sl: '-'
+        }
+      }
+    }
+    const url = getPlusvalia(smp, area)
+    const response = await fetch(url)
+    // .catch(() => rejectWithValue('algo salio mal'))
+    // rejectWithValue
+    const data = (await response.json())
+    return {
+      plusvalia: data
+    }
+  }
+)
 
 const clickOnParcel = createAsyncThunk(
   'buildable/clickOnParcel',
@@ -25,12 +55,15 @@ const buildable = createSlice({
   initialState: {
     isLoading: false,
     lastIDCAll: '',
-    data: {
-      smp: null
-    },
+    data: {},
+    plusvalia: {},
     isSelected: false
   },
   extraReducers: {
+    [areaChanged.fulfilled]: (draftState, action) => {
+      draftState.plusvalia = action.payload
+      draftState.isLoading = false
+    },
     [clickOnParcel.pending]: (draftState) => {
       draftState.isLoading = true
       draftState.data = {}
@@ -51,5 +84,5 @@ const buildable = createSlice({
 
 export default buildable.reducer
 
-const actions = { ...buildable.actions, clickOnParcel }
+const actions = { ...buildable.actions, clickOnParcel, areaChanged }
 export { actions }

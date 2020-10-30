@@ -23,8 +23,7 @@ export default makeStyles((theme) => ({
     }
   },
   button: {
-    // padding: 0,
-    minWidth: '0px !important'
+    padding: 0
   },
   listado: {
     paddingLeft: 0
@@ -37,5 +36,9 @@ export default makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  input: {
+    width: 100,
+    marginTop: -10
   }
 }))

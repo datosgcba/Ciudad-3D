@@ -15,6 +15,7 @@ const getAffectations = (smp) => `https://epok.buenosaires.gob.ar/cur3d/afectaci
 const getWorks = (smp) => `https://epok.buenosaires.gob.ar/cur3d/obras/?smp=${smp}`
 
 const getInspections = (smp) => `https://epok.buenosaires.gob.ar/cur3d/inspecciones/?smp=${smp}`
+const getPlusvalia = (smp, area) => `https://epok.buenosaires.gob.ar/cur3d/calcular_plusvalia/?smp=${smp}&area_edificar=${area}`
 
 export {
   getParcel,
@@ -25,5 +26,6 @@ export {
   getUses,
   getAffectations,
   getWorks,
-  getInspections
+  getInspections,
+  getPlusvalia
 }

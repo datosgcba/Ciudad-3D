@@ -48,9 +48,9 @@ const getCapitalGain = () => config.capitalGain.map(({ title, fill, format }) =>
 }))
 
 const getBuildable = () => config.buildable.map(({
-  title, items
+  title, items, isArea, isPlusvalia
 }) => ({
-  title, items
+  title, items, isArea, isPlusvalia
 }))
 
 const getUsesTable = async () => config.uses.map(({

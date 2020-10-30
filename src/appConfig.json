@@ -414,6 +414,7 @@
     },
     {
       "title": "Superficie Edificable en Planta (Pisada)",
+      "isArea": true,
       "items": [{
         "field": "sup_edificable_planta",
         "unidad": " m"
@@ -435,14 +436,15 @@
     },
     {
       "title": "Plusvalía",
+      "isPlusvalia": true,
       "items": [{
-        "label": "Medianera: ",
+        "label": "Medianera: $ ",
         "field": "plusvalia.plusvalia_em"
       },{
-        "label": "Perímetro Libre: ",
+        "label": "Perímetro Libre: $ ",
         "field": "plusvalia.plusvalia_pl"
       },{
-        "label": "Perímetro Semi-Libre: ",
+        "label": "Perímetro Semi-Libre: $ ",
         "field": "plusvalia.plusvalia_sl"
       }]
     },

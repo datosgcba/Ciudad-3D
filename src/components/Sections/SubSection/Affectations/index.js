@@ -55,7 +55,9 @@ const Affectations = () => {
     dispatch(affectationsActions.clickOnParcel(smp))
   }, [dispatch, smp])
   return (
-    <ContainerBar>
+    <ContainerBar
+      type="list"
+    >
       {data
         && data.map(({
           id, title, subtitle, desc

@@ -65,7 +65,9 @@ const Uses = () => {
     dispatch(usesActions.clickOnParcel(smp))
   }, [dispatch, smp])
   return (
-    <ContainerBar>
+    <ContainerBar
+      type="list"
+    >
       {data
         && data.map(({
           id, title, desc, afluencia, iconsData

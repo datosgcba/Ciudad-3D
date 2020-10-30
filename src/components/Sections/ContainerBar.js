@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Paper } from '@material-ui/core'
+import { Box, Paper } from '@material-ui/core'
 import Scrollbar from 'react-smooth-scrollbar'
 
 import { getCategoryTitle, getSectionTitle } from 'utils/configQueries'
@@ -13,7 +13,7 @@ import HeaderSection from 'components/Sections/HeaderSection'
 import PropTypes from 'prop-types'
 import useStyles from './ContainerBarStyles'
 
-const ContainerBar = ({ children }) => {
+const ContainerBar = ({ children, type }) => {
   const classes = useStyles()
 
   const sectionId = useSelector((state) => state.categories.sectionId)
@@ -27,19 +27,24 @@ const ContainerBar = ({ children }) => {
 
   return (
     <Scrollbar>
-      <Paper className={classes.paper}>
-        <HeaderSection
-          categoryTitle={categoryTitle}
-          sectionTitle={sectionTitle}
-        />
-        <Alerts />
-        {children}
-      </Paper>
+      <Box className={`${classes[type]} ${classes.container} ${classes.responsive}`}>
+        <Paper elevation={2} className={classes.padding}>
+          <HeaderSection
+            categoryTitle={categoryTitle}
+            sectionTitle={sectionTitle}
+          />
+        </Paper>
+        <Box className={classes.padding}>
+          <Alerts />
+          {children}
+        </Box>
+      </Box>
     </Scrollbar>
   )
 }
 ContainerBar.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.any).isRequired
+  children: PropTypes.arrayOf(PropTypes.any).isRequired,
+  type: PropTypes.string.isRequired
 }
 
 export default ContainerBar

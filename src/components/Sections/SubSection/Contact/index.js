@@ -8,7 +8,9 @@ import FontsTest from 'theme/FontsTest'
 import ContainerBar from 'components/Sections/ContainerBar'
 
 const Contact = () => (
-  <ContainerBar>
+  <ContainerBar
+    type="list"
+  >
     <Typography variant="caption">EN CONSTRUCCIÓN</Typography>
     <BuildIcon />
     <FontsTest />

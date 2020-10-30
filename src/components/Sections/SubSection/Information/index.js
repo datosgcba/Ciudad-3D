@@ -5,18 +5,20 @@ import { getInformation } from 'utils/configQueries'
 
 import InfoCard from './InfoCard'
 
-const ListCard = () => (getInformation().map(({ id, title, description }) => (
-  <InfoCard
-    key={id}
-    id={id}
-    title={title}
-    description={description}
-  />
-)))
-
 const Information = () => (
-  <ContainerBar>
-    <ListCard />
+  <ContainerBar
+    type="list"
+  >
+    {
+      getInformation().map(({ id, title, description }) => (
+        <InfoCard
+          key={id}
+          id={id}
+          title={title}
+          description={description}
+        />
+      ))
+    }
   </ContainerBar>
 )
 

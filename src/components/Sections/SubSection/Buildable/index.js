@@ -73,7 +73,9 @@ const Buildable = () => {
     dispatch(buildableActions.clickOnParcel(smp))
   }, [dispatch, smp])
   return (
-    <ContainerBar>
+    <ContainerBar
+      type="list"
+    >
       {
         getBuildable().map(({
           title, items, fill, field, fillPL, fillSL, subtitle, subtitlePL, subtitleSL, format

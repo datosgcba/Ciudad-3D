@@ -21,8 +21,8 @@ const HeaderSection = ({ categoryTitle, sectionTitle }) => {
   const dispatch = useDispatch()
 
   return (
-    <>
-      <Typography variant="h5" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
+    <Box className={classes.container}>
+      <Typography variant="h5" className={`${decorators.bold} ${decorators.marginBottom_ml}`}>
         {categoryTitle}
       </Typography>
       {
@@ -43,7 +43,7 @@ const HeaderSection = ({ categoryTitle, sectionTitle }) => {
         </Box>
         )
       }
-    </>
+    </Box>
   )
 }
 

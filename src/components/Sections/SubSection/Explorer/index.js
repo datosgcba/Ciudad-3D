@@ -82,7 +82,9 @@ const Explorer = () => {
   }
 
   return (
-    <ContainerBar>
+    <ContainerBar
+      type="list"
+    >
       <Autocomplete
         className={classes.combo}
         multiple

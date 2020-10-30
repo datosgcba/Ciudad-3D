@@ -42,7 +42,9 @@ const BasicData = () => {
   const isSelected = useSelector((state) => state.basicData.isSelected)
 
   return (
-    <ContainerBar>
+    <ContainerBar
+      type="list"
+    >
       { isSelected && (
         <Box className={classes.details}>
           {

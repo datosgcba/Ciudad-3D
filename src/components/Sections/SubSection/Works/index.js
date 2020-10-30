@@ -7,7 +7,7 @@ import {
   Box, Typography, TableContainer, Table, TableHead, TableRow,
   TableCell, TableBody, makeStyles
 } from '@material-ui/core'
-import ContainerBarWorks from 'components/Sections/ContainerBarWorks'
+import ContainerBar from 'components/Sections/ContainerBar'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
@@ -71,7 +71,9 @@ const Works = () => {
   }, [dispatch, smp])
 
   return (
-    <ContainerBarWorks>
+    <ContainerBar
+      type="table"
+    >
       <Box className={classes.boxContainer}>
         {
           getWorksGroups().map(({ id, title, columns }) => (
@@ -84,7 +86,7 @@ const Works = () => {
           ))
         }
       </Box>
-    </ContainerBarWorks>
+    </ContainerBar>
   )
 }
 

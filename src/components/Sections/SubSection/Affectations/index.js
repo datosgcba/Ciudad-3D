@@ -72,11 +72,11 @@ const Affectations = () => {
           />
         ))}
       { data.length === 0 && !isLoading && (
-        <Typography variant="body1" className={classes.body1}>
-          <Paper className={classes.paper}>
+        <Paper className={classes.paper}>
+          <Typography variant="body1" className={classes.body1}>
             No hay datos disponibles
-          </Paper>
-        </Typography>
+          </Typography>
+        </Paper>
       )}
       { isLoading && (
         <Typography variant="body1" className={classes.body1}>

@@ -2,9 +2,7 @@ import React from 'react'
 
 import { Drawer } from '@material-ui/core'
 
-import { actions as alertsActions } from 'state/ducks/alerts'
-
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import Affectations from 'components/Sections/SubSection/Affectations'
 import BasicData from 'components/Sections/SubSection/BasicData'
@@ -21,7 +19,6 @@ import Works from 'components/Sections/SubSection/Works'
 // siempre será el último elemento del array
 
 const Section = () => {
-  const dispatch = useDispatch()
   const isShow = useSelector((state) => state.categories.sectionOpen)
   const sectionId = useSelector((state) => state.categories.sectionId)
   const lastIndex = sectionId.length - 1
@@ -39,9 +36,6 @@ const Section = () => {
     ['Affectations', Affectations],
     ['Inspections', Inspections]
   ])
-
-  // Se borran las alertas que pudieran estar de una categoria anterior
-  dispatch(alertsActions.clear())
 
   // Acá busco el que voy a usar
   const Selected = isShow && sectionComponents.get(sectionSelected)

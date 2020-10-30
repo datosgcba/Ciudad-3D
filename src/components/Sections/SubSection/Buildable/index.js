@@ -63,14 +63,11 @@ const Buildable = () => {
   const isSelected = useSelector((state) => state.buildable.isSelected)
   const isLoading = useSelector((state) => state.buildable.isLoading)
 
-  // Prueba de alerta, suponiendo que es una esquina y tiene rivolta
-  if (data.rivolta === 0) {
-    dispatch(alertsActions.clear())
-    dispatch(alertsActions.addId('C'))
-  }
-
   useEffect(() => {
     dispatch(buildableActions.clickOnParcel(smp))
+    // Prueba de alerta, suponiendo que es una esquina y tiene rivolta
+    dispatch(alertsActions.clear())
+    dispatch(alertsActions.addId('C'))
   }, [dispatch, smp])
   return (
     <ContainerBar

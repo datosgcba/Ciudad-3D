@@ -8,6 +8,7 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux'
 import { actions } from 'state/ducks/categories'
+import { actions as alertsActions } from 'state/ducks/alerts'
 
 import useStyles from './styles'
 
@@ -30,7 +31,11 @@ const Category = ({ id, path, title }) => {
 
   return (
     <CardActionArea
-      onClick={() => dispatch(actions.categorySelected(id))}
+      onClick={() => {
+        // Se borran las alertas que pudieran estar de una categoria anterior
+        dispatch(alertsActions.clear())
+        dispatch(actions.categorySelected(id))
+      }}
       className={classes.option}
     >
       <Icon className={classes.icon} path={path} isSelected={isSelected} />

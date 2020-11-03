@@ -3,7 +3,7 @@ import React from 'react'
 
 export const largeScreenSteps = [
   {
-    selector: ".logo",
+    selector: ".makeStyles-logo-5",
     content: () => (
         <div>
           <p>
@@ -13,7 +13,7 @@ export const largeScreenSteps = [
       )
     },
     {
-      selector: ".informacion",
+      selector: ".MuiCardActionArea-root:nth-child(1)",
       content: () => (
         <div>
           <p>
@@ -24,7 +24,7 @@ export const largeScreenSteps = [
       )
     },
     {
-      selector: ".capas",
+      selector: ".MuiCardActionArea-root:nth-child(2)",
       content: () => (
         <div>
           <p>
@@ -34,7 +34,7 @@ export const largeScreenSteps = [
       )
     },
     {
-      selector: ".explorar",
+      selector: ".MuiCardActionArea-root:nth-child(3)",
       content: () => (
         <div>
           <p>
@@ -44,11 +44,31 @@ export const largeScreenSteps = [
       )
     },
     {
-      selector: ".ayudanosAMejorar",
+      selector: ".MuiCardActionArea-root:nth-child(4)",
       content: () => (
         <div>
           <p>
             Acá vas a poder enviarnos los comentarios que desees y contactarte con nosotros
+          </p>
+        </div>
+      )
+    },
+    {
+      selector: ".search-input-holder",
+      content: () => (
+        <div>
+          <p>
+            Acá vas a poder buscar por Dirección o Lugar y ubicarlo en el Mapa
+          </p>
+        </div>
+      )
+    },
+    {
+      selector: ".makeStyles-minimapLayer-14",
+      content: () => (
+        <div>
+          <p>
+            Acá vas a poder cambiar a Modo Oscuro el Mapa
           </p>
         </div>
       )

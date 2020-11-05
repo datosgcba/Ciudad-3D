@@ -9,8 +9,7 @@ const clickOnParcel = createAsyncThunk(
     if (smp.length === undefined) {
       return { smp: 'Invalido' }
     }
-    // TODO: ! usar getInspections(smp)
-    const url = 'https://epok.buenosaires.gob.ar/cur3d/inspecciones/?smp=72-099B-21'
+    const url = getInspections(smp)
     const response = await fetch(url)
     const dataState = (await response.json())
     return dataState

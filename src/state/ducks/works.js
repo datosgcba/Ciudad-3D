@@ -9,8 +9,7 @@ const clickOnParcel = createAsyncThunk(
     if (smp.length === undefined) {
       return { smp: 'Invalido' }
     }
-    // TODO: ! usar getWorks(smp)
-    const url = 'https://epok.buenosaires.gob.ar/cur3d/obras/?smp=66-101-001'
+    const url = getWorks(smp)
     const response = await fetch(url)
     const dataState = (await response.json())
     return dataState

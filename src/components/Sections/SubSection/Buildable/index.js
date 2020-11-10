@@ -111,7 +111,6 @@ const Buildable = () => {
   const data = useSelector((state) => state.buildable.data)
   const dispatch = useDispatch()
   const smp = useSelector((state) => state.parcel.smp)
-  const isSelected = useSelector((state) => state.buildable.isSelected)
   const isLoading = useSelector((state) => state.buildable.isLoading)
   const [isEditing, setIsEditing] = useState(false)
   const plusvalia = useSelector((state) => state.buildable.plusvalia)
@@ -130,7 +129,7 @@ const Buildable = () => {
         getBuildable().map(({
           title, items, isArea, isPlusvalia
         }, index) => (
-          isSelected && (
+          smp && !isLoading && (
             <Details
               // eslint-disable-next-line react/no-array-index-key
               key={index}
@@ -148,7 +147,7 @@ const Buildable = () => {
           )
         ))
       }
-      { !isSelected && !isLoading && (
+      { !smp && !isLoading && (
         <Paper className={classes.paper}>
           <Typography variant="body1" className={classes.body1}>
             Seleccione una parcela

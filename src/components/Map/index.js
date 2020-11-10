@@ -138,6 +138,19 @@ const Map = ({ children }) => {
           <Seeker onSelectItem={(selectedSuggestion) => {
             dispatch(seekerActions.placeSelected(selectedSuggestion))
             dispatch(seekerActions.coordinatesSelected(selectedSuggestion.data.coordenadas))
+            /*
+              Se actualiza la camara desde acá
+              ya que al elegir lugares el autocompleter no trae SMP
+             */
+            if (selectedSuggestion.data.smp === undefined) {
+              dispatch(mapActions.cameraUpdated({
+                lat: selectedSuggestion.data.coordenadas.y,
+                lng: selectedSuggestion.data.coordenadas.x,
+                zoom: 17,
+                pitch: 60,
+                bearing: 0
+              }))
+            }
           }}
           />
           {// logged ? <LogoutButton /> : null

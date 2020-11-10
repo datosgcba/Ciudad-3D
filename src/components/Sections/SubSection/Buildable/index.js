@@ -110,7 +110,7 @@ const Buildable = () => {
   const decorators = useFontsStyles()
   const data = useSelector((state) => state.buildable.data)
   const dispatch = useDispatch()
-  const smp = useSelector((state) => state.basicData.data.smp)
+  const smp = useSelector((state) => state.parcel.smp)
   const isSelected = useSelector((state) => state.buildable.isSelected)
   const isLoading = useSelector((state) => state.buildable.isLoading)
   const [isEditing, setIsEditing] = useState(false)

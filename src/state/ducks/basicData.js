@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import { getParcel, getParcelBySmp } from 'utils/apiConfig'
 import { actions as mapActions } from 'state/ducks/map'
+import { actions as smpActions } from 'state/ducks/parcel'
 
 const cameraUpdated = (data, dispatch) => {
   const [lng, lat] = data.centroide
@@ -16,6 +17,8 @@ const selectedParcel = createAsyncThunk(
     const response = await fetch(url)
     const data = (await response.json())
     cameraUpdated(data, dispatch)
+
+    dispatch(smpActions.smpSelected(data.smp))
     // TODO: traer sólo lo necesario
     return data
   },
@@ -39,6 +42,7 @@ const seekerParcel = createAsyncThunk(
       const data = (await response.json())
 
       cameraUpdated(data, dispatch)
+      dispatch(smpActions.smpSelected(data.smp))
       // TODO: traer sólo lo necesario
       return data
     }

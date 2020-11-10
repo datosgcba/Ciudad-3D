@@ -48,7 +48,7 @@ const Affectations = () => {
   const decorators = useFontsStyles()
   const data = useSelector((state) => state.affectations.data)
   const dispatch = useDispatch()
-  const smp = useSelector((state) => state.basicData.data.smp)
+  const smp = useSelector((state) => state.parcel.smp)
   const isLoading = useSelector((state) => state.affectations.isLoading)
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const Affectations = () => {
     <ContainerBar
       type="list"
     >
-      {data
+      {!isLoading && smp && data
         && data.map(({
           id, title, subtitle, desc
         }) => (
@@ -71,7 +71,12 @@ const Affectations = () => {
             fill={desc}
           />
         ))}
-      { data.length === 0 && !isLoading && (
+      { !isLoading && smp && data && data.length === 0 && (
+        <Typography variant="body1" className={classes.body1}>
+          No posee afectaciones
+        </Typography>
+      )}
+      { smp && data === null && !isLoading && (
         <Paper className={classes.paper}>
           <Typography variant="body1" className={classes.body1}>
             No hay datos disponibles
@@ -82,6 +87,13 @@ const Affectations = () => {
         <Typography variant="body1" className={classes.body1}>
           Cargando...
         </Typography>
+      )}
+      { !isLoading && !smp && (
+        <Paper className={classes.paper}>
+          <Typography variant="body1" className={classes.body1}>
+            Seleccione una parcela
+          </Typography>
+        </Paper>
       )}
     </ContainerBar>
   )

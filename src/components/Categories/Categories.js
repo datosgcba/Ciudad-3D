@@ -25,6 +25,8 @@ const Categories = ({ data }) => {
   // seekerSmp es el smp obtenido por el buscador
   const seekerSmp = useSelector((state) => state.seeker.place.data.smp)
 
+  const smp = useSelector((state) => state.parcel.smp)
+
   // Se obtienen los datos básicos de la parcela seleccionada
   useEffect(() => {
     dispatch(basicDataActions.selectedParcel(parcelCoords))
@@ -36,13 +38,13 @@ const Categories = ({ data }) => {
 
   // Se abre el panel Information al seleccionar una parcela o hacer una busqueda
   useEffect(() => {
-    if (isMapReady && parcelCoords !== null && !sectionOpen) {
+    if (isMapReady && smp !== null && !sectionOpen) {
       const openPanel = 'Information'
       dispatch(actions.categorySelected(openPanel))
     }
   // TODO: Agregar sectionOpen a las dependencias del useEffect sin perder funcionalidad
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isMapReady, parcelCoords, dispatch])
+  }, [isMapReady, smp, dispatch])
 
   return (
     <Box className={classes.options}>

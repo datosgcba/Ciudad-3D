@@ -16,7 +16,7 @@ const clickOnParcel = createAsyncThunk(
     const afectaciones = (await response.json())
 
     const afectacionesFiltrado = Object.entries(afectaciones).filter(([, value]) => value
-    === 1).map(([key]) => key)
+    !== 0).map(([key]) => key)
 
     const affectationsTable = await getAffectationsTable()
     const data = afectacionesFiltrado
@@ -31,12 +31,12 @@ const affectations = createSlice({
   initialState: {
     isLoading: false,
     lastIDCAll: '',
-    data: []
+    data: null
   },
   extraReducers: {
     [clickOnParcel.pending]: (draftState) => {
       draftState.isLoading = true
-      draftState.data = []
+      draftState.data = null
     },
     [clickOnParcel.fulfilled]: (draftState, action) => {
       draftState.data = action.payload
@@ -44,7 +44,7 @@ const affectations = createSlice({
     },
     [clickOnParcel.rejected]: (draftState) => {
       draftState.isLoading = false
-      draftState.data = []
+      draftState.data = null
     }
   }
 })

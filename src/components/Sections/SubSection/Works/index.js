@@ -64,7 +64,7 @@ const Works = () => {
   const decorators = useFontsStyles()
   // const data = useSelector((state) => state.works.data)
   const dispatch = useDispatch()
-  const smp = useSelector((state) => state.basicData.data.smp)
+  const smp = useSelector((state) => state.parcel.smp)
 
   useEffect(() => {
     dispatch(worksActions.clickOnParcel(smp))

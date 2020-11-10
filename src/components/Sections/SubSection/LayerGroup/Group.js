@@ -71,7 +71,7 @@ const Group = ({ id, title }) => {
 
   return (
     <Container className={classes.container}>
-      <Typography variant="subtitle1" className={decorators.bold}>
+      <Typography variant="subtitle2" className={decorators.bold}>
         {title}
         <Divider className={classes.divider} />
       </Typography>

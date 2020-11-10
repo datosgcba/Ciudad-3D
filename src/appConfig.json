@@ -407,6 +407,7 @@
   "buildable": [
     {
       "title": "Superficie Máxima Edificable",
+      "isArea": false,
       "items": [{
         "field": "sup_max_edificable",
         "unidad": " m²"
@@ -422,6 +423,7 @@
     },
     {
       "title": "Altura Máxima",
+      "isArea": false,
       "items": [{
         "field": "altura_max",
         "unidad": " m"
@@ -429,6 +431,7 @@
     },
     {
       "title": "Altura Máxima Plano Límite",
+      "isArea": false,
       "items": [{
         "field": "altura_max_plano_limite",
         "unidad": " m"
@@ -436,6 +439,7 @@
     },
     {
       "title": "Plusvalía",
+      "isArea": false,
       "isPlusvalia": true,
       "items": [{
         "label": "Medianera: $ ",
@@ -450,6 +454,7 @@
     },
     {
       "title": "Factor Ocupacional Total",
+      "isArea": false,
       "items": [{
         "label": "Medianera: ",
         "field": "fot.fot_medianera"
@@ -463,6 +468,7 @@
     },
     {
       "title": "Listado de SMP de Parcelas Linderas",
+      "isArea": false,
       "items": [{
         "field": "parcelas_linderas.smp_linderas"
       }]

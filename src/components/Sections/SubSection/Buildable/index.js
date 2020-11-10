@@ -8,7 +8,6 @@ import {
   Paper,
   Grid,
   IconButton,
-  List,
   ListItem,
   TextField,
   InputAdornment
@@ -35,7 +34,7 @@ const ItemValues = ({ children }) => {
   ))
 }
 const Details = ({
-  classes, title, data, items, isArea, isPlusvalia, smp, decorators, isEditing, setIsEditing
+  classes, title, data, items, isArea, smp, decorators, isEditing, setIsEditing
 }) => {
   const dispatch = useDispatch()
   const [areaValue, setAreaValue] = useState(0)
@@ -52,14 +51,15 @@ const Details = ({
     <Box className={classes.subDetails}>
       <Grid container>
         <Grid item xs={12}>
-          <Typography variant="subtitle3" className={decorators.bold}>
+          <Typography variant="subtitle2" className={decorators.bold}>
             {title}
           </Typography>
         </Grid>
         <Grid item xs={12} className={classes.gridItem}>
           {
-            items && items.map(({ label, field, unidad }) => (
-              <ListItem className={classes.listado}>
+            items && items.map(({ label, field, unidad }, idx) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <ListItem key={idx} className={classes.listado}>
                 {label}
                 {
                   isArea && isEditing
@@ -141,7 +141,6 @@ const Buildable = () => {
               isArea={isArea}
               isEditing={isEditing}
               setIsEditing={setIsEditing}
-              isPlusvalia={isPlusvalia}
               smp={smp}
             />
           )
@@ -163,14 +162,18 @@ const Buildable = () => {
   )
 }
 
+Details.defaultProps = {
+  isArea: false
+}
 Details.propTypes = {
-  classes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  classes: PropTypes.objectOf(PropTypes.any).isRequired,
   decorators: PropTypes.objectOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
-  data: PropTypes.objectOf(PropTypes.object).isRequired,
+  isEditing: PropTypes.bool.isRequired,
+  setIsEditing: PropTypes.func.isRequired,
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
-  isArea: PropTypes.bool.isRequired,
-  isPlusvalia: PropTypes.bool.isRequired,
+  isArea: PropTypes.bool,
   smp: PropTypes.string.isRequired
 }
 

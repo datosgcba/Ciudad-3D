@@ -23,12 +23,12 @@ const Details = ({
     <Box className={classes.card}>
       <Grid container>
         <Grid item xs={12}>
-          <Typography className={decorators.bold}>
+          <Typography variant="subtitle2" className={decorators.bold}>
             {title}
           </Typography>
         </Grid>
-        <Grid item xs={12} className={classes.gridItem}>
-          <Typography className={classes.gridText}>
+        <Grid item xs={12}>
+          <Typography variant="caption">
             {fill}
           </Typography>
         </Grid>
@@ -40,10 +40,13 @@ const Details = ({
           <Box className={classes.icon}>
             {svg}
           </Box>
-          <Typography variant="body2" className={classes.gridTituloCategoria}>{iconTitle}</Typography>
-          <Typography variant="body2">
+          <Typography variant="subtitle2" className={decorators.bold}>
+            {iconTitle}
+          </Typography>
+          <Typography variant="subtitle2">
             Afluencia
-            <br />
+          </Typography>
+          <Typography variant="subtitle2">
             {afluencia}
           </Typography>
         </Grid>

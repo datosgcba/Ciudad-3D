@@ -46,7 +46,9 @@ const theme = createMuiTheme({
       'Open Sans'
     ].join(','),
     caption: {
-      letterSpacing: 0
+      letterSpacing: 0,
+      fontSize: '11.5px',
+      lineHeight: '17px'
     },
     h5: {
       fontSize: '1.5rem'

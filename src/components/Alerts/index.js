@@ -18,7 +18,7 @@ const Alerts = () => {
     <>
       {
         alertsIds.map((id) => (
-          <Box className={classes.box}>
+          <Box key={id} className={classes.box}>
             <Typography>
               {getAlert(id)}
             </Typography>

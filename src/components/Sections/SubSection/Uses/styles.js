@@ -29,11 +29,6 @@ export default makeStyles((theme) => ({
     lineHeight: '17px',
     fontSize: '11.5px'
   },
-  gridTituloCategoria: {
-    fontWeight: 'bold',
-    lineHeight: '17px',
-    fontSize: '11.5px'
-  },
   icon: {
     borderRadius: '50%',
     margin: '0 auto',

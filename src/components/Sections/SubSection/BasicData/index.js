@@ -22,12 +22,12 @@ const Details = ({
   <Box className={classes.card}>
     <Grid container>
       <Grid item xs={7}>
-        <Typography variant="subtitle1" className={decorators.bold}>
+        <Typography variant="subtitle2" className={decorators.bold}>
           {title}
         </Typography>
       </Grid>
       <Grid item xs={5} className={classes.gridItem}>
-        <Typography variant="subtitle1" className={`${decorators.bold} ${classes.value}`}>
+        <Typography variant="subtitle2" className={`${classes.value}`}>
           {`${fill} ${format}`}
         </Typography>
       </Grid>

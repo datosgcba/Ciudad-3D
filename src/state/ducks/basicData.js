@@ -30,9 +30,14 @@ const seekerParcel = createAsyncThunk(
   'basicData/seekerParcel',
   async (smp, { dispatch }) => {
     if (smp !== null && smp !== undefined) {
-      const url = getParcelBySmp(smp)
+      let url = getParcelBySmp(smp)
+      // TODO: Eliminar cuando se corrija la Api
+      if (smp[0] === '0' && smp.length > 10) {
+        url = getParcelBySmp(smp.slice(1))
+      }
       const response = await fetch(url)
       const data = (await response.json())
+
       cameraUpdated(data, dispatch)
       // TODO: traer sólo lo necesario
       return data

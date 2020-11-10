@@ -7,7 +7,11 @@ import { actions as smpActions } from 'state/ducks/parcel'
 const smpSelected = createAsyncThunk(
   'parcel/smpSelected',
   async (smp, { dispatch }) => {
-    const url = getGeometrical(smp)
+    let url = getGeometrical(smp)
+    // TODO: Eliminar cuando se corrija la Api
+    if (smp[0] === '0' && smp.length > 10) {
+      url = getGeometrical(smp.slice(1))
+    }
     const response = await fetch(url)
     const data = (await response.json())
     dispatch(smpActions.updateSmp(smp))

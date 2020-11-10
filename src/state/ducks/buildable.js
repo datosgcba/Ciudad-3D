@@ -5,12 +5,6 @@ import { getBuildable, getPlusvalia } from 'utils/apiConfig'
 const areaChanged = createAsyncThunk(
   'buildable/areaChanged',
   async ({ smp, text }) => {
-    // TODO: remove default value
-    if (!smp) {
-      // eslint-disable-next-line no-param-reassign
-      smp = '08-017-011'
-    }
-    smp = '0' + smp
     const area = Number.parseFloat(text)
     if (Number.isNaN(area) || !smp || smp.length === 0) {
       return {

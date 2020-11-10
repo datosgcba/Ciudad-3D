@@ -38,7 +38,7 @@ const clickOnParcel = createAsyncThunk(
     // rejectWithValue
     const data = (await response.json())
     // TODO: !remover smp_linderas ahora es un string
-    data.parcelas_linderas.smp_linderas = ['0001', '45466', '222']
+    data.parcelas_linderas.smp_linderas = ['045-068-024', '045-068-001', '045-068-025']
     // TODO: traer sólo lo necesario
     return data
   }

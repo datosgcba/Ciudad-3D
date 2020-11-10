@@ -30,8 +30,8 @@ import useStyles from './styles'
 
 const ItemValues = ({ children }) => {
   const values = children instanceof Array ? children : [children]
-  return values.map((v) => (
-    `${v} `
+  return values.map((v, idx) => (
+    `${idx > 0 ? ' | ' : ''} ${v}`
   ))
 }
 const Details = ({

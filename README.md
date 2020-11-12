@@ -211,8 +211,17 @@ python manage.py collectstatic
 ```
 
 ### Prod: compilará el código con las variables seteadas en el archivo .env.production
+
+### Docker
+Para generar la imagen
 ```bash
-npm run build:production
+docker build -t react-nginx .
 ```
-
-
+Para generar el contendor
+```bash
+docker run -it --name react-nginx -p 8080:80 react-nginx
+```
+Para inciarlo en luego
+```bash
+docker start react-nginx
+```

@@ -1,6 +1,9 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 
 import { Drawer, makeStyles, Button } from '@material-ui/core'
+
+import { actions } from 'state/ducks/tour'
 
 import Categories from 'components/Categories/Categories'
 import Logo from 'components/Logo/Logo'
@@ -19,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ConnectedPanel = () => {
   const classes = useStyles()
-
+  const dispatch = useDispatch()
   return (
     <Drawer
       variant="persistent"
@@ -30,7 +33,11 @@ const ConnectedPanel = () => {
         <Logo />
       </div>
       <Categories data={data} />
-      <Button variant="contained" color="primary">
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => dispatch(actions.isVisibleTour(true))}
+      >
         Tour
       </Button>
     </Drawer>

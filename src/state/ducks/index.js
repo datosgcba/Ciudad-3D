@@ -10,6 +10,7 @@ import inspections from './inspections'
 import map from './map'
 import parcel from './parcel'
 import seeker from './seeker'
+import tour from './tour'
 import uses from './uses'
 import works from './works'
 
@@ -25,5 +26,6 @@ export default combineReducers({
   affectations,
   explorer,
   works,
-  inspections
+  inspections,
+  tour
 })

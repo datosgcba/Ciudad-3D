@@ -35,8 +35,10 @@ const getInspectionsGroups = () => config.inspections.map(({ id, title, columns 
   columns
 }))
 
-const getInformation = () => config.information.map(({ id, title, description }) => ({
-  id, title, description
+const getInformation = () => config.information.map(({
+  id, title, description, color
+}) => ({
+  id, title, description, color
 }))
 
 const getBasicData = () => config.basicData.map(({ title, fill, format }) => ({

@@ -10,12 +10,15 @@ const Information = () => (
     type="list"
   >
     {
-      getInformation().map(({ id, title, description }) => (
+      getInformation().map(({
+        id, title, description, color
+      }) => (
         <InfoCard
           key={id}
           id={id}
           title={title}
           description={description}
+          color={color}
         />
       ))
     }

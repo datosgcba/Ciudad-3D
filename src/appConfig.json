@@ -249,34 +249,40 @@
   ],
   "information": [
     {
-      "id": "Buildable",
-      "title": "Edificabilidad",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua"
-    },
-    {
       "id": "BasicData",
       "title": "Datos Básicos",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua"
+      "description": "Información sobre tu lote.",
+      "color": "#34485e"
+    },
+    {
+      "id": "Buildable",
+      "title": "Edificabilidad",
+      "description": "Constructibilidad de tu lote.",
+      "color": "#037dbf"
     },
     {
       "id": "Uses",
       "title": "Usos",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua"
+      "description": "Usos permitidos en tu lote.",
+      "color": "#18b596"
     },
     {
       "id": "Affectations",
       "title": "Afectaciones",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua"
+      "description": "Afectaciones especificas sobre tu lote.",
+      "color": "#fdd306"
     },
     {
       "id": "Works",
       "title": "Obras",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua"
+      "description": "Permisos de obra que fueron registrados por la Subsecretaría de Registro y Catastro pero no dan cuenta de que la obra haya comenzado.",
+      "color": "#f39c12"
     },
     {
       "id": "Inspections",
       "title": "Inspecciones",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua"
+      "description": "Obras por las que se dio aviso de inicio ante la Agencia Gubernamental de Control.",
+      "color": "#e74c3c"
     }
   ],
   "layersGroup": [

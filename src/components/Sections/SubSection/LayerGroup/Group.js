@@ -12,7 +12,7 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 
 import { actions } from 'state/ducks/map'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
@@ -24,6 +24,7 @@ const GroupItem = ({
   idGroup, idLayer, title, color, classes
 }) => {
   const dispatch = useDispatch()
+  const isVisible = useSelector((state) => state.map.groups[idGroup][idLayer].isVisible)
 
   const layerChangeHandler = () => {
     dispatch(actions.toggleLayer({ idGroup, idLayer }))
@@ -36,6 +37,7 @@ const GroupItem = ({
           <Checkbox
             icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
             checkedIcon={<CheckBoxIcon fontSize="small" />}
+            checked={isVisible}
             onChange={layerChangeHandler}
             className={classes.checkBox}
             name={idLayer}

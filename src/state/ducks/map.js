@@ -171,6 +171,7 @@ const map = createSlice({
     }) => {
       const layerState = getLayerState(draftState, idGroup, idLayer)
       layerState.processingId = requestId
+      layerState.isVisible = !layerState.isVisible
     },
     [toggleLayer.fulfilled]: (draftState, {
       meta: {
@@ -181,11 +182,9 @@ const map = createSlice({
       const layerState = getLayerState(draftState, idGroup, idLayer)
       if (layerState.processingId === requestId) {
         layerState.processingId = null
-        layerState.isVisible = !layerState.isVisible
       }
     },
-    // TODO: Revisar porque error ¿será rejected?
-    [toggleLayer.error]: (draftState, {
+    [toggleLayer.rejected]: (draftState, {
       meta: {
         requestId,
         arg: { idGroup, idLayer }
@@ -221,7 +220,7 @@ const map = createSlice({
       }
     },
 
-    [selectedExplorerFilter.error]: (draftState, {
+    [selectedExplorerFilter.rejected]: (draftState, {
       meta: {
         requestId,
         arg

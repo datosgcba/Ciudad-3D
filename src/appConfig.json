@@ -226,6 +226,7 @@
               "color": "#8a4545"
             }
           ]
+          
         }
       ]
     }
@@ -234,17 +235,59 @@
     {
       "id": "Height",
       "filterId": "Height",
-      "title": "Alturas Código Urbanístico"
+      "title": "Alturas Código Urbanístico",
+      "layers": {
+          "id": "a",
+          "title": "tituloA",
+          "color": "red"
+        }
     },
     {
       "id": "Incidence",
       "filterId": "IncidenceAliquot",
-      "title": "Incidencia Ley 6.062 mod. y comp."
+      "title": "Incidencia Ley 6.062 mod. y comp.",
+      "layers": {
+          "title": "Incidencia en UVA",
+          "color": "#E87167",
+          "id": "codigourbanistico_uva",
+          "type": "vectortile",
+          "displayPopup": true,
+          "popupContent": "{alicuota}",
+          "options": {
+            "source": {
+              "type": "vector",
+              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"],
+              "minzoom": 10,
+              "maxzoom": 18,
+              "cluster": false
+            },
+            "source-layer": "codigo_urbanistico",
+            "type": "fill",
+            "paint": {
+              "fill-color":[
+               "match",
+               ["to-string", ["get", "alicuota"]],
+                "0.1", "#fff5eb",
+                "0.18", "#fdbd83",
+                "0.27", "#ee6510",
+                "0.35", "#7f2704",
+                "0.39", "#00FF00",
+                 "#fff"
+               ],
+               "fill-opacity" : 0.8
+             }
+          }
+        }
     },
     {
       "id": "Aliquot",
       "filterId": "IncidenceAliquot",
-      "title": "Alícuotas ley 6.062 mod. y comp."
+      "title": "Alícuotas ley 6.062 mod. y comp.",
+      "layers": {
+          "id": "b",
+          "title": "tituloB",
+          "color": "blue"
+        }
     }
   ],
   "information": [
@@ -420,7 +463,7 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "green",
               "line-width": 4
             }
           }
@@ -445,7 +488,8 @@
             "paint": {
               "line-color": "#E87167",
               "line-width": 4
-            }
+            },
+            "filter": ["==", "tipo", "cuerpo principal"]
           }
         }
       ]
@@ -475,7 +519,8 @@
               "fill-extrusion-color": "green",
               "fill-extrusion-opacity": 0.9,
               "fill-extrusion-height": ["get", "altura"]
-            }
+            },
+            "filter": ["==", "consolidado", "falso"]
           }
         },
         {
@@ -701,7 +746,8 @@
             "paint": {
               "line-color": "#E87167",
               "line-width": 4
-            }
+            },
+            "filter": ["===", "tipo", "Apertura de calle"]
           }
         },
         {

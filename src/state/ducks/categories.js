@@ -4,7 +4,7 @@ const categories = createSlice({
   name: 'categories',
   initialState: {
     sectionOpen: true,
-    sectionId: ['LayerGroup']
+    sectionId: ['Explorer']
   },
   reducers: {
     categorySelected: (draftState, action) => {

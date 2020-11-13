@@ -16,6 +16,7 @@ import ContainerBar from 'components/Sections/ContainerBar'
 import { List, GridTwoColumns } from 'theme/wrappers'
 
 import { actions } from 'state/ducks/explorer'
+import { actions as actionsMap } from 'state/ducks/map'
 
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -74,8 +75,11 @@ const Explorer = () => {
   const [focusFilter, setFocusFilter] = useState(false)
 
   useEffect(() => {
+    value.map(({ id: idExplorer }) => dispatch(
+      actionsMap.selectedExplorerFilter(idExplorer)
+    ))
     setFilters(getExplorerFilters().filter((f) => !value || !value.map((v) => v.id).includes(f.id)))
-  }, [value])
+  }, [value, dispatch])
 
   const handleComboChange = (_, nextValue) => {
     dispatch(actions.selectedValue(nextValue))

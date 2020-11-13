@@ -1,4 +1,7 @@
-import { getFullLayerConfig, getLayersGroups, getLayersByLayersGroupId } from 'utils/configQueries'
+import {
+  getLayersGroups, getLayersByLayersGroupId, getFullLayerConfig,
+  getExplorerFilters, getFullExplorerLayerConfig
+} from 'utils/configQueries'
 import { mapOnPromise } from 'utils/mapboxUtils'
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
@@ -50,13 +53,13 @@ const initMap = createAsyncThunk(
 const getLayerState = (state, idGroup, idLayer) => state
   .groups[idGroup][idLayer]
 
+const getExplorerLayerState = (state, idExplorer) => state
+  .explorerLayers[idExplorer].layers
+
 const toggleLayer = createAsyncThunk(
   'map/toggleLayer',
   async ({ idGroup, idLayer }) => {
-    console.log('idGroup:', idGroup)
-    console.log('idLayer:', idLayer)
     const layer = getFullLayerConfig(idGroup, idLayer)
-    console.log('layer:', layer)
     const mapOnIdle = mapOnPromise(mapGL.map)('idle')
     await toggle(layer)
     return mapOnIdle
@@ -72,10 +75,33 @@ const toggleLayer = createAsyncThunk(
   }
 )
 
+const selectedExplorerFilter = createAsyncThunk(
+  'map/selectedExplorerFilter',
+  async (idExplorer) => {
+    const explorerLayer = getFullExplorerLayerConfig(idExplorer)
+    const mapOnIdle = mapOnPromise(mapGL.map)('idle')
+    // TODO: bug, hay que volver a elegirlo para que se borre la capa
+    // funciona como checkbox
+    await toggle(explorerLayer)
+    return mapOnIdle
+      .then(() => true)
+      .catch(() => false)
+  },
+  {
+    condition: (idExplorer, { getState }) => {
+      const state = getState()
+      const explorerLayer = getExplorerLayerState(state.map, idExplorer)
+      return state.map.isMapReady && explorerLayer.processingId === null
+    }
+  }
+)
+
 const groups = {}
 
+// devuelve cada id y title de config.layersGroup
 getLayersGroups().forEach(({ id: idGroup }) => {
   groups[idGroup] = {}
+  // devuelve el title, color y id de de cada layersGroup.layers
   getLayersByLayersGroupId(idGroup).forEach(({ id: idLayer }) => {
     groups[idGroup][idLayer] = {
       processingId: null,
@@ -84,19 +110,30 @@ getLayersGroups().forEach(({ id: idGroup }) => {
   })
 })
 
+const explorerLayers = {}
+
+getExplorerFilters().forEach(({ id: idExplorer }) => {
+  explorerLayers[idExplorer] = {}
+  explorerLayers[idExplorer].layers = {
+    processingId: null,
+    isVisible: false
+  }
+})
+
 const map = createSlice({
   name: 'map',
   initialState: {
     isMapReady: false,
     camera: {
-      lat: -34.62,
-      lng: -58.44,
+      lat: -34.56,
+      lng: -58.47,
       zoom: 16,
       pitch: 0,
       bearing: 0
     },
     selectedCoords: null,
-    groups
+    groups,
+    explorerLayers
   },
   reducers: {
     cameraUpdated: (draftState, {
@@ -159,6 +196,42 @@ const map = createSlice({
         layerState.processingId = null
         layerState.isVisible = !layerState.isVisible
       }
+    },
+    // selectedExplorerFilter
+    [selectedExplorerFilter.pending]: (draftState, {
+      meta: {
+        requestId,
+        arg
+      }
+    }) => {
+      const explorerLayerState = getExplorerLayerState(draftState, arg)
+      explorerLayerState.processingId = requestId
+    },
+
+    [selectedExplorerFilter.fulfilled]: (draftState, {
+      meta: {
+        requestId,
+        arg
+      }
+    }) => {
+      const explorerLayerState = getExplorerLayerState(draftState, arg)
+      if (explorerLayerState.processingId === requestId) {
+        explorerLayerState.processingId = null
+        explorerLayerState.isVisible = !explorerLayerState.isVisible
+      }
+    },
+
+    [selectedExplorerFilter.error]: (draftState, {
+      meta: {
+        requestId,
+        arg
+      }
+    }) => {
+      const explorerLayerState = getExplorerLayerState(draftState, arg)
+      if (explorerLayerState.processingId === requestId) {
+        explorerLayerState.processingId = null
+        explorerLayerState.isVisible = !explorerLayerState.isVisible
+      }
     }
   }
 })
@@ -166,6 +239,6 @@ const map = createSlice({
 export default map.reducer
 
 const actions = {
-  ...map.actions, initMap, toggleLayer
+  ...map.actions, initMap, toggleLayer, selectedExplorerFilter
 }
 export { actions }

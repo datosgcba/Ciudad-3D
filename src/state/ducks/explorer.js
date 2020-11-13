@@ -5,9 +5,9 @@ const explorer = createSlice({
   initialState: {
     autoCompleteValue: [
       {
-        id: 'Height',
-        filterId: 'Height',
-        title: 'Alturas Código Urbanístico'
+        id: 'Incidence',
+        filterId: 'IncidenceAliquot',
+        title: 'Incidencia Ley 6.062 mod. y comp.'
       }
     ],
     filterHeighOptions: true,

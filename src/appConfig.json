@@ -533,22 +533,31 @@
           "color": "#E87167",
           "id": "codigourbanistico_uva",
           "type": "vectortile",
-          "displayPopup": false,
-          "popupContent": "",
+          "displayPopup": true,
+          "popupContent": "{alicuota}",
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigourbanistico/{z}/{x}/{y}.pbf"],
+              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
             },
-            "source-layer": "default",
-            "type": "line",
+            "source-layer": "codigo_urbanistico",
+            "type": "fill",
             "paint": {
-              "line-color": "#E87167",
-              "line-width": 4
-            }
+              "fill-color":[
+               "match",
+               ["to-string", ["get", "alicuota"]],
+                "0.1", "#fff5eb",
+                "0.18", "#fdbd83",
+                "0.27", "#ee6510",
+                "0.35", "#7f2704",
+                "0.39", "#00FF00",
+                 "#fff"
+               ],
+               "fill-opacity" : 0.8
+             }
           }
         },
         {

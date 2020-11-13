@@ -12,15 +12,21 @@ import ListItem from '@material-ui/core/ListItem'
 import useFontsStyles from 'theme/fontsDecorators'
 import useStyles from './styles'
 
+const handleChange = (id) => (_, isChecked) => {
+  console.log('id', id)
+  console.log('isChecked', isChecked)
+}
 const ListItems = ({
-  decorators, subTitle, details, color
+  id, decorators, subTitle, details, color
 }) => (
   <ListItem style={{ backgroundColor: `${color}`, paddingBottom: 0, paddingTop: 0 }}>
     <FormControlLabel
       control={(
         <Checkbox
+          defaultChecked
           icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
           checkedIcon={<CheckBoxIcon fontSize="large" />}
+          onChange={handleChange(id)}
         />
       )}
     />
@@ -41,10 +47,13 @@ const List = ({ items }) => {
   return (
     <Box className={classes.options}>
       {
-        items.map(({ subTitle, details, color }, idx) => (
+        items.map(({
+          subTitle, details, color, id
+        }) => (
           <ListItems
             // eslint-disable-next-line react/no-array-index-key
-            key={idx}
+            key={id}
+            id={id}
             decorators={decorators}
             subTitle={subTitle}
             details={details}
@@ -63,7 +72,8 @@ ListItems.propTypes = {
   decorators: PropTypes.objectOf(PropTypes.string).isRequired,
   subTitle: PropTypes.string,
   details: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired
+  color: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
 }
 ListItems.defaultProps = {
   subTitle: ''

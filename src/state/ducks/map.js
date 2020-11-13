@@ -125,9 +125,9 @@ const map = createSlice({
   initialState: {
     isMapReady: false,
     camera: {
-      lat: -34.56,
+      lat: -34.57,
       lng: -58.47,
-      zoom: 16,
+      zoom: 13,
       pitch: 0,
       bearing: 0
     },

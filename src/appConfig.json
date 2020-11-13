@@ -32,31 +32,37 @@
           "title": "Altura código urbanístico",
           "items": [
             {
+              "id": "highCorridors",
               "subTitle": "38 m",
               "details": "Corredores Altos",
               "color": "#557e8d"
             },
             {
+              "id": "memdiumCorridors",
               "subTitle": "31.2 m",
               "details": "Corredores Medios",
               "color": "#85adb1"
             },
             {
+              "id": "highSustainability",
               "subTitle": "22.8 m",
               "details": "Unidades de Sustentabilidad de Altura Alta",
               "color": "#ea9e82"
             },
             {
+              "id": "mediumSustainability",
               "subTitle": "16.5 m",
               "details": "Unidades de Sustentabilidad de Altura Media",
               "color": "#f5c294"
             },
             {
+              "id": "lowSustainability2",
               "subTitle": "11.2 m",
               "details": "Unidades de Sustentabilidad de Altura Baja 2",
               "color": "#c9c2ab"
             },
             {
+              "id": "lowSustainability1",
               "subTitle": "9 m",
               "details": "Unidades de Sustentabilidad de Altura Baja 1",
               "color": "#f0e6cc"
@@ -129,9 +135,28 @@
           "id": "Barrio",
           "title": "Barrio",
           "items": [
-            "Agronomía", "Almagro", "Balvanera", "Barras", "Belgrano", "Boca", "Boedo", "Cabalito",
-            "Chacarita", "Coghlan", "Colegiales", "Constitución", "Flores", "Floresta", "Liniers",
-            "Mataderos", "Monserrat", "Monte Castro", "Nueva Pompeya", "Nuñez", "Palermo", "Parque Avellaneda"
+            "Agronomía",
+            "Almagro",
+            "Balvanera",
+            "Barras",
+            "Belgrano",
+            "Boca",
+            "Boedo",
+            "Cabalito",
+            "Chacarita",
+            "Coghlan",
+            "Colegiales",
+            "Constitución",
+            "Flores",
+            "Floresta",
+            "Liniers",
+            "Mataderos",
+            "Monserrat",
+            "Monte Castro",
+            "Nueva Pompeya",
+            "Nuñez",
+            "Palermo",
+            "Parque Avellaneda"
           ]
         }
       ]
@@ -145,56 +170,67 @@
           "title": "Incidencia Ley 6.062",
           "items": [
             {
+              "id": "NA",
               "subTitle": "",
               "details": "N/A",
               "color": "#686868"
             },
             {
+              "id": "300",
               "subTitle": "",
               "details": "< 300",
               "color": "#8f9ebf"
             },
             {
+              "id": "400",
               "subTitle": "",
               "details": "300-400",
               "color": "#9ebbd7"
             },
             {
+              "id": "500",
               "subTitle": "",
               "details": "400-500",
               "color": "#9cd6c4"
             },
             {
+              "id": "600",
               "subTitle": "",
               "details": "500-600",
               "color": "#deedb8"
             },
             {
+              "id": "700",
               "subTitle": "",
               "details": "600-700",
               "color": "#ffffbe"
             },
             {
+              "id": "800",
               "subTitle": "",
               "details": "700-800",
               "color": "#ffe3a1"
             },
             {
+              "id": "900",
               "subTitle": "",
               "details": "800-900",
               "color": "#ffc473"
             },
             {
+              "id": "1000",
               "subTitle": "",
               "details": "900-1000",
               "color": "#ff9e63"
             },
             {
+              "id": "1500",
               "subTitle": "",
               "details": "1000-1500",
               "color": "#f2786b"
             },
             {
+              "id": "1500+",
               "subTitle": "",
               "details": ">= 1500",
               "color": "#c44a4a"
@@ -206,27 +242,30 @@
           "title": "Alícuota Ley 6.062",
           "items": [
             {
+              "id": "Zone1",
               "subTitle": "Zona 1",
               "details": "",
               "color": "#ffbfbf"
             },
             {
+              "id": "Zone2",
               "subTitle": "Zona 2",
               "details": "",
               "color": "#d69090"
             },
             {
+              "id": "Zone3",
               "subTitle": "Zona 3",
               "details": "",
               "color": "#b06868"
             },
             {
+              "id": "Zone4",
               "subTitle": "Zona 4",
               "details": "",
               "color": "#8a4545"
             }
           ]
-          
         }
       ]
     }
@@ -237,57 +276,106 @@
       "filterId": "Height",
       "title": "Alturas Código Urbanístico",
       "layers": {
-          "id": "a",
-          "title": "tituloA",
-          "color": "red"
+        "title": "Incidencia en UVA",
+        "color": "#E87167",
+        "id": "codigourbanistico_uva",
+        "type": "vectortile",
+        "displayPopup": true,
+        "popupContent": "{alicuota}",
+        "options": {
+          "source": {
+            "type": "vector",
+            "tiles": [
+              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
+            ],
+            "minzoom": 10,
+            "maxzoom": 18,
+            "cluster": false
+          },
+          "source-layer": "codigo_urbanistico",
+          "type": "fill",
+          "paint": {
+            "fill-color": "blue",
+            "fill-opacity": 0.8
+          }
         }
+      }
     },
     {
       "id": "Incidence",
       "filterId": "IncidenceAliquot",
       "title": "Incidencia Ley 6.062 mod. y comp.",
       "layers": {
-          "title": "Incidencia en UVA",
-          "color": "#E87167",
-          "id": "codigourbanistico_uva",
-          "type": "vectortile",
-          "displayPopup": true,
-          "popupContent": "{alicuota}",
-          "options": {
-            "source": {
-              "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"],
-              "minzoom": 10,
-              "maxzoom": 18,
-              "cluster": false
-            },
-            "source-layer": "codigo_urbanistico",
-            "type": "fill",
-            "paint": {
-              "fill-color":[
-               "match",
-               ["to-string", ["get", "alicuota"]],
-                "0.1", "#fff5eb",
-                "0.18", "#fdbd83",
-                "0.27", "#ee6510",
-                "0.35", "#7f2704",
-                "0.39", "#00FF00",
-                 "#fff"
-               ],
-               "fill-opacity" : 0.8
-             }
+        "title": "Incidencia en UVA",
+        "color": "#E87167",
+        "id": "codigourbanistico_uva",
+        "type": "vectortile",
+        "displayPopup": true,
+        "popupContent": "{alicuota}",
+        "options": {
+          "source": {
+            "type": "vector",
+            "tiles": [
+              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
+            ],
+            "minzoom": 10,
+            "maxzoom": 18,
+            "cluster": false
+          },
+          "source-layer": "codigo_urbanistico",
+          "type": "fill",
+          "paint": {
+            "fill-color": [
+              "match",
+              [ "get", "inc_uva_19" ],
+              700, "green",    
+              "#fff"
+            ],
+            "fill-opacity": 0.8
           }
         }
+      }
     },
     {
       "id": "Aliquot",
       "filterId": "IncidenceAliquot",
       "title": "Alícuotas ley 6.062 mod. y comp.",
       "layers": {
-          "id": "b",
-          "title": "tituloB",
-          "color": "blue"
+        "title": "Incidencia en UVA",
+        "color": "#E87167",
+        "id": "codigourbanistico_uva",
+        "type": "vectortile",
+        "displayPopup": true,
+        "popupContent": "{alicuota}",
+        "options": {
+          "source": {
+            "type": "vector",
+            "tiles": [
+              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
+            ],
+            "minzoom": 10,
+            "maxzoom": 18,
+            "cluster": false
+          },
+          "source-layer": "codigo_urbanistico",
+          "type": "fill",
+          "paint": {
+            "fill-color": [
+              "match",
+              [
+                "to-string", [ "get", "alicuota" ]
+              ],
+              "0.1", "#fff5eb",
+              "0.18", "#fdbd83",
+              "0.27", "#ee6510",
+              "0.35", "#7f2704",
+              "0.39", "#00FF00",
+              "#fff"
+            ],
+            "fill-opacity": 0.8
+          }
         }
+      }
     }
   ],
   "information": [
@@ -343,7 +431,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/linea_oficial/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/linea_oficial/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -366,7 +456,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/manzana/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/manzana/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -378,7 +470,7 @@
               "circle-color": "#e74c3c",
               "circle-opacity": 0.5,
               "circle-stroke-width": 2,
-              "circle-stroke-color":"#e74c3c"
+              "circle-stroke-color": "#e74c3c"
             }
           }
         },
@@ -392,7 +484,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/lfi/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/lfi/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -415,7 +509,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/banda_minima/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/banda_minima/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -438,7 +534,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/rivolta/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/rivolta/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -461,7 +559,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -484,7 +584,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -495,7 +597,11 @@
               "line-color": "#E87167",
               "line-width": 4
             },
-            "filter": ["==", "tipo", "cuerpo principal"]
+            "filter": [
+              "==",
+              "tipo",
+              "cuerpo principal"
+            ]
           }
         }
       ]
@@ -514,7 +620,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/tejido_2/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/tejido_2/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -524,9 +632,16 @@
             "paint": {
               "fill-extrusion-color": "green",
               "fill-extrusion-opacity": 0.9,
-              "fill-extrusion-height": ["get", "altura"]
+              "fill-extrusion-height": [
+                "get",
+                "altura"
+              ]
             },
-            "filter": ["==", "consolidado", "falso"]
+            "filter": [
+              "==",
+              "consolidado",
+              "falso"
+            ]
           }
         },
         {
@@ -539,7 +654,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/tejido_2/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/tejido_2/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -549,7 +666,10 @@
             "paint": {
               "fill-extrusion-color": "white",
               "fill-extrusion-opacity": 0.9,
-              "fill-extrusion-height": ["get", "altura"]
+              "fill-extrusion-height": [
+                "get",
+                "altura"
+              ]
             }
           }
         },
@@ -563,7 +683,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/manzana/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/manzana/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -575,7 +697,7 @@
               "circle-color": "#e74c3c",
               "circle-opacity": 0.5,
               "circle-stroke-width": 2,
-              "circle-stroke-color":"#e74c3c"
+              "circle-stroke-color": "#e74c3c"
             }
           }
         },
@@ -589,7 +711,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -597,18 +721,29 @@
             "source-layer": "codigo_urbanistico",
             "type": "fill",
             "paint": {
-              "fill-color":[
-               "match",
-               ["to-string", ["get", "alicuota"]],
-                "0.1", "#fff5eb",
-                "0.18", "#fdbd83",
-                "0.27", "#ee6510",
-                "0.35", "#7f2704",
-                "0.39", "#00FF00",
-                 "#fff"
-               ],
-               "fill-opacity" : 0.8
-             }
+              "fill-color": [
+                "match",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "alicuota"
+                  ]
+                ],
+                "0.1",
+                "#fff5eb",
+                "0.18",
+                "#fdbd83",
+                "0.27",
+                "#ee6510",
+                "0.35",
+                "#7f2704",
+                "0.39",
+                "#00FF00",
+                "#fff"
+              ],
+              "fill-opacity": 0.8
+            }
           }
         },
         {
@@ -621,7 +756,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigourbanistico/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigourbanistico/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -633,7 +770,7 @@
               "line-width": 4
             }
           }
-        }        
+        }
       ]
     },
     {
@@ -650,7 +787,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -673,7 +812,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -696,7 +837,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -719,7 +862,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -742,7 +887,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -753,7 +900,11 @@
               "line-color": "#E87167",
               "line-width": 4
             },
-            "filter": ["===", "tipo", "Apertura de calle"]
+            "filter": [
+              "===",
+              "tipo",
+              "Apertura de calle"
+            ]
           }
         },
         {
@@ -766,7 +917,9 @@
           "options": {
             "source": {
               "type": "vector",
-              "tiles": ["https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"],
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"
+              ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
@@ -837,70 +990,88 @@
     {
       "title": "Superficie Máxima Edificable",
       "isArea": false,
-      "items": [{
-        "field": "sup_max_edificable",
-        "unidad": " m²"
-      }]
+      "items": [
+        {
+          "field": "sup_max_edificable",
+          "unidad": " m²"
+        }
+      ]
     },
     {
       "title": "Superficie Edificable en Planta (Pisada)",
       "isArea": true,
-      "items": [{
-        "field": "sup_edificable_planta",
-        "unidad": " m"
-      }]
+      "items": [
+        {
+          "field": "sup_edificable_planta",
+          "unidad": " m"
+        }
+      ]
     },
     {
       "title": "Altura Máxima",
       "isArea": false,
-      "items": [{
-        "field": "altura_max",
-        "unidad": " m"
-      }]
+      "items": [
+        {
+          "field": "altura_max",
+          "unidad": " m"
+        }
+      ]
     },
     {
       "title": "Altura Máxima Plano Límite",
       "isArea": false,
-      "items": [{
-        "field": "altura_max_plano_limite",
-        "unidad": " m"
-      }]
+      "items": [
+        {
+          "field": "altura_max_plano_limite",
+          "unidad": " m"
+        }
+      ]
     },
     {
       "title": "Plusvalía",
       "isArea": false,
       "isPlusvalia": true,
-      "items": [{
-        "label": "Medianera: $ ",
-        "field": "plusvalia.plusvalia_em"
-      },{
-        "label": "Perímetro Libre: $ ",
-        "field": "plusvalia.plusvalia_pl"
-      },{
-        "label": "Perímetro Semi-Libre: $ ",
-        "field": "plusvalia.plusvalia_sl"
-      }]
+      "items": [
+        {
+          "label": "Medianera: $ ",
+          "field": "plusvalia.plusvalia_em"
+        },
+        {
+          "label": "Perímetro Libre: $ ",
+          "field": "plusvalia.plusvalia_pl"
+        },
+        {
+          "label": "Perímetro Semi-Libre: $ ",
+          "field": "plusvalia.plusvalia_sl"
+        }
+      ]
     },
     {
       "title": "Factor Ocupacional Total",
       "isArea": false,
-      "items": [{
-        "label": "Medianera: ",
-        "field": "fot.fot_medianera"
-      },{
-        "label": "Perímetro Libre: ",
-        "field": "fot.fot_perim_libre"
-      },{
-        "label": "Perímetro Semi-Libre: ",
-        "field": "fot.fot_semi_libre"
-      }]
+      "items": [
+        {
+          "label": "Medianera: ",
+          "field": "fot.fot_medianera"
+        },
+        {
+          "label": "Perímetro Libre: ",
+          "field": "fot.fot_perim_libre"
+        },
+        {
+          "label": "Perímetro Semi-Libre: ",
+          "field": "fot.fot_semi_libre"
+        }
+      ]
     },
     {
       "title": "Listado de SMP de Parcelas Linderas",
       "isArea": false,
-      "items": [{
-        "field": "parcelas_linderas.smp_linderas"
-      }]
+      "items": [
+        {
+          "field": "parcelas_linderas.smp_linderas"
+        }
+      ]
     }
   ],
   "uses": [
@@ -909,28 +1080,88 @@
       "title": "Área de Baja Mixtura del Usos de Suelo 1:",
       "desc": "Corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia.",
       "afluencia": "Baja",
-      "icons": [{ "title": "Residencia", "svgId": "iconoResidencia" }, { "title": "Comercio", "svgId": "iconoComercio" }, { "title": "Servicio", "svgId": "iconoServicio" }]
+      "icons": [
+        {
+          "title": "Residencia",
+          "svgId": "iconoResidencia"
+        },
+        {
+          "title": "Comercio",
+          "svgId": "iconoComercio"
+        },
+        {
+          "title": "Servicio",
+          "svgId": "iconoServicio"
+        }
+      ]
     },
     {
       "id": 2,
       "title": "Área de Baja Mixtura del Usos de Suelo 2:",
       "desc": "Corresponde a las áreas y corredores destinados a residencia, servicios y comercios de mediana afluencia.",
       "afluencia": "Mediana",
-      "icons": [{ "title": "Residencia", "svgId": "iconoResidencia" }, { "title": "Comercio", "svgId": "iconoComercio" }, { "title": "Servicio", "svgId": "iconoServicio" }]
+      "icons": [
+        {
+          "title": "Residencia",
+          "svgId": "iconoResidencia"
+        },
+        {
+          "title": "Comercio",
+          "svgId": "iconoComercio"
+        },
+        {
+          "title": "Servicio",
+          "svgId": "iconoServicio"
+        }
+      ]
     },
     {
       "id": 3,
       "title": "Área de Media Mixtura de Usos del Suelo 3:",
       "desc": "Corresponde a las áreas y corredores destinados a residencia, depósitos siempre que incluyan local de venta y servicios y comercios de mediana afluencia.",
       "afluencia": "Mediana",
-      "icons": [{ "title": "Residencia", "svgId": "iconoResidencia" }, { "title": "Comercio", "svgId": "iconoComercio" }, { "title": "Servicio", "svgId": "iconoServicio" }, { "title": "Depósitos", "svgId": "iconoDepositos" }]
+      "icons": [
+        {
+          "title": "Residencia",
+          "svgId": "iconoResidencia"
+        },
+        {
+          "title": "Comercio",
+          "svgId": "iconoComercio"
+        },
+        {
+          "title": "Servicio",
+          "svgId": "iconoServicio"
+        },
+        {
+          "title": "Depósitos",
+          "svgId": "iconoDepositos"
+        }
+      ]
     },
     {
       "id": 4,
       "title": "Área de Alta Mixtura de Usos del Suelo 4:",
       "desc": "Corresponde a las áreas y corredores destinados a residencia, depósitos siempre que incluyan local de venta y servicios y comercios de afluencia metropolitana.",
       "afluencia": "Alta",
-      "icons": [{ "title": "Residencia", "svgId": "iconoResidencia" }, { "title": "Comercio", "svgId": "iconoComercio" }, { "title": "Servicio", "svgId": "iconoServicio" }, { "title": "Depósitos", "svgId": "iconoDepositos" }]
+      "icons": [
+        {
+          "title": "Residencia",
+          "svgId": "iconoResidencia"
+        },
+        {
+          "title": "Comercio",
+          "svgId": "iconoComercio"
+        },
+        {
+          "title": "Servicio",
+          "svgId": "iconoServicio"
+        },
+        {
+          "title": "Depósitos",
+          "svgId": "iconoDepositos"
+        }
+      ]
     }
   ],
   "works": [
@@ -941,16 +1172,20 @@
         {
           "label": "Expediente",
           "field": "expediente"
-        }, {
+        },
+        {
           "label": "Fecha",
           "field": "fecha_inicio"
-        }, {
+        },
+        {
           "label": "Dirección",
           "field": "direccion"
-        }, {
+        },
+        {
           "label": "Tipo Obra",
           "field": "tipo_obra"
-        }, {
+        },
+        {
           "label": "Superficie",
           "field": "superficie_ini"
         }
@@ -963,34 +1198,42 @@
         {
           "label": "Expediente",
           "field": "expediente"
-        }, {
+        },
+        {
           "label": "Fecha",
           "field": "fecha_reg"
-        }, {
+        },
+        {
           "label": "Dirección",
           "field": "direccion"
-        }, {
+        },
+        {
           "label": "Tipo Obra",
           "field": "tipo_obra"
-        }, {
+        },
+        {
           "label": "Superficie",
           "field": "superficie_reg"
         }
       ]
-    },{
+    },
+    {
       "id": "cer_urbanistico",
       "title": "Certificados Urbanísticos",
       "columns": [
         {
           "label": "Fecha",
           "field": "fecha"
-        }, {
+        },
+        {
           "label": "Expediente",
           "field": "expediente"
-        }, {
+        },
+        {
           "label": "N°SADE",
           "field": "sade"
-        }, {
+        },
+        {
           "label": "Dirección",
           "field": "direccion"
         }
@@ -1043,10 +1286,12 @@
         {
           "label": "Tipo de Inspección",
           "field": "tipo_inspeccion"
-        }, {
+        },
+        {
           "label": "Dirección",
           "field": "direccion"
-        }, {
+        },
+        {
           "label": "Fecha de Inspección",
           "field": "fecha"
         }
@@ -1055,10 +1300,12 @@
     {
       "id": "cer_fachadas",
       "title": "Certificados de Fachada",
-      "columns": [{
+      "columns": [
+        {
           "label": "Dirección",
           "field": "direccion"
-        }, {
+        },
+        {
           "label": "Fecha de Inspección",
           "field": "fecha_venc"
         }

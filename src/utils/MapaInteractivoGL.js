@@ -23,7 +23,7 @@ const defaultMapStyle = {
       type: 'raster',
       scheme: 'tms',
       tiles: [
-        'https://servicios.usig.buenosaires.gob.ar/mapcache/tms/1.0.0/amba_con_transporte_3857@GoogleMapsCompatible/{z}/{x}/{y}.png'
+        'https://servicios.usig.buenosaires.gob.ar/mapcache/tms/1.0.0/fotografias_aereas_2017_caba_3857@GoogleMapsCompatible/{z}/{x}/{y}.png'
       ],
       tileSize: 256
     }

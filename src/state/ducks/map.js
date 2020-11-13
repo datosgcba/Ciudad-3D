@@ -1,4 +1,4 @@
-import { getFullLayerConfig } from 'utils/configQueries'
+import { getFullLayerConfig, getLayersGroups, getLayersByLayersGroupId } from 'utils/configQueries'
 import { mapOnPromise } from 'utils/mapboxUtils'
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
@@ -48,13 +48,15 @@ const initMap = createAsyncThunk(
 )
 
 const getLayerState = (state, idGroup, idLayer) => state
-  .groups[idGroup]
-  .layers[idLayer]
+  .groups[idGroup][idLayer]
 
 const toggleLayer = createAsyncThunk(
   'map/toggleLayer',
   async ({ idGroup, idLayer }) => {
+    console.log('idGroup:', idGroup)
+    console.log('idLayer:', idLayer)
     const layer = getFullLayerConfig(idGroup, idLayer)
+    console.log('layer:', layer)
     const mapOnIdle = mapOnPromise(mapGL.map)('idle')
     await toggle(layer)
     return mapOnIdle
@@ -70,6 +72,18 @@ const toggleLayer = createAsyncThunk(
   }
 )
 
+const groups = {}
+
+getLayersGroups().forEach(({ id: idGroup }) => {
+  groups[idGroup] = {}
+  getLayersByLayersGroupId(idGroup).forEach(({ id: idLayer }) => {
+    groups[idGroup][idLayer] = {
+      processingId: null,
+      isVisible: false
+    }
+  })
+})
+
 const map = createSlice({
   name: 'map',
   initialState: {
@@ -81,7 +95,8 @@ const map = createSlice({
       pitch: 0,
       bearing: 0
     },
-    selectedCoords: null
+    selectedCoords: null,
+    groups
   },
   reducers: {
     cameraUpdated: (draftState, {
@@ -119,7 +134,6 @@ const map = createSlice({
     }) => {
       const layerState = getLayerState(draftState, idGroup, idLayer)
       layerState.processingId = requestId
-      layerState.isVisible = !layerState.isVisible
     },
     [toggleLayer.fulfilled]: (draftState, {
       meta: {
@@ -130,6 +144,7 @@ const map = createSlice({
       const layerState = getLayerState(draftState, idGroup, idLayer)
       if (layerState.processingId === requestId) {
         layerState.processingId = null
+        layerState.isVisible = !layerState.isVisible
       }
     },
     // TODO: Revisar porque error ¿será rejected?

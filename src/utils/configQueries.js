@@ -3,7 +3,7 @@ import icons from 'utils/svgIcons'
 
 // Métodos que devuelven mucha data y puede no ser serializable
 const getFullLayerConfig = (idGroup, idLayer) => config
-  .grupos.find((g) => g.id === idGroup)
+  .layersGroup.find((g) => g.id === idGroup)
   .layers.find((l) => l.id === idLayer)
 
 // Métodos que retornan data acotada y segura de serializar
@@ -18,7 +18,8 @@ const getLayersGroups = () => config.layersGroup.map(({ id, title }) => ({
 
 const getLayersByLayersGroupId = (layersGroupId) => config
   .layersGroup.find((l) => l.id === layersGroupId)
-  .layers.map(({ title, color }) => ({
+  .layers.map(({ id, title, color }) => ({
+    id,
     title,
     color
   }))

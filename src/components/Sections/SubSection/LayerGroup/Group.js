@@ -54,9 +54,11 @@ const GroupItems = ({ idGroup, classes }) => {
   const layersConfig = getLayersByLayersGroupId(idGroup)
   return (
     layersConfig
-      .map(({ title, color }) => (
+      .map(({ id, title, color }) => (
         <GroupItem
-          key={title}
+          key={id}
+          idGroup={idGroup}
+          idLayer={id}
           title={title}
           color={color}
           classes={classes}

@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles'
 export default makeStyles((theme) => ({
   container: {
     marginLeft: theme.spacing(9.75), // 9.75 - 78px
-    marginBottom: theme.spacing(3),
     boxShadow: '0 0 black'
   },
   padding: {

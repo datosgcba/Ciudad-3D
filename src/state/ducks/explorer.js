@@ -3,13 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const explorer = createSlice({
   name: 'explorer',
   initialState: {
-    autoCompleteValue: [
-      {
-        id: 'Incidence',
-        filterId: 'IncidenceAliquot',
-        title: 'Incidencia Ley 6.062 mod. y comp.'
-      }
-    ],
+    autoCompleteValue: [],
     filterHeighOptions: true,
     filterIncidenceOptions: false
   },

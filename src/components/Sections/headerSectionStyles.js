@@ -2,10 +2,12 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
   container: {
-    minHeight: theme.spacing(5)
+    minHeight: theme.spacing(5),
+    marginBottom: theme.spacing(3)
   },
   subTitle: {
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
+    paddingBottom: theme.spacing(1)
   },
   button: {
     padding: 0,

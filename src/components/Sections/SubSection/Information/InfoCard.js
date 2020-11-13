@@ -9,7 +9,9 @@ import useFontsStyles from 'theme/fontsDecorators'
 import PropTypes from 'prop-types'
 import styles from './styles'
 
-const InfoCard = ({ id, title, description }) => {
+const InfoCard = ({
+  id, title, description, color
+}) => {
   const classes = styles()
   const decorators = useFontsStyles()
   const dispatch = useDispatch()
@@ -17,6 +19,7 @@ const InfoCard = ({ id, title, description }) => {
   return (
     <CardActionArea
       className={classes.card}
+      style={{ borderColor: color }}
       onClick={() => dispatch(actions.sectionSelected(id))}
     >
       <Typography variant="h5" className={decorators.bold}>
@@ -32,7 +35,8 @@ const InfoCard = ({ id, title, description }) => {
 InfoCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  description: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired
 }
 
 export default InfoCard

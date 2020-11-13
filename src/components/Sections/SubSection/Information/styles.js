@@ -7,11 +7,11 @@ export default makeStyles((theme) => ({
   card: {
     padding: theme.spacing(1),
     minHeight: theme.spacing(11),
-    marginBottom: theme.spacing(3),
+    marginBottom: theme.spacing(2.5),
     backgroundColor: '#F1F1F3',
     borderLeftStyle: 'solid',
+    borderRadius: '5px',
     borderWidth: 'thick',
-    borderColor: '#C4A1A1',
     lineHeight: theme.spacing(20)
   }
 }))

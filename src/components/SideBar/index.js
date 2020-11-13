@@ -1,10 +1,9 @@
 import React from 'react'
 
-import { Drawer, makeStyles } from '@material-ui/core'
+import { Drawer, makeStyles, Button } from '@material-ui/core'
 
 import Categories from 'components/Categories/Categories'
 import Logo from 'components/Logo/Logo'
-
 import { getCategories } from 'utils/configQueries'
 
 const data = getCategories()
@@ -31,6 +30,9 @@ const ConnectedPanel = () => {
         <Logo />
       </div>
       <Categories data={data} />
+      <Button variant="contained" color="primary">
+        Tour
+      </Button>
     </Drawer>
   )
 }

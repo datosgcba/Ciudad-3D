@@ -9,24 +9,51 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 import ListItem from '@material-ui/core/ListItem'
 
+import { actions } from 'state/ducks/map'
+
+import { useDispatch } from 'react-redux'
+
 import useFontsStyles from 'theme/fontsDecorators'
 import useStyles from './styles'
 
-const handleChange = (id) => (_, isChecked) => {
-  console.log('id', id)
-  console.log('isChecked', isChecked)
+// TODO: el filter podría estar en el state
+const filters = [{ idLayer: '', valueFilter: [] }]
+
+const addFilters = (f, idx, layer, value, check) => {
+  if (f.idLayer === layer) {
+    if (check) {
+      filters[idx].valueFilter.push(value)
+    } else {
+      filters[idx].valueFilter.pop(value)
+    }
+  }
+}
+const handleChange = (layer, value, dispatch) => (_, check) => {
+  // Se crea el idLayer en filters en caso que no exista
+  const existLayer = filters.find((f) => f.idLayer === layer)
+  if (existLayer === undefined) {
+    filters.push(
+      {
+        idLayer: layer,
+        valueFilter: []
+      }
+    )
+  }
+
+  // Se mapea filters en busca del layer correspondiente y se le agregan los filtros
+  filters.map((f, idx) => addFilters(f, idx, layer, value, check))
+  dispatch(actions.filterUpdate(filters))
 }
 const ListItems = ({
-  id, decorators, subTitle, details, color
+  decorators, subTitle, details, color, dispatch, idLayer, valueFilter
 }) => (
   <ListItem style={{ backgroundColor: `${color}`, paddingBottom: 0, paddingTop: 0 }}>
     <FormControlLabel
+      onChange={handleChange(idLayer, valueFilter, dispatch)}
       control={(
         <Checkbox
-          defaultChecked
           icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
           checkedIcon={<CheckBoxIcon fontSize="large" />}
-          onChange={handleChange(id)}
         />
       )}
     />
@@ -42,22 +69,25 @@ const ListItems = ({
 )
 
 const List = ({ items }) => {
+  const dispatch = useDispatch()
   const decorators = useFontsStyles()
   const classes = useStyles()
   return (
     <Box className={classes.options}>
       {
         items.map(({
-          subTitle, details, color, id
+          subTitle, details, color, id, idLayer, valueFilter
         }) => (
           <ListItems
-            // eslint-disable-next-line react/no-array-index-key
             key={id}
             id={id}
             decorators={decorators}
             subTitle={subTitle}
             details={details}
             color={color}
+            dispatch={dispatch}
+            idLayer={idLayer}
+            valueFilter={valueFilter}
           />
         ))
       }
@@ -73,7 +103,9 @@ ListItems.propTypes = {
   subTitle: PropTypes.string,
   details: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  idLayer: PropTypes.string.isRequired,
+  valueFilter: PropTypes.string.isRequired,
+  dispatch: PropTypes.string.isRequired
 }
 ListItems.defaultProps = {
   subTitle: ''

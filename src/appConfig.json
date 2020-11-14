@@ -245,25 +245,33 @@
               "id": "Zone1",
               "subTitle": "Zona 1",
               "details": "",
-              "color": "#ffbfbf"
+              "color": "#ffbfbf",
+              "idLayer": "codigourbanistico_uva",
+              "valueFilter": "0.1"
             },
             {
               "id": "Zone2",
               "subTitle": "Zona 2",
               "details": "",
-              "color": "#d69090"
+              "color": "#d69090",
+              "idLayer": "codigourbanistico_uva",
+              "valueFilter": "0.18"
             },
             {
               "id": "Zone3",
               "subTitle": "Zona 3",
               "details": "",
-              "color": "#b06868"
+              "color": "#b06868",
+              "idLayer": "codigourbanistico_uva",
+              "valueFilter": "0.27"
             },
             {
               "id": "Zone4",
               "subTitle": "Zona 4",
               "details": "",
-              "color": "#8a4545"
+              "color": "#8a4545",
+              "idLayer": "codigourbanistico_uva",
+              "valueFilter": "0.35"
             }
           ]
         }
@@ -365,11 +373,10 @@
               [
                 "to-string", [ "get", "alicuota" ]
               ],
-              "0.1", "#fff5eb",
-              "0.18", "#fdbd83",
-              "0.27", "#ee6510",
-              "0.35", "#7f2704",
-              "0.39", "#00FF00",
+              "0.1", "green",
+              "0.18", "yellow",
+              "0.27", "red",
+              "0.35", "blue",
               "#fff"
             ],
             "fill-opacity": 0.8

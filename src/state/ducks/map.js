@@ -75,14 +75,36 @@ const toggleLayer = createAsyncThunk(
   }
 )
 
+const filterUpdate = (filters) => {
+  filters.forEach((f) => {
+    const { idLayer, valueFilter } = f
+
+    const newFilters = ['all']
+    valueFilter.forEach((v) => {
+      // TODO: Escalar formato de filtro
+      newFilters.push((['===', ['to-string', ['get', 'alicuota']], `${v}`]))
+    })
+
+    const layer = mapGL.map.getLayer(idLayer)
+    if (layer !== undefined) {
+      mapGL.setFilter(
+        idLayer,
+        newFilters
+      )
+    }
+  })
+}
+
 const selectedExplorerFilter = createAsyncThunk(
   'map/selectedExplorerFilter',
   async (idExplorer) => {
     const explorerLayer = getFullExplorerLayerConfig(idExplorer)
+    // const filter = getFilterLayer(capasSelected)
     const mapOnIdle = mapOnPromise(mapGL.map)('idle')
     // TODO: bug, hay que volver a elegirlo para que se borre la capa
     // funciona como checkbox
     await toggle(explorerLayer)
+    // if visible
     return mapOnIdle
       .then(() => true)
       .catch(() => false)
@@ -157,6 +179,9 @@ const map = createSlice({
     },
     clickOnMap: (draftState, action) => {
       draftState.selectedCoords = action.payload
+    },
+    filterUpdate: (draftState, action) => {
+      filterUpdate(action.payload)
     }
   },
   extraReducers: {

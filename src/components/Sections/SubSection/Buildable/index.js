@@ -27,10 +27,10 @@ import { getBuildable } from 'utils/configQueries'
 
 import useStyles from './styles'
 
-const ItemValues = ({ children }) => {
+const ItemValues = ({ children, unit }) => {
   const values = children instanceof Array ? children : [children]
   return values.map((v, idx) => (
-    `${idx > 0 ? ' | ' : ''} ${v}`
+    `${idx > 0 ? ' | ' : ''} ${v === undefined ? '' : v} ${unit || ''}`
   ))
 }
 const Details = ({
@@ -75,14 +75,13 @@ const Details = ({
                     )
                     : (
                       <>
-                        <ItemValues>
+                        <ItemValues unit={unidad}>
                           {
                             field
                               .split('.')
                               .reduce((p, c) => p && p[c], data)
                           }
                         </ItemValues>
-                        {unidad}
                       </>
                     )
                 }

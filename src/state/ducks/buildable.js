@@ -33,12 +33,15 @@ const clickOnParcel = createAsyncThunk(
       return { smp: 'Invalido' }
     }
     const url = getBuildable(smp)
-    const response = await fetch(url)
-    // .catch(() => rejectWithValue('algo salio mal'))
-    // rejectWithValue
-    const data = (await response.json())
-    // TODO: !remover smp_linderas ahora es un string
-    data.parcelas_linderas.smp_linderas = ['045-068-024', '045-068-001', '045-068-025']
+    const data = await fetch(url)
+      .then((response) => response.json())
+      .then(({ altura_max: alturas, ...others }) => {
+        const alturasAux = alturas.filter((altura) => altura > 0)
+        return ({
+          altura_max: alturasAux.length === 0 ? [0] : alturasAux,
+          ...others
+        })
+      })
     // TODO: traer sólo lo necesario
     return data
   }

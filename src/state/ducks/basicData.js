@@ -19,7 +19,6 @@ const selectedParcel = createAsyncThunk(
     cameraUpdated(data, dispatch)
 
     dispatch(smpActions.smpSelected(data.smp))
-    // TODO: traer sólo lo necesario
     return data
   },
   {
@@ -43,7 +42,6 @@ const seekerParcel = createAsyncThunk(
 
       cameraUpdated(data, dispatch)
       dispatch(smpActions.smpSelected(data.smp))
-      // TODO: traer sólo lo necesario
       return data
     }
     throw new Error()

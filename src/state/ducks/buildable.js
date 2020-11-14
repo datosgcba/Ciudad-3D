@@ -16,10 +16,17 @@ const areaChanged = createAsyncThunk(
       }
     }
     const url = getPlusvalia(smp, area)
-    const response = await fetch(url)
-    // .catch(() => rejectWithValue('algo salio mal'))
-    // rejectWithValue
-    const data = (await response.json())
+    const data = await fetch(url)
+      .then((response) => response.json())
+      .then(({
+        plusvalia_em: em,
+        plusvalia_pl: pl,
+        plusvalia_sl: sl
+      }) => ({
+        plusvalia_em: (em === 0 ? 0 : em.toLocaleString('es-AR')),
+        plusvalia_pl: (pl === 0 ? 0 : pl.toLocaleString('es-AR')),
+        plusvalia_sl: (sl === 0 ? 0 : sl.toLocaleString('es-AR'))
+      }))
     return {
       plusvalia: data
     }
@@ -35,10 +42,25 @@ const clickOnParcel = createAsyncThunk(
     const url = getBuildable(smp)
     const data = await fetch(url)
       .then((response) => response.json())
-      .then(({ altura_max: alturas, ...others }) => {
-        const alturasAux = alturas.filter((altura) => altura > 0)
+      .then(({
+        altura_max: alturas,
+        fot: {
+          fot_medianera: medianera,
+          fot_perim_libre: perim,
+          fot_semi_libre: semi
+        },
+        ...others
+      }) => {
+        const alturasAux = alturas
+          .filter((altura) => altura > 0)
+          .map((altura) => altura.toLocaleString('es-AR'))
         return ({
           altura_max: alturasAux.length === 0 ? [0] : alturasAux,
+          fot: {
+            fot_medianera: medianera.toLocaleString('es-AR'),
+            fot_perim_libre: perim.toLocaleString('es-AR'),
+            fot_semi_libre: semi.toLocaleString('es-AR')
+          },
           ...others
         })
       })

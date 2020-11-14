@@ -961,27 +961,32 @@
     {
       "title": "Superficie edificada",
       "fill": "superficie_cubierta",
-      "format": "m²"
+      "format": "m²",
+      "isNumber": true
     },
     {
       "title": "Superficie de parcela",
       "fill": "superficie_total",
-      "format": "m"
+      "format": "m",
+      "isNumber": true
     },
     {
       "title": "Cantidad total de unidades funcionales",
       "fill": "unidades_funcionales",
-      "format": ""
+      "format": "",
+      "isNumber": true
     },
     {
       "title": "Cantidad de pisos sobre rasantes",
       "fill": "pisos_sobre_rasante",
-      "format": ""
+      "format": "",
+      "isNumber": true
     },
     {
       "title": "Cantidad de pisos bajo rasantes",
       "fill": "pisos_bajo_rasante",
-      "format": ""
+      "format": "",
+      "isNumber": true
     }
   ],
   "capitalGain": [

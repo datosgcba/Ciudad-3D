@@ -17,7 +17,7 @@ import { getBasicData } from 'utils/configQueries'
 import useStyles from './styles'
 
 const Details = ({
-  classes, decorators, title, fill, format
+  classes, decorators, title, value, format
 }) => (
   <Box className={classes.card}>
     <Grid container>
@@ -28,7 +28,7 @@ const Details = ({
       </Grid>
       <Grid item xs={5} className={classes.gridItem}>
         <Typography variant="subtitle2" className={`${classes.value}`}>
-          {`${fill} ${format}`}
+          {`${value} ${format}`}
         </Typography>
       </Grid>
     </Grid>
@@ -48,14 +48,14 @@ const BasicData = () => {
       { isSelected && (
         <Box className={classes.details}>
           {
-            getBasicData().map(({ title, fill, format }, index) => (
+            getBasicData().map(({ title, fill, format, isNumber }, index) => (
               <Details
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 classes={classes}
                 decorators={decorators}
                 title={title}
-                fill={data[fill]}
+                value={isNumber && data[fill] ? Number.parseFloat(data[fill]).toLocaleString('es-AR') : data[fill]}
                 format={format}
               />
             ))
@@ -77,12 +77,12 @@ Details.propTypes = {
   classes: PropTypes.objectOf(makeStyles).isRequired,
   decorators: PropTypes.objectOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
-  fill: PropTypes.string,
+  value: PropTypes.string,
   format: PropTypes.string.isRequired
 }
 
 Details.defaultProps = {
-  fill: ''
+  value: ''
 }
 
 export default BasicData

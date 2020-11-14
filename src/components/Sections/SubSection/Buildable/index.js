@@ -39,7 +39,14 @@ const Details = ({
   const dispatch = useDispatch()
   const [areaValue, setAreaValue] = useState(0)
 
-  const handleOnAreaChange = (ev) => setAreaValue(ev.target.value)
+  const handleOnAreaChange = ({ target: { value } }) => {
+    const newAreaValue = Number.parseInt(value, 10)
+    setAreaValue(
+      Number.isNaN(newAreaValue)
+        ? areaValue
+        : Math.abs(newAreaValue)
+    )
+  }
 
   useEffect(() => {
     if (isArea) {

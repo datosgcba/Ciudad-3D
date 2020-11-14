@@ -11,8 +11,8 @@ import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 
-import { actions } from 'state/ducks/map'
 import { useDispatch, useSelector } from 'react-redux'
+import { actions } from 'state/ducks/map'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
@@ -36,7 +36,7 @@ const GroupItem = ({
         control={(
           <Checkbox
             icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-            checkedIcon={<CheckBoxIcon fontSize="small" />}
+            checkedIcon={<CheckBoxIcon fontSize="small" style={{color: `${color}`}} />}
             checked={isVisible}
             onChange={layerChangeHandler}
             className={classes.checkBox}

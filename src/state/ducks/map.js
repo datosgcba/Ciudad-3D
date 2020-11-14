@@ -12,15 +12,14 @@ const add = async (layer) => {
   if (layer.type && (layer.type === 'vectortile' || layer.type === 'custom')) {
     const options = { ...layer.options }
     options.id = layer.id
-    await mapGL.addVectorTileLayer(
+    return mapGL.addVectorTileLayer(
       options,
       null,
       layer.displayPopup,
       layer.popupContent
     )
-  } else {
-    await mapGL.addPublicLayer(layer.id, { clustering: true })
   }
+  return mapGL.addPublicLayer(layer.id, { clustering: true })
 }
 
 const toggle = async (layer) => {
@@ -32,9 +31,9 @@ const toggle = async (layer) => {
     } else {
       map.setLayoutProperty(layer.id, 'visibility', 'visible')
     }
-  } else {
-    await add(layer)
+    return map.getLayoutProperty(layer.id, 'visibility')
   }
+  return add(layer)
 }
 
 const initMap = createAsyncThunk(
@@ -60,11 +59,11 @@ const toggleLayer = createAsyncThunk(
   'map/toggleLayer',
   async ({ idGroup, idLayer }) => {
     const layer = getFullLayerConfig(idGroup, idLayer)
-    const mapOnIdle = mapOnPromise(mapGL.map)('idle')
-    await toggle(layer)
-    return mapOnIdle
-      .then(() => true)
-      .catch(() => false)
+    return toggle(layer)
+      .then((isVisible) => {
+        const mapOnIdle = mapOnPromise(mapGL.map)('idle')
+        return mapOnIdle.then(() => isVisible === 'visible')
+      })
   },
   {
     condition: ({ idGroup, idLayer }, { getState }) => {
@@ -199,6 +198,7 @@ const map = createSlice({
       layerState.isVisible = !layerState.isVisible
     },
     [toggleLayer.fulfilled]: (draftState, {
+      payload,
       meta: {
         requestId,
         arg: { idGroup, idLayer }
@@ -207,6 +207,7 @@ const map = createSlice({
       const layerState = getLayerState(draftState, idGroup, idLayer)
       if (layerState.processingId === requestId) {
         layerState.processingId = null
+        layerState.isVisible = !!payload
       }
     },
     [toggleLayer.rejected]: (draftState, {

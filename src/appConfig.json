@@ -17,8 +17,13 @@
       "path": "explorer"
     },
     {
+      "id": "Tutorial",
+      "title": "Tutorial",
+      "path": "tutorial"
+    },
+    {
       "id": "Contact",
-      "title": "Ayudanos",
+      "title": "Ayudanos a mejorar",
       "path": "contact"
     }
   ],

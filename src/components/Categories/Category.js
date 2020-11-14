@@ -8,6 +8,7 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux'
 import { actions } from 'state/ducks/categories'
+import { actions as actionsTour } from 'state/ducks/tour'
 import { actions as alertsActions } from 'state/ducks/alerts'
 
 import useStyles from './styles'
@@ -34,7 +35,11 @@ const Category = ({ id, path, title }) => {
       onClick={() => {
         // Se borran las alertas que pudieran estar de una categoria anterior
         dispatch(alertsActions.clear())
-        dispatch(actions.categorySelected(id))
+        if (id === 'Tutorial') {
+          dispatch(actionsTour.isVisibleTour(true))
+        } else {
+          dispatch(actions.categorySelected(id))
+        }
       }}
       className={classes.option}
     >

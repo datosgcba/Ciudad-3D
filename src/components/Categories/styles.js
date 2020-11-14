@@ -19,7 +19,7 @@ export default makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.action.active,
     alignSelf: 'center',
-    '&:last-child': {
+    '&:nth-last-child(2)': {
       marginTop: 'auto'
     }
   },

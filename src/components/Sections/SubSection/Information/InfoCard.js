@@ -18,6 +18,7 @@ const InfoCard = ({
 
   return (
     <CardActionArea
+      style={{ borderColor: color }}
       className={classes.card}
       style={{ borderColor: color }}
       onClick={() => dispatch(actions.sectionSelected(id))}

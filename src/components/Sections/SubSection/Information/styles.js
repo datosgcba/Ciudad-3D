@@ -9,6 +9,7 @@ export default makeStyles((theme) => ({
     minHeight: theme.spacing(11),
     marginBottom: theme.spacing(2.5),
     backgroundColor: '#F1F1F3',
+    borderRadius: '5px',
     borderLeftStyle: 'solid',
     borderRadius: '5px',
     borderWidth: 'thick',

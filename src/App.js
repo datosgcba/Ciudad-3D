@@ -1,28 +1,37 @@
-/* eslint-disable */
+/* eslint  */
 import { BrowserRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
-import Routes from './routes'
+import React from 'react'
+
+import { useSelector, useDispatch } from 'react-redux'
+
+import { actions } from 'state/ducks/tour'
 
 import Tour from 'reactour'
+
+import Routes from './routes'
 
 import { largeScreenSteps } from './steps'
 
 export const ModalContext = React.createContext({ isModalOpen: true })
 
-export default function App(props) {
-  const showModal = JSON.parse(localStorage.getItem('isModalOpen')) === false ? false : true
-  const [isModalOpen, setIsModalOpen] = useState(showModal)
+export default function App({ isAuthenticated }) {
+  const dispatch = useDispatch()
+  const isModalOpen = useSelector((state) => state.tour.showModal)
+  const firstView = JSON.parse(localStorage.getItem('isModalOpen')) || false
+  if (!firstView) {
+    dispatch(actions.isVisibleTour(true))
+    localStorage.setItem('isModalOpen', 'true')
+  }
   const handleClose = () => {
-    setIsModalOpen(false)
-    localStorage.setItem('isModalOpen', 'false')
+    dispatch((actions.isVisibleTour(false)))
   }
 
   return (
     <div>
-     <BrowserRouter>
-    <Routes authed={props.isAuthenticated} />
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes authed={isAuthenticated} />
+      </BrowserRouter>
       <Tour
         disableInteraction
         steps={largeScreenSteps}
@@ -34,11 +43,9 @@ export default function App(props) {
   )
 }
 
-
 App.propTypes = {
   isAuthenticated: PropTypes.bool
 }
 App.defaultProps = {
   isAuthenticated: false
 }
-

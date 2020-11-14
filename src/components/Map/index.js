@@ -127,13 +127,7 @@ const Map = ({ children }) => {
               : `url(${imgCapaBaseSecundaria})`
           }}
           onClick={() => setCapabasePrincipal(!capabasePrincipal)}
-        >
-          <Box className={classes.minimapTitleContainer}>
-            <Box className={classes.minimapTitle}>
-              {capabasePrincipal ? 'Modo Oscuro' : 'Modo Claro'}
-            </Box>
-          </Box>
-        </Box>
+        />
         <Box className={classes.topMenu}>
           <Seeker onSelectItem={(selectedSuggestion) => {
             dispatch(seekerActions.placeSelected(selectedSuggestion))

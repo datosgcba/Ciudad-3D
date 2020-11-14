@@ -1,8 +1,10 @@
-/* eslint-disable react/self-closing-comp */
 import React from 'react'
+
+import ReCAPTCHA from 'react-google-recaptcha'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 
+import { Typography } from '@material-ui/core'
 import useStyles from './styles'
 
 const Contact = () => {
@@ -11,28 +13,39 @@ const Contact = () => {
   return (
     <ContainerBar
       type="list"
-      classes={classes}
     >
       <form>
-        <p>NOMBRE:</p>
+        <Typography className={classes.label}>
+          NOMBRE:
+        </Typography>
+        <Typography className={classes.asterisco}>*</Typography>
         <input
           className={classes.field}
           type="text"
         />
-        <p>EMAIL:</p>
+        <Typography className={classes.label}>
+          EMAIL:
+        </Typography>
+        <Typography className={classes.asterisco}>*</Typography>
         <input
           className={classes.field}
-          type="email"
+          type="text"
+          required
         />
-        <p>COMENTARIOS:</p>
+        <Typography className={classes.label}>
+          COMENTARIOS:
+        </Typography>
+        <Typography className={classes.asterisco}>*</Typography>
         <textarea
           className={classes.textArea}
-        >
-        </textarea>
-        <br></br>
-        <br></br>
+          required
+        />
         <input
           type="submit"
+          value="Enviar"
+        />
+        <ReCAPTCHA
+          sitekey="6LdVAuMZAAAAADGeupnkf5fB37bNhbxah0asbDkX"
         />
       </form>
     </ContainerBar>

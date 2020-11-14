@@ -20,7 +20,6 @@ const InfoCard = ({
     <CardActionArea
       style={{ borderColor: color }}
       className={classes.card}
-      style={{ borderColor: color }}
       onClick={() => dispatch(actions.sectionSelected(id))}
     >
       <Typography variant="h5" className={decorators.bold}>

@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import { getGeometrical } from 'utils/apiConfig'
 
+import { actions as categoriesActions } from 'state/ducks/categories'
 import { actions as smpActions } from 'state/ducks/parcel'
 
 const smpSelected = createAsyncThunk(
@@ -15,6 +16,7 @@ const smpSelected = createAsyncThunk(
     const response = await fetch(url)
     const data = (await response.json())
     dispatch(smpActions.updateSmp(smp))
+    dispatch(categoriesActions.categorySelected('Information'))
     return data.features[0].geometry.coordinates[0][0]
   }
 )

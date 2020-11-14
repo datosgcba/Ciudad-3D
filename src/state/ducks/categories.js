@@ -7,18 +7,18 @@ const categories = createSlice({
     sectionId: ['Explorer']
   },
   reducers: {
-    categorySelected: (draftState, action) => {
-      if (action.payload === draftState.sectionId[0]) {
+    categorySelected: (draftState, { payload }) => {
+      if (payload === draftState.sectionId[0]) {
         draftState.sectionOpen = false
         draftState.sectionId = ['']
       } else {
         draftState.sectionOpen = true
         draftState.sectionId = ['']
-        draftState.sectionId[0] = action.payload
+        draftState.sectionId[0] = payload
       }
     },
-    sectionSelected: (draftState, action) => {
-      draftState.sectionId.push(action.payload)
+    sectionSelected: (draftState, { payload }) => {
+      draftState.sectionId.push(payload)
     },
     sectionBack: (draftState) => {
       draftState.sectionId.pop()

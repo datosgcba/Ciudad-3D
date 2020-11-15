@@ -1331,16 +1331,52 @@
   ],
   "alerts": [
     {
-      "id": "A",
+      "id": "unidad_edificabilidad",
       "text": "Este lote tiene más de una unidad de edificabilidad y/o área especial individualizada. Requiere de un estudio específico."
     },
     {
-      "id": "B",
+      "id": "afectaciones",
       "text": "Este lote tiene afectaciones adicionales."
     },
     {
-      "id": "C",
+      "id": "rivolta",
       "text": "La altura máxima del lote responde al artículo 6.4.6 sobre la Altura de Edificios de Esquina: en una esquina cuyas vías públicas concurrentes autoricen distintas alturas de edificación, la altura mayor podrá llevarse sobre los lotes de la calle transversal a la cual corresponde la altura menor. Como este lote se ubica en una manzana típica, la altura mayor se podrá llevar hasta la prolongación virtual de la Línea de Frente Interno. Deberá confirmarse la altura máxima mediante un estudio particularizado."
+    },
+    {
+      "id": "adyacente_catalogado",
+      "text": "La altura podrá variar si: existe algún edificio adyacente Catalogado (Artículo 3.6 Anexo II) o la altura de los edificios linderos es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
+    },
+    {
+      "id": "coredor_alto",
+      "text": "Son los corredores centrales. Concentran actividades, modos de transporte y densidad, con un alto grado de consolidación. Sus alturas guardan relación con el ancho de los espacios públicos que enfrentan. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y ocho (38) metros (Ver más en Art. 6.2.1). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
+    },
+    {
+      "id": "coredor_medios",
+      "text": "Son los corredores principales. Concentran actividades, modos de transporte y densidades, con un menor grado de consolidación. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y un metros  con veinte centímetros (31.20m). (Ver más en Art. 6.2.2). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
+    },
+    {
+      "id": "usaa",
+      "text": "Son las áreas de la Ciudad de menor altura que los corredores, con alturas adecuadas a los espacios públicos de calles y avenidas barriales. Altura Máxima: 22,8 metros. (Ver más en Art. 6.2.3). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
+    },
+    {
+      "id": "usam",
+      "text": "Son las áreas de la ciudad con alturas de escala media, adecuadas para un carácter residencial mixto con cercanía a corredores y centros barriales. La edificabilidad máxima se corresponde con una Altura Máxima de dieciséis metros con cincuenta centímetros (17,20m). (Ver más en Art. 6.2.4) .La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
+    },
+    {
+      "id": "usab2",
+      "text": "Son las áreas de la ciudad de alturas menores, adecuadas para el desarrollo principalmente de actividades residenciales. La edificabilidad máxima se corresponde con una Altura Máxima de  once metros con veinte centímetros (11,20). (Ver más en Art. 6.2.5). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
+    },
+    {
+      "id": "usab1",
+      "text": "Son las áreas de la ciudad de alturas menores, adecuadas para el desarrollo principalmente de actividades residenciales.La edificabilidad máxima se corresponde con una Altura Máxima de nueve (9) metros. (Ver más en Art. 6.2.6). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
+    },
+    {
+      "id": "catalogado",
+      "text": "La catalogación constituye el instrumento de protección para la salvaguarda y puesta en valor de edificios a partir de sus criterios de valoración. A través de la catalogación se determina la normativa que regula cada edificio catalogado y su nivel de protección. Por este motivo, no corresponde a una de las alturas estándares, sino que está regulado especialmente por el Código Urbanístico para preservar su valor urbano."
+    },
+    {
+      "id": "mixtura_usos",
+      "text": "Esta parcela tiene más de un Uso. Requiere de un estudio específico."
     }
   ]
 }

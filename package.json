@@ -21,7 +21,7 @@
     "react-google-recaptcha": "^2.1.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^3.4.4",
     "react-smooth-scrollbar": "^8.0.6",
     "reactour": "^1.18.0",
     "redux": "^4.0.1",

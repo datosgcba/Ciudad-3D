@@ -18,7 +18,6 @@ import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 
-import { actions as alertsActions } from 'state/ducks/alerts'
 import { actions as buildableActions } from 'state/ducks/buildable'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -123,9 +122,6 @@ const Buildable = () => {
 
   useEffect(() => {
     dispatch(buildableActions.clickOnParcel(smp))
-    // Prueba de alerta, suponiendo que es una esquina y tiene rivolta
-    dispatch(alertsActions.clear())
-    dispatch(alertsActions.addId('C'))
   }, [dispatch, smp])
   return (
     <ContainerBar

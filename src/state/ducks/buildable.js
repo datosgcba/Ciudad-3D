@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import { getBuildable, getPlusvalia } from 'utils/apiConfig'
+import { actions as alertsActions } from 'state/ducks/alerts'
 
 const areaChanged = createAsyncThunk(
   'buildable/areaChanged',
@@ -35,7 +36,8 @@ const areaChanged = createAsyncThunk(
 
 const clickOnParcel = createAsyncThunk(
   'buildable/clickOnParcel',
-  async (smp) => {
+  async (smp, { dispatch }) => {
+    dispatch(alertsActions.clear())
     if (smp.length === undefined) {
       return { smp: 'Invalido' }
     }
@@ -64,7 +66,56 @@ const clickOnParcel = createAsyncThunk(
           ...others
         })
       })
-    // TODO: traer sólo lo necesario
+
+    // Condiciones de alertas
+    const deCount = data
+      ?.distrito_especial?.filter((distrito) => distrito.distrito_especifico > 0).length ?? 0
+    const udCount = data
+      ?.unidad_edificabilidad?.filter((valor) => valor > 0).length ?? 0
+    if (deCount + udCount > 0) {
+      dispatch(alertsActions.addId('unidad_edificabilidad'))
+    }
+    const uniEdif1 = data?.unidad_edificabilidad[0] ?? 0
+    switch (uniEdif1) {
+      case 38:
+        dispatch(alertsActions.addId('coredor_alto'))
+        break
+      case 31.2:
+        dispatch(alertsActions.addId('coredor_medios'))
+        break
+      case 22.8:
+        dispatch(alertsActions.addId('usaa'))
+        break
+      case 17.2:
+        dispatch(alertsActions.addId('usam'))
+        break
+      case 11.6:
+        dispatch(alertsActions.addId('usab2'))
+        break
+      case 9:
+        dispatch(alertsActions.addId('usab1'))
+        break
+      default:
+    }
+    const afectacionesCount = Object.values(data?.afectaciones ?? {})
+      .filter((valor) => valor > 0).length ?? 0
+    if (afectacionesCount > 0) {
+      dispatch(alertsActions.addId('afectaciones'))
+    }
+    if (data?.rivolta > 0 && data?.tipica?.length) {
+      dispatch(alertsActions.addId('rivolta'))
+    }
+    if (data.parcelas_linderas?.aph_linderas
+      && ['cautelar', 'integral', 'especial', 'estructural']
+        .includes(data.catalogacion?.proteccion)
+    ) {
+      dispatch(alertsActions.addId('adyacente_catalogado'))
+    }
+    if (['cautelar', 'integral', 'especial', 'estructural'].includes(data.catalogacion?.proteccion)) {
+      dispatch(alertsActions.addId('catalogado'))
+    }
+    //
+
     return data
   }
 )

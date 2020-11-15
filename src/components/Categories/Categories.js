@@ -17,15 +17,10 @@ const Categories = ({ data }) => {
 
   const dispatch = useDispatch()
 
-  const isMapReady = useSelector((state) => state.map.isMapReady)
-  const sectionOpen = useSelector((state) => state.categories.sectionOpen)
-
   // parcelCoords son las coordenadas donde se hace click
   const parcelCoords = useSelector((state) => state.map.selectedCoords)
   // seekerSmp es el smp obtenido por el buscador
   const seekerSmp = useSelector((state) => state.seeker.place.data.smp)
-
-  const smp = useSelector((state) => state.parcel.smp)
 
   // Se obtienen los datos básicos de la parcela seleccionada
   useEffect(() => {
@@ -35,16 +30,6 @@ const Categories = ({ data }) => {
   useEffect(() => {
     dispatch(basicDataActions.seekerParcel(seekerSmp))
   }, [seekerSmp, dispatch])
-
-  // Se abre el panel Information al seleccionar una parcela o hacer una busqueda
-  useEffect(() => {
-    if (isMapReady && smp !== null && !sectionOpen) {
-      const openPanel = 'Information'
-      dispatch(actions.categorySelected(openPanel))
-    }
-  // TODO: Agregar sectionOpen a las dependencias del useEffect sin perder funcionalidad
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isMapReady, smp, dispatch])
 
   return (
     <Box className={classes.options}>

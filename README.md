@@ -140,10 +140,13 @@ npm start
 ```
 Se abre una solapa en [http://localhost:``3000``](http://localhost:3000) el valor ``PORT`` definido en ``.env.development``
 
+Para poder utilizar el captcha que se encuentra en la categoria *Ayudanos a mejorar* 
+se debe cambiar localhost por 127.0.0.1 [http://127.0.0.1:``3000``](http://127.0.0.1:3000)
+
 ## Desarrollo
 
 ### Entorno
-Se ha probado utilizando node 12.18.2 (lts/erbium) con npm 6.14.5, específicamente se ha desarrollado sobre windows 10 y macOS Catalina, es de suponer se puede continuar el desarrollo en cualquier sistema operativo que soporte node 12 o superior.
+Se ha probado utilizando node 12.18.2 (lts/erbium) con npm 6.14.5, específicamente se ha desarrollado sobre windows 10, Linux Ubuntu y macOS Catalina, es de suponer se puede continuar el desarrollo en cualquier sistema operativo que soporte node 12 o superior.
 
 ### IDE
 
@@ -151,7 +154,7 @@ Si bien el proyecto debería poder ser utilizado con cualquier IDE, se recomiend
 
 * **ESLint**: Resalta en rojo los errores de ESLint, es importante que procuremos mantener un estilo de código unificado. Este estilo esta definido en ``.eslintrc.json``
 
-* **Debugger for Chrome**:  Útil al momento de depurar código, también se recomienda usar log points en reemplazo de ``console.log`` si se desea hace console.log por favor no deshabilitar el ESLint en esa linea, para asegurar que se eliminara antes de hacer el commit.
+* **Debugger for Chrome**:  Útil al momento de depurar código, también se recomienda usar log points en reemplazo de ``console.log`` si se desea hacer console.log por favor no deshabilitar el ESLint en esa linea, para asegurar que se eliminara antes de hacer el commit.
 
 * **Live Share**: Permite un fácil trabajo en equipo, al momento de ver código en el que esta trabajando un compañero.
 

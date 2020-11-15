@@ -42,7 +42,9 @@ const getInformation = () => config.information.map(({
   id, title, description, color
 }))
 
-const getBasicData = () => config.basicData.map(({ title, fill, format, isNumber }) => ({
+const getBasicData = () => config.basicData.map(({
+  title, fill, format, isNumber
+}) => ({
   title, fill, format, isNumber
 }))
 

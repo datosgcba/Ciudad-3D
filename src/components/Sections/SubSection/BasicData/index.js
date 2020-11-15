@@ -48,7 +48,12 @@ const BasicData = () => {
       { isSelected && (
         <Box className={classes.details}>
           {
-            getBasicData().map(({ title, fill, format, isNumber }, index) => (
+            getBasicData().map(({
+              title,
+              fill,
+              format,
+              isNumber
+            }, index) => (
               <Details
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}

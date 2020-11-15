@@ -11,7 +11,6 @@ export default makeStyles((theme) => ({
     backgroundColor: '#F1F1F3',
     borderRadius: '5px',
     borderLeftStyle: 'solid',
-    borderRadius: '5px',
     borderWidth: 'thick',
     lineHeight: theme.spacing(20)
   }

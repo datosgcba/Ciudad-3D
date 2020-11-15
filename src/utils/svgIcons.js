@@ -1,7 +1,5 @@
 import React from 'react'
 
-import NearMeOutlinedIcon from '@material-ui/icons/NearMeOutlined'
-
 const icons = [
   {
     id: 'information',

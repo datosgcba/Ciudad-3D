@@ -24,14 +24,26 @@ const Polygon = ({ smp, geomCoords }) => {
         "paint": {
           "fill-extrusion-color": "#DD0083",
           "fill-extrusion-opacity": 0.8,
-          "fill-extrusion-height": [ "get", "altura_final" ]
+          "fill-extrusion-height": ["get", "altura_final"]
         },
-        "filter": [ "==", "smp", smp ]
       },
       null,
       false,
       null
     )
+  }, [])
+
+  useEffect(() => {
+    const parcel3D = mapGL.map.getLayer('edif_smp')
+    if (parcel3D !== undefined) {
+      mapGL.setFilter(
+        'edif_smp',
+        ["==", "smp", smp]
+      )
+    }
+  }, [smp])
+
+  useEffect(() => {
 
     const layer = mapGL.map.getLayer('Parcel')
     if (layer !== undefined) {
@@ -64,8 +76,8 @@ const Polygon = ({ smp, geomCoords }) => {
         }
       })
     }
-  // TODO: Agregar smp a las dependencias del useEffect sin perder funcionalidad
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // TODO: Agregar smp a las dependencias del useEffect sin perder funcionalidad
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [geomCoords, mapGL])
 
   return null

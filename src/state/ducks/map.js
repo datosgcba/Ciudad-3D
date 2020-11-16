@@ -29,7 +29,6 @@ const toggle = async (layer, isVisible = null) => {
     const nextVisibility = isVisible !== null
       ? isVisible
       : visibility === 'none'
-    console.log(isVisible, visibility, nextVisibility)
     map.setLayoutProperty(layer.id, 'visibility', nextVisibility ? 'visible' : 'none')
     return nextVisibility
   }
@@ -67,10 +66,10 @@ const toggleLayer = createAsyncThunk(
     const state = getState()
     const { isVisible } = getLayerState(state.map, idGroup, idLayer)
     const layer = getFullLayerConfig(idGroup, idLayer)
-    return toggle(layer, !isVisible)
+    return toggle(layer, isVisible)
       .then(() => {
         const mapOnIdle = mapOnPromise(mapGL.map)('idle')
-        return mapOnIdle.then(() => !isVisible)
+        return mapOnIdle.then(() => isVisible)
       })
       // eslint-disable-next-line no-console
       .catch((error) => console.warn('toggleLayer catch error:', error))

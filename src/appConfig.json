@@ -635,7 +635,7 @@
       "layers": [
         {
           "title": "Tejido 3d consolidado",
-          "color": "#white",
+          "color": "#bea8b6",
           "id": "tejido_consolidado",
           "type": "vectortile",
           "displayPopup": false,
@@ -644,7 +644,34 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/tejido_tes_zg/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/tejido/{z}/{x}/{y}.pbf"
+              ],
+              "minzoom": 10,
+              "maxzoom": 18,
+              "cluster": false
+            },
+            "source-layer": "default",
+            "type": "fill-extrusion",
+            "paint": {
+              "fill-extrusion-color": "#bea8b6",
+              "fill-extrusion-opacity": 0.9,
+              "fill-extrusion-height": ["get", "altura"]
+            },
+            "filter": [ "==", "consolidado", true ]
+          }
+        },
+        {
+          "title": "Tejido 3d no consolidado",
+          "color": "white",
+          "id": "tejido",
+          "type": "vectortile",
+          "displayPopup": false,
+          "popupContent": "",
+          "options": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/tejido/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -657,36 +684,7 @@
               "fill-extrusion-opacity": 0.9,
               "fill-extrusion-height": ["get", "altura"]
             },
-            "filter": [ "==", "consolidado", "falso" ]
-          }
-        },
-        {
-          "title": "Tejido 3d no consolidado",
-          "color": "#9d6db6",
-          "id": "tejido",
-          "type": "vectortile",
-          "displayPopup": false,
-          "popupContent": "",
-          "options": {
-            "source": {
-              "type": "vector",
-              "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/tejido_tes_zg/{z}/{x}/{y}.pbf"
-              ],
-              "minzoom": 10,
-              "maxzoom": 18,
-              "cluster": false
-            },
-            "source-layer": "default",
-            "type": "fill-extrusion",
-            "paint": {
-              "fill-extrusion-color": "#9d6db6",
-              "fill-extrusion-opacity": 0.9,
-              "fill-extrusion-height": [
-                "get",
-                "altura"
-              ]
-            }
+            "filter": [ "==", "consolidado", false ]
           }
         },
         {
@@ -736,23 +734,12 @@
             "paint": {
               "fill-color": [
                 "match",
-                [
-                  "to-string",
-                  [
-                    "get",
-                    "alicuota"
-                  ]
-                ],
-                "0.1",
-                "#fff5eb",
-                "0.18",
-                "#fdbd83",
-                "0.27",
-                "#ee6510",
-                "0.35",
-                "#7f2704",
-                "0.39",
-                "#00FF00",
+                [ "to-string", [ "get", "alicuota" ] ],
+                "0.1", "#fff5eb",
+                "0.18", "#fdbd83",
+                "0.27", "#ee6510",
+                "0.35", "#7f2704",
+                "0.39", "#00FF00",
                 "#fff"
               ],
               "fill-opacity": 0.8
@@ -764,23 +751,31 @@
           "color": "#e76056",
           "id": "codigourbanistico_mixtura",
           "type": "vectortile",
-          "displayPopup": false,
-          "popupContent": "",
+          "displayPopup": true,
+          "popupContent": "{uso_1}",
           "options": {
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigourbanistico/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
             },
             "source-layer": "default",
-            "type": "line",
+            "type": "fill",
             "paint": {
-              "line-color": "#e76056",
-              "line-width": 4
+              "fill-color": [
+                "match",
+                [ "get", "uso_1" ],
+                1, "#3b0f6f",
+                2, "#8c2981",
+                3, "#de4969",
+                4, "#fe9f6d",
+                "#fff"
+              ],
+              "fill-opacity": 0.8
             }
           }
         }

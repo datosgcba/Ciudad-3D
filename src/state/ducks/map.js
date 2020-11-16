@@ -29,6 +29,7 @@ const toggle = async (layer, isVisible = null) => {
     const nextVisibility = isVisible !== null
       ? isVisible
       : visibility === 'none'
+    console.log(isVisible, visibility, nextVisibility)
     map.setLayoutProperty(layer.id, 'visibility', nextVisibility ? 'visible' : 'none')
     return nextVisibility
   }

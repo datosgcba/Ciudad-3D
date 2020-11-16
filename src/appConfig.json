@@ -252,7 +252,7 @@
               "details": "",
               "color": "#ffbfbf",
               "idLayer": "codigourbanistico_uva",
-              "valueFilter": "0.1"
+              "filter": ["==", ["to-string", ["get", "alicuota"]], "0.1"]
             },
             {
               "id": "Zone2",
@@ -260,7 +260,7 @@
               "details": "",
               "color": "#d69090",
               "idLayer": "codigourbanistico_uva",
-              "valueFilter": "0.18"
+              "filter": ["==", ["to-string", ["get", "alicuota"]], "0.18"]
             },
             {
               "id": "Zone3",
@@ -268,7 +268,7 @@
               "details": "",
               "color": "#b06868",
               "idLayer": "codigourbanistico_uva",
-              "valueFilter": "0.27"
+              "filter": ["==", ["to-string", ["get", "alicuota"]], "0.27"]
             },
             {
               "id": "Zone4",
@@ -276,7 +276,7 @@
               "details": "",
               "color": "#8a4545",
               "idLayer": "codigourbanistico_uva",
-              "valueFilter": "0.35"
+              "filter": ["==", ["to-string", ["get", "alicuota"]], "0.35"]
             }
           ]
         }
@@ -299,72 +299,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
-            ],
-            "minzoom": 10,
-            "maxzoom": 18,
-            "cluster": false
-          },
-          "source-layer": "codigo_urbanistico",
-          "type": "fill",
-          "paint": {
-            "fill-color": "blue",
-            "fill-opacity": 0.8
-          }
-        }
-      }
-    },
-    {
-      "id": "Incidence",
-      "filterId": "IncidenceAliquot",
-      "title": "Incidencia Ley 6.062 mod. y comp.",
-      "layers": {
-        "title": "Incidencia en UVA",
-        "color": "#E87167",
-        "id": "codigourbanistico_uva",
-        "type": "vectortile",
-        "displayPopup": true,
-        "popupContent": "{alicuota}",
-        "options": {
-          "source": {
-            "type": "vector",
-            "tiles": [
-              "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
-            ],
-            "minzoom": 10,
-            "maxzoom": 18,
-            "cluster": false
-          },
-          "source-layer": "codigo_urbanistico",
-          "type": "fill",
-          "paint": {
-            "fill-color": [
-              "match",
-              [ "get", "inc_uva_19" ],
-              700, "green",    
-              "#fff"
-            ],
-            "fill-opacity": 0.8
-          }
-        }
-      }
-    },
-    {
-      "id": "Aliquot",
-      "filterId": "IncidenceAliquot",
-      "title": "Alícuotas ley 6.062 mod. y comp.",
-      "layers": {
-        "title": "Incidencia en UVA",
-        "color": "#E87167",
-        "id": "codigourbanistico_uva",
-        "type": "vectortile",
-        "displayPopup": true,
-        "popupContent": "{alicuota}",
-        "options": {
-          "source": {
-            "type": "vector",
-            "tiles": [
-              "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
+              "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -388,6 +323,82 @@
           }
         }
       }
+    },
+    {
+      "id": "Incidence",
+      "filterId": "IncidenceAliquot",
+      "title": "Incidencia Ley 6.062 mod. y comp.",
+      "layers": {
+        "title": "Incidencia en UVA",
+        "color": "#E87167",
+        "id": "codigourbanistico_uva",
+        "type": "vectortile",
+        "displayPopup": true,
+        "popupContent": "{alicuota}",
+        "options": {
+          "source": {
+            "type": "vector",
+            "tiles": [
+              "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf"
+            ],
+            "minzoom": 10,
+            "maxzoom": 18,
+            "cluster": false
+          },
+          "source-layer": "codigo_urbanistico",
+          "type": "fill",
+          "paint": {
+            "fill-color": "red",
+            "fill-opacity": 0.8
+          }
+        }
+      }
+    },
+    {
+      "id": "Aliquot",
+      "filterId": "IncidenceAliquot",
+      "title": "Alícuotas ley 6.062 mod. y comp.",
+      "layers": {
+        "id": "codigourbanistico_uva",
+        "type": "vectortile",
+        "displayPopup": true,
+        "popupContent": "{alicuota}",
+        "options": {
+          "source": {
+            "type": "vector",
+            "tiles": [
+              "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf"
+            ],
+            "minzoom": 10,
+            "maxzoom": 18,
+            "cluster": false
+          },
+          "source-layer": "default",
+          "type": "fill",
+          "paint": {
+            "fill-color": [
+              "match",
+              [
+                "to-string",
+                [
+                  "get",
+                  "alicuota"
+                ]
+              ],
+              "0.1",
+              "rgb(255, 191, 191)",
+              "0.18",
+              "rgb(214, 144, 144)",
+              "0.27",
+              "rgb(176, 104, 104)",
+              "0.35",
+              "rgb(138, 69, 69)",
+              "#fff"
+            ],
+            "fill-opacity": 0.8
+          }
+        }
+      }      
     }
   ],
   "information": [

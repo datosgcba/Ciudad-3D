@@ -17,14 +17,14 @@ import useFontsStyles from 'theme/fontsDecorators'
 import useStyles from './styles'
 
 // TODO: el filter podría estar en el state
-const filters = [{ idLayer: '', valueFilter: [] }]
+const filters = [{ idLayer: '', filter: [] }]
 
 const addFilters = (f, idx, layer, value, check) => {
   if (f.idLayer === layer) {
     if (check) {
-      filters[idx].valueFilter.push(value)
+      filters[idx].filter.push(value)
     } else {
-      filters[idx].valueFilter.pop(value)
+      filters[idx].filter.pop(value)
     }
   }
 }
@@ -35,7 +35,7 @@ const handleChange = (layer, value, dispatch) => (_, check) => {
     filters.push(
       {
         idLayer: layer,
-        valueFilter: []
+        filter: []
       }
     )
   }
@@ -45,11 +45,11 @@ const handleChange = (layer, value, dispatch) => (_, check) => {
   dispatch(actions.filterUpdate(filters))
 }
 const ListItems = ({
-  decorators, subTitle, details, color, dispatch, idLayer, valueFilter
+  decorators, subTitle, details, color, dispatch, idLayer, filter
 }) => (
   <ListItem style={{ backgroundColor: `${color}`, paddingBottom: 0, paddingTop: 0 }}>
     <FormControlLabel
-      onChange={handleChange(idLayer, valueFilter, dispatch)}
+      onChange={handleChange(idLayer, filter, dispatch)}
       control={(
         <Checkbox
           icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
@@ -76,7 +76,7 @@ const List = ({ items }) => {
     <Box className={classes.options}>
       {
         items.map(({
-          subTitle, details, color, id, idLayer, valueFilter
+          subTitle, details, color, id, idLayer, filter
         }) => (
           <ListItems
             key={id}
@@ -87,7 +87,7 @@ const List = ({ items }) => {
             color={color}
             dispatch={dispatch}
             idLayer={idLayer}
-            valueFilter={valueFilter}
+            filter={filter}
           />
         ))
       }
@@ -104,7 +104,7 @@ ListItems.propTypes = {
   details: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   idLayer: PropTypes.string.isRequired,
-  valueFilter: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
   dispatch: PropTypes.string.isRequired
 }
 ListItems.defaultProps = {

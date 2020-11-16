@@ -83,26 +83,6 @@ const toggleLayer = createAsyncThunk(
   }
 )
 
-const filterUpdate = (filters) => {
-  filters.forEach((f) => {
-    const { idLayer, valueFilter } = f
-
-    const newFilters = ['all']
-    valueFilter.forEach((v) => {
-      // TODO: Escalar formato de filtro
-      newFilters.push((['===', ['to-string', ['get', 'alicuota']], `${v}`]))
-    })
-
-    const layer = mapGL.map.getLayer(idLayer)
-    if (layer !== undefined) {
-      mapGL.setFilter(
-        idLayer,
-        newFilters
-      )
-    }
-  })
-}
-
 const selectedExplorerFilter = createAsyncThunk(
   'map/selectedExplorerFilter',
   async (idExplorer) => {
@@ -125,6 +105,25 @@ const selectedExplorerFilter = createAsyncThunk(
     }
   }
 )
+
+const filterUpdate = (filters) => {
+  filters.forEach((f) => {
+    const { idLayer, filter } = f
+
+    const newFilters = ['any']
+    filter.forEach((v) => {
+      newFilters.push(v)
+    })
+
+    const layer = mapGL.map.getLayer(idLayer)
+    if (layer !== undefined) {
+      mapGL.setFilter(
+        idLayer,
+        newFilters
+      )
+    }
+  })
+}
 
 const groups = {}
 
@@ -155,6 +154,11 @@ const map = createSlice({
   initialState: {
     isMapReady: false,
     camera: {
+      /*
+      lat: -34.6079,
+      lng: -58.4426,
+      zoom: 13,
+      */
       lat: -34.574168,
       lng: -58.484989,
       zoom: 15.58,

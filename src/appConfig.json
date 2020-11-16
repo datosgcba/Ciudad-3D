@@ -787,8 +787,8 @@
       "layers": [
         {
           "title": "Riesgo Hídrico",
-          "color": "#f3a32d",
-          "id": "restricciones_hidrivo",
+          "color": "blue",
+          "id": "restricciones_hidrico",
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
@@ -796,7 +796,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/restricciones/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/riesgo_hidrico/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -805,14 +805,14 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#f3a32d",
+              "line-color": "blue",
               "line-width": 4
             }
           }
         },
         {
           "title": "Cono Aproximación Aeroparque",
-          "color": "#fcda59",
+          "color": "goldenrod",
           "id": "restricciones_aeroparque",
           "type": "vectortile",
           "displayPopup": false,
@@ -830,9 +830,10 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#fcda59",
+              "line-color": "goldenrod",
               "line-width": 4
-            }
+            },
+            "filter": [ "==", "tipo", "TODO: falta" ]
           }
         },
         {
@@ -840,8 +841,8 @@
           "color": "#2ebc98",
           "id": "restricciones_particularizada",
           "type": "vectortile",
-          "displayPopup": false,
-          "popupContent": "",
+          "displayPopup": true,
+          "popupContent": "{tipo}",
           "options": {
             "source": {
               "type": "vector",
@@ -857,7 +858,8 @@
             "paint": {
               "line-color": "#2ebc98",
               "line-width": 4
-            }
+            },
+            "filter": [ "==", "tipo", "Línea particularizada" ]
           }
         },
         {
@@ -865,8 +867,8 @@
           "color": "#99c25f",
           "id": "restricciones_ensanche",
           "type": "vectortile",
-          "displayPopup": false,
-          "popupContent": "",
+          "displayPopup": true,
+          "popupContent": "{tipo}",
           "options": {
             "source": {
               "type": "vector",
@@ -882,7 +884,8 @@
             "paint": {
               "line-color": "#99c25f",
               "line-width": 4
-            }
+            },
+            "filter": [ "==", "tipo", "TODO: falta" ]
           }
         },
         {

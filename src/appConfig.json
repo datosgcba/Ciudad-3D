@@ -299,7 +299,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
+              "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -329,7 +329,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
+              "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -364,7 +364,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
+              "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -444,7 +444,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/linea_oficial/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/linea_oficial/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -469,35 +469,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/manzana/{z}/{x}/{y}.pbf"
-              ],
-              "minzoom": 10,
-              "maxzoom": 18,
-              "cluster": false
-            },
-            "source-layer": "default",
-            "type": "circle",
-            "paint": {
-              "circle-radius": 5,
-              "circle-color": "#f3a32d",
-              "circle-opacity": 0.5,
-              "circle-stroke-width": 2,
-              "circle-stroke-color": "#f3a32d"
-            }
-          }
-        },
-        {
-          "title": "Líneas de Frente Interno (L.F.I)",
-          "color": "#fcda59",
-          "id": "lfi",
-          "type": "vectortile",
-          "displayPopup": false,
-          "popupContent": "",
-          "options": {
-            "source": {
-              "type": "vector",
-              "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/lfi/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/lib/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -506,7 +478,32 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#fcda59",
+              "line-color": "#f3a32d",
+              "line-width": 4
+            }
+          }
+        },
+        {
+          "title": "Líneas de Frente Interno (L.F.I)",
+          "color": "#0389d1",
+          "id": "lfi",
+          "type": "vectortile",
+          "displayPopup": false,
+          "popupContent": "",
+          "options": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/lfi/{z}/{x}/{y}.pbf"
+              ],
+              "minzoom": 10,
+              "maxzoom": 18,
+              "cluster": false
+            },
+            "source-layer": "default",
+            "type": "line",
+            "paint": {
+              "line-color": "#0389d1",
               "line-width": 4
             }
           }
@@ -522,17 +519,17 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/banda_minima/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/banda_minima/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
             },
             "source-layer": "default",
-            "type": "line",
+            "type": "fill",
             "paint": {
-              "line-color": "#2ebc98",
-              "line-width": 4
+              "fill-color": "#2ebc98",
+              "fill-opacity": 0.7
             }
           }
         },
@@ -547,17 +544,17 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/rivolta/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/rivolta/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
             },
             "source-layer": "default",
-            "type": "line",
+            "type": "fill",
             "paint": {
-              "line-color": "#99c25f",
-              "line-width": 4
+              "fill-color": "#99c25f",
+              "fill-opacity": 0.7
             }
           }
         },
@@ -572,23 +569,37 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/volumen_edif_2/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
             },
             "source-layer": "default",
-            "type": "line",
+            "type": "fill-extrusion",
             "paint": {
-              "line-color": "#19c3e3",
-              "line-width": 4
+              "fill-extrusion-color": [
+                "match",
+                [ "get", "edificabilidad" ],
+                "USAB1","#efe6cd",
+                "USAB2", "#ccc5af",
+                "USAM", "#f4c59b",
+                "USAA", "#eaa58b",
+                "CM", "#8fb3b5",
+                "CA", "#648894",
+                "#0389d1"
+              ],
+              "fill-extrusion-opacity": 0.8,
+              "fill-extrusion-height": [
+                "get",
+                "altura_final"
+              ]
             }
           }
         },
         {
           "title": "Área edificable",
-          "color": "#0389d1",
+          "color": "#fcda59",
           "id": "volumen_edif_basamento",
           "type": "vectortile",
           "displayPopup": false,
@@ -597,22 +608,26 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/volumen_edif/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
             },
             "source-layer": "default",
-            "type": "line",
+            "type": "fill-extrusion",
             "paint": {
-              "line-color": "#0389d1",
-              "line-width": 4
+              "fill-extrusion-color": "#fcda59",
+              "fill-extrusion-opacity": 0.9,
+              "fill-extrusion-height": [
+                "get",
+                "altura"
+              ]
             },
             "filter": [
-              "==",
-              "tipo",
-              "cuerpo principal"
+              "any",
+              [ "==", "tipo", "basamento" ],
+              [ "==", "tipo", "cuerpo principal" ]
             ]
           }
         }
@@ -633,7 +648,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/tejido_2/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/linea_oficial/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -667,7 +682,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/tejido_2/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/tejido_tes_zg/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -676,7 +691,7 @@
             "source-layer": "default",
             "type": "fill-extrusion",
             "paint": {
-              "fill-extrusion-color": "9d6db6",
+              "fill-extrusion-color": "#9d6db6",
               "fill-extrusion-opacity": 0.9,
               "fill-extrusion-height": [
                 "get",
@@ -696,7 +711,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/manzana/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/manzana/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -724,7 +739,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -769,7 +784,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigourbanistico/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigourbanistico/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -800,7 +815,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/restricciones/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -825,7 +840,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/restricciones/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -850,7 +865,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/restricciones/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -875,7 +890,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/restricciones/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -900,7 +915,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/restricciones/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -930,7 +945,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/restricciones/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,

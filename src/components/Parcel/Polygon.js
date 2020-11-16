@@ -14,7 +14,7 @@ const Polygon = ({ smp, geomCoords }) => {
         "source": {
           "type": "vector",
           "tiles": [
-            "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/volumen_edif/{z}/{x}/{y}.pbf"
+            "http://cur3d.eastus2.cloudapp.azure.com/cur3d/volumen_edif/{z}/{x}/{y}.pbf"
           ],
           "minzoom": 10,
           "maxzoom": 18,

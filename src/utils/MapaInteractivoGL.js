@@ -425,7 +425,7 @@ class MapaInteractivoGL {
     }
   }
 
-  addVectorTileLayer(options, icon, displayPopup = false, popupContent = '') {
+  addVectorTileLayer(options, icon, displayPopup = false, popupContent = '', beforeId) {
     this._loadingLayer = true
     const self = this
     const { id } = options

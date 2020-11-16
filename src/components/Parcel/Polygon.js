@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
+const parcelId = 'Parcel'
 const Polygon = ({ smp, geomCoords }) => {
   const mapGL = MapaInteractivoGL()
 
@@ -22,7 +23,7 @@ const Polygon = ({ smp, geomCoords }) => {
         "source-layer": "default",
         "type": "fill-extrusion",
         "paint": {
-          "fill-extrusion-color": "#fcda59",
+          "fill-extrusion-color": "#DD0083",
           "fill-extrusion-opacity": 0.8,
           "fill-extrusion-height": ["get", "altura_final"]
         },
@@ -30,7 +31,8 @@ const Polygon = ({ smp, geomCoords }) => {
       },
       null,
       false,
-      null
+      null,
+      parcelId
     )
   }, [])
 
@@ -46,9 +48,9 @@ const Polygon = ({ smp, geomCoords }) => {
 
   useEffect(() => {
 
-    const layer = mapGL.map.getLayer('Parcel')
+    const layer = mapGL.map.getLayer(parcelId)
     if (layer !== undefined) {
-      mapGL.map.removeLayer('Parcel')
+      mapGL.map.removeLayer(parcelId)
     }
 
     if (geomCoords !== null) {
@@ -66,7 +68,7 @@ const Polygon = ({ smp, geomCoords }) => {
         })
       }
       mapGL.map.addLayer({
-        id: 'Parcel',
+        id: parcelId,
         type: 'fill',
         source: smp,
         layout: {},

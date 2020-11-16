@@ -85,12 +85,13 @@ const toggleLayer = createAsyncThunk(
 
 const selectedExplorerFilter = createAsyncThunk(
   'map/selectedExplorerFilter',
-  async (idExplorer) => {
+  async (idExplorer, { getState }) => {
     const explorerLayer = getFullExplorerLayerConfig(idExplorer)
     // const filter = getFilterLayer(capasSelected)
     const mapOnIdle = mapOnPromise(mapGL.map)('idle')
     // TODO: bug, hay que volver a elegirlo para que se borre la capa
     // funciona como checkbox
+    const state = getState().map.explorerLayers
     await toggle(explorerLayer)
     // if visible
     return mapOnIdle
@@ -246,6 +247,7 @@ const map = createSlice({
     }) => {
       const explorerLayerState = getExplorerLayerState(draftState, arg)
       explorerLayerState.processingId = requestId
+      explorerLayerState.isVisible = !explorerLayerState.isVisible
     },
 
     [selectedExplorerFilter.fulfilled]: (draftState, {
@@ -257,7 +259,6 @@ const map = createSlice({
       const explorerLayerState = getExplorerLayerState(draftState, arg)
       if (explorerLayerState.processingId === requestId) {
         explorerLayerState.processingId = null
-        explorerLayerState.isVisible = !explorerLayerState.isVisible
       }
     },
 
@@ -270,7 +271,6 @@ const map = createSlice({
       const explorerLayerState = getExplorerLayerState(draftState, arg)
       if (explorerLayerState.processingId === requestId) {
         explorerLayerState.processingId = null
-        explorerLayerState.isVisible = !explorerLayerState.isVisible
       }
     }
   }

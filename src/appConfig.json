@@ -635,7 +635,7 @@
       "layers": [
         {
           "title": "Tejido 3d consolidado",
-          "color": "#3e4f5e",
+          "color": "#white",
           "id": "tejido_consolidado",
           "type": "vectortile",
           "displayPopup": false,
@@ -653,18 +653,11 @@
             "source-layer": "default",
             "type": "fill-extrusion",
             "paint": {
-              "fill-extrusion-color": "#3e4f5e",
+              "fill-extrusion-color": "white",
               "fill-extrusion-opacity": 0.9,
-              "fill-extrusion-height": [
-                "get",
-                "altura"
-              ]
+              "fill-extrusion-height": ["get", "altura"]
             },
-            "filter": [
-              "==",
-              "consolidado",
-              "falso"
-            ]
+            "filter": [ "==", "consolidado", "falso" ]
           }
         },
         {
@@ -714,13 +707,10 @@
               "cluster": false
             },
             "source-layer": "default",
-            "type": "circle",
+            "type": "fill",
             "paint": {
-              "circle-radius": 5,
-              "circle-color": "#f562a2",
-              "circle-opacity": 0.5,
-              "circle-stroke-width": 2,
-              "circle-stroke-color": "#f562a2"
+              "fill-color": "#f562a2",
+              "fill-opacity": 0.7
             }
           }
         },
@@ -735,13 +725,13 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
               "cluster": false
             },
-            "source-layer": "codigo_urbanistico",
+            "source-layer": "default",
             "type": "fill",
             "paint": {
               "fill-color": [

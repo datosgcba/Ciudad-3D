@@ -114,7 +114,7 @@ const filterUpdate = (filters) => {
     filter.forEach((v) => {
       newFilters.push(v)
     })
-    
+
     const layer = mapGL.map.getLayer(idLayer)
     if (layer !== undefined) {
       mapGL.setFilter(

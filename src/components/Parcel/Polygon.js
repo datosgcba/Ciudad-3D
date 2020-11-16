@@ -22,10 +22,11 @@ const Polygon = ({ smp, geomCoords }) => {
         "source-layer": "default",
         "type": "fill-extrusion",
         "paint": {
-          "fill-extrusion-color": "#DD0083",
+          "fill-extrusion-color": "#fcda59",
           "fill-extrusion-opacity": 0.8,
           "fill-extrusion-height": ["get", "altura_final"]
         },
+        "filter": ["==", "smp", smp]
       },
       null,
       false,

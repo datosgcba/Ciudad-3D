@@ -22,18 +22,20 @@ const add = async (layer) => {
   return mapGL.addPublicLayer(layer.id, { clustering: true })
 }
 
-const toggle = async (layer) => {
+const toggle = async (layer, isVisible = null) => {
   const { map } = mapGL
   if (map.getLayer(layer.id)) {
-    const visibility = map.getLayoutProperty(layer.id, 'visibility')
-    if (typeof visibility === 'undefined' || visibility === 'visible') {
-      map.setLayoutProperty(layer.id, 'visibility', 'none')
-    } else {
-      map.setLayoutProperty(layer.id, 'visibility', 'visible')
-    }
-    return map.getLayoutProperty(layer.id, 'visibility')
+    const visibility = map.getLayoutProperty(layer.id, 'visibility') ?? 'visible'
+    const nextVisibility = isVisible !== null
+      ? isVisible
+      : visibility === 'none'
+    map.setLayoutProperty(layer.id, 'visibility', nextVisibility ? 'visible' : 'none')
+    return nextVisibility
   }
-  return add(layer)
+  await add(layer)
+    // eslint-disable-next-line no-console
+    .catch((error) => console.warn('toggle add layer - catch error:', error))
+  return true
 }
 
 const initMap = createAsyncThunk(
@@ -55,15 +57,22 @@ const getLayerState = (state, idGroup, idLayer) => state
 const getExplorerLayerState = (state, idExplorer) => state
   .explorerLayers[idExplorer].layers
 
+// Notar que si el server falla el tilde parece dejar de funcionar
+// si falla se desea el toggle se comporte como si el server funcionara bien
+// Si se espera el tilde vuelve a funcionar, tarda porque se espera map este idle
 const toggleLayer = createAsyncThunk(
   'map/toggleLayer',
-  async ({ idGroup, idLayer }) => {
+  async ({ idGroup, idLayer }, { getState }) => {
+    const state = getState()
+    const { isVisible } = getLayerState(state.map, idGroup, idLayer)
     const layer = getFullLayerConfig(idGroup, idLayer)
-    return toggle(layer)
-      .then((isVisible) => {
+    return toggle(layer, !isVisible)
+      .then(() => {
         const mapOnIdle = mapOnPromise(mapGL.map)('idle')
-        return mapOnIdle.then(() => isVisible === 'visible')
+        return mapOnIdle.then(() => !isVisible)
       })
+      // eslint-disable-next-line no-console
+      .catch((error) => console.warn('toggleLayer catch error:', error))
   },
   {
     condition: ({ idGroup, idLayer }, { getState }) => {
@@ -198,7 +207,6 @@ const map = createSlice({
       layerState.isVisible = !layerState.isVisible
     },
     [toggleLayer.fulfilled]: (draftState, {
-      payload,
       meta: {
         requestId,
         arg: { idGroup, idLayer }
@@ -207,7 +215,6 @@ const map = createSlice({
       const layerState = getLayerState(draftState, idGroup, idLayer)
       if (layerState.processingId === requestId) {
         layerState.processingId = null
-        layerState.isVisible = !!payload
       }
     },
     [toggleLayer.rejected]: (draftState, {
@@ -219,7 +226,6 @@ const map = createSlice({
       const layerState = getLayerState(draftState, idGroup, idLayer)
       if (layerState.processingId === requestId) {
         layerState.processingId = null
-        layerState.isVisible = !layerState.isVisible
       }
     },
     // selectedExplorerFilter

@@ -615,14 +615,10 @@
               "cluster": false
             },
             "source-layer": "default",
-            "type": "fill-extrusion",
+            "type": "fill",
             "paint": {
-              "fill-extrusion-color": "#fcda59",
-              "fill-extrusion-opacity": 0.9,
-              "fill-extrusion-height": [
-                "get",
-                "altura"
-              ]
+              "fill-color": "#fcda59",
+              "fill-opacity": 0.9
             },
             "filter": [
               "any",
@@ -648,7 +644,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/linea_oficial/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com:8080/cur3d/tejido_tes_zg/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -657,7 +653,7 @@
             "source-layer": "default",
             "type": "fill-extrusion",
             "paint": {
-              "fill-extrusion-color": "3e4f5e",
+              "fill-extrusion-color": "#3e4f5e",
               "fill-extrusion-opacity": 0.9,
               "fill-extrusion-height": [
                 "get",

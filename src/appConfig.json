@@ -435,7 +435,7 @@
       "layers": [
         {
           "title": "Línea oficial",
-          "color": "#E87167",
+          "color": "#e76056",
           "id": "linea_oficial",
           "type": "vectortile",
           "displayPopup": false,
@@ -453,14 +453,14 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "#e76056",
               "line-width": 4
             }
           }
         },
         {
           "title": "Líneas Internas de Basamento (L.I.B)",
-          "color": "#EDBD77",
+          "color": "#f3a32d",
           "id": "lib",
           "type": "vectortile",
           "displayPopup": false,
@@ -479,16 +479,16 @@
             "type": "circle",
             "paint": {
               "circle-radius": 5,
-              "circle-color": "#e74c3c",
+              "circle-color": "#f3a32d",
               "circle-opacity": 0.5,
               "circle-stroke-width": 2,
-              "circle-stroke-color": "#e74c3c"
+              "circle-stroke-color": "#f3a32d"
             }
           }
         },
         {
           "title": "Líneas de Frente Interno (L.F.I)",
-          "color": "#E87167",
+          "color": "#fcda59",
           "id": "lfi",
           "type": "vectortile",
           "displayPopup": false,
@@ -506,14 +506,14 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "#fcda59",
               "line-width": 4
             }
           }
         },
         {
           "title": "Banda Mínima Edificable",
-          "color": "#E87167",
+          "color": "#2ebc98",
           "id": "banda_minima",
           "type": "vectortile",
           "displayPopup": false,
@@ -531,14 +531,14 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "#2ebc98",
               "line-width": 4
             }
           }
         },
         {
           "title": "Rivolta",
-          "color": "#E87167",
+          "color": "#99c25f",
           "id": "rivolta",
           "type": "vectortile",
           "displayPopup": false,
@@ -556,14 +556,14 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "#99c25f",
               "line-width": 4
             }
           }
         },
         {
           "title": "Unidades de edificabilidad",
-          "color": "#E87167",
+          "color": "#19c3e3",
           "id": "volumen_edif_unidades",
           "type": "vectortile",
           "displayPopup": false,
@@ -581,14 +581,14 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "green",
+              "line-color": "#19c3e3",
               "line-width": 4
             }
           }
         },
         {
           "title": "Área edificable",
-          "color": "#E87167",
+          "color": "#0389d1",
           "id": "volumen_edif_basamento",
           "type": "vectortile",
           "displayPopup": false,
@@ -606,7 +606,7 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "#0389d1",
               "line-width": 4
             },
             "filter": [
@@ -624,7 +624,7 @@
       "layers": [
         {
           "title": "Tejido 3d consolidado",
-          "color": "#E87167",
+          "color": "#3e4f5e",
           "id": "tejido_consolidado",
           "type": "vectortile",
           "displayPopup": false,
@@ -642,7 +642,7 @@
             "source-layer": "default",
             "type": "fill-extrusion",
             "paint": {
-              "fill-extrusion-color": "green",
+              "fill-extrusion-color": "3e4f5e",
               "fill-extrusion-opacity": 0.9,
               "fill-extrusion-height": [
                 "get",
@@ -658,7 +658,7 @@
         },
         {
           "title": "Tejido 3d no consolidado",
-          "color": "#E87167",
+          "color": "#9d6db6",
           "id": "tejido",
           "type": "vectortile",
           "displayPopup": false,
@@ -676,7 +676,7 @@
             "source-layer": "default",
             "type": "fill-extrusion",
             "paint": {
-              "fill-extrusion-color": "white",
+              "fill-extrusion-color": "9d6db6",
               "fill-extrusion-opacity": 0.9,
               "fill-extrusion-height": [
                 "get",
@@ -687,7 +687,7 @@
         },
         {
           "title": "Manzanas atípicas",
-          "color": "#EDBD77",
+          "color": "#f562a2",
           "id": "lib",
           "type": "vectortile",
           "displayPopup": false,
@@ -706,16 +706,16 @@
             "type": "circle",
             "paint": {
               "circle-radius": 5,
-              "circle-color": "#e74c3c",
+              "circle-color": "#f562a2",
               "circle-opacity": 0.5,
               "circle-stroke-width": 2,
-              "circle-stroke-color": "#e74c3c"
+              "circle-stroke-color": "#f562a2"
             }
           }
         },
         {
           "title": "Incidencia en UVA",
-          "color": "#E87167",
+          "color": "#fff5eb",
           "id": "codigourbanistico_uva",
           "type": "vectortile",
           "displayPopup": true,
@@ -760,7 +760,7 @@
         },
         {
           "title": "Mixtura de usos de suelo",
-          "color": "#E87167",
+          "color": "#e76056",
           "id": "codigourbanistico_mixtura",
           "type": "vectortile",
           "displayPopup": false,
@@ -778,7 +778,7 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "#e76056",
               "line-width": 4
             }
           }
@@ -791,7 +791,7 @@
       "layers": [
         {
           "title": "Riesgo Hídrico",
-          "color": "#8292F0",
+          "color": "#f3a32d",
           "id": "restricciones_hidrivo",
           "type": "vectortile",
           "displayPopup": false,
@@ -809,14 +809,14 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "#f3a32d",
               "line-width": 4
             }
           }
         },
         {
           "title": "Cono Aproximación Aeroparque",
-          "color": "#EDBD77",
+          "color": "#fcda59",
           "id": "restricciones_aeroparque",
           "type": "vectortile",
           "displayPopup": false,
@@ -834,14 +834,14 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "#fcda59",
               "line-width": 4
             }
           }
         },
         {
           "title": "Línea de Edificación Particularizada",
-          "color": "#8EB283",
+          "color": "#2ebc98",
           "id": "restricciones_particularizada",
           "type": "vectortile",
           "displayPopup": false,
@@ -859,14 +859,14 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "#2ebc98",
               "line-width": 4
             }
           }
         },
         {
           "title": "Ensanche",
-          "color": "#EA92F1",
+          "color": "#99c25f",
           "id": "restricciones_ensanche",
           "type": "vectortile",
           "displayPopup": false,
@@ -884,14 +884,14 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "#99c25f",
               "line-width": 4
             }
           }
         },
         {
           "title": "Apertura",
-          "color": "#B299BC",
+          "color": "#19c3e3",
           "id": "restricciones_apretura",
           "type": "vectortile",
           "displayPopup": false,
@@ -909,7 +909,7 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "#19c3e3",
               "line-width": 4
             },
             "filter": [
@@ -921,7 +921,7 @@
         },
         {
           "title": "Cinturón Digital",
-          "color": "#E9E1BC",
+          "color": "#0389d1",
           "id": "restricciones_cinturon",
           "type": "vectortile",
           "displayPopup": false,
@@ -939,7 +939,7 @@
             "source-layer": "default",
             "type": "line",
             "paint": {
-              "line-color": "#E87167",
+              "line-color": "#0389d1",
               "line-width": 4
             }
           }

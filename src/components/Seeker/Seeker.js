@@ -115,6 +115,7 @@ const Seeker = (props) => {
     } = suggestionProps
 
     const title = suggestion.alias || suggestion.title || suggestion.nombre
+    if (title.length === null){console.log('HOLA')}else{console.log(title)}
     const subTitle = suggestion.subTitle
       ? suggestion.subTitle
       : suggestion.descripcion
@@ -131,17 +132,14 @@ const Seeker = (props) => {
         key={index}
         selected={isHighlighted}
         component="div"
-        style={{
-          fontSize: '0.6rem',
-          maxWidth: 600
-        }}
+        className={classes.list}
       >
         <ListItemAvatar>
           <Avatar>
             <Icono fontSize="small" />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary={title} secondary={subTitle} />
+        <ListItemText primary={title} secondary={subTitle} className={classes.listItem} />
       </MenuItem>
     )
   }

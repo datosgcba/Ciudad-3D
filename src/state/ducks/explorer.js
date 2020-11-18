@@ -21,27 +21,6 @@ getExplorer().forEach(({ id: idExplorer }) => {
 })
 
 const filterUpdate = (optionsState, idLayer, dispatch) => {
-  const mockLayer = [
-    {
-      idLayer: 'codigourbanistico_uva',
-      groups: [
-        {
-          idGroup: 'Altura',
-          filter: [
-            ['==', ['to-string', ['get', 'uni_edif_1']], '11.2'],
-            ['==', ['to-string', ['get', 'uni_edif_1']], '22.8']
-          ]
-        },
-        {
-          idGroup: 'Area',
-          filter: [
-            ['==', ['get', 'dist_1_grp'], 'AE']
-          ]
-        }
-      ]
-    }
-  ]
-
   const filters = []
   Object.keys(optionsState).map(
     (idOption) => Object.keys(optionsState[idOption]).forEach(
@@ -49,9 +28,10 @@ const filterUpdate = (optionsState, idLayer, dispatch) => {
         if (
           optionsState[idOption][idItem].isVisible
           && optionsState[idOption][idItem].filter !== undefined
+          && optionsState[idOption][idItem].idGroup !== 'Area'
         ) {
-          // Se crea el idGroup en filters en caso que no exista
           const { idGroup } = optionsState[idOption][idItem]
+          // Se crea el idGroup en filters en caso que no exista
           const existLayer = filters.find((f) => f.idGroup === idGroup)
           if (existLayer === undefined) {
             filters.push(
@@ -64,12 +44,28 @@ const filterUpdate = (optionsState, idLayer, dispatch) => {
           filters.find((g) => g.idGroup === idGroup).filter.push(
             optionsState[idOption][idItem].filter
           )
+          // Entre Area y Altura es criterio es OR por lo tanto se meten en el mismo grupo
+          // TODO: mejorar solución
+        } else if (
+          optionsState[idOption][idItem].isVisible
+          && optionsState[idOption][idItem].idGroup === 'Area'
+        ) {
+          const existLayer = filters.find((f) => f.idGroup === 'Altura')
+          if (existLayer === undefined) {
+            filters.push(
+              {
+                idGroup: 'Altura',
+                filter: []
+              }
+            )
+          }
+          filters.find((g) => g.idGroup === 'Altura').filter.push(
+            optionsState[idOption][idItem].filter
+          )
         }
       }
     )
   )
-
-  console.log('filter', filters)
   const layers = [
     {
       idLayer,
@@ -77,7 +73,7 @@ const filterUpdate = (optionsState, idLayer, dispatch) => {
     }
   ]
 
-  dispatch(mapActions.filterUpdate({ mockLayer, layers }))
+  dispatch(mapActions.filterUpdate({ layers }))
 }
 
 const checkChange = createAsyncThunk(

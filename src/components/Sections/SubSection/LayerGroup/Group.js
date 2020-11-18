@@ -35,8 +35,8 @@ const GroupItem = ({
         className={classes.formControl}
         control={(
           <Checkbox
-            icon={<CheckBoxOutlineBlankIcon fontSize="small" style={{ color: '#717170'}} />}
-            checkedIcon={<CheckBoxIcon fontSize="small" style={{ color: '#a6a4a4' }} />}
+            icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+            checkedIcon={<CheckBoxIcon fontSize="small" style={{ color: `${color}` }} />}
             checked={isVisible}
             onChange={layerChangeHandler}
             className={classes.checkBox}

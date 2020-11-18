@@ -95,42 +95,48 @@
               "subTitle": "AE",
               "details": "Área de Arquitectura Especial",
               "color": "#CCADAD",
-              "idLayer": "codigourbanistico_uva"
+              "idLayer": "codigourbanistico_uva",
+              "filter": ["==", ["get", "dist_1_grp"], "AE"]
             },
             {
               "id": "aph",
               "subTitle": "APH",
               "details": "Área de Arqquitectura Especial",
               "color": "#F9BCB4",
-              "idLayer": "codigourbanistico_uva"
+              "idLayer": "codigourbanistico_uva",
+              "filter": ["==", ["get", "dist_1_grp"], "APH"]
             },
             {
               "id": "are",
               "subTitle": "ARE",
               "details": "Área de Reserva Ecológica",
               "color": "#BCC489",
-              "idLayer": "codigourbanistico_uva"
+              "idLayer": "codigourbanistico_uva",
+              "filter": ["==", ["get", "dist_1_grp"], "ARE"]
             },
             {
               "id": "renovationArea",
               "subTitle": "Área de Renovación",
               "details": "Área de renovación urbana Riachuelo",
               "color": "#efefef",
-              "idLayer": "codigourbanistico_uva"
+              "idLayer": "codigourbanistico_uva",
+              "filter": ["==", ["get", "dist_1_grp"], "Area de Renovacion"]
             },
             {
               "id": "ee",
               "subTitle": "EE",
               "details": "Equipamentos Especiales",
               "color": "#AAB4C7",
-              "idLayer": "codigourbanistico_uva"
+              "idLayer": "codigourbanistico_uva",
+              "filter": ["==", ["get", "dist_1_grp"], "EE"]
             },
             {
               "id": "publicSpace",
               "subTitle": "Espacio Público",
               "details": "Espacio Público",
               "color": "#c2ccb7",
-              "idLayer": "codigourbanistico_uva"
+              "idLayer": "codigourbanistico_uva",
+              "filter": ["==", ["get", "dist_1_grp"], "Espacio Publico"]
             }
           ]
         },
@@ -322,7 +328,7 @@
               "id": "NA",
               "subTitle": "",
               "details": "N/A",
-              "color": "fff",
+              "color": "rgba(0, 0, 0, 0.26)",
               "idLayer": "codigourbanistico_uva",
               "filter": ["all", ["==", ["get", "inc_uva_19"], ""]]
             },
@@ -481,7 +487,7 @@
                 [
                   "get",
                   "uni_edif_1"
-                ]
+                ]                
               ],
               "38","#667d8a",
               "31.2","#92aaaf",

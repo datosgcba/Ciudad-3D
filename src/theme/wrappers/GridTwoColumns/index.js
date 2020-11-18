@@ -8,7 +8,6 @@ import {
 import useFontsStyles from 'theme/fontsDecorators'
 
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 
 import { actions } from 'state/ducks/explorer'
 
@@ -37,8 +36,8 @@ const GridItems = ({
         control={(
           <Checkbox
             checked={isChecked}
-            icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-            checkedIcon={<CheckBoxIcon fontSize="small" />}
+            icon={<CheckBoxIcon fontSize="small" style={{ color: 'white', backgroundColor: 'white', border: '0.5px solid grey' }} />}
+            checkedIcon={<CheckBoxIcon fontSize="small" style={{ color: '#707070' }} />}
           />
         )}
       />

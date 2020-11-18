@@ -136,7 +136,11 @@ const Map = ({ children }) => {
               Se actualiza la camara desde acá
               ya que al elegir lugares el autocompleter no trae SMP
              */
-            if (selectedSuggestion.data.smp === undefined && selectedSuggestion.data.coordenadas && selectedSuggestion.data.coordenadas.x && selectedSuggestion.data.coordenadas.y) {
+            if (
+              selectedSuggestion.data.smp === undefined
+              && selectedSuggestion.data.coordenadas
+              && selectedSuggestion.data.coordenadas.x && selectedSuggestion.data.coordenadas.y
+            ) {
               dispatch(mapActions.cameraUpdated({
                 lat: selectedSuggestion.data.coordenadas.y,
                 lng: selectedSuggestion.data.coordenadas.x,

@@ -47,8 +47,8 @@ const initMap = createAsyncThunk(
       .then(async () => true)
       .catch(() => false)
   }, {
-  condition: () => mapGL === null
-}
+    condition: () => mapGL === null
+  }
 )
 
 const getLayerState = (state, idGroup, idLayer) => state
@@ -105,10 +105,7 @@ const selectedExplorerFilter = createAsyncThunk(
     }
   }
 )
-const filterUpdate = ({ mockLayer, layers }) => {
-  console.log('mockLayer', mockLayer)
-  console.log('layers', layers)
-
+const filterUpdate = ({ layers }) => {
   layers.forEach((l) => {
     const { idLayer, groups } = l
 
@@ -122,8 +119,6 @@ const filterUpdate = ({ mockLayer, layers }) => {
         )
       )
     ]
-
-    console.log('newFilters', newFilters)
     const layer = mapGL.map.getLayer(idLayer)
     if (layer !== undefined) {
       mapGL.setFilter(

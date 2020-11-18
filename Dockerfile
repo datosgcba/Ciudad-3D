@@ -18,7 +18,7 @@ COPY ./public ./public
 COPY ./jsconfig.json .
 
 # build for development
-COPY ./.env.development ./.env
+COPY ./.env.development ./.env.development
 RUN npm run build
 
 ### nginx state for serving content ###

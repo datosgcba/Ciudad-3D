@@ -72,7 +72,7 @@ const clickOnParcel = createAsyncThunk(
       ?.distrito_especial?.filter((distrito) => distrito.distrito_especifico > 0).length ?? 0
     const udCount = data
       ?.unidad_edificabilidad?.filter((valor) => valor > 0).length ?? 0
-    if (deCount + udCount > 0) {
+    if (deCount + udCount > 1) {
       dispatch(alertsActions.addId('unidad_edificabilidad'))
     }
     const uniEdif1 = data?.unidad_edificabilidad[0] ?? 0

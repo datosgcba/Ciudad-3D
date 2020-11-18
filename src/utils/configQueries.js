@@ -88,7 +88,9 @@ const getExplorerFilters = () => config.explorerFilters.map(({
 const getFullExplorerLayerConfig = (idExplorer) => config
   .explorerFilters.find((g) => g.id === idExplorer).layers
 
-const getExplorerOptions = (filter) => config.explorer.filter((c) => c.id === filter)
+const getExplorerOptions = (idExplorer) => config.explorer.filter((c) => c.id === idExplorer)
+
+const getExplorer = () => config.explorer
 
 const getAlert = (idAlert) => config.alerts.find(({ id }) => id === idAlert).text
 
@@ -98,7 +100,7 @@ const getSectionTitle = (idTitle) => config.information.find(({ id }) => id === 
 
 export {
   getCategories, getFullLayerConfig, getInformation, getBasicData,
-  getLayersGroups, getLayersByLayersGroupId, getBuildable,
+  getLayersGroups, getLayersByLayersGroupId, getBuildable, getExplorer,
   getUsesTable, getWorksGroups, getAffectationsTable, getExplorerOptions,
   getExplorerFilters, getCapitalGain, getInspectionsGroups, getAlert,
   getCategoryTitle, getSectionTitle, getFullExplorerLayerConfig

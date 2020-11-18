@@ -47,8 +47,8 @@ const initMap = createAsyncThunk(
       .then(async () => true)
       .catch(() => false)
   }, {
-    condition: () => mapGL === null
-  }
+  condition: () => mapGL === null
+}
 )
 
 const getLayerState = (state, idGroup, idLayer) => state
@@ -85,14 +85,13 @@ const toggleLayer = createAsyncThunk(
 
 const selectedExplorerFilter = createAsyncThunk(
   'map/selectedExplorerFilter',
-  async (idExplorer, { getState }) => {
+  async (idExplorer) => {
     const explorerLayer = getFullExplorerLayerConfig(idExplorer)
     // const filter = getFilterLayer(capasSelected)
     const mapOnIdle = mapOnPromise(mapGL.map)('idle')
     // TODO: bug, hay que volver a elegirlo para que se borre la capa
     // funciona como checkbox
-    const state = getState().map.explorerLayers
-    await toggle(explorerLayer)
+    await toggle(explorerLayer, true)
     // if visible
     return mapOnIdle
       .then(() => true)
@@ -106,16 +105,25 @@ const selectedExplorerFilter = createAsyncThunk(
     }
   }
 )
+const filterUpdate = ({ mockLayer, layers }) => {
+  console.log('mockLayer', mockLayer)
+  console.log('layers', layers)
 
-const filterUpdate = (filters) => {
-  filters.forEach((f) => {
-    const { idLayer, filter } = f
+  layers.forEach((l) => {
+    const { idLayer, groups } = l
 
-    const newFilters = ['any']
-    filter.forEach((v) => {
-      newFilters.push(v)
-    })
+    const newFilters = ['all',
+      ...groups.map(
+        ({ filter }) => (
+          [
+            'any',
+            ...filter
+          ]
+        )
+      )
+    ]
 
+    console.log('newFilters', newFilters)
     const layer = mapGL.map.getLayer(idLayer)
     if (layer !== undefined) {
       mapGL.setFilter(
@@ -160,9 +168,9 @@ const map = createSlice({
       lng: -58.4426,
       zoom: 13,
       */
-      lat: -34.574168,
-      lng: -58.484989,
-      zoom: 15.58,
+      lat: -34.6079,
+      lng: -58.4426,
+      zoom: 13,
       /*
       lat: -34.574168,
       lng: -58.484989,

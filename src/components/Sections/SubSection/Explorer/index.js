@@ -24,7 +24,9 @@ import { getExplorerOptions, getExplorerFilters } from 'utils/configQueries'
 
 import useStyles from './styles'
 
-const AccordionOptions = ({ id, title, items }) => {
+const AccordionOptions = ({
+  id, idExplorer, title, items
+}) => {
   const accordionItems = new Map([
     ['Altura', List],
     ['Area', List],
@@ -46,6 +48,7 @@ const AccordionOptions = ({ id, title, items }) => {
       </AccordionSummary>
       <AccordionDetails>
         <AccordionItem
+          idExplorer={idExplorer}
           items={items}
         />
       </AccordionDetails>
@@ -115,8 +118,8 @@ const Explorer = () => {
       }
       {
         !focusFilter && categories
-          .map((cat) => cat.map(({ title, id, options }) => (
-            <Box key={id}>
+          .map((cat) => cat.map(({ title, id: idExplorer, options }) => (
+            <Box key={idExplorer}>
               <Typography variant="body2" className={`${decorators.marginTop_xl} ${decorators.marginBottom_ml}`}>
                 {title}
               </Typography>
@@ -125,6 +128,7 @@ const Explorer = () => {
                   <AccordionOptions
                     key={idx}
                     id={idx}
+                    idExplorer={idExplorer}
                     title={t}
                     items={items}
                   />
@@ -140,7 +144,8 @@ const Explorer = () => {
 AccordionOptions.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(PropTypes.any).isRequired
+  items: PropTypes.arrayOf(PropTypes.any).isRequired,
+  idExplorer: PropTypes.string.isRequired
 }
 
 export default Explorer

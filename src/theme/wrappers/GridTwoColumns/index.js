@@ -10,50 +10,33 @@ import useFontsStyles from 'theme/fontsDecorators'
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 
-import { actions } from 'state/ducks/map'
-import { useDispatch } from 'react-redux'
+import { actions } from 'state/ducks/explorer'
+
+import { useDispatch, useSelector } from 'react-redux'
 
 import useStyles from './styles'
 
-// TODO: el filter podría estar en el state
-const filters = [{ idLayer: '', filter: [] }]
-
-const addFilters = (f, idx, layer, value, check) => {
-  if (f.idLayer === layer) {
-    if (check) {
-      filters[idx].filter.push(value)
-    } else {
-      filters[idx].filter.pop(value)
-    }
-  }
-}
-const handleChange = (layer, value, dispatch) => (_, check) => {
-  // Se crea el idLayer en filters en caso que no exista
-  const existLayer = filters.find((f) => f.idLayer === layer)
-  if (existLayer === undefined) {
-    filters.push(
-      {
-        idLayer: layer,
-        filter: []
-      }
-    )
-  }
-  // Se mapea filters en busca del layer correspondiente y se le agregan los filtros
-  filters.map((f, idx) => addFilters(f, idx, layer, value, check))
-  dispatch(actions.filterUpdate(filters))
-}
 const GridItems = ({
-  decorators, title, idLayer, filter
+  decorators, title, idLayer, idExplorer: idExp, id: idItem
 }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
+  const isChecked = useSelector((state) => state.explorer.options[idExp][idItem].isVisible)
+
+  const handleChange = (idExplorer, itemId, isVisible) => {
+    dispatch(actions.checkChange({
+      idLayer, idExplorer, itemId, isVisible
+    }))
+  }
+
   return (
     <Grid item xs={6}>
       <FormControlLabel
         className={classes.formControl}
-        onChange={handleChange(idLayer, filter, dispatch)}
+        onChange={(_, isCheck) => handleChange(idExp, idItem, isCheck)}
         control={(
           <Checkbox
+            checked={isChecked}
             icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
             checkedIcon={<CheckBoxIcon fontSize="small" />}
           />
@@ -66,24 +49,31 @@ const GridItems = ({
   )
 }
 
-const GridTwoColumns = ({ items }) => {
+const GridTwoColumns = ({ idExplorer, items }) => {
   const decorators = useFontsStyles()
   return (
     <Grid container spacing={0}>
-      {items.map(({ title, idLayer, filter }) => (
-        <GridItems
-          key={title}
-          decorators={decorators}
-          title={title}
-          idLayer={idLayer}
-          filter={filter}
-        />
-      ))}
+      {
+        items.map(({
+          title, id, idLayer, filter
+        }) => (
+          <GridItems
+            key={id}
+            idExplorer={idExplorer}
+            id={id}
+            decorators={decorators}
+            title={title}
+            idLayer={idLayer}
+            filter={filter}
+          />
+        ))
+      }
     </Grid>
   )
 }
 
 GridTwoColumns.propTypes = {
+  idExplorer: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
@@ -91,7 +81,8 @@ GridItems.propTypes = {
   decorators: PropTypes.objectOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   idLayer: PropTypes.string.isRequired,
-  filter: PropTypes.string.isRequired
+  idExplorer: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
 }
 
 export default GridTwoColumns

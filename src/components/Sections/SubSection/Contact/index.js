@@ -18,7 +18,7 @@ const Contact = () => {
         <Typography className={classes.label}>
           NOMBRE:
         </Typography>
-        <Typography className={classes.asterisco}>*</Typography>
+        <Typography className={classes.asterisco}>* </Typography>
         <input
           className={classes.field}
           type="text"
@@ -39,13 +39,15 @@ const Contact = () => {
         <textarea
           className={classes.textArea}
           required
+          resize="vertical"
+        />
+        <Typography className={classes.asterisco}>* los campos son obligatorios</Typography>
+        <ReCAPTCHA
+          sitekey="6LdVAuMZAAAAADGeupnkf5fB37bNhbxah0asbDkX"
         />
         <input
           type="submit"
           value="Enviar"
-        />
-        <ReCAPTCHA
-          sitekey="6LdVAuMZAAAAADGeupnkf5fB37bNhbxah0asbDkX"
         />
       </form>
     </ContainerBar>

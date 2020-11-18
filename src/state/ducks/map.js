@@ -85,23 +85,20 @@ const toggleLayer = createAsyncThunk(
 
 const selectedExplorerFilter = createAsyncThunk(
   'map/selectedExplorerFilter',
-  async (idExplorer) => {
+  async ({ idExplorer, isVisible }) => {
     const explorerLayer = getFullExplorerLayerConfig(idExplorer)
-    // const filter = getFilterLayer(capasSelected)
     const mapOnIdle = mapOnPromise(mapGL.map)('idle')
-    // TODO: bug, hay que volver a elegirlo para que se borre la capa
-    // funciona como checkbox
-    await toggle(explorerLayer, true)
+    await toggle(explorerLayer, isVisible)
     // if visible
     return mapOnIdle
       .then(() => true)
       .catch(() => false)
   },
   {
-    condition: (idExplorer, { getState }) => {
+    condition: ({ idExplorer }, { getState }) => {
       const state = getState()
       const explorerLayer = getExplorerLayerState(state.map, idExplorer)
-      return state.map.isMapReady && explorerLayer.processingId === null
+      return explorerLayer.processingId === null
     }
   }
 )
@@ -245,21 +242,21 @@ const map = createSlice({
     [selectedExplorerFilter.pending]: (draftState, {
       meta: {
         requestId,
-        arg
+        arg: { idExplorer, isVisible }
       }
     }) => {
-      const explorerLayerState = getExplorerLayerState(draftState, arg)
+      const explorerLayerState = getExplorerLayerState(draftState, idExplorer)
       explorerLayerState.processingId = requestId
-      explorerLayerState.isVisible = !explorerLayerState.isVisible
+      explorerLayerState.isVisible = isVisible
     },
 
     [selectedExplorerFilter.fulfilled]: (draftState, {
       meta: {
         requestId,
-        arg
+        arg: { idExplorer }
       }
     }) => {
-      const explorerLayerState = getExplorerLayerState(draftState, arg)
+      const explorerLayerState = getExplorerLayerState(draftState, idExplorer)
       if (explorerLayerState.processingId === requestId) {
         explorerLayerState.processingId = null
       }
@@ -268,10 +265,10 @@ const map = createSlice({
     [selectedExplorerFilter.rejected]: (draftState, {
       meta: {
         requestId,
-        arg
+        arg: { idExplorer }
       }
     }) => {
-      const explorerLayerState = getExplorerLayerState(draftState, arg)
+      const explorerLayerState = getExplorerLayerState(draftState, idExplorer)
       if (explorerLayerState.processingId === requestId) {
         explorerLayerState.processingId = null
       }

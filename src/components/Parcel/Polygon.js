@@ -27,12 +27,11 @@ const Polygon = ({ smp, geomCoords }) => {
           "fill-extrusion-opacity": 0.8,
           "fill-extrusion-height": ["get", "altura_final"]
         },
-        "filter": ["==", "smp", smp]
+        "filter": ["==", "smp", "no-match"]
       },
       null,
       false,
-      null,
-      parcelId
+      null
     )
   }, [])
 

@@ -78,9 +78,15 @@ const Explorer = () => {
   const [focusFilter, setFocusFilter] = useState(false)
 
   useEffect(() => {
+  }, [dispatch])
+
+  useEffect(() => {
+    /*
     value.map(({ id: idExplorer }) => dispatch(
       actionsMap.selectedExplorerFilter(idExplorer)
     ))
+    */
+    dispatch(actionsMap.selectedExplorerFilter({ idExplorer: 'Height', isVisible: value.length > 0 }))
     setFilters(getExplorerFilters().filter((f) => !value || !value.map((v) => v.id).includes(f.id)))
   }, [value, dispatch])
 

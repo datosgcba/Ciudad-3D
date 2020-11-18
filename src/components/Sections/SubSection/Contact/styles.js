@@ -17,6 +17,11 @@ export default makeStyles((theme) => ({
   textArea: {
     width: theme.spacing(35),
     height: theme.spacing(15),
-    marginBottom: theme.spacing(1.5)
+    marginBottom: theme.spacing(0),
+    resize: 'vertical'
+  },
+  captcha: {
+    marginBottom: theme.spacing(1.5),
+    marginTop: theme.spacing(1.5)
   }
 }))

@@ -1079,7 +1079,7 @@
               "line-color": "#2ebc98",
               "line-width": 4
             },
-            "filter": [ "==", "clase", "liea_particularizada" ]
+            "filter": [ "==", "clase", "linea_particularizada" ]
           }
         },
         {

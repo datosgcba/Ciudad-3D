@@ -22,6 +22,7 @@ const Contact = () => {
         <input
           className={classes.field}
           type="text"
+          required
         />
         <Typography className={classes.label}>
           EMAIL:
@@ -29,7 +30,7 @@ const Contact = () => {
         <Typography className={classes.asterisco}>*</Typography>
         <input
           className={classes.field}
-          type="text"
+          type="email"
           required
         />
         <Typography className={classes.label}>
@@ -39,13 +40,15 @@ const Contact = () => {
         <textarea
           className={classes.textArea}
           required
-          resize="vertical"
+          resize="none"
         />
         <Typography className={classes.asterisco}>* los campos son obligatorios</Typography>
         <ReCAPTCHA
+          className={classes.captcha}
           sitekey="6LdVAuMZAAAAADGeupnkf5fB37bNhbxah0asbDkX"
         />
         <input
+          className={classes.button}
           type="submit"
           value="Enviar"
         />

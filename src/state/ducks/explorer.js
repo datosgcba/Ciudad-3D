@@ -10,7 +10,7 @@ getExplorer().forEach(({ id: idExplorer }) => {
     options[idOption] = {}
     opt.forEach(({ id: idGroup, items }) => items.forEach(({ id, filter, invFilter }) => {
       options[idOption][id] = {
-        isVisible: false,
+        isVisible: true,
         idGroup,
         filter,
         invFilter,
@@ -20,52 +20,77 @@ getExplorer().forEach(({ id: idExplorer }) => {
   })
 })
 
-const filterUpdate = (optionsState, idLayer, dispatch) => {
-  const filters = []
-  Object.keys(optionsState).map(
-    (idOption) => Object.keys(optionsState[idOption]).forEach(
-      (idItem) => {
-        if (
-          optionsState[idOption][idItem].isVisible
-          && optionsState[idOption][idItem].filter !== undefined
-          && optionsState[idOption][idItem].idGroup !== 'Area'
-        ) {
-          const { idGroup } = optionsState[idOption][idItem]
-          // Se crea el idGroup en filters en caso que no exista
-          const existLayer = filters.find((f) => f.idGroup === idGroup)
-          if (existLayer === undefined) {
-            filters.push(
-              {
-                idGroup,
-                filter: []
-              }
-            )
-          }
-          filters.find((g) => g.idGroup === idGroup).filter.push(
-            optionsState[idOption][idItem].filter
-          )
-          // Entre Area y Altura es criterio es OR por lo tanto se meten en el mismo grupo
-          // TODO: mejorar solución
-        } else if (
-          optionsState[idOption][idItem].isVisible
-          && optionsState[idOption][idItem].idGroup === 'Area'
-        ) {
-          const existLayer = filters.find((f) => f.idGroup === 'Altura')
-          if (existLayer === undefined) {
-            filters.push(
-              {
-                idGroup: 'Altura',
-                filter: []
-              }
-            )
-          }
-          filters.find((g) => g.idGroup === 'Altura').filter.push(
-            optionsState[idOption][idItem].filter
-          )
-        }
-      }
-    )
+// Esta funcón rebuscada se resume en ¿algún grupo de los visibles tiene cero tildes?
+const hasGroupWithEmtpyFilter = ({ optionsState, autoCompleteValue }) => autoCompleteValue
+  .some(
+    ({ filterId }) => {
+      const groupsCount = Object.values(optionsState[filterId])
+        .reduce(
+          (groups, { idGroup, isVisible }) => {
+            let { [idGroup]: group = 0 } = groups
+            group += isVisible ? 1 : 0
+            return { ...groups, [idGroup]: group }
+          },
+          {}
+        )
+      return Object.values(groupsCount).some((count) => count === 0)
+    }
   )
+
+const refreshFilter = (optionsState, autoCompleteValue, idLayer, dispatch) => {
+  const filters = []
+  // Cuando un grupo de filtros visibles esta completamente destildado, la capa queda oculta
+  if (hasGroupWithEmtpyFilter({ optionsState, autoCompleteValue })) {
+    filters.push({
+      idGroup: 'emptyGroup',
+      filter: [['==', '1', '2']]
+    })
+  } else {
+    Object.keys(optionsState).map(
+      (idOption) => Object.keys(optionsState[idOption]).forEach(
+        (idItem) => {
+          if (
+            optionsState[idOption][idItem].isVisible
+            && optionsState[idOption][idItem].filter !== undefined
+            && optionsState[idOption][idItem].idGroup !== 'Area'
+          ) {
+            const { idGroup } = optionsState[idOption][idItem]
+            // Se crea el idGroup en filters en caso que no exista
+            const existLayer = filters.find((f) => f.idGroup === idGroup)
+            if (existLayer === undefined) {
+              filters.push(
+                {
+                  idGroup,
+                  filter: []
+                }
+              )
+            }
+            filters.find((g) => g.idGroup === idGroup).filter.push(
+              optionsState[idOption][idItem].filter
+            )
+            // Entre Area y Altura es criterio es OR por lo tanto se meten en el mismo grupo
+            // TODO: mejorar solución
+          } else if (
+            optionsState[idOption][idItem].isVisible
+            && optionsState[idOption][idItem].idGroup === 'Area'
+          ) {
+            const existLayer = filters.find((f) => f.idGroup === 'Altura')
+            if (existLayer === undefined) {
+              filters.push(
+                {
+                  idGroup: 'Altura',
+                  filter: []
+                }
+              )
+            }
+            filters.find((g) => g.idGroup === 'Altura').filter.push(
+              optionsState[idOption][idItem].filter
+            )
+          }
+        }
+      )
+    )
+  }
   const layers = [
     {
       idLayer,
@@ -74,17 +99,24 @@ const filterUpdate = (optionsState, idLayer, dispatch) => {
   ]
 
   dispatch(mapActions.filterUpdate({ layers }))
+  return layers
 }
+
+const refreshFilterRequest = createAsyncThunk(
+  'explorer/refreshFilterRequest',
+  async ({ idLayer }, { getState, dispatch }) => {
+    const { explorer: { options: optionsState, autoCompleteValue } } = getState()
+    const layersFilters = refreshFilter(optionsState, autoCompleteValue, idLayer, dispatch)
+    return layersFilters
+  }
+)
 
 const checkChange = createAsyncThunk(
   'explorer/checkChange',
   async ({
-    idLayer, idExplorer, itemId, isVisible
-  }, { getState, dispatch }) => {
-    filterUpdate(getState().explorer.options, idLayer, dispatch)
-    return {
-      idLayer, idExplorer, itemId, isVisible
-    }
+    idLayer
+  }, { dispatch }) => {
+    dispatch(refreshFilterRequest({ idLayer }))
   },
   {
     condition: ({ idExplorer, itemId }, { getState }) => {
@@ -101,7 +133,8 @@ const explorer = createSlice({
     autoCompleteValue: [],
     filterHeighOptions: true,
     filterIncidenceOptions: false,
-    options
+    options,
+    layersFilters: null
   },
   reducers: {
     filterHeighOptions: (draftState, action) => {
@@ -136,6 +169,9 @@ const explorer = createSlice({
       draftState.options[idExplorer][itemId].isVisible = isVisible
       draftState.options[idExplorer][itemId].processingId = null
     },
+    [refreshFilterRequest.fulfilled]: (draftState, { payload }) => {
+      draftState.layersFilters = payload
+    },
     [checkChange.rejected]: (draftState, {
       meta: {
         arg: {
@@ -150,5 +186,5 @@ const explorer = createSlice({
 
 export default explorer.reducer
 
-const actions = { ...explorer.actions, checkChange }
+const actions = { ...explorer.actions, checkChange, refreshFilterRequest }
 export { actions }

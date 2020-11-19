@@ -183,7 +183,7 @@
           "title": "Barrio",
           "items": [
             {
-              "id": "",
+              "id": "Agronomía",
               "title": "Agronomía",
               "idLayer": "codigourbanistico_uva",
               "filter": ["==", ["get", "barrio"], "AGRONOMIA"]
@@ -225,8 +225,8 @@
               "filter": ["==", ["get", "barrio"], "BOEDO"]
             },
             {
-              "id": "Cabalito",
-              "title": "Cabalito",
+              "id": "Caballito",
+              "title": "Caballito",
               "idLayer": "codigourbanistico_uva",
               "filter": ["==", ["get", "barrio"], "CABALLITO"]
             },
@@ -249,6 +249,7 @@
               "filter": ["==", ["get", "barrio"], "COLEGIALES"]
             },
             {
+              "id": "Constitución",
               "title": "Constitución",
               "idLayer": "codigourbanistico_uva",
               "filter": ["==", ["get", "barrio"], "CONSTITUCION"]
@@ -266,6 +267,7 @@
               "filter": ["==", ["get", "barrio"], "FLORESTA"]
             },
             {
+              "id": "Liniers", 
               "title": "Liniers", 
               "idLayer": "codigourbanistico_uva",
               "filter": ["==", ["get", "barrio"], "LINIERS"]
@@ -289,7 +291,7 @@
               "filter": ["==", ["get", "barrio"], "MONTE CASTRO"]
             },
             {
-              "id": "Nueva Pompeya",   
+              "id": "NuevaPompeya",   
               "title": "Nueva Pompeya",   
               "idLayer": "codigourbanistico_uva",
               "filter": ["==", ["get", "barrio"], "NUEVA POMPEYA"]

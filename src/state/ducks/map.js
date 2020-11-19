@@ -102,29 +102,33 @@ const selectedExplorerFilter = createAsyncThunk(
     }
   }
 )
-const filterUpdate = ({ layers }) => {
-  layers.forEach((l) => {
-    const { idLayer, groups } = l
 
-    const newFilters = ['all',
-      ...groups.map(
-        ({ filter }) => (
-          [
-            'any',
-            ...filter
-          ]
+const filterUpdate = createAsyncThunk(
+  'map/filterUpdate',
+  async ({ layers }) => {
+    layers.forEach((l) => {
+      const { idLayer, groups } = l
+
+      const newFilters = ['all',
+        ...groups.map(
+          ({ filter }) => (
+            [
+              'any',
+              ...filter
+            ]
+          )
         )
-      )
-    ]
-    const layer = mapGL.map.getLayer(idLayer)
-    if (layer !== undefined) {
-      mapGL.setFilter(
-        idLayer,
-        newFilters
-      )
-    }
-  })
-}
+      ]
+      const layer = mapGL.map.getLayer(idLayer)
+      if (layer !== undefined) {
+        mapGL.setFilter(
+          idLayer,
+          newFilters
+        )
+      }
+    })
+  }
+)
 
 const groups = {}
 
@@ -197,9 +201,6 @@ const map = createSlice({
     },
     clickOnMap: (draftState, action) => {
       draftState.selectedCoords = action.payload
-    },
-    filterUpdate: (draftState, action) => {
-      filterUpdate(action.payload)
     }
   },
   extraReducers: {
@@ -279,6 +280,6 @@ const map = createSlice({
 export default map.reducer
 
 const actions = {
-  ...map.actions, initMap, toggleLayer, selectedExplorerFilter
+  ...map.actions, initMap, toggleLayer, selectedExplorerFilter, filterUpdate
 }
 export { actions }

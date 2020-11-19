@@ -3,11 +3,24 @@ import React from 'react'
 
 export const largeScreenSteps = [
   {
+    selector: "",
+    content: () => (
+        <div>
+          <p>
+         <b> AVISO LEGAL:
+“Este sitio web tiene como objetivo brindar información urbanística con carácter orientativo, a los efectos de facilitar la comprensión del Nuevo Código Urbanístico. Esta información no sustituye las normas legales vigentes ni constituye una copia fiel de los datos en poder del Gobierno de la Ciudad de Buenos Aires. Es responsabilidad del usuario confirmar mediante la vía administrativa pertinente la información provista en este sitio previo a alguna toma de decisión o acción.
+
+La información provista por esta página web es orientativa y no vinculante, al momento de realizar un trámite ante Gobierno de la Ciudad de Buenos Aires.”
+         </b> </p>
+        </div>
+      )
+    },
+  {
     selector: ".makeStyles-logo-5",
     content: () => (
         <div>
           <p>
-            Este mapa es una herramienta online para saber qué se puede construir en determinadas parcelas de la Ciudad.
+          Este mapa es una herramienta online para saber qué se puede construir en determinadas parcelas de la Ciudad.
           </p>
         </div>
       )
@@ -17,8 +30,7 @@ export const largeScreenSteps = [
       content: () => (
         <div>
           <p>
-            Acá vas a poder obtener información con respecto a la parcela seleccionada, ya sean Datos Básicos, o en cuanto a Edificabilidad,
-            Usos, Afectaciones, Obras e Inspecciones.
+          Acá vas a poder obtener información con respecto a la parcela seleccionada, ya sean Datos Básicos, o en cuanto a Edificabilidad, Usos, Afectaciones, Obras e Inspecciones.
           </p>
         </div>
       )
@@ -44,11 +56,11 @@ export const largeScreenSteps = [
       )
     },
     {
-      selector: ".MuiCardActionArea-root:nth-child(4)",
+      selector: ".MuiCardActionArea-root:nth-child(5)",
       content: () => (
         <div>
           <p>
-            Acá vas a poder enviarnos los comentarios que desees y contactarte con nosotros
+          Acá vas a poder enviarnos los comentarios que desees y contactarte con nosotros.
           </p>
         </div>
       )
@@ -58,17 +70,17 @@ export const largeScreenSteps = [
       content: () => (
         <div>
           <p>
-            Acá vas a poder buscar por Dirección o Lugar y ubicarlo en el Mapa
+          Acá vas a poder buscar por Dirección o Lugar y ubicarlo en el Mapa.
           </p>
         </div>
       )
     },
     {
-      selector: ".makeStyles-minimapLayer-14",
+      selector: ".makeStyles-minimapLayer-15",
       content: () => (
         <div>
           <p>
-            Acá vas a poder cambiar a Modo Oscuro el Mapa
+          Acá vas a poder cambiar a Modo Claro el Mapa.
           </p>
         </div>
       )

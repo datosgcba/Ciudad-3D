@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import {
   getLayersGroups, getLayersByLayersGroupId, getFullLayerConfig,
   getExplorerFilters, getFullExplorerLayerConfig
@@ -22,7 +23,25 @@ const add = async (layer) => {
   return mapGL.addPublicLayer(layer.id, { clustering: true })
 }
 
-const toggle = async (layer, isVisible = null) => {
+const reorderLayers = (layerId, index, groups) => {
+  console.log(layerId, index, groups)
+  console.time('order')
+  //Object.values(groups).sort((ga, gb)=> la.)
+  /*
+  // Capa inmediata superior
+  const layerBefore = Object.values(layersState)
+    .reduce((layerState) => Object.entries(layerState)
+      .reduce((result, [layerId, { isVisible: isVisibleLayer, index: idxLayer }]) => 
+        isVisible && Layerindex < idxLayer
+      , null)
+    )
+    */
+  //console.timeLog(layerBefore)
+  console.timeEnd('order')
+  return { order: 2 }
+}
+
+const toggle = async (layer, isVisible = null, index, groups) => {
   const { map } = mapGL
   if (map.getLayer(layer.id)) {
     const visibility = map.getLayoutProperty(layer.id, 'visibility') ?? 'visible'
@@ -30,12 +49,13 @@ const toggle = async (layer, isVisible = null) => {
       ? isVisible
       : visibility === 'none'
     map.setLayoutProperty(layer.id, 'visibility', nextVisibility ? 'visible' : 'none')
-    return nextVisibility
+    return reorderLayers(layer.id, index, groups)
   }
-  await add(layer)
+  return add(layer)
+    // Orden de layers
+    .then(() => reorderLayers(layer.id, index, groups))
     // eslint-disable-next-line no-console
     .catch((error) => console.warn('toggle add layer - catch error:', error))
-  return true
 }
 
 const initMap = createAsyncThunk(
@@ -64,15 +84,14 @@ const toggleLayer = createAsyncThunk(
   'map/toggleLayer',
   async ({ idGroup, idLayer }, { getState }) => {
     const state = getState()
-    const { isVisible } = getLayerState(state.map, idGroup, idLayer)
+    const { isVisible, index } = getLayerState(state.map, idGroup, idLayer)
     const layer = getFullLayerConfig(idGroup, idLayer)
-    return toggle(layer, isVisible)
-      .then(() => {
-        const mapOnIdle = mapOnPromise(mapGL.map)('idle')
-        return mapOnIdle.then(() => isVisible)
-      })
+    const { order } = await toggle(layer, isVisible, index, state.map.groups)
+    await mapOnPromise(mapGL.map)('idle')
       // eslint-disable-next-line no-console
       .catch((error) => console.warn('toggleLayer catch error:', error))
+    console.log(order)
+    return { order }
   },
   {
     condition: ({ idGroup, idLayer }, { getState }) => {
@@ -88,11 +107,12 @@ const selectedExplorerFilter = createAsyncThunk(
   async ({ idExplorer, isVisible }) => {
     const explorerLayer = getFullExplorerLayerConfig(idExplorer)
     const mapOnIdle = mapOnPromise(mapGL.map)('idle')
-    await toggle(explorerLayer, isVisible)
+    const { order } = await toggle(explorerLayer, isVisible)
     // if visible
-    return mapOnIdle
+    await mapOnIdle
       .then(() => true)
       .catch(() => false)
+    return { order }
   },
   {
     condition: ({ idExplorer }, { getState }) => {
@@ -133,13 +153,14 @@ const filterUpdate = createAsyncThunk(
 const groups = {}
 
 // devuelve cada id y title de config.layersGroup
-getLayersGroups().forEach(({ id: idGroup }) => {
+getLayersGroups().forEach(({ id: idGroup, index = 0 }) => {
   groups[idGroup] = {}
   // devuelve el title, color y id de de cada layersGroup.layers
-  getLayersByLayersGroupId(idGroup).forEach(({ id: idLayer }) => {
+  getLayersByLayersGroupId(idGroup).forEach(({ id: idLayer, index: idxLayer }) => {
     groups[idGroup][idLayer] = {
       processingId: null,
-      isVisible: false
+      isVisible: false,
+      index: idxLayer ?? index
     }
   })
 })
@@ -159,19 +180,9 @@ const map = createSlice({
   initialState: {
     isMapReady: false,
     camera: {
-      /*
-      lat: -34.6079,
-      lng: -58.4426,
-      zoom: 13,
-      */
-      lat: -34.6079,
-      lng: -58.4426,
-      zoom: 13,
-      /*
       lat: -34.574168,
       lng: -58.484989,
       zoom: 15.58,
-      */
       pitch: 0,
       bearing: 0
     },
@@ -218,6 +229,7 @@ const map = createSlice({
       layerState.isVisible = !layerState.isVisible
     },
     [toggleLayer.fulfilled]: (draftState, {
+      payload: { order },
       meta: {
         requestId,
         arg: { idGroup, idLayer }
@@ -226,6 +238,7 @@ const map = createSlice({
       const layerState = getLayerState(draftState, idGroup, idLayer)
       if (layerState.processingId === requestId) {
         layerState.processingId = null
+        layerState.order = order ?? 0
       }
     },
     [toggleLayer.rejected]: (draftState, {
@@ -252,6 +265,7 @@ const map = createSlice({
     },
 
     [selectedExplorerFilter.fulfilled]: (draftState, {
+      payload: { order },
       meta: {
         requestId,
         arg: { idExplorer }
@@ -260,6 +274,7 @@ const map = createSlice({
       const explorerLayerState = getExplorerLayerState(draftState, idExplorer)
       if (explorerLayerState.processingId === requestId) {
         explorerLayerState.processingId = null
+        explorerLayerState.order = order
       }
     },
 

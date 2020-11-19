@@ -6,6 +6,7 @@ import {
   Box, Checkbox, FormControlLabel, Typography
 } from '@material-ui/core'
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 import ListItem from '@material-ui/core/ListItem'
 
 import { actions as actionsExplorer } from 'state/ducks/explorer'
@@ -33,8 +34,8 @@ const ListItems = ({
         control={(
           <Checkbox
             checked={isChecked}
-            icon={<CheckBoxIcon fontSize="small" style={{ color: 'white', backgroundColor: 'white', border: '0.5px solid grey' }} />}
-            checkedIcon={<CheckBoxIcon fontSize="small" style={{ color: '#707070', backgroundColor: 'white' }} />}
+            icon={<CheckBoxOutlineBlankIcon fontSize="small" style={{ color: '#717170' }} />}
+            checkedIcon={<CheckBoxIcon fontSize="small" style={{ color: '#333' }} />}
           />
         )}
       />

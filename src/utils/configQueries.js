@@ -18,10 +18,13 @@ const getLayersGroups = () => config.layersGroup.map(({ id, title }) => ({
 
 const getLayersByLayersGroupId = (layersGroupId) => config
   .layersGroup.find((l) => l.id === layersGroupId)
-  .layers.map(({ id, title, color }) => ({
+  .layers.map(({
+    id, title, color, index
+  }) => ({
     id,
     title,
-    color
+    color,
+    index
   }))
 
 const getWorksGroups = () => config.works.map(({ id, title, columns }) => ({

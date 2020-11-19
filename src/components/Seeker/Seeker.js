@@ -35,9 +35,15 @@ const Seeker = (props) => {
   }
 
   const completeSuggestionsCallback = (suggestions) => {
+    console.log('completeSuggestionsCallback', suggestions)
     if (suggestions.length === 0) {
       // setSugerenciasVacias(true);
-      setSuggestions([])
+      setSuggestions([{
+        data:{
+          tipo: "tipoalerta"
+        },
+        title: "No se hallaron resultados coincidentes"
+      }])
     }
   }
 
@@ -45,7 +51,6 @@ const Seeker = (props) => {
     // Si ya hay sugerencias (por ejemplo de favoritos) no muestro el error
     if (suggestions.length === 0) {
       // setErrorSugerencias(error);
-      setSuggestions([])
     }
   }
 
@@ -115,7 +120,6 @@ const Seeker = (props) => {
     } = suggestionProps
 
     const title = suggestion.alias || suggestion.title || suggestion.nombre
-    if (title.length === null){console.log('HOLA')}else{console.log(title)}
     const subTitle = suggestion.subTitle
       ? suggestion.subTitle
       : suggestion.descripcion

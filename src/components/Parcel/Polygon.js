@@ -23,7 +23,7 @@ const Polygon = ({ smp, geomCoords }) => {
         "source-layer": "default",
         "type": "fill-extrusion",
         "paint": {
-          "fill-extrusion-color": "#fcda59",
+          "fill-extrusion-color": "#fdd306",
           "fill-extrusion-opacity": 0.8,
           "fill-extrusion-height": ["get", "altura_final"]
         },

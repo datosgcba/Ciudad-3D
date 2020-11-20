@@ -23,7 +23,7 @@ const Polygon = ({ smp, geomCoords }) => {
         "source-layer": "default",
         "type": "fill-extrusion",
         "paint": {
-          "fill-extrusion-color": "#DD0083",
+          "fill-extrusion-color": "#fcda59",
           "fill-extrusion-opacity": 0.8,
           "fill-extrusion-height": ["get", "altura_final"]
         },
@@ -77,6 +77,7 @@ const Polygon = ({ smp, geomCoords }) => {
           'fill-opacity': 0.5
         }
       })
+      mapGL.map.moveLayer(parcelId, 'edif_smp')
     }
     // TODO: Agregar smp a las dependencias del useEffect sin perder funcionalidad
     // eslint-disable-next-line react-hooks/exhaustive-deps

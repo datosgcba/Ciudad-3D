@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import {
   getLayersGroups, getLayersByLayersGroupId, getFullLayerConfig,
   getExplorerFilters, getFullExplorerLayerConfig
@@ -24,20 +23,29 @@ const add = async (layer) => {
 }
 
 const reorderLayers = (layerId, index, groups) => {
-  console.log(layerId, index, groups)
-  console.time('order')
-  //Object.values(groups).sort((ga, gb)=> la.)
-  /*
-  // Capa inmediata superior
-  const layerBefore = Object.values(layersState)
-    .reduce((layerState) => Object.entries(layerState)
-      .reduce((result, [layerId, { isVisible: isVisibleLayer, index: idxLayer }]) => 
-        isVisible && Layerindex < idxLayer
-      , null)
-    )
-    */
-  //console.timeLog(layerBefore)
-  console.timeEnd('order')
+  const newOrder = Object.values(groups)
+    .flatMap((group) => Object.entries(group))
+    .filter(([id, { isVisible }]) => isVisible || id === layerId)
+    // eslint-disable-next-line no-confusing-arrow
+    .sort((
+      [ida, { index: ia, order: oa }],
+      [idb, { index: ib, order: ob }]
+      // eslint-disable-next-line no-nested-ternary
+    ) => {
+      const diff = ib - ia
+      if (diff === 0) {
+        return (idb === layerId ? 999999 : ob) - (ida === layerId ? 999999 : oa)
+      }
+      return diff
+    })
+  const count = newOrder.length
+
+  if (mapGL.map.getLayer('edif_smp')) {
+    mapGL.map.moveLayer(newOrder[0], 'edif_smp')
+  }
+  for (let idx = 1; idx < count; idx += 1) {
+    mapGL.map.moveLayer(newOrder[idx][0], newOrder[idx - 1][0])
+  }
   return { order: 2 }
 }
 
@@ -90,7 +98,6 @@ const toggleLayer = createAsyncThunk(
     await mapOnPromise(mapGL.map)('idle')
       // eslint-disable-next-line no-console
       .catch((error) => console.warn('toggleLayer catch error:', error))
-    console.log(order)
     return { order }
   },
   {
@@ -229,7 +236,6 @@ const map = createSlice({
       layerState.isVisible = !layerState.isVisible
     },
     [toggleLayer.fulfilled]: (draftState, {
-      payload: { order },
       meta: {
         requestId,
         arg: { idGroup, idLayer }
@@ -238,7 +244,6 @@ const map = createSlice({
       const layerState = getLayerState(draftState, idGroup, idLayer)
       if (layerState.processingId === requestId) {
         layerState.processingId = null
-        layerState.order = order ?? 0
       }
     },
     [toggleLayer.rejected]: (draftState, {

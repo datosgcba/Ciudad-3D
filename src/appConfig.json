@@ -654,7 +654,6 @@
     {
       "id": "buildableStrip",
       "title": "Franja edificable",
-      "index": 6,
       "layers": [
         {
           "title": "Línea oficial",
@@ -679,8 +678,7 @@
               "line-color": "#e76056",
               "line-width": 4
             }
-          },
-          "index": 6
+          }
         },
         {
           "title": "Líneas Internas de Basamento (L.I.B)",
@@ -705,8 +703,7 @@
               "line-color": "#f3a32d",
               "line-width": 4
             }
-          },
-          "index": 7
+          }
         },
         {
           "title": "Líneas de Frente Interno (L.F.I)",
@@ -731,8 +728,7 @@
               "line-color": "#0389d1",
               "line-width": 4
             }
-          },
-          "index": 8
+          }
         },
         {
           "title": "Banda Mínima Edificable",
@@ -757,8 +753,7 @@
               "fill-color": "#2ebc98",
               "fill-opacity": 0.7
             }
-          },
-          "index": 9
+          }
         },
         {
           "title": "Rivolta",
@@ -823,7 +818,7 @@
               ]
             }
           },
-          "index": 20
+          "index": 3
         },
         {
           "title": "Área edificable",
@@ -854,14 +849,13 @@
               [ "==", "tipo", "cuerpo principal" ]
             ]
           },
-          "index": 3
+          "index": -1
         }
       ]
     },
     {
       "id": "references",
       "title": "Bases de Referencias",
-      "index": 11,
       "layers": [
         {
           "title": "Tejido 3d consolidado",
@@ -888,7 +882,8 @@
               "fill-extrusion-height": ["get", "altura"]
             },
             "filter": [ "==", "consolidado", true ]
-          }
+          },
+          "index": 5
         },
         {
           "title": "Tejido 3d no consolidado",
@@ -915,7 +910,8 @@
               "fill-extrusion-height": ["get", "altura"]
             },
             "filter": [ "==", "consolidado", false ]
-          }
+          },
+          "index": 5
         },
         {
           "title": "Manzanas atípicas",

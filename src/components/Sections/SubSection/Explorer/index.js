@@ -87,7 +87,7 @@ const Explorer = () => {
     ))
     */
     dispatch(actionsMap.selectedExplorerFilter({ idExplorer: 'Height', isVisible: value.length > 0 }))
-    dispatch(actions.refreshFilterRequest({ idLayer: 'codigourbanistico_uva' }))
+    dispatch(actions.refreshFilterRequest({ idLayer: 'explorer_layer' }))
     setFilters(getExplorerFilters().filter((f) => !value || !value.map((v) => v.id).includes(f.id)))
   }, [value, dispatch])
 

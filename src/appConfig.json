@@ -41,7 +41,7 @@
               "subTitle": "38 m",
               "details": "Corredores Altos",
               "color": "#557e8d",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "38"]
             },
             {
@@ -49,7 +49,7 @@
               "subTitle": "31.2 m",
               "details": "Corredores Medios",
               "color": "#85adb1",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "31.2"]
             },
             {
@@ -57,7 +57,7 @@
               "subTitle": "22.8 m",
               "details": "Unidades de Sustentabilidad de Altura Alta",
               "color": "#ea9e82",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "22.8"]
             },
             {
@@ -65,7 +65,7 @@
               "subTitle": "16.5 m",
               "details": "Unidades de Sustentabilidad de Altura Media",
               "color": "#f5c294",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "16.5"]
             },
             {
@@ -73,7 +73,7 @@
               "subTitle": "11.2 m",
               "details": "Unidades de Sustentabilidad de Altura Baja 2",
               "color": "#c9c2ab",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "11.2"]
             },
             {
@@ -81,7 +81,7 @@
               "subTitle": "9 m",
               "details": "Unidades de Sustentabilidad de Altura Baja 1",
               "color": "#f0e6cc",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "9"]
             }
           ]
@@ -95,7 +95,7 @@
               "subTitle": "AE",
               "details": "Área de Arquitectura Especial",
               "color": "#CCADAD",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "dist_1_grp"], "AE"]
             },
             {
@@ -103,7 +103,7 @@
               "subTitle": "APH",
               "details": "Área de Arqquitectura Especial",
               "color": "#F9BCB4",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "dist_1_grp"], "APH"]
             },
             {
@@ -111,7 +111,7 @@
               "subTitle": "ARE",
               "details": "Área de Reserva Ecológica",
               "color": "#BCC489",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "dist_1_grp"], "ARE"]
             },
             {
@@ -119,7 +119,7 @@
               "subTitle": "Área de Renovación",
               "details": "Área de renovación urbana Riachuelo",
               "color": "#efefef",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "dist_1_grp"], "Area de Renovacion"]
             },
             {
@@ -127,7 +127,7 @@
               "subTitle": "EE",
               "details": "Equipamentos Especiales",
               "color": "#AAB4C7",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "dist_1_grp"], "EE"]
             },
             {
@@ -135,7 +135,7 @@
               "subTitle": "Espacio Público",
               "details": "Espacio Público",
               "color": "#c2ccb7",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "dist_1_grp"], "Espacio Publico"]
             }
           ]
@@ -149,7 +149,7 @@
               "subTitle": "Mixtura 1",
               "details": "Área de Baja Mixtura de Usos de Suelo 1",
               "color": "white",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "uso_1"], 1]
             },
             {
@@ -157,7 +157,7 @@
               "subTitle": "Mixtura 2",
               "details": "Área de Media Mixtura de Usos de Suelo 2",
               "color": "white",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "uso_1"], 2]
             },
             {
@@ -165,7 +165,7 @@
               "subTitle": "Mixtura 3",
               "details": "Área de Media Mixtura de Usos de Suelo 3",
               "color": "white",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "uso_1"], 3]
             },
             {
@@ -173,7 +173,7 @@
               "subTitle": "Mixtura 4",
               "details": "Área de Alta Mixtura de Usos de Suelo 4",
               "color": "white",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "uso_1"], 4]
             }
           ]
@@ -185,133 +185,133 @@
             {
               "id": "Agronomía",
               "title": "Agronomía",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "AGRONOMIA"]
             },
             {
               "id": "Almagro",
               "title": "Almagro",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "uso_1"], "ALMAGRO"]
             },
             {
               "id": "Balvanera",
               "title": "Balvanera",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "BALVANERA"]
             },
             {
               "id": "Barras",
               "title": "Barras",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "BARRAS"]
             },
             {
               "id": "Belgrano",
               "title": "Belgrano",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "BELGRANO"]
             },
             {
               "id": "Boca",
               "title": "Boca",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "BOCA"]
             },
             {
               "id": "Boedo",
               "title": "Boedo",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "BOEDO"]
             },
             {
               "id": "Caballito",
               "title": "Caballito",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "CABALLITO"]
             },
             {
               "id": "Chacarita",
               "title": "Chacarita",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "CHACARITA"]
             },
             {
               "id": "Coghlan",
               "title": "Coghlan",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "COGHLAN"]
             },
             {
               "id": "Colegiales",
               "title": "Colegiales",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "COLEGIALES"]
             },
             {
               "id": "Constitución",
               "title": "Constitución",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "CONSTITUCION"]
             },
             {
               "id": "Flores",
               "title": "Flores",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "FLORES"]
             },
             {
               "id": "Floresta",
               "title": "Floresta",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "FLORESTA"]
             },
             {
               "id": "Liniers", 
               "title": "Liniers", 
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "LINIERS"]
             },
             {
               "id": "Mataderos",
               "title": "Mataderos",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "MATADEROS"]
             },
             {
               "id": "Monserrat",
               "title": "Monserrat",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "MONSERRAT"]
             },
             {
               "id": "Monte Castro",
               "title": "Monte Castro",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "MONTE CASTRO"]
             },
             {
               "id": "NuevaPompeya",   
               "title": "Nueva Pompeya",   
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "NUEVA POMPEYA"]
             },
             {
               "id": "Nuñez",
               "title": "Nuñez",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "NUÑEZ"]
             },
             {
               "id": "Palermo",
               "title": "Palermo",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "PALERMO"]
             },
             {
               "id": "Parque Avellaneda",
               "title": "Parque Avellaneda",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "PARQUE AVELLANEDA"]
             }
           ]
@@ -331,7 +331,7 @@
               "subTitle": "",
               "details": "N/A",
               "color": "rgba(0, 0, 0, 0.26)",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["all", ["==", ["get", "inc_uva_19"], ""]]
             },
             {
@@ -339,7 +339,7 @@
               "subTitle": "",
               "details": "< 300",
               "color": "#5ea7b1",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["all", ["<", ["get", "inc_uva_19"], 300]]
             },
             {
@@ -347,7 +347,7 @@
               "subTitle": "",
               "details": "300-400",
               "color": "#91cba9",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["all", [">=", ["get", "inc_uva_19"], 300], ["<", ["get", "inc_uva_19"], 400]]
             },
             {
@@ -355,7 +355,7 @@
               "subTitle": "",
               "details": "400-500",
               "color": "#bce4aa",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["all", [">=", ["get", "inc_uva_19"], 400], ["<", ["get", "inc_uva_19"], 500]]
             },
             {
@@ -363,7 +363,7 @@
               "subTitle": "",
               "details": "500-600",
               "color": "#def2b4",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["all", [">=", ["get", "inc_uva_19"], 500], ["<", ["get", "inc_uva_19"], 600]]
             },
             {
@@ -371,7 +371,7 @@
               "subTitle": "",
               "details": "600-700",
               "color": "#ffffbf",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["all", [">=", ["get", "inc_uva_19"], 600], ["<", ["get", "inc_uva_19"], 700]]
             },
             {
@@ -379,7 +379,7 @@
               "subTitle": "",
               "details": "700-800",
               "color": "#ffdf9a",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["all", [">=", ["get", "inc_uva_19"], 700], ["<", ["get", "inc_uva_19"], 800]]
             },
             {
@@ -387,7 +387,7 @@
               "subTitle": "",
               "details": "800-900",
               "color": "#febe74",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["all", [">=", ["get", "inc_uva_19"], 800], ["<", ["get", "inc_uva_19"], 900]]
             },
             {
@@ -395,7 +395,7 @@
               "subTitle": "",
               "details": "900-1000",
               "color": "#f69053",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["all", [">=", ["get", "inc_uva_19"], 900], ["<", ["get", "inc_uva_19"], 1000]]
             },
             {
@@ -403,7 +403,7 @@
               "subTitle": "",
               "details": "1000-1500",
               "color": "#e75437",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["all", [">=", ["get", "inc_uva_19"], 1000], ["<", ["get", "inc_uva_19"], 1500]]
             },
             {
@@ -411,7 +411,7 @@
               "subTitle": "",
               "details": ">= 1500",
               "color": "#d7191c",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["all", [">=", ["get", "inc_uva_19"], 1500]]
             }
           ]
@@ -425,7 +425,7 @@
               "subTitle": "Zona 1",
               "details": "",
               "color": "#ffbfbf",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["to-string", ["get", "alicuota"]], "0.1"]
             },
             {
@@ -433,7 +433,7 @@
               "subTitle": "Zona 2",
               "details": "",
               "color": "#d69090",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["to-string", ["get", "alicuota"]], "0.18"]
             },
             {
@@ -441,7 +441,7 @@
               "subTitle": "Zona 3",
               "details": "",
               "color": "#b06868",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["to-string", ["get", "alicuota"]], "0.27"]
             },
             {
@@ -449,7 +449,7 @@
               "subTitle": "Zona 4",
               "details": "",
               "color": "#8a4545",
-              "idLayer": "codigourbanistico_uva",
+              "idLayer": "explorer_layer",
               "filter": ["==", ["to-string", ["get", "alicuota"]], "0.35"]
             }
           ]
@@ -465,10 +465,10 @@
       "layers": {
         "title": "Incidencia en UVA",
         "color": "#E87167",
-        "id": "codigourbanistico_uva",
+        "id": "explorer_layer",
         "type": "vectortile",
         "displayPopup": true,
-        "popupContent": "{alicuota}",
+        "popupContent": "{uni_edif_1}",
         "options": {
           "source": {
             "type": "vector",
@@ -489,8 +489,9 @@
                 [
                   "get",
                   "uni_edif_1"
-                ]                
+                ]
               ],
+              "0","#f0f",
               "38","#667d8a",
               "31.2","#92aaaf",
               "22.8","#d6a083",
@@ -510,7 +511,7 @@
               "UF","#b9a1b2",
               "UP","#97a872",
               "UP/APH 2","#d3e39f",
-              "#fff"
+              "red"
             ],
             "fill-opacity": 0.8            
           }
@@ -524,7 +525,7 @@
       "layers": {
         "title": "Incidencia en UVA",
         "color": "#E87167",
-        "id": "codigourbanistico_uva",
+        "id": "explorer_layer",
         "type": "vectortile",
         "displayPopup": true,
         "popupContent": "{alicuota}",
@@ -570,7 +571,7 @@
       "filterId": "IncidenceAliquot",
       "title": "Alícuotas ley 6.062 mod. y comp.",
       "layers": {
-        "id": "codigourbanistico_uva",
+        "id": "explorer_layer",
         "type": "vectortile",
         "displayPopup": true,
         "popupContent": "{alicuota}",
@@ -651,6 +652,55 @@
     }
   ],
   "layersGroup": [
+    {
+      "id": "explorer",
+      "layers": [
+        {
+          "title": "Línea oficial",
+          "color": "#e76056",
+          "id": "linea_oficial",
+          "type": "vectortile",
+          "displayPopup": false,
+          "popupContent": "",
+          "options": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf"
+              ],
+              "minzoom": 10,
+              "maxzoom": 18,
+              "cluster": false
+            },
+            "source-layer": "default",
+            "type": "fill",
+            "paint": {
+              "fill-color": [
+                "match",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "alicuota"
+                  ]
+                ],
+                "0.1",
+                "rgb(255, 191, 191)",
+                "0.18",
+                "rgb(214, 144, 144)",
+                "0.27",
+                "rgb(176, 104, 104)",
+                "0.35",
+                "rgb(138, 69, 69)",
+                "#fff"
+              ],
+              "fill-opacity": 0.8
+            }
+          },
+          "index": -1
+        }
+      ]
+    },
     {
       "id": "buildableStrip",
       "title": "Franja edificable",

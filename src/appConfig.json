@@ -1655,6 +1655,10 @@
     {
       "id": "mixtura_usos",
       "text": "Esta parcela tiene más de un Uso. Requiere de un estudio específico."
+    },
+    {
+      "id": "plusvalía_no_calculable",
+      "text": "La parcela contiene un Área Especial Individualizada.Se deberá consultar la norma específica."
     }
   ]
 }

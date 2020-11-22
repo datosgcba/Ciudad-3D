@@ -61,7 +61,8 @@ const clickOnParcel = createAsyncThunk(
           fot: {
             fot_medianera: medianera.toLocaleString('es-AR'),
             fot_perim_libre: perim.toLocaleString('es-AR'),
-            fot_semi_libre: semi.toLocaleString('es-AR')
+            fot_semi_libre: semi.toLocaleString('es-AR'),
+            total: medianera + perim + semi
           },
           ...others
         })
@@ -113,6 +114,9 @@ const clickOnParcel = createAsyncThunk(
     }
     if (['cautelar', 'integral', 'especial', 'estructural'].includes(data.catalogacion?.proteccion)) {
       dispatch(alertsActions.addId('catalogado'))
+    }
+    if ((data?.fot?.total ?? 0) === 0) {
+      dispatch(alertsActions.addId('plusvalía_no_calculable'))
     }
     //
 

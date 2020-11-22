@@ -23,6 +23,15 @@ const defaultMapStyle = {
         'https://servicios.usig.buenosaires.gob.ar/mapcache/tms/1.0.0/fotografias_aereas_2017_caba_3857@GoogleMapsCompatible/{z}/{x}/{y}.png'
       ],
       tileSize: 256
+    },
+    capabase_3: {
+      type: 'vector',
+      tiles: [
+        "http://cur3d.eastus2.cloudapp.azure.com/cur3d/parcela/{z}/{x}/{y}.pbf"
+      ],
+      minzoom: 10,
+      maxzoom: 18,
+      cluster: false
     }
   },
   layers: [
@@ -43,6 +52,21 @@ const defaultMapStyle = {
         visibility: 'visible'
       },
       paint: {}
+    },
+    {
+      id: 'baseLayer_parcela',
+      source: 'capabase_3',
+      layout: {
+        visibility: 'visible'
+      },
+      minzoom: 16,
+      "source-layer": "default",
+      "type": "line",
+      "paint": {
+        "line-color": "#c0bfc1",
+        "line-width": 4,
+        "line-opacity": 0.3
+      }
     },
     {
       id: 'emptyLayer',
@@ -146,9 +170,11 @@ class MapaInteractivoGL {
     if (this.isVisibleBaseLayerPrincipal()) {
       this.map.setLayoutProperty('baseLayer_principal', 'visibility', 'none')
       this.map.setLayoutProperty('baseLayer_secundario', 'visibility', 'visible')
+      this.map.setLayoutProperty('baseLayer_parcela', 'visibility', 'visible')
     } else {
       this.map.setLayoutProperty('baseLayer_principal', 'visibility', 'visible')
       this.map.setLayoutProperty('baseLayer_secundario', 'visibility', 'none')
+      this.map.setLayoutProperty('baseLayer_parcela', 'visibility', 'none')
     }
   }
 

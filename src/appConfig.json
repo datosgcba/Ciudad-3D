@@ -467,13 +467,13 @@
         "color": "#E87167",
         "id": "explorer_layer",
         "type": "vectortile",
-        "displayPopup": true,
-        "popupContent": "{uni_edif_1}",
+        "displayPopup": false,
+        "popupContent": "",
         "options": {
           "source": {
             "type": "vector",
             "tiles": [
-              "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf"
+              "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -484,33 +484,39 @@
           "paint": {
             "fill-color": [
               "match",
-              [
+              ["concat", 
+                [
                 "to-string",
+                  [
+                    "get",
+                    "uni_edif_1"
+                  ]
+                ],
+                "_",
                 [
                   "get",
-                  "uni_edif_1"
+                  "dist_1_grp"
                 ]
               ],
-              "0","#f0f",
-              "38","#667d8a",
-              "31.2","#92aaaf",
-              "22.8","#d6a083",
-              "16.5","#e6c294",
-              "11.2","#c6c294",
-              "9","#ede7ce",
-              "AE","#ccadad",
-              "APH","#f9bcb4",
-              "ARE","rgb(188, 196, 137)",
-              "Area de Renovacion","#efefef",
-              "EE","#aab4c7",
-              "Espacio Publico","#c2ccb7",
-              "P","#b2b2b2",
-              "RU","#d0c375",
-              "RUA","#1bbbb1",
-              "U","#d1bbd0",
-              "UF","#b9a1b2",
-              "UP","#97a872",
-              "UP/APH 2","#d3e39f",
+              "38_","#667d8a",
+              "31.2_","#92aaaf",
+              "22.8_","#d6a083",
+              "16.5_","#e6c294",
+              "11.2_","#c6c294",
+              "9_","#ede7ce",
+              "0_AE","#ccadad",
+              "0_APH","#f9bcb4",
+              "0_ARE","rgb(188, 196, 137)",
+              "0_Area de Renovacion","#efefef",
+              "0_EE","#aab4c7",
+              "0_Espacio Publico","#c2ccb7",
+              "0_P","#b2b2b2",
+              "0_RU","#d0c375",
+              "0_RUA","#1bbbb1",
+              "0_U","#d1bbd0",
+              "0_UF","#b9a1b2",
+              "0_UP","#97a872",
+              "0_UP/APH 2","#d3e39f",
               "red"
             ],
             "fill-opacity": 0.8            
@@ -533,7 +539,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf"
+              "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -579,7 +585,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf"
+              "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -666,7 +672,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -716,7 +722,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/linea_oficial/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/linea_oficial/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -741,7 +747,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/lib/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/lib/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -766,7 +772,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/lfi/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/lfi/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -791,7 +797,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/banda_minima/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/banda_minima/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -816,7 +822,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/rivolta/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/rivolta/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -841,7 +847,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/volumen_edif_2/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/volumen_edif_2/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -881,7 +887,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/volumen_edif/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/volumen_edif/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -918,7 +924,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/tejido/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/tejido/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -946,7 +952,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/tejido/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/tejido/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -974,7 +980,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/manzana/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/manzana/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -999,7 +1005,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1033,7 +1039,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1072,7 +1078,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/riesgo_hidrico/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/riesgo_hidrico/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1097,7 +1103,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1123,7 +1129,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1149,7 +1155,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1175,7 +1181,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1205,7 +1211,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf"
+                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,

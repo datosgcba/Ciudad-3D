@@ -51,6 +51,13 @@ const clickOnParcel = createAsyncThunk(
           fot_perim_libre: perim,
           fot_semi_libre: semi
         },
+        plusvalia: {
+          plusvalia_em: em,
+          plusvalia_pl: pl,
+          plusvalia_sl: sl
+        },
+        sup_max_edificable: supMax,
+        sup_edificable_planta: supPlanta,
         ...others
       }) => {
         const alturasAux = alturas
@@ -64,6 +71,13 @@ const clickOnParcel = createAsyncThunk(
             fot_semi_libre: semi.toLocaleString('es-AR'),
             total: medianera + perim + semi
           },
+          plusvalia: {
+            plusvalia_em: em.toLocaleString('es-AR'),
+            plusvalia_pl: pl.toLocaleString('es-AR'),
+            plusvalia_sl: sl.toLocaleString('es-AR')
+          },
+          sup_max_edificable: supMax.toLocaleString('es-AR'),
+          sup_edificable_planta: supPlanta.toLocaleString('es-AR'),
           ...others
         })
       })

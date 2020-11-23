@@ -137,6 +137,70 @@
               "color": "#c2ccb7",
               "idLayer": "explorer_layer",
               "filter": ["==", ["get", "dist_1_grp"], "Espacio Publico"]
+            },
+            {
+              "id": "p",
+              "subTitle": "P",
+              "details": "Área Puerto",
+              "color": "#b2b2b2",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "dist_1_grp"], "P"]              
+            },
+            {
+              "id": "ru",
+              "subTitle": "RU",
+              "details": "Renovación Urbana",
+              "color": "#d0c375",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "dist_1_grp"], "RU"]
+            },
+            {
+              "id": "rua",
+              "subTitle": "RUA",
+              "details": "Áreas de Renovación Urbana linderas a Autopistas",
+              "color": "#1bbbb1",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "dist_1_grp"], "RUA"]
+            },
+            {
+              "id": "u",
+              "subTitle": "U",
+              "details": "Urbanizaciones Determinadas",
+              "color": "#d1bbd0",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "dist_1_grp"], "U"]
+            },
+            {
+              "id": "uf",
+              "subTitle": "UF",
+              "details": "Urbanizaciones Futuras",
+              "color": "#b9a1b2",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "dist_1_grp"], "UF"]
+            },
+            {
+              "id": "up",
+              "subTitle": "UP",
+              "details": "Urbanización Parque",
+              "color": "#97a872",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "dist_1_grp"], "UP"]
+            },
+            {
+              "id": "up/aph",
+              "subTitle": "UP/APH",
+              "details": "Urbanización Parque/ärea de Protección Historica",
+              "color": "#d3e39f",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "dist_1_grp"], "UP/APH"]
+            },
+            {
+              "id": "up/aph2",
+              "subTitle": "UP/APH 2",
+              "details": "Urbanización Parque/ärea de Protección Historica",
+              "color": "#d3e39f",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "dist_1_grp"], "UP/APH 2"]
             }
           ]
         },
@@ -672,6 +736,7 @@
               "0_U","#d1bbd0",
               "0_UF","#b9a1b2",
               "0_UP","#97a872",
+              "0_UP/APH","#d3e39f",
               "0_UP/APH 2","#d3e39f",
               "red"
             ],

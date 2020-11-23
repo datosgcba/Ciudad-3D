@@ -129,7 +129,7 @@ const filterUpdate = createAsyncThunk(
     layers.forEach((l) => {
       const { idLayer, groups } = l
 
-      const newFilters = ['all',
+      let newFilters = ['all',
         ...groups.map(
           ({ filter }) => (
             [
@@ -139,6 +139,9 @@ const filterUpdate = createAsyncThunk(
           )
         )
       ]
+
+      // newFilters = ["==", ["get", "dist_1_grp"], "UP"]
+      console.log('newFilters', newFilters)
       const layer = mapGL.map.getLayer(idLayer)
       if (layer !== undefined) {
         mapGL.setFilter(
@@ -188,9 +191,9 @@ const map = createSlice({
   initialState: {
     isMapReady: false,
     camera: {
-      lat: -34.574168,
-      lng: -58.484989,
-      zoom: 15.58,
+      lat: -34.6079,
+      lng: -58.4426,
+      zoom: 13,
       pitch: 0,
       bearing: 0
     },

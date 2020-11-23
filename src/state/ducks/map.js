@@ -82,9 +82,6 @@ const initMap = createAsyncThunk(
 const getLayerState = (state, idGroup, idLayer) => state
   .groups[idGroup][idLayer]
 
-const getExplorerLayerState = (state, idExplorer) => state
-  .explorerLayers[idExplorer].layers
-
 // Notar que si el server falla el tilde parece dejar de funcionar
 // si falla se desea el toggle se comporte como si el server funcionara bien
 // Si se espera el tilde vuelve a funcionar, tarda porque se espera map este idle
@@ -129,7 +126,7 @@ const filterUpdate = createAsyncThunk(
     layers.forEach((l) => {
       const { idLayer, groups } = l
 
-      let newFilters = ['all',
+      const newFilters = ['all',
         ...groups.map(
           ({ filter }) => (
             [
@@ -140,8 +137,6 @@ const filterUpdate = createAsyncThunk(
         )
       ]
 
-      // newFilters = ["==", ["get", "dist_1_grp"], "UP"]
-      console.log('newFilters', newFilters)
       const layer = mapGL.map.getLayer(idLayer)
       if (layer !== undefined) {
         mapGL.setFilter(

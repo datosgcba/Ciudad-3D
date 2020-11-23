@@ -82,6 +82,11 @@ const Explorer = () => {
   }, [dispatch])
 
   useEffect(() => {
+    if (value.length > 1) {
+      dispatch(actionsMap.removeLayer({ idLayer: 'explorer_layer' }))
+      dispatch(actions.selectedValue([value[value.length - 1]]))
+      return
+    }
     if (value.length > 0) {
       dispatch(actionsMap.selectedExplorerFilter({ value }))
     } else {
@@ -112,7 +117,7 @@ const Explorer = () => {
         onChange={handleComboChange}
         renderInput={(params) => (
           // eslint-disable-next-line react/jsx-props-no-spreading
-          <TextField {...params} variant="outlined" label="Filtros" placeholder="Capas" />
+          <TextField {...params} variant="outlined" label="Filtros" placeholder="Capa" />
         )}
       />
       {

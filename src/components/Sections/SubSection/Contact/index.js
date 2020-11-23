@@ -26,26 +26,25 @@ const Contact = () => {
   }
 
   const [errorName, setErrorName] = useState(false)
+  const [errorMail, setErrorMail] = useState(false)
+  const [errorComent, setErrorComent] = useState(false)
 
   const validate = () => {
     const values = {}
-    if (nameValue !== '') {
-      setErrorName(false)
-    } else {
-      setErrorName(true)
-    }
-    values.nameValue = nameValue !== '' ? 'correct' : 'Ingrese su nombre'
-    values.emailValue = (/\S+@\S+\.\S+/).test(emailValue) ? 'correct' : 'Ingrese un email valido'
-    values.comentValue = comentValue !== '' ? 'correct' : 'Ingrese un comentario más especifico'
-
-    return Object.values(values).every((v) => v === 'correct')
+    values.nameValue = nameValue !== '' ? ['correct', setErrorName(false)] : ['incorrect', setErrorName(true)]
+    values.emailValue = (/\S+@\S+\.\S+/).test(emailValue) ? ['correct', setErrorMail(false)] : ['incorrect', setErrorMail(true)]
+    values.comentValue = comentValue !== '' ? ['correct', setErrorComent(false)] : ['incorrect', setErrorComent(true)]
+    return Object.values(values).every((v) => v[0] === 'correct')
   }
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    console.log('Submit')
+    e.preventDefault()
     if (validate()) {
       console.log('validate OK')
     } else {
       console.log('validate FAIL')
     }
+    console.log('...')
   }
 
   return (
@@ -61,7 +60,7 @@ const Contact = () => {
               value={nameValue}
               onChange={({ target: { value } }) => nameChange(value)}
               // eslint-disable-next-line react/jsx-props-no-spreading
-              error={errorName && true}
+              error={errorName}
               helperText={errorName && 'Ingrese su nombre'}
             />
           </Grid>
@@ -71,6 +70,8 @@ const Contact = () => {
               label="Email *"
               value={emailValue}
               onChange={({ target: { value } }) => emailChange(value)}
+              error={errorMail}
+              helperText={errorMail && 'Ingrese un email valido'}
             />
           </Grid>
           <Grid item>
@@ -82,6 +83,8 @@ const Contact = () => {
               variant="outlined"
               value={comentValue}
               onChange={({ target: { value } }) => comentChange(value)}
+              error={errorComent}
+              helperText={errorComent && 'Ingrese un comentario'}
             />
           </Grid>
           <Grid item className={classes.item}>

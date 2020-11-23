@@ -57,7 +57,7 @@ const Contact = () => {
           <Grid item className={classes.item}>
             <TextField
               id="name"
-              label="Nombre"
+              label="Nombre *"
               value={nameValue}
               onChange={({ target: { value } }) => nameChange(value)}
               // eslint-disable-next-line react/jsx-props-no-spreading
@@ -68,7 +68,7 @@ const Contact = () => {
           <Grid item className={classes.item}>
             <TextField
               id="email"
-              label="Email"
+              label="Email *"
               value={emailValue}
               onChange={({ target: { value } }) => emailChange(value)}
             />
@@ -76,7 +76,7 @@ const Contact = () => {
           <Grid item>
             <TextField
               id="outlined-multiline-static"
-              label="Comentario"
+              label="Comentario *"
               multiline
               rows={10}
               variant="outlined"

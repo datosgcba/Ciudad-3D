@@ -26,20 +26,21 @@ const ContainerBar = ({ children, type }) => {
   }
 
   return (
-    <Scrollbar>
-      <Box className={`${classes[type]} ${classes.container} ${classes.responsive}`}>
-        <Paper elevation={2} className={classes.padding}>
-          <HeaderSection
-            categoryTitle={categoryTitle}
-            sectionTitle={sectionTitle}
-          />
-        </Paper>
-        <Box className={classes.padding}>
+    <Box className={`${classes[type]} ${classes.container} ${classes.responsive}`}>
+      <Paper elevation={2} className={classes.padding}>
+        <HeaderSection
+          categoryTitle={categoryTitle}
+          sectionTitle={sectionTitle}
+        />
+      </Paper>
+
+      <Scrollbar>
+        <Box className={`${classes.children} ${classes.padding}`}>
           <Alerts />
           {children}
         </Box>
-      </Box>
-    </Scrollbar>
+      </Scrollbar>
+    </Box>
   )
 }
 ContainerBar.propTypes = {

@@ -5,6 +5,9 @@ export default makeStyles((theme) => ({
     marginLeft: theme.spacing(9.75), // 9.75 - 78px
     boxShadow: '0 0 black'
   },
+  children: {
+    maxHeight: '90vh'
+  },
   padding: {
     paddingTop: theme.spacing(2.25), // 2.25 - 18px
     paddingLeft: theme.spacing(3.26), // 3.26 - 26.08px

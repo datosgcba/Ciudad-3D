@@ -88,7 +88,7 @@ const Explorer = () => {
       dispatch(actionsMap.removeLayer({ idLayer: 'explorer_layer' }))
     }
 
-    // dispatch(actions.refreshFilterRequest({ idLayer: 'explorer_layer' }))
+    dispatch(actions.refreshFilterRequest({ idLayer: 'explorer_layer' }))
     setFilters(getExplorerFilters().filter((f) => !value || !value.map((v) => v.id).includes(f.id)))
   }, [value, dispatch])
 

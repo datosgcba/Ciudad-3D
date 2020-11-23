@@ -38,6 +38,11 @@ const theme = createMuiTheme({
       root: {
         padding: 0
       }
+    },
+    MuiFormLabel: {
+      root: {
+        color: '#707070'
+      }
     }
   },
   typography: {
@@ -59,7 +64,8 @@ const theme = createMuiTheme({
   palette: {
     text: {
       primary: '#707070',
-      secondary: '#D9D9D9'
+      secondary: '#D9D9D9',
+      Info: '#00f'
     },
     action: {
       active: '#707070',

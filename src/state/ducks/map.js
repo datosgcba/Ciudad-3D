@@ -22,7 +22,7 @@ const add = async (layer) => {
   return mapGL.addPublicLayer(layer.id, { clustering: true })
 }
 
-const reorderLayers = (layerId, index, groups) => {
+const reorderLayers = (groups, layerId, index) => {
   const newOrder = Object.values(groups)
     .flatMap((group) => Object.entries(group))
     .filter(([id, { isVisible }]) => isVisible || id === layerId)
@@ -46,7 +46,17 @@ const reorderLayers = (layerId, index, groups) => {
   for (let idx = 1; idx < count; idx += 1) {
     mapGL.map.moveLayer(newOrder[idx][0], newOrder[idx - 1][0])
   }
-  return { order: 2 }
+  if (mapGL.map.getLayer('explorer_layer')) {
+    mapGL.map.moveLayer('explorer_layer', newOrder[count - 1][0])
+  }
+  const order = Object.values(groups)
+    .flatMap((group) => Object.entries(group))
+    .filter(([id, { isVisible, index: idx }]) => isVisible && idx === index && id !== layerId)
+    .reduce(
+      (maxOrder, [, { order: oa }]) => (oa > maxOrder ? oa : maxOrder),
+      0
+    ) + 1
+  return { order }
 }
 
 const toggle = async (layer, isVisible = null, index, groups) => {
@@ -57,11 +67,11 @@ const toggle = async (layer, isVisible = null, index, groups) => {
       ? isVisible
       : visibility === 'none'
     map.setLayoutProperty(layer.id, 'visibility', nextVisibility ? 'visible' : 'none')
-    return reorderLayers(layer.id, index, groups)
+    return reorderLayers(groups, layer.id, index)
   }
   return add(layer)
     // Orden de layers
-    .then(() => reorderLayers(layer.id, index, groups))
+    .then(() => reorderLayers(groups, layer.id, index))
     // eslint-disable-next-line no-console
     .catch((error) => console.warn('toggle add layer - catch error:', error))
 }
@@ -108,13 +118,13 @@ const toggleLayer = createAsyncThunk(
 
 const selectedExplorerFilter = createAsyncThunk(
   'map/selectedExplorerFilter',
-  async ({ value }) => {
+  async ({ value }, { getState }) => {
     const idExplorer = value[0].id
     const explorerLayer = getFullExplorerLayerConfig(idExplorer)
     const mapOnIdle = mapOnPromise(mapGL.map)('idle')
     await add(explorerLayer)
     await mapOnIdle
-      .then(() => true)
+      .then(() => reorderLayers(getState().map.groups))
       .catch(() => false)
     return 2
   }
@@ -167,7 +177,8 @@ getLayersGroups().forEach(({ id: idGroup, index = 0 }) => {
     groups[idGroup][idLayer] = {
       processingId: null,
       isVisible: false,
-      index: idxLayer ?? index
+      index: idxLayer ?? index,
+      order: 0
     }
   })
 })
@@ -235,6 +246,7 @@ const map = createSlice({
       layerState.isVisible = !layerState.isVisible
     },
     [toggleLayer.fulfilled]: (draftState, {
+      payload: { order },
       meta: {
         requestId,
         arg: { idGroup, idLayer }
@@ -243,6 +255,7 @@ const map = createSlice({
       const layerState = getLayerState(draftState, idGroup, idLayer)
       if (layerState.processingId === requestId) {
         layerState.processingId = null
+        layerState.order = order
       }
     },
     [toggleLayer.rejected]: (draftState, {

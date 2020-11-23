@@ -880,55 +880,6 @@
   ],
   "layersGroup": [
     {
-      "id": "explorer",
-      "layers": [
-        {
-          "title": "Línea oficial",
-          "color": "#e76056",
-          "id": "linea_oficial",
-          "type": "vectortile",
-          "displayPopup": false,
-          "popupContent": "",
-          "options": {
-            "source": {
-              "type": "vector",
-              "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
-              ],
-              "minzoom": 10,
-              "maxzoom": 18,
-              "cluster": false
-            },
-            "source-layer": "default",
-            "type": "fill",
-            "paint": {
-              "fill-color": [
-                "match",
-                [
-                  "to-string",
-                  [
-                    "get",
-                    "alicuota"
-                  ]
-                ],
-                "0.1",
-                "rgb(255, 191, 191)",
-                "0.18",
-                "rgb(214, 144, 144)",
-                "0.27",
-                "rgb(176, 104, 104)",
-                "0.35",
-                "rgb(138, 69, 69)",
-                "#fff"
-              ],
-              "fill-opacity": 0.8
-            }
-          },
-          "index": -1
-        }
-      ]
-    },
-    {
       "id": "buildableStrip",
       "title": "Franja edificable",
       "layers": [

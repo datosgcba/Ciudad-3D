@@ -158,7 +158,7 @@ const Seeker = (props) => {
       <Downshift
         id="usig-autocomplete"
         inputValue={inputValue}
-        onChange={handleSelectItem}
+        onSelect={handleSelectItem}
       > 
         {({
           getInputProps,

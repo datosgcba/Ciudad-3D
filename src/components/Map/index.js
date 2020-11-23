@@ -130,6 +130,7 @@ const Map = ({ children }) => {
         />
         <Box className={classes.topMenu}>
           <Seeker onSelectItem={(selectedSuggestion) => {
+            dispatch(seekerActions.placeSelected({ data: { smp: null } }))
             dispatch(seekerActions.placeSelected(selectedSuggestion))
             dispatch(seekerActions.coordinatesSelected(selectedSuggestion.data.coordenadas))
             /*

@@ -192,7 +192,7 @@
               "id": "Almagro",
               "title": "Almagro",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "uso_1"], "ALMAGRO"]
+              "filter": ["==", ["get", "barrio"], "ALMAGRO"]
             },
             {
               "id": "Balvanera",
@@ -201,10 +201,10 @@
               "filter": ["==", ["get", "barrio"], "BALVANERA"]
             },
             {
-              "id": "Barras",
-              "title": "Barras",
+              "id": "Barracas",
+              "title": "Barracas",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "BARRAS"]
+              "filter": ["==", ["get", "barrio"], "BARRACAS"]
             },
             {
               "id": "Belgrano",
@@ -279,10 +279,10 @@
               "filter": ["==", ["get", "barrio"], "MATADEROS"]
             },
             {
-              "id": "Monserrat",
-              "title": "Monserrat",
+              "id": "Montserrat",
+              "title": "Montserrat",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "MONSERRAT"]
+              "filter": ["==", ["get", "barrio"], "MONTSERRAT"]
             },
             {
               "id": "Monte Castro",
@@ -313,6 +313,162 @@
               "title": "Parque Avellaneda",
               "idLayer": "explorer_layer",
               "filter": ["==", ["get", "barrio"], "PARQUE AVELLANEDA"]
+            },
+            {
+              "id": "Parque Chacabuco",
+              "title": "Parque Chacabuco",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "PARQUE CHACABUCO"]
+            },
+            {
+              "id": "Parque Chas",
+              "title": "Parque Chas",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "PARQUE CHAS"]
+            },
+            {
+              "id": "Parque Patricios",
+              "title": "Parque Patricios",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "PARQUE PATRICIOS"]
+            },
+            {
+              "id": "Paternal",
+              "title": "Paternal",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "PATERNAL"]
+            },
+            {
+              "id": "Puerto Madera",
+              "title": "Puerto Madero",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "PUERTO MADERO"]
+            },
+            {
+              "id": "Recoleta",
+              "title": "Recoleta",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "RECOLETA"]
+            },
+            {
+              "id": "Retiro",
+              "title": "Retiro",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "RETIRO"]
+            },
+            {
+              "id": "Saavedra",
+              "title": "Saavedra",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "SAAVEDRA"]
+            },
+            {
+              "id": "San Cristobal",
+              "title": "San Cristobal",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "SAN CRISTOBAL"]
+            },
+            {
+              "id": "San Nicolas",
+              "title": "San Nicolas",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "SAN NICOLAS"]
+            },
+            {
+              "id": "San Telmo",
+              "title": "San Telmo",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "SAN TELMO"]
+            },
+            {
+              "id": "Velex Sarsfield",
+              "title": "Velez Sarsfield",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VELEZ SARSFIELD"]
+            },
+            {
+              "id": "Versalles",
+              "title": "Versalles",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VERSALLES"]
+            },
+            {
+              "id": "Villa Crespo",
+              "title": "Villa Crespo",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA CRESPO"]
+            },
+            {
+              "id": "Villa del Parque",
+              "title": "Villa del Parque",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA DEL PARQUE"]
+            },
+            {
+              "id": "Villa Devoto",
+              "title": "Villa Devoto",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA DEVOTO"]
+            },
+            {
+              "id": "Villa Gral. Mitre",
+              "title": "Villa Gral. Mitre",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA GRAL. MITRE"]
+            },
+            {
+              "id": "Villa Lugano",
+              "title": "Villa Lugano",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA LUGANO"]
+            },
+            {
+              "id": "Villa Luro",
+              "title": "Villa Luro",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA LURO"]
+            },
+            {
+              "id": "Villa Ortuzar",
+              "title": "Villa Ortuzar",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA ORTUZAR"]
+            },
+            {
+              "id": "Villa Pueyrredon",
+              "title": "Villa Pueyrredon",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA PUEYRREDON"]
+            },
+            {
+              "id": "Villa Real",
+              "title": "Villa Real",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA REAL"]
+            },
+            {
+              "id": "Villa Riachuelo",
+              "title": "Villa Riachuelo",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA RIACHUELO"]
+            },
+            {
+              "id": "Villa Santa Rita",
+              "title": "Villa Santa Rita",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA SANTA RITA"]
+            },
+            {
+              "id": "Villa Soldati",
+              "title": "Villa Soldati",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA SOLDATI"]
+            },
+            {
+              "id": "Villa Urquiza",
+              "title": "Villa Urquiza",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "barrio"], "VILLA URQUIZA"]
             }
           ]
         }

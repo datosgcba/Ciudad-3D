@@ -111,22 +111,15 @@ const toggleLayer = createAsyncThunk(
 
 const selectedExplorerFilter = createAsyncThunk(
   'map/selectedExplorerFilter',
-  async ({ idExplorer, isVisible }) => {
+  async ({ value }) => {
+    const idExplorer = value[0].id
     const explorerLayer = getFullExplorerLayerConfig(idExplorer)
     const mapOnIdle = mapOnPromise(mapGL.map)('idle')
-    const { order } = await toggle(explorerLayer, isVisible)
-    // if visible
+    await add(explorerLayer)
     await mapOnIdle
       .then(() => true)
       .catch(() => false)
-    return { order }
-  },
-  {
-    condition: ({ idExplorer }, { getState }) => {
-      const state = getState()
-      const explorerLayer = getExplorerLayerState(state.map, idExplorer)
-      return explorerLayer.processingId === null
-    }
+    return 2
   }
 )
 
@@ -157,8 +150,17 @@ const filterUpdate = createAsyncThunk(
   }
 )
 
-const groups = {}
+const removeLayer = createAsyncThunk(
+  'map/removeLayer',
+  async ({ idLayer }) => {
+    const layer = mapGL.map.getLayer(idLayer)
+    if (layer !== undefined) {
+      mapGL.removeVectorTileLayer(idLayer)
+    }
+  }
+)
 
+const groups = {}
 // devuelve cada id y title de config.layersGroup
 getLayersGroups().forEach(({ id: idGroup, index = 0 }) => {
   groups[idGroup] = {}
@@ -173,7 +175,6 @@ getLayersGroups().forEach(({ id: idGroup, index = 0 }) => {
 })
 
 const explorerLayers = {}
-
 getExplorerFilters().forEach(({ id: idExplorer }) => {
   explorerLayers[idExplorer] = {}
   explorerLayers[idExplorer].layers = {
@@ -258,41 +259,9 @@ const map = createSlice({
       }
     },
     // selectedExplorerFilter
-    [selectedExplorerFilter.pending]: (draftState, {
-      meta: {
-        requestId,
-        arg: { idExplorer, isVisible }
-      }
-    }) => {
-      const explorerLayerState = getExplorerLayerState(draftState, idExplorer)
-      explorerLayerState.processingId = requestId
-      explorerLayerState.isVisible = isVisible
-    },
 
-    [selectedExplorerFilter.fulfilled]: (draftState, {
-      payload: { order },
-      meta: {
-        requestId,
-        arg: { idExplorer }
-      }
-    }) => {
-      const explorerLayerState = getExplorerLayerState(draftState, idExplorer)
-      if (explorerLayerState.processingId === requestId) {
-        explorerLayerState.processingId = null
-        explorerLayerState.order = order
-      }
-    },
-
-    [selectedExplorerFilter.rejected]: (draftState, {
-      meta: {
-        requestId,
-        arg: { idExplorer }
-      }
-    }) => {
-      const explorerLayerState = getExplorerLayerState(draftState, idExplorer)
-      if (explorerLayerState.processingId === requestId) {
-        explorerLayerState.processingId = null
-      }
+    [removeLayer.fulfilled]: () => {
+      // TODO: respuestas
     }
   }
 })
@@ -300,6 +269,11 @@ const map = createSlice({
 export default map.reducer
 
 const actions = {
-  ...map.actions, initMap, toggleLayer, selectedExplorerFilter, filterUpdate
+  ...map.actions,
+  initMap,
+  toggleLayer,
+  selectedExplorerFilter,
+  filterUpdate,
+  removeLayer
 }
 export { actions }

@@ -8,6 +8,7 @@ import {
 import useFontsStyles from 'theme/fontsDecorators'
 
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 
 import { actions } from 'state/ducks/explorer'
 
@@ -48,10 +49,31 @@ const GridItems = ({
   )
 }
 
-const GridTwoColumns = ({ idExplorer, items }) => {
+const GridTwoColumns = ({ idExplorer, idGroup, items }) => {
+  const dispatch = useDispatch()
   const decorators = useFontsStyles()
+
+  const handleChangeAllSelected = (idExp, idG, isSelected) => {
+    dispatch(actions.allSelected({ idExp, idG, isSelected }))
+    setTimeout(() => {
+      dispatch(actions.refreshFilterRequest({ idLayer: 'explorer_layer' }))
+    }, 0)
+  }
+
   return (
     <Grid container spacing={0}>
+      <FormControlLabel
+        style={{ paddingLeft: '10px' }}
+        control={(
+          <Checkbox
+            defaultChecked
+            onChange={(_, isSelected) => handleChangeAllSelected(idExplorer, idGroup, isSelected)}
+            icon={<CheckBoxOutlineBlankIcon fontSize="small" style={{ color: '#717170' }} />}
+            checkedIcon={<CheckBoxIcon fontSize="small" style={{ color: '#333' }} />}
+          />
+        )}
+        label="Seleccionar todos"
+      />
       {
         items.map(({
           title, id, idLayer, filter
@@ -73,6 +95,7 @@ const GridTwoColumns = ({ idExplorer, items }) => {
 
 GridTwoColumns.propTypes = {
   idExplorer: PropTypes.string.isRequired,
+  idGroup: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 

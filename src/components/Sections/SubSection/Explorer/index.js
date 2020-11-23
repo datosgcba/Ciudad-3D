@@ -48,6 +48,7 @@ const AccordionOptions = ({
       </AccordionSummary>
       <AccordionDetails>
         <AccordionItem
+          idGroup={id}
           idExplorer={idExplorer}
           items={items}
         />
@@ -81,12 +82,12 @@ const Explorer = () => {
   }, [dispatch])
 
   useEffect(() => {
-    /*
-    value.map(({ id: idExplorer }) => dispatch(
-      actionsMap.selectedExplorerFilter(idExplorer)
-    ))
-    */
-    dispatch(actionsMap.selectedExplorerFilter({ idExplorer: 'Height', isVisible: value.length > 0 }))
+    if (value.length > 0) {
+      dispatch(actionsMap.selectedExplorerFilter({ value }))
+    } else {
+      dispatch(actionsMap.removeLayer({ idLayer: 'explorer_layer' }))
+    }
+
     dispatch(actions.refreshFilterRequest({ idLayer: 'explorer_layer' }))
     setFilters(getExplorerFilters().filter((f) => !value || !value.map((v) => v.id).includes(f.id)))
   }, [value, dispatch])

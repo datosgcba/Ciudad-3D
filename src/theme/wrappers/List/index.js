@@ -17,20 +17,21 @@ import useFontsStyles from 'theme/fontsDecorators'
 import useStyles from './styles'
 
 const ListItems = ({
-  decorators, idExplorer: idExp, id: idItem, subTitle, details, color, idLayer
+  decorators, idExplorer, id: itemId, subTitle, details, color, idLayer
 }) => {
   const dispatch = useDispatch()
-  const isChecked = useSelector((state) => state.explorer.options[idExp][idItem].isVisible)
+  const isChecked = useSelector((state) => state.explorer.options[idExplorer][itemId].isVisible)
 
-  const handleChange = (idExplorer, itemId, isVisible) => {
+  const handleChange = (isVisible) => {
     dispatch(actionsExplorer.checkChange({
       idLayer, idExplorer, itemId, isVisible
     }))
   }
+
   return (
     <ListItem style={{ backgroundColor: `${color}`, paddingBottom: 0, paddingTop: 0 }}>
       <FormControlLabel
-        onChange={(_, isCheck) => handleChange(idExp, idItem, isCheck)}
+        onChange={(_, isCheck) => handleChange(isCheck)}
         control={(
           <Checkbox
             checked={isChecked}
@@ -51,11 +52,32 @@ const ListItems = ({
   )
 }
 
-const List = ({ idExplorer, items }) => {
+const List = ({ idGroup, idExplorer, items }) => {
+  const dispatch = useDispatch()
   const decorators = useFontsStyles()
   const classes = useStyles()
+
+  const handleChangeAllSelected = (idExp, idG, isSelected) => {
+    dispatch(actionsExplorer.allSelected({ idExp, idG, isSelected }))
+    setTimeout(() => {
+      dispatch(actionsExplorer.refreshFilterRequest({ idLayer: 'explorer_layer' }))
+    }, 0)
+  }
+
   return (
     <Box className={classes.options}>
+      <FormControlLabel
+        style={{ paddingLeft: '10px' }}
+        control={(
+          <Checkbox
+            defaultChecked
+            onChange={(_, isSelected) => handleChangeAllSelected(idExplorer, idGroup, isSelected)}
+            icon={<CheckBoxOutlineBlankIcon fontSize="small" style={{ color: '#717170' }} />}
+            checkedIcon={<CheckBoxIcon fontSize="small" style={{ color: '#333' }} />}
+          />
+        )}
+        label="Seleccionar todos"
+      />
       {
         items.map(({
           subTitle, details, color, id, idLayer, filter
@@ -78,6 +100,7 @@ const List = ({ idExplorer, items }) => {
 }
 
 List.propTypes = {
+  idGroup: PropTypes.string.isRequired,
   idExplorer: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.object).isRequired
 }

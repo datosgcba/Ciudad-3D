@@ -8,12 +8,11 @@ const options = {}
 getExplorer().forEach(({ id: idExplorer }) => {
   getExplorerOptions(idExplorer).forEach(({ id: idOption, options: opt }) => {
     options[idOption] = {}
-    opt.forEach(({ id: idGroup, items }) => items.forEach(({ id, filter, invFilter }) => {
+    opt.forEach(({ id: idGroup, items }) => items.forEach(({ id, filter }) => {
       options[idOption][id] = {
         isVisible: true,
         idGroup,
         filter,
-        invFilter,
         processingId: null
       }
     }))
@@ -33,6 +32,7 @@ const hasGroupWithEmtpyFilter = ({ optionsState, autoCompleteValue }) => autoCom
           },
           {}
         )
+      // TODO: entre Altura y Area debería ser: every((count) => count === 0)
       return Object.values(groupsCount).some((count) => count === 0)
     }
   )
@@ -127,6 +127,23 @@ const checkChange = createAsyncThunk(
   }
 )
 
+const allSelected = createAsyncThunk(
+  'explorer/allSelected',
+  async ({ idExp, idG }, { getState }) => {
+    const optionsUpdated = { ...getState().explorer.options }
+
+    const itemsChange = []
+    Object.keys(optionsUpdated[idExp]).forEach(
+      (item) => {
+        if (optionsUpdated[idExp][item].idGroup === idG) {
+          itemsChange.push(item)
+        }
+      }
+    )
+    return { itemsChange }
+  }
+)
+
 const explorer = createSlice({
   name: 'explorer',
   initialState: {
@@ -180,11 +197,25 @@ const explorer = createSlice({
       }
     }) => {
       draftState.options[idExplorer][itemId].processingId = null
+    },
+    [allSelected.fulfilled]: (draftState, {
+      meta: {
+        arg: { idExp, isSelected }
+      }, payload: { itemsChange }
+    }) => {
+      itemsChange.forEach(
+        (item) => {
+          draftState.options[idExp][item].isVisible = isSelected
+          return null
+        }
+      )
     }
   }
 })
 
 export default explorer.reducer
 
-const actions = { ...explorer.actions, checkChange, refreshFilterRequest }
+const actions = {
+  ...explorer.actions, checkChange, refreshFilterRequest, allSelected
+}
 export { actions }

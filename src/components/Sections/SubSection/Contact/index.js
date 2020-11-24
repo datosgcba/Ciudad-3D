@@ -1,5 +1,5 @@
 // TODO: console.log()
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { actions as actionsContact } from 'state/ducks/contact'
 
@@ -62,7 +62,9 @@ const Contact = () => {
     }
   }
 
+  useEffect(() => () => dispatch(actionsContact.cleanStatus()), [dispatch])
   const statusEmail = useSelector((state) => state.contact.statusEmail)
+
   return (
     <ContainerBar
       type="list"
@@ -128,30 +130,36 @@ const Contact = () => {
               Enviar
             </Button>
           </Grid>
+          {
+            statusEmail === 'sending' && (
+              <Grid item className={classes.item}>
+                <Typography>
+                  ENVIANDO
+                </Typography>
+              </Grid>
+            )
+          }
+          {
+            statusEmail === 'success' && (
+              <Grid item className={classes.item}>
+                <Typography>
+                  ENVIADO CON ÉXITO
+                </Typography>
+              </Grid>
+            )
+          }
+          {
+            statusEmail === 'fail' && (
+              <Grid item className={classes.item}>
+                <Typography className={classes.asterisco}>
+                  ERROR EL ENVIAR
+                </Typography>
+              </Grid>
+            )
+          }
         </Grid>
       </form>
 
-      {
-        statusEmail === 'sending' && (
-          <Typography>
-            ENVIANDO
-          </Typography>
-        )
-      }
-      {
-        statusEmail === 'success' && (
-          <Typography>
-            ENVIADO CON ÉXITO
-          </Typography>
-        )
-      }
-      {
-        statusEmail === 'fail' && (
-          <Typography className={classes.asterisco}>
-            ERROR EL ENVIAR
-          </Typography>
-        )
-      }
     </ContainerBar>
   )
 }

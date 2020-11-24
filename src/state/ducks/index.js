@@ -5,6 +5,7 @@ import alerts from './alerts'
 import basicData from './basicData'
 import buildable from './buildable'
 import categories from './categories'
+import contact from './contact'
 import explorer from './explorer'
 import inspections from './inspections'
 import map from './map'
@@ -17,6 +18,7 @@ import works from './works'
 export default combineReducers({
   alerts,
   categories,
+  contact,
   map,
   seeker,
   basicData,

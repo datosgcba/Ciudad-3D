@@ -1,7 +1,9 @@
 // TODO: console.log()
 import React, { useState } from 'react'
 
-import emailjs from 'emailjs-com'
+import { actions as actionsContact } from 'state/ducks/contact'
+
+import { useDispatch, useSelector } from 'react-redux'
 
 import ReCAPTCHA from 'react-google-recaptcha'
 
@@ -14,6 +16,7 @@ import useStyles from './styles'
 
 const Contact = () => {
   const classes = useStyles()
+  const dispatch = useDispatch()
 
   // Validaciones
   const [nameValue, setNameValue] = useState('')
@@ -51,27 +54,15 @@ const Contact = () => {
     return Object.values(values).every((v) => v[0] === 'correct')
   }
 
-  const [showMessage, setShowMessage] = useState(false)
-  const [isSending, setIsSending] = useState(false)
-
   const handleSubmit = (e) => {
     e.preventDefault()
     if (validate()) {
-      setIsSending(true)
-      // TODO: pasar a un midleware
-      emailjs.sendForm('default_service', 'template_0mcaxro', e.target, 'user_RVfYzsE2p9F5ySzITwsQK')
-        .then((response) => {
-          console.log('SUCCESS!', response.status, response.text)
-          setIsSending(false)
-          setShowMessage(true)
-        }, (err) => {
-          setIsSending(false)
-          console.log('FAILED...', err)
-        })
+      dispatch(actionsContact.sendEmail({ target: e.target }))
       resetValues()
     }
   }
 
+  const statusEmail = useSelector((state) => state.contact.statusEmail)
   return (
     <ContainerBar
       type="list"
@@ -83,6 +74,7 @@ const Contact = () => {
               id="name"
               name="userName"
               label="Nombre *"
+              value={nameValue}
               onChange={({ target: { value } }) => nameChange(value)}
               error={errorName}
               helperText={errorName && 'Ingrese su nombre'}
@@ -93,6 +85,7 @@ const Contact = () => {
               id="email"
               name="userEmail"
               label="Email *"
+              value={emailValue}
               onChange={({ target: { value } }) => emailChange(value)}
               error={errorMail}
               helperText={errorMail && (emailValue === '' ? 'Ingrese un email' : 'Ingrese un email valido')}
@@ -106,6 +99,7 @@ const Contact = () => {
               multiline
               rows={10}
               variant="outlined"
+              value={comentValue}
               onChange={({ target: { value } }) => comentChange(value)}
               error={errorComent}
               helperText={errorComent && 'Ingrese un comentario'}
@@ -119,6 +113,7 @@ const Contact = () => {
           <Grid item className={classes.item}>
             <ReCAPTCHA
               sitekey="6LdVAuMZAAAAADGeupnkf5fB37bNhbxah0asbDkX"
+              name="captcha"
             />
           </Grid>
           <Grid item className={classes.item}>
@@ -133,16 +128,23 @@ const Contact = () => {
       </form>
 
       {
-        isSending && (
+        statusEmail === 'sending' && (
           <Typography>
             ENVIANDO
           </Typography>
         )
       }
       {
-        showMessage && (
+        statusEmail === 'success' && (
           <Typography>
-            Mensaje enviado correctamente
+            ENVIADO CON ÉXITO
+          </Typography>
+        )
+      }
+      {
+        statusEmail === 'fail' && (
+          <Typography className={classes.asterisco}>
+            ERROR EL ENVIAR
           </Typography>
         )
       }

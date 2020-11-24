@@ -71,6 +71,7 @@ const Contact = () => {
         <Grid container className={classes.container}>
           <Grid item className={classes.item}>
             <TextField
+              className={classes.textField}
               id="name"
               name="userName"
               label="Nombre *"
@@ -82,6 +83,7 @@ const Contact = () => {
           </Grid>
           <Grid item className={classes.item}>
             <TextField
+              className={classes.textField}
               id="email"
               name="userEmail"
               label="Email *"
@@ -91,8 +93,9 @@ const Contact = () => {
               helperText={errorMail && (emailValue === '' ? 'Ingrese un email' : 'Ingrese un email valido')}
             />
           </Grid>
-          <Grid item>
+          <Grid item className={classes.item}>
             <TextField
+              className={classes.textField}
               id="outlined-multiline-static"
               name="coment"
               label="Comentario *"
@@ -110,8 +113,9 @@ const Contact = () => {
               * los campos son obligatorios
             </Typography>
           </Grid>
-          <Grid item className={classes.item}>
+          <Grid item className={classes.captcha}>
             <ReCAPTCHA
+              // TODO: siteKey propia del gobierno
               sitekey="6LdVAuMZAAAAADGeupnkf5fB37bNhbxah0asbDkX"
               name="captcha"
             />

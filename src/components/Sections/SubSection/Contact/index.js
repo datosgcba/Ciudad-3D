@@ -1,4 +1,7 @@
+// TODO: console.log()
 import React, { useState } from 'react'
+
+import emailjs from 'emailjs-com'
 
 import ReCAPTCHA from 'react-google-recaptcha'
 
@@ -12,6 +15,7 @@ import useStyles from './styles'
 const Contact = () => {
   const classes = useStyles()
 
+  // Validaciones
   const [nameValue, setNameValue] = useState('')
   const nameChange = (value) => {
     setNameValue(value)
@@ -25,26 +29,47 @@ const Contact = () => {
     setComentValue(value)
   }
 
+  const resetValues = () => {
+    setNameValue('')
+    setEmailValue('')
+    setComentValue('')
+  }
+
   const [errorName, setErrorName] = useState(false)
   const [errorMail, setErrorMail] = useState(false)
   const [errorComent, setErrorComent] = useState(false)
 
   const validate = () => {
     const values = {}
-    values.nameValue = nameValue !== '' ? ['correct', setErrorName(false)] : ['incorrect', setErrorName(true)]
-    values.emailValue = (/\S+@\S+\.\S+/).test(emailValue) ? ['correct', setErrorMail(false)] : ['incorrect', setErrorMail(true)]
-    values.comentValue = comentValue !== '' ? ['correct', setErrorComent(false)] : ['incorrect', setErrorComent(true)]
+    values.nameValue = nameValue !== ''
+      ? ['correct', setErrorName(false)] : ['incorrect', setErrorName(true)]
+    values.emailValue = (/\S+@\S+\.\S+/).test(emailValue)
+      ? ['correct', setErrorMail(false)] : ['incorrect', setErrorMail(true)]
+    values.comentValue = comentValue !== ''
+      ? ['correct', setErrorComent(false)] : ['incorrect', setErrorComent(true)]
+
     return Object.values(values).every((v) => v[0] === 'correct')
   }
+
+  const [showMessage, setShowMessage] = useState(false)
+  const [isSending, setIsSending] = useState(false)
+
   const handleSubmit = (e) => {
-    console.log('Submit')
     e.preventDefault()
     if (validate()) {
-      console.log('validate OK')
-    } else {
-      console.log('validate FAIL')
+      setIsSending(true)
+      // TODO: pasar a un midleware
+      emailjs.sendForm('default_service', 'template_0mcaxro', e.target, 'user_RVfYzsE2p9F5ySzITwsQK')
+        .then((response) => {
+          console.log('SUCCESS!', response.status, response.text)
+          setIsSending(false)
+          setShowMessage(true)
+        }, (err) => {
+          setIsSending(false)
+          console.log('FAILED...', err)
+        })
+      resetValues()
     }
-    console.log('...')
   }
 
   return (
@@ -52,14 +77,13 @@ const Contact = () => {
       type="list"
     >
       <form onSubmit={handleSubmit}>
-        <Grid container>
+        <Grid container className={classes.container}>
           <Grid item className={classes.item}>
             <TextField
               id="name"
+              name="userName"
               label="Nombre *"
-              value={nameValue}
               onChange={({ target: { value } }) => nameChange(value)}
-              // eslint-disable-next-line react/jsx-props-no-spreading
               error={errorName}
               helperText={errorName && 'Ingrese su nombre'}
             />
@@ -67,21 +91,21 @@ const Contact = () => {
           <Grid item className={classes.item}>
             <TextField
               id="email"
+              name="userEmail"
               label="Email *"
-              value={emailValue}
               onChange={({ target: { value } }) => emailChange(value)}
               error={errorMail}
-              helperText={errorMail && 'Ingrese un email valido'}
+              helperText={errorMail && (emailValue === '' ? 'Ingrese un email' : 'Ingrese un email valido')}
             />
           </Grid>
           <Grid item>
             <TextField
               id="outlined-multiline-static"
+              name="coment"
               label="Comentario *"
               multiline
               rows={10}
               variant="outlined"
-              value={comentValue}
               onChange={({ target: { value } }) => comentChange(value)}
               error={errorComent}
               helperText={errorComent && 'Ingrese un comentario'}
@@ -107,6 +131,21 @@ const Contact = () => {
           </Grid>
         </Grid>
       </form>
+
+      {
+        isSending && (
+          <Typography>
+            ENVIANDO
+          </Typography>
+        )
+      }
+      {
+        showMessage && (
+          <Typography>
+            Mensaje enviado correctamente
+          </Typography>
+        )
+      }
     </ContainerBar>
   )
 }

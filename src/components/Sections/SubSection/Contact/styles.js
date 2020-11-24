@@ -1,6 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
+  container: {
+    paddingLeft: theme.spacing(2),
+    height: '100%'
+  },
   item: {
     marginBottom: theme.spacing(3)
   },

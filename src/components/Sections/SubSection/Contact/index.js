@@ -85,7 +85,7 @@ const Contact = () => {
             <TextField
               className={classes.textField}
               id="name"
-              name="userName"
+              name="from_name"
               label="Nombre *"
               value={nameValue}
               onChange={({ target: { value } }) => nameChange(value)}
@@ -97,7 +97,7 @@ const Contact = () => {
             <TextField
               className={classes.textField}
               id="email"
-              name="userEmail"
+              name="reply_to"
               label="Email *"
               value={emailValue}
               onChange={({ target: { value } }) => emailChange(value)}
@@ -109,7 +109,7 @@ const Contact = () => {
             <TextField
               className={classes.textField}
               id="outlined-multiline-static"
-              name="coment"
+              name="message"
               label="Comentario *"
               multiline
               rows={10}
@@ -127,8 +127,9 @@ const Contact = () => {
           </Grid>
           <Grid item className={classes.captcha}>
             <ReCAPTCHA
-              // TODO: siteKey propia del gobierno
-              sitekey="6LdVAuMZAAAAADGeupnkf5fB37bNhbxah0asbDkX"
+              sitekey="6LfR8ewZAAAAAEQHqrlnwxlw_3ejpqCiqW436IKd"
+              // Gonzalo "6LdVAuMZAAAAADGeupnkf5fB37bNhbxah0asbDkX"
+              // Ariel   "6LfR8ewZAAAAAEQHqrlnwxlw_3ejpqCiqW436IKd"
               onChange={(e) => handleCaptcha(e)}
               name="captcha"
             />

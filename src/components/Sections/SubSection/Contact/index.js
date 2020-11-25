@@ -1,4 +1,3 @@
-// TODO: console.log()
 import React, { useState, useEffect } from 'react'
 
 import { actions as actionsContact } from 'state/ducks/contact'
@@ -19,6 +18,8 @@ const Contact = () => {
   const dispatch = useDispatch()
 
   // Validaciones
+  const [captchaValue, setCaptchaValue] = useState()
+
   const [nameValue, setNameValue] = useState('')
   const nameChange = (value) => {
     setNameValue(value)
@@ -30,12 +31,6 @@ const Contact = () => {
   const [comentValue, setComentValue] = useState('')
   const comentChange = (value) => {
     setComentValue(value)
-  }
-
-  const resetValues = () => {
-    setNameValue('')
-    setEmailValue('')
-    setComentValue('')
   }
 
   const [errorName, setErrorName] = useState(false)
@@ -50,8 +45,16 @@ const Contact = () => {
       ? ['correct', setErrorMail(false)] : ['incorrect', setErrorMail(true)]
     values.comentValue = comentValue !== ''
       ? ['correct', setErrorComent(false)] : ['incorrect', setErrorComent(true)]
+    values.captchaValue = captchaValue
+      ? ['correct'] : ['incorrect', setCaptchaValue(false)]
 
     return Object.values(values).every((v) => v[0] === 'correct')
+  }
+
+  const resetValues = () => {
+    setNameValue('')
+    setEmailValue('')
+    setComentValue('')
   }
 
   const handleSubmit = (e) => {
@@ -59,6 +62,13 @@ const Contact = () => {
     if (validate()) {
       dispatch(actionsContact.sendEmail({ target: e.target }))
       resetValues()
+    }
+  }
+  const handleCaptcha = (token) => {
+    if (token === null) {
+      setCaptchaValue(null)
+    } else {
+      setCaptchaValue(true)
     }
   }
 
@@ -111,7 +121,7 @@ const Contact = () => {
             />
           </Grid>
           <Grid item className={classes.item}>
-            <Typography className={classes.asterisco}>
+            <Typography className={classes.required}>
               * los campos son obligatorios
             </Typography>
           </Grid>
@@ -119,8 +129,16 @@ const Contact = () => {
             <ReCAPTCHA
               // TODO: siteKey propia del gobierno
               sitekey="6LdVAuMZAAAAADGeupnkf5fB37bNhbxah0asbDkX"
+              onChange={(e) => handleCaptcha(e)}
               name="captcha"
             />
+            {
+              captchaValue === false && (
+                <Typography className={classes.required}>
+                  Utilice el captcha
+                </Typography>
+              )
+            }
           </Grid>
           <Grid item className={classes.item}>
             <Button
@@ -151,7 +169,7 @@ const Contact = () => {
           {
             statusEmail === 'fail' && (
               <Grid item className={classes.item}>
-                <Typography className={classes.asterisco}>
+                <Typography className={classes.required}>
                   ERROR EL ENVIAR
                 </Typography>
               </Grid>

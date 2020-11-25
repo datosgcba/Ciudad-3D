@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
   textField: {
     width: '100%'
   },
-  asterisco: {
+  required: {
     color: 'red',
     fontSize: '13px',
     marginLeft: theme.spacing(0.5)

@@ -62,7 +62,6 @@ const basicData = createSlice({
   },
   extraReducers: {
     [selectedParcel.pending]: (draftState) => {
-      // TODO: Spinner cargando (?)
       draftState.isLoading = true
     },
     [selectedParcel.fulfilled]: (draftState, action) => {
@@ -71,11 +70,9 @@ const basicData = createSlice({
       draftState.data = action.payload
     },
     [selectedParcel.rejected]: (draftState) => {
-      // TODO: Mostrar mensaje de error al usuario (?)
       draftState.isLoading = false
     },
     [seekerParcel.pending]: (draftState) => {
-      // TODO: Spinner cargando (?)
       draftState.isLoading = true
     },
     [seekerParcel.fulfilled]: (draftState, action) => {
@@ -84,7 +81,6 @@ const basicData = createSlice({
       draftState.data = action.payload
     },
     [seekerParcel.rejected]: (draftState) => {
-      // TODO: Mostrar mensaje de error al usuario (?)
       draftState.isLoading = false
       draftState.isSelected = false
       draftState.data = { smp: null }

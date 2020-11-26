@@ -11,27 +11,19 @@ export default makeStyles((theme) => ({
       width: '200px'
     }
   },
-
   input: {
-    marginLeft: 5,
-    paddingLeft: 5,
+    paddingLeft: 10,
     width: '100%'
   },
-
   iconButton: {
     padding: 10
   },
   list: {
     fontSize: '0.6rem',
     width: '400px',
-    height: 'auto',
     display: 'flex',
     [theme.breakpoints.down('sm')]: {
       width: '200px'
     }
-  },
-  listItem: {
-    width: '400px',
-    height: 'auto'
   }
 }))

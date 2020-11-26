@@ -26,11 +26,9 @@ const reorderLayers = (groups, layerId, index) => {
   const newOrder = Object.values(groups)
     .flatMap((group) => Object.entries(group))
     .filter(([id, { isVisible }]) => isVisible || id === layerId)
-    // eslint-disable-next-line no-confusing-arrow
     .sort((
       [ida, { index: ia, order: oa }],
       [idb, { index: ib, order: ob }]
-      // eslint-disable-next-line no-nested-ternary
     ) => {
       const diff = ib - ia
       if (diff === 0) {
@@ -268,11 +266,6 @@ const map = createSlice({
       if (layerState.processingId === requestId) {
         layerState.processingId = null
       }
-    },
-    // selectedExplorerFilter
-
-    [removeLayer.fulfilled]: () => {
-      // TODO: respuestas
     }
   }
 })

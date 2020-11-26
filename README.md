@@ -171,7 +171,7 @@ Otras extensiones útiles:
 
 * **components**: Como se dijo en containers hay tres componentes principales que engloban toda la aplicación
   * **Map**: Es un contenedor del mapa generado por mapbox gl js a través de **MapaInteractivoGL**,
-  //TODO: el componente **Buscador** que actualmente esta en proceso de migración a su versión 2.1.0
+  // TODO: el componente **Buscador** que actualmente esta en proceso de migración a su versión 2.1.0
   y el mini-mapa que sirve para cambiar entre modo claro y oscuro
 
   * **SideBar**: Es un contenedor de **Categories** las cuales se obtienen desde appConfig

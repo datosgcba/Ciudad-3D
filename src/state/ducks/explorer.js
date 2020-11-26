@@ -69,7 +69,6 @@ const refreshFilter = (optionsState, autoCompleteValue, idLayer, dispatch) => {
               optionsState[idOption][idItem].filter
             )
             // Entre Area y Altura es criterio es OR por lo tanto se meten en el mismo grupo
-            // TODO: mejorar solución
           } else if (
             optionsState[idOption][idItem].isVisible
             && optionsState[idOption][idItem].idGroup === 'Area'

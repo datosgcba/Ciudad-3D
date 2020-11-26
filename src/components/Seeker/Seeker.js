@@ -63,16 +63,18 @@ const Seeker = ({ onSelectItem }) => {
   }
 
   const handleSelectItem = () => {
+    console.log('selectedSuggestion', selectedSuggestion)
     if (selectedSuggestion) {
       setInputValue(`${selectedSuggestion.title} `)
+      setSuggestions([])
       if (selectedSuggestion.type === 'CALLE') {
-        setInputValue(`${selectedSuggestion.title} `)
-        setSuggestions([])
-      } else {
-        setSuggestions([])
-
-        // Geolocaliza el punto y envía la info a tooltip.js
-        // que agrega el marker con el popup
+        console.log('CALLE')
+        setSuggestions([{
+          data: {
+            tipo: 'tipoalerta'
+          },
+          title: 'El origen indicado es una Calle, por lo tanto debe especificar la altura o bien un cruce para poder continuar con la búsqueda.'
+        }])
       }
       Promise.all(Suggester.getSuggestionPromises(selectedSuggestion))
         .then(() => onSelectItem(selectedSuggestion))

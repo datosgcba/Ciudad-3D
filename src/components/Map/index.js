@@ -135,10 +135,12 @@ const Map = ({ children }) => {
             dispatch(seekerActions.coordinatesSelected(selectedSuggestion.data.coordenadas))
             /*
               Se actualiza la camara desde acá
-              ya que al elegir lugares el autocompleter no trae SMP
+              ya que al elegir lugares o intersecciones
+              el autocompleter no trae SMP
              */
             if (
-              selectedSuggestion.data.smp === undefined
+              (selectedSuggestion.data.smp === undefined
+              || selectedSuggestion.data.smp === '')
               && selectedSuggestion.data.coordenadas
               && selectedSuggestion.data.coordenadas.x && selectedSuggestion.data.coordenadas.y
             ) {

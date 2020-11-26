@@ -75,7 +75,7 @@ const Seeker = ({ onSelectItem }) => {
         // que agrega el marker con el popup
       }
       Promise.all(Suggester.getSuggestionPromises(selectedSuggestion))
-        .then(_ => onSelectItem(selectedSuggestion))
+        .then(() => onSelectItem(selectedSuggestion))
     }
   }
 

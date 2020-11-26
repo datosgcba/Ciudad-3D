@@ -69,7 +69,7 @@ const getUsesTable = async () => config.uses.map(({
   desc,
   afluencia,
   iconsData: icon.map(({ title: iconTitle, svgId }) => (
-    { iconTitle, svg: icons.find((i) => i.id === svgId).path }
+    { iconTitle, svgId }
   ))
 }))
 

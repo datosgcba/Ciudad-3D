@@ -5,14 +5,14 @@ import PropTypes from 'prop-types'
 import {
   Box, Typography, Grid, makeStyles, Paper
 } from '@material-ui/core'
-
 import useFontsStyles from 'theme/fontsDecorators'
 
-import ContainerBar from 'components/Sections/ContainerBar'
-
-import { actions as usesActions } from 'state/ducks/uses'
-
 import { useDispatch, useSelector } from 'react-redux'
+
+
+import ContainerBar from 'components/Sections/ContainerBar'
+import icons from 'utils/svgIcons'
+import { actions as usesActions } from 'state/ducks/uses'
 
 import useStyles from './styles'
 
@@ -35,10 +35,10 @@ const Details = ({
       </Grid>
     </Box>
     <Grid container style={{ textAlign: 'center', marginBottom: 10 }}>
-      {iconsData.map(({ iconTitle, svg }) => (
-        <Grid item xs={Math.trunc(12 / iconsData.length)}>
+      {iconsData.map(({ iconTitle, svgId }) => (
+        <Grid key={iconTitle} item xs={Math.trunc(12 / iconsData.length)}>
           <Box className={classes.icon}>
-            {svg}
+            {icons.find((i) => i.id === svgId).path}
           </Box>
           <Typography variant="subtitle2" className={decorators.bold}>
             {iconTitle}
@@ -107,6 +107,6 @@ Details.propTypes = {
   title: PropTypes.string.isRequired,
   fill: PropTypes.string.isRequired,
   afluencia: PropTypes.string.isRequired,
-  iconsData: PropTypes.string.isRequired
+  iconsData: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 export default Uses

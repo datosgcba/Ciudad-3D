@@ -64,8 +64,7 @@ const defaultMapStyle = {
       "type": "line",
       "paint": {
         "line-color": "#c0bfc1",
-        "line-width": 4,
-        "line-opacity": 0.3
+        "line-width": 4
       }
     },
     {

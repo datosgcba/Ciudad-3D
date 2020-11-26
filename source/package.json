@@ -31,11 +31,10 @@
     "styled-components": "^4.0.0"
   },
   "scripts": {
-    "start": "env-cmd -f .env.development react-scripts start",
+    "start": "env-cmd -f .env react-scripts start",
+    "build": "env-cmd -f .env react-scripts build",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "build": "env-cmd -f .env.development react-scripts build",
-    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "browserslist": {

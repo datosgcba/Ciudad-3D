@@ -18,7 +18,7 @@ COPY ./public ./public
 COPY ./jsconfig.json .
 
 # build for development
-COPY ./.env.development ./.env.development
+COPY ./.env ./.env
 RUN npm run build
 
 ### apache state for serving content ###

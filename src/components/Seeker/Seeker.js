@@ -63,12 +63,10 @@ const Seeker = ({ onSelectItem }) => {
   }
 
   const handleSelectItem = () => {
-    console.log('selectedSuggestion', selectedSuggestion)
     if (selectedSuggestion) {
       setInputValue(`${selectedSuggestion.title} `)
       setSuggestions([])
       if (selectedSuggestion.type === 'CALLE') {
-        console.log('CALLE')
         setSuggestions([{
           data: {
             tipo: 'tipoalerta'

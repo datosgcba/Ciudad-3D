@@ -1365,7 +1365,7 @@
               "line-color": "#19c3e3",
               "line-width": 4
             },
-            "filter": [ "===", "clase", "apertura_de_calle" ]
+            "filter": [ "==", "clase", "apertura_de_calle" ]
           }
         },
         {
@@ -1391,7 +1391,7 @@
               "line-color": "#0389d1",
               "line-width": 4
             },
-            "filter": [ "===", "clase", "cinturon_digital" ]
+            "filter": [ "==", "clase", "cinturon_digital" ]
           }
         }
       ]

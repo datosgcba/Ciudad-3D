@@ -23,16 +23,23 @@ getExplorer().forEach(({ id: idExplorer }) => {
 const hasGroupWithEmtpyFilter = ({ optionsState, autoCompleteValue }) => autoCompleteValue
   .some(
     ({ filterId }) => {
+      let area = 0
       const groupsCount = Object.values(optionsState[filterId])
         .reduce(
           (groups, { idGroup, isVisible }) => {
             let { [idGroup]: group = 0 } = groups
-            group += isVisible ? 1 : 0
+            if (idGroup !== 'Area') {
+              group += isVisible ? 1 : 0
+            } else {
+              group += 1
+              area += isVisible ? 1 : 0
+            }
             return { ...groups, [idGroup]: group }
           },
           {}
         )
-      // TODO: entre Altura y Area debería ser: every((count) => count === 0)
+      // Entre Altura y Area el criterio es and por eso evaluan en un mismo grupo
+      groupsCount.Altura += area
       return Object.values(groupsCount).some((count) => count === 0)
     }
   )

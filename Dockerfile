@@ -21,13 +21,11 @@ COPY ./jsconfig.json .
 COPY ./.env.development ./.env.development
 RUN npm run build
 
-### nginx state for serving content ###
-FROM nginx:1.19-alpine
-# Set working directory to nginx asset directory
-WORKDIR /usr/share/nginx/html
-# Remove default nginx static assets
-RUN rm -rf ./*
+### apache state for serving content ###
+FROM httpd:24
+# Set working directory to server asset directory
+WORKDIR /var/www/html/
 # Copy static assets from builder stage
 COPY --from=builder /frontend/build .
-# Containers run nginx with global directives and daemon off
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# Containers run server
+CMD run-httpd

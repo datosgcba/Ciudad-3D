@@ -944,7 +944,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/lfi/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/lfi/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -969,7 +969,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/banda_minima/{z}/{x}/{y}.pbf?optimize=true"
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/banda_minima/{z}/{x}/{y}.pbf"
               ],
               "minzoom": 10,
               "maxzoom": 18,

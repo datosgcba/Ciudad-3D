@@ -1,21 +1,24 @@
-const getParcel = ({ lng, lat }) => `https://epok.buenosaires.gob.ar/catastro/parcela/?lng=${lng}&lat=${lat}`
+import getApiUrl from './configQueries'
 
-const getParcelBySmp = (smp) => `https://epok.buenosaires.gob.ar/catastro/parcela/?smp=${smp}`
+const apiUrl = getApiUrl()
+const getParcel = ({ lng, lat }) => `${apiUrl}/catastro/parcela/?lng=${lng}&lat=${lat}`
 
-const getGeometrical = (smp) => `https://epok.buenosaires.gob.ar/catastro/geometria/?smp=${smp}`
+const getParcelBySmp = (smp) => `${apiUrl}/catastro/parcela/?smp=${smp}`
 
-const getBuildable = (smp) => `https://epok.buenosaires.gob.ar/cur3d/seccion_edificabilidad/?smp=${smp}`
+const getGeometrical = (smp) => `${apiUrl}/catastro/geometria/?smp=${smp}`
 
-const getCapitalGain = (smp) => `https://epok.buenosaires.gob.ar/cur3d/calcular_plusvalia/?smp=${smp}`
+const getBuildable = (smp) => `${apiUrl}/cur3d/seccion_edificabilidad/?smp=${smp}`
 
-const getUses = (smp) => `https://epok.buenosaires.gob.ar/cur3d/mixtura_usos/?smp=${smp}`
+const getCapitalGain = (smp) => `${apiUrl}/cur3d/calcular_plusvalia/?smp=${smp}`
 
-const getAffectations = (smp) => `https://epok.buenosaires.gob.ar/cur3d/afectaciones/?smp=${smp}`
+const getUses = (smp) => `${apiUrl}/cur3d/mixtura_usos/?smp=${smp}`
 
-const getWorks = (smp) => `https://epok.buenosaires.gob.ar/cur3d/obras/?smp=${smp}`
+const getAffectations = (smp) => `${apiUrl}/cur3d/afectaciones/?smp=${smp}`
 
-const getInspections = (smp) => `https://epok.buenosaires.gob.ar/cur3d/inspecciones/?smp=${smp}`
-const getPlusvalia = (smp, area) => `https://epok.buenosaires.gob.ar/cur3d/calcular_plusvalia/?smp=${smp}&area_edificar=${area}`
+const getWorks = (smp) => `${apiUrl}/cur3d/obras/?smp=${smp}`
+
+const getInspections = (smp) => `${apiUrl}/cur3d/inspecciones/?smp=${smp}`
+const getPlusvalia = (smp, area) => `${apiUrl}/cur3d/calcular_plusvalia/?smp=${smp}&area_edificar=${area}`
 
 export {
   getParcel,

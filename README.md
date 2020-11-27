@@ -19,7 +19,7 @@ Para probarlo simplemente clonar el repositorio y  ejecutar estas dos lineas de 
 npm install
 npm start
 ```
-Se abre una solapa en [http://localhost:``3000``](http://localhost:3000) el valor ``PORT`` definido en ``.env``
+Se abre una solapa en [http://localhost:``3000``](http://localhost:3000) el valor ``PORT`` definido en ``.env.dev``
 
 Para poder utilizar el captcha que se encuentra en la categoria *Ayudanos a mejorar* 
 se debe cambiar localhost por [http://127.0.0.1:``3000``](http://127.0.0.1:3000)
@@ -82,7 +82,7 @@ Como se dijo el corazón de la aplicación es **Mapbox GL JS** esta es una excel
 ---
 ## Deploy
 
-### El proyecto compilará el código con las variables seteadas en el archivo .env
+### El proyecto compilará el código con las variables seteadas en el archivo ./envs/.env.prod
 ```bash
 npm run build
 ```

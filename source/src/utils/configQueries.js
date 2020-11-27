@@ -101,10 +101,12 @@ const getCategoryTitle = (idCategory) => config.categories.find(({ id }) => id =
 
 const getSectionTitle = (idTitle) => config.information.find(({ id }) => id === idTitle).title
 
+const getApiUrl = () => config.urlAPI
+
 export {
   getCategories, getFullLayerConfig, getInformation, getBasicData,
   getLayersGroups, getLayersByLayersGroupId, getBuildable, getExplorer,
   getUsesTable, getWorksGroups, getAffectationsTable, getExplorerOptions,
   getExplorerFilters, getCapitalGain, getInspectionsGroups, getAlert,
-  getCategoryTitle, getSectionTitle, getFullExplorerLayerConfig
+  getCategoryTitle, getSectionTitle, getFullExplorerLayerConfig, getApiUrl
 }

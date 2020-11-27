@@ -693,7 +693,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+              "http://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -760,7 +760,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+              "http://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -806,7 +806,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+              "http://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -894,7 +894,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/linea_oficial/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/linea_oficial/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -919,7 +919,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/lib/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/lib/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -944,7 +944,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/lfi/{z}/{x}/{y}.pbf"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/lfi/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -969,7 +969,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/banda_minima/{z}/{x}/{y}.pbf"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/banda_minima/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -994,7 +994,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/rivolta/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/rivolta/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1019,7 +1019,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/volumen_edif_2/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif_2/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1059,7 +1059,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/volumen_edif/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1096,7 +1096,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/tejido/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/tejido/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1124,7 +1124,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/tejido/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/tejido/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1152,7 +1152,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/manzana/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/manzana/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1177,7 +1177,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1211,7 +1211,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1250,7 +1250,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/riesgo_hidrico/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/riesgo_hidrico/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1275,7 +1275,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1301,7 +1301,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1327,7 +1327,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1353,7 +1353,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1379,7 +1379,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "http://cur3d.eastus2.cloudapp.azure.com/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
+                "http://vectortiles.usig.buenosaires.gob.ar/cur3d/restricciones/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,

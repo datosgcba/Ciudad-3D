@@ -22,7 +22,7 @@ const add = async (layer) => {
   return mapGL.addPublicLayer(layer.id, { clustering: true })
 }
 
-const reorderLayers = (groups, layerId, index) => {
+const reorderLayers = async (groups, layerId, index) => {
   const newOrder = Object.values(groups)
     .flatMap((group) => Object.entries(group))
     .filter(([id, { isVisible }]) => isVisible || id === layerId)
@@ -38,13 +38,13 @@ const reorderLayers = (groups, layerId, index) => {
     })
   const count = newOrder.length
 
-  if (mapGL.map.getLayer('edif_smp')) {
-    mapGL.map.moveLayer(newOrder[0], 'edif_smp')
+  if (count > 0 && mapGL.map.getLayer('edif_smp')) {
+    mapGL.map.moveLayer(newOrder[0][0], 'edif_smp')
   }
   for (let idx = 1; idx < count; idx += 1) {
     mapGL.map.moveLayer(newOrder[idx][0], newOrder[idx - 1][0])
   }
-  if (mapGL.map.getLayer('explorer_layer')) {
+  if (count > 0 && mapGL.map.getLayer('explorer_layer')) {
     mapGL.map.moveLayer('explorer_layer', newOrder[count - 1][0])
   }
   const order = Object.values(groups)
@@ -65,10 +65,11 @@ const toggle = async (layer, isVisible = null, index, groups) => {
       ? isVisible
       : visibility === 'none'
     map.setLayoutProperty(layer.id, 'visibility', nextVisibility ? 'visible' : 'none')
-    return reorderLayers(groups, layer.id, index)
+    return await reorderLayers(groups, layer.id, index)
   }
-  return add(layer)
+  return await add(layer)
     // Orden de layers
+    .then(() => mapOnPromise(mapGL.map)('idle'))
     .then(() => reorderLayers(groups, layer.id, index))
     // eslint-disable-next-line no-console
     .catch((error) => console.warn('toggle add layer - catch error:', error))

@@ -27,7 +27,7 @@ const defaultMapStyle = {
     capabase_3: {
       type: 'vector',
       tiles: [
-        "http://cur3d.eastus2.cloudapp.azure.com/cur3d/parcela/{z}/{x}/{y}.pbf"
+        "http://vectortiles.usig.buenosaires.gob.ar/cur3d/parcela/{z}/{x}/{y}.pbf?optimize=true"
       ],
       minzoom: 10,
       maxzoom: 18,

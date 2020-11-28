@@ -1,6 +1,15 @@
-import config from 'appConfig.json'
+// import config from 'appConfig.json'
 import icons from 'utils/svgIcons'
 
+let config = null
+const init = async () => {
+  if (config !== null) {
+    return
+  }
+  const url = 'https://epok.buenosaires.gob.ar/cur3d/config/?environment=dev'
+  config = await fetch(url)
+    .then((data) => data.json())
+}
 // Métodos que devuelven mucha data y puede no ser serializable
 const getFullLayerConfig = (idGroup, idLayer) => config
   .layersGroup.find((g) => g.id === idGroup)
@@ -104,7 +113,7 @@ const getSectionTitle = (idTitle) => config.information.find(({ id }) => id === 
 const getApiUrl = () => config.urlAPI
 
 export {
-  getCategories, getFullLayerConfig, getInformation, getBasicData,
+  init, getCategories, getFullLayerConfig, getInformation, getBasicData,
   getLayersGroups, getLayersByLayersGroupId, getBuildable, getExplorer,
   getUsesTable, getWorksGroups, getAffectationsTable, getExplorerOptions,
   getExplorerFilters, getCapitalGain, getInspectionsGroups, getAlert,

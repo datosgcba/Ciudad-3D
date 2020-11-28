@@ -1,24 +1,23 @@
-import getApiUrl from './configQueries'
+import { getApiUrl } from './configQueries'
 
-const apiUrl = getApiUrl()
-const getParcel = ({ lng, lat }) => `${apiUrl}/catastro/parcela/?lng=${lng}&lat=${lat}`
+const getParcel = ({ lng, lat }) => `${getApiUrl()}/catastro/parcela/?lng=${lng}&lat=${lat}`
 
-const getParcelBySmp = (smp) => `${apiUrl}/catastro/parcela/?smp=${smp}`
+const getParcelBySmp = (smp) => `${getApiUrl()}/catastro/parcela/?smp=${smp}`
 
-const getGeometrical = (smp) => `${apiUrl}/catastro/geometria/?smp=${smp}`
+const getGeometrical = (smp) => `${getApiUrl()}/catastro/geometria/?smp=${smp}`
 
-const getBuildable = (smp) => `${apiUrl}/cur3d/seccion_edificabilidad/?smp=${smp}`
+const getBuildable = (smp) => `${getApiUrl()}/cur3d/seccion_edificabilidad/?smp=${smp}`
 
-const getCapitalGain = (smp) => `${apiUrl}/cur3d/calcular_plusvalia/?smp=${smp}`
+const getCapitalGain = (smp) => `${getApiUrl()}/cur3d/calcular_plusvalia/?smp=${smp}`
 
-const getUses = (smp) => `${apiUrl}/cur3d/mixtura_usos/?smp=${smp}`
+const getUses = (smp) => `${getApiUrl()}/cur3d/mixtura_usos/?smp=${smp}`
 
-const getAffectations = (smp) => `${apiUrl}/cur3d/afectaciones/?smp=${smp}`
+const getAffectations = (smp) => `${getApiUrl()}/cur3d/afectaciones/?smp=${smp}`
 
-const getWorks = (smp) => `${apiUrl}/cur3d/obras/?smp=${smp}`
+const getWorks = (smp) => `${getApiUrl()}/cur3d/obras/?smp=${smp}`
 
-const getInspections = (smp) => `${apiUrl}/cur3d/inspecciones/?smp=${smp}`
-const getPlusvalia = (smp, area) => `${apiUrl}/cur3d/calcular_plusvalia/?smp=${smp}&area_edificar=${area}`
+const getInspections = (smp) => `${getApiUrl()}/cur3d/inspecciones/?smp=${smp}`
+const getPlusvalia = (smp, area) => `${getApiUrl()}/cur3d/calcular_plusvalia/?smp=${smp}&area_edificar=${area}`
 
 export {
   getParcel,

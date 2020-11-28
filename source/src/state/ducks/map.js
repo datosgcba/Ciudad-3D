@@ -1,5 +1,5 @@
 import {
-  getLayersGroups, getLayersByLayersGroupId, getFullLayerConfig,
+  init, getLayersGroups, getLayersByLayersGroupId, getFullLayerConfig,
   getExplorerFilters, getFullExplorerLayerConfig
 } from 'utils/configQueries'
 import { mapOnPromise } from 'utils/mapboxUtils'
@@ -65,9 +65,9 @@ const toggle = async (layer, isVisible = null, index, groups) => {
       ? isVisible
       : visibility === 'none'
     map.setLayoutProperty(layer.id, 'visibility', nextVisibility ? 'visible' : 'none')
-    return await reorderLayers(groups, layer.id, index)
+    return reorderLayers(groups, layer.id, index)
   }
-  return await add(layer)
+  return add(layer)
     // Orden de layers
     .then(() => mapOnPromise(mapGL.map)('idle'))
     .then(() => reorderLayers(groups, layer.id, index))
@@ -75,10 +75,40 @@ const toggle = async (layer, isVisible = null, index, groups) => {
     .catch((error) => console.warn('toggle add layer - catch error:', error))
 }
 
+const loadLayers = createAsyncThunk(
+  'map/loadLayers',
+  async () => {
+    const explorerLayers = {}
+    getExplorerFilters().forEach(({ id: idExplorer }) => {
+      explorerLayers[idExplorer] = {}
+      explorerLayers[idExplorer].layers = {
+        processingId: null,
+        isVisible: false
+      }
+    })
+    const groups = {}
+    // devuelve cada id y title de config.layersGroup
+    getLayersGroups().forEach(({ id: idGroup, index = 0 }) => {
+      groups[idGroup] = {}
+      // devuelve el title, color y id de de cada layersGroup.layers
+      getLayersByLayersGroupId(idGroup).forEach(({ id: idLayer, index: idxLayer }) => {
+        groups[idGroup][idLayer] = {
+          processingId: null,
+          isVisible: false,
+          index: idxLayer ?? index,
+          order: 0
+        }
+      })
+    })
+    return { explorerLayers, groups }
+  }
+)
 const initMap = createAsyncThunk(
   'map/initMap',
-  async (mapInstance) => {
+  async (mapInstance, { dispatch }) => {
+    console.log('initMap')
     mapGL = mapInstance
+    await init().then(() => dispatch(loadLayers()))
     const mapOnLoad = mapOnPromise(mapInstance.map)('load')
     return mapOnLoad
       .then(async () => true)
@@ -167,30 +197,6 @@ const removeLayer = createAsyncThunk(
   }
 )
 
-const groups = {}
-// devuelve cada id y title de config.layersGroup
-getLayersGroups().forEach(({ id: idGroup, index = 0 }) => {
-  groups[idGroup] = {}
-  // devuelve el title, color y id de de cada layersGroup.layers
-  getLayersByLayersGroupId(idGroup).forEach(({ id: idLayer, index: idxLayer }) => {
-    groups[idGroup][idLayer] = {
-      processingId: null,
-      isVisible: false,
-      index: idxLayer ?? index,
-      order: 0
-    }
-  })
-})
-
-const explorerLayers = {}
-getExplorerFilters().forEach(({ id: idExplorer }) => {
-  explorerLayers[idExplorer] = {}
-  explorerLayers[idExplorer].layers = {
-    processingId: null,
-    isVisible: false
-  }
-})
-
 const map = createSlice({
   name: 'map',
   initialState: {
@@ -203,8 +209,8 @@ const map = createSlice({
       bearing: 0
     },
     selectedCoords: null,
-    groups,
-    explorerLayers
+    groups: {},
+    explorerLayers: {}
   },
   reducers: {
     cameraUpdated: (draftState, {
@@ -267,6 +273,12 @@ const map = createSlice({
       if (layerState.processingId === requestId) {
         layerState.processingId = null
       }
+    },
+    [loadLayers.fulfilled]: (draftState, {
+      payload: { explorerLayers, groups }
+    }) => {
+      draftState.groups = groups
+      draftState.explorerLayers = explorerLayers
     }
   }
 })

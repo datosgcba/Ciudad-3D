@@ -2,22 +2,28 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getExplorer, getExplorerOptions } from 'utils/configQueries'
 import { actions as mapActions } from 'state/ducks/map'
 
-const options = {}
+const loadExplorerOptions = createAsyncThunk(
+  'map/loadExplorerOptions',
+  async () => {
+    const options = {}
 
-// devuelve cada id y title de config.layersGroup
-getExplorer().forEach(({ id: idExplorer }) => {
-  getExplorerOptions(idExplorer).forEach(({ id: idOption, options: opt }) => {
-    options[idOption] = {}
-    opt.forEach(({ id: idGroup, items }) => items.forEach(({ id, filter }) => {
-      options[idOption][id] = {
-        isVisible: true,
-        idGroup,
-        filter,
-        processingId: null
-      }
-    }))
-  })
-})
+    // devuelve cada id y title de config.layersGroup
+    getExplorer().forEach(({ id: idExplorer }) => {
+      getExplorerOptions(idExplorer).forEach(({ id: idOption, options: opt }) => {
+        options[idOption] = {}
+        opt.forEach(({ id: idGroup, items }) => items.forEach(({ id, filter }) => {
+          options[idOption][id] = {
+            isVisible: true,
+            idGroup,
+            filter,
+            processingId: null
+          }
+        }))
+      })
+    })
+    return { options }
+  }
+)
 
 // Esta funcón rebuscada se resume en ¿algún grupo de los visibles tiene cero tildes?
 const hasGroupWithEmtpyFilter = ({ optionsState, autoCompleteValue }) => autoCompleteValue
@@ -156,7 +162,7 @@ const explorer = createSlice({
     autoCompleteValue: [],
     filterHeighOptions: true,
     filterIncidenceOptions: false,
-    options,
+    options: {},
     layersFilters: null
   },
   reducers: {
@@ -215,6 +221,11 @@ const explorer = createSlice({
           return null
         }
       )
+    },
+    [loadExplorerOptions.fulfilled]: (draftState, {
+      payload: { options }
+    }) => {
+      draftState.options = options
     }
   }
 })

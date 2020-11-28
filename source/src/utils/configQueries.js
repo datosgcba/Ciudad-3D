@@ -6,7 +6,7 @@ const init = async () => {
   if (config !== null) {
     return
   }
-  const url = 'https://epok.buenosaires.gob.ar/cur3d/config/?environment=dev'
+  const url = process.env.REACT_APP_URL_CONFIG || 'https://epok.buenosaires.gob.ar/cur3d/config/?environment=dev'
   config = await fetch(url)
     .then((data) => data.json())
 }

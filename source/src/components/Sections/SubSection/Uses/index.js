@@ -9,7 +9,6 @@ import useFontsStyles from 'theme/fontsDecorators'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-
 import ContainerBar from 'components/Sections/ContainerBar'
 import icons from 'utils/svgIcons'
 import { actions as usesActions } from 'state/ducks/uses'

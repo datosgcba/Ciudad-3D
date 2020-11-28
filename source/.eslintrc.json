@@ -37,12 +37,7 @@
         "comma-dangle": ["error", "never"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "linebreak-style": 0,
-        "sort-imports": ["error", {
-            "ignoreCase": false,
-            "ignoreDeclarationSort": false,
-            "ignoreMemberSort": true,
-            "allowSeparatedGroups": true
-        }],
+        "sort-imports": ["off"],
         "no-param-reassign": ["error", {
             "props": true,
             "ignorePropertyModificationsFor": ["draftState"]

@@ -106,7 +106,6 @@ const loadLayers = createAsyncThunk(
 const initMap = createAsyncThunk(
   'map/initMap',
   async (mapInstance, { dispatch }) => {
-    console.log('initMap')
     mapGL = mapInstance
     await init().then(() => dispatch(loadLayers()))
     const mapOnLoad = mapOnPromise(mapInstance.map)('load')

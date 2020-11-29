@@ -1,4 +1,4 @@
-# Plano Abierto-CUR3D
+# Plano Abierto - CUR3D
 ### Uso:
 En source/src/appConfig.js se configuran los grupos y las capas que figurarán en el panel lateral y las secciones que se abren al seleccionar cada categoría así como también la visualización de sus capas<br />
 Se pueden agregar capas usando directamente las funcionalidades de [mapbox gl js](https://docs.mapbox.com/mapbox-gl-js/style-spec/)

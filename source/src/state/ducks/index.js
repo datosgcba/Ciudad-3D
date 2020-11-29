@@ -10,7 +10,7 @@ import explorer from './explorer'
 import inspections from './inspections'
 import map from './map'
 import parcel from './parcel'
-import report from './report'
+import reports from './reports'
 import seeker from './seeker'
 import tour from './tour'
 import uses from './uses'
@@ -31,5 +31,5 @@ export default combineReducers({
   works,
   inspections,
   tour,
-  report
+  reports
 })

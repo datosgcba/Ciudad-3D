@@ -22,10 +22,8 @@ COPY ./.env ./.env
 RUN npm run build
 
 ### apache state for serving content ###
-FROM httpd:24
+FROM httpd:2.4-alpine
 # Set working directory to server asset directory
-WORKDIR /var/www/html/
+WORKDIR /usr/local/apache2/htdocs/
 # Copy static assets from builder stage
 COPY --from=builder /frontend/build .
-# Containers run server
-CMD run-httpd

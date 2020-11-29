@@ -36,10 +36,21 @@ export default async (sections, fileName) => {
       const xValue = margin + doc.getTextWidth(subtile)
       doc.setFont(fontName, 'normal')
       doc.text(value, xValue, y)
-      y+=8
+      y+=5
     })
-    y+=2
   })
+
+  doc.setLineWidth(0.2)
+  doc.line(marginLeft, y, 210 - marginLeft * 2, y)
+  y+=15
+  doc.setFont(fontName, 'bold')
+  doc.setFontSize(11)
+  doc.text('AVISO LEGAL', marginLeft, y)
+  y+=5
+  doc.setFont(fontName, 'italic')
+  doc.text('Esta información no sustituye las normas legales vigentes ni constituye una copia fiel de los datos en poder del Gobierno de la Ciudad de Buenos Aires. Es responsabilidad del usuario confirmar mediante la vía administrativa pertinente la información provista en este sitio previo a alguna toma de decisión o acción.', marginLeft, y)
+  y+=5
+  doc.text('La información provista por esta página web es orientativa y no vinculante, al momento de realizar un trámite ante Gobierno de la Ciudad de Buenos Aires.', marginLeft, y)
 
   doc.save(fileName)
 }

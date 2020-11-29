@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import buildPDF from 'utils/reportTemplate'
 
+import { getParcelBySmp } from 'utils/apiConfig'
+import { getBuildable, getPlusvalia } from 'utils/apiConfig'
+
 const getData = createAsyncThunk(
   'report/getData',
   async (smp, { getState }) => {
@@ -8,22 +11,27 @@ const getData = createAsyncThunk(
     const report = getState().reports[smp]
     console.log('report ', report)
 
+    const { direccion  } = await fetch(getParcelBySmp(smp))
+      .then((response) => response.json())
+    const { unidad_edificabilidad  } = await fetch(getBuildable(smp))
+      .then((response) => response.json())
+      
     const sections = [
       {
         title: 'Información General de la Parcela',
         dataList: [
           {
             name: 'Seccion Manzana Parcela',
-            value: 'value'
+            value: smp
           }, {
             name: 'Dirección',
-            value: 'value'
+            value: direccion
           }, {
             name: 'Barrio',
-            value: 'value'
+            value: '...........................'
           }, {
             name: 'Comuna',
-            value: 'value'
+            value: '...........................'
           }
         ]
       }, {
@@ -31,13 +39,13 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Unidad de Edificabilidad',
-            value: 'value'
+            value: JSON.stringify(unidad_edificabilidad[0] ?? '')
           }, {
             name: 'Superficie de parcela',
-            value: 'value'
+            value: '...........................'
           }, {
             name: 'Área Edificable máxima',
-            value: 'value'
+            value: '...........................'
           }
         ]
       }, {
@@ -45,25 +53,25 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Altura Máxima Permitida',
-            value: 'value'
+            value: '...........................'
           }, {
             name: 'Plano Límite',
-            value: 'value'
+            value: '...........................'
           }, {
             name: 'Área Especial Agrupada',
-            value: 'value'
+            value: '...........................'
           }, {
             name: 'Área Especial Individualizada',
-            value: 'value'
+            value: '...........................'
           }, {
             name: 'Subzona',
-            value: 'value'
+            value: '...........................'
           }, {
             name: 'Mixtura de uso',
-            value: 'value'
+            value: '...........................'
           }, {
             name: 'Tipo de Afectación',
-            value: 'value'
+            value: '...........................'
           }
         ]
       }, {
@@ -71,52 +79,38 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Valor de Incidencia',
-            value: 'value'
+            value: '...........................'
           }, {
             name: 'Valor de FOT Entremedianera',
-            value: 'value'
+            value: '...........................'
           }, {
             name: 'Valor de FOT Perímetro Libre',
-            value: 'value'
+            value: '...........................'
           }, {
             name: 'Valor de FOT Semilibre',
-            value: 'value'
+            value: '...........................'
           }, {
             name: 'Valor de Alícuota',
-            value: 'value'
+            value: '...........................'
           }
         ]
       }, {
-        title: '',
+        title: 'Datos de la manzana',
         dataList: [
           {
-            name: '',
-            value: 'value'
-          }, {
-            name: '',
-            value: 'value'
+            name: 'Tipo de manzana',
+            value: '...........................'
           }
         ]
       }, {
-        title: '',
+        title: 'Información sobre linderos',
         dataList: [
           {
-            name: '',
-            value: 'value'
+            name: 'Parcelas linderas / Grado de Consolidación',
+            value: '...........................'
           }, {
-            name: '',
-            value: 'value'
-          }
-        ]
-      }, {
-        title: '',
-        dataList: [
-          {
-            name: '',
-            value: 'value'
-          }, {
-            name: '',
-            value: 'value'
+            name: 'APH Linderos',
+            value: '...........................'
           }
         ]
       }
@@ -135,7 +129,7 @@ const download = createAsyncThunk(
   'report/download',
   async (smp, { getState }) => {
     const report = getState().reports[smp]
-    await buildPDF(report.sections, 'Plano Abierto - CUR3D.pdf')
+    await buildPDF(report.sections, `Plano Abierto - CUR3D ${smp}.pdf`)
   }
 )
 

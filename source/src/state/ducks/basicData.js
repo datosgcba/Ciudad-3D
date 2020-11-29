@@ -33,10 +33,6 @@ const seekerParcel = createAsyncThunk(
   async (smp, { dispatch }) => {
     if (smp !== null && smp !== undefined) {
       let url = getParcelBySmp(smp)
-      // TODO: Eliminar cuando se corrija la Api
-      if (smp[0] === '0' && smp.length > 10) {
-        url = getParcelBySmp(smp.slice(1))
-      }
       const response = await fetch(url)
       const data = (await response.json())
 

@@ -19,7 +19,7 @@ Para probarlo simplemente clonar el repositorio y  ejecutar estas dos lineas de 
 npm install
 npm start
 ```
-Se abre una solapa en [http://localhost:``3000``](http://localhost:3000) el valor ``PORT`` definido en ``.env.dev``
+Se abre una solapa en [http://localhost:``3000``](http://localhost:3000) el valor ``PORT`` definido en ``.env``
 
 Para poder utilizar el captcha que se encuentra en la categoria *Ayudanos a mejorar* 
 se debe cambiar localhost por [http://127.0.0.1:``3000``](http://127.0.0.1:3000)
@@ -80,23 +80,51 @@ Como se dijo el corazón de la aplicación es **Mapbox GL JS** esta es una excel
 
 ![Arquitectura de la aplicación](./docs/images/architecture.svg)
 ---
-## Deploy
+## Deploy - productivo
 
-### El proyecto compilará el código con las variables seteadas en el archivo ./envs/.env.prod
+El primer paso es instalar todas las dependencias y para esto simplemente ejecutar
+
+```bash
+cd source
+npm i
+```
+
+Previo a realizar el build del proyecto hay que considerar que la aplicación utiliza dentro del archivo .env la variable REACT_APP_URL_CONFIG para conectar al api que retorna la configuración del app.  Al momento de subir a producción esta debe ser igual a https://epok.buenosaires.gob.ar/cur3d/config/?environment=prod
+
+Hacer el build de la aplicación con el siguiente comando
 ```bash
 npm run build
 ```
 
-### Docker - deploy local
+Dicho comando genera una carpeta build la cuál puede ser publicada como un sitio estático, en el servidor que se desee, nginx, apache, iis, express, serve, etc
+
+### Para más información:
+  - Crear una construcción para producción https://create-react-app.dev/docs/production-build/
+
+  - Para ver algunos ejemplos de implementación como ser con serve o express https://https://create-react-app.dev/docs/deployment/
+
+
+### Docker - deploy
+
+Al igual que para Deploy - productivo previo a realizar el build del proyecto actualizar la variable REACT_APP_URL_CONFIG que se encuentra dentro del archivo .env por el valor que corresponda.
+
+Si la intención es usar este docker para realizar unas pruebas y no en producción,  pueder muy útil asignar el REACT_APP_URL_CONFIG=appConfig.json y revisar el archivo public/appConfig.json se encuentré configurado como sea conveniente.
+
+Para instalar las dependencias
+```bash
+cd source
+npm i
+```
+
 Para generar la imagen
 ```bash
-docker build -t react-nginx .
+docker build -t react-httpd .
 ```
 Para generar el contendor
 ```bash
-docker run -it --name react-nginx -p 8080:80 react-nginx
+docker run -it --name react-httpd -p 8080:80 react-httpd
 ```
 Para inciarlo luego
 ```bash
-docker start react-nginx
+docker start react-httpd
 ```

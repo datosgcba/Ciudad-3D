@@ -45,7 +45,7 @@ export default function App({ isAuthenticated }) {
         isOpen={isModalOpen}
         onRequestClose={handleClose}
         className="tour"
-        startAt={6}
+        startAt={0}
       />
     </div>
   )

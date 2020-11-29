@@ -38,14 +38,14 @@ const reorderLayers = async (groups, layerId, index) => {
     })
   const count = newOrder.length
 
-  if (count > 0 && mapGL.map.getLayer('edif_smp')) {
-    mapGL.map.moveLayer(newOrder[0][0], 'edif_smp')
+  if (count > 0 && mapGL.map.getLayer('parcel_layer')) {
+    mapGL.map.moveLayer(newOrder[0][0], 'parcel_layer')
   }
   for (let idx = 1; idx < count; idx += 1) {
     mapGL.map.moveLayer(newOrder[idx][0], newOrder[idx - 1][0])
   }
-  if (count > 0 && mapGL.map.getLayer('explorer_layer')) {
-    mapGL.map.moveLayer('explorer_layer', newOrder[count - 1][0])
+  if (mapGL.map.getLayer('explorer_layer') && (count > 0 || mapGL.map.getLayer('parcel_layer'))) {
+    mapGL.map.moveLayer('explorer_layer', count > 0 ? newOrder[count - 1][0] : 'parcel_layer')
   }
   const order = Object.values(groups)
     .flatMap((group) => Object.entries(group))

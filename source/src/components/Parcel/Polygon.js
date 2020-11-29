@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
-const parcelId = 'Parcel'
+const parcelId = 'parcel_layer'
 const Polygon = ({ smp, geomCoords }) => {
   const mapGL = MapaInteractivoGL()
 

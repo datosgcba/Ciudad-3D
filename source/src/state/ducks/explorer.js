@@ -6,7 +6,6 @@ const loadExplorerOptions = createAsyncThunk(
   'map/loadExplorerOptions',
   async () => {
     const options = {}
-
     // devuelve cada id y title de config.layersGroup
     getExplorer().forEach(({ id: idExplorer }) => {
       getExplorerOptions(idExplorer).forEach(({ id: idOption, options: opt }) => {
@@ -233,6 +232,6 @@ const explorer = createSlice({
 export default explorer.reducer
 
 const actions = {
-  ...explorer.actions, checkChange, refreshFilterRequest, allSelected
+  ...explorer.actions, checkChange, refreshFilterRequest, allSelected, loadExplorerOptions
 }
 export { actions }

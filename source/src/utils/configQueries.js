@@ -104,7 +104,7 @@ const getExplorerOptions = (idExplorer) => config.explorer.filter((c) => c.id ==
 
 const getExplorer = () => config.explorer
 
-const getAlert = (idAlert) => config.alerts.find(({ id }) => id === idAlert).text
+const getAlert = (idAlert) => config.alerts.find(({ id }) => id === idAlert)
 
 const getCategoryTitle = (idCategory) => config.categories.find(({ id }) => id === idCategory).title
 

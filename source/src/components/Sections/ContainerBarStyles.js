@@ -2,11 +2,12 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
   container: {
+    height: '100vh',
     marginLeft: theme.spacing(9.75), // 9.75 - 78px
     boxShadow: '0 0 black'
   },
   children: {
-    maxHeight: '90vh'
+    maxHeight: '85vh'
   },
   padding: {
     paddingTop: theme.spacing(2.25), // 2.25 - 18px

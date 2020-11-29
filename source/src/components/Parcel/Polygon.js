@@ -68,8 +68,8 @@ const Polygon = ({ smp, geomCoords }) => {
       }
       mapGL.map.addLayer({
         id: parcelId,
-        type: 'fill',
         source: smp,
+        type: 'fill',        
         layout: {},
         paint: {
           'fill-color': 'khaki',

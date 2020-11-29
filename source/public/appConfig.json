@@ -1467,7 +1467,8 @@
           "field": "sup_max_edificable",
           "unidad": " m²"
         }
-      ]
+      ],
+      "large": 6
     },
     {
       "title": "Superficie Edificable en Planta (Pisada)",
@@ -1477,7 +1478,8 @@
           "field": "sup_edificable_planta",
           "unidad": " m"
         }
-      ]
+      ],
+      "large": 6
     },
     {
       "title": "Altura Máxima",
@@ -1487,7 +1489,8 @@
           "field": "altura_max",
           "unidad": " m"
         }
-      ]
+      ],
+      "large": 6
     },
     {
       "title": "Altura Máxima Plano Límite",
@@ -1497,7 +1500,8 @@
           "field": "altura_max_plano_limite",
           "unidad": " m"
         }
-      ]
+      ],
+      "large": 6
     },
     {
       "title": "Plusvalía",
@@ -1516,7 +1520,8 @@
           "label": "Perímetro Semi-Libre: $ ",
           "field": "plusvalia.plusvalia_sl"
         }
-      ]
+      ],
+      "large": 12
     },
     {
       "title": "Factor Ocupacional Total (CPU)",
@@ -1534,7 +1539,8 @@
           "label": "Perímetro Semi-Libre: ",
           "field": "fot.fot_semi_libre"
         }
-      ]
+      ],
+      "large": 12
     },
     {
       "title": "Listado de SMP de Parcelas Linderas",
@@ -1543,7 +1549,8 @@
         {
           "field": "parcelas_linderas.smp_linderas"
         }
-      ]
+      ],
+      "large": 12
     }
   ],
   "uses": [

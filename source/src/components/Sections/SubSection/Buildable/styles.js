@@ -1,17 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
-  subDetails: {
+  grid: {
     backgroundColor: '#F5F5F5',
     margin: theme.spacing(0.5),
-    width: theme.spacing(18),
-    height: theme.spacing(10),
-    padding: theme.spacing(1),
-    float: 'left',
-    '&:nth-last-child(-n+3)': {
-      width: theme.spacing(37),
-      height: 'auto'
-    }
+    padding: theme.spacing(1)
+  },
+  gridItem: {
+    marginBottom: theme.spacing(2)
   },
   button: {
     padding: 0

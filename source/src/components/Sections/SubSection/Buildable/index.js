@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box,
   Typography,
   Grid,
   IconButton,
@@ -54,59 +53,53 @@ const Details = ({
   }, [dispatch, smp, areaValue, isArea])
 
   return (
-    <Box className={classes.subDetails}>
-      <Grid container>
-        <Grid item xs={12}>
-          <Typography variant="subtitle2" className={decorators.bold}>
-            {title}
-          </Typography>
-        </Grid>
-        <Grid item xs={12} className={classes.gridItem}>
-          {
-            items && items.map(({ label, field, unidad }, idx) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <ListItem key={idx} className={classes.listado}>
-                {label}
-                {
-                  isArea && isEditing
-                    ? (
-                      <TextField
-                        className={classes.input}
-                        value={areaValue}
-                        InputProps={{
-                          endAdornment: <InputAdornment position="end">{unidad}</InputAdornment>
-                        }}
-                        onChange={handleOnAreaChange}
-                      />
-                    )
-                    : (
-                      <>
-                        <ItemValues unit={unidad}>
-                          {
-                            field
-                              .split('.')
-                              .reduce((p, c) => p && p[c], data)
-                          }
-                        </ItemValues>
-                      </>
-                    )
-                }
-                {
-                  isArea && (
-                    <IconButton
-                      onClick={() => setIsEditing(!isEditing)}
-                      className={classes.button}
-                    >
-                      <EditIcon color={isEditing ? 'primary' : 'inherit'} />
-                    </IconButton>
-                  )
-                }
-              </ListItem>
-            ))
-          }
-        </Grid>
-      </Grid>
-    </Box>
+    <>
+      <Typography variant="subtitle2" className={decorators.bold}>
+        {title}
+      </Typography>
+      {
+        items && items.map(({ label, field, unidad }, idx) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <ListItem key={idx} className={classes.listado}>
+            {label}
+            {
+              isArea && isEditing
+                ? (
+                  <TextField
+                    className={classes.input}
+                    value={areaValue}
+                    InputProps={{
+                      endAdornment: <InputAdornment position="end">{unidad}</InputAdornment>
+                    }}
+                    onChange={handleOnAreaChange}
+                  />
+                )
+                : (
+                  <>
+                    <ItemValues unit={unidad}>
+                      {
+                        field
+                          .split('.')
+                          .reduce((p, c) => p && p[c], data)
+                      }
+                    </ItemValues>
+                  </>
+                )
+            }
+            {
+              isArea && (
+                <IconButton
+                  onClick={() => setIsEditing(!isEditing)}
+                  className={classes.button}
+                >
+                  <EditIcon color={isEditing ? 'primary' : 'inherit'} />
+                </IconButton>
+              )
+            }
+          </ListItem>
+        ))
+      }
+    </>
   )
 }
 
@@ -127,27 +120,31 @@ const Buildable = () => {
     <ContainerBar
       type="list"
     >
-      {
-        getBuildable().map(({
-          title, items, isArea, isPlusvalia
-        }, index) => (
-          smp && !isLoading && (
-            <Details
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
-              classes={classes}
-              decorators={decorators}
-              title={title}
-              items={items}
-              data={isPlusvalia && isEditing ? plusvalia : data}
-              isArea={isArea}
-              isEditing={isEditing}
-              setIsEditing={setIsEditing}
-              smp={smp}
-            />
-          )
-        ))
-      }
+      <Grid container className={classes.grid}>
+        {
+          getBuildable().map(({
+            title, items, isArea, isPlusvalia, large
+          }, index) => (
+            smp && !isLoading && (
+              <Grid item xs={large} className={classes.gridItem}>
+                <Details
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={index}
+                  classes={classes}
+                  decorators={decorators}
+                  title={title}
+                  items={items}
+                  data={isPlusvalia && isEditing ? plusvalia : data}
+                  isArea={isArea}
+                  isEditing={isEditing}
+                  setIsEditing={setIsEditing}
+                  smp={smp}
+                />
+              </Grid>
+            )
+          ))
+        }
+      </Grid>
       { !smp && !isLoading && <SelectParcel />}
       { isLoading && (
         <Typography variant="body1">

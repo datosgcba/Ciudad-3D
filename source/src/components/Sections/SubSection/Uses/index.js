@@ -3,13 +3,15 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, Grid, makeStyles, Paper
+  Box, Typography, Grid, makeStyles
 } from '@material-ui/core'
 import useFontsStyles from 'theme/fontsDecorators'
 
 import { useDispatch, useSelector } from 'react-redux'
 
 import ContainerBar from 'components/Sections/ContainerBar'
+import SelectParcel from 'components/Sections/SubSection/SelectParcel'
+
 import icons from 'utils/svgIcons'
 import { actions as usesActions } from 'state/ducks/uses'
 
@@ -84,13 +86,7 @@ const Uses = () => {
             iconsData={iconsData}
           />
         ))}
-      { data.length === 0 && !isLoading && (
-        <Paper className={classes.paper}>
-          <Typography variant="body1" className={classes.body1}>
-            No hay datos disponibles
-          </Typography>
-        </Paper>
-      )}
+      { data.length === 0 && !isLoading && <SelectParcel />}
       { isLoading && (
         <Typography variant="body1" className={classes.body1}>
           Cargando...

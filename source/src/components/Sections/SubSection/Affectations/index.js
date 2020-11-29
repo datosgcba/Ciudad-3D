@@ -9,6 +9,7 @@ import {
 import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
+import SelectParcel from 'components/Sections/SubSection/SelectParcel'
 
 import { actions as affectationsActions } from 'state/ducks/affectations'
 
@@ -88,13 +89,7 @@ const Affectations = () => {
           Cargando...
         </Typography>
       )}
-      { !isLoading && !smp && (
-        <Paper className={classes.paper}>
-          <Typography variant="body1" className={classes.body1}>
-            Seleccione una parcela
-          </Typography>
-        </Paper>
-      )}
+      { !isLoading && !smp && <SelectParcel />}
     </ContainerBar>
   )
 }

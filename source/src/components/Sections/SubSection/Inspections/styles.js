@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
     width: theme.spacing(46),
     [theme.breakpoints.down('sm')]: {
       maxWidth: theme.spacing(35)
-    } // 45 - 360px
+    }
   },
   boxSubContainer: {
     paddingBottom: theme.spacing(4)

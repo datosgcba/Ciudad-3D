@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import {
   Box,
   Typography,
-  Paper,
   Grid,
   IconButton,
   ListItem,
@@ -17,6 +16,7 @@ import EditIcon from '@material-ui/icons/Edit'
 import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
+import SelectParcel from 'components/Sections/SubSection/SelectParcel'
 
 import { actions as buildableActions } from 'state/ducks/buildable'
 
@@ -149,15 +149,9 @@ const Buildable = () => {
           )
         ))
       }
-      { !smp && !isLoading && (
-        <Paper className={classes.paper}>
-          <Typography variant="body1" className={classes.body1}>
-            Seleccione una parcela
-          </Typography>
-        </Paper>
-      )}
+      { !smp && !isLoading && <SelectParcel />}
       { isLoading && (
-        <Typography variant="body1" className={classes.body1}>
+        <Typography variant="body1">
           Cargando...
         </Typography>
       )}

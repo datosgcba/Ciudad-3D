@@ -3,12 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Paper, Box, Typography, Grid, makeStyles
+  Box, Typography, Grid, makeStyles
 } from '@material-ui/core'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
+import SelectParcel from 'components/Sections/SubSection/SelectParcel'
 
 import { useSelector } from 'react-redux'
 
@@ -26,7 +27,7 @@ const Details = ({
           {title}
         </Typography>
       </Grid>
-      <Grid item xs={5} className={classes.gridItem}>
+      <Grid item xs={5}>
         <Typography variant="subtitle2" className={`${classes.value}`}>
           {`${value} ${format}`}
         </Typography>
@@ -46,7 +47,7 @@ const BasicData = () => {
       type="list"
     >
       { isSelected && (
-        <Box className={classes.details}>
+        <Box>
           {
             getBasicData().map(({
               title,
@@ -67,13 +68,7 @@ const BasicData = () => {
           }
         </Box>
       )}
-      { !isSelected && (
-        <Paper className={classes.paper}>
-          <Typography variant="body1" className={classes.body1}>
-            Seleccione una parcela
-          </Typography>
-        </Paper>
-      )}
+      { !isSelected && <SelectParcel />}
     </ContainerBar>
   )
 }

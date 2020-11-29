@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import React, { useEffect } from 'react'
 
 import PropTypes from 'prop-types'
@@ -7,7 +6,9 @@ import {
   Box, Typography, TableContainer, Table, TableHead, TableRow,
   TableCell, TableBody, makeStyles
 } from '@material-ui/core'
+
 import ContainerBar from 'components/Sections/ContainerBar'
+import SelectParcel from 'components/Sections/SubSection/SelectParcel'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
@@ -19,9 +20,10 @@ import { getWorksGroups } from 'utils/configQueries'
 
 import useStyles from './styles'
 
-const GridPanel = ({ id, columns, styles: { bold, tableCell } }) => {
-  const data = useSelector((state) => state.works.data[id])
-
+const GridPanel = ({
+  id, columns, data, styles: { bold, tableCell }
+}) => {
+  const tableData = data[id]
   return (
     <TableContainer>
       <Table>
@@ -42,16 +44,32 @@ const GridPanel = ({ id, columns, styles: { bold, tableCell } }) => {
           {
             // Se mapea cada una de las obras para dicha tabla
             // Por lo tanto se crea una nueva TableRow por cada obra
-            data && data.map((row, idx) => (
+            tableData.length >= 1 && tableData.map((row, idx) => (
+              // eslint-disable-next-line react/no-array-index-key
               <TableRow key={idx}>
                 {
                   // Se mapean los valores de cada obra para cada columna
-                  columns.map(({ field }) => (
-                    <TableCell key={field} className={tableCell}>{row[field]}</TableCell>
-                  ))
+                  columns.map(({ field }) => {
+                    const value = row[field] !== '' ? row[field] : 'No posee'
+                    return (
+                      <TableCell key={field} className={tableCell}>{value}</TableCell>
+                    )
+                  })
                 }
               </TableRow>
             ))
+          }
+          {
+            tableData.length === 0 && (
+              <TableRow>
+                {
+                  // Se mapean los valores de cada obra para cada columna
+                  columns.map(({ field }) => (
+                    <TableCell key={field} className={tableCell}>No posee</TableCell>
+                  ))
+                }
+              </TableRow>
+            )
           }
         </TableBody>
       </Table>
@@ -62,7 +80,7 @@ const GridPanel = ({ id, columns, styles: { bold, tableCell } }) => {
 const Works = () => {
   const classes = useStyles()
   const decorators = useFontsStyles()
-  // const data = useSelector((state) => state.works.data)
+  const data = useSelector((state) => state.works.data)
   const dispatch = useDispatch()
   const smp = useSelector((state) => state.parcel.smp)
 
@@ -76,14 +94,24 @@ const Works = () => {
     >
       <Box className={classes.boxContainer}>
         {
-          getWorksGroups().map(({ id, title, columns }) => (
-            <Box className={classes.boxSubContainer} key={id}>
-              <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
-                {title}
-              </Typography>
-              <GridPanel id={id} columns={columns} styles={{ ...decorators, ...classes }} />
-            </Box>
-          ))
+          Object.keys(data).length >= 1 && (
+            getWorksGroups().map(({ id, title, columns }) => (
+              <Box className={classes.boxSubContainer} key={id}>
+                <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
+                  {title}
+                </Typography>
+                <GridPanel
+                  id={id}
+                  columns={columns}
+                  data={data}
+                  styles={{ ...decorators, ...classes }}
+                />
+              </Box>
+            ))
+          )
+        }
+        {
+          data.length === 0 && <SelectParcel />
         }
       </Box>
     </ContainerBar>
@@ -99,6 +127,7 @@ GridPanel.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   bold: PropTypes.string,
   tableCell: PropTypes.string,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
   styles: PropTypes.objectOf(makeStyles).isRequired
 }
 

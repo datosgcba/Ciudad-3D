@@ -12,6 +12,7 @@
     "downshift": "^3.2.12",
     "emailjs-com": "^2.6.4",
     "env-cmd": "^9.0.3",
+    "jspdf": "^2.1.1",
     "mapbox-gl": "^1.12.0",
     "material-ui": "^0.20.2",
     "proj4": "^2.5.0",

@@ -24,7 +24,7 @@ const Polygon = ({ smp, geomCoords }) => {
         "type": "fill-extrusion",
         "paint": {
           "fill-extrusion-color": "#fdd306",
-          "fill-extrusion-opacity": 0.8,
+          "fill-extrusion-opacity": 0.9,
           "fill-extrusion-height": ["get", "altura_final"]
         },
         "filter": ["==", "smp", "no-match"]
@@ -72,8 +72,8 @@ const Polygon = ({ smp, geomCoords }) => {
         source: smp,
         layout: {},
         paint: {
-          'fill-color': '#DD0083',
-          'fill-outline-color': '#DD0093',
+          'fill-color': 'khaki',
+          'fill-outline-color': 'khaki',
           'fill-opacity': 0.5
         }
       })

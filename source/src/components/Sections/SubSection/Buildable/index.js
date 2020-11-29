@@ -58,7 +58,7 @@ const Details = ({
       <Grid container>
         <Grid item xs={12}>
           <Typography variant="subtitle2" className={decorators.bold}>
-            {title}
+            {title}!
           </Typography>
         </Grid>
         <Grid item xs={12} className={classes.gridItem}>

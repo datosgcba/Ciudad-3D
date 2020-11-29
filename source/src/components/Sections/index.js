@@ -12,6 +12,7 @@ import Explorer from 'components/Sections/SubSection/Explorer'
 import Information from 'components/Sections/SubSection/Information'
 import Inspections from 'components/Sections/SubSection/Inspections'
 import LayerGroup from 'components/Sections/SubSection/LayerGroup'
+import Report from 'components/Sections/SubSection/Report'
 import Uses from 'components/Sections/SubSection/Uses'
 import Works from 'components/Sections/SubSection/Works'
 
@@ -25,6 +26,7 @@ const Section = () => {
   const sectionSelected = sectionId[lastIndex]
 
   const sectionComponents = new Map([
+    ['Report', Report],
     ['Information', Information],
     ['LayerGroup', LayerGroup],
     ['Explorer', Explorer],

@@ -38,15 +38,19 @@ const getLayersByLayersGroupId = (layersGroupId) => config
     link
   }))
 
-const getWorksGroups = () => config.works.map(({ id, title, columns }) => ({
+const getWorksGroups = () => config.works.map(({ id, title, info, link, columns }) => ({
   id,
   title,
+  info,
+  link,
   columns
 }))
 
-const getInspectionsGroups = () => config.inspections.map(({ id, title, columns }) => ({
+const getInspectionsGroups = () => config.inspections.map(({ id, title, info, link, columns }) => ({
   id,
   title,
+  info,
+  link,
   columns
 }))
 

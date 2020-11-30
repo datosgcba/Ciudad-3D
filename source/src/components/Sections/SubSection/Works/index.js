@@ -4,8 +4,12 @@ import PropTypes from 'prop-types'
 
 import {
   Box, Typography, TableContainer, Table, TableHead, TableRow,
-  TableCell, TableBody, makeStyles
+  TableCell, TableBody, makeStyles, IconButton
 } from '@material-ui/core'
+
+import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined'
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
+import Tooltip from '@material-ui/core/Tooltip'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 import SelectParcel from 'components/Sections/SubSection/SelectParcel'
@@ -93,10 +97,30 @@ const Works = () => {
       <Box className={classes.boxContainer}>
         {
           Object.keys(data).length >= 1 && (
-            getWorksGroups().map(({ id, title, columns }) => (
+            getWorksGroups().map(({
+              id, title, info, link, columns
+            }) => (
               <Box className={classes.boxSubContainer} key={id}>
                 <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
                   {title}
+                  {
+                    info && (
+                      <Tooltip
+                        className={classes.info}
+                        title={info}
+                        placement="top"
+                      >
+                        <InfoOutlinedIcon />
+                      </Tooltip>
+                    )
+                  }
+                  <IconButton
+                    className={classes.downloadIcon}
+                    target="_blank"
+                    href={link}
+                  >
+                    <CloudDownloadOutlinedIcon />
+                  </IconButton>
                 </Typography>
                 <GridPanel
                   id={id}

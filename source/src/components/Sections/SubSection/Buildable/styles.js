@@ -21,7 +21,6 @@ export default makeStyles((theme) => ({
     marginTop: -10
   },
   info: {
-    padding: 0,
-    marginLeft: theme.spacing(1)
+    padding: 0
   }
 }))

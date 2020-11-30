@@ -6,6 +6,8 @@ import {
   Box, Typography, IconButton
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
+import Tooltip from '@material-ui/core/Tooltip'
 
 import { actions as alertsAction } from 'state/ducks/alerts'
 import { actions as categoriesActions } from 'state/ducks/categories'
@@ -27,20 +29,33 @@ const HeaderSection = ({ categoryTitle, sectionTitle }) => {
       </Typography>
       {
         sectionTitle && (
-        <Box className={classes.subTitle}>
-          <Typography variant="h6" className={decorators.bold}>
-            <IconButton
-              onClick={() => {
-                dispatch(categoriesActions.sectionBack())
-                dispatch(alertsAction.clear())
-              }}
-              className={classes.button}
-            >
-              <ArrowBackIcon />
-            </IconButton>
-            {sectionTitle}
-          </Typography>
-        </Box>
+          <Box className={classes.subTitle}>
+            <Typography variant="h6" className={decorators.bold}>
+              <IconButton
+                onClick={() => {
+                  dispatch(categoriesActions.sectionBack())
+                  dispatch(alertsAction.clear())
+                }}
+                className={classes.button}
+              >
+                <ArrowBackIcon />
+              </IconButton>
+              {sectionTitle}
+              {
+                sectionTitle === 'Datos Básicos' && (
+                  <Tooltip
+                    className={classes.info}
+                    title="Esta información es relevada por la AGIP. Si los datos plasmados no coinciden con la realidad, se solicita ratificarlos ante dicho organismo."
+                    placement="top"
+                  >
+                    <InfoOutlinedIcon
+                      fontSize="small"
+                    />
+                  </Tooltip>
+                )
+              }
+            </Typography>
+          </Box>
         )
       }
     </Box>

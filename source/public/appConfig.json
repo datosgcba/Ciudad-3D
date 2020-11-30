@@ -1684,6 +1684,8 @@
     {
       "id": "obras_iniciadas",
       "title": "Obras Iniciadas",
+      "info": "Obras por las que se dio aviso de inicio ante la Agencia Gubernamental de Control",
+      "link": "https://data.buenosaires.gob.ar/dataset/obras-iniciadas",
       "columns": [
         {
           "label": "Expediente",
@@ -1710,6 +1712,8 @@
     {
       "id": "obras_registradas",
       "title": "Obras Registradas",
+      "info": "Permisos de obra que fueron registrados por la Subsecretaría de Registro y Catastro pero no dan cuenta de que la obra haya comenzado",
+      "link": "https://data.buenosaires.gob.ar/dataset/obras-registradas",
       "columns": [
         {
           "label": "Expediente",
@@ -1736,6 +1740,8 @@
     {
       "id": "cer_urbanistico",
       "title": "Certificados Urbanísticos",
+      "info": "",
+      "link": "https://data.buenosaires.gob.ar/dataset/",
       "columns": [
         {
           "label": "Fecha",
@@ -1795,6 +1801,8 @@
     {
       "id": "inspecciones",
       "title": "Inspecciones",
+      "info": "",
+      "link": "https://data.buenosaires.gob.ar/dataset/fiscalizaciones",
       "columns": [
         {
           "label": "Tipo de Inspección",
@@ -1813,6 +1821,8 @@
     {
       "id": "cer_fachadas",
       "title": "Certificados de Fachada",
+      "info": "Certificado de inspecciones técnicas previstas por la Ley 257/99 para el mantenimiento en buen estado de los frentes, contra frentes (incluidos balcones, saledizos, carteles, marquesinas, toldos, maceteros, antepechos y cerramientos), patios de aire y luz, medianeras o muros perimetrales y techos con objeto de preservar la seguridad y evitar accidentes, conservando la integridad de los elementos ornamentales de la fachada de los inmuebles.",
+      "link": "https://data.buenosaires.gob.ar/dataset/fachadas",
       "columns": [
         {
           "label": "Dirección",

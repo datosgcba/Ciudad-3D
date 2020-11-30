@@ -28,5 +28,13 @@ export default makeStyles((theme) => ({
       padding: 0,
       textAlign: 'center'
     }
+  },
+  info: {
+    padding: 0,
+    marginLeft: theme.spacing(1)
+  },
+  downloadIcon: {
+    padding: 0,
+    marginLeft: theme.spacing(1)
   }
 }))

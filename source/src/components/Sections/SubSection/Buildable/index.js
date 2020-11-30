@@ -12,11 +12,11 @@ import {
 } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
-import Tooltip from '@material-ui/core/Tooltip'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
+import CustomTooltip from 'theme/wrappers/CustomTooltip'
 import SelectParcel from 'components/Sections/SubSection/SelectParcel'
 
 import { actions as buildableActions } from 'state/ducks/buildable'
@@ -61,15 +61,13 @@ const Details = ({
         {title}
         {
           info && (
-            <Tooltip
+            <CustomTooltip
               className={classes.info}
               title={info}
               placement="top"
             >
-              <InfoOutlinedIcon
-                fontSize="small"
-              />
-            </Tooltip>
+              <InfoOutlinedIcon />
+            </CustomTooltip>
           )
         }
       </Typography>

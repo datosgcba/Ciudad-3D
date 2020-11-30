@@ -1468,7 +1468,7 @@
           "unidad": " m²"
         }
       ],
-      "large": 5
+      "large": 6
     },
     {
       "title": "Superficie Edificable en Planta (Pisada)",
@@ -1479,7 +1479,7 @@
           "unidad": " m"
         }
       ],
-      "large": 5
+      "large": 6
     },
     {
       "title": "Altura Máxima",
@@ -1490,7 +1490,7 @@
           "unidad": " m"
         }
       ],
-      "large": 5
+      "large": 6
     },
     {
       "title": "Altura Máxima Plano Límite",
@@ -1501,7 +1501,7 @@
           "unidad": " m"
         }
       ],
-      "large": 5
+      "large": 6
     },
     {
       "title": "Plusvalía",

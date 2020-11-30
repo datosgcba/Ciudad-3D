@@ -124,25 +124,28 @@ const Buildable = () => {
         {
           getBuildable().map(({
             title, items, isArea, isPlusvalia, large
-          }, index) => (
-            smp && !isLoading && (
-              <Grid item xs={large} className={classes.gridItem}>
-                <Details
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={index}
-                  classes={classes}
-                  decorators={decorators}
-                  title={title}
-                  items={items}
-                  data={isPlusvalia && isEditing ? plusvalia : data}
-                  isArea={isArea}
-                  isEditing={isEditing}
-                  setIsEditing={setIsEditing}
-                  smp={smp}
-                />
-              </Grid>
+          }, index) => {
+            const maxWidth = large === 6 ? 'small' : null
+            return (
+              smp && !isLoading && (
+                <Grid item xs={large} className={`${classes.gridItem} ${classes[maxWidth]} `}>
+                  <Details
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={index}
+                    classes={classes}
+                    decorators={decorators}
+                    title={title}
+                    items={items}
+                    data={isPlusvalia && isEditing ? plusvalia : data}
+                    isArea={isArea}
+                    isEditing={isEditing}
+                    setIsEditing={setIsEditing}
+                    smp={smp}
+                  />
+                </Grid>
+              )
             )
-          ))
+          })
         }
       </Grid>
       { !smp && !isLoading && <SelectParcel />}

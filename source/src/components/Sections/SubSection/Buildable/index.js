@@ -11,6 +11,8 @@ import {
   InputAdornment
 } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
+import Tooltip from '@material-ui/core/Tooltip'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
@@ -32,7 +34,8 @@ const ItemValues = ({ children, unit }) => {
   ))
 }
 const Details = ({
-  classes, title, data, items, isArea, smp, decorators, isEditing, setIsEditing
+  classes, title, data, items, isArea,
+  smp, decorators, isEditing, setIsEditing, info
 }) => {
   const dispatch = useDispatch()
   const [areaValue, setAreaValue] = useState(0)
@@ -56,6 +59,19 @@ const Details = ({
     <>
       <Typography variant="subtitle2" className={decorators.bold}>
         {title}
+        {
+          info && (
+            <Tooltip
+              className={classes.info}
+              title={info}
+              placement="top"
+            >
+              <InfoOutlinedIcon
+                fontSize="small"
+              />
+            </Tooltip>
+          )
+        }
       </Typography>
       {
         items && items.map(({ label, field, unidad }, idx) => (
@@ -123,7 +139,7 @@ const Buildable = () => {
       <Grid container className={classes.grid}>
         {
           getBuildable().map(({
-            title, items, isArea, isPlusvalia, large
+            title, items, isArea, isPlusvalia, large, info
           }, index) => {
             const maxWidth = large === 6 ? 'small' : null
             return (
@@ -136,6 +152,7 @@ const Buildable = () => {
                     decorators={decorators}
                     title={title}
                     items={items}
+                    info={info}
                     data={isPlusvalia && isEditing ? plusvalia : data}
                     isArea={isArea}
                     isEditing={isEditing}
@@ -159,12 +176,14 @@ const Buildable = () => {
 }
 
 Details.defaultProps = {
-  isArea: false
+  isArea: false,
+  info: ''
 }
 Details.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   decorators: PropTypes.objectOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
+  info: PropTypes.string,
   isEditing: PropTypes.bool.isRequired,
   setIsEditing: PropTypes.func.isRequired,
   data: PropTypes.objectOf(PropTypes.any).isRequired,

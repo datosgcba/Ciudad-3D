@@ -1543,6 +1543,7 @@
       "title": "Plusvalía",
       "isArea": false,
       "isPlusvalia": true,
+      "info": "Inicialmente se muestra la plusvalía con la Superficie Edificable Máxima",
       "items": [
         {
           "label": "Medianera: $ ",

@@ -19,5 +19,9 @@ export default makeStyles((theme) => ({
   input: {
     width: 100,
     marginTop: -10
+  },
+  info: {
+    padding: 0,
+    marginLeft: theme.spacing(1)
   }
 }))

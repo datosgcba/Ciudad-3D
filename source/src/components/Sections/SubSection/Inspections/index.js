@@ -25,55 +25,53 @@ const GridPanel = ({
   const tableData = data[id]
 
   return (
-    <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-            {
-              columns.map(({ label, field }) => (
-                <TableCell key={field} className={tableCell}>
-                  <Typography variant="subtitle2" className={bold}>
-                    {label}
-                  </Typography>
-                </TableCell>
-              ))
-            }
-          </TableRow>
-        </TableHead>
-        <TableBody styles={{ tableCell }}>
-          {
-            // Se mapea cada una de las obras para dicha tabla
-            // Por lo tanto se crea una nueva TableRow por cada obra
-            tableData.length >= 1 && tableData.map((row, idx) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <TableRow key={idx}>
+    <>
+      {
+        tableData.length === 0 && (
+          <Typography>
+            No posee
+          </Typography>
+        )
+      }
+      {
+        tableData.length >= 1 && (
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  {
+                    columns.map(({ label, field }) => (
+                      <TableCell key={field} className={tableCell}>
+                        <Typography variant="subtitle2" className={bold}>
+                          {label}
+                        </Typography>
+                      </TableCell>
+                    ))
+                  }
+                </TableRow>
+              </TableHead>
+              <TableBody styles={{ tableCell }}>
                 {
-                  // Se mapean los valores de cada obra para cada columna
-                  columns.map(({ field }) => {
-                    const value = row[field] !== '' ? row[field] : 'No posee'
-                    return (
-                      <TableCell key={field} className={tableCell}>{value}</TableCell>
-                    )
-                  })
-                }
-              </TableRow>
-            ))
-          }
-          {
-            tableData.length === 0 && (
-              <TableRow>
-                {
-                  // Se mapean los valores de cada obra para cada columna
-                  columns.map(({ field }) => (
-                    <TableCell key={field} className={tableCell}>No posee</TableCell>
+                  // Se mapea cada una de las obras para dicha tabla
+                  // Por lo tanto se crea una nueva TableRow por cada obra
+                  tableData.map((row, idx) => (
+                    // eslint-disable-next-line react/no-array-index-key
+                    <TableRow key={idx}>
+                      {
+                        // Se mapean los valores de cada obra para cada columna
+                        columns.map(({ field }) => (
+                          <TableCell key={field} className={tableCell}>{row[field]}</TableCell>
+                        ))
+                      }
+                    </TableRow>
                   ))
                 }
-              </TableRow>
-            )
-          }
-        </TableBody>
-      </Table>
-    </TableContainer>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )
+      }
+    </>
   )
 }
 

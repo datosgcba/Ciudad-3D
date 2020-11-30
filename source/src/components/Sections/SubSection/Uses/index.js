@@ -53,7 +53,6 @@ const Details = ({
         </Grid>
       ))}
     </Grid>
-
   </Box>
 )
 
@@ -86,9 +85,16 @@ const Uses = () => {
             iconsData={iconsData}
           />
         ))}
+      {
+        data.length !== 0 && (
+          <Typography variant="body2" className={classes.info}>
+            Para mayor descripción verificar el cuadro de usos
+          </Typography>
+        )
+      }
       { data.length === 0 && !isLoading && <SelectParcel />}
       { isLoading && (
-        <Typography variant="body1" className={classes.body1}>
+        <Typography variant="body1">
           Cargando...
         </Typography>
       )}

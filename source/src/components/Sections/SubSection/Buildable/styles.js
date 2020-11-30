@@ -2,11 +2,11 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
   grid: {
-    backgroundColor: '#F5F5F5',
     margin: theme.spacing(0.5),
     padding: theme.spacing(1)
   },
   gridItem: {
+    backgroundColor: '#F5F5F5',
     marginBottom: theme.spacing(2)
   },
   button: {

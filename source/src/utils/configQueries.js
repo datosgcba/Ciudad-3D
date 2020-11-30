@@ -110,12 +110,14 @@ const getCategoryTitle = (idCategory) => config.categories.find(({ id }) => id =
 
 const getSectionTitle = (idTitle) => config.information.find(({ id }) => id === idTitle).title
 
+const getParcel3D = () => config.parcelLayers.edif_3D
+
 const getApiUrl = () => config.urlAPI
 
 export {
-  init, getCategories, getFullLayerConfig, getInformation, getBasicData,
-  getLayersGroups, getLayersByLayersGroupId, getBuildable, getExplorer,
-  getUsesTable, getWorksGroups, getAffectationsTable, getExplorerOptions,
-  getExplorerFilters, getCapitalGain, getInspectionsGroups, getAlert,
-  getCategoryTitle, getSectionTitle, getFullExplorerLayerConfig, getApiUrl
+  init, getCategories, getFullLayerConfig, getInformation, getBasicData, getLayersGroups,
+  getLayersByLayersGroupId, getBuildable, getExplorer, getUsesTable, getWorksGroups,
+  getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain,
+  getInspectionsGroups, getAlert, getCategoryTitle, getSectionTitle, getFullExplorerLayerConfig,
+  getParcel3D, getApiUrl
 }

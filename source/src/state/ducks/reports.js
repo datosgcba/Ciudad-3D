@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import buildPDF from 'utils/reportTemplate'
 
 import { getParcelBySmp } from 'utils/apiConfig'
-import { getBuildable, getPlusvalia } from 'utils/apiConfig'
+import { getBuildable, getUses, getAffectations, getPlusvalia } from 'utils/apiConfig'
+import { getUsesTable, getAffectationsTable } from 'utils/configQueries'
 
 const getData = createAsyncThunk(
   'report/getData',
@@ -13,8 +14,48 @@ const getData = createAsyncThunk(
 
     const { direccion  } = await fetch(getParcelBySmp(smp))
       .then((response) => response.json())
-    const { unidad_edificabilidad  } = await fetch(getBuildable(smp))
+    const {
+      unidad_edificabilidad,
+      sup_edificable_planta,
+      sup_max_edificable,
+      altura_max,
+      altura_max_plano_limite,
+      distrito_especial,
+      fot: {
+        fot_medianera: medianera,
+        fot_perim_libre: perim,
+        fot_semi_libre: semi
+      },
+      tipica,
+      parcelas_linderas: {
+        aph_linderas,
+        smp_linderas
+      }
+    } = await fetch(getBuildable(smp))
       .then((response) => response.json())
+
+    const usesTable = await getUsesTable()
+    const { usos } = await fetch(getUses(smp))
+      .then((response) => response.json())
+/*
+    const usosText = usos
+      .map((id) => usesTable.find((ut) => ut.id === id))
+      .filter((u) => u !== undefined)
+      .map(({ title }) => title)
+      .join(', ')
+    console.log('usos:', usos, usosText)
+*/
+    const afectaciones = await fetch(getAffectations(smp))
+      .then((response) => response.json())
+    const afectacionesFiltrado = Object.entries(afectaciones).filter(([, value]) => value
+    !== 0).map(([key]) => key)
+
+    const affectationsTable = await getAffectationsTable()
+    const afectacionesText = afectacionesFiltrado
+      .map((id) => affectationsTable.find((at) => at.id === id))
+      .filter((d) => d !== undefined)
+      .map(({ title }) => title)
+      .join(', ')
       
     const sections = [
       {
@@ -26,12 +67,6 @@ const getData = createAsyncThunk(
           }, {
             name: 'Dirección',
             value: direccion
-          }, {
-            name: 'Barrio',
-            value: '...........................'
-          }, {
-            name: 'Comuna',
-            value: '...........................'
           }
         ]
       }, {
@@ -39,13 +74,16 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Unidad de Edificabilidad',
-            value: JSON.stringify(unidad_edificabilidad[0] ?? '')
+            value: unidad_edificabilidad
+              .filter((value) => value > 0)
+              .map((value) => value.toLocaleString('es-AR'))
+              .join(', ')
           }, {
-            name: 'Superficie de parcela',
-            value: '...........................'
+            name: 'Superficie Edificable en Planta (Pisada)',
+            value: sup_edificable_planta.toLocaleString('es-AR'),
           }, {
-            name: 'Área Edificable máxima',
-            value: '...........................'
+            name: 'Superficie Máxima Edificable',
+            value: sup_max_edificable.toLocaleString('es-AR')
           }
         ]
       }, {
@@ -53,45 +91,47 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Altura Máxima Permitida',
-            value: '...........................'
+            value: altura_max
+              .filter((value) => value > 0)
+              .map((value) => value.toLocaleString('es-AR'))
+              .join(', ')
           }, {
             name: 'Plano Límite',
-            value: '...........................'
+            value: altura_max_plano_limite.toLocaleString('es-AR')
           }, {
             name: 'Área Especial Agrupada',
-            value: '...........................'
+            value: distrito_especial
+              .map(({ distrito_agrupado }) => distrito_agrupado)
+              .filter((value) => (value.length ?? '') > 0)
+              .join(', ')
           }, {
             name: 'Área Especial Individualizada',
-            value: '...........................'
-          }, {
-            name: 'Subzona',
-            value: '...........................'
+            value: distrito_especial
+              .map(({ distrito_especifico }) => distrito_especifico)
+              .filter((value) => (value.length ?? '') > 0)
+              .join(', ')
           }, {
             name: 'Mixtura de uso',
-            value: '...........................'
+            value: usos
+              .filter((value) => value > 0)
+              .join(', ')
           }, {
             name: 'Tipo de Afectación',
-            value: '...........................'
+            value: afectacionesText
           }
         ]
       }, {
         title: 'Datos de Plusvalía',
         dataList: [
           {
-            name: 'Valor de Incidencia',
-            value: '...........................'
-          }, {
             name: 'Valor de FOT Entremedianera',
-            value: '...........................'
+            value: medianera.toLocaleString('es-AR')
           }, {
             name: 'Valor de FOT Perímetro Libre',
-            value: '...........................'
+            value: perim.toLocaleString('es-AR')
           }, {
             name: 'Valor de FOT Semilibre',
-            value: '...........................'
-          }, {
-            name: 'Valor de Alícuota',
-            value: '...........................'
+            value: semi.toLocaleString('es-AR')
           }
         ]
       }, {
@@ -99,18 +139,17 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Tipo de manzana',
-            value: '...........................'
+            value: tipica?.length > 0 ? 'Atípica': ''
           }
         ]
       }, {
         title: 'Información sobre linderos',
         dataList: [
           {
-            name: 'Parcelas linderas / Grado de Consolidación',
-            value: '...........................'
-          }, {
-            name: 'APH Linderos',
-            value: '...........................'
+            name: 'Parcelas linderas',
+            value: aph_linderas
+              ? smp_linderas. join(' | ')
+              : ''
           }
         ]
       }
@@ -120,7 +159,7 @@ const getData = createAsyncThunk(
   },
   {
     condition: (smp, { getState }) => {
-      return getState().reports[smp]?.state !== 'loading'
+      return !getState().reports[smp]
     }
   }
 )

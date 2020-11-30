@@ -48,9 +48,15 @@ export default async (sections, fileName) => {
   doc.text('AVISO LEGAL', marginLeft, y)
   y+=5
   doc.setFont(fontName, 'italic')
-  doc.text('Esta información no sustituye las normas legales vigentes ni constituye una copia fiel de los datos en poder del Gobierno de la Ciudad de Buenos Aires. Es responsabilidad del usuario confirmar mediante la vía administrativa pertinente la información provista en este sitio previo a alguna toma de decisión o acción.', marginLeft, y)
+  doc.text('"Esta información no sustituye las normas legales vigentes ni constituye una copia fiel de los datos en poder', marginLeft, y)
   y+=5
-  doc.text('La información provista por esta página web es orientativa y no vinculante, al momento de realizar un trámite ante Gobierno de la Ciudad de Buenos Aires.', marginLeft, y)
+  doc.text('del Gobierno de la Ciudad de Buenos Aires. Es responsabilidad del usuario confirmar mediante la vía', marginLeft, y)
+  y+=5
+  doc.text('administrativa pertinente la información provista en este sitio previo a alguna toma de decisión o acción.', marginLeft, y)
+  y+=5
+  doc.text('La información provista por esta página web es orientativa y no vinculante, al momento de realizar un trámite', marginLeft, y)
+  y+=5
+  doc.text('ante Gobierno de la Ciudad de Buenos Aires."', marginLeft, y)
 
   doc.save(fileName)
 }

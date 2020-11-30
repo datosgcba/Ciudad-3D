@@ -7,6 +7,7 @@ export default makeStyles((theme) => ({
   },
   gridItem: {
     backgroundColor: '#F5F5F5',
+    marginRight: theme.spacing(1),
     marginBottom: theme.spacing(2)
   },
   button: {

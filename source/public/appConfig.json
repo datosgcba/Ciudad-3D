@@ -895,6 +895,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "Línea Oficial",
+          "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
               "type": "vector",
@@ -920,6 +922,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "Línea Interna de Basamento",
+          "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
               "type": "vector",
@@ -945,6 +949,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "Línea de Frente Interno",
+          "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
               "type": "vector",
@@ -970,6 +976,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "Banda Mínima Edificable",
+          "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
               "type": "vector",
@@ -995,6 +1003,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "Rivolta",
+          "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
               "type": "vector",
@@ -1020,6 +1030,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "Volumen edificable",
+          "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {
               "type": "vector",
@@ -1060,6 +1072,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "Volumen edificable",
+          "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
               "type": "vector",
@@ -1097,6 +1111,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "Tejido",
+          "link": "https://data.buenosaires.gob.ar/dataset/tejido-urbano",
           "options": {
             "source": {
               "type": "vector",
@@ -1125,6 +1141,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "Tejido",
+          "link": "https://data.buenosaires.gob.ar/dataset/tejido-urbano",
           "options": {
             "source": {
               "type": "vector",
@@ -1153,6 +1171,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "Manzana",
+          "link": "https://data.buenosaires.gob.ar/dataset/manzanas",
           "options": {
             "source": {
               "type": "vector",
@@ -1178,6 +1198,8 @@
           "type": "vectortile",
           "displayPopup": true,
           "popupContent": "{alicuota}",
+          "info": "Datos del Codigo Urbanistico ",
+          "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {
               "type": "vector",
@@ -1212,6 +1234,8 @@
           "type": "vectortile",
           "displayPopup": true,
           "popupContent": "{uso_1}",
+          "info": "Datos del Codigo Urbanistico ",
+          "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {
               "type": "vector",
@@ -1251,6 +1275,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "Capa con información de Riesgo Hidricos",
+          "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {
               "type": "vector",
@@ -1276,6 +1302,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "",
+          "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {
               "type": "vector",
@@ -1302,6 +1330,8 @@
           "type": "vectortile",
           "displayPopup": true,
           "popupContent": "{tipo}",
+          "info": "",
+          "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {
               "type": "vector",
@@ -1328,6 +1358,8 @@
           "type": "vectortile",
           "displayPopup": true,
           "popupContent": "{tipo}",
+          "info": "",
+          "link": "https://data.buenosaires.gob.ar/dataset/planchetas-codigo-planeamiento-urbano",
           "options": {
             "source": {
               "type": "vector",
@@ -1354,6 +1386,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "",
+          "link": "https://data.buenosaires.gob.ar/dataset/planchetas-codigo-planeamiento-urbano",
           "options": {
             "source": {
               "type": "vector",
@@ -1380,6 +1414,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "info": "",
+          "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {
               "type": "vector",

@@ -3,13 +3,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Checkbox, Container, FormControlLabel, Typography, Box, makeStyles
+  Checkbox, Container, FormControlLabel, Typography, Box, makeStyles, IconButton
 } from '@material-ui/core'
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
+
+import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined'
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
+import Tooltip from '@material-ui/core/Tooltip'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { actions } from 'state/ducks/map'
@@ -21,7 +25,7 @@ import { getLayersByLayersGroupId } from 'utils/configQueries'
 import useStyles from './groupStyle'
 
 const GroupItem = ({
-  idGroup, idLayer, title, color, classes
+  idGroup, idLayer, title, color, classes, info, link
 }) => {
   const dispatch = useDispatch()
   const isVisible = useSelector((state) => state.map.groups[idGroup][idLayer].isVisible)
@@ -44,10 +48,33 @@ const GroupItem = ({
           />
         )}
       />
-      <Box className={classes.icon} style={{ backgroundColor: `${color}` }} />
-      <Typography variant="subtitle2">
-        {title}
-      </Typography>
+      <Box className={classes.color} style={{ backgroundColor: `${color}` }} />
+      <Box className={classes.boxIcons}>
+        <Typography
+          variant="subtitle2"
+          className={classes.title}
+        >
+          {title}
+          <IconButton
+            className={classes.downloadIcon}
+            target="_blank"
+            href={link}
+          >
+            <CloudDownloadOutlinedIcon />
+          </IconButton>
+          {
+            info && (
+              <Tooltip
+                className={classes.info}
+                title={info}
+                placement="top"
+              >
+                <InfoOutlinedIcon />
+              </Tooltip>
+            )
+          }
+        </Typography>
+      </Box>
     </ListItem>
   )
 }
@@ -56,7 +83,9 @@ const GroupItems = ({ idGroup, classes }) => {
   const layersConfig = getLayersByLayersGroupId(idGroup)
   return (
     layersConfig
-      .map(({ id, title, color }) => (
+      .map(({
+        id, title, color, info, link
+      }) => (
         <GroupItem
           key={id}
           idGroup={idGroup}
@@ -64,6 +93,8 @@ const GroupItems = ({ idGroup, classes }) => {
           title={title}
           color={color}
           classes={classes}
+          info={info}
+          link={link}
         />
       ))
   )
@@ -96,11 +127,15 @@ GroupItem.propTypes = {
   idLayer: PropTypes.string,
   title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
+  info: PropTypes.string,
+  link: PropTypes.string,
   classes: PropTypes.objectOf(makeStyles).isRequired
 }
 GroupItem.defaultProps = {
   idGroup: '',
-  idLayer: ''
+  idLayer: '',
+  info: '',
+  link: ''
 }
 
 export default Group

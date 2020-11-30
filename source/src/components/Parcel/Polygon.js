@@ -1,5 +1,6 @@
-/* eslint-disable */
 import { useEffect } from 'react'
+
+import { getParcelLayer } from 'utils/configQueries'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
@@ -7,32 +8,16 @@ const parcelId = 'parcel_layer'
 const Polygon = ({ smp, geomCoords }) => {
   const mapGL = MapaInteractivoGL()
 
+  const { edif, polygon } = getParcelLayer()
+
   useEffect(() => {
     mapGL.addVectorTileLayer(
-      {
-        id: `edif_smp`,
-        "source": {
-          "type": "vector",
-          "tiles": [
-            "http://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf?optimize=true"
-          ],
-          "minzoom": 10,
-          "maxzoom": 18,
-          "cluster": false
-        },
-        "source-layer": "default",
-        "type": "fill-extrusion",
-        "paint": {
-          "fill-extrusion-color": "#fdd306",
-          "fill-extrusion-opacity": 0.9,
-          "fill-extrusion-height": ["get", "altura_final"]
-        },
-        "filter": ["==", "smp", "no-match"]
-      },
+      edif,
       null,
       false,
       null
     )
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -40,13 +25,12 @@ const Polygon = ({ smp, geomCoords }) => {
     if (parcel3D !== undefined) {
       mapGL.setFilter(
         'edif_smp',
-        ["==", "smp", smp.toLowerCase()]//smp.toUpperCase() '001-001-001A' '063-113-001A'
+        ['==', 'smp', smp.toLowerCase()] // smp.toUpperCase() '001-001-001A' '063-113-001A'
       )
     }
-  }, [smp])
+  }, [mapGL, smp])
 
   useEffect(() => {
-
     const layer = mapGL.map.getLayer(parcelId)
     if (layer !== undefined) {
       mapGL.map.removeLayer(parcelId)
@@ -69,13 +53,9 @@ const Polygon = ({ smp, geomCoords }) => {
       mapGL.map.addLayer({
         id: parcelId,
         source: smp,
-        type: 'fill',        
-        layout: {},
-        paint: {
-          'fill-color': 'khaki',
-          'fill-outline-color': 'khaki',
-          'fill-opacity': 0.5
-        }
+        type: polygon.type,
+        layout: polygon.layout,
+        paint: polygon.paint
       })
       mapGL.map.moveLayer(parcelId, 'edif_smp')
     }

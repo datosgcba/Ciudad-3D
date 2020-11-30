@@ -114,10 +114,12 @@ const getParcel3D = () => config.parcelLayers.edif_3D
 
 const getApiUrl = () => config.urlAPI
 
+const getParcelLayer = () => config.parcelLayers
+
 export {
   init, getCategories, getFullLayerConfig, getInformation, getBasicData, getLayersGroups,
   getLayersByLayersGroupId, getBuildable, getExplorer, getUsesTable, getWorksGroups,
   getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain,
   getInspectionsGroups, getAlert, getCategoryTitle, getSectionTitle, getFullExplorerLayerConfig,
-  getParcel3D, getApiUrl
+  getParcel3D, getApiUrl, getParcelLayer
 }

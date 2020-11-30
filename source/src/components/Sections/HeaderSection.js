@@ -7,7 +7,8 @@ import {
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
-import Tooltip from '@material-ui/core/Tooltip'
+
+import CustomTooltip from 'theme/wrappers/CustomTooltip'
 
 import { actions as alertsAction } from 'state/ducks/alerts'
 import { actions as categoriesActions } from 'state/ducks/categories'
@@ -43,7 +44,7 @@ const HeaderSection = ({ categoryTitle, sectionTitle }) => {
               {sectionTitle}
               {
                 sectionTitle === 'Datos Básicos' && (
-                  <Tooltip
+                  <CustomTooltip
                     className={classes.info}
                     title="Esta información es relevada por la AGIP. Si los datos plasmados no coinciden con la realidad, se solicita ratificarlos ante dicho organismo."
                     placement="top"
@@ -51,7 +52,7 @@ const HeaderSection = ({ categoryTitle, sectionTitle }) => {
                     <InfoOutlinedIcon
                       fontSize="small"
                     />
-                  </Tooltip>
+                  </CustomTooltip>
                 )
               }
             </Typography>

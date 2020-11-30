@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
     width: theme.spacing(86),
     [theme.breakpoints.down('sm')]: {
       maxWidth: theme.spacing(35)
-    } // 45 - 360px padding-left: 35px;
+    }
   },
   boxSubContainer: {
     paddingBottom: theme.spacing(4)
@@ -36,5 +36,8 @@ export default makeStyles((theme) => ({
   downloadIcon: {
     padding: 0,
     marginLeft: theme.spacing(1)
+  },
+  customWidth: {
+    backgroundColor: 'red'
   }
 }))

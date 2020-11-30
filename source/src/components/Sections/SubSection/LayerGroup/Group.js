@@ -13,7 +13,8 @@ import ListItem from '@material-ui/core/ListItem'
 
 import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
-import Tooltip from '@material-ui/core/Tooltip'
+
+import CustomTooltip from 'theme/wrappers/CustomTooltip'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { actions } from 'state/ducks/map'
@@ -64,13 +65,13 @@ const GroupItem = ({
           </IconButton>
           {
             info && (
-              <Tooltip
+              <CustomTooltip
                 className={classes.info}
                 title={info}
                 placement="top"
               >
                 <InfoOutlinedIcon />
-              </Tooltip>
+              </CustomTooltip>
             )
           }
         </Typography>

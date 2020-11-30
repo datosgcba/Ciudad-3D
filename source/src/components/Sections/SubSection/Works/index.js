@@ -9,9 +9,9 @@ import {
 
 import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
-import Tooltip from '@material-ui/core/Tooltip'
 
 import ContainerBar from 'components/Sections/ContainerBar'
+import CustomTooltip from 'theme/wrappers/CustomTooltip'
 import SelectParcel from 'components/Sections/SubSection/SelectParcel'
 
 import useFontsStyles from 'theme/fontsDecorators'
@@ -105,13 +105,13 @@ const Works = () => {
                   {title}
                   {
                     info && (
-                      <Tooltip
+                      <CustomTooltip
                         className={classes.info}
                         title={info}
                         placement="top"
                       >
                         <InfoOutlinedIcon />
-                      </Tooltip>
+                      </CustomTooltip>
                     )
                   }
                   <IconButton

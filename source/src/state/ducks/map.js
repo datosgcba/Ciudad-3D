@@ -1,6 +1,6 @@
 import {
   init, getLayersGroups, getLayersByLayersGroupId, getFullLayerConfig,
-  getExplorerFilters, getFullExplorerLayerConfig
+  getExplorerFilters, getFullExplorerLayerConfig, getBaseLayers
 } from 'utils/configQueries'
 import { mapOnPromise } from 'utils/mapboxUtils'
 
@@ -109,6 +109,12 @@ const initMap = createAsyncThunk(
     mapGL = mapInstance
     await init().then(() => dispatch(loadLayers()))
     const mapOnLoad = mapOnPromise(mapInstance.map)('load')
+    /*
+    console.log('mapGL', mapGL.config.params.style)
+    const baseLayers = getBaseLayers()
+    mapGL.config.params.style = baseLayers
+    console.log('mapGL UPDATE', mapGL.config.params.style)
+    */
     return mapOnLoad
       .then(async () => true)
       .catch(() => false)

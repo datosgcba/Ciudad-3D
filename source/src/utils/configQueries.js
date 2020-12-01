@@ -122,10 +122,12 @@ const getApiUrl = () => config.urlAPI
 
 const getParcelLayer = () => config.parcelLayers
 
+const getBaseLayers = () => config.baseLayers
+
 export {
   init, getCategories, getFullLayerConfig, getInformation, getBasicData, getLayersGroups,
   getLayersByLayersGroupId, getBuildable, getExplorer, getUsesTable, getWorksGroups,
   getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain,
   getInspectionsGroups, getAlert, getCategoryTitle, getSectionTitle, getFullExplorerLayerConfig,
-  getParcel3D, getApiUrl, getParcelLayer
+  getParcel3D, getApiUrl, getParcelLayer, getBaseLayers
 }

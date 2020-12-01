@@ -1,5 +1,5 @@
 import {
-  init, getLayersGroups, getLayersByLayersGroupId, getFullLayerConfig,
+  loadAppConfig, getLayersGroups, getLayersByLayersGroupId, getFullLayerConfig,
   getExplorerFilters, getFullExplorerLayerConfig, getBaseLayers
 } from 'utils/configQueries'
 import { mapOnPromise } from 'utils/mapboxUtils'
@@ -78,6 +78,8 @@ const toggle = async (layer, isVisible = null, index, groups) => {
 const loadLayers = createAsyncThunk(
   'map/loadLayers',
   async () => {
+    await loadAppConfig()
+
     const explorerLayers = {}
     getExplorerFilters().forEach(({ id: idExplorer }) => {
       explorerLayers[idExplorer] = {}
@@ -100,21 +102,16 @@ const loadLayers = createAsyncThunk(
         }
       })
     })
-    return { explorerLayers, groups }
+    const baseLayers = getBaseLayers()
+    return { explorerLayers, groups, baseLayers }
   }
 )
+
 const initMap = createAsyncThunk(
   'map/initMap',
-  async (mapInstance, { dispatch }) => {
+  async (mapInstance) => {
     mapGL = mapInstance
-    await init().then(() => dispatch(loadLayers()))
     const mapOnLoad = mapOnPromise(mapInstance.map)('load')
-    /*
-    console.log('mapGL', mapGL.config.params.style)
-    const baseLayers = getBaseLayers()
-    mapGL.config.params.style = baseLayers
-    console.log('mapGL UPDATE', mapGL.config.params.style)
-    */
     return mapOnLoad
       .then(async () => true)
       .catch(() => false)
@@ -206,6 +203,7 @@ const map = createSlice({
   name: 'map',
   initialState: {
     isMapReady: false,
+    defaultMapStyle: null,
     camera: {
       lat: -34.574168,
       lng: -58.484989,
@@ -280,10 +278,15 @@ const map = createSlice({
       }
     },
     [loadLayers.fulfilled]: (draftState, {
-      payload: { explorerLayers, groups }
+      payload: { explorerLayers, groups, baseLayers: { sources, layers } }
     }) => {
       draftState.groups = groups
       draftState.explorerLayers = explorerLayers
+      draftState.defaultMapStyle = {
+        version: 8,
+        sources,
+        layers
+      }
     }
   }
 })
@@ -296,6 +299,7 @@ const actions = {
   toggleLayer,
   selectedExplorerFilter,
   filterUpdate,
-  removeLayer
+  removeLayer,
+  loadLayers
 }
 export { actions }

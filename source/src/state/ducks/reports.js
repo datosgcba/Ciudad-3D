@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import buildPDF from 'utils/reportTemplate'
 
-import { getParcelBySmp } from 'utils/apiConfig'
-import { getBuildable, getUses, getAffectations, getPlusvalia } from 'utils/apiConfig'
+import {
+  getParcelBySmp, getBuildable, getUses, getAffectations, getPlusvalia
+} from 'utils/apiConfig'
+
 import { getUsesTable, getAffectationsTable } from 'utils/configQueries'
 
 const getData = createAsyncThunk(
@@ -12,7 +14,7 @@ const getData = createAsyncThunk(
     const report = getState().reports[smp]
     console.log('report ', report)
 
-    const { direccion  } = await fetch(getParcelBySmp(smp))
+    const { direccion } = await fetch(getParcelBySmp(smp))
       .then((response) => response.json())
     const {
       unidad_edificabilidad,
@@ -37,7 +39,7 @@ const getData = createAsyncThunk(
     const usesTable = await getUsesTable()
     const { usos } = await fetch(getUses(smp))
       .then((response) => response.json())
-/*
+    /*
     const usosText = usos
       .map((id) => usesTable.find((ut) => ut.id === id))
       .filter((u) => u !== undefined)
@@ -56,7 +58,7 @@ const getData = createAsyncThunk(
       .filter((d) => d !== undefined)
       .map(({ title }) => title)
       .join(', ')
-      
+
     const sections = [
       {
         title: 'Información General de la Parcela',
@@ -80,7 +82,7 @@ const getData = createAsyncThunk(
               .join(', ')
           }, {
             name: 'Superficie Edificable en Planta (Pisada)',
-            value: sup_edificable_planta.toLocaleString('es-AR'),
+            value: sup_edificable_planta.toLocaleString('es-AR')
           }, {
             name: 'Superficie Máxima Edificable',
             value: sup_max_edificable.toLocaleString('es-AR')
@@ -139,7 +141,7 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Tipo de manzana',
-            value: tipica?.length > 0 ? 'Atípica': ''
+            value: tipica?.length > 0 ? 'Atípica' : ''
           }
         ]
       }, {
@@ -148,7 +150,7 @@ const getData = createAsyncThunk(
           {
             name: 'Parcelas linderas',
             value: aph_linderas
-              ? smp_linderas. join(' | ')
+              ? smp_linderas.join(' | ')
               : ''
           }
         ]
@@ -158,9 +160,7 @@ const getData = createAsyncThunk(
     return { smp, sections }
   },
   {
-    condition: (smp, { getState }) => {
-      return !getState().reports[smp]
-    }
+    condition: (smp, { getState }) => !getState().reports[smp]
   }
 )
 

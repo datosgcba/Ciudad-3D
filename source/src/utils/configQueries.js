@@ -2,7 +2,7 @@
 import icons from 'utils/svgIcons'
 
 let config = null
-const init = async () => {
+const loadAppConfig = async () => {
   if (config !== null) {
     return
   }
@@ -38,7 +38,9 @@ const getLayersByLayersGroupId = (layersGroupId) => config
     link
   }))
 
-const getWorksGroups = () => config.works.map(({ id, title, info, link, columns }) => ({
+const getWorksGroups = () => config.works.map(({
+  id, title, info, link, columns
+}) => ({
   id,
   title,
   info,
@@ -46,7 +48,9 @@ const getWorksGroups = () => config.works.map(({ id, title, info, link, columns 
   columns
 }))
 
-const getInspectionsGroups = () => config.inspections.map(({ id, title, info, link, columns }) => ({
+const getInspectionsGroups = () => config.inspections.map(({
+  id, title, info, link, columns
+}) => ({
   id,
   title,
   info,
@@ -125,7 +129,7 @@ const getParcelLayer = () => config.parcelLayers
 const getBaseLayers = () => config.baseLayers
 
 export {
-  init, getCategories, getFullLayerConfig, getInformation, getBasicData, getLayersGroups,
+  loadAppConfig, getCategories, getFullLayerConfig, getInformation, getBasicData, getLayersGroups,
   getLayersByLayersGroupId, getBuildable, getExplorer, getUsesTable, getWorksGroups,
   getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain,
   getInspectionsGroups, getAlert, getCategoryTitle, getSectionTitle, getFullExplorerLayerConfig,

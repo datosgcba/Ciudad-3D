@@ -32,7 +32,7 @@ const seekerParcel = createAsyncThunk(
   'basicData/seekerParcel',
   async (smp, { dispatch }) => {
     if (smp !== null && smp !== undefined) {
-      let url = getParcelBySmp(smp)
+      const url = getParcelBySmp(smp)
       const response = await fetch(url)
       const data = (await response.json())
 

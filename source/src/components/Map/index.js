@@ -80,7 +80,6 @@ const Map = ({ children }) => {
       .then((res) => res.json())
       .then((data) => {
         const { contenido, direccionNormalizada } = data
-        // eslint-disable-next-line max-len
         const featureInfoString = renderToString(<FeatureInfo contenido={contenido} direccionNormalizada={direccionNormalizada} />)
         mapInstance.addPopup(lngLat, featureInfoString)
       })
@@ -97,13 +96,19 @@ const Map = ({ children }) => {
     }
   }, [capabasePrincipal, mapGL, isMapReady])
 
+  const defaultMapStyle = useSelector((state) => state.map.defaultMapStyle)
+
+  useEffect(() => {
+    dispatch(mapActions.loadLayers())
+  }, [])
   // Se inicializa el mapa
   useEffect(() => {
-    if (!isMapReady) {
+    if (!isMapReady && defaultMapStyle !== null) {
       const map = MapaInteractivoGL({
         params: {
           center: [cameraLng, cameraLat],
-          zoom: cameraZoom
+          zoom: cameraZoom,
+          style: defaultMapStyle
         },
         onFeatureClick,
         transformRequest,
@@ -113,7 +118,7 @@ const Map = ({ children }) => {
 
       dispatch(mapActions.initMap(map))
     }
-  }, [isMapReady, cameraLat, cameraLng, cameraZoom, onClicked, dispatch])
+  }, [isMapReady, defaultMapStyle, cameraLat, cameraLng, cameraZoom, onClicked, dispatch])
 
   const classes = useStyles()
   return (

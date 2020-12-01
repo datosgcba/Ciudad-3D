@@ -12,20 +12,22 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const Item = ({ smp, state, onClick }) => (
   <Box>
-    <Typography>{smp}: 
-    {
+    <Typography>
+      {smp}
+      :
+      {
       state === 'ready' && (
         <IconButton onClick={onClick}>
           <DownloadIcon />
         </IconButton>
       )
     }
-    {
+      {
       state === 'loading' && (
         <CircularProgress />
       )
     }
-    {
+      {
       state === 'error' && (
         <Error />
       )
@@ -49,7 +51,7 @@ const Report = () => {
       type="list"
     >
       {
-        Object.entries(reports).map(([key, { state }]) => <Item key={key} smp={key} state={state} onClick={() => handleOnClick(key)}/>)
+        Object.entries(reports).map(([key, { state }]) => <Item key={key} smp={key} state={state} onClick={() => handleOnClick(key)} />)
       }
     </ContainerBar>
   )

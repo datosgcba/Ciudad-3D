@@ -5,81 +5,6 @@ import * as mapboxgl from 'mapbox-gl'
 import genericLine from './layer-builders/GenericLineLayerBuilder'
 import genericPoint from './layer-builders/GenericPointLayerBuilder'
 
-const defaultMapStyle = {
-  version: 8,
-  sources: {
-    capabase_1: {
-      type: 'raster',
-      scheme: 'tms',
-      tiles: [
-        'https://servicios.usig.buenosaires.gob.ar/mapcache/tms/1.0.0/amba_con_transporte_3857@GoogleMapsCompatible/{z}/{x}/{y}.png'
-      ],
-      tileSize: 256
-    },
-    capabase_2: {
-      type: 'raster',
-      scheme: 'tms',
-      tiles: [
-        'https://servicios.usig.buenosaires.gob.ar/mapcache/tms/1.0.0/fotografias_aereas_2017_caba_3857@GoogleMapsCompatible/{z}/{x}/{y}.png'
-      ],
-      tileSize: 256
-    },
-    capabase_3: {
-      type: 'vector',
-      tiles: [
-        "https://vectortiles.usig.buenosaires.gob.ar/cur3d/parcela/{z}/{x}/{y}.pbf?optimize=true"
-      ],
-      minzoom: 10,
-      maxzoom: 18,
-      cluster: false
-    }
-  },
-  layers: [
-    {
-      id: 'baseLayer_principal',
-      type: 'raster',
-      source: 'capabase_1',
-      layout: {
-        visibility: 'none'
-      },
-      paint: {}
-    },
-    {
-      id: 'baseLayer_secundario',
-      type: 'raster',
-      source: 'capabase_2',
-      layout: {
-        visibility: 'visible'
-      },
-      paint: {}
-    },
-    {
-      id: 'baseLayer_parcela',
-      source: 'capabase_3',
-      layout: {
-        visibility: 'visible'
-      },
-      minzoom: 16,
-      "source-layer": "default",
-      "type": "line",
-      "paint": {
-        "line-color": "#c0bfc1",
-        "line-width": 4
-      }
-    },
-    {
-      id: 'emptyLayer',
-      type: 'background',
-      layout: {
-        visibility: 'none'
-      },
-      paint: {
-        'background-color': 'white'
-      }
-    }
-  ]
-}
-
 const defaults = {
   markerZoomInLevel: 14,
   featureZoomInLevel: 17,
@@ -87,8 +12,7 @@ const defaults = {
     container: 'map',
     hash: true,
     minzoom: 10,
-    maxzoom: 18,
-    style: defaultMapStyle
+    maxzoom: 18
   },
   // activeMarker: mapboxgl.Marker({color:'orange'}),
   // fromMarker: mapboxgl.Marker({color:'green'}),

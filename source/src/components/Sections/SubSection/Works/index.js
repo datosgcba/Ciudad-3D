@@ -32,9 +32,11 @@ const GridPanel = ({
     <>
       {
         tableData.length === 0 && (
-          <Typography>
-            No posee
-          </Typography>
+          <TableContainer>
+            <Typography>
+              No posee
+            </Typography>
+          </TableContainer>
         )
       }
       {
@@ -101,8 +103,12 @@ const Works = () => {
               id, title, info, link, columns
             }) => (
               <Box className={classes.boxSubContainer} key={id}>
-                <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
-                  {title}
+                <Box className={classes.title}>
+                  <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
+                    {title}
+                  </Typography>
+                </Box>
+                <Box className={classes.boxIcons}>
                   {
                     info && (
                       <CustomTooltip
@@ -121,7 +127,7 @@ const Works = () => {
                   >
                     <CloudDownloadOutlinedIcon />
                   </IconButton>
-                </Typography>
+                </Box>
                 <GridPanel
                   id={id}
                   columns={columns}

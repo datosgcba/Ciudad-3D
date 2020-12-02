@@ -30,11 +30,15 @@ export default makeStyles((theme) => ({
     }
   },
   info: {
-    padding: 0,
-    marginLeft: theme.spacing(1)
+    float: 'left'
   },
   downloadIcon: {
     padding: 0,
-    marginLeft: theme.spacing(1)
+    marginLeft: theme.spacing(0.5),
+    float: 'left'
+  },
+  title: {
+    float: 'left',
+    display: 'inline'
   }
 }))

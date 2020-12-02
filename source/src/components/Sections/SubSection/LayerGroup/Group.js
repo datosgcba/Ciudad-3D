@@ -53,7 +53,6 @@ const GroupItem = ({
       <Box className={classes.boxIcons}>
         <Typography
           variant="subtitle2"
-          className={classes.title}
         >
           {title}
           <IconButton

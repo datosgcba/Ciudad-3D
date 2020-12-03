@@ -214,6 +214,13 @@
           "title": "Mixtura de uso",
           "items": [
             {
+              "id": "mixZero",
+              "subTitle": "Sin mixtura",
+              "color": "white",
+              "idLayer": "explorer_layer",
+              "filter": ["==", ["get", "uso_1"], 0]
+            },
+            {
               "id": "mixOne",
               "subTitle": "Mixtura 1",
               "details": "Área de Baja Mixtura de Usos de Suelo 1",

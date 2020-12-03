@@ -133,7 +133,8 @@ const toggleLayer = createAsyncThunk(
     const { isVisible, index } = getLayerState(state.map, idGroup, idLayer)
     const layer = getFullLayerConfig(idGroup, idLayer)
     const { order } = await toggle(layer, isVisible, index, state.map.groups)
-    await mapOnPromise(mapGL.map)('idle')
+    const onPromise = await mapOnPromise(mapGL.map)
+    onPromise('idle')
       // eslint-disable-next-line no-console
       .catch((error) => console.warn('toggleLayer catch error:', error))
     return { order }

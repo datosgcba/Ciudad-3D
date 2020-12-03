@@ -37,8 +37,8 @@ const GridItems = ({
         control={(
           <Checkbox
             checked={isChecked}
-            icon={<CheckBoxIcon fontSize="small" style={{ color: 'white', backgroundColor: 'white', border: '0.5px solid grey' }} />}
-            checkedIcon={<CheckBoxIcon fontSize="small" style={{ color: '#707070' }} />}
+            icon={<CheckBoxOutlineBlankIcon fontSize="small" style={{ color: '#333' }} />}
+            checkedIcon={<CheckBoxIcon fontSize="small" style={{ color: '#333' }} />}
           />
         )}
       />
@@ -68,7 +68,7 @@ const GridTwoColumns = ({ idExplorer, idGroup, items }) => {
           <Checkbox
             defaultChecked
             onChange={(_, isSelected) => handleChangeAllSelected(idExplorer, idGroup, isSelected)}
-            icon={<CheckBoxOutlineBlankIcon fontSize="small" style={{ color: '#717170' }} />}
+            icon={<CheckBoxOutlineBlankIcon fontSize="small" style={{ color: '#333' }} />}
             checkedIcon={<CheckBoxIcon fontSize="small" style={{ color: '#333' }} />}
           />
         )}

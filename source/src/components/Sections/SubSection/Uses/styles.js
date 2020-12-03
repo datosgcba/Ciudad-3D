@@ -49,5 +49,8 @@ export default makeStyles((theme) => ({
   },
   info: {
     marginTop: theme.spacing(4)
+  },
+  link: {
+    color: '#306BB3 !important'
   }
 }))

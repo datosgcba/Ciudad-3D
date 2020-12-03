@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, Grid, makeStyles
+  Box, Typography, Grid, makeStyles, Link
 } from '@material-ui/core'
 import useFontsStyles from 'theme/fontsDecorators'
 
@@ -13,6 +13,9 @@ import ContainerBar from 'components/Sections/ContainerBar'
 import SelectParcel from 'components/Sections/SubSection/SelectParcel'
 
 import icons from 'utils/svgIcons'
+
+import { getUsesLink } from 'utils/configQueries'
+
 import { actions as usesActions } from 'state/ducks/uses'
 
 import useStyles from './styles'
@@ -63,6 +66,7 @@ const Uses = () => {
   const dispatch = useDispatch()
   const smp = useSelector((state) => state.basicData.data.smp)
   const isLoading = useSelector((state) => state.uses.isLoading)
+  const link = getUsesLink()
 
   useEffect(() => {
     dispatch(usesActions.clickOnParcel(smp))
@@ -87,8 +91,18 @@ const Uses = () => {
         ))}
       {
         data.length !== 0 && (
-          <Typography variant="body2" className={classes.info}>
-            Para mayor descripción verificar el cuadro de usos
+          <Typography variant="body1" className={`${decorators.bold} ${classes.info}`}>
+            Para mayor descripción verificar el cuadro de usos haciendo click
+            {' '}
+            <Link
+              className={classes.link}
+              href={link}
+              target="_blank"
+              rel="noopener"
+              underline="always"
+            >
+              aquí
+            </Link>
           </Typography>
         )
       }

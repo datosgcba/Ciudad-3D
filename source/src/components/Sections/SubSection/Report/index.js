@@ -64,7 +64,6 @@ const Report = () => {
 
   const handleOnClick = (key) => dispatch(actions.download(key))
   useEffect(() => {
-    console.log('click')
     if (smp !== null) {
       dispatch(actions.getData(smp))
     }

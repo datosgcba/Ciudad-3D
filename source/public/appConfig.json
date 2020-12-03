@@ -862,7 +862,8 @@
       "id": "Uses",
       "title": "Usos",
       "description": "Usos permitidos en tu lote.",
-      "color": "#18b596"
+      "color": "#18b596",
+      "link": "https://www.buenosaires.gob.ar/desarrollourbano/codigo-urbanistico"
     },
     {
       "id": "Affectations",

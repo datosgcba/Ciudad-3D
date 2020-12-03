@@ -1,9 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
-  paper: {
-    backgroundColor: 'white'
-  },
   card: {
     padding: theme.spacing(1),
     marginBottom: theme.spacing(2),

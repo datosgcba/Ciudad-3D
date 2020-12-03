@@ -1,19 +1,16 @@
+/* eslint-disable camelcase */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import buildPDF from 'utils/reportTemplate'
 
 import {
-  getParcelBySmp, getBuildable, getUses, getAffectations, getPlusvalia
+  getParcelBySmp, getBuildable, getUses, getAffectations
 } from 'utils/apiConfig'
 
-import { getUsesTable, getAffectationsTable } from 'utils/configQueries'
+import { getAffectationsTable } from 'utils/configQueries'
 
 const getData = createAsyncThunk(
   'report/getData',
-  async (smp, { getState }) => {
-    console.log('getState().reports ', getState().reports)
-    const report = getState().reports[smp]
-    console.log('report ', report)
-
+  async (smp) => {
     const { direccion } = await fetch(getParcelBySmp(smp))
       .then((response) => response.json())
     const {
@@ -36,7 +33,6 @@ const getData = createAsyncThunk(
     } = await fetch(getBuildable(smp))
       .then((response) => response.json())
 
-    const usesTable = await getUsesTable()
     const { usos } = await fetch(getUses(smp))
       .then((response) => response.json())
     /*
@@ -156,8 +152,7 @@ const getData = createAsyncThunk(
         ]
       }
     ]
-    console.log({ [smp]: report })
-    return { smp, sections }
+    return { smp, direccion, sections }
   },
   {
     condition: (smp, { getState }) => !getState().reports[smp]
@@ -180,9 +175,10 @@ const reports = createSlice({
     [getData.pending]: (draftState, { meta: { arg: smp } }) => {
       draftState[smp] = { state: 'loading' }
     },
-    [getData.fulfilled]: (draftState, { payload: { smp, sections } }) => {
+    [getData.fulfilled]: (draftState, { payload: { smp, direccion, sections } }) => {
       draftState[smp].sections = sections
       draftState[smp].state = 'ready'
+      draftState[smp].address = direccion
     },
     [getData.rejected]: (draftState, { meta: { arg: smp } }) => {
       draftState[smp].state = 'error'

@@ -14,11 +14,15 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import useStyles from './styles'
 
-const Item = ({ smp, state, onClick }) => {
+const Item = ({
+  smp, address, state, onClick
+}) => {
   const classes = useStyles()
   return (
     <Card className={classes.card}>
       <Typography>
+        SMP:
+        {' '}
         {smp}
         :
         {
@@ -45,6 +49,11 @@ const Item = ({ smp, state, onClick }) => {
           )
         }
       </Typography>
+      <Typography>
+        Dirección:
+        {' '}
+        {address}
+      </Typography>
     </Card>
   )
 }
@@ -52,8 +61,10 @@ const Report = () => {
   const dispatch = useDispatch()
   const smp = useSelector((state) => state.parcel.smp)
   const reports = useSelector((state) => state.reports)
+
   const handleOnClick = (key) => dispatch(actions.download(key))
   useEffect(() => {
+    console.log('click')
     if (smp !== null) {
       dispatch(actions.getData(smp))
     }
@@ -64,11 +75,12 @@ const Report = () => {
     >
       {
         Object.entries(reports).map(
-          ([key, { state }]) => (
+          ([key, { state, address }]) => (
             <Item
               key={key}
               smp={key}
               state={state}
+              address={address}
               onClick={() => handleOnClick(key)}
             />
           )
@@ -81,13 +93,15 @@ const Report = () => {
 Item.propTypes = {
   smp: PropTypes.string,
   state: PropTypes.string,
-  onClick: PropTypes.string
+  onClick: PropTypes.string,
+  address: PropTypes.string
 }
 
 Item.defaultProps = {
   smp: '',
   state: '',
-  onClick: ''
+  onClick: '',
+  address: ''
 }
 
 export default Report

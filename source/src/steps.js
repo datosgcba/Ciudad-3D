@@ -56,7 +56,7 @@ La información provista por esta página web es orientativa y no vinculante, al
       )
     },
     {
-      selector: ".MuiCardActionArea-root:nth-child(5)",
+      selector: ".MuiCardActionArea-root:nth-child(6)",
       content: () => (
         <div>
           <p>

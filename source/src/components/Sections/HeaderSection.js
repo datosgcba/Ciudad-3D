@@ -31,31 +31,35 @@ const HeaderSection = ({ categoryTitle, sectionTitle }) => {
       {
         sectionTitle && (
           <Box className={classes.subTitle}>
-            <Typography variant="h6" className={decorators.bold}>
-              <IconButton
-                onClick={() => {
-                  dispatch(categoriesActions.sectionBack())
-                  dispatch(alertsAction.clear())
-                }}
-                className={classes.button}
-              >
-                <ArrowBackIcon />
-              </IconButton>
-              {sectionTitle}
-              {
-                sectionTitle === 'Datos Básicos' && (
+            <Box className={sectionTitle === 'Datos Básicos' ? classes.sectionTitle : ''}>
+              <Typography variant="h6" className={decorators.bold}>
+                <IconButton
+                  onClick={() => {
+                    dispatch(categoriesActions.sectionBack())
+                    dispatch(alertsAction.clear())
+                  }}
+                  className={classes.button}
+                >
+                  <ArrowBackIcon />
+                </IconButton>
+                {sectionTitle}
+              </Typography>
+            </Box>
+            {
+              sectionTitle === 'Datos Básicos' && (
+                <Box className={classes.boxIcons}>
                   <CustomTooltip
-                    className={classes.info}
+                    className={classes.tooltip}
                     title="Esta información es relevada por la AGIP. Si los datos plasmados no coinciden con la realidad, se solicita ratificarlos ante dicho organismo."
                     placement="top"
                   >
                     <InfoOutlinedIcon
-                      fontSize="small"
+                      className={classes.info}
                     />
                   </CustomTooltip>
-                )
-              }
-            </Typography>
+                </Box>
+              )
+            }
           </Box>
         )
       }

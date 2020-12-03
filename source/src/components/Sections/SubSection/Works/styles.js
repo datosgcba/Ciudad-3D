@@ -29,13 +29,24 @@ export default makeStyles((theme) => ({
       textAlign: 'center'
     }
   },
+  tooltip: {
+    marginTop: '3px',
+    marginLeft: theme.spacing(1),
+    float: 'left'
+  },
   info: {
+    height: '17px',
+    width: '17px'
+  },
+  iconButton: {
+    marginTop: '3px',
+    padding: 0,
+    marginLeft: theme.spacing(1),
     float: 'left'
   },
   downloadIcon: {
-    padding: 0,
-    marginLeft: theme.spacing(0.5),
-    float: 'left'
+    height: '18px',
+    width: '18px'
   },
   title: {
     float: 'left',

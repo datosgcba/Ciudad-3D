@@ -12,6 +12,19 @@ export default makeStyles((theme) => ({
   button: {
     padding: 0,
     paddingRight: theme.spacing(0.5),
+    marginBottom: '5px',
     minWidth: '0px !important'
+  },
+  tooltip: {
+    marginLeft: theme.spacing(0.5),
+    marginTop: '5px'
+  },
+  info: {
+    height: '17px',
+    width: '17px'
+  },
+  sectionTitle: {
+    float: 'left',
+    display: 'inline'
   }
 }))

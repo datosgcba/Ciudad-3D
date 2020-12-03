@@ -104,7 +104,7 @@ const Works = () => {
             }) => (
               <Box className={classes.boxSubContainer} key={id}>
                 <Box className={classes.title}>
-                  <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginTop_md} ${decorators.marginBottom_ml}`}>
+                  <Typography variant="subtitle1" className={`${decorators.bold} ${decorators.marginBottom_ml}`}>
                     {title}
                   </Typography>
                 </Box>
@@ -112,20 +112,24 @@ const Works = () => {
                   {
                     info && (
                       <CustomTooltip
-                        className={classes.info}
+                        className={classes.tooltip}
                         title={info}
                         placement="top"
                       >
-                        <InfoOutlinedIcon />
+                        <InfoOutlinedIcon
+                          className={classes.info}
+                        />
                       </CustomTooltip>
                     )
                   }
                   <IconButton
-                    className={classes.downloadIcon}
+                    className={classes.iconButton}
                     target="_blank"
                     href={link}
                   >
-                    <CloudDownloadOutlinedIcon />
+                    <CloudDownloadOutlinedIcon
+                      className={classes.downloadIcon}
+                    />
                   </IconButton>
                 </Box>
                 <GridPanel

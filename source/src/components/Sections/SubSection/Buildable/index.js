@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import {
+  Box,
   Typography,
   Grid,
   IconButton,
@@ -57,20 +58,26 @@ const Details = ({
 
   return (
     <>
-      <Typography variant="subtitle2" className={decorators.bold}>
-        {title}
+      <Box className={classes.title}>
+        <Typography variant="subtitle2" className={decorators.bold}>
+          {title}
+        </Typography>
+      </Box>
+      <Box className={classes.boxIcons}>
         {
           info && (
             <CustomTooltip
-              className={classes.info}
+              className={classes.tooltip}
               title={info}
               placement="top"
             >
-              <InfoOutlinedIcon />
+              <InfoOutlinedIcon
+                className={classes.info}
+              />
             </CustomTooltip>
           )
         }
-      </Typography>
+      </Box>
       {
         items && items.map(({ label, field, unidad }, idx) => (
           // eslint-disable-next-line react/no-array-index-key

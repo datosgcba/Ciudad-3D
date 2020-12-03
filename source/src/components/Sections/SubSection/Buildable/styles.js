@@ -20,7 +20,16 @@ export default makeStyles((theme) => ({
     width: 100,
     marginTop: -10
   },
+  tooltip: {
+    marginLeft: theme.spacing(0.5),
+    float: 'left'
+  },
   info: {
-    padding: 0
+    height: '17px',
+    width: '17px'
+  },
+  title: {
+    float: 'left',
+    display: 'inline'
   }
 }))

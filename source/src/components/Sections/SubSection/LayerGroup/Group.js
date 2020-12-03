@@ -55,15 +55,21 @@ const GroupItem = ({
           variant="subtitle2"
         >
           {title}
-          <IconButton
-            className={classes.downloadIcon}
-            target="_blank"
-            href={link}
-          >
-            <CloudDownloadOutlinedIcon />
-          </IconButton>
           {
-            info && (
+            isVisible && (
+              <IconButton
+                className={classes.iconButton}
+                target="_blank"
+                href={link}
+              >
+                <CloudDownloadOutlinedIcon
+                  className={classes.downloadIcon}
+                />
+              </IconButton>
+            )
+          }
+          {
+            isVisible && info && (
               <CustomTooltip
                 className={classes.info}
                 title={info}
@@ -73,6 +79,7 @@ const GroupItem = ({
               </CustomTooltip>
             )
           }
+          )
         </Typography>
       </Box>
     </ListItem>

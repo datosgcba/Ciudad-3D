@@ -27,11 +27,15 @@ export default makeStyles((theme) => ({
   },
   info: {
     padding: 0,
-    float: 'right'
+    float: 'right',
+    height: '18px'
   },
-  downloadIcon: {
+  iconButton: {
     padding: 0,
     float: 'right',
-    marginLeft: theme.spacing(1)
+    marginLeft: theme.spacing(0.5)
+  },
+  downloadIcon: {
+    height: '18px'
   }
 }))

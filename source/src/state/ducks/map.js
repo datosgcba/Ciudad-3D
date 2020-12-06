@@ -8,7 +8,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 let mapGL = null
 
-const add = async (layer) => {
+const add = async (layer, map) => {
   if (layer.type && (layer.type === 'vectortile' || layer.type === 'custom')) {
     const options = { ...layer.options }
     options.id = layer.id
@@ -18,7 +18,6 @@ const add = async (layer) => {
       layer.displayPopup,
       layer.popupContent
     )
-    const { map } = mapGL
     // Se agrega de forma invisible ya que falta ser ordenada
     map.setLayoutProperty(layer.id, 'visibility', 'none')
     return newLayer
@@ -71,7 +70,7 @@ const toggle = async (layer, isVisible = null, index, groups) => {
     map.setLayoutProperty(layer.id, 'visibility', nextVisibility ? 'visible' : 'none')
     return reorderLayers(groups, layer.id, index)
   }
-  return add(layer)
+  return add(layer, map)
     .then(() => mapOnPromise(mapGL.map)('idle'))
     .then(() => reorderLayers(groups, layer.id, index))
     // Se visualiza la capa luego de ser ordenada

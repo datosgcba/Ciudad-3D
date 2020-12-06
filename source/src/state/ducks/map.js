@@ -12,12 +12,16 @@ const add = async (layer) => {
   if (layer.type && (layer.type === 'vectortile' || layer.type === 'custom')) {
     const options = { ...layer.options }
     options.id = layer.id
-    return mapGL.addVectorTileLayer(
+    const newLayer = mapGL.addVectorTileLayer(
       options,
       null,
       layer.displayPopup,
       layer.popupContent
     )
+    const { map } = mapGL
+    // Se agrega de forma invisible ya que falta ser ordenada
+    map.setLayoutProperty(layer.id, 'visibility', 'none')
+    return newLayer
   }
   return mapGL.addPublicLayer(layer.id, { clustering: true })
 }
@@ -68,9 +72,10 @@ const toggle = async (layer, isVisible = null, index, groups) => {
     return reorderLayers(groups, layer.id, index)
   }
   return add(layer)
-    // Orden de layers
     .then(() => mapOnPromise(mapGL.map)('idle'))
     .then(() => reorderLayers(groups, layer.id, index))
+    // Se visualiza la capa luego de ser ordenada
+    .then(() => map.setLayoutProperty(layer.id, 'visibility', 'visible'))
     // eslint-disable-next-line no-console
     .catch((error) => console.warn('toggle add layer - catch error:', error))
 }

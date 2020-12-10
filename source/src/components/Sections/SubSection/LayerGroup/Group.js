@@ -79,7 +79,6 @@ const GroupItem = ({
               </CustomTooltip>
             )
           }
-          )
         </Typography>
       </Box>
     </ListItem>

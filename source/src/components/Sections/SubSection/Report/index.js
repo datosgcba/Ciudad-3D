@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import {
   Typography, IconButton, CircularProgress, Card
 } from '@material-ui/core'
-import DownloadIcon from '@material-ui/icons/CloudDownload'
+import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined'
 import Error from '@material-ui/icons/Error'
 
 import ContainerBar from 'components/Sections/ContainerBar'
@@ -31,7 +31,7 @@ const Item = ({
               onClick={onClick}
               className={classes.icon}
             >
-              <DownloadIcon />
+              <CloudDownloadOutlinedIcon />
             </IconButton>
           )
         }

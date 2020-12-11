@@ -31,7 +31,7 @@ const HeaderSection = ({ categoryTitle, sectionTitle, info }) => {
       {
         sectionTitle && (
           <Box className={classes.subTitle}>
-            <Box className={sectionTitle === 'Datos Básicos' ? classes.sectionTitle : ''}>
+            <Box className={info ? classes.sectionTitle : ''}>
               <Typography variant="h6" className={decorators.bold}>
                 <IconButton
                   onClick={() => {

@@ -8,7 +8,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 let mapGL = null
 
-const add = async (layer, map) => {
+const add = async (layer) => {
   if (layer.type && (layer.type === 'vectortile' || layer.type === 'custom')) {
     const options = { ...layer.options }
     options.id = layer.id
@@ -18,8 +18,6 @@ const add = async (layer, map) => {
       layer.displayPopup,
       layer.popupContent
     )
-    // Se agrega de forma invisible ya que falta ser ordenada
-    map.setLayoutProperty(layer.id, 'visibility', 'none')
     return newLayer
   }
   return mapGL.addPublicLayer(layer.id, { clustering: true })
@@ -161,6 +159,7 @@ const selectedExplorerFilter = createAsyncThunk(
     await add(explorerLayer)
     await mapOnIdle
       .then(() => reorderLayers(getState().map.groups))
+      .then(() => mapGL.map.setLayoutProperty(explorerLayer.id, 'visibility', 'visible'))
       .catch(() => false)
     return 2
   }

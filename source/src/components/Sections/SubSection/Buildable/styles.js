@@ -31,5 +31,8 @@ export default makeStyles((theme) => ({
   title: {
     float: 'left',
     display: 'inline'
+  },
+  link: {
+    color: '#306BB3 !important'
   }
 }))

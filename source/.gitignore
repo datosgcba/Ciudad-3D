@@ -2,7 +2,7 @@
 /node_modules
 *.pyc
 /env
-.env.production
+.env
 .idea/
 .vscode/
 .yalc/

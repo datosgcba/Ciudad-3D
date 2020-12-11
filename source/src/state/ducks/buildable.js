@@ -77,7 +77,9 @@ const clickOnParcel = createAsyncThunk(
             plusvalia_sl: sl.toLocaleString('es-AR')
           },
           sup_max_edificable: supMax.toLocaleString('es-AR'),
-          sup_edificable_planta: supPlanta.toLocaleString('es-AR'),
+          // sup_edificable_planta: supPlanta.toLocaleString('es-AR'),
+          // Por el Ticket 2863 se ignora supPlanta y se deja en cero
+          sup_edificable_planta: 0,
           ...others
         })
       })

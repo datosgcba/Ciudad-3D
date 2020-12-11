@@ -50,7 +50,10 @@ const HeaderSection = ({ categoryTitle, sectionTitle }) => {
                 <Box className={classes.boxIcons}>
                   <CustomTooltip
                     className={classes.tooltip}
-                    title="Esta información es relevada por la AGIP. Si los datos plasmados no coinciden con la realidad, se solicita ratificarlos ante dicho organismo."
+                    title="Esta información es relevada por la DGROC y
+                    AGIP. Si los datos plasmados no coinciden
+                    con la realidad, se solicita ratificarlos ante
+                    dicho organismo."
                     placement="top"
                   >
                     <InfoOutlinedIcon

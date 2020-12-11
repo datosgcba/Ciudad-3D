@@ -766,7 +766,7 @@
         "color": "#E87167",
         "id": "explorer_layer",
         "type": "vectortile",
-        "displayPopup": true,
+        "displayPopup": false,
         "popupContent": "{alicuota}",
         "options": {
           "source": {
@@ -812,7 +812,7 @@
       "layers": {
         "id": "explorer_layer",
         "type": "vectortile",
-        "displayPopup": true,
+        "displayPopup": false,
         "popupContent": "{alicuota}",
         "options": {
           "source": {
@@ -1204,8 +1204,8 @@
           "color": "#fff5eb",
           "id": "codigourbanistico_uva",
           "type": "vectortile",
-          "displayPopup": true,
-          "popupContent": "{alicuota}",
+          "displayPopup": false,
+          "popupContent": "",
           "info": "Datos del Codigo Urbanistico ",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
@@ -1240,7 +1240,7 @@
           "color": "#e76056",
           "id": "codigourbanistico_mixtura",
           "type": "vectortile",
-          "displayPopup": true,
+          "displayPopup": false,
           "popupContent": "{uso_1}",
           "info": "Datos del Codigo Urbanistico ",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
@@ -1336,7 +1336,7 @@
           "color": "#2ebc98",
           "id": "restricciones_particularizada",
           "type": "vectortile",
-          "displayPopup": true,
+          "displayPopup": false,
           "popupContent": "{tipo}",
           "info": "",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
@@ -1364,7 +1364,7 @@
           "color": "#99c25f",
           "id": "restricciones_ensanche",
           "type": "vectortile",
-          "displayPopup": true,
+          "displayPopup": false,
           "popupContent": "{tipo}",
           "info": "",
           "link": "https://data.buenosaires.gob.ar/dataset/planchetas-codigo-planeamiento-urbano",
@@ -1466,7 +1466,7 @@
     {
       "title": "Superficie de parcela",
       "fill": "superficie_total",
-      "format": "m",
+      "format": "m²",
       "isNumber": true
     },
     {
@@ -1504,7 +1504,7 @@
   ],
   "buildable": [
     {
-      "title": "Superficie Máxima Edificable",
+      "title": "Área edificable en planta",
       "isArea": false,
       "items": [
         {
@@ -1515,12 +1515,12 @@
       "large": 6
     },
     {
-      "title": "Superficie Edificable en Planta (Pisada)",
+      "title": "Superficie construible de proyecto",
       "isArea": true,
       "items": [
         {
           "field": "sup_edificable_planta",
-          "unidad": " m"
+          "unidad": " m²"
         }
       ],
       "large": 6
@@ -1551,18 +1551,20 @@
       "title": "Plusvalía",
       "isArea": false,
       "isPlusvalia": true,
-      "info": "Inicialmente se muestra la plusvalía con la Superficie Edificable Máxima",
+      "info": " Se muestran los valores en UVA de plusvalía según los m2 de proyecto.",
+      "link": "http://www.bcra.gov.ar/publicacionesestadisticas/Principales_variables.asp",
+      "valueLink": "Valor UVA BCRA",
       "items": [
         {
-          "label": "Medianera: $ ",
+          "label": "Medianera: ",
           "field": "plusvalia.plusvalia_em"
         },
         {
-          "label": "Perímetro Libre: $ ",
+          "label": "Perímetro Libre: ",
           "field": "plusvalia.plusvalia_pl"
         },
         {
-          "label": "Perímetro Semi-Libre: $ ",
+          "label": "Perímetro Semi-Libre: ",
           "field": "plusvalia.plusvalia_sl"
         }
       ],
@@ -1790,14 +1792,14 @@
     {
       "id": "ensanche",
       "title": "Ensanche",
-      "subtitle": "La parcela se encuentra afectada a ensanche.",
-      "desc": "La parcela se encuentra afectada a ensanche con declaración de utilidad pública y sujeción a expropiación."
+      "subtitle": "La parcela se encuentra afectada a ensanche con declaración de utilidad pública y sujeción a expropiación.",
+      "desc": ""
     },
     {
       "id": "apertura",
       "title": "Apertura",
-      "subtitle": "La parcela se encuentra afectada a apertura de calle.",
-      "desc": "La parcela se encuentra afectada a apertura de calle con declaración de utilidad pública y sujeción a expropiación."
+      "subtitle": "La parcela se encuentra afectada a apertura de calle con declaración de utilidad pública y sujeción a expropiación.",
+      "desc": ""
     },
     {
       "id": "ci_digital",
@@ -1904,7 +1906,7 @@
     {
       "id": "plusvalía_no_calculable",
       "title": "Plusvalía no calculable",
-      "text": "La parcela contiene un Área Especial Individualizada.Se deberá consultar la norma específica."
+      "text": "La parcela contiene normativa especial. Se deberá consultar la norma específica."
     }
   ],
   "baseLayers": {

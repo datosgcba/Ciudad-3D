@@ -9,7 +9,8 @@ import {
   IconButton,
   ListItem,
   TextField,
-  InputAdornment
+  InputAdornment,
+  Link
 } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
@@ -36,7 +37,7 @@ const ItemValues = ({ children, unit }) => {
 }
 const Details = ({
   classes, title, data, items, isArea,
-  smp, decorators, isEditing, setIsEditing, info
+  smp, decorators, isEditing, setIsEditing, info, link, valueLink
 }) => {
   const dispatch = useDispatch()
   const [areaValue, setAreaValue] = useState(0)
@@ -120,6 +121,18 @@ const Details = ({
           </ListItem>
         ))
       }
+      {
+        link && (
+          <Link
+            className={classes.link}
+            href={link}
+            target="_blank"
+            rel="noopener"
+          >
+            {valueLink}
+          </Link>
+        )
+      }
     </>
   )
 }
@@ -144,7 +157,7 @@ const Buildable = () => {
       <Grid container className={classes.grid}>
         {
           getBuildable().map(({
-            title, items, isArea, isPlusvalia, large, info
+            title, items, isArea, isPlusvalia, large, info, link, valueLink
           }, index) => {
             const maxWidth = large === 6 ? 'small' : null
             return (
@@ -158,6 +171,8 @@ const Buildable = () => {
                     title={title}
                     items={items}
                     info={info}
+                    link={link}
+                    valueLink={valueLink}
                     data={isPlusvalia && isEditing ? plusvalia : data}
                     isArea={isArea}
                     isEditing={isEditing}
@@ -182,13 +197,17 @@ const Buildable = () => {
 
 Details.defaultProps = {
   isArea: false,
-  info: ''
+  info: '',
+  link: '',
+  valueLink: ''
 }
 Details.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   decorators: PropTypes.objectOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   info: PropTypes.string,
+  link: PropTypes.string,
+  valueLink: PropTypes.string,
   isEditing: PropTypes.bool.isRequired,
   setIsEditing: PropTypes.func.isRequired,
   data: PropTypes.objectOf(PropTypes.any).isRequired,

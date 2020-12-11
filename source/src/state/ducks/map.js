@@ -104,8 +104,11 @@ const loadLayers = createAsyncThunk(
         }
       })
     })
+
     const baseLayers = getBaseLayers()
-    return { explorerLayers, groups, baseLayers }
+    return {
+      explorerLayers, groups, baseLayers
+    }
   }
 )
 
@@ -282,14 +285,17 @@ const map = createSlice({
       }
     },
     [loadLayers.fulfilled]: (draftState, {
-      payload: { explorerLayers, groups, baseLayers: { sources, layers } }
+      payload: {
+        explorerLayers, groups, baseLayers: { sources, layers, light }
+      }
     }) => {
       draftState.groups = groups
       draftState.explorerLayers = explorerLayers
       draftState.defaultMapStyle = {
         version: 8,
         sources,
-        layers
+        layers,
+        light
       }
     }
   }

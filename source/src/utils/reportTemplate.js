@@ -1,11 +1,8 @@
 import { jsPDF } from 'jspdf'
 
 export default async (sections, fileName) => {
-  // Default export is a4 paper, portrait, using millimeters for units
+  // eslint-disable-next-line new-cap
   const doc = new jsPDF()
-  //  doc.addFont("Arimo-Regular.ttf", "Arimo", "normal");
-  //  doc.addFont("Arimo-Bold.ttf", "Arimo", "bold");
-  console.log(doc.getFontList())
 
   const fontName = 'helvetica'
 

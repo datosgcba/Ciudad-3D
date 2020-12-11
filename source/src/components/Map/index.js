@@ -80,7 +80,9 @@ const Map = ({ children }) => {
       .then((res) => res.json())
       .then((data) => {
         const { contenido, direccionNormalizada } = data
-        const featureInfoString = renderToString(<FeatureInfo contenido={contenido} direccionNormalizada={direccionNormalizada} />)
+        const featureInfoString = renderToString(
+          <FeatureInfo contenido={contenido} direccionNormalizada={direccionNormalizada} />
+        )
         mapInstance.addPopup(lngLat, featureInfoString)
       })
   }
@@ -100,7 +102,9 @@ const Map = ({ children }) => {
 
   useEffect(() => {
     dispatch(mapActions.loadLayers())
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
   // Se inicializa el mapa
   useEffect(() => {
     if (!isMapReady && defaultMapStyle !== null) {

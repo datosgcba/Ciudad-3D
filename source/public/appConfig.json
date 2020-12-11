@@ -2034,7 +2034,12 @@
           "line-width": 4
         }
       }
-    ]
+    ],
+    "light": {
+      "anchor": "viewport",
+      "intensity": 0.4,
+      "position": [1.15,210,30]
+    }
   },
   "parcelLayers": {
     "edif": {

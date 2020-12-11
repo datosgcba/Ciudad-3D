@@ -903,7 +903,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Línea Oficial",
+          "info": "Línea que deslinda el lote de la vía pública actual o la línea señalada por el Gobierno para la futura vía pública.",
           "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
@@ -930,7 +930,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Línea Interna de Basamento",
+          "info": "Traza del plano que limita la edificación permitida del basamento con el Centro Libre de Manzana.",
           "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
@@ -957,7 +957,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Línea de Frente Interno",
+          "info": "Es la línea coincidente con la proyección de los planos que determinan el Centro Libre de Manzana. Se sitúa paralelamente con respecto a cada línea oficial a una distancia igual a un cuarto (¼) de la medida entre los puntos medios de las líneas oficiales opuestas de la manzana.",
           "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
@@ -984,7 +984,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Banda Mínima Edificable",
+          "info": "En todos los casos se garantiza a las parcelas o lotes una banda edificable mínima de dieciséis (16) metros.",
           "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
@@ -1011,7 +1011,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Rivolta",
+          "info": "(Edificios de Esquina): Forma en que debe darse la transición de altura en el encuentro de dos normativas de altura en la esquina de la manzana.",
           "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
@@ -1038,7 +1038,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Volumen edificable",
+          "info": "Corresponde a la clasificación de las alturas de conformidad al Código Urbanístico.",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {
@@ -1074,13 +1074,13 @@
           "index": 3
         },
         {
-          "title": "Área edificable",
+          "title": "Superficie edificable en planta (pisada)",
           "color": "#fcda59",
           "id": "volumen_edif_basamento",
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Volumen edificable",
+          "info": "Es el área correspondiente a la banda edificable. ",
           "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
@@ -1119,7 +1119,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Tejido",
+          "info": "Volumetría correspondiente a la edificación existente que alcanzó al menos el 75% de la altura máxima permitida para su unidad de edificabilidad.",
           "link": "https://data.buenosaires.gob.ar/dataset/tejido-urbano",
           "options": {
             "source": {
@@ -1149,7 +1149,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Tejido",
+          "info": "Volumetría correspondiente a la edificación existente que  no alcanzó al menos el 75% de la altura máxima permitida para su unidad de edificabilidad.",
           "link": "https://data.buenosaires.gob.ar/dataset/tejido-urbano",
           "options": {
             "source": {
@@ -1179,7 +1179,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Manzana",
+          "info": "Superficie de terreno delimitada por vía pública y/o deslinde de corredor ferroviario y/o registrada como tal que cumple con alguna de las siguientes condiciones: tener 3, 5 o más de 5 lados, tener un lado curvo, tener una superficie inferior a cuatro mil metros cuadrados (4.000m2), o en caso de ser cuadrangular que la semisuma de dos de sus lados opuestos resulte inferior a sesenta y dos metros (62).",
           "link": "https://data.buenosaires.gob.ar/dataset/manzanas",
           "options": {
             "source": {
@@ -1206,7 +1206,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Datos del Codigo Urbanistico ",
+          "info": "Valor relativo del suelo según su localización, definido por manzana y medido en UVAs por metro cuadrado.",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {
@@ -1242,7 +1242,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "{uso_1}",
-          "info": "Datos del Codigo Urbanistico ",
+          "info": "Consiste en la posibilidad de aplicación de usos diversos pero compatibles dentro de una misma área.",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {
@@ -1283,7 +1283,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Capa con información de Riesgo Hidricos",
+          "info": "Corresponde a zonas con vulnerabilidad a las inundaciones.",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {
@@ -1366,7 +1366,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "{tipo}",
-          "info": "",
+          "info": "Ampliación o prolongación de una vía.",
           "link": "https://data.buenosaires.gob.ar/dataset/planchetas-codigo-planeamiento-urbano",
           "options": {
             "source": {
@@ -1394,7 +1394,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "",
+          "info": "Apertura de una vía.",
           "link": "https://data.buenosaires.gob.ar/dataset/planchetas-codigo-planeamiento-urbano",
           "options": {
             "source": {
@@ -1422,7 +1422,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "",
+          "info": "Área en la que se restringe la altura por estar afectada a corredores radioeléctricos.",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {

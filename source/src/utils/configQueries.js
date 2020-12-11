@@ -118,7 +118,7 @@ const getAlert = (idAlert) => config.alerts.find(({ id }) => id === idAlert)
 
 const getCategoryTitle = (idCategory) => config.categories.find(({ id }) => id === idCategory).title
 
-const getSectionTitle = (idTitle) => config.information.find(({ id }) => id === idTitle).title
+const getSectionInfo = (idTitle) => config.information.find(({ id }) => id === idTitle)
 
 const getParcel3D = () => config.parcelLayers.edif_3D
 
@@ -134,6 +134,6 @@ export {
   loadAppConfig, getCategories, getFullLayerConfig, getInformation, getBasicData, getLayersGroups,
   getLayersByLayersGroupId, getBuildable, getExplorer, getUsesTable, getWorksGroups,
   getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain,
-  getInspectionsGroups, getAlert, getCategoryTitle, getSectionTitle, getFullExplorerLayerConfig,
+  getInspectionsGroups, getAlert, getCategoryTitle, getSectionInfo, getFullExplorerLayerConfig,
   getParcel3D, getApiUrl, getParcelLayer, getBaseLayers, getUsesLink
 }

@@ -18,7 +18,7 @@ import { useDispatch } from 'react-redux'
 import useFontsStyles from 'theme/fontsDecorators'
 import useStyles from './headerSectionStyles'
 
-const HeaderSection = ({ categoryTitle, sectionTitle }) => {
+const HeaderSection = ({ categoryTitle, sectionTitle, info }) => {
   const classes = useStyles()
   const decorators = useFontsStyles()
   const dispatch = useDispatch()
@@ -46,14 +46,11 @@ const HeaderSection = ({ categoryTitle, sectionTitle }) => {
               </Typography>
             </Box>
             {
-              sectionTitle === 'Datos Básicos' && (
+              info && (
                 <Box className={classes.boxIcons}>
                   <CustomTooltip
                     className={classes.tooltip}
-                    title="Esta información es relevada por la DGROC y
-                    AGIP. Si los datos plasmados no coinciden
-                    con la realidad, se solicita ratificarlos ante
-                    dicho organismo."
+                    title={info}
                     placement="top"
                   >
                     <InfoOutlinedIcon
@@ -71,12 +68,14 @@ const HeaderSection = ({ categoryTitle, sectionTitle }) => {
 }
 
 HeaderSection.defaultProps = {
-  sectionTitle: ''
+  sectionTitle: '',
+  info: ''
 }
 
 HeaderSection.propTypes = {
   categoryTitle: PropTypes.string.isRequired,
-  sectionTitle: PropTypes.string
+  sectionTitle: PropTypes.string,
+  info: PropTypes.string
 }
 
 export default HeaderSection

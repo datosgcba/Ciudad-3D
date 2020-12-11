@@ -3,7 +3,7 @@ import React from 'react'
 import { Box, Paper } from '@material-ui/core'
 import Scrollbar from 'react-smooth-scrollbar'
 
-import { getCategoryTitle, getSectionTitle } from 'utils/configQueries'
+import { getCategoryTitle, getSectionInfo } from 'utils/configQueries'
 
 import { useSelector } from 'react-redux'
 
@@ -20,17 +20,16 @@ const ContainerBar = ({ children, type }) => {
   const categoryTitle = getCategoryTitle(sectionId[0])
 
   const lastIndex = sectionId.length - 1
-  let sectionTitle = null
-  if (lastIndex > 0) {
-    sectionTitle = getSectionTitle(sectionId[lastIndex])
-  }
+  const { title, info } = lastIndex > 0
+    ? getSectionInfo(sectionId[lastIndex]) : { title: null, info: null }
 
   return (
     <Box className={`${classes[type]} ${classes.container} ${classes.responsive}`}>
       <Paper elevation={2} className={classes.padding}>
         <HeaderSection
           categoryTitle={categoryTitle}
-          sectionTitle={sectionTitle}
+          sectionTitle={title}
+          info={info}
         />
       </Paper>
 

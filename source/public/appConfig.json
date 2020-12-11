@@ -857,7 +857,8 @@
       "id": "BasicData",
       "title": "Datos Básicos",
       "description": "Información sobre tu lote.",
-      "color": "#34485e"
+      "color": "#34485e",
+      "info": "Esta información es relevada por la DGROC y AGIP. Si los datos plasmados no coinciden con la realidad, se solicita ratificarlos ante dicho organismo."
     },
     {
       "id": "Buildable",

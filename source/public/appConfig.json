@@ -1849,7 +1849,7 @@
   "alerts": [
     {
       "id": "unidad_edificabilidad",
-      "title": "Unidad Edificable",
+      "title": "Parcela con más de una altura o Área Especial",
       "text": "Este lote tiene más de una unidad de edificabilidad y/o área especial individualizada. Requiere de un estudio específico."
     },
     {

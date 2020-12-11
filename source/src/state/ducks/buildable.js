@@ -91,28 +91,29 @@ const clickOnParcel = createAsyncThunk(
       ?.unidad_edificabilidad?.filter((valor) => valor > 0).length ?? 0
     if (deCount + udCount > 1) {
       dispatch(alertsActions.addId('unidad_edificabilidad'))
-    }
-    const uniEdif1 = data?.unidad_edificabilidad[0] ?? 0
-    switch (uniEdif1) {
-      case 38:
-        dispatch(alertsActions.addId('coredor_alto'))
-        break
-      case 31.2:
-        dispatch(alertsActions.addId('coredor_medios'))
-        break
-      case 22.8:
-        dispatch(alertsActions.addId('usaa'))
-        break
-      case 17.2:
-        dispatch(alertsActions.addId('usam'))
-        break
-      case 11.6:
-        dispatch(alertsActions.addId('usab2'))
-        break
-      case 9:
-        dispatch(alertsActions.addId('usab1'))
-        break
-      default:
+    } else {
+      const uniEdif1 = data?.unidad_edificabilidad[0] ?? 0
+      switch (uniEdif1) {
+        case 38:
+          dispatch(alertsActions.addId('coredor_alto'))
+          break
+        case 31.2:
+          dispatch(alertsActions.addId('coredor_medios'))
+          break
+        case 22.8:
+          dispatch(alertsActions.addId('usaa'))
+          break
+        case 17.2:
+          dispatch(alertsActions.addId('usam'))
+          break
+        case 11.6:
+          dispatch(alertsActions.addId('usab2'))
+          break
+        case 9:
+          dispatch(alertsActions.addId('usab1'))
+          break
+        default:
+      }
     }
     const afectacionesCount = Object.values(data?.afectaciones ?? {})
       .filter((valor) => valor > 0).length ?? 0

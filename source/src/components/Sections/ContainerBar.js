@@ -23,6 +23,9 @@ const ContainerBar = ({ children, type }) => {
   const { title, info } = lastIndex > 0
     ? getSectionInfo(sectionId[lastIndex]) : { title: null, info: null }
 
+  const maxHeight = sectionId.length > 1
+    ? '80vh' : '85vh'
+
   return (
     <Box className={`${classes[type]} ${classes.container} ${classes.responsive}`}>
       <Paper elevation={2} className={classes.padding}>
@@ -34,7 +37,7 @@ const ContainerBar = ({ children, type }) => {
       </Paper>
 
       <Scrollbar>
-        <Box className={`${classes.children} ${classes.padding}`}>
+        <Box className={classes.padding} style={{ maxHeight }}>
           <Alerts />
           {children}
         </Box>

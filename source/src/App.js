@@ -20,7 +20,7 @@ export default function App({ isAuthenticated }) {
   const isMapReady = useSelector((state) => state.map.isMapReady)
   const isModalOpen = useSelector((state) => state.tour.showModal)
   const firstView = JSON.parse(localStorage.getItem('isModalOpen')) || false
-  if (!firstView) {
+  if (!firstView && isMapReady) {
     dispatch(actions.isVisibleTour(true))
     localStorage.setItem('isModalOpen', 'true')
   }

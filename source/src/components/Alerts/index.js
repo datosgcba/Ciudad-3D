@@ -16,10 +16,11 @@ const Alerts = () => {
   const classes = useStyles()
   const decorators = useFontsStyles()
   const alertsIds = useSelector((state) => state.alerts.ids)
+  const sectionId = useSelector((state) => state.categories.sectionId)
 
   return (
     <>
-      {
+      { sectionId.length > 1 && (
         alertsIds.map((id) => (
           <Box key={id} className={classes.box}>
             {
@@ -34,7 +35,7 @@ const Alerts = () => {
             </Typography>
           </Box>
         ))
-      }
+      )}
     </>
   )
 }

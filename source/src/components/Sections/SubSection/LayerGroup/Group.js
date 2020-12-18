@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core'
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
+import ListAltIcon from '@material-ui/icons/ListAlt'
 import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -26,7 +27,7 @@ import { getLayersByLayersGroupId } from 'utils/configQueries'
 import useStyles from './groupStyle'
 
 const GroupItem = ({
-  idGroup, idLayer, title, color, classes, info, link
+  idGroup, idLayer, title, color, classes, info, link, reference
 }) => {
   const dispatch = useDispatch()
   const isVisible = useSelector((state) => state.map.groups[idGroup][idLayer].isVisible)
@@ -79,6 +80,30 @@ const GroupItem = ({
               </CustomTooltip>
             )
           }
+          {
+            isVisible && reference && (
+              <CustomTooltip
+                className={classes.reference}
+                title={
+                  reference.map(({ id, subTitle, color: c }) => (
+                    <ListItem key={id} className={classes.referenceItems}>
+                      <Box className={classes.color} style={{ backgroundColor: `${c}` }} />
+                      <Box className={classes.referenceTitle}>
+                        <Typography
+                          variant="subtitle2"
+                        >
+                          {subTitle}
+                        </Typography>
+                      </Box>
+                    </ListItem>
+                  ))
+                }
+                placement="top"
+              >
+                <ListAltIcon />
+              </CustomTooltip>
+            )
+          }
         </Typography>
       </Box>
     </ListItem>
@@ -90,7 +115,7 @@ const GroupItems = ({ idGroup, classes }) => {
   return (
     layersConfig
       .map(({
-        id, title, color, info, link
+        id, title, color, info, link, reference
       }) => (
         <GroupItem
           key={id}
@@ -101,6 +126,7 @@ const GroupItems = ({ idGroup, classes }) => {
           classes={classes}
           info={info}
           link={link}
+          reference={reference}
         />
       ))
   )
@@ -135,13 +161,15 @@ GroupItem.propTypes = {
   color: PropTypes.string.isRequired,
   info: PropTypes.string,
   link: PropTypes.string,
+  reference: PropTypes.arrayOf(PropTypes.object),
   classes: PropTypes.objectOf(makeStyles).isRequired
 }
 GroupItem.defaultProps = {
   idGroup: '',
   idLayer: '',
   info: '',
-  link: ''
+  link: '',
+  reference: ''
 }
 
 export default Group

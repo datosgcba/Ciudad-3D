@@ -16,7 +16,7 @@ export default makeStyles((theme) => ({
   color: {
     width: theme.spacing(1.5),
     height: theme.spacing(1.5),
-    marginRight: theme.spacing(0.5),
+    marginRight: theme.spacing(0.8),
     border: '1px solid grey'
   },
   divider: {
@@ -24,6 +24,11 @@ export default makeStyles((theme) => ({
   },
   boxIcons: {
     width: '100%'
+  },
+  reference: {
+    padding: 0,
+    float: 'right',
+    height: '18px'
   },
   info: {
     padding: 0,
@@ -37,5 +42,11 @@ export default makeStyles((theme) => ({
   },
   downloadIcon: {
     height: '18px'
+  },
+  referenceItems: {
+    padding: 5
+  },
+  referenceTitle: {
+    paddingTop: theme.spacing(0.1)
   }
 }))

@@ -1063,6 +1063,38 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
+          "reference": [
+            {
+              "id": "highCorridors",
+              "subTitle": "38 m",
+              "color": "#557e8d"
+            },
+            {
+              "id": "memdiumCorridors",
+              "subTitle": "31.2 m",
+              "color": "#85adb1"
+            },
+            {
+              "id": "highSustainability",
+              "subTitle": "22.8 m",
+              "color": "#ea9e82"
+            },
+            {
+              "id": "mediumSustainability",
+              "subTitle": "16.5 m",
+              "color": "#f5c294"
+            },
+            {
+              "id": "lowSustainability2",
+              "subTitle": "11.2 m",
+              "color": "#c9c2ab"
+            },
+            {
+              "id": "lowSustainability1",
+              "subTitle": "9 m",
+              "color": "#f0e6cc"
+            }
+          ],
           "info": "Corresponde a la clasificación de las alturas de conformidad al Código Urbanístico.",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
@@ -1248,6 +1280,28 @@
           "popupContent": "",
           "info": "Valor relativo del suelo según su localización, definido por manzana y medido en UVAs por metro cuadrado.",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
+          "reference": [
+            {
+              "id": "zone1",
+              "subTitle": "Zona 1",
+              "color": "#fff5eb"
+            },
+            {
+              "id": "zone2",
+              "subTitle": "Zona 2",
+              "color": "#fdbd83"
+            },
+            {
+              "id": "zone3",
+              "subTitle": "Zona 3",
+              "color": "#ee6510"
+            },
+            {
+              "id": "zone4",
+              "subTitle": "Zona 4",
+              "color": "#7f2704"
+            }
+          ],
           "options": {
             "source": {
               "type": "vector",
@@ -1271,7 +1325,6 @@
                 "0.18", "#fdbd83",
                 "0.27", "#ee6510",
                 "0.35", "#7f2704",
-                "0.39", "#00FF00",
                 "#fff"
               ],
               "fill-opacity": 0.8
@@ -1287,6 +1340,28 @@
           "popupContent": "{uso_1}",
           "info": "Consiste en la posibilidad de aplicación de usos diversos pero compatibles dentro de una misma área.",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
+          "reference": [
+            {
+              "id": "use1",
+              "subTitle": "Uso 1",
+              "color": "#3b0f6f"
+            },
+            {
+              "id": "use2",
+              "subTitle": "Uso 2",
+              "color": "#8c2981"
+            },
+            {
+              "id": "use3",
+              "subTitle": "Uso 3",
+              "color": "#de4969"
+            },
+            {
+              "id": "use4",
+              "subTitle": "Uso 4",
+              "color": "#fe9f6d"
+            }
+          ],
           "options": {
             "source": {
               "type": "vector",
@@ -1927,7 +2002,7 @@
     },
     {
       "id": "adyacente_catalogado",
-      "title": "Adyacente catalogado",
+      "title": "Adyacente a edificio catalogado",
       "text": "La altura podrá variar si: existe algún edificio adyacente Catalogado (Artículo 3.6 Anexo II) o la altura de los edificios linderos es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
     },
     {
@@ -1942,19 +2017,22 @@
     },
     {
       "id": "usaa",
-      "title": "USAA",
+      "title": "Unidades de Sustentabilidad de Altura Alta",
       "text": "Son las áreas de la Ciudad de menor altura que los corredores, con alturas adecuadas a los espacios públicos de calles y avenidas barriales. Altura Máxima: 22,8 metros. (Ver más en Art. 6.2.3). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
     },
     {
       "id": "usam",
+      "title": "Unidades de Sustentabilidad de Altura Media",
       "text": "Son las áreas de la ciudad con alturas de escala media, adecuadas para un carácter residencial mixto con cercanía a corredores y centros barriales. La edificabilidad máxima se corresponde con una Altura Máxima de dieciséis metros con cincuenta centímetros (17,20m). (Ver más en Art. 6.2.4) .La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
     },
     {
       "id": "usab2",
+      "title": "Unidades de Sustentabilidad de Altura Baja 2",
       "text": "Son las áreas de la ciudad de alturas menores, adecuadas para el desarrollo principalmente de actividades residenciales. La edificabilidad máxima se corresponde con una Altura Máxima de  once metros con veinte centímetros (11,20). (Ver más en Art. 6.2.5). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
     },
     {
       "id": "usab1",
+      "title": "Unidades de Sustentabilidad de Altura Baja 1",
       "text": "Son las áreas de la ciudad de alturas menores, adecuadas para el desarrollo principalmente de actividades residenciales.La edificabilidad máxima se corresponde con una Altura Máxima de nueve (9) metros. (Ver más en Art. 6.2.6). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
     },
     {

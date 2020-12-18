@@ -2099,17 +2099,47 @@
         "paint": {}
       },
       {
-        "id": "baseLayer_parcela",
+        "id": "baseLayer_parcelaZ0",
         "source": "capabase_3",
         "layout": {
           "visibility": "visible"
         },
-        "minzoom": 16,
+        "minzoom": 19,
         "source-layer": "default",
         "type": "line",
         "paint": {
           "line-color": "#c0bfc1",
           "line-width": 4
+        }
+      },
+      {
+        "id": "baseLayer_parcelaZ1",
+        "source": "capabase_3",
+        "layout": {
+          "visibility": "visible"
+        },
+        "minzoom": 17.56,
+        "maxzoom": 18.99,
+        "source-layer": "default",
+        "type": "line",
+        "paint": {
+          "line-color": "#c0bfc1",
+          "line-width": 2
+        }
+      },
+      {
+        "id": "baseLayer_parcelaZ2",
+        "source": "capabase_3",
+        "layout": {
+          "visibility": "visible"
+        },
+        "minzoom": 16,
+        "maxzoom": 17.55,
+        "source-layer": "default",
+        "type": "line",
+        "paint": {
+          "line-color": "#c0bfc1",
+          "line-width": 1
         }
       }
     ],

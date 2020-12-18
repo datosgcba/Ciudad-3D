@@ -138,7 +138,6 @@ const clickOnParcel = createAsyncThunk(
     if ((data?.fot?.total ?? 0) === 0) {
       dispatch(alertsActions.addId('plusvalía_no_calculable'))
     }
-    //
 
     return data
   }

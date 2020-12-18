@@ -52,8 +52,11 @@ const clickOnParcel = createAsyncThunk(
           fot_semi_libre: semi
         },
         plusvalia: {
+          // eslint-disable-next-line no-unused-vars
           plusvalia_em: em,
+          // eslint-disable-next-line no-unused-vars
           plusvalia_pl: pl,
+          // eslint-disable-next-line no-unused-vars
           plusvalia_sl: sl
         },
         sup_max_edificable: supMax,
@@ -72,9 +75,9 @@ const clickOnParcel = createAsyncThunk(
             total: medianera + perim + semi
           },
           plusvalia: {
-            plusvalia_em: em.toLocaleString('es-AR'),
-            plusvalia_pl: pl.toLocaleString('es-AR'),
-            plusvalia_sl: sl.toLocaleString('es-AR')
+            plusvalia_em: 0,
+            plusvalia_pl: 0,
+            plusvalia_sl: 0
           },
           sup_max_edificable: supMax.toLocaleString('es-AR'),
           // sup_edificable_planta: supPlanta.toLocaleString('es-AR'),

@@ -1003,7 +1003,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "En todos los casos se garantiza a las parcelas o lotes una banda edificable mínima de dieciséis (16) metros.",
+          "info": "La banda edificable es la la franja que queda comprendida desde la  línea oficial hasta la línea de frente interno o línea interna de basamento según corresponda.En todos los casos se garantiza a las parcelas o lotes una banda edificable mínima de dieciséis (16) metros.",
           "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
@@ -1033,7 +1033,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "(Edificios de Esquina): Forma en que debe darse la transición de altura en el encuentro de dos normativas de altura en la esquina de la manzana.",
+          "info": "Forma en que debe darse la transición de altura en el encuentro de dos normativas de altura en la esquina de la manzana.",
           "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
@@ -1359,7 +1359,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "",
+          "info": "Limitación de altura en función de la regulación aeronáutica.",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {
@@ -1390,7 +1390,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "{tipo}",
-          "info": "",
+          "info": "Es la línea de edificación a usar por una nueva edificación.",
           "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
           "options": {
             "source": {

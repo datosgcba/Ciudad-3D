@@ -43,7 +43,7 @@ const Details = ({
   const [areaValue, setAreaValue] = useState(0)
 
   const handleOnAreaChange = ({ target: { value } }) => {
-    const newAreaValue = Number.parseInt(value, 10)
+    const newAreaValue = value === '' ? 0 : Number.parseInt(value, 10)
     setAreaValue(
       Number.isNaN(newAreaValue)
         ? areaValue

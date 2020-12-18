@@ -2118,8 +2118,8 @@
         "layout": {
           "visibility": "visible"
         },
-        "minzoom": 17.56,
-        "maxzoom": 18.99,
+        "minzoom": 17.55,
+        "maxzoom": 19,
         "source-layer": "default",
         "type": "line",
         "paint": {

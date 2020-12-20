@@ -15,9 +15,15 @@ import App from './App'
 
 import * as serviceWorker from './serviceWorker'
 
-// const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+import ReactGA from 'react-ga'
+if(!process.env.NODE_ENV || process.env.NODE_ENV === 'production') {
+  ReactGA.initialize('UA-139328021-01')
+  ReactGA.pageview(window.location.pathname + window.location.search)
+} else {
+  console.warn(`Google Analytics was omitted.
+    process.env.NODE_ENV: ${process.env.NODE_ENV}`)
+}
 
-// const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)))
 render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>

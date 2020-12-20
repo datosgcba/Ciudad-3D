@@ -87,9 +87,10 @@ const clickOnParcel = createAsyncThunk(
         })
       })
 
+    const esp = data
+      ?.distrito_especial?.filter((distrito) => distrito.distrito_especifico.length > 0)
     // Condiciones de alertas
-    const deCount = data
-      ?.distrito_especial?.filter((distrito) => distrito.distrito_especifico > 0).length ?? 0
+    const deCount = esp.length ?? 0
     const udCount = data
       ?.unidad_edificabilidad?.filter((valor) => valor > 0).length ?? 0
     if (deCount + udCount > 1) {
@@ -116,6 +117,10 @@ const clickOnParcel = createAsyncThunk(
           dispatch(alertsActions.addId('usab1'))
           break
         default:
+      }
+      const agrupado = esp[0]?.distrito_agrupado ?? ''
+      if(agrupado !== '') {
+        dispatch(alertsActions.addId(`especial_${agrupado.replace(/[\/|\s]/, '_')}`))
       }
     }
     const afectacionesCount = Object.values(data?.afectaciones ?? {})

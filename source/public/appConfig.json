@@ -880,7 +880,7 @@
       "title": "Usos",
       "description": "Usos permitidos en tu lote.",
       "color": "#18b596",
-      "link": "https://www.buenosaires.gob.ar/desarrollourbano/codigo-urbanistico"
+      "link": "http://cdn2.buenosaires.gob.ar/desarrollourbano/codigo_urbanistico/0_codigo_urbanistico_31_3.pdf"
     },
     {
       "id": "Affectations",
@@ -1140,7 +1140,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Es el área correspondiente a la banda edificable. ",
+          "info": "La banda edificable es la la franja que queda comprendida desde la  línea oficial hasta la línea de frente interno o línea interna de basamento según corresponda.En todos los casos se garantiza a las parcelas o lotes una banda edificable mínima de dieciséis (16) metros.",
           "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
@@ -2049,6 +2049,66 @@
       "id": "plusvalía_no_calculable",
       "title": "Plusvalía no calculable",
       "text": "La parcela contiene normativa especial. Se deberá consultar la norma específica."
+    },
+    {
+      "id": "especial_APH",
+      "title": "Área de Protección Histórica",
+      "text": "Las Áreas de Protección Histórica son espacios o conjuntos urbanos que por sus valores histórico-culturales, arquitectónicos, singulares y/o ambientales constituyen ámbitos claramente identificables como referentes de nuestra diversidad cultural."
+    },
+    {
+      "id": "especial_AE",
+      "title": "Áreas de Arquitectura Especial",
+      "text": "Corresponden a ámbitos o recorridos urbanos que poseen una identidad reconocible por sus características físicas particulares, que son objeto de normas para obra nueva referidas a aspectos formales, proporciones y relaciones de los edificios con su entorno. Son áreas que por el carácter histórico-cultural, tradicional o ambiental que ya poseen, son objeto de un ordenamiento especial mediante normas particularizadas con el fin de preservar dicho carácter."
+    },
+    {
+      "id": "especial_U",
+      "title": "Urbanizaciones Determinadas",
+      "text": "Corresponden a áreas que, con la finalidad de establecer o preservar conjuntos urbanos de características diferenciales son objeto de regulación integral en materia de uso, ocupación, subdivisión del suelo y plástica urbana."
+    },
+    {
+      "id": "especial_UP_APH",
+      "title": "Urbanización Parque/Área de Protección Histórica",
+      "text": "Constituye una Unidad Ambiental y de Gestión, que abarca el área comprendida en el Código Urbanístico por el Área de Protección Histórica APH2, Parque Tres de Febrero. Este Parque integra el sistema de grandes parques y espacios verdes de carácter regional"
+    },
+    {
+      "id": "especial_UF",
+      "title": "Urbanizaciones Futuras",
+      "text": "Corresponden a terrenos de propiedad pública, aún no urbanizados u ocupados por instalaciones y usos pasibles de remoción futura, así como a las tierras destinadas a uso ferroviario, zona de vías, playas de maniobras, estaciones y terrenos aledaños a esos usos."
+    },
+    {
+      "id": "especial_UP",
+      "title": "Urbanización Parque",
+      "text": "Las Urbanizaciones Parque son áreas destinadas a espacios verdes y parquización de uso público.En estas Áreas el Gobierno de la Ciudad podrá autorizar obras de exclusiva utilidad pública que complementen y no alteren el carácter de las Urbanizaciones Parque."
+    },
+    {
+      "id": "especial_EE",
+      "title": "Equipamientos Especiales",
+      "text": "Los Equipamientos Especiales corresponden a la localización de usos singulares que, por sus características, requieren terrenos de gran superficie y/o normas individualizadas para cada actividad. Constituyen los grandes equipamientos a escala urbana y/o regional, y tal especificidad del uso condiciona su constructibilidad. Los usos de suelo son aquellos específicos de la actividad principal de que se trate y los usos complementarios y conexos necesarios para el desarrollo de dicha actividad."
+    },
+    {
+      "id": "especial_RUA",
+      "title": "Áreas de Renovación Urbana linderas a Autopistas",
+      "text": "Son zonas longitudinales linderas a las trazas de las Autopistas de las Vías Primarias del Sistema Vial de la Ciudad, destinadas a localizar usos comerciales y de equipamiento y servicios a escala vecinal, compatibles con el uso Vial de la Autopista y el uso dominante del Área de Mixtura de Usos del Suelo adyacente."
+    },
+    {
+      "id": "especial_Area_de_renovacion",
+      "title": "Área de renovación urbana Riachuelo",
+      "text": "El Área de Renovación Urbana Riachuelo es un ámbito de la Ciudad destinado a la transformación de la situación urbana existente y la recepción de Equivalencia de Capacidad Constructiva Transferible, para lo que se prevé su renovación por cambio de uso, de volumetría, su afectación a obras trascendentes de interés público, o por el desarrollo de Proyectos Integrales."
+    },
+    {
+      "id": "especial_ARE",
+      "title": "Área de Reserva Ecológica",
+      "text": "Corresponde a aquellas áreas que por su carácter ambiental, su configuración física y su dinámica evolutiva, dan lugar a la conformación de ambientes naturales donde las distintas especies de su flora y fauna puedan mantenerse a perpetuidad o incluso aumentar su densidad, ya sea mediante el mantenimiento de las condiciones naturales o con el aporte de un manejo científico."
+    },
+    {
+      "id": "especial_RU",
+      "title": "Renovación Urbana General",
+      "text": "Corresponde a zonas en las que existe la necesidad de una reestructuración integral: - Por obsolescencia de algunos de sus sectores o elementos; - Por afectación a obras trascendentes de interés público; - Por sus condiciones de deterioro en los aspectos físico–económico–social."
+    },
+    {
+      "id": "especial_P",
+      "title": "Área Puerto",
+      "text": "Corresponde a las áreas afectadas a la actividad portuaria. Sus usos son aquellos derivados de la actividad portuaria y los usos complementarios indispensables para el desarrollo de dicha actividad."
     }
   ],
   "baseLayers": {

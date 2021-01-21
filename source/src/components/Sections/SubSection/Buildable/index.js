@@ -43,11 +43,21 @@ const Details = ({
   const [areaValue, setAreaValue] = useState(0)
 
   const handleOnAreaChange = ({ target: { value } }) => {
-    const newAreaValue = value === '' ? 0 : Number.parseInt(value, 10)
+    const isFloat = value[value.length - 1] === ','
+      ?? true
+    const isEmpty = value === '' ?? true
+
+    // eslint-disable-next-line no-nested-ternary
+    const newAreaValue = isFloat
+      ? value
+      : isEmpty
+        ? 0
+        : Number.parseFloat(value.replace(/,/g, '.'))
+
     setAreaValue(
       Number.isNaN(newAreaValue)
         ? areaValue
-        : Math.abs(newAreaValue)
+        : newAreaValue
     )
   }
 
@@ -162,7 +172,7 @@ const Buildable = () => {
             const maxWidth = large === 6 ? 'small' : null
             return (
               smp && !isLoading && (
-                <Grid item xs={large} className={`${classes.gridItem} ${classes[maxWidth]} `}>
+                <Grid item xs={12} className={`${classes.gridItem} ${classes[maxWidth]} `}>
                   <Details
                     // eslint-disable-next-line react/no-array-index-key
                     key={index}

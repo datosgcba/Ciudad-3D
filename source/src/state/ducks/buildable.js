@@ -118,7 +118,7 @@ const clickOnParcel = createAsyncThunk(
           break
         default:
       }
-      const agrupado = esp[0]?.distrito_agrupado ?? ''
+      const agrupado = esp[0]?.distrito_agrupado?.toUpperCase() ?? ''
       if(agrupado !== '') {
         dispatch(alertsActions.addId(`especial_${agrupado.replace(/[\/|\s]/, '_')}`))
       }
@@ -133,11 +133,11 @@ const clickOnParcel = createAsyncThunk(
     }
     if (data.parcelas_linderas?.aph_linderas
       && ['cautelar', 'integral', 'especial', 'estructural']
-        .includes(data.catalogacion?.proteccion)
+        .includes(data.catalogacion?.proteccion?.toLowerCase())
     ) {
       dispatch(alertsActions.addId('adyacente_catalogado'))
     }
-    if (['cautelar', 'integral', 'especial', 'estructural'].includes(data.catalogacion?.proteccion)) {
+    if (['cautelar', 'integral', 'especial', 'estructural'].includes(data.catalogacion?.proteccion?.toLowerCase())) {
       dispatch(alertsActions.addId('catalogado'))
     }
     if ((data?.fot?.total ?? 0) === 0) {

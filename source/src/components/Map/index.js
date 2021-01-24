@@ -12,7 +12,6 @@ import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 import Seeker from 'components/Seeker/Seeker'
 
 import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
-// import LogoutButton from 'components/LogoutButton/LogoutButton'
 
 import imgCapaBasePrincipal from 'img/capabase_1.png'
 import imgCapaBaseSecundaria from 'img/capabase_2.png'
@@ -20,29 +19,6 @@ import imgCapaBaseSecundaria from 'img/capabase_2.png'
 import PropTypes from 'prop-types'
 import useStyles from './styles'
 
-// TODO: !Revisar el tema del token
-/*
-Por ahora para usar ingresar obtener el token y setear en local storage
-curl 'http://seguridad.eastus2.cloudapp.azure.com/rest-auth/login/' \
-  -H 'Content-Type: application/json;charset=UTF-8' \
-  --data-binary '{"username":"admin","password":"adminusig1234"}'
-
-El token setearlo así. Pero ahora siempre retorna el mismo valor
-localStorage.setItem("token", '7b3ea1f12563ee390a13ab885884e4590cf6de26')
-
-Iniciar el navegador sin cors
-osx:
-open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
---args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
-
-linux:
-google-chrome --disable-web-security
-
-windows:
-"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
---disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
-
-*/
 const transformRequest = (url, resourceType) => {
   const token = '7b3ea1f12563ee390a13ab885884e4590cf6de26'
   if (resourceType === 'Tile' && url.endsWith('pbf')) {

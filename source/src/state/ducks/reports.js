@@ -11,12 +11,11 @@ import { getAffectationsTable } from 'utils/configQueries'
 const getData = createAsyncThunk(
   'report/getData',
   async (smp) => {
-    const { direccion } = await fetch(getParcelBySmp(smp))
+    const { direccion, superficie_total } = await fetch(getParcelBySmp(smp))
       .then((response) => response.json())
     const {
       unidad_edificabilidad,
       sup_edificable_planta,
-      sup_max_edificable,
       altura_max,
       altura_max_plano_limite,
       distrito_especial,
@@ -43,6 +42,7 @@ const getData = createAsyncThunk(
       .join(', ')
     console.log('usos:', usos, usosText)
 */
+    console.log('tipica', tipica)
     const afectaciones = await fetch(getAffectations(smp))
       .then((response) => response.json())
     const afectacionesFiltrado = Object.entries(afectaciones).filter(([, value]) => value
@@ -65,6 +65,9 @@ const getData = createAsyncThunk(
           }, {
             name: 'Dirección',
             value: direccion
+          }, {
+            name: 'Superficie de Parcela',
+            value: `${Number.parseFloat(superficie_total).toLocaleString('es-AR')} m²`
           }
         ]
       }, {
@@ -79,9 +82,6 @@ const getData = createAsyncThunk(
           }, {
             name: 'Superficie Edificable en Planta (Pisada)',
             value: sup_edificable_planta.toLocaleString('es-AR')
-          }, {
-            name: 'Superficie Máxima Edificable',
-            value: sup_max_edificable.toLocaleString('es-AR')
           }
         ]
       }, {
@@ -137,7 +137,7 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Tipo de manzana',
-            value: tipica?.length > 0 ? 'Atípica' : ''
+            value: tipica === 'T' ? 'Típica' : 'Atípica'
           }
         ]
       }, {

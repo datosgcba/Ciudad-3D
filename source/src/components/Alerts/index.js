@@ -21,20 +21,23 @@ const Alerts = () => {
   return (
     <>
       { sectionId.length > 1 && (
-        alertsIds.map((id) => (
-          <Box key={id} className={classes.box}>
-            {
-              getAlert(id).title && (
-                <Typography className={decorators.bold}>
-                  {getAlert(id).title}
-                </Typography>
-              )
-            }
-            <Typography>
-              {getAlert(id).text}
-            </Typography>
-          </Box>
-        ))
+        alertsIds
+          .map(getAlert)
+          .filter((alertData) => alertData)
+          .map(({ id, title, text}) => (
+            <Box key={id} className={classes.box}>
+              {
+                title && (
+                  <Typography className={decorators.bold}>
+                    {title}
+                  </Typography>
+                )
+              }
+              <Typography>
+                {text}
+              </Typography>
+            </Box>
+          ))
       )}
     </>
   )

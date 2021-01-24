@@ -2240,5 +2240,12 @@
       }
     }
   },
+  "camera": {
+    "lat": -34.616858,
+    "lng": -58.445155,
+    "zoom": 15.58,
+    "pitch": 0,
+    "bearing": 0
+  },
   "urlAPI": "https://epok.buenosaires.gob.ar"
 }

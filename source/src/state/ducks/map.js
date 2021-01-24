@@ -1,6 +1,6 @@
 import {
   loadAppConfig, getLayersGroups, getLayersByLayersGroupId, getFullLayerConfig,
-  getExplorerFilters, getFullExplorerLayerConfig, getBaseLayers
+  getExplorerFilters, getFullExplorerLayerConfig, getBaseLayers, getCamera
 } from 'utils/configQueries'
 import { mapOnPromise } from 'utils/mapboxUtils'
 
@@ -211,13 +211,7 @@ const map = createSlice({
   initialState: {
     isMapReady: false,
     defaultMapStyle: null,
-    camera: {
-      lat: -34.574168,
-      lng: -58.484989,
-      zoom: 15.58,
-      pitch: 0,
-      bearing: 0
-    },
+    camera: null,
     selectedCoords: null,
     groups: {},
     explorerLayers: {}
@@ -291,6 +285,7 @@ const map = createSlice({
     }) => {
       draftState.groups = groups
       draftState.explorerLayers = explorerLayers
+      draftState.camera = getCamera() ?? 'hola'
       draftState.defaultMapStyle = {
         version: 8,
         sources,

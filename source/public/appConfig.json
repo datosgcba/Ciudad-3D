@@ -75,11 +75,11 @@
             },
             {
               "id": "lowSustainability2",
-              "subTitle": "11.2 m",
+              "subTitle": "11.6 m",
               "details": "Unidades de Sustentabilidad de Altura Baja 2",
               "color": "#c9c2ab",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "11.2"]
+              "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "11.6"]
             },
             {
               "id": "lowSustainability1",
@@ -737,7 +737,7 @@
               "31.2_","#92aaaf",
               "22.8_","#d6a083",
               "16.5_","#e6c294",
-              "11.2_","#c6c294",
+              "11.6_","#c6c294",
               "9_","#ede7ce",
               "0_AE","#ccadad",
               "0_APH","#f9bcb4",
@@ -1086,7 +1086,7 @@
             },
             {
               "id": "lowSustainability2",
-              "subTitle": "11.2 m",
+              "subTitle": "11.6 m",
               "color": "#c9c2ab"
             },
             {

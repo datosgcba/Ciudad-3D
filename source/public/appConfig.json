@@ -1003,7 +1003,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "La banda edificable es la la franja que queda comprendida desde la  línea oficial hasta la línea de frente interno o línea interna de basamento según corresponda.En todos los casos se garantiza a las parcelas o lotes una banda edificable mínima de dieciséis (16) metros.",
+          "info": "La banda edificable es la franja que queda comprendida desde la  línea oficial hasta la línea de frente interno o línea interna de basamento según corresponda y determina el área donde puede edificarse dentro de un lote. En todos los casos se garantiza a las parcelas o lotes una banda edificable mínima de dieciséis (16) metros.",
           "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {
@@ -1140,7 +1140,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "La banda edificable es la la franja que queda comprendida desde la  línea oficial hasta la línea de frente interno o línea interna de basamento según corresponda.En todos los casos se garantiza a las parcelas o lotes una banda edificable mínima de dieciséis (16) metros.",
+          "info": "Es el área correspondiente a la banda edificable. La banda edificable es la franja que queda comprendida desde la  línea oficial hasta la línea de frente interno o línea interna de basamento según corresponda y determina el área donde puede edificarse dentro de un lote.",
           "link": "https://data.buenosaires.gob.ar/",
           "options": {
             "source": {

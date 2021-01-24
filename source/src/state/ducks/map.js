@@ -285,7 +285,7 @@ const map = createSlice({
     }) => {
       draftState.groups = groups
       draftState.explorerLayers = explorerLayers
-      draftState.camera = getCamera() ?? 'hola'
+      draftState.camera = getCamera()
       draftState.defaultMapStyle = {
         version: 8,
         sources,

@@ -67,11 +67,11 @@
             },
             {
               "id": "mediumSustainability",
-              "subTitle": "16.5 m",
+              "subTitle": "17.2 m",
               "details": "Unidades de Sustentabilidad de Altura Media",
               "color": "#f5c294",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "16.5"]
+              "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "17.2"]
             },
             {
               "id": "lowSustainability2",
@@ -736,7 +736,7 @@
               "38_","#667d8a",
               "31.2_","#92aaaf",
               "22.8_","#d6a083",
-              "16.5_","#e6c294",
+              "17.2_","#e6c294",
               "11.6_","#c6c294",
               "9_","#ede7ce",
               "0_AE","#ccadad",
@@ -1081,7 +1081,7 @@
             },
             {
               "id": "mediumSustainability",
-              "subTitle": "16.5 m",
+              "subTitle": "17.2 m",
               "color": "#f5c294"
             },
             {
@@ -1985,6 +1985,11 @@
     }
   ],
   "alerts": [
+    {
+      "id": "plusvalia_en_cero",
+      "title": "No se debe abonar plusvalía",
+      "text": ""
+    },
     {
       "id": "unidad_edificabilidad",
       "title": "Parcela con más de una altura o Área Especial",

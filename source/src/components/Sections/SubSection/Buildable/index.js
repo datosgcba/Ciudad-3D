@@ -39,6 +39,7 @@ const Details = ({
   classes, title, data, items, isArea,
   smp, decorators, isEditing, setIsEditing, info, link, valueLink
 }) => {
+  console.log(data, items)
   const dispatch = useDispatch()
   const [areaValue, setAreaValue] = useState(0)
 
@@ -155,8 +156,7 @@ const Buildable = () => {
   const smp = useSelector((state) => state.parcel.smp)
   const isLoading = useSelector((state) => state.buildable.isLoading)
   const [isEditing, setIsEditing] = useState(false)
-  const plusvalia = useSelector((state) => state.buildable.plusvalia)
-
+  const { isEditable, ...plusvalia } = useSelector((state) => state.buildable.plusvalia)
   useEffect(() => {
     dispatch(buildableActions.clickOnParcel(smp))
   }, [dispatch, smp])
@@ -183,8 +183,8 @@ const Buildable = () => {
                     info={info}
                     link={link}
                     valueLink={valueLink}
-                    data={isPlusvalia && isEditing ? plusvalia : data}
-                    isArea={isArea}
+                    data={isPlusvalia && isEditing ? { plusvalia: plusvalia } : data}
+                    isArea={isArea && isEditable}
                     isEditing={isEditing}
                     setIsEditing={setIsEditing}
                     smp={smp}

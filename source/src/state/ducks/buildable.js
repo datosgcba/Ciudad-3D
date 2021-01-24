@@ -9,11 +9,9 @@ const areaChanged = createAsyncThunk(
     const area = Number.parseFloat(text)
     if (Number.isNaN(area) || !smp || smp.length === 0) {
       return {
-        plusvalia: {
-          plusvalia_em: '-',
-          plusvalia_pl: '-',
-          plusvalia_sl: '-'
-        }
+        plusvalia_em: '-',
+        plusvalia_pl: '-',
+        plusvalia_sl: '-'
       }
     }
     const url = getPlusvalia(smp, area)
@@ -28,9 +26,7 @@ const areaChanged = createAsyncThunk(
         plusvalia_pl: (pl === 0 ? 0 : pl.toLocaleString('es-AR')),
         plusvalia_sl: (sl === 0 ? 0 : sl.toLocaleString('es-AR'))
       }))
-    return {
-      plusvalia: data
-    }
+    return data
   }
 )
 
@@ -52,11 +48,8 @@ const clickOnParcel = createAsyncThunk(
           fot_semi_libre: semi
         },
         plusvalia: {
-          // eslint-disable-next-line no-unused-vars
           plusvalia_em: em,
-          // eslint-disable-next-line no-unused-vars
           plusvalia_pl: pl,
-          // eslint-disable-next-line no-unused-vars
           plusvalia_sl: sl
         },
         sup_max_edificable: supMax,
@@ -77,7 +70,8 @@ const clickOnParcel = createAsyncThunk(
           plusvalia: {
             plusvalia_em: 0,
             plusvalia_pl: 0,
-            plusvalia_sl: 0
+            plusvalia_sl: 0,
+            isEditable: (em ?? 0) + (pl ?? 0) + (sl ?? 0) > 0
           },
           sup_max_edificable: supMax.toLocaleString('es-AR'),
           // sup_edificable_planta: supPlanta.toLocaleString('es-AR'),
@@ -143,6 +137,9 @@ const clickOnParcel = createAsyncThunk(
     if ((data?.fot?.total ?? 0) === 0) {
       dispatch(alertsActions.addId('plusvalía_no_calculable'))
     }
+    if (!data?.plusvalia?.isEditable) {
+      dispatch(alertsActions.addId('plusvalia_en_cero'))
+    }
 
     return data
   }
@@ -158,8 +155,10 @@ const buildable = createSlice({
     isSelected: false
   },
   extraReducers: {
-    [areaChanged.fulfilled]: (draftState, action) => {
-      draftState.plusvalia = action.payload
+    [areaChanged.fulfilled]: (draftState, { payload: {  plusvalia_em, plusvalia_pl, plusvalia_sl} }) => {
+      draftState.plusvalia.plusvalia_em = plusvalia_em
+      draftState.plusvalia.plusvalia_pl = plusvalia_pl
+      draftState.plusvalia.plusvalia_sl = plusvalia_sl
       draftState.isLoading = false
     },
     [clickOnParcel.pending]: (draftState) => {
@@ -167,8 +166,10 @@ const buildable = createSlice({
       draftState.data = {}
       draftState.isSelected = false
     },
-    [clickOnParcel.fulfilled]: (draftState, action) => {
-      draftState.data = action.payload
+    [clickOnParcel.fulfilled]: (draftState, { payload: { plusvalia, ...data } }) => {
+      draftState.data = data
+      draftState.data.plusvalia = plusvalia
+      draftState.plusvalia = plusvalia
       draftState.isLoading = false
       draftState.isSelected = true
     },

@@ -9,9 +9,11 @@ const areaChanged = createAsyncThunk(
     const area = Number.parseFloat(text)
     if (Number.isNaN(area) || !smp || smp.length === 0) {
       return {
-        plusvalia_em: '-',
-        plusvalia_pl: '-',
-        plusvalia_sl: '-'
+        plusvalia: {
+          plusvalia_em: '-',
+          plusvalia_pl: '-',
+          plusvalia_sl: '-'
+        }
       }
     }
     const url = getPlusvalia(smp, area)
@@ -26,7 +28,9 @@ const areaChanged = createAsyncThunk(
         plusvalia_pl: (pl === 0 ? 0 : pl.toLocaleString('es-AR')),
         plusvalia_sl: (sl === 0 ? 0 : sl.toLocaleString('es-AR'))
       }))
-    return data
+    return {
+      plusvalia: data
+    }
   }
 )
 
@@ -48,8 +52,11 @@ const clickOnParcel = createAsyncThunk(
           fot_semi_libre: semi
         },
         plusvalia: {
+          // eslint-disable-next-line no-unused-vars
           plusvalia_em: em,
+          // eslint-disable-next-line no-unused-vars
           plusvalia_pl: pl,
+          // eslint-disable-next-line no-unused-vars
           plusvalia_sl: sl
         },
         sup_max_edificable: supMax,
@@ -70,13 +77,12 @@ const clickOnParcel = createAsyncThunk(
           plusvalia: {
             plusvalia_em: 0,
             plusvalia_pl: 0,
-            plusvalia_sl: 0,
-            isEditable: (em ?? 0) + (pl ?? 0) + (sl ?? 0) > 0
+            plusvalia_sl: 0
           },
           sup_max_edificable: supMax.toLocaleString('es-AR'),
-          // sup_edificable_planta: supPlanta.toLocaleString('es-AR'),
+          sup_edificable_planta: supPlanta.toLocaleString('es-AR'),
           // Por el Ticket 2863 se ignora supPlanta y se deja en cero
-          sup_edificable_planta: 0,
+          // sup_edificable_planta: 0,
           ...others
         })
       })
@@ -113,11 +119,8 @@ const clickOnParcel = createAsyncThunk(
         default:
       }
       const agrupado = esp[0]?.distrito_agrupado?.toUpperCase() ?? ''
-      if(agrupado !== '') {
-        const id = `especial_${agrupado.replace(/[\/|\s]/, '_')}`
-        dispatch(alertsActions.addId(id))
-        const titleSuffix = esp[0]?.distrito_especifico?.trim()
-        dispatch(alertsActions.addExtraData({ id, titleSuffix }))
+      if (agrupado !== '') {
+        dispatch(alertsActions.addId(`especial_${agrupado.replace(/[\/|\s]/, '_')}`))
       }
     }
     const afectacionesCount = Object.values(data?.afectaciones ?? {})
@@ -140,9 +143,6 @@ const clickOnParcel = createAsyncThunk(
     if ((data?.fot?.total ?? 0) === 0) {
       dispatch(alertsActions.addId('plusvalía_no_calculable'))
     }
-    if (!data?.plusvalia?.isEditable) {
-      dispatch(alertsActions.addId('plusvalia_en_cero'))
-    }
 
     return data
   }
@@ -158,10 +158,8 @@ const buildable = createSlice({
     isSelected: false
   },
   extraReducers: {
-    [areaChanged.fulfilled]: (draftState, { payload: {  plusvalia_em, plusvalia_pl, plusvalia_sl} }) => {
-      draftState.plusvalia.plusvalia_em = plusvalia_em
-      draftState.plusvalia.plusvalia_pl = plusvalia_pl
-      draftState.plusvalia.plusvalia_sl = plusvalia_sl
+    [areaChanged.fulfilled]: (draftState, action) => {
+      draftState.plusvalia = action.payload
       draftState.isLoading = false
     },
     [clickOnParcel.pending]: (draftState) => {
@@ -169,10 +167,8 @@ const buildable = createSlice({
       draftState.data = {}
       draftState.isSelected = false
     },
-    [clickOnParcel.fulfilled]: (draftState, { payload: { plusvalia, ...data } }) => {
-      draftState.data = data
-      draftState.data.plusvalia = plusvalia
-      draftState.plusvalia = plusvalia
+    [clickOnParcel.fulfilled]: (draftState, action) => {
+      draftState.data = action.payload
       draftState.isLoading = false
       draftState.isSelected = true
     },

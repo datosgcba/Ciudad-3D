@@ -13,7 +13,6 @@ import useFontsStyles from 'theme/fontsDecorators'
 import useStyles from './styles'
 
 const Alert = ({ id, title, text}) => {
-
   const classes = useStyles()
   const decorators = useFontsStyles()
   const { titleSuffix } = useSelector((state) => state.alerts.extraData[id]) ?? {}
@@ -23,7 +22,8 @@ const Alert = ({ id, title, text}) => {
       {
         title && (
           <Typography className={decorators.bold}>
-            {title}{titleSuffix?.length ? ` - ${titleSuffix}` : ''} 
+            {title}
+            {titleSuffix?.length ? ` - ${titleSuffix}` : ''}
           </Typography>
         )
       }
@@ -47,8 +47,8 @@ const Alerts = () => {
         alertsIds
           .map(getAlert)
           .filter((alertData) => alertData)
-          .map(({ id, title, text}) => (
-            <Alert id={id} title={title} text={text} />
+          .map(({ id, title, text }) => (
+            <Alert key={id} id={id} title={title} text={text} />
           ))
       )}
     </>

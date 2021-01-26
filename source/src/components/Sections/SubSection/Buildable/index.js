@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react'
 
 import PropTypes from 'prop-types'
@@ -39,7 +40,6 @@ const Details = ({
   classes, title, data, items, isArea,
   smp, decorators, isEditing, setIsEditing, info, link, valueLink
 }) => {
-  console.log(data, items)
   const dispatch = useDispatch()
   const [areaValue, setAreaValue] = useState(0)
 
@@ -92,7 +92,6 @@ const Details = ({
       </Box>
       {
         items && items.map(({ label, field, unidad }, idx) => (
-          // eslint-disable-next-line react/no-array-index-key
           <ListItem key={idx} className={classes.listado}>
             {label}
             {
@@ -156,7 +155,8 @@ const Buildable = () => {
   const smp = useSelector((state) => state.parcel.smp)
   const isLoading = useSelector((state) => state.buildable.isLoading)
   const [isEditing, setIsEditing] = useState(false)
-  const { isEditable, ...plusvalia } = useSelector((state) => state.buildable.plusvalia)
+  const plusvalia = useSelector((state) => state.buildable.plusvalia)
+
   useEffect(() => {
     dispatch(buildableActions.clickOnParcel(smp))
   }, [dispatch, smp])
@@ -172,7 +172,7 @@ const Buildable = () => {
             const maxWidth = large === 6 ? 'small' : null
             return (
               smp && !isLoading && (
-                <Grid item xs={12} className={`${classes.gridItem} ${classes[maxWidth]} `}>
+                <Grid key={index} item xs={12} className={`${classes.gridItem} ${classes[maxWidth]} `}>
                   <Details
                     // eslint-disable-next-line react/no-array-index-key
                     key={index}
@@ -183,8 +183,8 @@ const Buildable = () => {
                     info={info}
                     link={link}
                     valueLink={valueLink}
-                    data={isPlusvalia && isEditing ? { plusvalia: plusvalia } : data}
-                    isArea={isArea && isEditable}
+                    data={isPlusvalia && isEditing ? plusvalia : data}
+                    isArea={isArea}
                     isEditing={isEditing}
                     setIsEditing={setIsEditing}
                     smp={smp}

@@ -2504,7 +2504,7 @@
       "isArea": true,
       "items": [
         {
-          "field": "sup_edificable_planta",
+          "field": "",
           "unidad": " m²"
         }
       ],

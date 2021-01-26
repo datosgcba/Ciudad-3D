@@ -47,7 +47,17 @@
               "details": "Corredores Altos",
               "color": "#557e8d",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "38"]
+              "filter": [
+                "==",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "uni_edif_1"
+                  ]
+                ],
+                "38"
+              ]
             },
             {
               "id": "memdiumCorridors",
@@ -55,7 +65,17 @@
               "details": "Corredores Medios",
               "color": "#85adb1",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "31.2"]
+              "filter": [
+                "==",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "uni_edif_1"
+                  ]
+                ],
+                "31.2"
+              ]
             },
             {
               "id": "highSustainability",
@@ -63,7 +83,17 @@
               "details": "Unidades de Sustentabilidad de Altura Alta",
               "color": "#ea9e82",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "22.8"]
+              "filter": [
+                "==",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "uni_edif_1"
+                  ]
+                ],
+                "22.8"
+              ]
             },
             {
               "id": "mediumSustainability",
@@ -71,7 +101,17 @@
               "details": "Unidades de Sustentabilidad de Altura Media",
               "color": "#f5c294",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "17.2"]
+              "filter": [
+                "==",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "uni_edif_1"
+                  ]
+                ],
+                "17.2"
+              ]
             },
             {
               "id": "lowSustainability2",
@@ -79,7 +119,17 @@
               "details": "Unidades de Sustentabilidad de Altura Baja 2",
               "color": "#c9c2ab",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "11.6"]
+              "filter": [
+                "==",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "uni_edif_1"
+                  ]
+                ],
+                "11.6"
+              ]
             },
             {
               "id": "lowSustainability1",
@@ -87,7 +137,17 @@
               "details": "Unidades de Sustentabilidad de Altura Baja 1",
               "color": "#f0e6cc",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["to-string", ["get", "uni_edif_1"]], "9"]
+              "filter": [
+                "==",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "uni_edif_1"
+                  ]
+                ],
+                "9"
+              ]
             }
           ]
         },
@@ -101,7 +161,14 @@
               "details": "Área de Arquitectura Especial",
               "color": "#CCADAD",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "AE"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "AE"
+              ]
             },
             {
               "id": "aph",
@@ -109,7 +176,14 @@
               "details": "Área de Arqquitectura Especial",
               "color": "#F9BCB4",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "APH"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "APH"
+              ]
             },
             {
               "id": "are",
@@ -117,7 +191,14 @@
               "details": "Área de Reserva Ecológica",
               "color": "#BCC489",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "ARE"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "ARE"
+              ]
             },
             {
               "id": "renovationArea",
@@ -125,7 +206,14 @@
               "details": "Área de renovación urbana Riachuelo",
               "color": "#efefef",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "Area de Renovacion"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "Area de Renovacion"
+              ]
             },
             {
               "id": "ee",
@@ -133,7 +221,14 @@
               "details": "Equipamentos Especiales",
               "color": "#AAB4C7",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "EE"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "EE"
+              ]
             },
             {
               "id": "publicSpace",
@@ -141,7 +236,14 @@
               "details": "Espacio Público",
               "color": "#c2ccb7",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "Espacio Publico"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "Espacio Publico"
+              ]
             },
             {
               "id": "p",
@@ -149,7 +251,14 @@
               "details": "Área Puerto",
               "color": "#b2b2b2",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "P"]              
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "P"
+              ]
             },
             {
               "id": "ru",
@@ -157,7 +266,14 @@
               "details": "Renovación Urbana",
               "color": "#d0c375",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "RU"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "RU"
+              ]
             },
             {
               "id": "rua",
@@ -165,7 +281,14 @@
               "details": "Áreas de Renovación Urbana linderas a Autopistas",
               "color": "#1bbbb1",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "RUA"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "RUA"
+              ]
             },
             {
               "id": "u",
@@ -173,7 +296,14 @@
               "details": "Urbanizaciones Determinadas",
               "color": "#d1bbd0",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "U"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "U"
+              ]
             },
             {
               "id": "uf",
@@ -181,7 +311,14 @@
               "details": "Urbanizaciones Futuras",
               "color": "#b9a1b2",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "UF"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "UF"
+              ]
             },
             {
               "id": "up",
@@ -189,7 +326,14 @@
               "details": "Urbanización Parque",
               "color": "#97a872",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "UP"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "UP"
+              ]
             },
             {
               "id": "up/aph",
@@ -197,7 +341,14 @@
               "details": "Urbanización Parque/ärea de Protección Historica",
               "color": "#d3e39f",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "UP/APH"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "UP/APH"
+              ]
             },
             {
               "id": "up/aph2",
@@ -205,7 +356,14 @@
               "details": "Urbanización Parque/ärea de Protección Historica",
               "color": "#d3e39f",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "dist_1_grp"], "UP/APH 2"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "dist_1_grp"
+                ],
+                "UP/APH 2"
+              ]
             }
           ]
         },
@@ -218,7 +376,14 @@
               "subTitle": "Sin mixtura",
               "color": "white",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "uso_1"], 0]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "uso_1"
+                ],
+                0
+              ]
             },
             {
               "id": "mixOne",
@@ -226,7 +391,14 @@
               "details": "Área de Baja Mixtura de Usos de Suelo 1",
               "color": "white",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "uso_1"], 1]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "uso_1"
+                ],
+                1
+              ]
             },
             {
               "id": "mixTwo",
@@ -234,7 +406,14 @@
               "details": "Área de Media Mixtura de Usos de Suelo 2",
               "color": "white",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "uso_1"], 2]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "uso_1"
+                ],
+                2
+              ]
             },
             {
               "id": "mixThree",
@@ -242,7 +421,14 @@
               "details": "Área de Media Mixtura de Usos de Suelo 3",
               "color": "white",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "uso_1"], 3]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "uso_1"
+                ],
+                3
+              ]
             },
             {
               "id": "mixFour",
@@ -250,7 +436,14 @@
               "details": "Área de Alta Mixtura de Usos de Suelo 4",
               "color": "white",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "uso_1"], 4]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "uso_1"
+                ],
+                4
+              ]
             }
           ]
         },
@@ -262,289 +455,625 @@
               "id": "Agronomía",
               "title": "Agronomía",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "AGRONOMIA"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "AGRONOMIA"
+              ]
             },
             {
               "id": "Almagro",
               "title": "Almagro",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "ALMAGRO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "ALMAGRO"
+              ]
             },
             {
               "id": "Balvanera",
               "title": "Balvanera",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "BALVANERA"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "BALVANERA"
+              ]
             },
             {
               "id": "Barracas",
               "title": "Barracas",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "BARRACAS"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "BARRACAS"
+              ]
             },
             {
               "id": "Belgrano",
               "title": "Belgrano",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "BELGRANO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "BELGRANO"
+              ]
             },
             {
               "id": "Boca",
               "title": "Boca",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "BOCA"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "BOCA"
+              ]
             },
             {
               "id": "Boedo",
               "title": "Boedo",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "BOEDO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "BOEDO"
+              ]
             },
             {
               "id": "Caballito",
               "title": "Caballito",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "CABALLITO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "CABALLITO"
+              ]
             },
             {
               "id": "Chacarita",
               "title": "Chacarita",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "CHACARITA"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "CHACARITA"
+              ]
             },
             {
               "id": "Coghlan",
               "title": "Coghlan",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "COGHLAN"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "COGHLAN"
+              ]
             },
             {
               "id": "Colegiales",
               "title": "Colegiales",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "COLEGIALES"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "COLEGIALES"
+              ]
             },
             {
               "id": "Constitución",
               "title": "Constitución",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "CONSTITUCION"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "CONSTITUCION"
+              ]
             },
             {
               "id": "Flores",
               "title": "Flores",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "FLORES"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "FLORES"
+              ]
             },
             {
               "id": "Floresta",
               "title": "Floresta",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "FLORESTA"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "FLORESTA"
+              ]
             },
             {
-              "id": "Liniers", 
-              "title": "Liniers", 
+              "id": "Liniers",
+              "title": "Liniers",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "LINIERS"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "LINIERS"
+              ]
             },
             {
               "id": "Mataderos",
               "title": "Mataderos",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "MATADEROS"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "MATADEROS"
+              ]
             },
             {
               "id": "Montserrat",
               "title": "Montserrat",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "MONTSERRAT"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "MONTSERRAT"
+              ]
             },
             {
               "id": "Monte Castro",
               "title": "Monte Castro",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "MONTE CASTRO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "MONTE CASTRO"
+              ]
             },
             {
-              "id": "NuevaPompeya",   
-              "title": "Nueva Pompeya",   
+              "id": "NuevaPompeya",
+              "title": "Nueva Pompeya",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "NUEVA POMPEYA"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "NUEVA POMPEYA"
+              ]
             },
             {
               "id": "Nuñez",
               "title": "Nuñez",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "NUÑEZ"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "NUÑEZ"
+              ]
             },
             {
               "id": "Palermo",
               "title": "Palermo",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "PALERMO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "PALERMO"
+              ]
             },
             {
               "id": "Parque Avellaneda",
               "title": "Parque Avellaneda",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "PARQUE AVELLANEDA"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "PARQUE AVELLANEDA"
+              ]
             },
             {
               "id": "Parque Chacabuco",
               "title": "Parque Chacabuco",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "PARQUE CHACABUCO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "PARQUE CHACABUCO"
+              ]
             },
             {
               "id": "Parque Chas",
               "title": "Parque Chas",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "PARQUE CHAS"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "PARQUE CHAS"
+              ]
             },
             {
               "id": "Parque Patricios",
               "title": "Parque Patricios",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "PARQUE PATRICIOS"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "PARQUE PATRICIOS"
+              ]
             },
             {
               "id": "Paternal",
               "title": "Paternal",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "PATERNAL"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "PATERNAL"
+              ]
             },
             {
               "id": "Puerto Madera",
               "title": "Puerto Madero",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "PUERTO MADERO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "PUERTO MADERO"
+              ]
             },
             {
               "id": "Recoleta",
               "title": "Recoleta",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "RECOLETA"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "RECOLETA"
+              ]
             },
             {
               "id": "Retiro",
               "title": "Retiro",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "RETIRO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "RETIRO"
+              ]
             },
             {
               "id": "Saavedra",
               "title": "Saavedra",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "SAAVEDRA"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "SAAVEDRA"
+              ]
             },
             {
               "id": "San Cristobal",
               "title": "San Cristobal",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "SAN CRISTOBAL"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "SAN CRISTOBAL"
+              ]
             },
             {
               "id": "San Nicolas",
               "title": "San Nicolas",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "SAN NICOLAS"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "SAN NICOLAS"
+              ]
             },
             {
               "id": "San Telmo",
               "title": "San Telmo",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "SAN TELMO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "SAN TELMO"
+              ]
             },
             {
               "id": "Velex Sarsfield",
               "title": "Velez Sarsfield",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VELEZ SARSFIELD"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VELEZ SARSFIELD"
+              ]
             },
             {
               "id": "Versalles",
               "title": "Versalles",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VERSALLES"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VERSALLES"
+              ]
             },
             {
               "id": "Villa Crespo",
               "title": "Villa Crespo",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA CRESPO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA CRESPO"
+              ]
             },
             {
               "id": "Villa del Parque",
               "title": "Villa del Parque",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA DEL PARQUE"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA DEL PARQUE"
+              ]
             },
             {
               "id": "Villa Devoto",
               "title": "Villa Devoto",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA DEVOTO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA DEVOTO"
+              ]
             },
             {
               "id": "Villa Gral. Mitre",
               "title": "Villa Gral. Mitre",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA GRAL. MITRE"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA GRAL. MITRE"
+              ]
             },
             {
               "id": "Villa Lugano",
               "title": "Villa Lugano",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA LUGANO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA LUGANO"
+              ]
             },
             {
               "id": "Villa Luro",
               "title": "Villa Luro",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA LURO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA LURO"
+              ]
             },
             {
               "id": "Villa Ortuzar",
               "title": "Villa Ortuzar",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA ORTUZAR"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA ORTUZAR"
+              ]
             },
             {
               "id": "Villa Pueyrredon",
               "title": "Villa Pueyrredon",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA PUEYRREDON"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA PUEYRREDON"
+              ]
             },
             {
               "id": "Villa Real",
               "title": "Villa Real",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA REAL"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA REAL"
+              ]
             },
             {
               "id": "Villa Riachuelo",
               "title": "Villa Riachuelo",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA RIACHUELO"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA RIACHUELO"
+              ]
             },
             {
               "id": "Villa Santa Rita",
               "title": "Villa Santa Rita",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA SANTA RITA"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA SANTA RITA"
+              ]
             },
             {
               "id": "Villa Soldati",
               "title": "Villa Soldati",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA SOLDATI"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA SOLDATI"
+              ]
             },
             {
               "id": "Villa Urquiza",
               "title": "Villa Urquiza",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["get", "barrio"], "VILLA URQUIZA"]
+              "filter": [
+                "==",
+                [
+                  "get",
+                  "barrio"
+                ],
+                "VILLA URQUIZA"
+              ]
             }
           ]
         }
@@ -564,7 +1093,17 @@
               "details": "N/A",
               "color": "rgba(0, 0, 0, 0.26)",
               "idLayer": "explorer_layer",
-              "filter": ["all", ["==", ["get", "inc_uva_19"], ""]]
+              "filter": [
+                "all",
+                [
+                  "==",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  ""
+                ]
+              ]
             },
             {
               "id": "300",
@@ -572,7 +1111,17 @@
               "details": "< 300",
               "color": "#5ea7b1",
               "idLayer": "explorer_layer",
-              "filter": ["all", ["<", ["get", "inc_uva_19"], 300]]
+              "filter": [
+                "all",
+                [
+                  "<",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  300
+                ]
+              ]
             },
             {
               "id": "400",
@@ -580,7 +1129,25 @@
               "details": "300-400",
               "color": "#91cba9",
               "idLayer": "explorer_layer",
-              "filter": ["all", [">=", ["get", "inc_uva_19"], 300], ["<", ["get", "inc_uva_19"], 400]]
+              "filter": [
+                "all",
+                [
+                  ">=",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  300
+                ],
+                [
+                  "<",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  400
+                ]
+              ]
             },
             {
               "id": "500",
@@ -588,7 +1155,25 @@
               "details": "400-500",
               "color": "#bce4aa",
               "idLayer": "explorer_layer",
-              "filter": ["all", [">=", ["get", "inc_uva_19"], 400], ["<", ["get", "inc_uva_19"], 500]]
+              "filter": [
+                "all",
+                [
+                  ">=",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  400
+                ],
+                [
+                  "<",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  500
+                ]
+              ]
             },
             {
               "id": "600",
@@ -596,7 +1181,25 @@
               "details": "500-600",
               "color": "#def2b4",
               "idLayer": "explorer_layer",
-              "filter": ["all", [">=", ["get", "inc_uva_19"], 500], ["<", ["get", "inc_uva_19"], 600]]
+              "filter": [
+                "all",
+                [
+                  ">=",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  500
+                ],
+                [
+                  "<",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  600
+                ]
+              ]
             },
             {
               "id": "700",
@@ -604,7 +1207,25 @@
               "details": "600-700",
               "color": "#ffffbf",
               "idLayer": "explorer_layer",
-              "filter": ["all", [">=", ["get", "inc_uva_19"], 600], ["<", ["get", "inc_uva_19"], 700]]
+              "filter": [
+                "all",
+                [
+                  ">=",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  600
+                ],
+                [
+                  "<",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  700
+                ]
+              ]
             },
             {
               "id": "800",
@@ -612,7 +1233,25 @@
               "details": "700-800",
               "color": "#ffdf9a",
               "idLayer": "explorer_layer",
-              "filter": ["all", [">=", ["get", "inc_uva_19"], 700], ["<", ["get", "inc_uva_19"], 800]]
+              "filter": [
+                "all",
+                [
+                  ">=",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  700
+                ],
+                [
+                  "<",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  800
+                ]
+              ]
             },
             {
               "id": "900",
@@ -620,7 +1259,25 @@
               "details": "800-900",
               "color": "#febe74",
               "idLayer": "explorer_layer",
-              "filter": ["all", [">=", ["get", "inc_uva_19"], 800], ["<", ["get", "inc_uva_19"], 900]]
+              "filter": [
+                "all",
+                [
+                  ">=",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  800
+                ],
+                [
+                  "<",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  900
+                ]
+              ]
             },
             {
               "id": "1000",
@@ -628,7 +1285,25 @@
               "details": "900-1000",
               "color": "#f69053",
               "idLayer": "explorer_layer",
-              "filter": ["all", [">=", ["get", "inc_uva_19"], 900], ["<", ["get", "inc_uva_19"], 1000]]
+              "filter": [
+                "all",
+                [
+                  ">=",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  900
+                ],
+                [
+                  "<",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  1000
+                ]
+              ]
             },
             {
               "id": "1500",
@@ -636,7 +1311,25 @@
               "details": "1000-1500",
               "color": "#e75437",
               "idLayer": "explorer_layer",
-              "filter": ["all", [">=", ["get", "inc_uva_19"], 1000], ["<", ["get", "inc_uva_19"], 1500]]
+              "filter": [
+                "all",
+                [
+                  ">=",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  1000
+                ],
+                [
+                  "<",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  1500
+                ]
+              ]
             },
             {
               "id": "1500+",
@@ -644,7 +1337,17 @@
               "details": ">= 1500",
               "color": "#d7191c",
               "idLayer": "explorer_layer",
-              "filter": ["all", [">=", ["get", "inc_uva_19"], 1500]]
+              "filter": [
+                "all",
+                [
+                  ">=",
+                  [
+                    "get",
+                    "inc_uva_19"
+                  ],
+                  1500
+                ]
+              ]
             }
           ]
         },
@@ -658,7 +1361,17 @@
               "details": "",
               "color": "#ffbfbf",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["to-string", ["get", "alicuota"]], "0.1"]
+              "filter": [
+                "==",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "alicuota"
+                  ]
+                ],
+                "0.1"
+              ]
             },
             {
               "id": "Zone2",
@@ -666,7 +1379,17 @@
               "details": "",
               "color": "#d69090",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["to-string", ["get", "alicuota"]], "0.18"]
+              "filter": [
+                "==",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "alicuota"
+                  ]
+                ],
+                "0.18"
+              ]
             },
             {
               "id": "Zone3",
@@ -674,7 +1397,17 @@
               "details": "",
               "color": "#b06868",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["to-string", ["get", "alicuota"]], "0.27"]
+              "filter": [
+                "==",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "alicuota"
+                  ]
+                ],
+                "0.27"
+              ]
             },
             {
               "id": "Zone4",
@@ -682,7 +1415,17 @@
               "details": "",
               "color": "#8a4545",
               "idLayer": "explorer_layer",
-              "filter": ["==", ["to-string", ["get", "alicuota"]], "0.35"]
+              "filter": [
+                "==",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "alicuota"
+                  ]
+                ],
+                "0.35"
+              ]
             }
           ]
         }
@@ -715,13 +1458,14 @@
           "type": "fill",
           "layout": {
             "visibility": "none"
-            },
+          },
           "paint": {
             "fill-color": [
               "match",
-              ["concat", 
+              [
+                "concat",
                 [
-                "to-string",
+                  "to-string",
                   [
                     "get",
                     "uni_edif_1"
@@ -733,31 +1477,51 @@
                   "dist_1_grp"
                 ]
               ],
-              "38_","#667d8a",
-              "31.2_","#92aaaf",
-              "22.8_","#d6a083",
-              "17.2_","#e6c294",
-              "11.6_","#c6c294",
-              "9_","#ede7ce",
-              "0_AE","#ccadad",
-              "0_APH","#f9bcb4",
-              "0_ARE","rgb(188, 196, 137)",
-              "0_Area de Renovacion","#efefef",
-              "0_EE","#aab4c7",
-              "0_Espacio Publico","#c2ccb7",
-              "0_P","#b2b2b2",
-              "0_RU","#d0c375",
-              "0_RUA","#1bbbb1",
-              "0_U","#d1bbd0",
-              "0_UF","#b9a1b2",
-              "0_UP","#97a872",
-              "0_UP/APH","#d3e39f",
-              "0_UP/APH 2","#d3e39f",
+              "38_",
+              "#667d8a",
+              "31.2_",
+              "#92aaaf",
+              "22.8_",
+              "#d6a083",
+              "17.2_",
+              "#e6c294",
+              "11.6_",
+              "#c6c294",
+              "9_",
+              "#ede7ce",
+              "0_AE",
+              "#ccadad",
+              "0_APH",
+              "#f9bcb4",
+              "0_ARE",
+              "rgb(188, 196, 137)",
+              "0_Area de Renovacion",
+              "#efefef",
+              "0_EE",
+              "#aab4c7",
+              "0_Espacio Publico",
+              "#c2ccb7",
+              "0_P",
+              "#b2b2b2",
+              "0_RU",
+              "#d0c375",
+              "0_RUA",
+              "#1bbbb1",
+              "0_U",
+              "#d1bbd0",
+              "0_UF",
+              "#b9a1b2",
+              "0_UP",
+              "#97a872",
+              "0_UP/APH",
+              "#d3e39f",
+              "0_UP/APH 2",
+              "#d3e39f",
               "#fff"
             ],
-            "fill-opacity": 0.8            
+            "fill-opacity": 0.8
           }
-        }        
+        }
       }
     },
     {
@@ -785,32 +1549,41 @@
           "type": "fill",
           "layout": {
             "visibility": "none"
-            },
+          },
           "paint": {
-            "fill-color":[
+            "fill-color": [
               "step",
-                [
-                  "get",
-                  "inc_uva_19"
-                ],
-                "#969696", 0,
-                "#5ea7b1", 300,
-                "#91cba9", 400,
-                "#bce4aa", 500,
-                "#def2b4", 600,
-                "#ffffbf", 700,
-                "#ffdf9a", 800,
-                "#febe74", 900,
-                "#f69053", 1000,
-                "#e75437", 1500,
-                "#fff"
+              [
+                "get",
+                "inc_uva_19"
+              ],
+              "#969696",
+              0,
+              "#5ea7b1",
+              300,
+              "#91cba9",
+              400,
+              "#bce4aa",
+              500,
+              "#def2b4",
+              600,
+              "#ffffbf",
+              700,
+              "#ffdf9a",
+              800,
+              "#febe74",
+              900,
+              "#f69053",
+              1000,
+              "#e75437",
+              1500,
+              "#fff"
             ],
-             "fill-opacity" : 0.8
-           }           
+            "fill-opacity": 0.8
+          }
         }
       }
     },
-
     {
       "id": "Aliquot",
       "filterId": "IncidenceAliquot",
@@ -834,7 +1607,7 @@
           "type": "fill",
           "layout": {
             "visibility": "none"
-            },
+          },
           "paint": {
             "fill-color": [
               "match",
@@ -858,7 +1631,7 @@
             "fill-opacity": 0.8
           }
         }
-      }      
+      }
     }
   ],
   "information": [
@@ -929,7 +1702,7 @@
             "type": "line",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "line-color": "#e76056",
               "line-width": 4
@@ -959,7 +1732,7 @@
             "type": "line",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "line-color": "#f3a32d",
               "line-width": 4
@@ -989,7 +1762,7 @@
             "type": "line",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "line-color": "#0389d1",
               "line-width": 4
@@ -1019,7 +1792,7 @@
             "type": "fill",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "fill-color": "#2ebc98",
               "fill-opacity": 0.7
@@ -1049,7 +1822,7 @@
             "type": "fill",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "fill-color": "#99c25f",
               "fill-opacity": 0.7
@@ -1111,17 +1884,26 @@
             "type": "fill-extrusion",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "fill-extrusion-color": [
                 "match",
-                [ "get", "edificabilidad" ],
-                "USAB1","#efe6cd",
-                "USAB2", "#ccc5af",
-                "USAM", "#f4c59b",
-                "USAA", "#eaa58b",
-                "CM", "#8fb3b5",
-                "CA", "#648894",
+                [
+                  "get",
+                  "edificabilidad"
+                ],
+                "USAB1",
+                "#efe6cd",
+                "USAB2",
+                "#ccc5af",
+                "USAM",
+                "#f4c59b",
+                "USAA",
+                "#eaa58b",
+                "CM",
+                "#8fb3b5",
+                "CA",
+                "#648894",
                 "#0389d1"
               ],
               "fill-extrusion-opacity": 0.8,
@@ -1156,15 +1938,23 @@
             "type": "fill",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "fill-color": "#fcda59",
               "fill-opacity": 0.9
             },
             "filter": [
               "any",
-              [ "==", "tipo", "basamento" ],
-              [ "==", "tipo", "cuerpo principal" ]
+              [
+                "==",
+                "tipo",
+                "basamento"
+              ],
+              [
+                "==",
+                "tipo",
+                "cuerpo principal"
+              ]
             ]
           },
           "index": -1
@@ -1198,13 +1988,20 @@
             "type": "fill-extrusion",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "fill-extrusion-color": "#bea8b6",
               "fill-extrusion-opacity": 0.9,
-              "fill-extrusion-height": ["get", "altura"]
+              "fill-extrusion-height": [
+                "get",
+                "altura"
+              ]
             },
-            "filter": [ "==", "consolidado", true ]
+            "filter": [
+              "==",
+              "consolidado",
+              true
+            ]
           },
           "index": 5
         },
@@ -1231,20 +2028,27 @@
             "type": "fill-extrusion",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "fill-extrusion-color": "white",
               "fill-extrusion-opacity": 0.9,
-              "fill-extrusion-height": ["get", "altura"]
+              "fill-extrusion-height": [
+                "get",
+                "altura"
+              ]
             },
-            "filter": [ "==", "consolidado", false ]
+            "filter": [
+              "==",
+              "consolidado",
+              false
+            ]
           },
           "index": 5
         },
         {
           "title": "Manzanas atípicas",
           "color": "#f562a2",
-          "id": "lib",
+          "id": "manz_atipica",
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
@@ -1264,11 +2068,16 @@
             "type": "fill",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "fill-color": "#f562a2",
               "fill-opacity": 0.7
-            }
+            },
+            "filter": [
+              "==",
+              "tipo",
+              "ATIPICA"
+            ]
           }
         },
         {
@@ -1316,15 +2125,25 @@
             "type": "fill",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "fill-color": [
                 "match",
-                [ "to-string", [ "get", "alicuota" ] ],
-                "0.1", "#fff5eb",
-                "0.18", "#fdbd83",
-                "0.27", "#ee6510",
-                "0.35", "#7f2704",
+                [
+                  "to-string",
+                  [
+                    "get",
+                    "alicuota"
+                  ]
+                ],
+                "0.1",
+                "#fff5eb",
+                "0.18",
+                "#fdbd83",
+                "0.27",
+                "#ee6510",
+                "0.35",
+                "#7f2704",
                 "#fff"
               ],
               "fill-opacity": 0.8
@@ -1376,15 +2195,22 @@
             "type": "fill",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "fill-color": [
                 "match",
-                [ "get", "uso_1" ],
-                1, "#3b0f6f",
-                2, "#8c2981",
-                3, "#de4969",
-                4, "#fe9f6d",
+                [
+                  "get",
+                  "uso_1"
+                ],
+                1,
+                "#3b0f6f",
+                2,
+                "#8c2981",
+                3,
+                "#de4969",
+                4,
+                "#fe9f6d",
                 "#fff"
               ],
               "fill-opacity": 0.8
@@ -1420,7 +2246,7 @@
             "type": "line",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "line-color": "blue",
               "line-width": 4
@@ -1450,12 +2276,16 @@
             "type": "line",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "line-color": "goldenrod",
               "line-width": 4
             },
-            "filter": [ "==", "clase", "aproximacion_aeroparque" ]
+            "filter": [
+              "==",
+              "clase",
+              "aproximacion_aeroparque"
+            ]
           }
         },
         {
@@ -1481,12 +2311,16 @@
             "type": "line",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "line-color": "#2ebc98",
               "line-width": 4
             },
-            "filter": [ "==", "clase", "linea_particularizada" ]
+            "filter": [
+              "==",
+              "clase",
+              "linea_particularizada"
+            ]
           }
         },
         {
@@ -1512,12 +2346,16 @@
             "type": "line",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "line-color": "#99c25f",
               "line-width": 4
             },
-            "filter": [ "==", "clase", "retiro_obligatorio" ]
+            "filter": [
+              "==",
+              "clase",
+              "retiro_obligatorio"
+            ]
           }
         },
         {
@@ -1543,12 +2381,16 @@
             "type": "line",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "line-color": "#19c3e3",
               "line-width": 4
             },
-            "filter": [ "==", "clase", "apertura_de_calle" ]
+            "filter": [
+              "==",
+              "clase",
+              "apertura_de_calle"
+            ]
           }
         },
         {
@@ -1574,12 +2416,16 @@
             "type": "line",
             "layout": {
               "visibility": "none"
-              },
+            },
             "paint": {
               "line-color": "#0389d1",
               "line-width": 4
             },
-            "filter": [ "==", "clase", "cinturon_digital" ]
+            "filter": [
+              "==",
+              "clase",
+              "cinturon_digital"
+            ]
           }
         }
       ]
@@ -1647,7 +2493,7 @@
       "isArea": false,
       "items": [
         {
-          "field": "sup_max_edificable",
+          "field": "sup_edificable_planta",
           "unidad": " m²"
         }
       ],
@@ -2211,7 +3057,11 @@
     "light": {
       "anchor": "viewport",
       "intensity": 0.4,
-      "position": [1.15,210,30]
+      "position": [
+        1.15,
+        210,
+        30
+      ]
     }
   },
   "parcelLayers": {
@@ -2231,9 +3081,16 @@
       "paint": {
         "fill-extrusion-color": "#fdd306",
         "fill-extrusion-opacity": 0.9,
-        "fill-extrusion-height": ["get", "altura_final"]
+        "fill-extrusion-height": [
+          "get",
+          "altura_final"
+        ]
       },
-      "filter": ["==", "smp", "no-match"]
+      "filter": [
+        "==",
+        "smp",
+        "no-match"
+      ]
     },
     "polygon": {
       "type": "fill",

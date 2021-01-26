@@ -10,3 +10,4 @@ yalc.lock
 debug.log
 .odo/env
 .odo/odo-file-index.json
+devfile.yaml

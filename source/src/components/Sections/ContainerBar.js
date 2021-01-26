@@ -27,7 +27,7 @@ const ContainerBar = ({ children, type }) => {
     ? '80vh' : '85vh'
 
   return (
-    <Box className={`${classes[type]} ${classes.container} ${classes.responsive}`}>
+    <Box className={`${classes[type]} ${classes.container}`}>
       <Paper elevation={2} className={classes.padding}>
         <HeaderSection
           categoryTitle={categoryTitle}

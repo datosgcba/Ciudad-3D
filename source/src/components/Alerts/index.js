@@ -12,9 +12,32 @@ import useFontsStyles from 'theme/fontsDecorators'
 
 import useStyles from './styles'
 
-const Alerts = () => {
+const Alert = ({ id, title, text}) => {
+
   const classes = useStyles()
   const decorators = useFontsStyles()
+  const { titleSuffix } = useSelector((state) => state.alerts.extraData[id]) ?? {}
+
+  return (
+    <Box key={id} className={classes.box}>
+      {
+        title && (
+          <Typography className={decorators.bold}>
+            {title}{titleSuffix?.length ? ` - ${titleSuffix}` : ''} 
+          </Typography>
+        )
+      }
+      {
+        text && (
+          <Typography>
+            {text}
+          </Typography>
+        )
+      }
+    </Box>
+  )
+}
+const Alerts = () => {
   const alertsIds = useSelector((state) => state.alerts.ids)
   const sectionId = useSelector((state) => state.categories.sectionId)
 
@@ -25,18 +48,7 @@ const Alerts = () => {
           .map(getAlert)
           .filter((alertData) => alertData)
           .map(({ id, title, text}) => (
-            <Box key={id} className={classes.box}>
-              {
-                title && (
-                  <Typography className={decorators.bold}>
-                    {title}
-                  </Typography>
-                )
-              }
-              <Typography>
-                {text}
-              </Typography>
-            </Box>
+            <Alert id={id} title={title} text={text} />
           ))
       )}
     </>

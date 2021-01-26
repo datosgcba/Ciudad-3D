@@ -7,6 +7,11 @@ export default makeStyles((theme) => ({
     padding: theme.spacing(0),
     paddingLeft: theme.spacing(0.5) // 0.5  -   4px
   },
+  responsive: {
+    [theme.breakpoints.down('sm')]: {
+      width: theme.spacing(30)
+    }
+  },
   formControl: {
     marginRight: 0
   },

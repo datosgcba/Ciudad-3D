@@ -16,5 +16,10 @@ export default makeStyles((theme) => ({
   },
   table: {
     width: theme.spacing(86) // 45 - 360px
+  },
+  responsive: {
+    [theme.breakpoints.down('sm')]: {
+      width: theme.spacing(35) // 35 - 280px
+    }
   }
 }))

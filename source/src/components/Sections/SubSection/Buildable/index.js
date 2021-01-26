@@ -99,7 +99,7 @@ const Details = ({
                 ? (
                   <TextField
                     className={classes.input}
-                    value={areaValue.toString().replace(/\./g,',')}
+                    value={areaValue.toString().replace(/\./g, ',')}
                     InputProps={{
                       endAdornment: <InputAdornment position="end">{unidad}</InputAdornment>
                     }}

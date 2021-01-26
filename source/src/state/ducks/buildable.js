@@ -120,6 +120,7 @@ const clickOnParcel = createAsyncThunk(
       }
       const agrupado = esp[0]?.distrito_agrupado?.toUpperCase() ?? ''
       if (agrupado !== '') {
+        // eslint-disable-next-line no-useless-escape
         dispatch(alertsActions.addId(`especial_${agrupado.replace(/[\/|\s]/, '_')}`))
       }
     }

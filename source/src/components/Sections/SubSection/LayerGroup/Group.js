@@ -137,7 +137,7 @@ const Group = ({ id, title }) => {
   const decorators = useFontsStyles()
 
   return (
-    <Container className={classes.container}>
+    <Container className={`${classes.container} ${classes.responsive}`}>
       <Typography variant="subtitle2" className={decorators.bold}>
         {title}
         <Divider className={classes.divider} />

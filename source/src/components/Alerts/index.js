@@ -22,8 +22,7 @@ const Alert = ({ id, title, text}) => {
       {
         title && (
           <Typography className={decorators.bold}>
-            {title}
-            {titleSuffix?.length ? ` - ${titleSuffix}` : ''}
+            {title} {titleSuffix?.length ? ` - ${titleSuffix}` : ''}
           </Typography>
         )
       }

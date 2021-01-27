@@ -1917,7 +1917,7 @@
         },
         {
           "title": "Superficie edificable en planta (pisada)",
-          "color": "#fcda59",
+          "color": "#fbebb1",
           "id": "volumen_edif_basamento",
           "type": "vectortile",
           "displayPopup": false,
@@ -1940,8 +1940,9 @@
               "visibility": "none"
             },
             "paint": {
-              "fill-color": "#fcda59",
-              "fill-opacity": 0.9
+              "fill-color": "#fbebb1",
+              "fill-opacity": 0.7,
+              "fill-outline-color": "white"
             },
             "filter": [
               "any",

@@ -161,7 +161,7 @@ GroupItem.propTypes = {
   color: PropTypes.string.isRequired,
   info: PropTypes.string,
   link: PropTypes.string,
-  reference: PropTypes.arrayOf(PropTypes.object),
+  reference: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   classes: PropTypes.objectOf(makeStyles).isRequired
 }
 GroupItem.defaultProps = {

@@ -25,30 +25,30 @@ const Item = ({
         {' '}
         {smp}
         :
-        {
-          state === 'ready' && (
-            <IconButton
-              onClick={onClick}
-              className={classes.icon}
-            >
-              <CloudDownloadOutlinedIcon />
-            </IconButton>
-          )
-        }
-        {
-          state === 'loading' && (
-            <CircularProgress
-              className={classes.icon}
-              size={20}
-            />
-          )
-        }
-        {
-          state === 'error' && (
-            <Error />
-          )
-        }
       </Typography>
+      {
+        state === 'ready' && (
+          <IconButton
+            onClick={onClick}
+            className={classes.icon}
+          >
+            <CloudDownloadOutlinedIcon />
+          </IconButton>
+        )
+      }
+      {
+        state === 'loading' && (
+          <CircularProgress
+            className={classes.icon}
+            size={20}
+          />
+        )
+      }
+      {
+        state === 'error' && (
+          <Error />
+        )
+      }
       <Typography>
         Dirección:
         {' '}
@@ -92,7 +92,7 @@ const Report = () => {
 Item.propTypes = {
   smp: PropTypes.string,
   state: PropTypes.string,
-  onClick: PropTypes.string,
+  onClick: PropTypes.func,
   address: PropTypes.string
 }
 

@@ -93,11 +93,9 @@ class MapaInteractivoGL {
     if (this.isVisibleBaseLayerPrincipal()) {
       this.map.setLayoutProperty('baseLayer_principal', 'visibility', 'none')
       this.map.setLayoutProperty('baseLayer_secundario', 'visibility', 'visible')
-      this.map.setLayoutProperty('baseLayer_parcela', 'visibility', 'visible')
     } else {
       this.map.setLayoutProperty('baseLayer_principal', 'visibility', 'visible')
       this.map.setLayoutProperty('baseLayer_secundario', 'visibility', 'none')
-      this.map.setLayoutProperty('baseLayer_parcela', 'visibility', 'none')
     }
   }
 
@@ -485,22 +483,12 @@ class MapaInteractivoGL {
   }
 
   addMarker(latlng, flag, visible = true, draggable = false, goTo, activate = true, clickable = true, options = {}) {
-   /* TO DO */ console.log("Entró a addMarker")
     const self = this
-   /* TO DO */ console.log(flag)
-
-    //if (flag===0){
 
     const marker = new mapboxgl.Marker(options)
     marker
       .setLngLat(latlng).addTo(this.map)
 
-    /*
-    flag=1 } else {
-      const marker = new mapboxgl.Marker(options)
-      .setLngLat(latlng);
-    }
-*/
     if (goTo) {
       this.map.flyTo({ center: latlng, zoom: this.config.markerZoomInLevel })
     }

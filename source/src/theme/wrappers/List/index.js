@@ -109,12 +109,13 @@ ListItems.propTypes = {
   idExplorer: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   subTitle: PropTypes.string,
-  details: PropTypes.string.isRequired,
+  details: PropTypes.string,
   color: PropTypes.string.isRequired,
   idLayer: PropTypes.string.isRequired
 }
 ListItems.defaultProps = {
-  subTitle: ''
+  subTitle: '',
+  details: ''
 }
 
 export default List

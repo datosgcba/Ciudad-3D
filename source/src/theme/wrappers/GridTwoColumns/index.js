@@ -96,7 +96,7 @@ const GridTwoColumns = ({ idExplorer, idGroup, items }) => {
 GridTwoColumns.propTypes = {
   idExplorer: PropTypes.string.isRequired,
   idGroup: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(PropTypes.string).isRequired
+  items: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired
 }
 
 GridItems.propTypes = {

@@ -46,7 +46,7 @@ const ContainerBar = ({ children, type }) => {
   )
 }
 ContainerBar.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.any).isRequired,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   type: PropTypes.string.isRequired
 }
 

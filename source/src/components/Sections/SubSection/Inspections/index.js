@@ -160,7 +160,7 @@ GridPanel.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   bold: PropTypes.string,
   tableCell: PropTypes.string,
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
   styles: PropTypes.objectOf(makeStyles).isRequired
 }
 

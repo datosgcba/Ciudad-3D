@@ -99,7 +99,10 @@ Details.propTypes = {
   decorators: PropTypes.objectOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  fill: PropTypes.string.isRequired
+  fill: PropTypes.string
+}
+Details.defaultProps = {
+  fill: ''
 }
 
 export default Affectations

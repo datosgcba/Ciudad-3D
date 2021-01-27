@@ -34,15 +34,6 @@ const getData = createAsyncThunk(
 
     const { usos } = await fetch(getUses(smp))
       .then((response) => response.json())
-    /*
-    const usosText = usos
-      .map((id) => usesTable.find((ut) => ut.id === id))
-      .filter((u) => u !== undefined)
-      .map(({ title }) => title)
-      .join(', ')
-    console.log('usos:', usos, usosText)
-*/
-    console.log('tipica', tipica)
     const afectaciones = await fetch(getAffectations(smp))
       .then((response) => response.json())
     const afectacionesFiltrado = Object.entries(afectaciones).filter(([, value]) => value

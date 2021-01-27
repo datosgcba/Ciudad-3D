@@ -131,8 +131,12 @@ const clickOnParcel = createAsyncThunk(
     if (afectacionesCount > 0) {
       dispatch(alertsActions.addId('afectaciones'))
     }
-    if (data?.rivolta > 0 && data?.tipica?.length) {
-      dispatch(alertsActions.addId('rivolta'))
+    if (data?.rivolta > 0) {
+      dispatch(alertsActions.addId(
+        data?.tipica?.length
+          ? 'rivolta_atipica'
+          : 'rivolta'
+        ))
     }
     if (data.parcelas_linderas?.aph_linderas
       && ['cautelar', 'integral', 'especial', 'estructural']

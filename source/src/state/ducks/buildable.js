@@ -134,9 +134,12 @@ const clickOnParcel = createAsyncThunk(
     if (data?.rivolta > 0) {
       dispatch(alertsActions.addId(
         data?.tipica?.length
+          // TODO: los id de rivolta deberían estar al revez
+          // Dado que se hizo un tag en el repositorio con la configuración mal hecha,
+          // se modificó la alerta en el appConfig
           ? 'rivolta_atipica'
           : 'rivolta'
-        ))
+      ))
     }
     if (data.parcelas_linderas?.aph_linderas
       && ['cautelar', 'integral', 'especial', 'estructural']

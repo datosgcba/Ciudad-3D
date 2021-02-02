@@ -141,10 +141,7 @@ const clickOnParcel = createAsyncThunk(
           : 'rivolta'
       ))
     }
-    if (data.parcelas_linderas?.aph_linderas
-      && ['cautelar', 'integral', 'especial', 'estructural']
-        .includes(data.catalogacion?.proteccion?.toLowerCase())
-    ) {
+    if (data.parcelas_linderas?.aph_linderas) {
       dispatch(alertsActions.addId('adyacente_catalogado'))
     }
     if (['cautelar', 'integral', 'especial', 'estructural'].includes(data.catalogacion?.proteccion?.toLowerCase())) {

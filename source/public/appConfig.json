@@ -1687,7 +1687,7 @@
           "displayPopup": false,
           "popupContent": "",
           "info": "Línea que deslinda el lote de la vía pública actual o la línea señalada por el Gobierno para la futura vía pública.",
-          "link": "https://data.buenosaires.gob.ar/",
+          "link": "https://data.buenosaires.gob.ar/dataset/linea-oficial",
           "options": {
             "source": {
               "type": "vector",
@@ -1717,7 +1717,7 @@
           "displayPopup": false,
           "popupContent": "",
           "info": "Traza del plano que limita la edificación permitida del basamento con el Centro Libre de Manzana.",
-          "link": "https://data.buenosaires.gob.ar/",
+          "link": "https://data.buenosaires.gob.ar/dataset/franja-edificable-lineas",
           "options": {
             "source": {
               "type": "vector",
@@ -1747,7 +1747,7 @@
           "displayPopup": false,
           "popupContent": "",
           "info": "Es la línea coincidente con la proyección de los planos que determinan el Centro Libre de Manzana. Se sitúa paralelamente con respecto a cada línea oficial a una distancia igual a un cuarto (¼) de la medida entre los puntos medios de las líneas oficiales opuestas de la manzana.",
-          "link": "https://data.buenosaires.gob.ar/",
+          "link": "https://data.buenosaires.gob.ar/dataset/franja-edificable-lineas",
           "options": {
             "source": {
               "type": "vector",
@@ -1777,7 +1777,7 @@
           "displayPopup": false,
           "popupContent": "",
           "info": "La banda edificable es la franja que queda comprendida desde la  línea oficial hasta la línea de frente interno o línea interna de basamento según corresponda y determina el área donde puede edificarse dentro de un lote. En todos los casos se garantiza a las parcelas o lotes una banda edificable mínima de dieciséis (16) metros.",
-          "link": "https://data.buenosaires.gob.ar/",
+          "link": "https://data.buenosaires.gob.ar/dataset/banda-minima-edificable",
           "options": {
             "source": {
               "type": "vector",
@@ -1807,7 +1807,7 @@
           "displayPopup": false,
           "popupContent": "",
           "info": "Forma en que debe darse la transición de altura en el encuentro de dos normativas de altura en la esquina de la manzana.",
-          "link": "https://data.buenosaires.gob.ar/",
+          "link": "https://data.buenosaires.gob.ar/dataset/rivolta",
           "options": {
             "source": {
               "type": "vector",
@@ -1923,7 +1923,7 @@
           "displayPopup": false,
           "popupContent": "",
           "info": "Es el área correspondiente a la banda edificable. La banda edificable es la franja que queda comprendida desde la  línea oficial hasta la línea de frente interno o línea interna de basamento según corresponda y determina el área donde puede edificarse dentro de un lote.",
-          "link": "https://data.buenosaires.gob.ar/",
+          "link": "https://data.buenosaires.gob.ar/dataset/superficie-edificable-en-planta",
           "options": {
             "source": {
               "type": "vector",

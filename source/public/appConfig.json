@@ -2737,7 +2737,7 @@
       "id": "cer_urbanistico",
       "title": "Certificados Urbanísticos",
       "info": "",
-      "link": "https://data.buenosaires.gob.ar/dataset/",
+      "link": "https://data.buenosaires.gob.ar/dataset/certificados-urbanisticos",
       "columns": [
         {
           "label": "Fecha",

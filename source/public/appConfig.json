@@ -2232,7 +2232,7 @@
           "displayPopup": false,
           "popupContent": "",
           "info": "Corresponde a zonas con vulnerabilidad a las inundaciones.",
-          "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
+          "link": "https://data.buenosaires.gob.ar/dataset/riesgo-hidrico",
           "options": {
             "source": {
               "type": "vector",
@@ -2262,7 +2262,7 @@
           "displayPopup": false,
           "popupContent": "",
           "info": "Limitación de altura en función de la regulación aeronáutica.",
-          "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
+          "link": "https://data.buenosaires.gob.ar/dataset/lineas-constructivas-particularizadas",
           "options": {
             "source": {
               "type": "vector",
@@ -2297,7 +2297,7 @@
           "displayPopup": false,
           "popupContent": "{tipo}",
           "info": "Es la línea de edificación a usar por una nueva edificación.",
-          "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
+          "link": "https://data.buenosaires.gob.ar/dataset/lineas-constructivas-particularizadas",
           "options": {
             "source": {
               "type": "vector",
@@ -2332,7 +2332,7 @@
           "displayPopup": false,
           "popupContent": "{tipo}",
           "info": "Ampliación o prolongación de una vía.",
-          "link": "https://data.buenosaires.gob.ar/dataset/planchetas-codigo-planeamiento-urbano",
+          "link": "https://data.buenosaires.gob.ar/dataset/lineas-constructivas-particularizadas",
           "options": {
             "source": {
               "type": "vector",
@@ -2367,7 +2367,7 @@
           "displayPopup": false,
           "popupContent": "",
           "info": "Apertura de una vía.",
-          "link": "https://data.buenosaires.gob.ar/dataset/planchetas-codigo-planeamiento-urbano",
+          "link": "https://data.buenosaires.gob.ar/dataset/lineas-constructivas-particularizadas",
           "options": {
             "source": {
               "type": "vector",
@@ -2402,7 +2402,7 @@
           "displayPopup": false,
           "popupContent": "",
           "info": "Área en la que se restringe la altura por estar afectada a corredores radioeléctricos.",
-          "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
+          "link": "https://data.buenosaires.gob.ar/dataset/lineas-constructivas-particularizadas",
           "options": {
             "source": {
               "type": "vector",

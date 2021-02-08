@@ -73,6 +73,14 @@ Otras extensiones útiles:
  
 * **appConfig.json**: Actualmente es principalmente un json que contiene toda la información necesaria que la aplicación pueda ser fácilmente adaptada. Se recomienda fuertemente que solo acceda a estas configuraciones a través de **configQueries** con el objetivo de mantener desacoplado la configuración de los componentes y así sea algo relativamente sencillo en un futuro migrar para obtener la configuración desde un api y que esta pueda ser almacenada en memoria o en el sessionStorage según sea conveniente. 
 
+### **EmailJs**
+EmailJs es una librería que permite enviar mails desde el frontend con JavaScript. Para este projecto se utiliza con el fin de que los usuarios puedan enviar sus sugerencias y consultas sobre el uso de la aplicación.
+
+La configuración del servicio y el template a utilizar se deben hacer desde [EmailJs](https://dashboard.emailjs.com/admin) accediendo con el usuario mapa.buenosaires.gob.ar@gmail.com.
+
+El id del usuario, servicio y el template deben ser colocados dentro del Reducer *contact* el cuál se encarga de utilizar esta librería.
+
+Para más información ver la [guía](https://www.emailjs.com/docs/introduction/how-does-emailjs-work/) de emailJs
 
 ### Sobre la librería **Mapbox GL JS** el componente **Map** y las utilidades **mapboxUtils** y **MapaInteractivoGL**
 

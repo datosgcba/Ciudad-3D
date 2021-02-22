@@ -41,8 +41,8 @@ const Seeker = ({ onSelectItem }) => {
   }
 
   const errorCallback = (/* error */) => {
-    // Si ya hay sugerencias (por ejemplo de favoritos) no muestro el error
     if (suggestions.length === 0) {
+      // TODO: Añadir error
       // setErrorSugerencias(error);
     }
   }

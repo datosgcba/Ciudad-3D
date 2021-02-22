@@ -24,7 +24,6 @@ const clickOnParcel = createAsyncThunk(
     if (usosCount > 0) {
       dispatch(alertsActions.addId('mixtura_usos'))
     }
-    //
 
     return data
   }

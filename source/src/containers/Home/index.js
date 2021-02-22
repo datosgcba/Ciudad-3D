@@ -48,7 +48,6 @@ const Home = ({ token }) => {
     </Paper>
   )
 }
-// <Mapa data={data} logged={!!token} />
 Home.propTypes = {
   token: PropTypes.string
 }

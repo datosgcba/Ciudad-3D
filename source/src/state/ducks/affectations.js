@@ -11,8 +11,6 @@ const clickOnParcel = createAsyncThunk(
     }
     const url = getAffectations(smp)
     const response = await fetch(url)
-    // .catch(() => rejectWithValue('algo salio mal'))
-    // rejectWithValue
     const afectaciones = (await response.json())
 
     const afectacionesFiltrado = Object.entries(afectaciones).filter(([, value]) => value

@@ -33,7 +33,6 @@ const Category = ({ id, path, title }) => {
   return (
     <CardActionArea
       onClick={() => {
-        // Se borran las alertas que pudieran estar de una categoria anterior
         dispatch(alertsActions.clear())
         if (id === 'Tutorial') {
           dispatch(actionsTour.isVisibleTour(true))

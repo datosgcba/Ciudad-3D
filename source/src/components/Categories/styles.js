@@ -24,8 +24,7 @@ export default makeStyles((theme) => ({
     }
   },
   optionSelected: {
-    color: 'yellow', // theme.palette.primary.main,
-    backgroundColor: 'red'
+    color: 'yellow' // TODO: theme.palette.primary.main,
   },
   icon: {
     width: '100%',

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import PropTypes from 'prop-types'
+
 import {
   Box, Typography
 } from '@material-ui/core'
@@ -12,7 +14,7 @@ import useFontsStyles from 'theme/fontsDecorators'
 
 import useStyles from './styles'
 
-const Alert = ({ id, title, text}) => {
+const Alert = ({ id, title, text }) => {
   const classes = useStyles()
   const decorators = useFontsStyles()
   const { titleSuffix } = useSelector((state) => state.alerts.extraData[id]) ?? {}
@@ -22,7 +24,8 @@ const Alert = ({ id, title, text}) => {
       {
         title && (
           <Typography className={decorators.bold}>
-            {title} {titleSuffix?.length ? ` - ${titleSuffix}` : ''}
+            {title}
+            {titleSuffix?.length ? ` - ${titleSuffix}` : ''}
           </Typography>
         )
       }
@@ -52,6 +55,12 @@ const Alerts = () => {
       )}
     </>
   )
+}
+
+Alert.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
 }
 
 export default Alerts

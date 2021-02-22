@@ -1,4 +1,3 @@
-// import config from 'appConfig.json'
 import icons from 'utils/svgIcons'
 
 let config = null

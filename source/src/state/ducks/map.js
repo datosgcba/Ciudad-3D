@@ -94,7 +94,7 @@ const loadLayers = createAsyncThunk(
     // devuelve cada id y title de config.layersGroup
     getLayersGroups().forEach(({ id: idGroup, index = 0 }) => {
       groups[idGroup] = {}
-      // devuelve el title, color y id de de cada layersGroup.layers
+      // devuelve el title, id y color de cada layersGroup.layers
       getLayersByLayersGroupId(idGroup).forEach(({ id: idLayer, index: idxLayer }) => {
         groups[idGroup][idLayer] = {
           processingId: null,

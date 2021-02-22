@@ -26,7 +26,7 @@ const Coords = {
    @return {Array|Object} Coordenadas GKBA
    */
   toGkba(coords) {
-    // Asumo que son 4326
+    // Se asume que son 4326
     const p = proj4('EPSG:4326', 'EPSG:7433', coords)
     if (p[0]) return { x: p[0], y: p[1] }
     return p

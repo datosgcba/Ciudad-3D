@@ -16,9 +16,6 @@ import Report from 'components/Sections/SubSection/Report'
 import Uses from 'components/Sections/SubSection/Uses'
 import Works from 'components/Sections/SubSection/Works'
 
-// En este archivo vemos cuál será la sección abierta del panel,
-// siempre será el último elemento del array
-
 const Section = () => {
   const isShow = useSelector((state) => state.categories.sectionOpen)
   const sectionId = useSelector((state) => state.categories.sectionId)
@@ -39,12 +36,7 @@ const Section = () => {
     ['Inspections', Inspections]
   ])
 
-  // Acá busco el que voy a usar
   const Selected = isShow && sectionComponents.get(sectionSelected)
-  // Acá se renderiza el elemento seleccionado.
-  // Tiene dos elementos, uno es un booleano (open),
-  // si está en false no se muestra y el otro
-  // es el elemento a mostrar
   return (
     <Drawer
       variant="persistent"

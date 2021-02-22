@@ -16,9 +16,7 @@ const Categories = ({ data }) => {
 
   const dispatch = useDispatch()
 
-  // parcelCoords son las coordenadas donde se hace click
   const parcelCoords = useSelector((state) => state.map.selectedCoords)
-  // seekerSmp es el smp obtenido por el buscador
   const seekerSmp = useSelector((state) => state.seeker.place.data.smp)
 
   // Se obtienen los datos básicos de la parcela seleccionada

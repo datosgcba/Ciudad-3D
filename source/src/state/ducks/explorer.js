@@ -43,7 +43,7 @@ const hasGroupWithEmtpyFilter = ({ optionsState, autoCompleteValue }) => autoCom
           },
           {}
         )
-      // Entre Altura y Area el criterio es and por eso evaluan en un mismo grupo
+      // Entre Altura y Area el criterio es AND por esto se evaluan en un mismo grupo
       groupsCount.Altura += area
       return Object.values(groupsCount).some((count) => count === 0)
     }
@@ -80,7 +80,7 @@ const refreshFilter = (optionsState, autoCompleteValue, idLayer, dispatch) => {
             filters.find((g) => g.idGroup === idGroup).filter.push(
               optionsState[idOption][idItem].filter
             )
-            // Entre Area y Altura es criterio es OR por lo tanto se meten en el mismo grupo
+            // Entre Área y Altura el criterio es OR por lo tanto se juntan en el mismo grupo
           } else if (
             optionsState[idOption][idItem].isVisible
             && optionsState[idOption][idItem].idGroup === 'Area'

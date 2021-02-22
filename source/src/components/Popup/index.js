@@ -42,7 +42,6 @@ const Popup = ({ coords, children }) => {
     }
   })
 
-  // {refPopup.current && cloneElement(children, { ref: refPopupContent })}
   return (
     <div ref={refPopup}>
       {refPopup.current && cloneElement(children, { ref: refPopupContent })}

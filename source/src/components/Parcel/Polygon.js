@@ -25,7 +25,7 @@ const Polygon = ({ smp, geomCoords }) => {
     if (parcel3D !== undefined) {
       mapGL.setFilter(
         'edif_smp',
-        ['==', 'smp', smp.toLowerCase()] // smp.toUpperCase() '001-001-001A' '063-113-001A'
+        ['==', 'smp', smp.toLowerCase()]
       )
     }
   }, [mapGL, smp])

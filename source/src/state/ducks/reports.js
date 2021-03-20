@@ -141,6 +141,54 @@ const getData = createAsyncThunk(
               : ''
           }
         ]
+      }, {
+        title: 'Información Urbanística',
+        dataList: [
+          {
+            name: 'Subzona',
+            value: '???'
+          }
+        ]
+      }, {
+        title: 'Datos de plusvalía',
+        dataList: [
+          {
+            name: 'Incidencia',
+            value: '???'
+          },
+          {
+            name: 'Alicuota',
+            value: '???'
+          },
+          {
+            name: 'Distrito CPU',
+            value: '???'
+          }
+        ]
+      }, {
+        title: 'Patrimonio Arquitectonico y Urbanistico',
+        dataList: [
+          {
+            name: 'Denominación',
+            value: '???'
+          },
+          {
+            name: 'Protección',
+            value: '???'
+          },
+          {
+            name: 'Catalogación',
+            value: '???'
+          },
+          {
+            name: 'Estado',
+            value: '???'
+          },
+          {
+            name: 'LEY 3056 - Edificio Anterior a 1941',
+            value: '???'
+          }
+        ]
       }
     ]
     return { smp, direccion, sections }

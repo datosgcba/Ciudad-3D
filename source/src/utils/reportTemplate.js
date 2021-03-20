@@ -13,13 +13,17 @@ export default async (sections, fileName) => {
 
   doc.setFont(fontName, 'bold')
   doc.setFontSize(18)
-  doc.text('Reporte Urbanístico Plano Abierto 3D ', marginLeft, y)
+  doc.text('Reporte Urbanístico - Ciudad 3D ', marginLeft, y)
   y += 10
 
   sections.forEach(({ title, dataList }) => {
     doc.setLineWidth(0.2)
     doc.line(marginLeft, y, 210 - marginLeft * 2, y)
     y += 15
+    if (y > 280) {
+      doc.addPage()
+      y = marginTop
+    }
     doc.setFont(fontName, 'bold')
     doc.setFontSize(13)
     doc.text(`${title}:`, marginLeft, y)
@@ -28,7 +32,7 @@ export default async (sections, fileName) => {
       const margin = marginLeft + 15
       doc.setFont(fontName, 'bold')
       doc.setFontSize(11)
-      const subtile = `-    ${name}: `
+      const subtile = `     ${name}: `
       doc.text(subtile, margin, y)
       const xValue = margin + doc.getTextWidth(subtile)
       doc.setFont(fontName, 'normal')

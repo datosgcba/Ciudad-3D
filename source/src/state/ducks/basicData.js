@@ -10,14 +10,21 @@ const cameraUpdated = (data, dispatch) => {
     lat, lng, zoom: 17, pitch: 60, bearing: 0
   }))
 }
+
+const getData = async ({ coord, smp }) => {
+  const url = coord
+    ? getParcel(coord)
+    : getParcelBySmp(smp)
+  const response = await fetch(url)
+  const data = (await response.json())
+  return data
+}
+
 const selectedParcel = createAsyncThunk(
   'basicData/selectedParcel',
   async (coord, { dispatch }) => {
-    const url = getParcel(coord)
-    const response = await fetch(url)
-    const data = (await response.json())
+    const data = await getData({ coord })
     cameraUpdated(data, dispatch)
-
     dispatch(smpActions.smpSelected(data.smp))
     return data
   },
@@ -32,9 +39,7 @@ const seekerParcel = createAsyncThunk(
   'basicData/seekerParcel',
   async (smp, { dispatch }) => {
     if (smp !== null && smp !== undefined) {
-      const url = getParcelBySmp(smp)
-      const response = await fetch(url)
-      const data = (await response.json())
+      const data = await getData({ smp })
 
       cameraUpdated(data, dispatch)
       dispatch(smpActions.smpSelected(data.smp))

@@ -120,7 +120,7 @@ const clickOnParcel = createAsyncThunk(
       }
       const agrupado = esp[0]?.distrito_agrupado?.toUpperCase() ?? ''
       if (agrupado !== '') {
-        const id = `especial_${agrupado.replace(/[\/|\s]/, '_')}`
+        const id = `especial_${agrupado.replace(/[/|\s]/, '_')}`
         dispatch(alertsActions.addId(id))
         const titleSuffix = esp[0]?.distrito_especifico?.trim()
         dispatch(alertsActions.addExtraData({ id, titleSuffix }))

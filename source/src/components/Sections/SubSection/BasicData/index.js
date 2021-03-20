@@ -41,13 +41,14 @@ const BasicData = () => {
   const decorators = useFontsStyles()
   const data = useSelector((state) => state.basicData.data)
   const isSelected = useSelector((state) => state.basicData.isSelected)
-
+  const { smp } = data
   return (
     <ContainerBar
       type="list"
     >
       { isSelected && (
         <Box>
+          <img alt="fachada" src={`https://fotos.usig.buenosaires.gob.ar/getFoto?smp=${smp}&w=300`} />
           {
             getBasicData().map(({
               title,

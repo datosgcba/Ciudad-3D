@@ -19,7 +19,9 @@ const Icon = ({ className, path, isSelected }) => (
   </SvgIcon>
 )
 
-const Category = ({ id, path, title }) => {
+const Category = ({
+  id, path, title, url
+}) => {
   const sectionName = useSelector((state) => (state.categories.sectionId.length === 0
     ? null
     : state.categories.sectionId[0]))
@@ -36,9 +38,13 @@ const Category = ({ id, path, title }) => {
         dispatch(alertsActions.clear())
         if (id === 'Tutorial') {
           dispatch(actionsTour.isVisibleTour(true))
-        } else {
-          dispatch(actions.categorySelected(id))
+          return
         }
+        if (url) {
+          window.open(url, '_blank')
+          return
+        }
+        dispatch(actions.categorySelected(id))
       }}
       className={classes.option}
     >
@@ -51,6 +57,7 @@ const Category = ({ id, path, title }) => {
 Category.propTypes = {
   id: PropTypes.string.isRequired,
   path: PropTypes.objectOf(PropTypes.any).isRequired,
+  url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 }
 

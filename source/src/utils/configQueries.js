@@ -16,7 +16,7 @@ const getFullLayerConfig = (idGroup, idLayer) => config
 
 // Métodos que retornan data acotada y segura de serializar
 const getCategories = () => config.categories.map(
-  ({ id, title, path }) => ({ id, title, path: icons.find((i) => i.id === path).path })
+  ({ id, title, path, url }) => ({ id, title, url, path: icons.find((i) => i.id === path).path })
 )
 
 const getLayersGroups = () => config.layersGroup.map(({ id, title }) => ({

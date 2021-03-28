@@ -29,7 +29,8 @@
     {
       "id": "Contact",
       "title": "Ayudanos a mejorar",
-      "path": "contact"
+      "path": "contact",
+      "url": "https://www.buenosaires.gob.ar/formulario-de-consultas-desarrollo-urbano"
     }
   ],
   "explorer": [

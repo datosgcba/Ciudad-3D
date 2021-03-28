@@ -31,12 +31,13 @@ const Categories = ({ data }) => {
   return (
     <Box className={classes.options}>
       {
-        data.map(({ id, title, path }) => (
+        data.map(({ id, title, path, url }) => (
           <Category
             key={id}
             id={id}
             path={path}
             title={title}
+            url={url}
           />
         ))
       }

@@ -3125,5 +3125,6 @@
     "pitch": 0,
     "bearing": 0
   },
-  "urlAPI": "https://epok.buenosaires.gob.ar"
+  "urlAPI": "https://epok.buenosaires.gob.ar",
+	"urlPhoto": "https://fotos.usig.buenosaires.gob.ar"
 }

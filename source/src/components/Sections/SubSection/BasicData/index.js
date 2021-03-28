@@ -10,6 +10,7 @@ import useFontsStyles from 'theme/fontsDecorators'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 import SelectParcel from 'components/Sections/SubSection/SelectParcel'
+import Carrousel from 'components/Carrousel'
 
 import { useSelector } from 'react-redux'
 
@@ -41,14 +42,16 @@ const BasicData = () => {
   const decorators = useFontsStyles()
   const data = useSelector((state) => state.basicData.data)
   const isSelected = useSelector((state) => state.basicData.isSelected)
-  const { smp } = data
+  const { smp, photoData } = data
   return (
     <ContainerBar
       type="list"
     >
       { isSelected && (
         <Box>
-          <img alt="fachada" src={`https://fotos.usig.buenosaires.gob.ar/getFoto?smp=${smp}&w=300`} />
+          {
+						!!photoData?.length && <Carrousel photos={photoData} />
+					}
           {
             getBasicData().map(({
               title,

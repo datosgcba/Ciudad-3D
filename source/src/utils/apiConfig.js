@@ -1,4 +1,4 @@
-import { getApiUrl } from './configQueries'
+import { getApiUrl, getPhotoUrl } from './configQueries'
 
 const getParcel = ({ lng, lat }) => `${getApiUrl()}/catastro/parcela/?lng=${lng}&lat=${lat}`
 
@@ -22,6 +22,10 @@ const getInspections = (smp) => `${getApiUrl()}/cur3d/inspecciones/?smp=${smp}`
 
 const getPlusvalia = (smp, area) => `${getApiUrl()}/cur3d/calcular_plusvalia/?smp=${smp}&area_edificar=${area}`
 
+const getPhotoData = (smp) => `${getPhotoUrl()}/getDatosFotos?smp=${smp}`
+
+const getPhoto = (smp, idx) => `${getPhotoUrl()}/getFoto?smp=${smp}&i=${idx}&w=243`
+
 export {
   getParcel,
   getParcelBySmp,
@@ -33,5 +37,7 @@ export {
   getAffectations,
   getWorks,
   getInspections,
-  getPlusvalia
+  getPlusvalia,
+  getPhotoData,
+  getPhoto
 }

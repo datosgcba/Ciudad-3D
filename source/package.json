@@ -26,6 +26,8 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.4.4",
     "react-smooth-scrollbar": "^8.0.6",
+    "react-swipeable-views": "^0.13.9",
+    "react-swipeable-views-utils": "^0.14.0-alpha.0",
     "reactour": "^1.18.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",

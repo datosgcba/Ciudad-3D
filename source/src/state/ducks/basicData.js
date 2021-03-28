@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getParcel, getParcelBySmp } from 'utils/apiConfig'
+import {
+  getParcel, getParcelBySmp, getPhoto, getPhotoData
+} from 'utils/apiConfig'
 import { actions as mapActions } from 'state/ducks/map'
 import { actions as smpActions } from 'state/ducks/parcel'
 
@@ -24,9 +26,21 @@ const selectedParcel = createAsyncThunk(
   'basicData/selectedParcel',
   async (coord, { dispatch }) => {
     const data = await getData({ coord })
+    const { smp } = data
     cameraUpdated(data, dispatch)
-    dispatch(smpActions.smpSelected(data.smp))
-    return data
+    dispatch(smpActions.smpSelected(smp))
+    const urlPhotoData = getPhotoData(smp)
+    const photoData = await fetch(urlPhotoData)
+      .then((response) => response.text())
+      .then((text) => JSON.parse(text.slice(1, -1)))
+
+    return {
+      ...data,
+      photoData: photoData.map(({ fecha }, idx) => ({
+        fecha,
+        photo: getPhoto(smp, idx)
+      }))
+    }
   },
   {
     condition: ({ lat, lng }, { getState }) => lat !== undefined

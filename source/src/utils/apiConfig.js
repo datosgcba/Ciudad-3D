@@ -8,6 +8,8 @@ const getGeometrical = (smp) => `${getApiUrl()}/catastro/geometria/?smp=${smp}`
 
 const getBuildable = (smp) => `${getApiUrl()}/cur3d/seccion_edificabilidad/?smp=${smp}`
 
+const getEnrase = (smp) => `${getApiUrl()}/cur3d/parcelas_plausibles_a_enrase/?smp=${smp}`
+
 const getCapitalGain = (smp) => `${getApiUrl()}/cur3d/calcular_plusvalia/?smp=${smp}`
 
 const getUses = (smp) => `${getApiUrl()}/cur3d/mixtura_usos/?smp=${smp}`
@@ -25,6 +27,7 @@ export {
   getParcelBySmp,
   getGeometrical,
   getBuildable,
+  getEnrase,
   getCapitalGain,
   getUses,
   getAffectations,

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getBuildable, getPlusvalia } from 'utils/apiConfig'
+import { getBuildable, getEnrase, getPlusvalia } from 'utils/apiConfig'
 import { actions as alertsActions } from 'state/ducks/alerts'
 
 const areaChanged = createAsyncThunk(
@@ -34,6 +34,51 @@ const areaChanged = createAsyncThunk(
   }
 )
 
+const getDataBuild = (url) => fetch(url)
+  .then((response) => response.json())
+  .then(({
+    altura_max: alturas,
+    fot: {
+      fot_medianera: medianera,
+      fot_perim_libre: perim,
+      fot_semi_libre: semi
+    },
+    plusvalia: {
+      // eslint-disable-next-line no-unused-vars
+      plusvalia_em: em,
+      // eslint-disable-next-line no-unused-vars
+      plusvalia_pl: pl,
+      // eslint-disable-next-line no-unused-vars
+      plusvalia_sl: sl
+    },
+    sup_max_edificable: supMax,
+    sup_edificable_planta: supPlanta,
+    ...others
+  }) => {
+    const alturasAux = alturas
+      .filter((altura) => altura > 0)
+      .map((altura) => altura.toLocaleString('es-AR'))
+    return ({
+      altura_max: alturasAux.length === 0 ? [0] : alturasAux,
+      fot: {
+        fot_medianera: medianera.toLocaleString('es-AR'),
+        fot_perim_libre: perim.toLocaleString('es-AR'),
+        fot_semi_libre: semi.toLocaleString('es-AR'),
+        total: medianera + perim + semi
+      },
+      plusvalia: {
+        plusvalia_em: 0,
+        plusvalia_pl: 0,
+        plusvalia_sl: 0
+      },
+      sup_max_edificable: supMax.toLocaleString('es-AR'),
+      sup_edificable_planta: supPlanta.toLocaleString('es-AR'),
+      // Por el Ticket 2863 se ignora supPlanta y se deja en cero
+      // sup_edificable_planta: 0,
+      ...others
+    })
+  })
+
 const clickOnParcel = createAsyncThunk(
   'buildable/clickOnParcel',
   async (smp, { dispatch }) => {
@@ -41,51 +86,15 @@ const clickOnParcel = createAsyncThunk(
     if (smp.length === undefined) {
       return { smp: 'Invalido' }
     }
-    const url = getBuildable(smp)
-    const data = await fetch(url)
-      .then((response) => response.json())
-      .then(({
-        altura_max: alturas,
-        fot: {
-          fot_medianera: medianera,
-          fot_perim_libre: perim,
-          fot_semi_libre: semi
-        },
-        plusvalia: {
-          // eslint-disable-next-line no-unused-vars
-          plusvalia_em: em,
-          // eslint-disable-next-line no-unused-vars
-          plusvalia_pl: pl,
-          // eslint-disable-next-line no-unused-vars
-          plusvalia_sl: sl
-        },
-        sup_max_edificable: supMax,
-        sup_edificable_planta: supPlanta,
-        ...others
-      }) => {
-        const alturasAux = alturas
-          .filter((altura) => altura > 0)
-          .map((altura) => altura.toLocaleString('es-AR'))
-        return ({
-          altura_max: alturasAux.length === 0 ? [0] : alturasAux,
-          fot: {
-            fot_medianera: medianera.toLocaleString('es-AR'),
-            fot_perim_libre: perim.toLocaleString('es-AR'),
-            fot_semi_libre: semi.toLocaleString('es-AR'),
-            total: medianera + perim + semi
-          },
-          plusvalia: {
-            plusvalia_em: 0,
-            plusvalia_pl: 0,
-            plusvalia_sl: 0
-          },
-          sup_max_edificable: supMax.toLocaleString('es-AR'),
-          sup_edificable_planta: supPlanta.toLocaleString('es-AR'),
-          // Por el Ticket 2863 se ignora supPlanta y se deja en cero
-          // sup_edificable_planta: 0,
-          ...others
-        })
-      })
+    const [dataBuild, dataEnrase] = await Promise.all([
+      getDataBuild(getBuildable(smp)),
+      fetch(getEnrase(smp)).then((response) => response.json())
+    ])
+
+    const data = {
+      ...dataBuild,
+      ...dataEnrase
+    }
 
     const esp = data
       ?.distrito_especial?.filter((distrito) => distrito.distrito_especifico.length > 0)
@@ -131,24 +140,26 @@ const clickOnParcel = createAsyncThunk(
     if (afectacionesCount > 0) {
       dispatch(alertsActions.addId('afectaciones'))
     }
-    if (data?.rivolta > 0) {
-      dispatch(alertsActions.addId(
-        data?.tipica?.length
-          // TODO: los id de rivolta deberían estar al revez
-          // Dado que se hizo un tag en el repositorio con la configuración mal hecha,
-          // se modificó la alerta en el appConfig
-          ? 'rivolta_atipica'
-          : 'rivolta'
-      ))
+    if (data?.rivolta > 0 && data?.tipica?.length) {
+      dispatch(alertsActions.addId('rivolta'))
+    }
+    if (data?.tipica?.toUpperCase() !== 'T') {
+      dispatch(alertsActions.addId('manzana_atipica'))
     }
     if (data.parcelas_linderas?.aph_linderas) {
       dispatch(alertsActions.addId('adyacente_catalogado'))
     }
     if (['cautelar', 'integral', 'especial', 'estructural'].includes(data.catalogacion?.proteccion?.toLowerCase())) {
-      dispatch(alertsActions.addId('catalogado'))
+      const id = 'catalogado'
+      dispatch(alertsActions.addId(id))
+      const titleSuffix = data.catalogacion.proteccion
+      dispatch(alertsActions.addExtraData({ id, titleSuffix }))
     }
     if ((data?.fot?.total ?? 0) === 0) {
       dispatch(alertsActions.addId('plusvalía_no_calculable'))
+    }
+    if (data?.enrase) {
+      dispatch(alertsActions.addId('enrase'))
     }
 
     return data

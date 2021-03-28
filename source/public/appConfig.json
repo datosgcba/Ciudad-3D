@@ -2966,6 +2966,16 @@
       "id": "especial_P",
       "title": "Área Puerto",
       "text": "Corresponde a las áreas afectadas a la actividad portuaria. Sus usos son aquellos derivados de la actividad portuaria y los usos complementarios indispensables para el desarrollo de dicha actividad."
+    },
+    {
+      "id": "manzana_atipica",
+      "title": "Parcela en Manzana Atípica",
+      "text": "Para consultar los trazados de Línea de Frente Interno o de Basamento en una manzana atípica, se deberá realizar la consulta Fijación de Línea de Frente Interno (https://www.buenosaires.gob.ar/tramites/fijacion-de-linea-de-frente-interno) vía TAD(https://lbapw.agip.gob.ar/claveciudad/)."
+    },
+    {
+      "id": "enrase",
+      "title": "Completamiento de Tejido o Edificabilidad",
+      "text": "Esta parcela posee edificios linderos que la hace plausible al completamiento de tejido o edificabilidad según el Artículo 6.5.5. Verificar con el organismo competente su aplicación y de qué tipo."
     }
   ],
   "baseLayers": {

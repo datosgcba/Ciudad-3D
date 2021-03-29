@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography
+  Box, Typography, Link
 } from '@material-ui/core'
 
 import { getAlert } from 'utils/configQueries'
@@ -19,6 +19,18 @@ const Alert = ({ id, title, text }) => {
   const decorators = useFontsStyles()
   const { titleSuffix } = useSelector((state) => state.alerts.extraData[id]) ?? {}
 
+  const content = []
+  const matches = text.matchAll(/(?:(?<textStart>.*?)\[(?<link>[^\]]+)\]\((?<url>http[s]{0,1}\:\/\/[^\)]+)\)|(?<textEnd>.+)$)/g)
+  for (const m of matches) {
+    const {
+      textStart, link, url, textEnd
+    } = m.groups
+ 		content.push(textStart || '')
+ 		content.push(link
+      ? (<Link href={url} target="_blank" rel="noopener">{link}</Link>)
+      : '')
+ 		content.push(textEnd || '')
+  }
   return (
     <Box key={id} className={classes.box}>
       {
@@ -32,7 +44,7 @@ const Alert = ({ id, title, text }) => {
       {
         text && (
           <Typography>
-            {text}
+            {content}
           </Typography>
         )
       }

@@ -27,19 +27,28 @@ const selectedParcel = createAsyncThunk(
   async (coord, { dispatch }) => {
     const data = await getData({ coord })
     const { smp } = data
-    cameraUpdated(data, dispatch)
-    dispatch(smpActions.smpSelected(smp))
-    const urlPhotoData = getPhotoData(smp)
-    const photoData = await fetch(urlPhotoData)
-      .then((response) => response.text())
-      .then((text) => JSON.parse(text.slice(1, -1)))
+    if (smp) {
+      cameraUpdated(data, dispatch)
+      dispatch(smpActions.smpSelected(smp))
+      const urlPhotoData = getPhotoData(smp)
+      const photoData = await fetch(urlPhotoData)
+        .then((response) => response.text())
+        .then((text) => JSON.parse(text.slice(1, -1)))
 
+      return {
+        ...data,
+        photoData: photoData.map(({ fecha }, idx) => ({
+          fecha,
+          photo: getPhoto(smp, idx)
+        }))
+      }
+    }
+    dispatch(smpActions.clean())
     return {
-      ...data,
-      photoData: photoData.map(({ fecha }, idx) => ({
-        fecha,
-        photo: getPhoto(smp, idx)
-      }))
+      data: {
+        smp: null
+      },
+      photoData: []
     }
   },
   {
@@ -57,7 +66,18 @@ const seekerParcel = createAsyncThunk(
 
       cameraUpdated(data, dispatch)
       dispatch(smpActions.smpSelected(data.smp))
-      return data
+      const urlPhotoData = getPhotoData(smp)
+      const photoData = await fetch(urlPhotoData)
+        .then((response) => response.text())
+        .then((text) => JSON.parse(text.slice(1, -1)))
+
+      return {
+        ...data,
+        photoData: photoData.map(({ fecha }, idx) => ({
+          fecha,
+          photo: getPhoto(smp, idx)
+        }))
+      }
     }
     throw new Error()
   },

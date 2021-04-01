@@ -12,6 +12,7 @@ import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 import Seeker from 'components/Seeker/Seeker'
 
 import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
+import North from 'components/North'
 
 import imgCapaBasePrincipal from 'img/capabase_1.png'
 import imgCapaBaseSecundaria from 'img/capabase_2.png'
@@ -92,7 +93,18 @@ const Map = ({ children }) => {
         },
         onFeatureClick,
         transformRequest,
-        onClicked
+        onClicked,
+        onMoveEnd: () => {
+          const { lng, lat } = map.map.getCenter()
+          const bearing = map.map.getBearing()
+          const pitch = map.map.getPitch()
+          dispatch(mapActions.cameraUpdated({
+            lat,
+            lng,
+            bearing,
+            pitch
+          }))
+        }
       })
       setMapGL(map)
 
@@ -113,33 +125,34 @@ const Map = ({ children }) => {
           }}
           onClick={() => setCapabasePrincipal(!capabasePrincipal)}
         />
-        <Box className={classes.topMenu}>
-          <Seeker onSelectItem={(selectedSuggestion) => {
-            dispatch(seekerActions.placeSelected({ data: { smp: null } }))
-            dispatch(seekerActions.placeSelected(selectedSuggestion))
-            dispatch(seekerActions.coordinatesSelected(selectedSuggestion.data.coordenadas))
-            /*
-              Se actualiza la camara desde acá
-              ya que al elegir lugares o intersecciones
-              el autocompleter no trae SMP
-             */
-            if (
-              (selectedSuggestion.data.smp === undefined
-              || selectedSuggestion.data.smp === '')
-              && selectedSuggestion.data.coordenadas
-              && selectedSuggestion.data.coordenadas.x && selectedSuggestion.data.coordenadas.y
-            ) {
-              dispatch(mapActions.cameraUpdated({
-                lat: selectedSuggestion.data.coordenadas.y,
-                lng: selectedSuggestion.data.coordenadas.x,
-                zoom: 17,
-                pitch: 60,
-                bearing: 0
-              }))
-            }
-          }}
-          />
-        </Box>
+        <North />
+      </Box>
+      <Box className={classes.topMenu}>
+        <Seeker onSelectItem={(selectedSuggestion) => {
+          dispatch(seekerActions.placeSelected({ data: { smp: null } }))
+          dispatch(seekerActions.placeSelected(selectedSuggestion))
+          dispatch(seekerActions.coordinatesSelected(selectedSuggestion.data.coordenadas))
+          /*
+            Se actualiza la camara desde acá
+            ya que al elegir lugares o intersecciones
+            el autocompleter no trae SMP
+           */
+          if (
+            (selectedSuggestion.data.smp === undefined
+            || selectedSuggestion.data.smp === '')
+            && selectedSuggestion.data.coordenadas
+            && selectedSuggestion.data.coordenadas.x && selectedSuggestion.data.coordenadas.y
+          ) {
+            dispatch(mapActions.cameraUpdated({
+              lat: selectedSuggestion.data.coordenadas.y,
+              lng: selectedSuggestion.data.coordenadas.x,
+              zoom: 17,
+              pitch: 60,
+              bearing: 0
+            }))
+          }
+        }}
+        />
       </Box>
       {isMapReady && children }
     </Container>

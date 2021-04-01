@@ -21,7 +21,8 @@ export default makeStyles(() => ({
     right: '23px',
     bottom: '10px',
     zIndex: 998,
-    display: 'inline-flex'
+    display: 'inline-flex',
+		flexDirection:'column-reverse',
   },
   minimapLayer: {
     cursor: 'pointer',

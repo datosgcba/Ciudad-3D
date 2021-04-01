@@ -118,6 +118,10 @@ const initMap = createAsyncThunk(
     mapGL = mapInstance
     const mapOnLoad = mapOnPromise(mapInstance.map)('load')
     return mapOnLoad
+		  .then(async () => {
+		    const mapOnIdle = mapOnPromise(mapGL.map)('idle')
+        mapOnIdle.then(() => console.log('idle:'))
+      })
       .then(async () => true)
       .catch(() => false)
   }, {
@@ -229,8 +233,8 @@ const map = createSlice({
         lat: newLat || lat,
         lng: newLng || lng,
         zoom: newZoom || zoom,
-        pitch: newPitch || pitch,
-        bearing: newBearing || bearing
+        pitch: typeof (newPitch) === 'number' ? newPitch : pitch,
+        bearing: typeof (newBearing) === 'number' ? newBearing : bearing
       }
     },
     setMapReady: (draftState) => {

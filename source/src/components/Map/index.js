@@ -13,6 +13,7 @@ import Seeker from 'components/Seeker/Seeker'
 
 import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
 import North from 'components/North'
+import Measure from 'components/Measure'
 
 import imgCapaBasePrincipal from 'img/capabase_1.png'
 import imgCapaBaseSecundaria from 'img/capabase_2.png'
@@ -98,9 +99,11 @@ const Map = ({ children }) => {
           const { lng, lat } = map.map.getCenter()
           const bearing = map.map.getBearing()
           const pitch = map.map.getPitch()
+          const zoom = map.map.getZoom()
           dispatch(mapActions.cameraUpdated({
             lat,
             lng,
+						zoom,
             bearing,
             pitch
           }))
@@ -126,6 +129,7 @@ const Map = ({ children }) => {
           onClick={() => setCapabasePrincipal(!capabasePrincipal)}
         />
         <North />
+        <Measure />
       </Box>
       <Box className={classes.topMenu}>
         <Seeker onSelectItem={(selectedSuggestion) => {

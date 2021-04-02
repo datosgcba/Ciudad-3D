@@ -118,10 +118,6 @@ const initMap = createAsyncThunk(
     mapGL = mapInstance
     const mapOnLoad = mapOnPromise(mapInstance.map)('load')
     return mapOnLoad
-		  .then(async () => {
-		    const mapOnIdle = mapOnPromise(mapGL.map)('idle')
-        mapOnIdle.then(() => console.log('idle:'))
-      })
       .then(async () => true)
       .catch(() => false)
   }, {
@@ -294,6 +290,7 @@ const map = createSlice({
         version: 8,
         sources,
         layers,
+        glyphs: 'https://fonts.openmaptiles.org/{fontstack}/{range}.pbf',
         light
       }
     }

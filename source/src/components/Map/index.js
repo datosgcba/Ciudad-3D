@@ -103,7 +103,7 @@ const Map = ({ children }) => {
           dispatch(mapActions.cameraUpdated({
             lat,
             lng,
-						zoom,
+            zoom,
             bearing,
             pitch
           }))

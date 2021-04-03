@@ -70,7 +70,7 @@ const Carrousel = ({ photos }) => {
               padding: 5
             }}
             >
-              <Typography color='textSecondary'>{photos[activeStep]?.fecha}</Typography>
+              <Typography color="textSecondary">{photos[activeStep]?.fecha}</Typography>
             </Box>
             {Math.abs(activeStep - index) <= 2 ? (
               <img className={classes.img} src={step.photo} alt={step.fecha} />

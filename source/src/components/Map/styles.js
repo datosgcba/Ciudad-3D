@@ -22,7 +22,7 @@ export default makeStyles(() => ({
     bottom: '10px',
     zIndex: 998,
     display: 'inline-flex',
-		flexDirection:'column-reverse',
+    flexDirection: 'column-reverse'
   },
   minimapLayer: {
     cursor: 'pointer',

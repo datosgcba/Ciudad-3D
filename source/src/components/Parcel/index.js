@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
 
@@ -8,10 +8,15 @@ const Parcel = () => {
   const smpParcel = useSelector((state) => state.parcel.smp)
   const geomCoords = useSelector((state) => state.parcel.geomCoords)
   const isVisible = useSelector((state) => state.parcel.isVisible)
+  const [smpList, setSmpList] = useState([])
+
+  useEffect(() => {
+    setSmpList(smpParcel ? [...smpList, smpParcel] : [])
+  }, [smpParcel])
 
   return (
     <>
-      {isVisible && smpParcel && geomCoords && <Polygon smp={smpParcel} geomCoords={geomCoords} />}
+      {isVisible && geomCoords?.length && <Polygon smpList={smpList} geomCoords={geomCoords} />}
     </>
   )
 }

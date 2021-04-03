@@ -28,10 +28,10 @@ const parcel = createSlice({
     smp: null
   },
   reducers: {
-    clean: {
-      isVisible: true,
-      geomCoords: null,
-      smp: null
+    clean: (draftState) => {
+      draftState.isVisiblen = false
+      draftState.geomCoords = null
+      draftState.smp = null
     },
     updateSmp: (draftState, action) => {
       draftState.smp = action.payload

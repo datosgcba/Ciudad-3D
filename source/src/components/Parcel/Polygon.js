@@ -5,41 +5,34 @@ import { getParcelLayer } from 'utils/configQueries'
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
 const parcelId = 'parcel_layer'
-const Polygon = ({ smp, geomCoords }) => {
+const Polygon = ({ smpList, geomCoords }) => {
   const mapGL = MapaInteractivoGL()
 
-  const { edif, polygon } = getParcelLayer()
+  const { edif, polygon: { paint, type, layout } } = getParcelLayer()
+  const { id: edifId } = edif
+  useEffect(() => {
+    mapGL.map.addLayer(edif)
+    return () => {
+      mapGL.map.removeLayer(edifId)
+      mapGL.map.removeSource(edifId)
+    }
+  }, [edif, edifId, mapGL])
 
   useEffect(() => {
-    mapGL.addVectorTileLayer(
-      edif,
-      null,
-      false,
-      null
-    )
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  useEffect(() => {
-    const parcel3D = mapGL.map.getLayer('edif_smp')
+    const parcel3D = mapGL.map.getLayer(edifId)
     if (parcel3D !== undefined) {
       mapGL.setFilter(
-        'edif_smp',
-        ['==', 'smp', smp.toLowerCase()]
+        edifId,
+        ['in', ['get', 'smp'], smpList.join(',').toLowerCase()]
       )
     }
-  }, [mapGL, smp])
+  }, [mapGL, smpList, edifId])
 
   useEffect(() => {
-    const layer = mapGL.map.getLayer(parcelId)
-    if (layer !== undefined) {
-      mapGL.map.removeLayer(parcelId)
-    }
-
     if (geomCoords !== null) {
-      const source = mapGL.map.getSource(smp)
+      const source = mapGL.map.getSource(parcelId)
       if (source === undefined) {
-        mapGL.map.addSource(smp, {
+        mapGL.map.addSource(parcelId, {
           type: 'geojson',
           data: {
             type: 'Feature',
@@ -52,16 +45,18 @@ const Polygon = ({ smp, geomCoords }) => {
       }
       mapGL.map.addLayer({
         id: parcelId,
-        source: smp,
-        type: polygon.type,
-        layout: polygon.layout,
-        paint: polygon.paint
+        source: parcelId,
+        type,
+        layout,
+        paint
       })
-      mapGL.map.moveLayer(parcelId, 'edif_smp')
+      //       mapGL.map.moveLayer(parcelId, edifId)
     }
-    // TODO: Agregar smp a las dependencias del useEffect sin perder funcionalidad
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [geomCoords, mapGL])
+    return () => {
+      mapGL.map.removeLayer(parcelId)
+      mapGL.map.removeSource(parcelId)
+    }
+  }, [geomCoords, mapGL, paint, type, layout])
 
   return null
 }

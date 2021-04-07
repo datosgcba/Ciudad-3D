@@ -55,6 +55,7 @@ class MapaInteractivoGL {
     const params = { ...this.config.params, ...options }
 
     this.map = new mapboxgl.Map(params)
+//		this.map.addControl(new mapboxgl.NavigationControl())
     this._markers = {}
     this.popup = this.config.popup
     this._layers = {}

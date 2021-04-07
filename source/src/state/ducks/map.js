@@ -118,7 +118,7 @@ const initMap = createAsyncThunk(
     mapGL = mapInstance
     const mapOnLoad = mapOnPromise(mapInstance.map)('load')
     return mapOnLoad
-      .then(async () => true)
+      .then(() => true)
       .catch(() => false)
   }, {
     condition: () => mapGL === null

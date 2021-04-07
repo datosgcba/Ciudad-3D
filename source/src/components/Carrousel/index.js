@@ -6,9 +6,7 @@ import MobileStepper from '@material-ui/core/MobileStepper'
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import SwipeableViews from 'react-swipeable-views'
-import { autoPlay } from 'react-swipeable-views-utils'
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 400,
@@ -54,7 +52,7 @@ const Carrousel = ({ photos }) => {
 
   return (
     <div className={classes.root}>
-      <AutoPlaySwipeableViews
+      <SwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
         onChangeIndex={handleStepChange}
@@ -77,7 +75,7 @@ const Carrousel = ({ photos }) => {
             ) : null}
           </Box>
         ))}
-      </AutoPlaySwipeableViews>
+      </SwipeableViews>
       <MobileStepper
         steps={maxSteps}
         position="static"

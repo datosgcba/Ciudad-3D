@@ -111,6 +111,9 @@ const Map = ({ children }) => {
       })
       setMapGL(map)
 
+      const engine = map.getMapEngine()
+      const control = new engine.NavigationControl()
+      map.map.addControl(control)
       dispatch(mapActions.initMap(map))
     }
   }, [isMapReady, defaultMapStyle, cameraLat, cameraLng, cameraZoom, onClicked, dispatch])
@@ -128,7 +131,6 @@ const Map = ({ children }) => {
           }}
           onClick={() => setCapabasePrincipal(!capabasePrincipal)}
         />
-        <North />
         <Measure />
       </Box>
       <Box className={classes.topMenu}>

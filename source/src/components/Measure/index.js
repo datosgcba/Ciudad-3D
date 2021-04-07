@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import {
   Box,
-  IconButton,
+  ButtonBase,
   Popper
 } from '@material-ui/core'
 import Timeline from '@material-ui/icons/Timeline'
@@ -32,25 +32,30 @@ const Measure = () => {
     }
   }, [isActive])
 
+  const controlGroup = document.querySelector('.mapboxgl-ctrl-top-right .mapboxgl-ctrl-group')
+  useEffect(() => {
+    if (controlGroup) {
+      controlGroup.appendChild(refMenu.current)
+    }
+  }, [refMenu, controlGroup])
+
   const handleMeasure = () => {
     setIsActive(!isActive)
   }
 
-  const classes = useStyles()
   return (
-    <Box>
+    <>
       { isActive && (
       <Lines points={coordinates} />
       ) }
-      <IconButton
-        ref={refMenu}
-        color={isActive ? 'primary' : 'secondary'}
-        onClick={handleMeasure}
-        className={classes.button}
-      >
-        <Timeline />
-      </IconButton>
-    </Box>
+      
+      <ButtonBase ref={refMenu}>
+        <Timeline
+          color={isActive ? 'primary' : 'inherit'}
+          onClick={handleMeasure}
+        />
+      </ButtonBase>
+    </>
   )
 }
 

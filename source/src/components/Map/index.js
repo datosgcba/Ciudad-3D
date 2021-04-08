@@ -131,34 +131,34 @@ const Map = ({ children }) => {
           }}
           onClick={() => setCapabasePrincipal(!capabasePrincipal)}
         />
-        <Measure />
-      </Box>
-      <Box className={classes.topMenu}>
-        <Seeker onSelectItem={(selectedSuggestion) => {
-          dispatch(seekerActions.placeSelected({ data: { smp: null } }))
-          dispatch(seekerActions.placeSelected(selectedSuggestion))
-          dispatch(seekerActions.coordinatesSelected(selectedSuggestion.data.coordenadas))
-          /*
+        <Box className={classes.topMenu}>
+          <Seeker onSelectItem={(selectedSuggestion) => {
+            dispatch(seekerActions.placeSelected({ data: { smp: null } }))
+            dispatch(seekerActions.placeSelected(selectedSuggestion))
+            dispatch(seekerActions.coordinatesSelected(selectedSuggestion.data.coordenadas))
+            /*
             Se actualiza la camara desde acá
             ya que al elegir lugares o intersecciones
             el autocompleter no trae SMP
            */
-          if (
-            (selectedSuggestion.data.smp === undefined
+            if (
+              (selectedSuggestion.data.smp === undefined
             || selectedSuggestion.data.smp === '')
             && selectedSuggestion.data.coordenadas
             && selectedSuggestion.data.coordenadas.x && selectedSuggestion.data.coordenadas.y
-          ) {
-            dispatch(mapActions.cameraUpdated({
-              lat: selectedSuggestion.data.coordenadas.y,
-              lng: selectedSuggestion.data.coordenadas.x,
-              zoom: 17,
-              pitch: 60,
-              bearing: 0
-            }))
-          }
-        }}
-        />
+            ) {
+              dispatch(mapActions.cameraUpdated({
+                lat: selectedSuggestion.data.coordenadas.y,
+                lng: selectedSuggestion.data.coordenadas.x,
+                zoom: 17,
+                pitch: 60,
+                bearing: 0
+              }))
+            }
+          }}
+          />
+        </Box>
+        <Measure />
       </Box>
       {isMapReady && children }
     </Container>

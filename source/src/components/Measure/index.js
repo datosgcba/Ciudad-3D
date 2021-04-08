@@ -1,15 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import {
-  Box,
-  ButtonBase,
-  Popper
-} from '@material-ui/core'
+import { ButtonBase } from '@material-ui/core'
 import Timeline from '@material-ui/icons/Timeline'
 
 import Lines from 'components/Lines'
-import useStyles from './styles'
 
 const Measure = () => {
   const [isActive, setIsActive] = useState(false)

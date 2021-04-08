@@ -11,7 +11,7 @@ export default makeStyles(() => ({
   },
   topMenu: {
     position: 'fixed',
-    right: '23px',
+    right: '50px',
     top: '10px',
     zIindex: 998,
     display: 'inline-flex'

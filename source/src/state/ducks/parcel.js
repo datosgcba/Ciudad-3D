@@ -17,6 +17,12 @@ const smpSelected = createAsyncThunk(
       dispatch(categoriesActions.categorySelected('Information'))
     }
     return data.features[0].geometry.coordinates[0][0]
+  },
+  {
+    condition: (_, { getState }) => {
+      const state = getState()
+      return !state.map.isMeasureActive
+    }
   }
 )
 

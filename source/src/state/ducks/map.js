@@ -138,7 +138,7 @@ const toggleLayer = createAsyncThunk(
     const { isVisible, index } = getLayerState(state.map, idGroup, idLayer)
     const layer = getFullLayerConfig(idGroup, idLayer)
     const { order } = await toggle(layer, isVisible, index, state.map.groups)
-    const onPromise = await mapOnPromise(mapGL.map)
+    const onPromise = mapOnPromise(mapGL.map)
     onPromise('idle')
       // eslint-disable-next-line no-console
       .catch((error) => console.warn('toggleLayer catch error:', error))
@@ -217,6 +217,9 @@ const map = createSlice({
     explorerLayers: {}
   },
   reducers: {
+    isMeasureActive: (draftState, { payload: isActive }) => {
+      draftState.isMeasureActive = isActive
+    },
     cameraUpdated: (draftState, {
       payload: {
         lat: newLat, lng: newLng, zoom: newZoom, pitch: newPitch, bearing: newBearing

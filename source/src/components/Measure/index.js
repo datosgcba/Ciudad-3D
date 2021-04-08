@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { actions as mapActions } from 'state/ducks/map'
 
 import { ButtonBase } from '@material-ui/core'
 import Timeline from '@material-ui/icons/Timeline'
@@ -7,10 +9,11 @@ import Timeline from '@material-ui/icons/Timeline'
 import Lines from 'components/Lines'
 
 const Measure = () => {
-  const [isActive, setIsActive] = useState(false)
+  const isActive = useSelector((state) => !!state?.map?.isMeasureActive)
   const [coordinates, setCoordinates] = useState([])
   const coord = useSelector((state) => state?.map?.selectedCoords)
   const refMenu = useRef(null)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (isActive && coord) {
@@ -35,7 +38,7 @@ const Measure = () => {
   }, [refMenu, controlGroup])
 
   const handleMeasure = () => {
-    setIsActive(!isActive)
+    dispatch(mapActions.isMeasureActive(!isActive))
   }
 
   return (
@@ -43,7 +46,6 @@ const Measure = () => {
       { isActive && (
       <Lines points={coordinates} />
       ) }
-      
       <ButtonBase ref={refMenu}>
         <Timeline
           color={isActive ? 'primary' : 'inherit'}

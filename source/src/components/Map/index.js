@@ -12,7 +12,6 @@ import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 import Seeker from 'components/Seeker/Seeker'
 
 import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
-import North from 'components/North'
 import Measure from 'components/Measure'
 
 import imgCapaBasePrincipal from 'img/capabase_1.png'

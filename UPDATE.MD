@@ -11,3 +11,12 @@ Para que los cambios se vean reflejados se debe compilar nuevamente el proyecto
 ### Update V1.0-RC.4:
 - Correcciones menores estéticas y de textos
 - Alertas especiales indicán área al que pertenecen
+
+### Update V1.0-RC.5:
+- Correcciones menores en alertas
+
+### Update V1.0-RC.6:
+- Menu de navegación
+- Medir distancias
+- Se agregan alertas
+- Se habilita Google Analytics

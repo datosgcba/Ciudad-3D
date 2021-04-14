@@ -1,4 +1,4 @@
-## CHANGELOG V1.0-RC.6:
+## CHANGELOG V1.1-RC.1:
 
 ### Tickets 3834
 - Medir distancias

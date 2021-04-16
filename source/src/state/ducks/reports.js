@@ -28,6 +28,13 @@ const getData = createAsyncThunk(
       parcelas_linderas: {
         aph_linderas,
         smp_linderas
+      },
+      catalogacion: {
+        proteccion,
+        denominacion,
+        estado,
+        ley_3056,
+        catalogacion
       }
     } = await fetch(getBuildable(smp))
       .then((response) => response.json())
@@ -170,23 +177,23 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Denominación',
-            value: '???'
+            value: denominacion
           },
           {
             name: 'Protección',
-            value: '???'
+            value: proteccion
           },
           {
             name: 'Catalogación',
-            value: '???'
+            value: catalogacion
           },
           {
             name: 'Estado',
-            value: '???'
+            value: estado
           },
           {
             name: 'LEY 3056 - Edificio Anterior a 1941',
-            value: '???'
+            value: ley_3056
           }
         ]
       }

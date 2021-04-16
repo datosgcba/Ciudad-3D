@@ -24,11 +24,13 @@ const getData = async ({ coord, smp }) => {
 
 const selectedParcel = createAsyncThunk(
   'basicData/selectedParcel',
-  async (coord, { dispatch }) => {
+  async (coord, { dispatch, getState }) => {
     const data = await getData({ coord })
     const { smp } = data
     if (smp) {
-      cameraUpdated(data, dispatch)
+      if (!getState().parcel.smp) {
+        cameraUpdated(data, dispatch)
+      }
       dispatch(smpActions.smpSelected(smp))
       const urlPhotoData = getPhotoData(smp)
       const photoData = await fetch(urlPhotoData)

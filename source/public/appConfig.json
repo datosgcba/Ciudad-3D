@@ -1968,6 +1968,73 @@
       "title": "Bases de Referencias",
       "layers": [
         {
+          "title": "Catalogados",
+          "color": "#19c3e3",
+          "id": "catalogados",
+          "type": "vectortile",
+          "displayPopup": false,
+          "popupContent": "{proteccion}",
+          "info": "Consultar.",
+          "link": "https://data.buenosaires.gob.ar/",
+          "reference": [
+            {
+              "id": "cautelar",
+              "subTitle": "Cautelar",
+              "color": "#e9c46a"
+            },
+            {
+              "id": "especial",
+              "subTitle": "Especial",
+              "color": "#f4a261"
+            },
+            {
+              "id": "estructural",
+              "subTitle": "Estructural",
+              "color": "#e76f51"
+            },
+            {
+              "id": "integral",
+              "subTitle": "Integral",
+              "color": "#f94144"
+            }
+          ],
+          "options": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/aph_ssregic/{z}/{x}/{y}.pbf?optimize=true"
+              ],
+              "minzoom": 10,
+              "maxzoom": 18,
+              "cluster": false
+            },
+            "source-layer": "default",
+            "type": "fill",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": [
+                "match",
+                [
+                  "get",
+                  "proteccion"
+                ],
+                "CAUTELAR",
+                "#e9c46a",
+                "ESPECIAL",
+                "#f4a261",
+                "ESTRUCTURAL",
+                "#e76f51",
+                "INTEGRAL",
+                "#f94144",
+                "rgba(255,255,255,0)"
+              ],
+              "fill-opacity": 0.8
+            }
+          }
+        },
+        {
           "title": "Tejido 3d consolidado",
           "color": "#bea8b6",
           "id": "tejido_consolidado",

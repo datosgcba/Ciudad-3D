@@ -20,7 +20,7 @@ const getWorks = (smp) => `${getApiUrl()}/cur3d/obras/?smp=${smp}`
 
 const getInspections = (smp) => `${getApiUrl()}/cur3d/inspecciones/?smp=${smp}`
 
-const getPlusvalia = (smp, area) => `${getApiUrl()}/cur3d/calcular_plusvalia/?smp=${smp}&area_edificar=${area}`
+const getPlusvalia = (smp, area = 0) => `${getApiUrl()}/cur3d/calcular_plusvalia/?smp=${smp}&area_edificar=${area}`
 
 const getPhotoData = (smp) => `${getPhotoUrl()}/getDatosFotos?smp=${smp}`
 

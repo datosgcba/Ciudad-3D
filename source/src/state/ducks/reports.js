@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import buildPDF from 'utils/reportTemplate'
 
 import {
-  getParcelBySmp, getBuildable, getUses, getAffectations
+  getParcelBySmp, getBuildable, getUses, getAffectations, getPlusvalia
 } from 'utils/apiConfig'
 
 import { getAffectationsTable } from 'utils/configQueries'
@@ -35,7 +35,8 @@ const getData = createAsyncThunk(
         estado,
         ley_3056,
         catalogacion
-      }
+      },
+      subzona
     } = await fetch(getBuildable(smp))
       .then((response) => response.json())
 
@@ -53,6 +54,9 @@ const getData = createAsyncThunk(
       .map(({ title }) => title)
       .join(', ')
 
+    const { incidencia_uva, alicuota, distrito_cpu } = await fetch(getPlusvalia(smp))
+      .then((response) => response.json())
+		console.log(incidencia_uva, alicuota, distrito_cpu) 
     const sections = [
       {
         title: 'Información General de la Parcela',
@@ -153,7 +157,7 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Subzona',
-            value: '???'
+            value: subzona
           }
         ]
       }, {
@@ -161,15 +165,15 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Incidencia',
-            value: '???'
+            value: incidencia_uva.toLocaleString('es-AR')
           },
           {
             name: 'Alicuota',
-            value: '???'
+            value: alicuota.toLocaleString('es-AR')
           },
           {
             name: 'Distrito CPU',
-            value: '???'
+            value: distrito_cpu
           }
         ]
       }, {

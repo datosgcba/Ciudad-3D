@@ -3045,6 +3045,11 @@
       "id": "enrase",
       "title": "Completamiento de Tejido o Edificabilidad",
       "text": "Esta parcela posee edificios linderos que la hace plausible al completamiento de tejido o edificabilidad según el Artículo 6.5.5. Verificar con el organismo competente su aplicación y de qué tipo."
+    },
+    {
+      "id": "subzona",
+      "title": "Sub Área Especial",
+      "text": "{{value}}"
     }
   ],
   "baseLayers": {

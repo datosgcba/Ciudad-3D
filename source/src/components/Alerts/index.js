@@ -17,19 +17,23 @@ import useStyles from './styles'
 const Alert = ({ id, title, text }) => {
   const classes = useStyles()
   const decorators = useFontsStyles()
-  const { titleSuffix } = useSelector((state) => state.alerts.extraData[id]) ?? {}
+  const { titleSuffix, value } = useSelector((state) => state.alerts.extraData[id]) ?? {}
 
   const content = []
   const matches = text.matchAll(/(?:(?<textStart>.*?)\[(?<link>[^\]]+)\]\((?<url>http[s]{0,1}\:\/\/[^\)]+)\)|(?<textEnd>.+)$)/g)
+
+	const processReplace = (contentText) => {
+		return contentText.replace(`{{value}}`, value)
+	}
   for (const m of matches) {
     const {
       textStart, link, url, textEnd
     } = m.groups
- 		content.push(textStart || '')
+ 		content.push(processReplace(textStart || ''))
  		content.push(link
       ? (<Link href={url} target="_blank" rel="noopener">{link}</Link>)
       : '')
- 		content.push(textEnd || '')
+ 		content.push(processReplace(textEnd || ''))
   }
   return (
     <Box key={id} className={classes.box}>

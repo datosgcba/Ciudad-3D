@@ -161,6 +161,11 @@ const clickOnParcel = createAsyncThunk(
     if (data?.enrase) {
       dispatch(alertsActions.addId('enrase'))
     }
+    if (data?.subzona?.length) {
+      const id = 'subzona'
+      dispatch(alertsActions.addId(id))
+      dispatch(alertsActions.addExtraData({ id, value: data.subzona }))
+    }
 
     return data
   }

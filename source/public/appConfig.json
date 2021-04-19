@@ -1974,8 +1974,8 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "{proteccion}",
-          "info": "Consultar.",
-          "link": "https://data.buenosaires.gob.ar/",
+          "info": "Información sobre las zonas de la Ciudad consultadas para ser consideradas áreas con valor patrimonial que poseen gran calidad urbana y arquitectónica. Para más información ver el Atlas de Edificios Catalogados.",
+          "link": "https://data.buenosaires.gob.ar/dataset/areas-proteccion-historica",
           "reference": [
             {
               "id": "cautelar",

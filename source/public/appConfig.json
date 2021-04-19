@@ -1894,9 +1894,9 @@
                   "edificabilidad"
                 ],
                 "USAB1",
-                "#efe6cd",
+                "#CCADAD",
                 "USAB2",
-                "#ccc5af",
+                "#CCADAD",
                 "USAM",
                 "#f4c59b",
                 "USAA",
@@ -1905,7 +1905,7 @@
                 "#8fb3b5",
                 "CA",
                 "#648894",
-                "#0389d1"
+                "#CCADAD"
               ],
               "fill-extrusion-opacity": 0.8,
               "fill-extrusion-height": [

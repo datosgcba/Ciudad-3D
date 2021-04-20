@@ -1681,6 +1681,36 @@
       "title": "Franja edificable",
       "layers": [
         {
+          "title": "Area de Esquina",
+          "color": "#9b9b9b",
+          "id": "area_esquina",
+          "type": "vectortile",
+          "displayPopup": false,
+          "popupContent": "",
+          "info": "Información sobre el volumen máximo que puede construirse en una parcela, según las presentes normas.",
+          "link": "https://data.buenosaires.gob.ar/dataset/area-edificable-volumen",
+          "options": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/e34m/{z}/{x}/{y}.pbf?optimize=true"
+              ],
+              "minzoom": 10,
+              "maxzoom": 18,
+              "cluster": false
+            },
+            "source-layer": "default",
+            "type": "line",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "#9b9b9b",
+              "line-width": 7
+            }
+          }
+        },
+        {
           "title": "Línea oficial",
           "color": "#e76056",
           "id": "linea_oficial",

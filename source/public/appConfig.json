@@ -2527,7 +2527,117 @@
               "cinturon_digital"
             ]
           }
+        },
+        {
+          "title": "Riesgo Arqueológico",
+          "color": "#19c3e3",
+          "id": "riesgo_arqueologico",
+          "type": "vectortile",
+          "displayPopup": false,
+          "popupContent": "{tipo}",
+          "info": "A revisar.",
+          "link": "https://data.buenosaires.gob.ar/",
+          "reference": [
+            {
+              "id": "radio_antiguo",
+              "subTitle": "Radio Antiguo",
+              "color": "#a851b2"
+            },
+            {
+              "id": "casco_pueblo_de_flores",
+              "subTitle": "Casco Pueblo de Flores",
+              "color": "#fead3a"
+            },
+            {
+              "id": "casco_pueblo_de_belgrano",
+              "subTitle": "Casco Pueblo de Belgrano",
+              "color": "#fd8793"
+            },
+            {
+              "id": "villa_riachuelo",
+              "subTitle": "Villa Riachuelo",
+              "color": "#000000"
+            },
+            {
+              "id": "frente_costero_de_la_ciudad",
+              "subTitle": "Frente Costero de la Ciudad",
+              "color": "#1e7db3"
+            },
+            {
+              "id": "palermo",
+              "subTitle": "Palermo",
+              "color": "#286152"
+            },
+            {
+              "id": "la_quema",
+              "subTitle": "La Quema",
+              "color": "#707521"
+            },
+            {
+              "id": "parque_avellaneda",
+              "subTitle": "Parque Avellaneda",
+              "color": "#4c907b"
+            },
+            {
+              "id": "chacra_de_castro",
+              "subTitle": "Chacra de Castro",
+              "color": "#fd5c02"
+            }
+          ],
+          "options": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/cur_riesgo_arqueologico/{z}/{x}/{y}.pbf?optimize=true"
+              ],
+              "minzoom": 10,
+              "maxzoom": 18,
+              "cluster": false
+            },
+            "source-layer": "default",
+            "type": "fill",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": [
+                "match",
+                [
+                  "get",
+                  "tipo"
+                ],
+                "Radio Antiguo",
+                "#a851b2",
+                "Casco Pueblo de Flores",
+                "#fead3a",
+                "Casco Pueblo de Belgrano",
+                "#fd8793",
+                "Villa Riachuelo",
+                "#000000",
+                "Frente Costero de la Ciudad",
+                "#1e7db3",
+                "Palermo",
+                "#286152",
+                "La Quema",
+                "#707521",
+                "Parque Avellaneda",
+                "#4c907b",
+                "Chacra de Castro",
+                "#fd5c02",
+                "rgba(255,255,255,0)"
+              ],
+              "fill-opacity": 0.8
+            }
+          }
         }
+
+
+
+
+
+
+
+
       ]
     }
   ],

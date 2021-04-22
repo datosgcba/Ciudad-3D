@@ -2595,12 +2595,12 @@
               "cluster": false
             },
             "source-layer": "default",
-            "type": "fill",
+            "type": "line",
             "layout": {
               "visibility": "none"
             },
             "paint": {
-              "fill-color": [
+              "line-color": [
                 "match",
                 [
                   "get",
@@ -2626,7 +2626,7 @@
                 "#fd5c02",
                 "rgba(255,255,255,0)"
               ],
-              "fill-opacity": 0.8
+              "line-width": 4
             }
           }
         }

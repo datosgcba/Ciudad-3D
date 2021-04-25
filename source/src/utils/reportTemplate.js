@@ -20,7 +20,7 @@ export default async (sections, fileName) => {
     doc.setLineWidth(0.2)
     doc.line(marginLeft, y, 210 - marginLeft * 2, y)
     y += 15
-    if (y > 280) {
+    if (y > 250) {
       doc.addPage()
       y = marginTop
     }

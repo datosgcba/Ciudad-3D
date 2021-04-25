@@ -56,7 +56,6 @@ const getData = createAsyncThunk(
 
     const { incidencia_uva, alicuota, distrito_cpu } = await fetch(getPlusvalia(smp))
       .then((response) => response.json())
-		console.log(incidencia_uva, alicuota, distrito_cpu) 
     const sections = [
       {
         title: 'Información General de la Parcela',
@@ -84,6 +83,10 @@ const getData = createAsyncThunk(
           }, {
             name: 'Superficie Edificable en Planta (Pisada)',
             value: sup_edificable_planta.toLocaleString('es-AR')
+          },
+          {
+            name: 'Subzona',
+            value: subzona
           }
         ]
       }, {
@@ -132,6 +135,18 @@ const getData = createAsyncThunk(
           }, {
             name: 'Valor de FOT Semilibre',
             value: semi.toLocaleString('es-AR')
+          },
+          {
+            name: 'Incidencia',
+            value: incidencia_uva.toLocaleString('es-AR')
+          },
+          {
+            name: 'Alicuota',
+            value: alicuota.toLocaleString('es-AR')
+          },
+          {
+            name: 'Distrito CPU',
+            value: distrito_cpu
           }
         ]
       }, {
@@ -153,30 +168,6 @@ const getData = createAsyncThunk(
           }
         ]
       }, {
-        title: 'Información Urbanística',
-        dataList: [
-          {
-            name: 'Subzona',
-            value: subzona
-          }
-        ]
-      }, {
-        title: 'Datos de plusvalía',
-        dataList: [
-          {
-            name: 'Incidencia',
-            value: incidencia_uva.toLocaleString('es-AR')
-          },
-          {
-            name: 'Alicuota',
-            value: alicuota.toLocaleString('es-AR')
-          },
-          {
-            name: 'Distrito CPU',
-            value: distrito_cpu
-          }
-        ]
-      }, {
         title: 'Patrimonio Arquitectonico y Urbanistico',
         dataList: [
           {
@@ -184,11 +175,11 @@ const getData = createAsyncThunk(
             value: denominacion
           },
           {
-            name: 'Protección',
+            name: 'Catalogación',
             value: proteccion
           },
           {
-            name: 'Catalogación',
+            name: 'Protección',
             value: catalogacion
           },
           {

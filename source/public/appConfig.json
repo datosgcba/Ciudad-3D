@@ -1687,7 +1687,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "",
-          "info": "Información sobre el volumen máximo que puede construirse en una parcela, según las presentes normas.",
+          "info": "Prolongación virtual de las L.F.I. concurrentes más nueve metros (9m), hasta una distancia máxima de treinta y cuatro metros (34m).",
           "link": "https://data.buenosaires.gob.ar/dataset/area-edificable-volumen",
           "options": {
             "source": {
@@ -2626,7 +2626,8 @@
                 "#fd5c02",
                 "rgba(255,255,255,0)"
               ],
-              "line-width": 4
+              "line-width": 4,
+              "line-opacity": 0.4
             }
           }
         }

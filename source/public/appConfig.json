@@ -2004,7 +2004,7 @@
           "type": "vectortile",
           "displayPopup": false,
           "popupContent": "{proteccion}",
-          "info": "Información sobre las zonas de la Ciudad consultadas para ser consideradas áreas con valor patrimonial que poseen gran calidad urbana y arquitectónica. Para más información ver el Atlas de Edificios Catalogados.",
+          "info": "Parcelas consideradas áreas con valor patrimonial que poseen gran calidad urbana y arquitectónica. Para más información ver el Atlas de Edificios Catalogados.",
           "link": "https://data.buenosaires.gob.ar/dataset/areas-proteccion-historica",
           "reference": [
             {
@@ -2626,8 +2626,7 @@
                 "#fd5c02",
                 "rgba(255,255,255,0)"
               ],
-              "fill-opacity": 0.4,
-              "fill-inline-color": "red"
+              "fill-opacity": 0.4
             }
           }
         }

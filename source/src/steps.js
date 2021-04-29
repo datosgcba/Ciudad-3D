@@ -68,6 +68,16 @@ export const largeScreenSteps = [
     )
   },
   {
+    selector: '.MuiCardActionArea-root:nth-child(4)',
+    content: () => (
+      <div>
+        <p>
+          Acá vas a poder descargar un reporte con datos básicos de la parcela en PDF.
+        </p>
+      </div>
+    )
+  },
+  {
     selector: '.MuiCardActionArea-root:nth-child(6)',
     content: () => (
       <div>
@@ -83,6 +93,36 @@ export const largeScreenSteps = [
       <div>
         <p>
           Acá vas a poder buscar por Dirección o Lugar y ubicarlo en el Mapa.
+        </p>
+      </div>
+    )
+  },
+  {
+    selector: '.mapboxgl-ctrl-zoom-in',
+    content: () => (
+      <div>
+        <p>
+          Acá vas a poder hacer zoom en el mapa.
+        </p>
+      </div>
+    )
+  },
+  {
+    selector: '.mapboxgl-ctrl-compass',
+    content: () => (
+      <div>
+        <p>
+          Acá vas a poder orientar el norte en el mapa.
+        </p>
+      </div>
+    )
+  },
+  {
+    selector: '.mapboxgl-ctrl-group button:nth-last-child(1)',
+    content: () => (
+      <div>
+        <p>
+          Acá vas a poder medir en el mapa.
         </p>
       </div>
     )

@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import buildPDF from 'utils/reportTemplate'
 
 import {
-  getParcelBySmp, getBuildable, getUses, getAffectations, getPlusvalia
+  getParcelBySmp, getBuildable, getUses, getAffectations
 } from 'utils/apiConfig'
 
 import { getAffectationsTable } from 'utils/configQueries'
@@ -36,6 +36,7 @@ const getData = createAsyncThunk(
         ley_3056,
         catalogacion
       },
+      plusvalia: { incidencia_uva, alicuota, distrito_cpu },
       subzona
     } = await fetch(getBuildable(smp))
       .then((response) => response.json())
@@ -54,8 +55,6 @@ const getData = createAsyncThunk(
       .map(({ title }) => title)
       .join(', ')
 
-    const { incidencia_uva, alicuota, distrito_cpu } = await fetch(getPlusvalia(smp))
-      .then((response) => response.json())
     const sections = [
       {
         title: 'Información General de la Parcela',

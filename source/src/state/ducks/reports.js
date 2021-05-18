@@ -82,10 +82,6 @@ const getData = createAsyncThunk(
           }, {
             name: 'Superficie Edificable en Planta (Pisada)',
             value: sup_edificable_planta.toLocaleString('es-AR')
-          },
-          {
-            name: 'Subzona',
-            value: subzona
           }
         ]
       }, {
@@ -120,6 +116,10 @@ const getData = createAsyncThunk(
           }, {
             name: 'Tipo de Afectación',
             value: afectacionesText
+          },
+          {
+            name: 'Subzona',
+            value: subzona
           }
         ]
       }, {

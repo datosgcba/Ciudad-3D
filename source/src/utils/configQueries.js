@@ -130,6 +130,8 @@ const getApiUrl = () => config.urlAPI
 
 const getPhotoUrl = () => config.urlPhoto
 
+const getWsUsigUrl = () => config.urlWsUsig
+
 const getParcelLayer = () => config.parcelLayers
 
 const getBaseLayers = () => config.baseLayers
@@ -143,5 +145,6 @@ export {
   getLayersByLayersGroupId, getBuildable, getExplorer, getUsesTable, getWorksGroups,
   getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain,
   getInspectionsGroups, getAlert, getCategoryTitle, getSectionInfo, getFullExplorerLayerConfig,
-  getParcel3D, getApiUrl, getPhotoUrl, getParcelLayer, getBaseLayers, getUsesLink, getCamera
+  getParcel3D, getApiUrl, getPhotoUrl, getWsUsigUrl, getParcelLayer, getBaseLayers, getUsesLink,
+  getCamera
 }

@@ -42,37 +42,32 @@ const BasicData = () => {
   const decorators = useFontsStyles()
   const data = useSelector((state) => state.basicData.data)
   const isSelected = useSelector((state) => state.basicData.isSelected)
-  const { smp, photoData } = data
+  const { photoData } = data
   return (
-    <ContainerBar
-      type="list"
-    >
-      { isSelected && (
+    <ContainerBar type="list">
+      {isSelected && (
         <Box>
-          {
-						!!photoData?.length && <Carrousel photos={photoData} />
-					}
-          {
-            getBasicData().map(({
-              title,
-              fill,
-              format,
-              isNumber
-            }, index) => (
-              <Details
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
-                classes={classes}
-                decorators={decorators}
-                title={title}
-                value={isNumber && data[fill] ? Number.parseFloat(data[fill]).toLocaleString('es-AR') : data[fill]}
-                format={format}
-              />
-            ))
-          }
+          {!!photoData?.length && <Carrousel photos={photoData} />}
+          {getBasicData().map(({
+            title, fill, format, isNumber
+          }, index) => (
+            <Details
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              classes={classes}
+              decorators={decorators}
+              title={title}
+              value={
+                isNumber && data[fill]
+                  ? Number.parseFloat(data[fill]).toLocaleString('es-AR')
+                  : data[fill]
+              }
+              format={format}
+            />
+          ))}
         </Box>
       )}
-      { !isSelected && <SelectParcel />}
+      {!isSelected && <SelectParcel />}
     </ContainerBar>
   )
 }

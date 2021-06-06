@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import {
-  getParcel, getParcelBySmp, getPhoto, getPhotoData
+  getParcel, getParcelBySmp, getPhoto, getPhotoData, getDataWsUsig
 } from 'utils/apiConfig'
 import { actions as mapActions } from 'state/ducks/map'
 import { actions as smpActions } from 'state/ducks/parcel'
@@ -19,7 +19,10 @@ const getData = async ({ coord, smp }) => {
     : getParcelBySmp(smp)
   const response = await fetch(url)
   const data = (await response.json())
-  return data
+  const [x, y] = data.centroide
+  const { barrio = '', comuna = '' } = await fetch(getDataWsUsig(x, y))
+    .then((r) => r.json())
+  return { ...data, barrio, comuna }
 }
 
 const selectedParcel = createAsyncThunk(

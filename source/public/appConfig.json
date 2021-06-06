@@ -2645,6 +2645,16 @@
       "format": ""
     },
     {
+      "title": "Barrio",
+      "fill": "barrio",
+      "format": ""
+    },
+    {
+      "title": "Comuna",
+      "fill": "comuna",
+      "format": ""
+    },
+    {
       "title": "Superficie edificada",
       "fill": "superficie_cubierta",
       "format": "m²",
@@ -3332,5 +3342,6 @@
     "bearing": 0
   },
   "urlAPI": "https://epok.buenosaires.gob.ar",
-	"urlPhoto": "https://fotos.usig.buenosaires.gob.ar"
+	"urlPhoto": "https://fotos.usig.buenosaires.gob.ar",
+  "urlWsUsig": "https://ws.usig.buenosaires.gob.ar"
 }

@@ -50,7 +50,7 @@ const Polygon = ({ smpList, geomCoords }) => {
         layout,
         paint
       })
-      //       mapGL.map.moveLayer(parcelId, edifId)
+      mapGL.map.moveLayer(parcelId, edifId)
     }
     return () => {
       mapGL.map.removeLayer(parcelId)

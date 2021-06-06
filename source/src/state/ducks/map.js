@@ -42,6 +42,9 @@ const reorderLayers = async (groups, layerId, index) => {
   if (count > 0 && mapGL.map.getLayer('parcel_layer')) {
     mapGL.map.moveLayer(newOrder[0][0], 'parcel_layer')
   }
+  if (count > 0 && mapGL.map.getLayer('edif_smp')) {
+    mapGL.map.moveLayer(newOrder[0][0], 'edif_smp')
+  }
   for (let idx = 1; idx < count; idx += 1) {
     mapGL.map.moveLayer(newOrder[idx][0], newOrder[idx - 1][0])
   }

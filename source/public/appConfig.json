@@ -1924,17 +1924,17 @@
                   "edificabilidad"
                 ],
                 "USAB1",
-                "#efe6cd",
+                "#f0e6cc",
                 "USAB2",
-                "#ccc5af",
+                "#c9c2ab",
                 "USAM",
-                "#f4c59b",
+                "#f5c294",
                 "USAA",
-                "#eaa58b",
+                "#ea9e82",
                 "CM",
-                "#8fb3b5",
+                "#85adb1",
                 "CA",
-                "#648894",
+                "#557e8d",
                 "#CCADAD"
               ],
               "fill-extrusion-opacity": 0.8,
@@ -1942,7 +1942,40 @@
                 "get",
                 "altura_final"
               ]
-            }
+            },
+            "filter": [
+              "any",
+              [
+                "==",
+                "edificabilidad",
+                "USAB1"
+              ],
+              [
+                "==",
+                "edificabilidad",
+                "USAB2"
+              ],
+              [
+                "==",
+                "edificabilidad",
+                "USAM"
+              ],
+              [
+                "==",
+                "edificabilidad",
+                "USAA"
+              ],
+              [
+                "==",
+                "edificabilidad",
+                "CM"
+              ],
+              [
+                "==",
+                "edificabilidad",
+                "CA"
+              ]
+            ]
           },
           "index": 3
         },
@@ -2342,15 +2375,13 @@
               "cluster": false
             },
             "source-layer": "default",
-            "type": "line",
+            "type": "fill",
             "layout": {
               "visibility": "none"
             },
             "paint": {
-              "line-color": "blue",
-              "line-opacity": 0.4,
-              "line-width": 4
-            }
+              "fill-color": "blue",
+              "fill-opacity": 0.4            }
           }
         },
         {

@@ -3,10 +3,10 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Typography, IconButton, CircularProgress, Card
+  Typography, IconButton, CircularProgress, Card, Tooltip
 } from '@material-ui/core'
 import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined'
-import Error from '@material-ui/icons/Error'
+import { Warning } from '@material-ui/icons'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 import { actions } from 'state/ducks/reports'
@@ -46,7 +46,13 @@ const Item = ({
       }
       {
         state === 'error' && (
-          <Error />
+        <Tooltip title="No disponible actualmente">
+          <Warning
+            className={classes.icon}
+            size={20}
+          />
+
+        </Tooltip>
         )
       }
       <Typography>

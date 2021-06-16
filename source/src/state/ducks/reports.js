@@ -61,13 +61,13 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Seccion Manzana Parcela',
-            value: smp
+            value: smp ?? ''
           }, {
             name: 'Dirección',
-            value: direccion
+            value: direccion ?? ''
           }, {
             name: 'Superficie de Parcela',
-            value: `${Number.parseFloat(superficie_total).toLocaleString('es-AR')} m²`
+            value: superficie_total ? `${Number.parseFloat(superficie_total).toLocaleString('es-AR')} m²` : ''
           }
         ]
       }, {
@@ -76,12 +76,12 @@ const getData = createAsyncThunk(
           {
             name: 'Unidad de Edificabilidad',
             value: unidad_edificabilidad
-              .filter((value) => value > 0)
-              .map((value) => value.toLocaleString('es-AR'))
-              .join(', ')
+              ?.filter((value) => value > 0)
+              .map((value) => value?.toLocaleString('es-AR'))
+              .join(', ') ?? ''
           }, {
             name: 'Superficie Edificable en Planta (Pisada)',
-            value: sup_edificable_planta.toLocaleString('es-AR')
+            value: sup_edificable_planta?.toLocaleString('es-AR') ?? ''
           }
         ]
       }, {
@@ -90,36 +90,36 @@ const getData = createAsyncThunk(
           {
             name: 'Altura Máxima Permitida',
             value: altura_max
-              .filter((value) => value > 0)
-              .map((value) => value.toLocaleString('es-AR'))
-              .join(', ')
+              ?.filter((value) => value > 0)
+              .map((value) => value?.toLocaleString('es-AR'))
+              .join(', ') ?? ''
           }, {
             name: 'Plano Límite',
-            value: altura_max_plano_limite.toLocaleString('es-AR')
+            value: altura_max_plano_limite?.toLocaleString('es-AR') ?? ''
           }, {
             name: 'Área Especial Agrupada',
             value: distrito_especial
-              .map(({ distrito_agrupado }) => distrito_agrupado)
-              .filter((value) => (value.length ?? '') > 0)
-              .join(', ')
+              ?.map(({ distrito_agrupado }) => distrito_agrupado)
+              .filter((value) => (value?.length ?? '') > 0)
+              .join(', ') ?? ''
           }, {
             name: 'Área Especial Individualizada',
             value: distrito_especial
-              .map(({ distrito_especifico }) => distrito_especifico)
-              .filter((value) => (value.length ?? '') > 0)
-              .join(', ')
+              ?.map(({ distrito_especifico }) => distrito_especifico)
+              .filter((value) => (value?.length ?? '') > 0)
+              .join(', ') ?? ''
           }, {
             name: 'Mixtura de uso',
             value: usos
-              .filter((value) => value > 0)
-              .join(', ')
+              ?.filter((value) => value > 0)
+              .join(', ') ?? ''
           }, {
             name: 'Tipo de Afectación',
-            value: afectacionesText
+            value: afectacionesText ?? ''
           },
           {
             name: 'Subzona',
-            value: subzona
+            value: subzona ?? ''
           }
         ]
       }, {
@@ -127,25 +127,25 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Valor de FOT Entremedianera',
-            value: medianera.toLocaleString('es-AR')
+            value: medianera?.toLocaleString('es-AR') ?? ''
           }, {
             name: 'Valor de FOT Perímetro Libre',
-            value: perim.toLocaleString('es-AR')
+            value: perim?.toLocaleString('es-AR') ?? ''
           }, {
             name: 'Valor de FOT Semilibre',
-            value: semi.toLocaleString('es-AR')
+            value: semi?.toLocaleString('es-AR') ?? ''
           },
           {
             name: 'Incidencia',
-            value: incidencia_uva.toLocaleString('es-AR')
+            value: incidencia_uva?.toLocaleString('es-AR') ?? ''
           },
           {
             name: 'Alicuota',
-            value: alicuota.toLocaleString('es-AR')
+            value: alicuota?.toLocaleString('es-AR') ?? ''
           },
           {
             name: 'Distrito CPU',
-            value: distrito_cpu
+            value: distrito_cpu ?? ''
           }
         ]
       }, {
@@ -161,7 +161,7 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Parcelas linderas',
-            value: aph_linderas
+            value: aph_linderas && smp_linderas
               ? smp_linderas.join(' | ')
               : ''
           }
@@ -171,23 +171,23 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Denominación',
-            value: denominacion
+            value: denominacion ?? ''
           },
           {
             name: 'Catalogación',
-            value: proteccion
+            value: proteccion ?? ''
           },
           {
             name: 'Protección',
-            value: catalogacion
+            value: catalogacion ?? ''
           },
           {
             name: 'Estado',
-            value: estado
+            value: estado ?? ''
           },
           {
             name: 'LEY 3056 - Edificio Anterior a 1941',
-            value: ley_3056
+            value: ley_3056 ?? ''
           }
         ]
       }
@@ -221,6 +221,9 @@ const reports = createSlice({
       draftState[smp].address = direccion
     },
     [getData.rejected]: (draftState, { meta: { arg: smp } }) => {
+      draftState[smp].state = 'error'
+    },
+    [download.rejected]: (draftState, { meta: { arg: smp } }) => {
       draftState[smp].state = 'error'
     }
   }

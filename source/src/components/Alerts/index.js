@@ -20,21 +20,24 @@ const Alert = ({ id, title, text }) => {
   const { titleSuffix, value } = useSelector((state) => state.alerts.extraData[id]) ?? {}
 
   const content = []
-  const matches = text.matchAll(/(?:(?<textStart>.*?)\[(?<link>[^\]]+)\]\((?<url>http[s]{0,1}\:\/\/[^\)]+)\)|(?<textEnd>.+)$)/g)
+  const matches = text.matchAll(/(?:(?<textStart>.*?)\[(?<link>[^\]]+)\]\((?<url>http[s]{0,1}:\/\/[^)]+)\)|(?<textEnd>.+)$)/gm)
 
-	const processReplace = (contentText) => {
-		return contentText.replace(`{{value}}`, value)
-	}
+  const processReplace = (contentText) => contentText.replace('{{value}}', value)
+  // eslint-disable-next-line no-restricted-syntax
   for (const m of matches) {
     const {
       textStart, link, url, textEnd
     } = m.groups
- 		content.push(processReplace(textStart || ''))
- 		content.push(link
+    if (content.length) {
+      content.push(<br />)
+    }
+    content.push(processReplace(textStart || ''))
+    content.push(link
       ? (<Link href={url} target="_blank" rel="noopener">{link}</Link>)
       : '')
- 		content.push(processReplace(textEnd || ''))
+    content.push(processReplace(textEnd || ''))
   }
+
   return (
     <Box key={id} className={classes.box}>
       {

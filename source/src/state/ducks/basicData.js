@@ -19,7 +19,7 @@ const getData = async ({ coord, smp }) => {
     : getParcelBySmp(smp)
   const response = await fetch(url)
   const data = (await response.json())
-  const [x, y] = data.centroide
+  const [x, y] = data?.centroide || [0, 0]
   const { barrio = '', comuna = '' } = await fetch(getDataWsUsig(x, y))
     .then((r) => r.json())
   return { ...data, barrio, comuna }

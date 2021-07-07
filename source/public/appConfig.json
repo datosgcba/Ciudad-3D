@@ -174,7 +174,7 @@
             {
               "id": "aph",
               "subTitle": "APH",
-              "details": "Área de Arqquitectura Especial",
+              "details": "Área de Protección Histórica",
               "color": "#F9BCB4",
               "idLayer": "explorer_layer",
               "filter": [
@@ -2097,8 +2097,142 @@
             }
           }
         },
+				{
+          "title": "Tejido 2D Alturas",
+          "color": "#212529",
+          "id": "tejido_2d_labels",
+          "type": "vectortile",
+          "displayPopup": true,
+          "popupContent": "",
+          "info": "Plano correspondiente a la morfologia de la Ciudad elaborada mediante restitución Fotogramética",
+          "options": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/tejido/{z}/{x}/{y}.pbf?optimize=true"
+              ],
+              "minzoom": 18,
+              "maxzoom": 18,
+              "cluster": false
+            },
+            "source-layer": "default",
+            "type": "symbol",
+            "layout": {
+             "text-offset": [
+                 0.0,
+                 0.0
+              ],
+              "text-font": ["Open Sans Regular"],
+              "text-field": "{altura}",
+              "text-size": 10 
+            },
+            "paint": {
+              "text-color": "black",
+              "text-halo-color": "white",
+              "text-halo-width": 1.5
+            }
+          },
+          "index": 6
+        },
         {
-          "title": "Tejido 3d consolidado",
+          "title": "Tejido 2D",
+          "color": "#212529",
+          "id": "tejido_2d",
+          "type": "vectortile",
+          "displayPopup": false,
+          "popupContent": "",
+          "reference": [
+            {
+              "id": "6mts",
+              "subTitle": "1-6mts",
+              "color": "#e9ecef"
+            },
+            {
+              "id": "9mts",
+              "subTitle": "6-9mts",
+              "color": "#dee2e6"
+            },
+            {
+              "id": "12mts",
+              "subTitle": "9-12mts",
+              "color": "#ced4da"
+            },
+            {
+              "id": "20mts",
+              "subTitle": "12-20mts",
+              "color": "#adb5bd"
+            },
+            {
+              "id": "30mts",
+              "subTitle": "20-30mts",
+              "color": "#6c757d"
+            },
+            {
+              "id": "45mts",
+              "subTitle": "30-45mts",
+              "color": "#495057"
+            },
+            {
+              "id": "60mts",
+              "subTitle": "45-60mts",
+              "color": "#343a40"
+            },
+            {
+              "id": "mas60mts",
+              "subTitle": "60mts",
+              "color": "#212529"
+            }
+          ],
+          "info": "Plano correspondiente a la morfologia de la Ciudad elaborada mediante restitución Fotogramética",
+          "link": "https://data.buenosaires.gob.ar/dataset/tejido-urbano",
+          "options": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/tejido/{z}/{x}/{y}.pbf?optimize=true"
+              ],
+              "minzoom": 10,
+              "maxzoom": 18,
+              "cluster": false
+            },
+            "source-layer": "default",
+            "type": "fill",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": [
+                "step",
+                [
+                  "get",
+                  "altura"
+                ],
+								"#ff0000",
+                1,
+                "#e9ecef",
+                6,
+                "#dee2e6",
+                9,
+                "#ced4da",
+                12,
+                "#adb5bd",
+                20,
+                "#6c757d",
+                30,
+                "#495057",
+                45,
+                "#343a40",
+                60,
+                "#212529"
+              ],
+							"fill-outline-color": "white",
+              "fill-opacity": 1 
+            }
+          },
+          "index": 5
+        },
+        {
+          "title": "Tejido 3D consolidado",
           "color": "#bea8b6",
           "id": "tejido_consolidado",
           "type": "vectortile",
@@ -2138,7 +2272,7 @@
           "index": 5
         },
         {
-          "title": "Tejido 3d no consolidado",
+          "title": "Tejido 3D no consolidado",
           "color": "white",
           "id": "tejido",
           "type": "vectortile",

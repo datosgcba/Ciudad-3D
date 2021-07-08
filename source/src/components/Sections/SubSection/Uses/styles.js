@@ -51,6 +51,6 @@ export default makeStyles((theme) => ({
     marginTop: theme.spacing(4)
   },
   link: {
-    color: '#306BB3 !important'
+    color: '#0532ff !important'
   }
 }))

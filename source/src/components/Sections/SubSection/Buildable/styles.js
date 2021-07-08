@@ -33,6 +33,6 @@ export default makeStyles((theme) => ({
     display: 'inline'
   },
   link: {
-    color: '#306BB3 !important'
+    color: '#0532ff !important'
   }
 }))

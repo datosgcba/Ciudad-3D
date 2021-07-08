@@ -2131,8 +2131,7 @@
               "text-halo-color": "white",
               "text-halo-width": 1.5
             }
-          },
-          "index": 6
+          }
         },
         {
           "title": "Tejido 2D",
@@ -2228,8 +2227,7 @@
 							"fill-outline-color": "white",
               "fill-opacity": 1 
             }
-          },
-          "index": 5
+          }
         },
         {
           "title": "Tejido 3D consolidado",

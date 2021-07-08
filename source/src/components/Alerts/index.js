@@ -33,7 +33,7 @@ const Alert = ({ id, title, text }) => {
     }
     content.push(processReplace(textStart || ''))
     content.push(link
-      ? (<Link href={url} target="_blank" rel="noopener">{link}</Link>)
+      ? (<Link href={url} className={classes.link} target="_blank" rel="noopener">{link}</Link>)
       : '')
     content.push(processReplace(textEnd || ''))
   }
@@ -64,7 +64,7 @@ const Alerts = () => {
 
   return (
     <>
-      { sectionId.length > 1 && (
+      { sectionId.length > 1 && sectionId[1] === 'Buildable' && (
         alertsIds
           .map(getAlert)
           .filter((alertData) => alertData)

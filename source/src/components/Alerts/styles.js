@@ -8,5 +8,8 @@ export default makeStyles((theme) => ({
     border: '1px solid transparent',
     backgroundColor: '#fcf8e3',
     borderColor: '#faebcc'
+  },
+  link: {
+    color: '#0532ff !important'
   }
 }))

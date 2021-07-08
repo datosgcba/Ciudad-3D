@@ -1,28 +1,42 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import {
-  getParcel, getParcelBySmp, getPhoto, getPhotoData, getDataWsUsig
+  getParcel,
+  getParcelBySmp,
+  getPhoto,
+  getPhotoData,
+  getDataWsUsig
 } from 'utils/apiConfig'
 import { actions as mapActions } from 'state/ducks/map'
 import { actions as smpActions } from 'state/ducks/parcel'
+import { actions as buildActions } from 'state/ducks/buildable'
 
 const cameraUpdated = (data, dispatch) => {
   const [lng, lat] = data.centroide
-  dispatch(mapActions.cameraUpdated({
-    lat, lng, zoom: 17, pitch: 60, bearing: 0
-  }))
+  dispatch(
+    mapActions.cameraUpdated({
+      lat,
+      lng,
+      zoom: 17,
+      pitch: 60,
+      bearing: 0
+    })
+  )
 }
 
 const getData = async ({ coord, smp }) => {
-  const url = coord
-    ? getParcel(coord)
-    : getParcelBySmp(smp)
+  const url = coord ? getParcel(coord) : getParcelBySmp(smp)
   const response = await fetch(url)
-  const data = (await response.json())
+  const data = await response.json()
   const [x, y] = data?.centroide || [0, 0]
-  const { barrio = '', comuna = '' } = await fetch(getDataWsUsig(x, y))
-    .then((r) => r.json())
-  return { ...data, barrio, comuna }
+  const { barrio = '', comuna = '' } = await fetch(
+    getDataWsUsig(x, y)
+  ).then((r) => r.json())
+  return {
+    ...data,
+    barrio,
+    comuna
+  }
 }
 
 const selectedParcel = createAsyncThunk(
@@ -34,6 +48,7 @@ const selectedParcel = createAsyncThunk(
       if (!getState().parcel.smp) {
         cameraUpdated(data, dispatch)
       }
+      dispatch(buildActions.clickOnParcel(smp))
       dispatch(smpActions.smpSelected(smp))
       const urlPhotoData = getPhotoData(smp)
       const photoData = await fetch(urlPhotoData)
@@ -71,6 +86,7 @@ const seekerParcel = createAsyncThunk(
       const data = await getData({ smp })
 
       cameraUpdated(data, dispatch)
+      dispatch(buildActions.clickOnParcel(data.smp))
       dispatch(smpActions.smpSelected(data.smp))
       const urlPhotoData = getPhotoData(smp)
       const photoData = await fetch(urlPhotoData)

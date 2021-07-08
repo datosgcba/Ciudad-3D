@@ -11,5 +11,8 @@ export default makeStyles((theme) => ({
   },
   value: {
     textAlign: 'right'
+  },
+  link: {
+    color: '#0532ff !important'
   }
 }))

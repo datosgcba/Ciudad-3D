@@ -1,5 +1,5 @@
 {
-  "defaultMarkerColor": "#FF9A17",
+  "defaultMarkerColor": "#0532ff",
   "categories": [
     {
       "id": "Information",
@@ -2818,6 +2818,21 @@
       "title": "Comuna",
       "fill": "comuna",
       "format": ""
+    },
+    {
+      "title": "Croquis de Parcela",
+      "fill": "croquis_parcela,Ver Plano",
+      "format": "url"
+    },
+    {
+      "title": "Perímetro de Manzana",
+      "fill": "perimetro_manzana,Ver Plano",
+      "format": "url"
+    },
+    {
+      "title": "Plano Índice",
+      "fill": "plano_indice,Ver Plano",
+      "format": "url"
     },
     {
       "title": "Superficie edificada",

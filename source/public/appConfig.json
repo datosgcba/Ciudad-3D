@@ -2821,17 +2821,17 @@
     },
     {
       "title": "Croquis de Parcela",
-      "fill": "urlCroquis,Ver Plano",
+      "fill": "croquis_parcela,Ver Plano",
       "format": "url"
     },
     {
       "title": "Perímetro de Manzana",
-      "fill": "urlPerimetro,Ver Plano",
+      "fill": "perimetro_manzana,Ver Plano",
       "format": "url"
     },
     {
       "title": "Plano Índice",
-      "fill": "urlPlano,Ver Plano",
+      "fill": "plano_indice,Ver Plano",
       "format": "url"
     },
     {

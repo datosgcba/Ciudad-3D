@@ -74,7 +74,7 @@ const BasicData = () => {
             }
             if (format === 'url' && linkImagen) {
               value.push(linkImagen[fills[0]])
-              value.push(fills)
+              value.push(...fills)
             }
             return (
               <Details

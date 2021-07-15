@@ -1905,7 +1905,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif_2/{z}/{x}/{y}.pbf?optimize=true"
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif_2_nuevo/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1921,7 +1921,7 @@
                 "match",
                 [
                   "get",
-                  "edificabilidad"
+                  "edificabil"
                 ],
                 "USAB1",
                 "#f0e6cc",
@@ -1940,40 +1940,111 @@
               "fill-extrusion-opacity": 0.8,
               "fill-extrusion-height": [
                 "get",
-                "altura_final"
+                "altura_fin"
               ]
             },
             "filter": [
               "any",
               [
                 "==",
-                "edificabilidad",
+                "edificabil",
                 "USAB1"
               ],
               [
                 "==",
-                "edificabilidad",
+                "edificabil",
                 "USAB2"
               ],
               [
                 "==",
-                "edificabilidad",
+                "edificabil",
                 "USAM"
               ],
               [
                 "==",
-                "edificabilidad",
+                "edificabil",
                 "USAA"
               ],
               [
                 "==",
-                "edificabilidad",
+                "edificabil",
                 "CM"
               ],
               [
                 "==",
-                "edificabilidad",
+                "edificabil",
                 "CA"
+              ]
+            ]
+          },
+          "index": 3
+        },
+        {
+          "title": "Areas Especiales Individualizadas",
+          "color": "rgb(249, 188, 180)",
+          "id": "areas_especiales_individualizadas",
+          "type": "vectortile",
+          "displayPopup": true,
+          "popupContent": "{origen}{dist1}",
+          "reference": [
+            {
+              "id": "APH",
+              "subTitle": "38 m",
+              "color": "rgb(249, 188, 180)"
+            },
+            {
+              "id": "U",
+              "subTitle": "31.2 m",
+              "color": "rgb(209, 187, 208)"
+            }
+          ],
+          "info": "Corresponde a la clasificación de las alturas de conformidad al Código Urbanístico.",
+          "link": "https://data.buenosaires.gob.ar/dataset/codigo-urbanistico",
+          "options": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif_2_nuevo/{z}/{x}/{y}.pbf?optimize=true"
+              ],
+              "minzoom": 10,
+              "maxzoom": 18,
+              "cluster": false
+            },
+            "source-layer": "default",
+            "type": "fill-extrusion",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-extrusion-color": [
+                "match",
+                [
+                  "get",
+                  "origen"
+                ],
+                "APH",
+                "red",
+                "U",
+                "blue",
+                "white"
+              ],
+              "fill-extrusion-opacity": 0.8,
+              "fill-extrusion-height": [
+                "get",
+                "altura_fin"
+              ]
+            },
+            "filter": [
+              "any",
+              [
+                "==",
+                "origen",
+                "APH"
+              ],
+              [
+                "==",
+                "origen",
+                "U"
               ]
             ]
           },
@@ -1992,7 +2063,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf?optimize=true"
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif_2_nuevo/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -3480,7 +3551,7 @@
       "source": {
         "type": "vector",
         "tiles": [
-          "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf?optimize=true"
+          "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif_2_nuevo/{z}/{x}/{y}.pbf?optimize=true"
         ],
         "minzoom": 10,
         "maxzoom": 18,
@@ -3493,7 +3564,7 @@
         "fill-extrusion-opacity": 0.9,
         "fill-extrusion-height": [
           "get",
-          "altura_final"
+          "altura_fin"
         ]
       },
       "filter": [

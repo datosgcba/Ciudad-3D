@@ -1984,17 +1984,17 @@
           "color": "rgb(249, 188, 180)",
           "id": "areas_especiales_individualizadas",
           "type": "vectortile",
-          "displayPopup": true,
-          "popupContent": "{origen}{dist1}",
+          "displayPopup": false,
+          "popupContent": "",
           "reference": [
             {
               "id": "APH",
-              "subTitle": "38 m",
+              "subTitle": "APH",
               "color": "rgb(249, 188, 180)"
             },
             {
               "id": "U",
-              "subTitle": "31.2 m",
+              "subTitle": "U",
               "color": "rgb(209, 187, 208)"
             }
           ],
@@ -2023,9 +2023,9 @@
                   "origen"
                 ],
                 "APH",
-                "red",
+                "rgb(249, 188, 180)",
                 "U",
-                "blue",
+                "rgb(209, 187, 208)",
                 "white"
               ],
               "fill-extrusion-opacity": 0.8,
@@ -2175,7 +2175,7 @@
           "type": "vectortile",
           "displayPopup": true,
           "popupContent": "",
-          "info": "Plano correspondiente a la morfologia de la Ciudad elaborada mediante restitución Fotogramética",
+          "info": "Plano correspondiente a la morfologia de la Ciudad elaborada mediante restitución Fotogramética. Esto puede abarcar tejido no registrado.",
           "options": {
             "source": {
               "type": "vector",
@@ -2253,7 +2253,7 @@
               "color": "#212529"
             }
           ],
-          "info": "Plano correspondiente a la morfologia de la Ciudad elaborada mediante restitución Fotogramética",
+          "info": "Plano correspondiente a la morfologia de la Ciudad elaborada mediante restitución Fotogramética. Esto puede abarcar tejido no registrado.",
           "link": "https://data.buenosaires.gob.ar/dataset/tejido-urbano",
           "options": {
             "source": {

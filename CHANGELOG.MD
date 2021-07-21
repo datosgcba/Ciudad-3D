@@ -1,3 +1,28 @@
+## CHANGELOG V1.1.2-RC.1:
+
+### Tickets 4320
+- appconfig con volumen_edif
+
+### Tickets 3989 
+- fix: capa tejido 2d por debajo de 3d
+
+### Tickets 4053
+- fix: enlace nunca terminaba de cargar
+
+### Tickets 3989
+- feat: capa tejido 2d
+
+### Tickets 4045
+- incorporar los datos de Barrio Comuna
+
+### Tickets 4289
+- se optimizo uso de memoria
+
+### Tickets 4288
+- corrige informe PDF, reemplaza strings null por espacio en blanco
+
+
+
 ## CHANGELOG V1.1-RC.1:
 
 ### Tickets 3834

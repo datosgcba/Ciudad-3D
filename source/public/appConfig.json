@@ -1905,7 +1905,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif_2_nuevo/{z}/{x}/{y}.pbf?optimize=true"
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -2004,7 +2004,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif_2_nuevo/{z}/{x}/{y}.pbf?optimize=true"
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -2063,7 +2063,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif_2_nuevo/{z}/{x}/{y}.pbf?optimize=true"
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -3551,7 +3551,7 @@
       "source": {
         "type": "vector",
         "tiles": [
-          "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif_2_nuevo/{z}/{x}/{y}.pbf?optimize=true"
+          "https://vectortiles.usig.buenosaires.gob.ar/cur3d/volumen_edif/{z}/{x}/{y}.pbf?optimize=true"
         ],
         "minzoom": 10,
         "maxzoom": 18,

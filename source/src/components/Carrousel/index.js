@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import {
-  Box, Paper, Typography, Button, makeStyles, useTheme
+  Box, Typography, Button, makeStyles, useTheme
 } from '@material-ui/core'
 import MobileStepper from '@material-ui/core/MobileStepper'
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Carrousel = ({ photos }) => {
+const Carrousel = ({ photos = [] }) => {
   const classes = useStyles()
   const theme = useTheme()
   const [activeStep, setActiveStep] = React.useState(0)

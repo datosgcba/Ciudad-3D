@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
-import { lineString, points } from '@turf/helpers'
+import { lineString } from '@turf/helpers'
 import length from '@turf/length'
 
 const Lines = ({ points }) => {

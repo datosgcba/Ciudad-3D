@@ -30,5 +30,5 @@ Para que los cambios se vean reflejados se debe compilar nuevamente el proyecto
 - se optimizo uso de memoria
 - corrige informe PDF, reemplaza strings null por espacio en blanco
 
-### CHANGELOG V1.1.2-RC.2:
+### CHANGELOG V1.1.3-RC.1:
 - Actualizacion de librerias

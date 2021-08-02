@@ -1,3 +1,7 @@
+## CHANGELOG V1.1.2-RC.2:
+- Actualizacion de librerias
+
+
 ## CHANGELOG V1.1.2-RC.1:
 
 ### Tickets 4320

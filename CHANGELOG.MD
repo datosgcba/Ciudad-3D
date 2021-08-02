@@ -1,4 +1,4 @@
-## CHANGELOG V1.1.2-RC.2:
+## CHANGELOG V1.1.3-RC.1:
 - Actualizacion de librerias
 
 

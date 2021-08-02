@@ -23,7 +23,7 @@ const Polygon = ({ smpList, geomCoords }) => {
     if (parcel3D !== undefined) {
       mapGL.setFilter(
         edifId,
-        ['in', ["upcase", ['get', 'smp']], smpList.join(',').toUpperCase()]
+        ['in', ['upcase', ['get', 'smp']], smpList.join(',').toUpperCase()]
       )
     }
   }, [mapGL, smpList, edifId])

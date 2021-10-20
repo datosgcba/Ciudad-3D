@@ -29,7 +29,6 @@ import useStyles from './groupStyle'
 const GroupItem = ({
   idGroup, idLayer, title, color, classes, info, link, reference
 }) => {
-  console.log(idLayer)
   const dispatch = useDispatch()
   const isVisible = useSelector((state) => state.map.groups[idGroup][idLayer].isVisible)
 

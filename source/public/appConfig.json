@@ -2301,7 +2301,7 @@
           }
         },
         {
-          "title": "Tejido 3D no consolidado",
+          "title": "Tejido 3D",
           "color": "white",
           "id": "tejido",
           "type": "vectortile",

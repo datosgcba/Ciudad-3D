@@ -2301,47 +2301,7 @@
           }
         },
         {
-          "title": "Tejido 3D consolidado",
-          "color": "#bea8b6",
-          "id": "tejido_consolidado",
-          "type": "vectortile",
-          "displayPopup": false,
-          "popupContent": "",
-          "info": "Volumetría correspondiente a la edificación existente que alcanzó al menos el 75% de la altura máxima permitida para su unidad de edificabilidad.",
-          "link": "https://data.buenosaires.gob.ar/dataset/tejido-urbano",
-          "options": {
-            "source": {
-              "type": "vector",
-              "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/tejido/{z}/{x}/{y}.pbf?optimize=true"
-              ],
-              "minzoom": 10,
-              "maxzoom": 18,
-              "cluster": false
-            },
-            "source-layer": "default",
-            "type": "fill-extrusion",
-            "layout": {
-              "visibility": "none"
-            },
-            "paint": {
-              "fill-extrusion-color": "#bea8b6",
-              "fill-extrusion-opacity": 0.9,
-              "fill-extrusion-height": [
-                "get",
-                "altura"
-              ]
-            },
-            "filter": [
-              "==",
-              "consolidado",
-              true
-            ]
-          },
-          "index": 5
-        },
-        {
-          "title": "Tejido 3D no consolidado",
+          "title": "Tejido 3D",
           "color": "white",
           "id": "tejido",
           "type": "vectortile",
@@ -2371,13 +2331,8 @@
                 "get",
                 "altura"
               ]
-            },
-            "filter": [
-              "==",
-              "consolidado",
-              false
-            ]
-          },
+            }
+           },
           "index": 5
         },
         {

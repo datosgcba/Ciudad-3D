@@ -4,7 +4,8 @@ const alerts = createSlice({
   name: 'alerts',
   initialState: {
     ids: [],
-    extraData: {}
+    extraData: {},
+    showModalAlert: false
   },
   reducers: {
     addId: (draftState, { payload: id }) => {
@@ -20,6 +21,10 @@ const alerts = createSlice({
     clear: (draftState) => {
       draftState.ids = []
       draftState.extraData = {}
+    },
+    isVisibleAlert: (draftState, { payload }) => {
+      console.log('en el Alert', payload)
+      draftState.showModalAlert = payload
     }
   }
 })

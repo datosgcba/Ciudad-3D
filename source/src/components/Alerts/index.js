@@ -8,10 +8,10 @@ import {
 
 import { getAlert } from 'utils/configQueries'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import useFontsStyles from 'theme/fontsDecorators'
-
+import { actions as actionsAlert } from 'state/ducks/alerts'
 import useStyles from './styles'
 
 const Alert = ({ id, title, text }) => {
@@ -21,6 +21,8 @@ const Alert = ({ id, title, text }) => {
 
   const content = []
   const matches = text.matchAll(/(?:(?<textStart>.*?)\[(?<link>[^\]]+)\]\((?<url>http[s]{0,1}:\/\/[^)]+)\)|(?<textEnd>.+)$)/gm)
+
+  const dispatch = useDispatch()
 
   const processReplace = (contentText) => contentText.replace('{{value}}', value)
   // eslint-disable-next-line no-restricted-syntax
@@ -38,8 +40,12 @@ const Alert = ({ id, title, text }) => {
     content.push(processReplace(textEnd || ''))
   }
 
+  const openModal = () => {
+    dispatch(actionsAlert.isVisibleAlert(true))
+  }
+
   return (
-    <Box key={id} className={classes.box}>
+    <Box key={id} onClick={openModal} className={classes.box}>
       {
         title && (
           <Typography className={decorators.bold}>

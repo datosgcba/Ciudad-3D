@@ -9,6 +9,8 @@ import { actions as explorerActions } from 'state/ducks/explorer'
 
 import Tour from 'reactour'
 
+import StepAlerts from 'components/StepAlerts'
+
 import Routes from './routes'
 
 import { largeScreenSteps } from './steps'
@@ -24,6 +26,7 @@ export default function App({ isAuthenticated }) {
     dispatch(actions.isVisibleTour(true))
     localStorage.setItem('isModalOpen', 'true')
   }
+
   const handleClose = () => {
     dispatch((actions.isVisibleTour(false)))
   }
@@ -47,6 +50,7 @@ export default function App({ isAuthenticated }) {
         className="tour"
         startAt={0}
       />
+      <StepAlerts />
     </div>
   )
 }

@@ -23,7 +23,6 @@ const alerts = createSlice({
       draftState.extraData = {}
     },
     isVisibleAlert: (draftState, { payload }) => {
-      console.log('en el Alert', payload)
       draftState.showModalAlert = payload
     }
   }

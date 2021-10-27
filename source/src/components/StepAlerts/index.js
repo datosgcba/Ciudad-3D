@@ -21,7 +21,7 @@ const StepAlerts = () => {
       onClose={closeModal}
       className={classes.modal}
     >
-      <div className={classes.modal}>
+      <div>
         <img src={img} alt="modal" />
       </div>
     </Modal>

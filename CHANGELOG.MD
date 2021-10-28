@@ -1,3 +1,8 @@
+## CHANGELOG V1.1.4-RC.1:
+- Actualizacion de descripcion en alerta CATALOGADO
+- Unificar tejido consolodidado y no consolidado
+- Boton para cambiar angulo de imagen 2D/3D
+
 ## CHANGELOG V1.1.3-RC.1:
 - Actualizacion de librerias
 

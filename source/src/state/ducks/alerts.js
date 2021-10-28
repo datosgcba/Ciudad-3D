@@ -8,7 +8,9 @@ const alerts = createSlice({
   },
   reducers: {
     addId: (draftState, { payload: id }) => {
-      draftState.ids.push(id)
+      if (!draftState.ids.includes(id)) {
+        draftState.ids.push(id)
+      }
     },
     addExtraData: (draftState, { payload: { id, titleSuffix, value } }) => {
       draftState.extraData[id] = draftState.extraData[id] ?? {}

@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import { getAlert } from 'utils/configQueries'
+
 import { useSelector, useDispatch } from 'react-redux'
 
 import { actions } from 'state/ducks/tour'
@@ -21,6 +23,7 @@ export default function App({ isAuthenticated }) {
   const dispatch = useDispatch()
   const isMapReady = useSelector((state) => state.map.isMapReady)
   const isModalOpen = useSelector((state) => state.tour.showModal)
+  const alertsIds = useSelector((state) => state.alerts.ids)
   const firstView = JSON.parse(localStorage.getItem('isModalOpen')) || false
   if (!firstView && isMapReady) {
     dispatch(actions.isVisibleTour(true))
@@ -50,7 +53,14 @@ export default function App({ isAuthenticated }) {
         className="tour"
         startAt={0}
       />
-      <StepAlerts />
+      {
+      alertsIds
+        .map(getAlert)
+        .filter((alertData) => alertData)
+        .map(({ id, title, text }) => (
+          <StepAlerts id={id} title={title} text={text} />
+        ))
+}
     </div>
   )
 }

@@ -2168,7 +2168,7 @@
             }
           }
         },
-				{
+        {
           "title": "Tejido 2D Alturas",
           "color": "#212529",
           "id": "tejido_2d_labels",
@@ -2189,13 +2189,15 @@
             "source-layer": "default",
             "type": "symbol",
             "layout": {
-             "text-offset": [
-                 0.0,
-                 0.0
+              "text-offset": [
+                0.0,
+                0.0
               ],
-              "text-font": ["Open Sans Regular"],
+              "text-font": [
+                "Open Sans Regular"
+              ],
               "text-field": "{altura}",
-              "text-size": 10 
+              "text-size": 10
             },
             "paint": {
               "text-color": "black",
@@ -2277,7 +2279,7 @@
                   "get",
                   "altura"
                 ],
-								"#ff0000",
+                "#ff0000",
                 1,
                 "#e9ecef",
                 6,
@@ -2295,8 +2297,8 @@
                 60,
                 "#212529"
               ],
-							"fill-outline-color": "white",
-              "fill-opacity": 1 
+              "fill-outline-color": "white",
+              "fill-opacity": 1
             }
           }
         },
@@ -2584,7 +2586,8 @@
             },
             "paint": {
               "fill-color": "blue",
-              "fill-opacity": 0.4            }
+              "fill-opacity": 0.4
+            }
           }
         },
         {
@@ -3291,6 +3294,62 @@
       ]
     }
   ],
+  "article": [
+    {
+      "id": "6.2.1",
+      "title": "6.2.1 Corredores Altos (C.A.) ",
+      "text": "La edificabilidad máxima se corresponde con una Altura Máxima de treinta y ocho metros (38m) con una altura de Planta Baja mínima de tres metros (3m), la cual no puede tener una cota inferior a cero en los primeros ocho metros (8m) de fondo contados desde la L.O. con excepción de rampas vehiculares y escaleras. El área edificable se encuentra limitada por L.O. y la L.F.I. En parcelas de esquina está definido por la L.O.E. En los casos de retiros obligatorios, estará definido por la L.E. Entre L.O. y la L.I.B. se puede edificar un basamento hasta los seis metros (6m) de altura desde la cota de la parcela. Se puede edificar subsuelo según el artículo 6.6 del presente Código.",
+      "image": "./img/article/6_2_1__1.png"
+    },
+    {
+      "id": "6.2.2",
+      "title": "6.2.2 Corredores Medios (C.M.) ",
+      "text": "La edificabilidad máxima se corresponde con una Altura Máxima de treinta y un metros con veinte centímetros (31,20m) con una altura de Planta Baja mínima de tres metros (3m), la cual no puede tener una cota inferior a cero en los primeros ocho metros (8m) de fondo contados desde la L.O. con excepción de rampas vehiculares y escaleras. El área edificable se encuentra ",
+      "image": "./img/article/6_2_2__1.png"
+    },
+    {
+      "id": "6.2.3",
+      "title": "2.3 Unidad de Sustentabilidad de Altura Alta (U.S.A.A.)",
+      "text": "La edificabilidad máxima se corresponde con una Altura Máxima de veintidós metros con ochenta centímetros (22,80m) con una altura de Planta Baja mínima de tres metros (3m), la cual no puede tener una cota inferior a cero en los primeros ocho metros (8m) de fondo contados desde la L.O. con excepción de rampas vehiculares y escaleras. El área edificable se encuentra limitada por L.O. y la L.F.I. En parcelas de esquina está definido por la L.O.E. En los casos de retiros obligatorios, estará definido por la L.E. Se puede edificar subsuelo según el artículo 6.6. del presente Código.",
+      "image": "./img/article/6_2_3__1.png"
+    },
+    {
+      "id": "6.2.4",
+      "title": "6.2.4 Unidad de Sustentabilidad de Altura Media (U.S.A.M.) ",
+      "text": "La edificabilidad máxima se corresponde con una Altura Máxima de once metros con sesenta centímetros (11,60m) con una altura de Planta Baja mínima de dos metros con sesenta centímetros (2,60m), la cual no puede tener una cota inferior a cero en los primeros ocho metros (8m) de fondo contados desde la L.O. con excepción de rampas vehiculares y escaleras. El área edificable se encuentra limitada por L.O. y la L.I.B. En parcelas de esquina está definido por la L.O.E. En los casos de retiros obligatorios, estará definido por la L.E. Se puede edificar subsuelo según el artículo 6.6. del presente Código.",
+      "image": "./img/article/6_2_4__1.png"
+    },
+    {
+      "id": "6.2.5",
+      "title": "6.2.5  Unidad de Sustentabilidad de Altura Baja 2 (U.S.A.B 2)",
+      "text": "La edificabilidad máxima se corresponde con una Altura Máxima de once metros con sesenta centímetros (11,60m) con una altura de Planta Baja mínima de dos metros con sesenta centímetros (2,60m), la cual no puede tener una cota inferior a cero en los primeros ocho metros (8m) de fondo contados desde la L.O. con excepción de rampas vehiculares y escaleras. El área edificable se encuentra limitada por L.O. y la L.I.B. En parcelas de esquina está definido por la L.O.E. En los casos de retiros obligatorios, estará definido por la L.E. Se puede edificar subsuelo según el artículo 6.6. del presente Código.",
+      "image": "./img/article/6_2_5__1.png"
+    },
+    {
+      "id": "6.2.6",
+      "title": "6.2.6  Unidad de Sustentabilidad de Altura Baja 1 (U.S.A.B 1)",
+      "text": "La edificabilidad máxima se corresponde con una Altura Máxima de nueve metros (9m) con una altura de Planta Baja mínima de dos metros con sesenta centímetros (2,60m), la cual no podrá tener una cota inferior a cero en los primeros ocho metros (8m) de fondo contados desde la L.O. con excepción de rampas vehiculares y escaleras. El área edificable se encuentra limitada por L.O. y la L.I.B. En parcelas de esquina está definido por la L.O.E. En los casos de retiros obligatorios, estará definido por la L.E. Se puede edificar subsuelo según el artículo 6.6 del presente Código.",
+      "image": "./img/article/6_2_6__1.png"
+    },
+    {
+      "id": "6.5.5",
+      "title": "6.5.5 Completamiento de Tejido o Edificabilidad",
+      "text": "Se permite el completamiento de tejido o edificabilidad cuando la altura de alguno de los edificios linderos supere la altura máxima de la parcela a edificar. El edificio debe adosarse equiparando los niveles de techos y terrazas con los niveles correspondientes del edificio lindero, en su altura de fachada y cada uno de sus retiros, en forma independiente de las alturas que tengan los parapetos o muros medianeros entre los volúmenes a adosar. Las alturas existentes se consideran tomadas a nivel de piso terminado (N.P.T.) de los edificios linderos. En todos los casos de completamiento de tejido o edificabilidad en los cuales exista una diferencia de altura, el volumen más alto debe dar cumplimiento a las normas sobre fachadas también en ",
+      "image": "./img/article/6_5_5_1__1.png"
+    },
+    {
+      "id": "",
+      "title": "",
+      "text": "",
+      "image": "./img/article/"
+    },
+    {
+      "id": "",
+      "title": "",
+      "text": "",
+      "image": "./img/article/"
+    }
+  ],
   "alerts": [
     {
       "id": "plusvalia_en_cero",
@@ -3325,12 +3384,28 @@
     {
       "id": "coredor_alto",
       "title": "Corredor alto",
-      "text": "Son los corredores centrales. Concentran actividades, modos de transporte y densidad, con un alto grado de consolidación. Sus alturas guardan relación con el ancho de los espacios públicos que enfrentan. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y ocho (38) metros (Ver más en Art. 6.2.1). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos 6.4.2.3. Extensiones vinculadas al Espacio Libre de Manzana, 6.4.2.4. Edificabilidad en las parcelas no alcanzadas por la L.F.I., 6.4.3.5. Edificabilidad en las parcelas no alcanzadas por la L.I.B."
+      "text": "Son los corredores centrales. Concentran actividades, modos de transporte y densidad, con un alto grado de consolidación. Sus alturas guardan relación con el ancho de los espacios públicos que enfrentan. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y ocho (38) metros (Ver más en Art. 6.2.1)[0]. La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos 6.4.2.3. Extensiones vinculadas al Espacio Libre de Manzana, 6.4.2.4. Edificabilidad en las parcelas no alcanzadas por la L.F.I., 6.4.3.5. Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
+      "article": [
+        "6.2.1",
+        "3.6 Anexo II",
+        "6.5.5",
+        "6.4.2.3",
+        "6.4.2.4",
+        "6.4.3."
+      ]
     },
     {
       "id": "coredor_medios",
       "title": "Corredor medio",
-      "text": "Son los corredores principales. Concentran actividades, modos de transporte y densidades, con un menor grado de consolidación. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y un metros  con veinte centímetros (31.20m). (Ver más en Art. 6.2.2). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos 6.4.2.3. Extensiones vinculadas al Espacio Libre de Manzana, 6.4.2.4. Edificabilidad en las parcelas no alcanzadas por la L.F.I., 6.4.3.5. Edificabilidad en las parcelas no alcanzadas por la L.I.B."
+      "text": "Son los corredores principales. Concentran actividades, modos de transporte y densidades, con un menor grado de consolidación. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y un metros  con veinte centímetros (31.20m). (Ver más en Art. 6.2.2). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos 6.4.2.3. Extensiones vinculadas al Espacio Libre de Manzana, 6.4.2.4. Edificabilidad en las parcelas no alcanzadas por la L.F.I., 6.4.3.5. Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
+      "article": [
+        "6.2.2",
+        "3.6 Anexo II",
+        "6.5.5",
+        "6.4.2.3",
+        "6.4.2.4",
+        "6.4.3.5"
+      ]
     },
     {
       "id": "usaa",
@@ -3591,6 +3666,6 @@
     "bearing": 0
   },
   "urlAPI": "https://epok.buenosaires.gob.ar",
-	"urlPhoto": "https://fotos.usig.buenosaires.gob.ar",
+  "urlPhoto": "https://fotos.usig.buenosaires.gob.ar",
   "urlWsUsig": "https://ws.usig.buenosaires.gob.ar"
 }

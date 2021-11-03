@@ -6,6 +6,7 @@ import { Container, Box } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import { actions as mapActions } from 'state/ducks/map'
 import { actions as seekerActions } from 'state/ducks/seeker'
+import { getAlert } from 'utils/configQueries'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
@@ -13,11 +14,13 @@ import Seeker from 'components/Seeker/Seeker'
 
 import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
 import Measure from 'components/Measure'
+import StepAlerts from 'components/StepAlerts'
 
 import imgCapaBasePrincipal from 'img/capabase_1.png'
 import imgCapaBaseSecundaria from 'img/capabase_2.png'
 
 import PropTypes from 'prop-types'
+import img from 'img/modal.png'
 import useStyles from './styles'
 
 const transformRequest = (url, resourceType) => {
@@ -34,6 +37,7 @@ const transformRequest = (url, resourceType) => {
 
 const Map = ({ children }) => {
   const isMapReady = useSelector((state) => state.map.isMapReady)
+  const alertsIds = useSelector((state) => state.alerts.ids)
   const cameraLat = useSelector((state) => state.map.camera?.lat)
   const cameraLng = useSelector((state) => state.map.camera?.lng)
   const cameraZoom = useSelector((state) => state.map.camera?.zoom)
@@ -159,7 +163,15 @@ const Map = ({ children }) => {
         </Box>
         <Measure />
       </Box>
-      {isMapReady && children }
+      {isMapReady && children}
+      {
+        alertsIds
+          .map(getAlert)
+          .filter((alertData) => alertData)
+          .map(({ id, title, text }) => (
+            <StepAlerts id={id} title={title} text={text} images={img} />
+          ))
+      }
     </Container>
   )
 }

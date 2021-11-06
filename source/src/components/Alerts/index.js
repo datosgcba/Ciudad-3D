@@ -6,13 +6,14 @@ import {
   Box, Typography, Link
 } from '@material-ui/core'
 
-import { getAlert } from 'utils/configQueries'
+import { getAlert, getArticlesData } from 'utils/configQueries'
 
 import { useDispatch, useSelector } from 'react-redux'
 
 import useFontsStyles from 'theme/fontsDecorators'
 import { actions as actionsAlert } from 'state/ducks/alerts'
 import useStyles from './styles'
+import StepAlerts from '../StepAlerts'
 
 const Alert = ({ id, title, text }) => {
   const classes = useStyles()
@@ -41,7 +42,7 @@ const Alert = ({ id, title, text }) => {
   }
 
   const openModal = () => {
-    dispatch(actionsAlert.isVisibleAlert(true))
+    dispatch(actionsAlert.isVisibleAlert({ isVisible: true, id }))
   }
 
   return (
@@ -68,6 +69,13 @@ const Alerts = () => {
   const alertsIds = useSelector((state) => state.alerts.ids)
   const sectionId = useSelector((state) => state.categories.sectionId)
 
+  // coredor_alto - Av. Rivadavia 4655
+  const isModalOpenAlert = useSelector((state) => state.alerts.showModalAlert)
+
+  // TODO: conseguir id del link
+  const idArticle = '6.4.3.5'
+  const { content } = getArticlesData(idArticle)
+  console.log(content)
   return (
     <>
       { sectionId.length > 1 && sectionId[1] === 'Buildable' && (
@@ -78,6 +86,10 @@ const Alerts = () => {
             <Alert key={id} id={id} title={title} text={text} />
           ))
       )}
+      <StepAlerts
+        isModalOpenAlert={isModalOpenAlert}
+        content={content}
+      />
     </>
   )
 }

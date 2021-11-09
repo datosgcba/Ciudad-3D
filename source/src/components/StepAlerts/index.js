@@ -31,7 +31,7 @@ const StepAlerts = ({
               <Box>
                 <ListItemText className={classes.title} primary={title} />
                 <ListItemText className={classes.text} primary={text} />
-                <img src={`./images/${image}`} alt="modal" />
+                {image && <img src={`./images/${image}`} alt="Artículo" />}
               </Box>
             ))
           }

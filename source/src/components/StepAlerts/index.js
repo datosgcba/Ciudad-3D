@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Modal, Typography, Box
+  Modal, Box, List, ListItemText
 } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import { actions as actionsAlert } from 'state/ducks/alerts'
@@ -21,30 +21,20 @@ const StepAlerts = ({
     <Modal
       open={isModalOpenAlert}
       onClose={closeModal}
-      className={classes.modal}
     >
-      <Box>
-        {
-        // eslint-disable-next-line react/prop-types
-        content.map(({ title, text, image }) => (
-          <Box>
-            <Typography
-              className={classes.title}
-              variant="h5"
-            >
-              {title}
-            </Typography>
-
-            <Typography
-              className={classes.text}
-              variant="h6"
-            >
-              {text}
-            </Typography>
-            <img src={`./images/${image}`} alt="modal" />
-          </Box>
-        ))
-}
+      <Box className={classes.containerList}>
+        <List>
+          {
+            // eslint-disable-next-line react/prop-types
+            content.map(({ title, text, image }) => (
+              <Box>
+                <ListItemText className={classes.title} primary={title} />
+                <ListItemText className={classes.text} primary={text} />
+                <img src={`./images/${image}`} alt="modal" />
+              </Box>
+            ))
+          }
+        </List>
       </Box>
     </Modal>
   )

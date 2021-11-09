@@ -1,28 +1,26 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles(() => ({
-  modal: {
+  containerList: {
+    background: 'white',
     textAlign: 'center',
-    display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    maxHeight: 540,
+    margin: '4% auto',
+    width: '93vh',
+    overflowX: 'hidden'
   },
 
   title: {
-    background: 'white',
     color: '#121012',
     textAlign: 'left',
-    fontWeight: 'bold',
     fontSize: '12px',
     padding: '1em',
-    height: '20px',
-    width: '509px'
+    height: '25px'
   },
 
   text: {
-    background: 'white',
     color: '#121012',
-    width: '509px',
     fontSize: '10px',
     padding: '1em'
   }

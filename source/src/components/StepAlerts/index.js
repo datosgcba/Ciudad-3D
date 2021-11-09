@@ -21,6 +21,7 @@ const StepAlerts = ({
     <Modal
       open={isModalOpenAlert}
       onClose={closeModal}
+      className={classes.modal}
     >
       <Box className={classes.containerList}>
         <List>

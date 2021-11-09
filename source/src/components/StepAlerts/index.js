@@ -14,7 +14,7 @@ const StepAlerts = ({
   const classes = useStyles()
   const dispatch = useDispatch()
   const closeModal = () => {
-    dispatch((actionsAlert.isVisibleAlert(false)))
+    dispatch((actionsAlert.isVisibleAlert({ isVisible: false })))
   }
 
   return (

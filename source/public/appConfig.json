@@ -2799,7 +2799,7 @@
     {
       "id": "adyacente_catalogado",
       "title": "Adyacente a edificio catalogado",
-      "text": "La altura podrá variar si: existe algún edificio adyacente Catalogado (Artículo 3.6 Anexo II) o la altura de los edificios linderos es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
+      "text": "La altura podrá variar si: existe algún edificio adyacente Catalogado [(Artículo 3.6 Anexo II)](articuloId:3.6 Anexo II) o la altura de los edificios linderos es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5)."
     },
     {
       "id": "coredor_alto",

@@ -25,7 +25,7 @@ const alerts = createSlice({
     },
     isVisibleAlert: (draftState, { payload }) => {
       draftState.showModalAlert = payload.isVisible
-      draftState.showModalAlertId = payload.id
+      draftState.showModalAlertId = payload.articuloId
     }
   }
 })

@@ -18,35 +18,45 @@ import StepAlerts from '../StepAlerts'
 const Alert = ({ id, title, text }) => {
   const classes = useStyles()
   const decorators = useFontsStyles()
+  const dispatch = useDispatch()
+
+  const openModal = ({ articuloId }) => {
+    dispatch(actionsAlert.isVisibleAlert({ isVisible: true, articuloId }))
+  }
+
   const { titleSuffix, value } = useSelector((state) => state.alerts.extraData[id]) ?? {}
 
-  const content = []
-  const matches = text.matchAll(/(?:(?<textStart>.*?)\[(?<link>[^\]]+)\]\((?<url>http[s]{0,1}:\/\/[^)]+)\)|(?<textEnd>.+)$)/gm)
+  text.matchAll(
+    /(?:(?<textStart>.*?)\[(?<articulo>[^\]]+)\]\((?<articuloId>articuloId[s]{0,1}:[^)]+)\)|(?<textEnd>.+)$)/gm
+  )
 
-  const dispatch = useDispatch()
+  const content = []
+
+  const matches = text.includes('articuloId') ? text.matchAll(/(?:(?<textStart>.*?)\[(?<articulo>[^\]]+)\]\((?<articuloId>articuloId[s]{0,1}:[^)]+)\)|(?<textEnd>.+)$)/gm)
+    : text.matchAll(/(?:(?<textStart>.*?)\[(?<link>[^\]]+)\]\((?<url>http[s]{0,1}:\/\/[^)]+)\)|(?<textEnd>.+)$)/gm)
 
   const processReplace = (contentText) => contentText.replace('{{value}}', value)
   // eslint-disable-next-line no-restricted-syntax
   for (const m of matches) {
     const {
-      textStart, link, url, textEnd
+      textStart, link, url, textEnd, articulo, articuloId
     } = m.groups
     if (content.length) {
       content.push(<br />)
     }
     content.push(processReplace(textStart || ''))
+    // eslint-disable-next-line no-nested-ternary
     content.push(link
       ? (<Link href={url} className={classes.link} target="_blank" rel="noopener">{link}</Link>)
-      : '')
+      : articuloId ? (
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
+        <Link href="#" className={classes.link} onClick={() => openModal({ articuloId: articuloId.slice(11) })} rel="noopener">{articulo}</Link>
+      ) : '')
     content.push(processReplace(textEnd || ''))
   }
 
-  const openModal = () => {
-    dispatch(actionsAlert.isVisibleAlert({ isVisible: true, id }))
-  }
-
   return (
-    <Box key={id} onClick={openModal} className={classes.box}>
+    <Box key={id} className={classes.box}>
       {
         title && (
           <Typography className={decorators.bold}>
@@ -71,14 +81,12 @@ const Alerts = () => {
 
   // coredor_alto - Av. Rivadavia 4655
   const isModalOpenAlert = useSelector((state) => state.alerts.showModalAlert)
+  const idArticle = useSelector((state) => state.alerts.showModalAlertId)
+  const data = getArticlesData(idArticle)
 
-  // TODO: conseguir id del link
-  const idArticle = '6.4.3.5'
-  const { content } = getArticlesData(idArticle)
-  console.log(content)
   return (
     <>
-      { sectionId.length > 1 && sectionId[1] === 'Buildable' && (
+      {sectionId.length > 1 && sectionId[1] === 'Buildable' && (
         alertsIds
           .map(getAlert)
           .filter((alertData) => alertData)
@@ -88,7 +96,7 @@ const Alerts = () => {
       )}
       <StepAlerts
         isModalOpenAlert={isModalOpenAlert}
-        content={content}
+        content={data ? data.content : []}
       />
     </>
   )

@@ -2789,37 +2789,43 @@
     {
       "id": "rivolta_atipica",
       "title": "Rivolta y manzana atípica",
-      "text": "La altura máxima del lote responde al artículo 6.4.6 sobre la Altura de Edificios de Esquina: en una esquina cuyas vías públicas concurrentes autoricen distintas alturas de edificación, la altura mayor podrá llevarse sobre los lotes de la calle transversal a la cual corresponde la altura menor. Como este lote se ubica en una manzana atípica, la altura mayor podrá llevarse hasta una distancia igual al ancho de la calle más angosta. Deberá confirmarse la altura máxima mediante un estudio particularizado.",
-      "article": ["6.4.6"]
+      "text": "La altura máxima del lote responde al artículo 6.4.6 sobre la Altura de Edificios de Esquina: en una esquina cuyas vías públicas concurrentes autoricen distintas alturas de edificación, la altura mayor podrá llevarse sobre los lotes de la calle transversal a la cual corresponde la altura menor. Como este lote se ubica en una manzana atípica, la altura mayor podrá llevarse hasta una distancia igual al ancho de la calle más angosta. Deberá confirmarse la altura máxima mediante un estudio particularizado."
     },
     {
       "id": "rivolta",
       "title": "Rivolta",
-      "text": "La altura máxima del lote responde al artículo 6.4.6 sobre la Altura de Edificios de Esquina: en una esquina cuyas vías públicas concurrentes autoricen distintas alturas de edificación, la altura mayor podrá llevarse sobre los lotes de la calle transversal a la cual corresponde la altura menor. Como este lote se ubica en una manzana típica, la altura mayor se podrá llevar hasta la prolongación virtual de la Línea de Frente Interno. Deberá confirmarse la altura máxima mediante un estudio particularizado."
+      "text": "La altura máxima del lote responde al artículo [6.4.6](articuloId:6.4.6) sobre la Altura de Edificios de Esquina: en una esquina cuyas vías públicas concurrentes autoricen distintas alturas de edificación, la altura mayor podrá llevarse sobre los lotes de la calle transversal a la cual corresponde la altura menor. Como este lote se ubica en una manzana típica, la altura mayor se podrá llevar hasta la prolongación virtual de la Línea de Frente Interno. Deberá confirmarse la altura máxima mediante un estudio particularizado.",
+      "article": [
+        "6.4.6"
+      ]
     },
     {
       "id": "adyacente_catalogado",
       "title": "Adyacente a edificio catalogado",
-      "text": "La altura podrá variar si: existe algún edificio adyacente Catalogado [(Artículo 3.6 Anexo II)](articuloId:3.6 Anexo II) o la altura de los edificios linderos es mayor a la de la Unidad de Edificabilidad [(Artículo 6.5.5)](articuloId:6.5.5).",
-      "article": ["9.1.4", "9.1.4.3", "9.1.4.2"]
+      "text": "La altura podrá variar si: existe algún edificio adyacente Catalogado (Artículo 3.6 Anexo II) o la altura de los edificios linderos es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).",
+      "article": [
+        "9.1.4", 
+        "9.1.4.3", 
+        "9.1.4.2"
+      ]
     },
     {
       "id": "coredor_alto",
       "title": "Corredor alto",
-      "text": "Son los corredores centrales. Concentran actividades, modos de transporte y densidad, con un alto grado de consolidación. Sus alturas guardan relación con el ancho de los espacios públicos que enfrentan. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y ocho (38) metros (Ver más en Art. 6.2.1)[0]. La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos 6.4.2.3. Extensiones vinculadas al Espacio Libre de Manzana, 6.4.2.4. Edificabilidad en las parcelas no alcanzadas por la L.F.I., 6.4.3.5. Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
+      "text": "Son los corredores centrales. Concentran actividades, modos de transporte y densidad, con un alto grado de consolidación. Sus alturas guardan relación con el ancho de los espacios públicos que enfrentan. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y ocho (38) metros (Ver más en Art. [6.2.1](articuloId:6.2.1)). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5)).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos [6.4.2.3.](articuloId:6.4.2.3) Extensiones vinculadas al Espacio Libre de Manzana, [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.3.5](articuloId:6.4.3.5). Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
       "article": [
         "6.2.1",
         "3.6 Anexo II",
         "6.5.5",
         "6.4.2.3",
         "6.4.2.4",
-        "6.4.3."
+        "6.4.3.5"
       ]
     },
     {
       "id": "coredor_medios",
       "title": "Corredor medio",
-      "text": "Son los corredores principales. Concentran actividades, modos de transporte y densidades, con un menor grado de consolidación. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y un metros  con veinte centímetros (31.20m). (Ver más en Art. 6.2.2). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos 6.4.2.3. Extensiones vinculadas al Espacio Libre de Manzana, 6.4.2.4. Edificabilidad en las parcelas no alcanzadas por la L.F.I., 6.4.3.5. Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
+      "text": "Son los corredores principales. Concentran actividades, modos de transporte y densidades, con un menor grado de consolidación. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y un metros  con veinte centímetros (31.20m). (Ver más en Art. [6.2.2](articuloId:6.2.2)). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5)).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos [6.4.2.3](articuloId:6.4.2.3). Extensiones vinculadas al Espacio Libre de Manzana, [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.3.5](articuloId:6.4.3.5). Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
       "article": [
         "6.2.2",
         "3.6 Anexo II",
@@ -2832,7 +2838,7 @@
     {
       "id": "usaa",
       "title": "Unidades de Sustentabilidad de Altura Alta",
-      "text": "Son las áreas de la Ciudad de menor altura que los corredores, con alturas adecuadas a los espacios públicos de calles y avenidas barriales. Altura Máxima: 22,8 metros. (Ver más en Art. 6.2.3). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos 6.4.2.3. Extensiones vinculadas al Espacio Libre de Manzana, 6.4.2.4. Edificabilidad en las parcelas no alcanzadas por la L.F.I., 6.4.3.5. Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
+      "text": "Son las áreas de la Ciudad de menor altura que los corredores, con alturas adecuadas a los espacios públicos de calles y avenidas barriales. Altura Máxima: 22,8 metros. (Ver más en Art. [6.2.3](articuloId:6.2.3)). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5)).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos [6.4.2.3](articuloId:6.4.2.3). Extensiones vinculadas al Espacio Libre de Manzana, [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.3.5](articuloId:6.4.3.5). Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
       "article": [
         "6.2.3",
         "3.6 Anexo II",
@@ -2845,7 +2851,7 @@
     {
       "id": "usam",
       "title": "Unidades de Sustentabilidad de Altura Media",
-      "text": "Son las áreas de la ciudad con alturas de escala media, adecuadas para un carácter residencial mixto con cercanía a corredores y centros barriales. La edificabilidad máxima se corresponde con una Altura Máxima de dieciséis metros con cincuenta centímetros (17,20m). (Ver más en Art. 6.2.4) .La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos 6.4.2.3. Extensiones vinculadas al Espacio Libre de Manzana, 6.4.2.4. Edificabilidad en las parcelas no alcanzadas por la L.F.I., 6.4.3.5. Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
+      "text": "Son las áreas de la ciudad con alturas de escala media, adecuadas para un carácter residencial mixto con cercanía a corredores y centros barriales. La edificabilidad máxima se corresponde con una Altura Máxima de dieciséis metros con cincuenta centímetros (17,20m). (Ver más en Art. [6.2.4](articuloId:6.2.4)) .La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5)).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos [6.4.2.3](articuloId:6.4.2.3). Extensiones vinculadas al Espacio Libre de Manzana, [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.3.5](articuloId:6.4.3.5). Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
       "article": [
         "6.2.4",
         "3.6 Anexo II",
@@ -2858,7 +2864,7 @@
     {
       "id": "usab2",
       "title": "Unidades de Sustentabilidad de Altura Baja 2",
-      "text": "Son las áreas de la ciudad de alturas menores, adecuadas para el desarrollo principalmente de actividades residenciales. La edificabilidad máxima se corresponde con una Altura Máxima de  once metros con veinte centímetros (11,20). (Ver más en Art. 6.2.5). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos 6.4.2.3. Extensiones vinculadas al Espacio Libre de Manzana, 6.4.2.4. Edificabilidad en las parcelas no alcanzadas por la L.F.I., 6.4.3.5. Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
+      "text": "Son las áreas de la ciudad de alturas menores, adecuadas para el desarrollo principalmente de actividades residenciales. La edificabilidad máxima se corresponde con una Altura Máxima de  once metros con veinte centímetros (11,20). (Ver más en Art. [6.2.5](articuloId:6.2.5)). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5)).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos [6.4.2.3](articuloId:6.4.2.3). Extensiones vinculadas al Espacio Libre de Manzana, [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.3.5](articuloId:6.4.3.5). Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
       "article": [
         "6.2.5",
         "3.6 Anexo II",
@@ -2871,7 +2877,7 @@
     {
       "id": "usab1",
       "title": "Unidades de Sustentabilidad de Altura Baja 1",
-      "text": "Son las áreas de la ciudad de alturas menores, adecuadas para el desarrollo principalmente de actividades residenciales.La edificabilidad máxima se corresponde con una Altura Máxima de nueve (9) metros. (Ver más en Art. 6.2.6). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo 3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos 6.4.2.3. Extensiones vinculadas al Espacio Libre de Manzana, 6.4.2.4. Edificabilidad en las parcelas no alcanzadas por la L.F.I., 6.4.3.5. Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
+      "text": "Son las áreas de la ciudad de alturas menores, adecuadas para el desarrollo principalmente de actividades residenciales.La edificabilidad máxima se corresponde con una Altura Máxima de nueve (9) metros. (Ver más en Art. [6.2.6](articuloId:6.2.6)). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5)).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos [6.4.2.3](articuloId:6.4.2.3). Extensiones vinculadas al Espacio Libre de Manzana, [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.3.5](articuloId:6.4.3.5). Edificabilidad en las parcelas no alcanzadas por la L.I.B.",
       "article": [
         "6.2.6",
         "3.6 Anexo II",
@@ -2968,8 +2974,10 @@
     {
       "id": "enrase",
       "title": "Completamiento de Tejido o Edificabilidad",
-      "text": "Esta parcela posee edificios linderos que la hace plausible al completamiento de tejido o edificabilidad según el Artículo 6.5.5. Verificar con el organismo competente su aplicación y de qué tipo.",
-      "article": ["6.5.5"]
+      "text": "Esta parcela posee edificios linderos que la hace plausible al completamiento de tejido o edificabilidad según el Artículo [6.5.5](articuloId:6.5.5). Verificar con el organismo competente su aplicación y de qué tipo.",
+      "article": [
+        "6.5.5"
+      ]
     },
     {
       "id": "subzona",

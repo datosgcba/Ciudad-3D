@@ -22,6 +22,11 @@
       "path": "report"
     },
     {
+      "id": "Normative",
+      "title": "Normativas",
+      "path": "normative"
+    },
+    {
       "id": "Tutorial",
       "title": "Tutorial",
       "path": "tutorial"
@@ -1673,6 +1678,28 @@
       "title": "Inspecciones",
       "description": "Obras por las que se dio aviso de inicio ante la Agencia Gubernamental de Control.",
       "color": "#e74c3c"
+    }
+  ],
+  "normative": [
+    {
+      "id": "UrbanCode",
+      "title": "Código Urbanístico",
+      "color": "#34485e"
+    },
+    {
+      "id": "BuildingCode",
+      "title": "Código de Edificación",
+      "color": "#037dbf"
+    },
+    {
+      "id": "Heritage",
+      "title": "Patrimonio",
+      "color": "#18b596"
+    },
+    {
+      "id": "Plusvalia",
+      "title": "Plusvalía",
+      "color": "#fdd306"
     }
   ],
   "layersGroup": [

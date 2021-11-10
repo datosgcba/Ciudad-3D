@@ -15,6 +15,7 @@ import LayerGroup from 'components/Sections/SubSection/LayerGroup'
 import Report from 'components/Sections/SubSection/Report'
 import Uses from 'components/Sections/SubSection/Uses'
 import Works from 'components/Sections/SubSection/Works'
+import Normative from 'components/Sections/SubSection/Normative'
 
 const Section = () => {
   const isShow = useSelector((state) => state.categories.sectionOpen)
@@ -33,6 +34,7 @@ const Section = () => {
     ['Uses', Uses],
     ['Works', Works],
     ['Affectations', Affectations],
+    ['Normative', Normative],
     ['Inspections', Inspections]
   ])
 

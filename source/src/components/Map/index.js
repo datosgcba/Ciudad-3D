@@ -13,7 +13,7 @@ import Seeker from 'components/Seeker/Seeker'
 
 import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
 import Measure from 'components/Measure'
-
+import DimensionBtn from 'components/DimensionBtn'
 import imgCapaBasePrincipal from 'img/capabase_1.png'
 import imgCapaBaseSecundaria from 'img/capabase_2.png'
 
@@ -158,6 +158,7 @@ const Map = ({ children }) => {
           />
         </Box>
         <Measure />
+        <DimensionBtn />
       </Box>
       {isMapReady && children}
     </Container>

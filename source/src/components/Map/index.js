@@ -160,7 +160,7 @@ const Map = ({ children }) => {
         <Measure />
         <DimensionBtn />
       </Box>
-      {isMapReady && children }
+      {isMapReady && children}
     </Container>
   )
 }

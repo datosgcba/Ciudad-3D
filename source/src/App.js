@@ -24,6 +24,7 @@ export default function App({ isAuthenticated }) {
     dispatch(actions.isVisibleTour(true))
     localStorage.setItem('isModalOpen', 'true')
   }
+
   const handleClose = () => {
     dispatch((actions.isVisibleTour(false)))
   }

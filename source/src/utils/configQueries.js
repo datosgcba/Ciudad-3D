@@ -140,11 +140,13 @@ const getUsesLink = () => config.information.find((Uses) => Uses.id === 'Uses').
 
 const getCamera = () => config.camera
 
+const getArticlesData = ((idArticle) => config.articles.find(({ id }) => id === idArticle))
+
 export {
   loadAppConfig, getCategories, getFullLayerConfig, getInformation, getBasicData, getLayersGroups,
   getLayersByLayersGroupId, getBuildable, getExplorer, getUsesTable, getWorksGroups,
   getAffectationsTable, getExplorerOptions, getExplorerFilters, getCapitalGain,
   getInspectionsGroups, getAlert, getCategoryTitle, getSectionInfo, getFullExplorerLayerConfig,
   getParcel3D, getApiUrl, getPhotoUrl, getWsUsigUrl, getParcelLayer, getBaseLayers, getUsesLink,
-  getCamera
+  getCamera, getArticlesData
 }

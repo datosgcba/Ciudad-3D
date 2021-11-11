@@ -1,3 +1,7 @@
+## CHANGELOG V1.1.5-RC.1:
+
+- [(#5854)](https://sscite-redmine.buenosaires.gob.ar/issues/5854) agrega popups para describir los artículos de normativas que se mencionan en las alertas
+
 ## CHANGELOG V1.1.4-RC.1:
 - Actualizacion de descripcion en alerta CATALOGADO
 - Unificar tejido consolodidado y no consolidado

@@ -1684,22 +1684,78 @@
     {
       "id": "UrbanCode",
       "title": "Código Urbanístico",
-      "color": "#34485e"
+      "color": "#34485e",
+      "link": [
+        {
+          "text": "texto correspondiente del Código Urbanístico 1",
+          "url": "https://www.youtube.com/"
+        },
+      {
+        "text": "texto correspondiente del Código Urbanístico 2",
+          "url": "https://www.youtube.com/"
+      },
+      {
+        "text": "texto correspondiente del Código Urbanístico 3",
+          "url": "https://www.youtube.com/"
+      }
+    ]
     },
     {
       "id": "BuildingCode",
       "title": "Código de Edificación",
-      "color": "#037dbf"
+      "color": "#037dbf",
+      "link": [
+        {
+          "text": "texto correspondiente del Código de Edificación 1",
+          "url": "https://www.youtube.com/"
+        },
+      {
+        "text": "texto correspondiente del Código de Edificación 2",
+          "url": "https://www.youtube.com/"
+      },
+      {
+        "text": "texto correspondiente del Código de Edificación 3",
+          "url": "https://www.youtube.com/"
+      }
+    ]
     },
     {
       "id": "Heritage",
       "title": "Patrimonio",
-      "color": "#18b596"
+      "color": "#18b596",
+      "link": [
+        {
+          "text": "texto correspondiente del Patrimonio 1",
+          "url": "https://www.youtube.com/"
+        },
+      {
+        "text": "texto correspondiente del Patrimonio 2",
+          "url": "https://www.youtube.com/"
+      },
+      {
+        "text": "texto correspondiente del Patrimonio 3",
+          "url": "https://www.youtube.com/"
+      }
+    ]
     },
     {
       "id": "Plusvalia",
       "title": "Plusvalía",
-      "color": "#fdd306"
+      "color": "#fdd306",
+      "link": [
+        {
+          "text": "texto correspondiente del Plusvalía 1",
+          "url": "https://www.youtube.com/"
+        },
+      {
+        "text": "texto correspondiente del Plusvalía 2",
+          "url": "https://www.youtube.com/"
+      },
+      {
+        "text": "texto correspondiente del Plusvalía 3",
+          "url": "https://www.youtube.com/"
+      }
+    ]
     }
   ],
   "layersGroup": [

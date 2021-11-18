@@ -16,6 +16,7 @@ import Report from 'components/Sections/SubSection/Report'
 import Uses from 'components/Sections/SubSection/Uses'
 import Works from 'components/Sections/SubSection/Works'
 import Normative from 'components/Sections/SubSection/Normative'
+import LinksNormatives from 'components/Sections/SubSection/Normative/LinksNormatives'
 
 const Section = () => {
   const isShow = useSelector((state) => state.categories.sectionOpen)
@@ -35,7 +36,8 @@ const Section = () => {
     ['Works', Works],
     ['Affectations', Affectations],
     ['Normative', Normative],
-    ['Inspections', Inspections]
+    ['Inspections', Inspections],
+    ['UrbanCode', LinksNormatives]
   ])
 
   const Selected = isShow && sectionComponents.get(sectionSelected)

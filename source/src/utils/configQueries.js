@@ -73,12 +73,13 @@ const getInformation = () => config.information.map(({
 }))
 
 const getNormative = () => config.normative.map(({
-  id, title, description, color
+  id, title, description, color, link
 }) => ({
   id,
   title,
   description,
-  color
+  color,
+  link
 }))
 
 const getBasicData = () => config.basicData.map(({

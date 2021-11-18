@@ -11,14 +11,14 @@ const Normative = () => (
   >
     {
       getNormative().map(({
-        id, title, description, color
+        id, title, color, link
       }) => (
         <InfoCard
           key={id}
           id={id}
           title={title}
-          description={description}
           color={color}
+          link={link}
         />
       ))
     }

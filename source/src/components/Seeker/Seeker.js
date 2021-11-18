@@ -139,6 +139,7 @@ const Seeker = ({ onSelectItem }) => {
   autocompleter.addSuggester('Direcciones', { inputPause: 250 })
   autocompleter.addSuggester('Lugares')
   autocompleter.addSuggester('Catastro')
+  autocompleter.addSuggester('CatastroInformal')
 
   return (
     <Box>

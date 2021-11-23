@@ -38,8 +38,8 @@ const Section = () => {
     ['Normative', Normative],
     ['Inspections', Inspections],
     ['UrbanCode', LinksNormatives],
-    ['BuildingCode', LinksNormatives],
-    ['Heritage', LinksNormatives],
+    ['Urban Heritage', LinksNormatives],
+    ['Cadastre', LinksNormatives],
     ['Plusvalia', LinksNormatives]
   ])
 

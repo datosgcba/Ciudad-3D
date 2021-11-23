@@ -3,7 +3,7 @@ import React from 'react'
 import { Box, Paper } from '@material-ui/core'
 import Scrollbar from 'react-smooth-scrollbar'
 
-import { getCategoryTitle, getSectionInfo } from 'utils/configQueries'
+import { getCategoryTitle, getSectionNorm } from 'utils/configQueries'
 
 import { useSelector } from 'react-redux'
 
@@ -21,7 +21,7 @@ const ContainerBar = ({ children, type }) => {
 
   const lastIndex = sectionId.length - 1
   const { title, info } = lastIndex > 0
-    ? getSectionInfo(sectionId[lastIndex]) : { title: null, info: null }
+    ? getSectionNorm(sectionId[lastIndex]) : { title: null, info: null }
 
   const maxHeight = sectionId.length > 1
     ? '80vh' : '85vh'

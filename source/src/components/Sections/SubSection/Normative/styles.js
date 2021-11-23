@@ -10,5 +10,11 @@ export default makeStyles((theme) => ({
     borderLeftStyle: 'solid',
     borderWidth: 'thick',
     lineHeight: theme.spacing(20)
+  },
+  Box: {
+    padding: '10px'
+  },
+  links: {
+    color: '#0532ff !important'
   }
 }))

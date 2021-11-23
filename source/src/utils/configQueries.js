@@ -151,9 +151,7 @@ const getAlert = (idAlert) => config.alerts.find(({ id }) => id === idAlert)
 
 const getCategoryTitle = (idCategory) => config.categories.find(({ id }) => id === idCategory).title
 
-const getSectionInfo = (idTitle) => config.information.find(({ id }) => id === idTitle)
-
-const getSectionNorm = (idTitle) => config.normative.find(({ id }) => id === idTitle)
+const getSectionInfo = (selectedOp, idTitle) => config[selectedOp].find(({ id }) => id === idTitle)
 
 const getParcel3D = () => config.parcelLayers.edif_3D
 
@@ -192,7 +190,6 @@ export {
   getAlert,
   getCategoryTitle,
   getSectionInfo,
-  getSectionNorm,
   getFullExplorerLayerConfig,
   getParcel3D,
   getApiUrl,

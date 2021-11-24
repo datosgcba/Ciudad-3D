@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Link } from '@material-ui/core'
+import { Box, Link, Typography } from '@material-ui/core'
 import { getNormative } from 'utils/configQueries'
 import { useSelector } from 'react-redux'
 import ContainerBar from 'components/Sections/ContainerBar'
@@ -19,9 +19,11 @@ const LinksNormatives = () => {
         {
     getNormative().find((e) => e.id === sectionSelected).link.map(({ text, url }) => (
       <Box className={classes.Box}>
-        <Link className={classes.links} href={url}>
-          {text}
-        </Link>
+        { url !== undefined ? (
+          <Link className={classes.links} href={url}>
+            {text}
+          </Link>
+        ) : (<Typography className={classes.title}>{text}</Typography>) }
       </Box>
     ))
     }

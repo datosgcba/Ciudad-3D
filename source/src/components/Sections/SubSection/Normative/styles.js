@@ -16,5 +16,8 @@ export default makeStyles((theme) => ({
   },
   links: {
     color: '#0532ff !important'
+  },
+  title: {
+    color: '#000000 !important'
   }
 }))

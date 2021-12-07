@@ -1,3 +1,6 @@
+## CHANGELOG V1.1.6-RC.1:
+- Se incorpora api de Catastro Informal con los endpoints buscarManzana y direccionInformal
+
 ## CHANGELOG V1.1.5-RC.1:
 
 - [(#5854)](https://sscite-redmine.buenosaires.gob.ar/issues/5854) agrega popups para describir los artículos de normativas que se mencionan en las alertas

@@ -1,7 +1,9 @@
 # Ciudad 3D
 
 ### Update V1.1.6-RC.1:
-- Se incorpora api de Catastro Informal con los endpoints buscarManzana y direccionInformal
+- Se actualiza Autocompleter a su [ultima version](https://www.npmjs.com/package/@usig-gcba/autocompleter/v/2.2.6) en la seccion de dependecias del archivo [package.json](https://repositorio-asi.buenosaires.gob.ar/ssppbe_usig/cur3d/-/blob/master/source/package.json).
+- La aplicacion se deploya principalmente en un ambiente de openshift
+- El objetivo principal es deployar esta [aplicacion de openshift](http://ciudad3d-app-usig-desarrollo.apps.ocp4-dev.gcba.gob.ar/) en los ambientes de QA, HML, y PRD.
 
 ### Update V1.1.5-RC.1:
 (#5854) agrega popups para describir los artículos de normativas que se mencionan en las alertas

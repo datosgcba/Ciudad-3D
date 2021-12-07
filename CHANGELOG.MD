@@ -1,5 +1,5 @@
 ## CHANGELOG V1.1.6-RC.1:
-- Se incorpora api de Catastro Informal con los endpoints buscarManzana y direccionInformal
+- Se incorpora api de Catastro Informal con los endpoints buscarManzana y direccionInformal.
 
 ## CHANGELOG V1.1.5-RC.1:
 

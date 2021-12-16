@@ -8,6 +8,7 @@
 - Actualizar desde git:
         
         git fetch && git fetch --tags
+        git checkout develop
         git pull
 
 - Actualizar paquetes:

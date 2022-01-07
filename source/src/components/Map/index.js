@@ -48,6 +48,10 @@ const Map = ({ children }) => {
       mapGL.map.flyTo({
         center: [cameraLng, cameraLat], zoom: cameraZoom, pitch: cameraPitch, bearing: cameraBearing
       })
+    } else if (isMapReady) {
+      mapGL.map.flyTo({
+        zoom: cameraZoom, pitch: cameraPitch, bearing: cameraBearing
+      })
     }
   }, [isMapReady, mapGL, cameraLat, cameraLng, cameraZoom, cameraBearing, cameraPitch])
 

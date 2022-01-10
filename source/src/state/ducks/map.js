@@ -229,11 +229,11 @@ const map = createSlice({
       }
     }) => {
       const {
-        lat, lng, zoom, pitch, bearing
+        zoom, pitch, bearing
       } = draftState.camera
       draftState.camera = {
-        lat: newLat || lat,
-        lng: newLng || lng,
+        lat: newLat,
+        lng: newLng,
         zoom: newZoom || zoom,
         pitch: typeof (newPitch) === 'number' ? newPitch : pitch,
         bearing: typeof (newBearing) === 'number' ? newBearing : bearing

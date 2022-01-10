@@ -22,7 +22,7 @@ const Measure = () => {
         setCoordinates([...coordinates, [lng, lat]])
       }
     }
-  }, [coord, coordinates])
+  }, [isActive, coord, coordinates])
 
   useEffect(() => {
     if (!isActive) {

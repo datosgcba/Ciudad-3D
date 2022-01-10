@@ -56,7 +56,7 @@ const Polygon = ({ smpList, geomCoords }) => {
       mapGL.map.removeLayer(parcelId)
       mapGL.map.removeSource(parcelId)
     }
-  }, [geomCoords, mapGL, paint, type, layout])
+  }, [geomCoords, mapGL, paint, type, layout, edifId])
 
   return null
 }

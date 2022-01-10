@@ -4,27 +4,32 @@
     {
       "id": "Information",
       "title": "Información",
-      "path": "information"
+      "path": "information",
+      "url": ""
     },
     {
       "id": "LayerGroup",
       "title": "Capas",
-      "path": "layerGroups"
+      "path": "layerGroups",
+      "url": ""
     },
     {
       "id": "Explorer",
       "title": "Explorar",
-      "path": "explorer"
+      "path": "explorer",
+      "url": ""
     },
     {
       "id": "Report",
       "title": "Reportes",
-      "path": "report"
+      "path": "report",
+      "url": ""
     },
     {
       "id": "Tutorial",
       "title": "Tutorial",
-      "path": "tutorial"
+      "path": "tutorial",
+      "url": ""
     },
     {
       "id": "Contact",

@@ -2780,7 +2780,7 @@
     {
       "id": "adyacente_catalogado",
       "title": "Adyacente a edificio catalogado",
-      "text": "La altura podrá variar si: existe algún edificio adyacente Catalogado (Artículo 3.6 Anexo II) o la altura de los edificios linderos es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).",
+      "text": "La altura podrá variar si: existe algún edificio adyacente Catalogado (Artículo 3.6 Anexo II) o la altura de los edificios linderos es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).Las pautas generales de intervención se explicitan en el [ART. 9.1.4](articuloId:9.1.4.) y el [ART. 9.1.4.1](articuloId:9.1.4.1.). Si el edificio es lindero a un inmueble con protección CAUTELAR, las pautas se indica en el [ART. 9.1.4.3](articuloId:9.1.4.3.). Si el edificio es lindero a un inmueble con protección ESTRUCTURAL e INTEGRAL, las pautas se indican en el [ART. 9.1.4.2](articuloId:9.1.4.2.)",
       "article": [
         "9.1.4", 
         "9.1.4.3", 

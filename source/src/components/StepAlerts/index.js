@@ -11,7 +11,6 @@ const StepAlerts = ({
   // eslint-disable-next-line react/prop-types
   isModalOpenAlert, content
 }) => {
-  console.log(content)
   const classes = useStyles()
   const dispatch = useDispatch()
   const closeModal = () => {

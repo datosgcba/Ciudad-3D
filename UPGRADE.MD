@@ -1,5 +1,8 @@
 # Ciudad 3D
 
+### Update V1.1.6-RC.2:
+- Se realizan los mismos pasos de la version anterior
+
 ### Update V1.1.6-RC.1:
 - Ingresar a la carpeta del proyecto:
         

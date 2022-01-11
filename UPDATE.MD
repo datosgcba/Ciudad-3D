@@ -1,7 +1,11 @@
 # Ciudad 3D
 
 ## CHANGELOG V1.1.6-RC.1:
-- Se incorpora api de Catastro Informal con los endpoints buscarManzana y direccionInformal.
+- Se incorpora api de Catastro Informal con los endpoints buscarManzana y direccionInformal
+- Se corrige cámara de componente DimensionBtn 
+- Se resuelven algunas advertencias y errores
+- Modificacion de alertas
+- Se agregaron links al alerta Adyacente a edificio catalogado
 
 ### Update V1.1.5-RC.1:
 (#5854) agrega popups para describir los artículos de normativas que se mencionan en las alertas

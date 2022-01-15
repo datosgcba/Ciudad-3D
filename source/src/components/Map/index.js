@@ -50,7 +50,7 @@ const Map = ({ children }) => {
       })
     } else if (isMapReady) {
       mapGL.map.flyTo({
-        zoom: cameraZoom, pitch: cameraPitch, bearing: cameraBearing
+        pitch: cameraPitch
       })
     }
   }, [isMapReady, mapGL, cameraLat, cameraLng, cameraZoom, cameraBearing, cameraPitch])

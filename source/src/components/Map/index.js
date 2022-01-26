@@ -110,7 +110,6 @@ const Map = ({ children }) => {
             bearing,
             pitch
           }))
-          console.log('pitch: ', pitch)
         }
       })
       setMapGL(map)

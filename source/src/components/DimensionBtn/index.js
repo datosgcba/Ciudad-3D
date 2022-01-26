@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ButtonBase } from '@material-ui/core'
+import { ButtonBase, debounce } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import { actions as mapActions } from 'state/ducks/map'
 import useStyles from './styles'
@@ -20,7 +20,6 @@ const DimensionBtn = () => {
   }, [cameraPitch])
 
   const dimensionChange = () => {
-    setDimension(!Dimension)
     if (Dimension) {
       dispatch(mapActions.cameraUpdated({
         pitch: 0
@@ -45,9 +44,9 @@ const DimensionBtn = () => {
       <ButtonBase
         className={classes.Button}
         ref={refMenu}
-        onClick={dimensionChange}
+        onClick={debounce(() => dimensionChange(), 100)}
       >
-        {Dimension ? '2D' : '3D'}
+        {Dimension ? '2D' : '3D' }
       </ButtonBase>
     </>
   )

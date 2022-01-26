@@ -121,21 +121,18 @@ class MapaInteractivoGL {
     if (typeof (this.config.onContextMenu) === 'function') {
       this.config.onContextMenu(ev)
     }
-    console.log('onContextMenu')
   }
 
   _onMoveStart(ev) {
     if (typeof (this.config.onMoveStart) === 'function') {
       this.config.onMoveStart(ev)
     }
-    console.log('onMoveStart')
   }
 
   _onMoveEnd(ev) {
     if (typeof (this.config.onMoveEnd) === 'function') {
       this.config.onMoveEnd(ev)
     }
-    console.log('onMoveEnd')
   }
 
   _onZoomEnd(ev) {

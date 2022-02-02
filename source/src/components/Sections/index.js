@@ -15,6 +15,8 @@ import LayerGroup from 'components/Sections/SubSection/LayerGroup'
 import Report from 'components/Sections/SubSection/Report'
 import Uses from 'components/Sections/SubSection/Uses'
 import Works from 'components/Sections/SubSection/Works'
+import Normative from 'components/Sections/SubSection/Normative'
+import LinksNormatives from 'components/Sections/SubSection/Normative/LinksNormatives'
 
 const Section = () => {
   const isShow = useSelector((state) => state.categories.sectionOpen)
@@ -33,7 +35,12 @@ const Section = () => {
     ['Uses', Uses],
     ['Works', Works],
     ['Affectations', Affectations],
-    ['Inspections', Inspections]
+    ['Normative', Normative],
+    ['Inspections', Inspections],
+    ['UrbanCode', LinksNormatives],
+    ['Urban Heritage', LinksNormatives],
+    ['Cadastre', LinksNormatives],
+    ['Plusvalia', LinksNormatives]
   ])
 
   const Selected = isShow && sectionComponents.get(sectionSelected)

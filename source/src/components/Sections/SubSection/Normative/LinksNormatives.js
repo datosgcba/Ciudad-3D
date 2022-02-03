@@ -17,16 +17,16 @@ const LinksNormatives = () => {
     >
       <Box>
         {
-    getNormative().find((e) => e.id === sectionSelected).link.map(({ text, url }) => (
-      <Box className={classes.Box}>
-        { url !== undefined ? (
-          <Link className={classes.links} href={url}>
-            {text}
-          </Link>
-        ) : (<Typography className={classes.title}>{text}</Typography>) }
-      </Box>
-    ))
-    }
+          getNormative().find((e) => e.id === sectionSelected).link.map(({ text, url }) => (
+            <Box className={classes.Box}>
+              {url !== undefined ? (
+                <Link className={classes.links} href={url} target={url}>
+                  {text}
+                </Link>
+              ) : (<Typography className={classes.title}>{text}</Typography>)}
+            </Box>
+          ))
+        }
       </Box>
     </ContainerBar>
   )

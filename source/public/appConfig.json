@@ -1747,7 +1747,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1811,7 +1811,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -3209,9 +3209,16 @@
       "paint": {
         "fill-extrusion-color": "#fdd306",
         "fill-extrusion-opacity": 0.9,
-        "fill-extrusion-height": ["get", "altura_fin"]
+        "fill-extrusion-height": [
+          "get",
+          "altura_final"
+        ]
       },
-      "filter": ["==", "smp", "no-match"]
+      "filter": [
+        "==",
+        "smp",
+        "no-match"
+      ]
     },
     "polygon": {
       "type": "fill",

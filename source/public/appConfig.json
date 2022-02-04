@@ -749,7 +749,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf?optimize=true"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -831,7 +831,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf?optimize=true"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -886,7 +886,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf?optimize=true"
             ],
             "minzoom": 10,
             "maxzoom": 18,

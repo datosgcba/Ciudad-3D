@@ -1527,6 +1527,7 @@
           "displayPopup": true,
           "popupContent": "",
           "info": "Plano correspondiente a la morfologia de la Ciudad elaborada mediante restitución Fotogramética. Esto puede abarcar tejido no registrado.",
+          "link": "https://data.buenosaires.gob.ar/dataset/tejido-urbano",
           "options": {
             "source": {
               "type": "vector",

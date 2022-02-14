@@ -3211,7 +3211,7 @@
         "fill-extrusion-opacity": 0.9,
         "fill-extrusion-height": [
           "get",
-          "altura_final"
+          "altura_fin"
         ]
       },
       "filter": [

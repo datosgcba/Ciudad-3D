@@ -26,6 +26,12 @@
       "url": ""
     },
     {
+      "id": "Normative",
+      "title": "Normativas",
+      "path": "normative",
+      "url": ""
+    },
+    {
       "id": "Tutorial",
       "title": "Tutorial",
       "path": "tutorial",
@@ -743,7 +749,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf?optimize=true"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -825,7 +831,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf?optimize=true"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -880,7 +886,7 @@
           "source": {
             "type": "vector",
             "tiles": [
-              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+              "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf?optimize=true"
             ],
             "minzoom": 10,
             "maxzoom": 18,
@@ -949,6 +955,134 @@
       "title": "Inspecciones",
       "description": "Obras por las que se dio aviso de inicio ante la Agencia Gubernamental de Control.",
       "color": "#e74c3c"
+    }
+  ],
+  "normative": [
+    {
+      "id": "UrbanCode",
+      "title": "Código Urbanístico",
+      "color": "#34485e",
+      "link": [
+      {
+        "text": "Ley N° 6099/18 – Código Urbanístico",
+        "url": "https://documentosboletinoficial.buenosaires.gob.ar/publico/ck_PL-LEY-LCABA-LCBA-6099-18-5526.pdf"
+      },
+      {
+        "text": "Cuerpo Principal – Código Urbanístico",
+        "url": "http://cdn2.buenosaires.gob.ar/desarrollourbano/codigo_urbanistico/0_codigo_urbanistico_31_3.pdf"
+      },
+      {
+        "text": "Anexo I – Listado de Inmuebles Catalogados",
+        "url": "./Normative/ANEXO_I_Listad_de_Inmuebles_Catalogados.pdf"
+      },
+      {
+        "text": "Anexo II – Áreas Especiales",
+        "url": "./Normative/Anexo_II_areas_Especiales_Individualizadas_con_cambios_RECINTO.pdf"
+      },
+      {
+        "text": "Anexo III – Atlas",
+        "url": "http://cdn2.buenosaires.gob.ar/desarrollourbano/codigo_urbanistico/3_anexo_III_atlas_31_03.pdf"
+      },
+      {
+        "text": "Planchetas Código Urbanístico",
+        "url": "http://cdn2.buenosaires.gob.ar/desarrollourbano/codigo_urbanistico/4_anexo_IV_planchetas_31_3.pdf"
+      },
+      {
+        "text": "Ley N° 6361/20 – Modificación Código Urbanístico",
+        "url": "https://documentosboletinoficial.buenosaires.gob.ar/publico/ck_PL-LEY-LCABA-LCBA-6361-20-6020.pdf"
+      },
+      {
+        "text": "Código de Planeamiento Urbano",
+        "url": "./Normative/texto_cpu_al_21_de_dic_2018.pdf"
+      }
+    ]
+    },
+    {
+      "id": "Urban Heritage",
+      "title":  "Patrimonio Urbanístico",
+      "color": "#037dbf",
+      "link": [
+        {
+            "text": "Guía de buenas prácticas – Patrimonio Urbano",
+            "url": "https://www.buenosaires.gob.ar/guia-de-buenas-practicas"
+        },
+        {
+          "text": "Consejo Asesor de Asuntos Patrimoniales",
+          "url": "https://www.buenosaires.gob.ar/jefaturadegabinete/desarrollo-urbano/normativa/consejo-asesor-de-asuntos-patrimoniales"
+        }      
+    ]
+    },
+    {
+      "id": "Cadastre",
+      "title":  "Catastro",
+      "color": "#18b596",
+      "link": [
+        {
+            "text": "Ley de Catastro 6437/21",
+            "url": "http://www2.cedom.gob.ar/es/legislacion/normas/leyes/ley6437.html"
+        },
+        {
+          "text": "Instructivo acreditación de titularidad y certificación de firmas",
+          "url": "./Normative/Acreditacion_de_titularidad_y_certificación_de_firmas_V1.pdf"
+        },
+        {
+          "text": "Cambio de vivienda de encargado a unidad funcional"
+        },
+        {
+          "text": "Memoria de cálculo para el cambio de vivienda de encargado a unidad funcional",
+          "url": "./Normative/anexo_2_memoria_de_calculo_para_el_cambio_de_vivienda_de_encargado_a_unidad_funcional_2021_v2.pdf"
+        },
+        {
+          "text": "Modelo de DDJJ para la desafectación de la vivienda del encargado",
+          "url": "./Normative/modelo_de_ddjj_para_la_desafectacion_de_la_vivienda_del_encargado_2021.pdf"
+        },
+        {
+          "text": "Sistema de coordenadas de la Ciudad de Buenos Aires"
+        },
+        {
+          "text": " Código EPSG",
+          "url": "https://epsg.org/search/by-name/sessionkey/4gdteeumiz/searchedTerms/9498/"
+        },
+        {
+          "text": "procedimiento para el cambio de coordenadas",
+          "url": "./Normative/instructivo-0f-gk-caba-2019.zip"
+        },
+        {
+          "text": "Paquete de Instructivos POSGAR 2007/CABA 2019",
+          "url": "./Normative/procedimiento_cambio_de_coordenadas_sistema_flores_a_sistema_gk-caba-2019_v1.pdf"
+        },
+        {
+          "text": "Transformación POSGAR 2007/CABA 2019 – Sistema Flores",
+          "url": "./Normative/plantilla_transformacion_pg07_sist-flores.xls"
+        },
+        {
+          "text": "Transformación Sistema Flores – POSGAR 2007/CABA 2019",
+          "url": "./Normative/transformacion_sist-flores_pg07.xls"
+        }
+      ]
+    },
+    {
+      "id": "Plusvalia",
+      "title": "Plusvalía",
+      "color": "#fdd306",
+      "link": [
+        {
+          "text": "Ley de Desarrollo Urbano y Hábitat Sustentable",
+          "url": "https://documentosboletinoficial.buenosaires.gob.ar/publico/ck_PL-LEY-LCABA-LCBA-6062-18-5522.pdf"
+        },
+      {
+        "text": "Ley Tarifaria",
+          "url": ""
+      },
+      {
+        "text": "Código Fiscal",
+          "url": ""
+      },
+      {
+        "text": "Código de Planeamiento Urbano",
+        "url": "./Normative/texto_cpu_al_21_de_dic_2018.pdf"
+      }
+    ]
     }
   ],
   "layersGroup": [
@@ -1393,6 +1527,7 @@
           "displayPopup": true,
           "popupContent": "",
           "info": "Plano correspondiente a la morfologia de la Ciudad elaborada mediante restitución Fotogramética. Esto puede abarcar tejido no registrado.",
+          "link": "https://data.buenosaires.gob.ar/dataset/tejido-urbano",
           "options": {
             "source": {
               "type": "vector",
@@ -1612,7 +1747,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -1676,7 +1811,7 @@
             "source": {
               "type": "vector",
               "tiles": [
-                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico_test_zg/{z}/{x}/{y}.pbf?optimize=true"
+                "https://vectortiles.usig.buenosaires.gob.ar/cur3d/codigo_urbanistico/{z}/{x}/{y}.pbf?optimize=true"
               ],
               "minzoom": 10,
               "maxzoom": 18,
@@ -3074,9 +3209,16 @@
       "paint": {
         "fill-extrusion-color": "#fdd306",
         "fill-extrusion-opacity": 0.9,
-        "fill-extrusion-height": ["get", "altura_fin"]
+        "fill-extrusion-height": [
+          "get",
+          "altura_fin"
+        ]
       },
-      "filter": ["==", "smp", "no-match"]
+      "filter": [
+        "==",
+        "smp",
+        "no-match"
+      ]
     },
     "polygon": {
       "type": "fill",

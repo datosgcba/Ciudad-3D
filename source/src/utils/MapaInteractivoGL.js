@@ -2,6 +2,7 @@
 /* eslint-disable */
 
 import * as mapboxgl from 'mapbox-gl'
+import getLayer from './layer-builders/GenericLineLayerBuilder'
 import genericLine from './layer-builders/GenericLineLayerBuilder'
 import genericPoint from './layer-builders/GenericPointLayerBuilder'
 
@@ -100,6 +101,7 @@ class MapaInteractivoGL {
 
   _getLayer(id) {
     this.map.getLayer(id)
+    conosle('getLayer: ', getLayer)
   }
 
   setIdioma(idioma) {

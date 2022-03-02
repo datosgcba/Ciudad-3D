@@ -1,5 +1,5 @@
 import React from 'react'
-
+import MenuBookIcon from '@material-ui/icons/MenuBook'
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined'
 
 const icons = [
@@ -41,6 +41,14 @@ const icons = [
     path: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="35" viewBox="0 0 29.33 29.33">
         <AssignmentOutlinedIcon />
+      </svg>
+    )
+  },
+  {
+    id: 'normative',
+    path: (
+      <svg id="info" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" width="38" height="38" viewBox="0 0 28 28">
+        <MenuBookIcon />
       </svg>
     )
   },

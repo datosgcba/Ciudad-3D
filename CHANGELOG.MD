@@ -1,3 +1,18 @@
+## CHANGELOG V1.2.0-RC.1:
+- [(#5853)](https://sscite-redmine.buenosaires.gob.ar/issues/5853) seccion normativa
+- [(#5854)](https://sscite-redmine.buenosaires.gob.ar/issues/5854) correccion de bugs del despliegue anterior
+- [(#5859)](https://sscite-redmine.buenosaires.gob.ar/issues/5859) correccion de sintaxis de la seccion "Adyacente a edificio catalogado"
+- [(#5861)](https://sscite-redmine.buenosaires.gob.ar/issues/5861) añade boton para cambiar perspectivas del mapa en 2D y 3D
+
+## CHANGELOG V1.1.6-RC.2:
+- Se corrige cámara de componente DimensionBtn 
+- Se resuelven algunas advertencias y errores
+- Modificacion de alertas
+- Se agregaron links al alerta Adyacente a edificio catalogado
+
+## CHANGELOG V1.1.6-RC.1:
+- Se incorpora api de Catastro Informal con los endpoints buscarManzana y direccionInformal
+
 ## CHANGELOG V1.1.5-RC.1:
 
 - [(#5854)](https://sscite-redmine.buenosaires.gob.ar/issues/5854) agrega popups para describir los artículos de normativas que se mencionan en las alertas

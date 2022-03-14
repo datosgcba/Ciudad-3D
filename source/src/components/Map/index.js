@@ -50,7 +50,7 @@ const Map = ({ children }) => {
       })
     } else if (isMapReady) {
       mapGL.map.flyTo({
-        zoom: cameraZoom, pitch: cameraPitch, bearing: cameraBearing
+        pitch: cameraPitch
       })
     }
   }, [isMapReady, mapGL, cameraLat, cameraLng, cameraZoom, cameraBearing, cameraPitch])
@@ -83,7 +83,7 @@ const Map = ({ children }) => {
 
   useEffect(() => {
     dispatch(mapActions.loadLayers())
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Se inicializa el mapa
@@ -146,9 +146,9 @@ const Map = ({ children }) => {
            */
             if (
               (selectedSuggestion.data.smp === undefined
-            || selectedSuggestion.data.smp === '')
-            && selectedSuggestion.data.coordenadas
-            && selectedSuggestion.data.coordenadas.x && selectedSuggestion.data.coordenadas.y
+                || selectedSuggestion.data.smp === '')
+              && selectedSuggestion.data.coordenadas
+              && selectedSuggestion.data.coordenadas.x && selectedSuggestion.data.coordenadas.y
             ) {
               dispatch(mapActions.cameraUpdated({
                 lat: selectedSuggestion.data.coordenadas.y,

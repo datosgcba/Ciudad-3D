@@ -1,21 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ButtonBase } from '@material-ui/core'
-import { useDispatch } from 'react-redux'
+import { ButtonBase, debounce } from '@material-ui/core'
+import { useDispatch, useSelector } from 'react-redux'
 import { actions as mapActions } from 'state/ducks/map'
 import useStyles from './styles'
 
 const DimensionBtn = () => {
-  // const isActive = useSelector((state) => !!state?.map?.isMeasureActive)
-  // const [coordinates, setCoordinates] = useState([])
+  const cameraPitch = useSelector((state) => state.map.camera?.pitch)
   const [Dimension, setDimension] = useState(false)
-  // const coord = useSelector((state) => state?.map?.selectedCoords)
   const refMenu = useRef(null)
 
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    if (cameraPitch === 0) {
+      setDimension(false)
+    } else {
+      setDimension(true)
+    }
+  }, [cameraPitch])
+
   const dimensionChange = () => {
-    setDimension(!Dimension)
-    if (Dimension === true) {
+    if (Dimension) {
       dispatch(mapActions.cameraUpdated({
         pitch: 0
       }))
@@ -39,9 +44,9 @@ const DimensionBtn = () => {
       <ButtonBase
         className={classes.Button}
         ref={refMenu}
-        onClick={dimensionChange}
+        onClick={debounce(() => dimensionChange(), 100)}
       >
-        {Dimension ? '2D' : '3D'}
+        {Dimension ? '2D' : '3D' }
       </ButtonBase>
     </>
   )

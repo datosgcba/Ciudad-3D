@@ -40,7 +40,9 @@ const Section = () => {
     ['UrbanCode', LinksNormatives],
     ['Urban Heritage', LinksNormatives],
     ['Cadastre', LinksNormatives],
-    ['Plusvalia', LinksNormatives]
+    ['Plusvalia', LinksNormatives],
+    ['Edification', LinksNormatives],
+    ['Manuals and Instructions', LinksNormatives]
   ])
 
   const Selected = isShow && sectionComponents.get(sectionSelected)

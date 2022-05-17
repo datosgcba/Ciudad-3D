@@ -20,7 +20,7 @@ const LinksNormatives = () => {
     getNormative().find((e) => e.id === sectionSelected).link.map(({ text, url }) => (
       <Box className={classes.Box}>
         { url !== undefined ? (
-          <Link className={classes.links} href={url}>
+          <Link className={classes.links} href={url} target={url}>
             {text}
           </Link>
         ) : (<Typography className={classes.title}>{text}</Typography>) }

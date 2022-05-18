@@ -32,26 +32,26 @@ const Alert = ({ id, title, text }) => {
 
   const content = []
 
-  const matches = text.includes('articuloId') ? text.matchAll(/(?:(?<textStart>.*?)\[(?<articulo>[^\]]+)\]\((?<articuloId>articuloId[s]{0,1}:[^)]+)\)|(?<textEnd>.+)$)/gm)
-    : text.matchAll(/(?:(?<textStart>.*?)\[(?<link>[^\]]+)\]\((?<url>http[s]{0,1}:\/\/[^)]+)\)|(?<textEnd>.+)$)/gm)
-
   const processReplace = (contentText) => contentText.replace('{{value}}', value)
+
+  const matches = text.matchAll(/(?:(?<textStart>.*?)\[(?<link>[^\]]+)\]\((?:(?<articuloId>articuloId[s]{0,1}:[^)]+)|(?<url>http[s]{0,1}:\/\/[^)]+))\)|(?<textEnd>.+)$)/gm)
+
   // eslint-disable-next-line no-restricted-syntax
   for (const m of matches) {
     const {
-      textStart, link, url, textEnd, articulo, articuloId
+      textStart, link, url, textEnd, articuloId
     } = m.groups
     if (content.length) {
       content.push(<br />)
     }
     content.push(processReplace(textStart || ''))
     // eslint-disable-next-line no-nested-ternary
-    content.push(link
+    content.push(!articuloId
       ? (<Link href={url} className={classes.link} target="_blank" rel="noopener">{link}</Link>)
-      : articuloId ? (
+      : (
         // eslint-disable-next-line jsx-a11y/anchor-is-valid
-        <Link href="#" className={classes.link} onClick={() => openModal({ articuloId: articuloId.slice(11) })} rel="noopener">{articulo}</Link>
-      ) : '')
+        <Link href="#" className={classes.link} onClick={() => openModal({ articuloId: articuloId.slice(11) })} rel="noopener">{link}</Link>
+      ))
     content.push(processReplace(textEnd || ''))
   }
 

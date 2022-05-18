@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getBuildable, getEnrase, getPlusvalia } from 'utils/apiConfig'
+import {
+  getBuildable, getEnrase, getPlusvalia, getPdfLink
+} from 'utils/apiConfig'
 import { actions as alertsActions } from 'state/ducks/alerts'
 
 const areaChanged = createAsyncThunk(
@@ -155,8 +157,20 @@ const clickOnParcel = createAsyncThunk(
     if (data?.rivolta > 0 && data?.tipica?.length) {
       dispatch(alertsActions.addId('rivolta'))
     }
-    if (data?.tipica?.toUpperCase() !== 'T') {
-      dispatch(alertsActions.addId('manzana_atipica'))
+    if (data?.tipica?.toUpperCase() !== 'T' && !data?.manzanas_atipicas?.disposicio?.length) {
+      const id = 'manzana_atipica'
+      dispatch(alertsActions.addId(id))
+    }
+    if (data?.tipica?.toUpperCase() !== 'T' && data?.manzanas_atipicas?.disposicio?.length) {
+      const id = 'manzana_atipica_disposicion'
+      dispatch(alertsActions.addId(id))
+      dispatch(alertsActions.addExtraData({
+        id,
+        value: data.manzanas_atipicas.disposicio,
+        value2: data.manzanas_atipicas.pdf
+          ? getPdfLink(data.manzanas_atipicas.pdf)
+          : 'DISABLED'
+      }))
     }
     if (data.parcelas_linderas?.aph_linderas) {
       dispatch(alertsActions.addId('adyacente_catalogado'))

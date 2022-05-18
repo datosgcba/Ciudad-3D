@@ -1,4 +1,4 @@
-import { getApiUrl, getPhotoUrl, getWsUsigUrl } from './configQueries'
+import { getApiUrl, getPhotoUrl, getWsUsigUrl, getPdfUrl } from './configQueries'
 
 const getParcel = ({ lng, lat }) => `${getApiUrl()}/catastro/parcela/?lng=${lng}&lat=${lat}`
 
@@ -28,6 +28,8 @@ const getPhoto = (smp, idx) => `${getPhotoUrl()}/getFoto?smp=${smp}&i=${idx}&w=2
 
 const getDataWsUsig = (x, y) => `${getWsUsigUrl()}/datos_utiles?x=${x}&y=${y}`
 
+const getPdfLink = (pdf) => `${getPdfUrl()}/${pdf}`
+
 export {
   getParcel,
   getParcelBySmp,
@@ -42,5 +44,6 @@ export {
   getPlusvalia,
   getPhotoData,
   getPhoto,
-  getDataWsUsig
+  getDataWsUsig,
+  getPdfLink
 }

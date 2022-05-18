@@ -24,7 +24,7 @@ const Alert = ({ id, title, text }) => {
     dispatch(actionsAlert.isVisibleAlert({ isVisible: true, articuloId }))
   }
 
-  const { titleSuffix, value } = useSelector((state) => state.alerts.extraData[id]) ?? {}
+  const { titleSuffix, value, value2 } = useSelector((state) => state.alerts.extraData[id]) ?? {}
 
   text.matchAll(
     /(?:(?<textStart>.*?)\[(?<articulo>[^\]]+)\]\((?<articuloId>articuloId[s]{0,1}:[^)]+)\)|(?<textEnd>.+)$)/gm
@@ -45,13 +45,18 @@ const Alert = ({ id, title, text }) => {
       content.push(<br />)
     }
     content.push(processReplace(textStart || ''))
-    // eslint-disable-next-line no-nested-ternary
-    content.push(!articuloId
-      ? (<Link href={url} className={classes.link} target="_blank" rel="noopener">{link}</Link>)
-      : (
+    if (articuloId) {
+      const textArticle = processReplace(link)
+      content.push(
         // eslint-disable-next-line jsx-a11y/anchor-is-valid
-        <Link href="#" className={classes.link} onClick={() => openModal({ articuloId: articuloId.slice(11) })} rel="noopener">{link}</Link>
-      ))
+        <Link href="#" className={classes.link} onClick={() => openModal({ articuloId: articuloId.slice(11) })} rel="noopener">{textArticle}</Link>
+      )
+    }
+    if (link && !articuloId) {
+      const textLink = processReplace(link)
+      const urlLink = processReplace(url || '')
+      content.push(value2 === 'DISABLED' ? textLink : <Link href={urlLink} className={classes.link} target="_blank" rel="noopener">{textLink}</Link>)
+    }
     content.push(processReplace(textEnd || ''))
   }
 

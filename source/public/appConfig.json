@@ -3133,6 +3133,11 @@
       "text": "Para consultar los trazados de Línea de Frente Interno o de Basamento en una manzana atípica, se deberá realizar la consulta [Fijación de Línea de Frente Interno](https://www.buenosaires.gob.ar/tramites/fijacion-de-linea-de-frente-interno) vía [TAD](https://lbapw.agip.gob.ar/claveciudad/)."
     },
     {
+      "id": "manzana_atipica_disposicion",
+      "title": "Parcela en Manzana Atípica",
+      "text": "Esta manzana posee normativa vigente de acuerdo a [{{value}}](http://base_url_pdf/{{value2}})."
+    },
+    {
       "id": "enrase",
       "title": "Completamiento de Tejido o Edificabilidad",
       "text": "Esta parcela posee edificios linderos que la hace plausible al completamiento de tejido o edificabilidad según el Artículo [6.5.5](articuloId:6.5.5). Verificar con el organismo competente su aplicación y de qué tipo.",
@@ -3289,5 +3294,6 @@
   },
   "urlAPI": "https://epok.buenosaires.gob.ar",
   "urlPhoto": "https://fotos.usig.buenosaires.gob.ar",
-  "urlWsUsig": "https://ws.usig.buenosaires.gob.ar"
+  "urlWsUsig": "https://ws.usig.buenosaires.gob.ar",
+  "urlPDF": "https://base_pdf_url"
 }

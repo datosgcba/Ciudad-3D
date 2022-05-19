@@ -3003,7 +3003,11 @@
     {
       "id": "catalogado",
       "title": "Catalogado",
-      "text": "La catalogación constituye el instrumento de protección para la salvaguarda y puesta en valor de edificios a partir de sus criterios de valoración. A través de la catalogación se determina la normativa que regula cada edificio catalogado y su nivel de protección. Por este motivo, no corresponde a una de las alturas estándares, sino que está regulado especialmente por el Código Urbanístico para preservar su valor urbano.La definición de los Nivel de Protección se explicita en el ART. 9.1.3.2.2 y los Grados de Intervención en el ART. 9.1.3.2.2.2"
+      "text": "La catalogación constituye el instrumento de protección para la salvaguarda y puesta en valor de edificios a partir de sus criterios de valoración. A través de la catalogación se determina la normativa que regula cada edificio catalogado y su nivel de protección. Por este motivo, no corresponde a una de las alturas estándares, sino que está regulado especialmente por el Código Urbanístico para preservar su valor urbano.La definición de los Nivel de Protección se explicita en el ART. [9.1.3.2.2](articuloId:9.1.3.2.2) y los Grados de Intervención en el ART.[9.1.3.2.2.2](articuloId:9.1.3.2.2.2) ",
+      "article":[
+        "9.1.3.2.2",
+        "9.1.3.2.2.2"
+       ]
     },
     {
       "id": "mixtura_usos",

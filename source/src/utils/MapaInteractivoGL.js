@@ -55,13 +55,14 @@ class MapaInteractivoGL {
     const params = { ...this.config.params, ...options }
 
     this.map = new mapboxgl.Map(params)
-//		this.map.addControl(new mapboxgl.NavigationControl())
+    //		this.map.addControl(new mapboxgl.NavigationControl())
     this._markers = {}
     this.popup = this.config.popup
     this._layers = {}
     // this.map.on('contextmenu', this._onContextMenu);
     this.map.on('click', this._onClick.bind(this))
     this.map.on('movestart', this._onMoveStart.bind(this))
+    this.map.on('moveend', this._onMoveEnd.bind(this))
     this.map.on('zoomend', this._onZoomEnd.bind(this))
     this.map.on('dragend', this._onDragEnd.bind(this))
     this.map.on('dataloading', function () {

@@ -963,63 +963,63 @@
       "title": "Código Urbanístico",
       "color": "#34485e",
       "link": [
-      {
-        "text": "Ley N° 6099/18 – Código Urbanístico",
-        "url": "https://documentosboletinoficial.buenosaires.gob.ar/publico/ck_PL-LEY-LCABA-LCBA-6099-18-5526.pdf"
-      },
-      {
-        "text": "Cuerpo Principal – Código Urbanístico",
-        "url": "http://cdn2.buenosaires.gob.ar/desarrollourbano/codigo_urbanistico/0_codigo_urbanistico_31_3.pdf"
-      },
-      {
-        "text": "Anexo I – Listado de Inmuebles Catalogados",
-        "url": "./Normative/ANEXO_I_Listad_de_Inmuebles_Catalogados.pdf"
-      },
-      {
-        "text": "Anexo II – Áreas Especiales",
-        "url": "./Normative/Anexo_II_areas_Especiales_Individualizadas_con_cambios_RECINTO.pdf"
-      },
-      {
-        "text": "Anexo III – Atlas",
-        "url": "http://cdn2.buenosaires.gob.ar/desarrollourbano/codigo_urbanistico/3_anexo_III_atlas_31_03.pdf"
-      },
-      {
-        "text": "Planchetas Código Urbanístico",
-        "url": "http://cdn2.buenosaires.gob.ar/desarrollourbano/codigo_urbanistico/4_anexo_IV_planchetas_31_3.pdf"
-      },
-      {
-        "text": "Ley N° 6361/20 – Modificación Código Urbanístico",
-        "url": "https://documentosboletinoficial.buenosaires.gob.ar/publico/ck_PL-LEY-LCABA-LCBA-6361-20-6020.pdf"
-      },
-      {
-        "text": "Código de Planeamiento Urbano",
-        "url": "./Normative/texto_cpu_al_21_de_dic_2018.pdf"
-      }
-    ]
+        {
+          "text": "Ley N° 6099/18 – Código Urbanístico",
+          "url": "https://documentosboletinoficial.buenosaires.gob.ar/publico/ck_PL-LEY-LCABA-LCBA-6099-18-5526.pdf"
+        },
+        {
+          "text": "Cuerpo Principal – Código Urbanístico",
+          "url": "http://cdn2.buenosaires.gob.ar/desarrollourbano/codigo_urbanistico/0_codigo_urbanistico_31_3.pdf"
+        },
+        {
+          "text": "Anexo I – Listado de Inmuebles Catalogados",
+          "url": "./Normative/ANEXO_I_Listad_de_Inmuebles_Catalogados.pdf"
+        },
+        {
+          "text": "Anexo II – Áreas Especiales",
+          "url": "./Normative/Anexo_II_areas_Especiales_Individualizadas_con_cambios_RECINTO.pdf"
+        },
+        {
+          "text": "Anexo III – Atlas",
+          "url": "http://cdn2.buenosaires.gob.ar/desarrollourbano/codigo_urbanistico/3_anexo_III_atlas_31_03.pdf"
+        },
+        {
+          "text": "Planchetas Código Urbanístico",
+          "url": "http://cdn2.buenosaires.gob.ar/desarrollourbano/codigo_urbanistico/4_anexo_IV_planchetas_31_3.pdf"
+        },
+        {
+          "text": "Ley N° 6361/20 – Modificación Código Urbanístico",
+          "url": "https://documentosboletinoficial.buenosaires.gob.ar/publico/ck_PL-LEY-LCABA-LCBA-6361-20-6020.pdf"
+        },
+        {
+          "text": "Código de Planeamiento Urbano",
+          "url": "./Normative/texto_cpu_al_21_de_dic_2018.pdf"
+        }
+      ]
     },
     {
       "id": "Urban Heritage",
-      "title":  "Patrimonio Urbanístico",
+      "title": "Patrimonio Urbanístico",
       "color": "#037dbf",
       "link": [
         {
-            "text": "Guía de buenas prácticas – Patrimonio Urbano",
-            "url": "https://www.buenosaires.gob.ar/guia-de-buenas-practicas"
+          "text": "Guía de buenas prácticas – Patrimonio Urbano",
+          "url": "https://www.buenosaires.gob.ar/guia-de-buenas-practicas"
         },
         {
           "text": "Consejo Asesor de Asuntos Patrimoniales",
           "url": "https://www.buenosaires.gob.ar/jefaturadegabinete/desarrollo-urbano/normativa/consejo-asesor-de-asuntos-patrimoniales"
-        }      
-    ]
+        }
+      ]
     },
     {
       "id": "Cadastre",
-      "title":  "Catastro",
+      "title": "Catastro",
       "color": "#18b596",
       "link": [
         {
-            "text": "Ley de Catastro 6437/21",
-            "url": "http://www2.cedom.gob.ar/es/legislacion/normas/leyes/ley6437.html"
+          "text": "Ley de Catastro 6437/21",
+          "url": "http://www2.cedom.gob.ar/es/legislacion/normas/leyes/ley6437.html"
         },
         {
           "text": "Instructivo acreditación de titularidad y certificación de firmas",
@@ -1070,19 +1070,60 @@
           "text": "Ley de Desarrollo Urbano y Hábitat Sustentable",
           "url": "https://documentosboletinoficial.buenosaires.gob.ar/publico/ck_PL-LEY-LCABA-LCBA-6062-18-5522.pdf"
         },
-      {
-        "text": "Ley Tarifaria",
-          "url": ""
-      },
-      {
-        "text": "Código Fiscal",
-          "url": ""
-      },
-      {
-        "text": "Código de Planeamiento Urbano",
-        "url": "./Normative/texto_cpu_al_21_de_dic_2018.pdf"
-      }
-    ]
+        {
+          "text": "Ley Tarifaria",
+          "url": "./Normative/2021_12_29_GCBA-Ley-6505-21-ANX.pdf"
+        },
+        {
+          "text": "Código Fiscal",
+          "url": "./Normative/2021_12_29_GCBA-Ley-6505-21-ANX.pdf"
+        },
+        {
+          "text": "Código de Planeamiento Urbano",
+          "url": "./Normative/texto_cpu_al_21_de_dic_2018.pdf"
+        }
+      ]
+    },
+    {
+      "id": "Edification",
+      "title": "Código de Edificación",
+      "color": "#f39c12",
+      "link": [
+        {
+          "text": "Ley 6.438",
+          "url": "https://www.buenosaires.gob.ar/sites/gcaba/files/ce-_texto_ordenado_ley_6100ley_6438.pdf"
+        },
+        {
+          "text": "Reglamentos Técnicos",
+          "url": "https://cdn2.buenosaires.gob.ar/desarrollourbano/codigos-y-reglamentos/reglamentos-tecnicos-compilados-al-11-11-2021.pdf "
+        }
+      ]
+    },
+    {
+      "id": "Manuals and Instructions",
+      "title": "Manuales e Instructivos",
+      "color": "#e74c3c",
+      "link": [
+        {
+          "text": "Manual de proceso de Trámite para una obra",
+          "url": "https://www.buenosaires.gob.ar/sites/gcaba/files/proceso_de_obra_hoy_modificado_01.11.21_3.pdf "
+        },
+        {
+          "text": "Consejos para presentar tus trámites",
+          "url": "https://www.buenosaires.gob.ar/sites/gcaba/files/consejos_para_presentar_tus_tramites.pdf"
+        },
+        {
+          "text": "Ejemplos de Cómputo y Planillas de Superficies para el cálculo de Plusvalía",
+          "url": "https://www.buenosaires.gob.ar/sites/gcaba/files/ejemplo_grafico_de_computo_de_superficies.pdf"
+        },
+        {
+          "url": "https://www.buenosaires.gob.ar/sites/gcaba/files/template_planilla_plusvalia.xlsx"
+        },
+        {
+          "text": "Instructivo para el llenado de las carátulas en los planos",
+          "url": "http://www.buenosaires.gob.ar/sites/gcaba/files/instructivo_para_el_llenado_de_la_caratula_en_los_planos.pdf"
+        }
+      ]
     }
   ],
   "layersGroup": [
@@ -1673,12 +1714,9 @@
             "paint": {
               "fill-extrusion-color": "white",
               "fill-extrusion-opacity": 0.9,
-              "fill-extrusion-height": [
-                "get",
-                "altura"
-              ]
+              "fill-extrusion-height": ["get", "altura"]
             }
-           },
+          },
           "index": 5
         },
         {
@@ -2908,9 +2946,7 @@
       "id": "rivolta",
       "title": "Rivolta",
       "text": "La altura máxima del lote responde al artículo [6.4.6](articuloId:6.4.6) sobre la Altura de Edificios de Esquina: en una esquina cuyas vías públicas concurrentes autoricen distintas alturas de edificación, la altura mayor podrá llevarse sobre los lotes de la calle transversal a la cual corresponde la altura menor. Como este lote se ubica en una manzana típica, la altura mayor se podrá llevar hasta la prolongación virtual de la Línea de Frente Interno. Deberá confirmarse la altura máxima mediante un estudio particularizado.",
-      "article": [
-        "6.4.6"
-      ]
+      "article": ["6.4.6"]
     },
     {
       "id": "adyacente_catalogado",
@@ -3088,9 +3124,7 @@
       "id": "enrase",
       "title": "Completamiento de Tejido o Edificabilidad",
       "text": "Esta parcela posee edificios linderos que la hace plausible al completamiento de tejido o edificabilidad según el Artículo [6.5.5](articuloId:6.5.5). Verificar con el organismo competente su aplicación y de qué tipo.",
-      "article": [
-        "6.5.5"
-      ]
+      "article": ["6.5.5"]
     },
     {
       "id": "subzona",

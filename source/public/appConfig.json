@@ -2316,6 +2316,18 @@
         {
           "label": "Perímetro Semi-Libre: ",
           "field": "plusvalia.plusvalia_sl"
+        },
+        {
+          "label": "Incidencia: ",
+          "field": "plusvalia.incidencia_uva"
+        },
+        {
+          "label": "Alicuota: ",
+          "field": "plusvalia.alicuota"
+        },
+        {
+          "label": "Distrito CPU: ",
+          "field": "plusvalia.distrito_cpu"
         }
       ],
       "large": 12

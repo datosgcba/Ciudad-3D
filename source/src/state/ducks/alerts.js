@@ -14,10 +14,15 @@ const alerts = createSlice({
         draftState.ids.push(id)
       }
     },
-    addExtraData: (draftState, { payload: { id, titleSuffix, value } }) => {
+    addExtraData: (draftState, {
+      payload: {
+        id, titleSuffix, value, value2
+      }
+    }) => {
       draftState.extraData[id] = draftState.extraData[id] ?? {}
       draftState.extraData[id].titleSuffix = titleSuffix
       draftState.extraData[id].value = value
+      draftState.extraData[id].value2 = value2
     },
     clear: (draftState) => {
       draftState.ids = []

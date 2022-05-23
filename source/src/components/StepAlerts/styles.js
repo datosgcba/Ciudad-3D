@@ -8,7 +8,7 @@ export default makeStyles(() => ({
   },
   containerList: {
     background: 'white',
-    maxHeight: 540,
+    maxHeight: '90%',
     width: '700px',
     overflowX: 'hidden'
   },

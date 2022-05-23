@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getBuildable, getEnrase, getPlusvalia } from 'utils/apiConfig'
+import {
+  getBuildable, getEnrase, getPlusvalia, getPdfLink
+} from 'utils/apiConfig'
 import { actions as alertsActions } from 'state/ducks/alerts'
 
 const areaChanged = createAsyncThunk(
@@ -22,11 +24,17 @@ const areaChanged = createAsyncThunk(
       .then(({
         plusvalia_em: em,
         plusvalia_pl: pl,
-        plusvalia_sl: sl
+        plusvalia_sl: sl,
+        alicuota: al,
+        incidencia_uva: uva,
+        distrito_cpu: cpu
       }) => ({
         plusvalia_em: (em === 0 ? 0 : em.toLocaleString('es-AR')),
         plusvalia_pl: (pl === 0 ? 0 : pl.toLocaleString('es-AR')),
-        plusvalia_sl: (sl === 0 ? 0 : sl.toLocaleString('es-AR'))
+        plusvalia_sl: (sl === 0 ? 0 : sl.toLocaleString('es-AR')),
+        alicuota: (al === 0 ? 0 : al.toLocaleString('es-AR')),
+        incidencia_uva: (uva === 0 ? 0 : uva.toLocaleString('es-AR')),
+        distrito_cpu: cpu
       }))
     return {
       plusvalia: data
@@ -49,7 +57,10 @@ const getDataBuild = (url) => fetch(url)
       // eslint-disable-next-line no-unused-vars
       plusvalia_pl: pl,
       // eslint-disable-next-line no-unused-vars
-      plusvalia_sl: sl
+      plusvalia_sl: sl,
+      alicuota: al,
+      incidencia_uva: uva,
+      distrito_cpu: cpu
     },
     sup_max_edificable: supMax,
     sup_edificable_planta: supPlanta,
@@ -69,7 +80,10 @@ const getDataBuild = (url) => fetch(url)
       plusvalia: {
         plusvalia_em: 0,
         plusvalia_pl: 0,
-        plusvalia_sl: 0
+        plusvalia_sl: 0,
+        alicuota: (al === 0 ? 0 : al.toLocaleString('es-AR')),
+        incidencia_uva: (uva === 0 ? 0 : uva.toLocaleString('es-AR')),
+        distrito_cpu: cpu
       },
       sup_max_edificable: supMax.toLocaleString('es-AR'),
       sup_edificable_planta: supPlanta.toLocaleString('es-AR'),
@@ -143,8 +157,20 @@ const clickOnParcel = createAsyncThunk(
     if (data?.rivolta > 0 && data?.tipica?.length) {
       dispatch(alertsActions.addId('rivolta'))
     }
-    if (data?.tipica?.toUpperCase() !== 'T') {
-      dispatch(alertsActions.addId('manzana_atipica'))
+    if (data?.tipica?.toUpperCase() !== 'T' && !data?.manzanas_atipicas?.disposicio?.length) {
+      const id = 'manzana_atipica'
+      dispatch(alertsActions.addId(id))
+    }
+    if (data?.tipica?.toUpperCase() !== 'T' && data?.manzanas_atipicas?.disposicio?.length) {
+      const id = 'manzana_atipica_disposicion'
+      dispatch(alertsActions.addId(id))
+      dispatch(alertsActions.addExtraData({
+        id,
+        value: data.manzanas_atipicas.disposicio,
+        value2: data.manzanas_atipicas.pdf
+          ? getPdfLink(data.manzanas_atipicas.pdf)
+          : 'DISABLED'
+      }))
     }
     if (data.parcelas_linderas?.aph_linderas) {
       dispatch(alertsActions.addId('adyacente_catalogado'))

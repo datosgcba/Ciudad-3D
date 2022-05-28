@@ -86,6 +86,8 @@ const getData = createAsyncThunk(
       ? dataUsos
       : [{ titleReport: noUsos.title, textReport: noUsos.text }]
 
+    const adyacenteCatalogado = getAlert('adyacente_catalogado')
+
     let usoCatalogado
     switch (proteccion?.toLowerCase()) {
       case 'cautelar':
@@ -160,7 +162,15 @@ const getData = createAsyncThunk(
       ? distritoEspecial
       : null
 
-    console.log({ distritoEspecial })
+    let distritoAPH = distrito_especial
+      ?.map(({ distrito_especifico, distrito_agrupado }) => distrito_especifico)
+      .filter(({ distrito_agrupado, distrito_especifico }) => distrito_agrupado === 'APH')
+      .map(({ distrito_especifico }) => distrito_especifico)
+      .join(', ')
+    distritoAPH = distritoAPH?.length
+      ? distritoAPH
+      : null
+
     const sections = [
       {
         title: 'Información General',
@@ -342,23 +352,33 @@ const getData = createAsyncThunk(
         dataList: [
           {
             name: 'Área de Protección histórica',
-            value: ''
+            value: distritoAPH
           },
           {
             name: 'Denominación',
-            value: 'title'
+            value: denominacion?.length
+              ? denominacion
+              : null
           }, {
             name: 'Catalogación',
-            value: 'title'
+            value: catalogacion?.length
+              ? catalogacion
+              : null
           }, {
             name: 'Protección',
-            value: 'title'
+            value: proteccion?.length
+              ? proteccion
+              : null
           }, {
-            name: 'Estado',
-            value: 'title'
+            name: '',
+            value: usoCatalogado
+              ? `La parcela se encuentra catalogada con nivel de protección ${usoCatalogado} por lo cual son de aplicación los grados de intervención 1/2/3/4 (Cuadro de Grados de Intervención según Nivel de Protección Edilicia art. 9.1.3.2.2.2.)`
+              : null
           }, {
-            name: 'LEY 3056 - Edificio Anterior a 1941',
-            value: ley_3056 ?? ''
+            name: adyacenteCatalogado.title,
+            value: aph_linderas
+              ? adyacenteCatalogado.text
+              : null
           }
         ]
       }

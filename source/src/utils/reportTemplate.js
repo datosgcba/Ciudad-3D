@@ -88,17 +88,21 @@ export default async (sections, fileName) => {
             .map((valueAux) => (typeof valueAux === 'string'
               ? { titleReport: valueAux, textReport: '' }
               : valueAux))
-          : [{ titleReport: value, textReport: linkText || value, isLink: !!linkText }]
+          : [{ titleReport: value, textReport: linkText || '', isLink: !!linkText }]
         values.forEach(({ titleReport, textReport, isLink }) => {
           if (isLink) {
             doc.textWithLink(textReport, xValue, y, { url: titleReport })
+            doc.setDrawColor(0, 0, 0) // color de linea
+            doc.setLineWidth(0.2) // grosor de la linea
+            doc.line(xValue, y + 1, xValue + doc.getTextWidth(textReport), y + 1)
+            y += 9 // le da espacio entre las lineas a los subtile
           } else {
             doc.text(titleReport, xValue, y)
             const xSubValue = xValue + doc.getTextWidth(titleReport) + 1
             doc.text(textReport, xSubValue, y)
+            y += 9 // le da espacio entre las lineas a los subtile
           }
         })
-        y += 9 // le da espacio entre las lineas a los subtile
       })
   })
 

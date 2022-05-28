@@ -250,7 +250,8 @@ const getData = createAsyncThunk(
                 'Se deberá consultar al Organismo Competente a través de una ',
                 {
                   titleReport: 'https://www.buenosaires.gob.ar/tramites/consulta-de-usos',
-                  textReport: 'Consulta de Usos'
+                  textReport: 'Consulta de Usos',
+                  isLink: true
                 },
                 ` ya que el inmueble sito en la parcela se encuentra se encuentra catalogada con nivel de protección ${usoCatalogado}`
               ]
@@ -262,7 +263,8 @@ const getData = createAsyncThunk(
                 'Para la localización de actividades productivas e industriales se deberá consultar al Organismo Competente a través de una ',
                 {
                   titleReport: 'https://www.buenosaires.gob.ar/tramites/consulta-de-usos',
-                  textReport: 'Consulta de Usos'
+                  textReport: 'Consulta de Usos',
+                  isLink: true
                 }
               ]
               : null

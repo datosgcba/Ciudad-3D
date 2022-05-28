@@ -2366,7 +2366,7 @@
     {
       "id": 1,
       "title": "Área de Baja Mixtura del Usos de Suelo 1:",
-      "desc": "Corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia.",
+      "desc": "Corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia. Los usos que resulten de aplicar las disposiciones del Cuadro de Usos del Suelo N° 3.3, de la Ley 6361. En el mismo se referencia si el rubro está permitido en el área de mixtura, la superficie máxima por unidad de uso, si requiere consulta al Consejo “C”. Asimismo, se indican los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.\n\nLas actividades productivas e industriales se encuentran permitidas en todo el ejido de la Ciudad. Éstas deben dar cumplimiento al Cuadro de Usos del Suelo Industrial 3.11.2, y al Anexo del Decreto N°86/19, reglamentación de la Ley N°2216, en donde se incorporan los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.\nPara la localización de actividades productivas e industriales se deberá consultar al organismo competente a través de una Consulta de Usos.",
       "afluencia": "Baja",
       "icons": [
         {
@@ -2385,8 +2385,8 @@
     },
     {
       "id": 2,
-      "title": "Área de Baja Mixtura del Usos de Suelo 2:",
-      "desc": "Corresponde a las áreas y corredores destinados a residencia, servicios y comercios de mediana afluencia.",
+      "title": "Área de Baja Mixtura del Usos de Suelo A 2:",
+      "desc": "Corresponde a las áreas y corredores destinados a residencia, servicios y comercios de mediana afluencia. Los usos que resulten de aplicar las disposiciones del Cuadro de Usos del Suelo N° 3.3, de la Ley 6361. En el mismo se referencia si el rubro está permitido en el área de mixtura, la superficie máxima por unidad de uso, si requiere consulta al Consejo “C”. Asimismo, se indican los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.\n\nLas actividades productivas e industriales se encuentran permitidas en todo el ejido de la Ciudad. Éstas deben dar cumplimiento al Cuadro de Usos del Suelo Industrial 3.11.2, y al Anexo del Decreto N°86/19, reglamentación de la Ley N°2216, en donde se incorporan los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.",
       "afluencia": "Mediana",
       "icons": [
         {
@@ -2405,8 +2405,8 @@
     },
     {
       "id": 3,
-      "title": "Área de Media Mixtura de Usos del Suelo 3:",
-      "desc": "Corresponde a las áreas y corredores destinados a residencia, depósitos siempre que incluyan local de venta y servicios y comercios de mediana afluencia.",
+      "title": "Área de Media Mixtura de Usos del Suelo B 3:",
+      "desc": "Corresponde a las áreas y corredores destinados a residencia, depósitos, equipamientos y servicios y comercios de gran afluencia. Los usos que resulten de aplicar las disposiciones del Cuadro de Usos del Suelo N° 3.3, de la Ley 6361. En el mismo se referencia si el rubro está permitido en el área de mixtura, la superficie máxima por unidad de uso, si requiere consulta al Consejo “C”. Asimismo, se indican los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.\n\nLas actividades productivas e industriales se encuentran permitidas en todo el ejido de la Ciudad. Éstas deben dar cumplimiento al Cuadro de Usos del Suelo Industrial 3.11.2, y al Anexo del Decreto N°86/19, reglamentación de la Ley N°2216, en donde se incorporan los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.",
       "afluencia": "Mediana",
       "icons": [
         {
@@ -2430,7 +2430,7 @@
     {
       "id": 4,
       "title": "Área de Alta Mixtura de Usos del Suelo 4:",
-      "desc": "Corresponde a las áreas y corredores destinados a residencia, depósitos siempre que incluyan local de venta y servicios y comercios de afluencia metropolitana.",
+      "desc": "Corresponde a las áreas y corredores destinados a residencia, depósitos, equipamiento, servicios y comercios de afluencia masiva. Los usos que resulten de aplicar las disposiciones del Cuadro de Usos del Suelo N° 3.3, de la Ley 6361. En el mismo se referencia si el rubro está permitido en el área de mixtura, la superficie máxima por unidad de uso, si requiere consulta al Consejo “C”. Asimismo, se indican los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.\n\nLas actividades productivas e industriales se encuentran permitidas en todo el ejido de la Ciudad. Éstas deben dar cumplimiento al Cuadro de Usos del Suelo Industrial 3.11.2, y al Anexo del Decreto N°86/19, reglamentación de la Ley N°2216, en donde se incorporan los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.",
       "afluencia": "Alta",
       "icons": [
         {
@@ -2982,7 +2982,7 @@
       ]
     },
     {
-      "id": "coredor_alto",
+      "id": "corredor_alto",
       "title": "Corredor alto",
       "titleReport": "Corredor Alto | C.A (Ley 6361 Art. 6.2)",
       "text": "Son los corredores centrales. Concentran actividades, modos de transporte y densidad, con un alto grado de consolidación. Sus alturas guardan relación con el ancho de los espacios públicos que enfrentan. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y ocho (38) metros (Ver más en Art. [6.2.1](articuloId:6.2.1)). La altura podrá variar si: existe algún edificio lindero Catalogado ([Artículo 9.1.4](articuloId:9.1.4.)) Proximidad a edificios catalogados Cuerpo principal CUr y ver condiciones del [Artículo 3.6 Pieza de ajuste Anexo II](articuloId:3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad ([Artículo 6.5.5](articuloId:6.5.5))",
@@ -2996,7 +2996,7 @@
       ]
     },
     {
-      "id": "coredor_medios",
+      "id": "corredor_medios",
       "title": "Corredor medio",
       "titleReport": "Corredor Medio | C.M (Ley 6361 Art. 6.2)",
       "text": "Son los corredores principales. Concentran actividades, modos de transporte y densidades, con un menor grado de consolidación. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y un metros  con veinte centímetros (31.20m). (Ver más en Art. [6.2.2](articuloId:6.2.2)). La altura podrá variar si: existe algún edificio lindero Catalogado ([Artículo 9.1.4](articuloId:9.1.4.)) Proximidad a edificios catalogados Cuerpo principal CUr y ver condiciones del [Artículo 3.6 Pieza de ajuste Anexo II](articuloId:3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad ([Artículo 6.5.5](articuloId:6.5.5))",
@@ -3078,6 +3078,11 @@
       "id": "mixtura_usos",
       "title": "Mixtura de usos",
       "text": "Esta parcela tiene más de un Uso. Requiere de un estudio específico."
+    },
+    {
+      "id": "no_usos",
+      "title": "Usos:",
+      "text": "Resultarán de aplicación los usos permitidos de acuerdo a lo previsto en la normativa específica en el Anexo II del Código Urbanístico."
     },
     {
       "id": "plusvalía_no_calculable",

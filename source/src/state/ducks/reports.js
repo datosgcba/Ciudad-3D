@@ -3,13 +3,13 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import buildPDF from 'utils/reportTemplate'
 
 import {
-  getParcelBySmp, getBuildable, getPdfLink, getAffectations
+  getParcelBySmp, getBuildable, getPdfLink, getAffectations, getUses
 } from 'utils/apiConfig'
 /* import {
   getParcelBySmp, getBuildable, getUses, getAffectations
 } from 'utils/apiConfig' */
 
-import { getAlert, getAffectationsTable } from 'utils/configQueries'
+import { getAlert, getAffectationsTable, getUsesTable } from 'utils/configQueries'
 // import { getAffectationsTable, getAlert } from 'utils/configQueries'
 
 const getData = createAsyncThunk(
@@ -17,6 +17,10 @@ const getData = createAsyncThunk(
   async (smp) => {
     const { direccion, superficie_total } = await fetch(getParcelBySmp(smp))
       .then((response) => response.json())
+
+    const buildableData = await fetch(getBuildable(smp))
+      .then((response) => response.json())
+
     const {
       unidad_edificabilidad,
       sup_edificable_planta,
@@ -51,12 +55,8 @@ const getData = createAsyncThunk(
         disposicio,
         pdf
       }
-    } = await fetch(getBuildable(smp))
-      .then((response) => response.json())
+    } = buildableData
 
-    /* const { usos } = await fetch(getUses(smp))
-      .then((response) => response.json())
-*/
     const afectaciones = await fetch(getAffectations(smp))
       .then((response) => response.json())
     const afectacionesFiltrado = Object.entries(afectaciones).filter(([, value]) => value
@@ -68,15 +68,47 @@ const getData = createAsyncThunk(
       .filter((d) => d !== undefined)
       .filter(({ titleReport }) => titleReport !== null)
       .map(({ titleReport, textReport }) => `${titleReport}: ${textReport}`)
-console.log({afectacionesText})
+
+    const { usos } = await fetch(getUses(smp))
+      .then((response) => response.json())
+    const usesTable = await getUsesTable()
+    const dataUsos = usos
+      .map((id) => usesTable.find((ut) => ut.id === id))
+      .filter((d) => d !== undefined)
+      ?.usos
+      ?.filter((value) => value > 0)
+      ?.map(({ title, desc }) => ({
+        titleReport: title, textReport: desc
+      }))
+
+    const noUsos = getAlert('no_usos')
+    const usosValue = dataUsos?.length > 0
+      ? dataUsos
+      : [{ titleReport: noUsos.title, textReport: noUsos.text }]
+
+    let usoCatalogado
+    switch (proteccion?.toLowerCase()) {
+      case 'cautelar':
+        usoCatalogado = 'Cautelar'
+        break
+      case 'integral':
+        usoCatalogado = 'Integral'
+        break
+      case 'estructural':
+        usoCatalogado = 'Estructural'
+        break
+      default:
+        usoCatalogado = null
+    }
+
     const alertSmp = () => {
       let result
       switch (unidad_edificabilidad[0]) {
         case 38:
-          result = getAlert('coredor_alto')
+          result = getAlert('corredor_alto')
           break
         case 31.2:
-          result = getAlert('coredor_medios')
+          result = getAlert('corredor_medios')
           break
         case 22.8:
           result = getAlert('usaa')
@@ -91,11 +123,11 @@ console.log({afectacionesText})
           result = getAlert('usab1')
           break
         default:
+          result = { titleReport: null }
       }
-      return result
+      return result.titleReport
     }
-    const { title: titleAlert, titleReport } = alertSmp()
-    const title = titleReport || titleAlert
+    const unidadEdificabilidad = alertSmp()
 
     let perfilEdificableImage = null
     let areaEdificable = null
@@ -128,6 +160,7 @@ console.log({afectacionesText})
       ? distritoEspecial
       : null
 
+    console.log({ distritoEspecial })
     const sections = [
       {
         title: 'Información General',
@@ -163,11 +196,8 @@ console.log({afectacionesText})
         dataList: [
           {
             name: 'Unidad de Edificabilidad / Corredor',
-            value: title
-          }, /* {
-            name: 'Superficie Edificable en Planta (Pisada)',
-            value: sup_edificable_planta?.toLocaleString('es-AR') ?? ''
-          }, */ {
+            value: unidadEdificabilidad
+          }, {
             name: 'Altura Máxima',
             value: altura_max
               ? `${altura_max
@@ -206,48 +236,70 @@ console.log({afectacionesText})
         title: 'Usos del Suelo',
         dataList: [
           {
-            name: 'Área Mixtura de Usos',
-            value: ''
+            name: '',
+            value: usosValue
           }, {
-            name: 'Área especial individualizada',
-            value: ''
+            name: '',
+            value: usosValue.length > 1
+              ? 'La parcela se encuentra afectada a dos o más áreas de mixtura de usos, por lo cual se podrán localizar los usos que se encuentren permitidos en cualquiera de éstas mixturas, debiendo ejecutarse accesos sobre cada L.O. concordante con la mixtura de uso correspondiente.'
+              : null
           }, {
-            name: 'Subárea',
-            value: ''
+            name: '',
+            value: usoCatalogado
+              ? [
+                'Se deberá consultar al Organismo Competente a través de una ',
+                {
+                  titleReport: 'https://www.buenosaires.gob.ar/tramites/consulta-de-usos',
+                  textReport: 'Consulta de Usos'
+                },
+                ` ya que el inmueble sito en la parcela se encuentra se encuentra catalogada con nivel de protección ${usoCatalogado}`
+              ]
+              : null
+          }, {
+            name: '',
+            value: usos.some((id) => id === 1)
+              ? [
+                'Para la localización de actividades productivas e industriales se deberá consultar al Organismo Competente a través de una ',
+                {
+                  titleReport: 'https://www.buenosaires.gob.ar/tramites/consulta-de-usos',
+                  textReport: 'Consulta de Usos'
+                }
+              ]
+              : null
           }
         ]
-      }, /* {
-        title: 'Información Urbanística',
-        dataList: [
-          {
-            name: 'Altura Máxima Permitida',
-            value: altura_max
-              ?.filter((value) => value > 0)
-              .map((value) => value?.toLocaleString('es-AR'))
-              .join(', ') ?? ''
-          }, {
-            name: 'Plano Límite',
-            value: altura_max_plano_limite?.toLocaleString('es-AR') ?? ''
-          }, {
-            name: 'Área Especial Agrupada',
-            value: distrito_especial
-              ?.map(({ distrito_agrupado }) => distrito_agrupado)
-              .filter((value) => (value?.length ?? '') > 0)
-              .join(', ') ?? ''
-          }, {
-            name: 'Mixtura de uso',
-            value: usos
-              ?.filter((value) => value > 0)
-              .join(', ') ?? ''
-          }, {
-            name: 'Tipo de Afectación',
-            value: afectacionesText ?? ''
-          }, {
-            name: 'Subzona',
-            value: subzona ?? ''
-          }
-        ]
-      }, */{
+      }, {
+      //   title: 'Información Urbanística',
+      //   dataList: [
+      //     {
+      //       name: 'Altura Máxima Permitida',
+      //       value: altura_max
+      //         ?.filter((value) => value > 0)
+      //         .map((value) => value?.toLocaleString('es-AR'))
+      //         .join(', ') ?? ''
+      //     }, {
+      //       name: 'Plano Límite',
+      //       value: altura_max_plano_limite?.toLocaleString('es-AR') ?? ''
+      //     }, {
+      //       name: 'Área Especial Agrupada',
+      //       value: distrito_especial
+      //         ?.map(({ distrito_agrupado }) => distrito_agrupado)
+      //         .filter((value) => (value?.length ?? '') > 0)
+      //         .join(', ') ?? ''
+      //     }, {
+      //       name: 'Mixtura de uso',
+      //       value: usos
+      //         ?.filter((value) => value > 0)
+      //         .join(', ') ?? ''
+      //     }, {
+      //       name: 'Tipo de Afectación',
+      //       value: afectacionesText ?? ''
+      //     }, {
+      //       name: 'Subzona',
+      //       value: subzona ?? ''
+      //     }
+      //   ]
+      // }, {
         title: 'Desarrollo Urbano y Hábitat Sustentable | Plusvalía',
         dataList: [
           {
@@ -259,13 +311,13 @@ console.log({afectacionesText})
           }, {
             name: 'FOT',
             value: medianera?.toLocaleString('es-AR') ?? ''
-          }, /* {
-            name: 'Valor de FOT Perímetro Libre',
-            value: perim?.toLocaleString('es-AR') ?? ''
           }, {
-            name: 'Valor de FOT Semilibre',
-            value: semi?.toLocaleString('es-AR') ?? ''
-          }, */ {
+          //   name: 'Valor de FOT Perímetro Libre',
+          //   value: perim?.toLocaleString('es-AR') ?? ''
+          // }, {
+          //   name: 'Valor de FOT Semilibre',
+          //   value: semi?.toLocaleString('es-AR') ?? ''
+          // },  {
             name: 'Incidencia Uva',
             value: incidencia_uva?.toLocaleString('es-AR') ?? ''
           }, {
@@ -273,17 +325,17 @@ console.log({afectacionesText})
             value: alicuota?.toLocaleString('es-AR') ?? ''
           }
         ]
-      }, /* {
-        title: 'Información sobre linderos',
-        dataList: [
-          {
-            name: 'Parcelas linderas',
-            value: aph_linderas && smp_linderas
-              ? smp_linderas.join(' | ')
-              : ''
-          }
-        ]
-      }, */ {
+      }, {
+      //   title: 'Información sobre linderos',
+      //   dataList: [
+      //     {
+      //       name: 'Parcelas linderas',
+      //       value: aph_linderas && smp_linderas
+      //         ? smp_linderas.join(' | ')
+      //         : ''
+      //     }
+      //   ]
+      // }, {
         title: 'Patrimonio Arquitectónico y Urbano',
         dataList: [
           {
@@ -292,16 +344,16 @@ console.log({afectacionesText})
           },
           {
             name: 'Denominación',
-            value: title
+            value: 'title'
           }, {
             name: 'Catalogación',
-            value: title
+            value: 'title'
           }, {
             name: 'Protección',
-            value: title
+            value: 'title'
           }, {
             name: 'Estado',
-            value: title
+            value: 'title'
           }, {
             name: 'LEY 3056 - Edificio Anterior a 1941',
             value: ley_3056 ?? ''
@@ -337,10 +389,12 @@ const reports = createSlice({
       draftState[smp].state = 'ready'
       draftState[smp].address = direccion
     },
-    [getData.rejected]: (draftState, { meta: { arg: smp } }) => {
+    [getData.rejected]: (draftState, { error, meta: { arg: smp } }) => {
+      console.error('getData.rejected:', error)
       draftState[smp].state = 'error'
     },
-    [download.rejected]: (draftState, { meta: { arg: smp } }) => {
+    [download.rejected]: (draftState, { error, meta: { arg: smp } }) => {
+      console.error('download.rejected:', error)
       draftState[smp].state = 'error'
     }
   }

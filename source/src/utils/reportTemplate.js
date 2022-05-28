@@ -79,22 +79,26 @@ export default async (sections, fileName) => {
         const margin = marginLeft + 5 // corre los subtile
         doc.setFont(fontName, 'bold')
         doc.setFontSize(10)
-        const subtile = `.    ${name}: `
+        const subtile = name ? `.    ${name}: ` : ''
         doc.text(subtile, margin, y)
         const xValue = margin + doc.getTextWidth(subtile)
         doc.setFont(fontName, 'normal')
-        if (linkText) {
-          doc.textWithLink(linkText, xValue, y, { url: value })
-          y += 9 // le da espacio entre las lineas a los subtile
-        } else if (Array.isArray(value)) {
-          value.forEach((textValue) => {
-            doc.text(textValue, xValue, y)
-            y += 9 // le da espacio entre las lineas a los subtile
-          })
-        } else {
-          doc.text(value, xValue, y)
-          y += 9 // le da espacio entre las lineas a los subtile
-        }
+        const values = Array.isArray(value)
+          ? value
+            .map((valueAux) => (typeof valueAux === 'string'
+              ? { titleReport: valueAux, textReport: '' }
+              : valueAux))
+          : [{ titleReport: value, textReport: linkText || value, isLink: !!linkText }]
+        values.forEach(({ titleReport, textReport, isLink }) => {
+          if (isLink) {
+            doc.textWithLink(textReport, xValue, y, { url: titleReport })
+          } else {
+            doc.text(titleReport, xValue, y)
+            const xSubValue = xValue + doc.getTextWidth(titleReport) + 1
+            doc.text(textReport, xSubValue, y)
+          }
+        })
+        y += 9 // le da espacio entre las lineas a los subtile
       })
   })
 

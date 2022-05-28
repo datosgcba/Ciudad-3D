@@ -122,10 +122,10 @@ const clickOnParcel = createAsyncThunk(
       const uniEdif1 = data?.unidad_edificabilidad[0] ?? 0
       switch (uniEdif1) {
         case 38:
-          dispatch(alertsActions.addId('coredor_alto'))
+          dispatch(alertsActions.addId('corredor_alto'))
           break
         case 31.2:
-          dispatch(alertsActions.addId('coredor_medios'))
+          dispatch(alertsActions.addId('corredor_medios'))
           break
         case 22.8:
           dispatch(alertsActions.addId('usaa'))

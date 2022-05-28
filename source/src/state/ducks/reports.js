@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import buildPDF from 'utils/reportTemplate'
 
 import {
-  getParcelBySmp, getBuildable, getPdfLink, getAffectations, getUses
+  getParcelBySmp, getBuildable, getPdfLink, getAffectations, getUses, getPhoto
 } from 'utils/apiConfig'
 /* import {
   getParcelBySmp, getBuildable, getUses, getAffectations
@@ -20,6 +20,11 @@ const getData = createAsyncThunk(
 
     const buildableData = await fetch(getBuildable(smp))
       .then((response) => response.json())
+
+    const fachadaImg = getPhoto(smp, 0)
+    // await fetch(getPhoto(smp, 0))
+    //   .then((response) => response.arrayBuffer())
+    //   .then((arrayBuffer) => btoa(String.fromCharCode(...new Uint8Array(arrayBuffer))))
 
     const {
       unidad_edificabilidad,
@@ -133,26 +138,28 @@ const getData = createAsyncThunk(
 
     let perfilEdificableImage = null
     let areaEdificable = null
+
     switch (unidad_edificabilidad?.length && unidad_edificabilidad[0]) {
       case 9:
       case 11.6:
-        perfilEdificableImage = 'retiros1'
+        perfilEdificableImage = 'retiro1.png'
         areaEdificable = 'L.O - L.I.B'
         break
       case 17.2:
       case 22.8:
-        perfilEdificableImage = 'retiros2'
+        perfilEdificableImage = 'retiro2.png'
         areaEdificable = 'L.O - L.F.I.'
         break
       case 31.2:
       case 38:
-        perfilEdificableImage = 'retiros2'
+        perfilEdificableImage = 'retiro2.png'
         areaEdificable = 'L.O - L.I.B Basamento, L.O - L.F.I Cuerpo Principal'
         break
       default:
         perfilEdificableImage = null
         areaEdificable = null
     }
+    perfilEdificableImage = perfilEdificableImage && `images/${perfilEdificableImage}`
 
     let distritoEspecial = distrito_especial
       ?.map(({ distrito_especifico }) => distrito_especifico)
@@ -163,10 +170,9 @@ const getData = createAsyncThunk(
       : null
 
     let distritoAPH = distrito_especial
-      ?.map(({ distrito_especifico, distrito_agrupado }) => distrito_especifico)
-      .filter(({ distrito_agrupado, distrito_especifico }) => distrito_agrupado === 'APH')
-      .map(({ distrito_especifico }) => distrito_especifico)
-      .join(', ')
+      ?.filter(({ distrito_agrupado }) => distrito_agrupado === 'APH')
+      ?.map(({ distrito_especifico }) => distrito_especifico)
+      ?.join(', ')
     distritoAPH = distritoAPH?.length
       ? distritoAPH
       : null
@@ -176,6 +182,11 @@ const getData = createAsyncThunk(
         title: 'Información General',
         dataList: [
           {
+            name: '',
+            value: fachadaImg,
+            type: 'IMAGE'
+          },
+          {
             name: 'Dirección',
             value: direccion ?? ''
           }, {
@@ -184,15 +195,18 @@ const getData = createAsyncThunk(
           }, {
             name: 'Plano Índice',
             value: plano_indice,
-            linkText: 'Descargar'
+            linkText: 'Descargar',
+            type: 'LINK'
           }, {
             name: 'Croquis de Parcela',
             value: croquis_parcela,
-            linkText: 'Descargar'
+            linkText: 'Descargar',
+            type: 'LINK'
           }, {
             name: 'Perímetro de Manzana',
             value: perimetro_manzana,
-            linkText: 'Descargar'
+            linkText: 'Descargar',
+            type: 'LINK'
           }, {
             name: 'Superficie de Parcela',
             value: superficie_total ? `${Number.parseFloat(superficie_total).toLocaleString('es-AR')} m²` : ''
@@ -225,8 +239,16 @@ const getData = createAsyncThunk(
               : null
           }, {
             name: 'Perfil Edificable',
-            value: 'Ley 6361 Art. 6.3, 6.3.1 y 6.3.1.1',
-            image: perfilEdificableImage
+            value: [
+              {
+                titleReport: '',
+                textReport: 'Ley 6361 Art. 6.3, 6.3.1 y 6.3.1.1'
+              }, {
+                titleReport: '',
+                textReport: perfilEdificableImage,
+                type: 'IMAGE'
+              }
+            ]
           }, {
             name: 'Área Edificable',
             value: areaEdificable
@@ -259,9 +281,9 @@ const getData = createAsyncThunk(
               ? [
                 'Se deberá consultar al Organismo Competente a través de una ',
                 {
-                  titleReport: 'https://www.buenosaires.gob.ar/tramites/consulta-de-usos',
-                  textReport: 'Consulta de Usos',
-                  isLink: true
+                  titleReport: 'Consulta de Usos',
+                  textReport: 'https://www.buenosaires.gob.ar/tramites/consulta-de-usos',
+                  type: 'LINK'
                 },
                 ` ya que el inmueble sito en la parcela se encuentra se encuentra catalogada con nivel de protección ${usoCatalogado}`
               ]
@@ -272,9 +294,9 @@ const getData = createAsyncThunk(
               ? [
                 'Para la localización de actividades productivas e industriales se deberá consultar al Organismo Competente a través de una ',
                 {
-                  titleReport: 'https://www.buenosaires.gob.ar/tramites/consulta-de-usos',
-                  textReport: 'Consulta de Usos',
-                  isLink: true
+                  titleReport: 'Consulta de Usos',
+                  textReport: 'https://www.buenosaires.gob.ar/tramites/consulta-de-usos',
+                  type: 'LINK'
                 }
               ]
               : null

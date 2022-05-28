@@ -10,6 +10,7 @@ export default async (sections, fileName) => {
   const marginLeft = 10
   const marginTop = 10
   const PAGE_HEIGHT = 250
+  const PAGE_WIDTH = 200
 
   let y = marginTop
 
@@ -74,7 +75,9 @@ export default async (sections, fileName) => {
 
     dataList
       .filter(({ value }) => value !== null)
-      .forEach(({ name, value, linkText }) => {
+      .forEach(({
+        name, value, linkText, type
+      }) => {
         addPageIfNeeded()
         const margin = marginLeft + 5 // corre los subtile
         doc.setFont(fontName, 'bold')
@@ -88,19 +91,25 @@ export default async (sections, fileName) => {
             .map((valueAux) => (typeof valueAux === 'string'
               ? { titleReport: valueAux, textReport: '' }
               : valueAux))
-          : [{ titleReport: value, textReport: linkText || '', isLink: !!linkText }]
-        values.forEach(({ titleReport, textReport, isLink }) => {
-          if (isLink) {
-            doc.textWithLink(textReport, xValue, y, { url: titleReport })
-            doc.setDrawColor(0, 0, 0) // color de linea
-            doc.setLineWidth(0.2) // grosor de la linea
-            doc.line(xValue, y + 1, xValue + doc.getTextWidth(textReport), y + 1)
-            y += 9 // le da espacio entre las lineas a los subtile
-          } else {
-            doc.text(titleReport, xValue, y)
-            const xSubValue = xValue + doc.getTextWidth(titleReport) + 1
-            doc.text(textReport, xSubValue, y)
-            y += 9 // le da espacio entre las lineas a los subtile
+          : [{ titleReport: linkText || name, textReport: value, type }]
+        values.forEach(({ titleReport, textReport, type: typeData }) => {
+          switch (typeData) {
+            case 'IMAGE':
+              doc.addImage(textReport, 'JPEG', PAGE_WIDTH / 2 + marginLeft - 25, y, 50, 50)
+              y += 60 // le da espacio entre las lineas a los subtile
+              break
+            case 'LINK':
+              doc.textWithLink(titleReport, xValue, y, { url: textReport })
+              doc.setDrawColor(0, 0, 0) // color de linea
+              doc.setLineWidth(0.2) // grosor de la linea
+              doc.line(xValue, y + 1, xValue + doc.getTextWidth(titleReport), y + 1)
+              y += 9 // le da espacio entre las lineas a los subtile
+              break
+            default:
+              doc.text(titleReport, xValue, y)
+              doc.text(textReport, xValue + doc.getTextWidth(titleReport) + 1, y)
+              y += 9 // le da espacio entre las lineas a los subtile
+              break
           }
         })
       })

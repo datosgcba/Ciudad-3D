@@ -2538,35 +2538,46 @@
     {
       "id": "riesgo_hidrico",
       "title": "Riesgo Hídrico",
-      "subtitle": "La parcela se encuentra afectada por riesgo hídrico"
+      "subtitle": "La parcela se encuentra afectada por riesgo hídrico",
+      "titleReport": "Riesgo Hídrico",
+      "textReport": "Si. 7.2.8.3.1. Compromiso Ambiental en materia de prevención de Riesgo Hídrico: Para la aprobación de obras nuevas cuya superficie cubierta sea de más de doscientos (200) m2 y su altura máxima sea superior a once metros con veinte centímetros (11,20 metros) y se encuentren dentro de los polígonos determinados por el Plano N° 7.2.8.3.1 como áreas de prevención de Riesgo Hídrico deben implementar la ralentización de conformidad al artículo 7.2.8.3.2 y la normativa de edificación que regule la materia. Los subsuelos deberán dar cumplimiento a la normativa de edificación que regule la materia. El Centro Libre de Manzana será absorbente de conformidad al artículo 7.2.2. La implementación de esta herramienta se computará para el cálculo de los incentivos del apartado 7.2.8.2 c) sólo cuando se conjuguen con otras herramientas de Compromiso Ambiental, según se reglamente por el Poder Ejecutivo."
     },
     {
       "id": "aprox_aeroparque",
       "title": "Aproximación Aeroparque",
-      "subtitle": "La parcela se encuentra afectada por aproximación a Aeroparque"
+      "subtitle": "La parcela se encuentra afectada por aproximación a Aeroparque",
+      "titleReport": null
     },
     {
       "id": "lep",
       "title": "LEP",
       "subtitle": "La parcela se encuentra afectada a línea de edificación particularizada (LEP)",
-      "desc": "En las nuevas construcciones que se ejecuten con posterioridad a la afectación de L.E. Particularizada con frente a las calles enumeradas en el Cuadro N° 5.4 deberá respetarse el retiro de frente al eje de calle que en el mismo se indica. La franja de terreno comprendida entre la L.O. y la L.E. resultante del retiro previsto deberá ajustarse a lo dispuesto en el artículo 4.3.1 de este Código."
+      "desc": "En las nuevas construcciones que se ejecuten con posterioridad a la afectación de L.E. Particularizada con frente a las calles enumeradas en el Cuadro N° 5.4 deberá respetarse el retiro de frente al eje de calle que en el mismo se indica. La franja de terreno comprendida entre la L.O. y la L.E. resultante del retiro previsto deberá ajustarse a lo dispuesto en el artículo 4.3.1 de este Código.",
+      "titleReport": "Línea de Edificación Particularizada",
+      "textReport": "Sí"
     },
     {
       "id": "ensanche",
       "title": "Ensanche",
       "subtitle": "La parcela se encuentra afectada a ensanche con declaración de utilidad pública y sujeción a expropiación.",
-      "desc": ""
+      "desc": "",
+      "titleReport": "Ensanche",
+      "textReport": "Sí"
     },
     {
       "id": "apertura",
       "title": "Apertura",
       "subtitle": "La parcela se encuentra afectada a apertura de calle con declaración de utilidad pública y sujeción a expropiación.",
-      "desc": ""
+      "desc": "",
+      "titleReport": "Apertura",
+      "textReport": "Sí"
     },
     {
       "id": "ci_digital",
       "title": "Cinturón Digital",
-      "subtitle": "La parcela se encuentra afectada a cinturón digital."
+      "subtitle": "La parcela se encuentra afectada a cinturón digital.",
+      "titleReport": "Cinturón Digital",
+      "textReport": "Sí"
     }
   ],
   "inspections": [
@@ -2973,6 +2984,7 @@
     {
       "id": "coredor_alto",
       "title": "Corredor alto",
+      "titleReport": "Corredor Alto | C.A (Ley 6361 Art. 6.2)",
       "text": "Son los corredores centrales. Concentran actividades, modos de transporte y densidad, con un alto grado de consolidación. Sus alturas guardan relación con el ancho de los espacios públicos que enfrentan. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y ocho (38) metros (Ver más en Art. [6.2.1](articuloId:6.2.1)). La altura podrá variar si: existe algún edificio lindero Catalogado ([Artículo 9.1.4](articuloId:9.1.4.)) Proximidad a edificios catalogados Cuerpo principal CUr y ver condiciones del [Artículo 3.6 Pieza de ajuste Anexo II](articuloId:3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad ([Artículo 6.5.5](articuloId:6.5.5))",
       "article": [
         "6.2.1",
@@ -2986,6 +2998,7 @@
     {
       "id": "coredor_medios",
       "title": "Corredor medio",
+      "titleReport": "Corredor Medio | C.M (Ley 6361 Art. 6.2)",
       "text": "Son los corredores principales. Concentran actividades, modos de transporte y densidades, con un menor grado de consolidación. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y un metros  con veinte centímetros (31.20m). (Ver más en Art. [6.2.2](articuloId:6.2.2)). La altura podrá variar si: existe algún edificio lindero Catalogado ([Artículo 9.1.4](articuloId:9.1.4.)) Proximidad a edificios catalogados Cuerpo principal CUr y ver condiciones del [Artículo 3.6 Pieza de ajuste Anexo II](articuloId:3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad ([Artículo 6.5.5](articuloId:6.5.5))",
       "article": [
         "6.2.2",
@@ -2999,6 +3012,7 @@
     {
       "id": "usaa",
       "title": "Unidades de Sustentabilidad de Altura Alta",
+      "titleReport": "Unidades de Sustentabilidad de Altura Alta | U.S.A.A (Ley 6361 Art. 6.2)",
       "text": "Son las áreas de la Ciudad de menor altura que los corredores, con alturas adecuadas a los espacios públicos de calles y avenidas barriales. Altura Máxima: 22,8 metros. (Ver más en Art. [6.2.3](articuloId:6.2.3)). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos\n. Extensiones vinculadas al Espacio Libre de .Manzana, [6.4.2.3](articuloId:6.4.2.3). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.I.B., [6.4.3.5](articuloId:6.4.3.5)",
       "article": [
         "6.2.3",
@@ -3012,6 +3026,7 @@
     {
       "id": "usam",
       "title": "Unidades de Sustentabilidad de Altura Media",
+      "titleReport": "Unidades de Sustentabilidad de Altura Media | U.S.A.M (Ley 6361 Art. 6.2)",
       "text": "Son las áreas de la ciudad con alturas de escala media, adecuadas para un carácter residencial mixto con cercanía a corredores y centros barriales. La edificabilidad máxima se corresponde con una Altura Máxima de diecisiete metros con veinte centímetros (17,20m). (Ver más en Art. [6.2.4](articuloId:6.2.4)) .La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5)).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos\n. Extensiones vinculadas al Espacio Libre de .Manzana, [6.4.2.3](articuloId:6.4.2.3). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.I.B., [6.4.3.5](articuloId:6.4.3.5)",
       "article": [
         "6.2.4",
@@ -3025,6 +3040,7 @@
     {
       "id": "usab2",
       "title": "Unidades de Sustentabilidad de Altura Baja 2",
+      "titleReport": "Unidades de Sustentabilidad de Altura Baja 2 | U.S.A.B 2 (Ley 6361 Art. 6.2)",
       "text": "Son las áreas de la ciudad de alturas menores, adecuadas para el desarrollo principalmente de actividades residenciales. La edificabilidad máxima se corresponde con una Altura Máxima de  once metros con sesenta centímetros (11,60). (Ver más en Art. [6.2.5](articuloId:6.2.5)). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5)).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos\n. Extensiones vinculadas al Espacio Libre de .Manzana, [6.4.2.3](articuloId:6.4.2.3). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.I.B., [6.4.3.5](articuloId:6.4.3.5)",
       "article": [
         "6.2.5",
@@ -3038,6 +3054,7 @@
     {
       "id": "usab1",
       "title": "Unidades de Sustentabilidad de Altura Baja 1",
+      "titleReport": "Unidades de Sustentabilidad de Altura Baja 1 | U.S.A.B 1 (Ley 6361 Art. 6.2)",
       "text": "Son las áreas de la ciudad de alturas menores, adecuadas para el desarrollo principalmente de actividades residenciales.La edificabilidad máxima se corresponde con una Altura Máxima de nueve (9) metros. (Ver más en Art. [6.2.6](articuloId:6.2.6)). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5)).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos\n. Extensiones vinculadas al Espacio Libre de .Manzana, [6.4.2.3](articuloId:6.4.2.3). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.I.B., [6.4.3.5](articuloId:6.4.3.5)",
       "article": [
         "6.2.6",

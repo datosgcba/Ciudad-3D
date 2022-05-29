@@ -104,7 +104,8 @@ export default async (sections, fileName) => {
             .map((valueAux) => (typeof valueAux === 'string'
               ? { titleReport: valueAux, textReport: '' }
               : valueAux))
-          : [{ titleReport: linkText || name, textReport: value, type }]
+          : [{ titleReport: linkText || '', textReport: value, type }]
+
         values.forEach(({ titleReport, textReport, type: typeData }) => {
           switch (typeData) {
             case 'IMAGE':
@@ -119,8 +120,8 @@ export default async (sections, fileName) => {
               y += 9 // le da espacio entre las lineas a los subtile
               break
             default:
-              doc.text(titleReport, xValue, y)
-              doc.text(textReport, xValue + doc.getTextWidth(titleReport) + 1, y)
+              inlineText({ text: titleReport, initialX: xValue })
+              inlineText({ text: textReport, initialX: xValue + doc.getTextWidth(titleReport) + 1 })
               y += 9 // le da espacio entre las lineas a los subtile
               break
           }

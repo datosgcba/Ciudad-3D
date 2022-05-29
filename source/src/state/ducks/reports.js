@@ -190,7 +190,7 @@ const getData = createAsyncThunk(
             name: 'Dirección',
             value: direccion ?? ''
           }, {
-            name: 'Nomenclatura Catastral (Seccion Manzana Parcela)',
+            name: 'Nomenclatura Catastral (Sección Manzana Parcela)',
             value: smp ?? ''
           }, {
             name: 'Plano Índice',

@@ -26,6 +26,23 @@ export default async (sections, fileName) => {
     y += 8
   }
 
+  const inlineText = ({ text, maxLine = PAGE_WIDTH, initialX = marginLeft }) => {
+    let x = initialX
+    const splitText = text.split(' ')
+    splitText.forEach((word) => {
+      const widthWord = doc.getTextWidth(word)
+      if (x + widthWord <= maxLine) {
+        doc.text(word, x, y)
+        x += widthWord + 1
+      } else {
+        x = initialX
+        y += 5
+        doc.text(word, x, y)
+        x += widthWord + 1
+      }
+    })
+  }
+
   const addPageIfNeeded = () => {
     if (y < PAGE_HEIGHT) {
       return
@@ -44,20 +61,16 @@ export default async (sections, fileName) => {
   doc.text('AVISO LEGAL', marginLeft, y)
   y += 5
   doc.setFont(fontName, 'italic')
-  doc.text('"Esta información no sustituye las normas legales vigentes ni constituye una copia fiel de los datos en poder', marginLeft, y)
-  y += 5
-  doc.text('del Gobierno de la Ciudad de Buenos Aires. Es responsabilidad del usuario confirmar mediante la vía', marginLeft, y)
-  y += 5
-  doc.text('administrativa pertinente la información provista en este sitio previo a alguna toma de decisión o acción.', marginLeft, y)
-  y += 5
-  doc.text('La información provista por esta página web es orientativa y no vinculante, al momento de realizar un trámite', marginLeft, y)
-  y += 5
-  doc.text('ante Gobierno de la Ciudad de Buenos Aires."', marginLeft, y)
 
-  y += 10
-  doc.text('Nota: La Ley 6099/18 Código Urbanístico fue modificada por Ley 6361/20, por tal motivo deberán ser consultadas ambas', marginLeft, y)
+  const firstMessage = '"Esta información no sustituye las normas legales vigentes ni constituye una copia fiel de los datos en poder del Gobierno de la Ciudad de Buenos Aires. Es responsabilidad del usuario confirmar mediante la vía administrativa pertinente la información provista en este sitio previo a alguna toma de decisión o acción.'
+  inlineText({ text: firstMessage })
   y += 5
-  doc.text('leyes para la correcta identificación de los artículos que han sido sustituidos y/o incorporados en la modificación.', marginLeft, y)
+  const seccodMessage = 'La información provista por esta página web es orientativa y no vinculante, al momento de realizar un trámite ante Gobierno de la Ciudad de Buenos Aires."'
+  inlineText({ text: seccodMessage })
+  y += 10
+
+  const note = 'Nota: La Ley 6099/18 Código Urbanístico fue modificada por Ley 6361/20, por tal motivo deberán ser consultadas ambas leyes para la correcta identificación de los artículos que han sido sustituidos y/o incorporados en la modificación.'
+  inlineText({ text: note })
   y += 5
 
   sections.forEach(({ title, dataList }) => {
@@ -91,7 +104,8 @@ export default async (sections, fileName) => {
             .map((valueAux) => (typeof valueAux === 'string'
               ? { titleReport: valueAux, textReport: '' }
               : valueAux))
-          : [{ titleReport: linkText || name, textReport: value, type }]
+          : [{ titleReport: linkText || '', textReport: value, type }]
+
         values.forEach(({ titleReport, textReport, type: typeData }) => {
           switch (typeData) {
             case 'IMAGE':
@@ -106,8 +120,8 @@ export default async (sections, fileName) => {
               y += 9 // le da espacio entre las lineas a los subtile
               break
             default:
-              doc.text(titleReport, xValue, y)
-              doc.text(textReport, xValue + doc.getTextWidth(titleReport) + 1, y)
+              inlineText({ text: titleReport, initialX: xValue })
+              inlineText({ text: textReport, initialX: xValue + doc.getTextWidth(titleReport) + 1 })
               y += 9 // le da espacio entre las lineas a los subtile
               break
           }

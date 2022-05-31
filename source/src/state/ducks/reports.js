@@ -3,14 +3,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import buildPDF from 'utils/reportTemplate'
 
 import {
-  getParcelBySmp, getBuildable, getPdfLink, getAffectations, getUses, getPhoto
+  getParcelBySmp, getBuildable, getPdfLink, getAffectations, getUses, getPhoto, getPhotoData
 } from 'utils/apiConfig'
-/* import {
-  getParcelBySmp, getBuildable, getUses, getAffectations
-} from 'utils/apiConfig' */
 
 import { getAlert, getAffectationsTable, getUsesTable } from 'utils/configQueries'
-// import { getAffectationsTable, getAlert } from 'utils/configQueries'
 
 const getData = createAsyncThunk(
   'report/getData',
@@ -21,32 +17,29 @@ const getData = createAsyncThunk(
     const buildableData = await fetch(getBuildable(smp))
       .then((response) => response.json())
 
-    const fachadaImg = getPhoto(smp, 0)
-    // await fetch(getPhoto(smp, 0))
-    //   .then((response) => response.arrayBuffer())
-    //   .then((arrayBuffer) => btoa(String.fromCharCode(...new Uint8Array(arrayBuffer))))
+    const hasImage = await fetch(getPhotoData(smp))
+      .then((response) => response.text())
+      .then((text) => JSON.parse(text.slice(1, -1)))
+      .then(({ length }) => length > 0)
+
+    const fachadaImg = hasImage
+      ? getPhoto(smp, 0)
+      : null
 
     const {
       unidad_edificabilidad,
-      sup_edificable_planta,
       altura_max,
       distrito_especial,
-      // altura_max_plano_limite,
       fot: {
-        fot_medianera: medianera,
-        fot_perim_libre: perim,
-        fot_semi_libre: semi
+        fot_medianera: medianera
       },
       tipica,
       parcelas_linderas: {
-        aph_linderas,
-        smp_linderas
+        aph_linderas
       },
       catalogacion: {
         proteccion,
         denominacion,
-        estado,
-        ley_3056,
         catalogacion
       },
       plusvalia: { incidencia_uva, alicuota, distrito_cpu },
@@ -78,10 +71,9 @@ const getData = createAsyncThunk(
       .then((response) => response.json())
     const usesTable = await getUsesTable()
     const dataUsos = usos
+      ?.filter((value) => value > 0)
       .map((id) => usesTable.find((ut) => ut.id === id))
       .filter((d) => d !== undefined)
-      ?.usos
-      ?.filter((value) => value > 0)
       ?.map(({ title, desc }) => ({
         titleReport: title, textReport: desc
       }))
@@ -92,6 +84,8 @@ const getData = createAsyncThunk(
       : [{ titleReport: noUsos.title, textReport: noUsos.text }]
 
     const adyacenteCatalogado = getAlert('adyacente_catalogado')
+
+    const alturaMax = altura_max?.filter((value) => value > 0)
 
     let usoCatalogado
     switch (proteccion?.toLowerCase()) {
@@ -130,7 +124,7 @@ const getData = createAsyncThunk(
           result = getAlert('usab1')
           break
         default:
-          result = { titleReport: null }
+          result = { titleReport: null, textReport: null }
       }
       return result.titleReport
     }
@@ -223,9 +217,8 @@ const getData = createAsyncThunk(
             value: unidadEdificabilidad
           }, {
             name: 'Altura Máxima',
-            value: altura_max
-              ? `${altura_max
-                .filter((value) => value > 0)
+            value: alturaMax?.length
+              ? `${alturaMax
                 .map((value) => value?.toLocaleString('es-AR'))
                 .join(', ')}mts (Ley 6361 Art. 6.2)`
               : null
@@ -239,7 +232,7 @@ const getData = createAsyncThunk(
               : null
           }, {
             name: 'Perfil Edificable',
-            value: [
+            value: perfilEdificableImage && [
               {
                 titleReport: '',
                 textReport: 'Ley 6361 Art. 6.3, 6.3.1 y 6.3.1.1'
@@ -254,9 +247,9 @@ const getData = createAsyncThunk(
             value: areaEdificable
           }, {
             name: 'Disposición de Trazado de LFI/LIB particularizadas',
-            value: disposicio?.length
+            value: tipica !== 'T' && disposicio?.length
               ? getPdfLink(pdf)
-              : 'No aplica'
+              : null
           }, {
             name: 'Afectaciones',
             value: afectacionesText?.length
@@ -303,37 +296,6 @@ const getData = createAsyncThunk(
           }
         ]
       }, {
-      //   title: 'Información Urbanística',
-      //   dataList: [
-      //     {
-      //       name: 'Altura Máxima Permitida',
-      //       value: altura_max
-      //         ?.filter((value) => value > 0)
-      //         .map((value) => value?.toLocaleString('es-AR'))
-      //         .join(', ') ?? ''
-      //     }, {
-      //       name: 'Plano Límite',
-      //       value: altura_max_plano_limite?.toLocaleString('es-AR') ?? ''
-      //     }, {
-      //       name: 'Área Especial Agrupada',
-      //       value: distrito_especial
-      //         ?.map(({ distrito_agrupado }) => distrito_agrupado)
-      //         .filter((value) => (value?.length ?? '') > 0)
-      //         .join(', ') ?? ''
-      //     }, {
-      //       name: 'Mixtura de uso',
-      //       value: usos
-      //         ?.filter((value) => value > 0)
-      //         .join(', ') ?? ''
-      //     }, {
-      //       name: 'Tipo de Afectación',
-      //       value: afectacionesText ?? ''
-      //     }, {
-      //       name: 'Subzona',
-      //       value: subzona ?? ''
-      //     }
-      //   ]
-      // }, {
         title: 'Desarrollo Urbano y Hábitat Sustentable | Plusvalía',
         dataList: [
           {
@@ -346,12 +308,6 @@ const getData = createAsyncThunk(
             name: 'FOT',
             value: medianera?.toLocaleString('es-AR') ?? ''
           }, {
-          //   name: 'Valor de FOT Perímetro Libre',
-          //   value: perim?.toLocaleString('es-AR') ?? ''
-          // }, {
-          //   name: 'Valor de FOT Semilibre',
-          //   value: semi?.toLocaleString('es-AR') ?? ''
-          // },  {
             name: 'Incidencia Uva',
             value: incidencia_uva?.toLocaleString('es-AR') ?? ''
           }, {
@@ -360,16 +316,6 @@ const getData = createAsyncThunk(
           }
         ]
       }, {
-      //   title: 'Información sobre linderos',
-      //   dataList: [
-      //     {
-      //       name: 'Parcelas linderas',
-      //       value: aph_linderas && smp_linderas
-      //         ? smp_linderas.join(' | ')
-      //         : ''
-      //     }
-      //   ]
-      // }, {
         title: 'Patrimonio Arquitectónico y Urbano',
         dataList: [
           {
@@ -399,7 +345,7 @@ const getData = createAsyncThunk(
           }, {
             name: adyacenteCatalogado.title,
             value: aph_linderas
-              ? adyacenteCatalogado.text
+              ? adyacenteCatalogado.reportText
               : null
           }
         ]

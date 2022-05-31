@@ -26,21 +26,36 @@ export default async (sections, fileName) => {
     y += 8
   }
 
-  const inlineText = ({ text, maxLine = PAGE_WIDTH, initialX = marginLeft }) => {
+  const inlineText = ({
+    text, maxLine = PAGE_WIDTH, newlineX = null, initialX = marginLeft, lineHeight = 5
+  }) => {
     let x = initialX
+    const nextlineX = newlineX || initialX
     const splitText = text.split(' ')
-    splitText.forEach((word) => {
+
+    const writeWord = (word) => {
       const widthWord = doc.getTextWidth(word)
       if (x + widthWord <= maxLine) {
         doc.text(word, x, y)
         x += widthWord + 1
       } else {
-        x = initialX
-        y += 5
+        x = nextlineX
+        y += lineHeight
         doc.text(word, x, y)
         x += widthWord + 1
       }
+      return { x, y }
+    }
+    splitText.forEach((wordWithSpecials) => {
+      wordWithSpecials.split('\n').forEach((word, idx) => {
+        if (idx > 0) {
+          y += lineHeight
+          x = nextlineX
+        }
+        ({ x, y } = writeWord(word))
+      })
     })
+    return x
   }
 
   const addPageIfNeeded = () => {
@@ -77,18 +92,19 @@ export default async (sections, fileName) => {
     y += 8
     addPageIfNeeded()
 
-    doc.setFont(fontName, 'bold')
-    doc.setFontSize(12)
-    doc.text(title, marginLeft, y)
-    doc.setDrawColor(0, 0, 0) // color de linea
-    doc.setLineWidth(0.2) // grosor de la linea
-    const textWidth = doc.getTextWidth(title)
-    doc.line(marginLeft, y + 1, marginLeft + textWidth, y + 1)
-    y += 8
-
-    dataList
+    const dataAvailable = dataList
       .filter(({ value }) => value !== null)
-      .forEach(({
+    if (dataAvailable.length) {
+      doc.setFont(fontName, 'bold')
+      doc.setFontSize(12)
+      doc.text(title, marginLeft, y)
+      doc.setDrawColor(0, 0, 0) // color de linea
+      doc.setLineWidth(0.2) // grosor de la linea
+      const textWidth = doc.getTextWidth(title)
+      doc.line(marginLeft, y + 1, marginLeft + textWidth, y + 1)
+      y += 8
+
+      dataAvailable.forEach(({
         name, value, linkText, type
       }) => {
         addPageIfNeeded()
@@ -96,8 +112,8 @@ export default async (sections, fileName) => {
         doc.setFont(fontName, 'bold')
         doc.setFontSize(10)
         const subtile = name ? `.    ${name}: ` : ''
-        doc.text(subtile, margin, y)
-        const xValue = margin + doc.getTextWidth(subtile)
+        let xValue = inlineText({ text: subtile, initialX: margin })
+        const newlineX = xValue
         doc.setFont(fontName, 'normal')
         const values = Array.isArray(value)
           ? value
@@ -105,28 +121,33 @@ export default async (sections, fileName) => {
               ? { titleReport: valueAux, textReport: '' }
               : valueAux))
           : [{ titleReport: linkText || '', textReport: value, type }]
-
         values.forEach(({ titleReport, textReport, type: typeData }) => {
           switch (typeData) {
             case 'IMAGE':
-              doc.addImage(textReport, 'JPEG', PAGE_WIDTH / 2 + marginLeft - 25, y, 50, 50)
-              y += 60 // le da espacio entre las lineas a los subtile
+              if (textReport) {
+                doc.addImage(textReport, 'JPEG', PAGE_WIDTH / 2 + marginLeft - 75, y, 150, 90)
+                y += 90 // le da espacio entre las lineas a los subtile
+              }
               break
             case 'LINK':
               doc.textWithLink(titleReport, xValue, y, { url: textReport })
               doc.setDrawColor(0, 0, 0) // color de linea
               doc.setLineWidth(0.2) // grosor de la linea
-              doc.line(xValue, y + 1, xValue + doc.getTextWidth(titleReport), y + 1)
-              y += 9 // le da espacio entre las lineas a los subtile
+              // eslint-disable-next-line no-case-declarations
+              const widthUnderline = doc.getTextWidth(titleReport)
+              doc.line(xValue, y + 1, xValue + widthUnderline, y + 1)
+              xValue += widthUnderline + 1
               break
             default:
-              inlineText({ text: titleReport, initialX: xValue })
-              inlineText({ text: textReport, initialX: xValue + doc.getTextWidth(titleReport) + 1 })
-              y += 9 // le da espacio entre las lineas a los subtile
+              xValue = inlineText({ text: titleReport, newlineX, initialX: xValue })
+              xValue = inlineText({ text: textReport, newlineX, initialX: xValue + 1 })
               break
           }
         })
+        xValue = newlineX
+        y += 9 // le da espacio entre las lineas a los subtile
       })
+    }
   })
 
   doc.save(fileName)

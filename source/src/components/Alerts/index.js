@@ -84,7 +84,6 @@ const Alerts = () => {
   const alertsIds = useSelector((state) => state.alerts.ids)
   const sectionId = useSelector((state) => state.categories.sectionId)
 
-  // coredor_alto - Av. Rivadavia 4655
   const isModalOpenAlert = useSelector((state) => state.alerts.showModalAlert)
   const idArticle = useSelector((state) => state.alerts.showModalAlertId)
   const data = getArticlesData(idArticle)

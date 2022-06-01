@@ -126,12 +126,14 @@ const getUsesTable = async () => config.uses.map(({
 }))
 
 const getAffectationsTable = async () => config.affectations.map(({
-  id, title, subtitle, desc
+  id, title, subtitle, desc, titleReport, textReport
 }) => ({
   id,
   title,
   subtitle,
-  desc
+  desc,
+  titleReport,
+  textReport
 }))
 
 const getExplorerFilters = () => config.explorerFilters.map(({ id, filterId, title }) => ({

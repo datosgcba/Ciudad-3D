@@ -2366,7 +2366,7 @@
     {
       "id": 1,
       "title": "Área de Baja Mixtura del Usos de Suelo 1:",
-      "desc": "Corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia.",
+      "desc": "Corresponde a áreas predominantemente residenciales con comercios minoristas y servicios personales de baja afluencia. Los usos que resulten de aplicar las disposiciones del Cuadro de Usos del Suelo N° 3.3, de la Ley 6361. En el mismo se referencia si el rubro está permitido en el área de mixtura, la superficie máxima por unidad de uso, si requiere consulta al Consejo \"C\". Asimismo, se indican los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.\n\nLas actividades productivas e industriales se encuentran permitidas en todo el ejido de la Ciudad. Éstas deben dar cumplimiento al Cuadro de Usos del Suelo Industrial 3.11.2, y al Anexo del Decreto N°86/19, reglamentación de la Ley N°2216, en donde se incorporan los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.\nPara la localización de actividades productivas e industriales se deberá consultar al organismo competente a través de una Consulta de Usos.",
       "afluencia": "Baja",
       "icons": [
         {
@@ -2385,8 +2385,8 @@
     },
     {
       "id": 2,
-      "title": "Área de Baja Mixtura del Usos de Suelo 2:",
-      "desc": "Corresponde a las áreas y corredores destinados a residencia, servicios y comercios de mediana afluencia.",
+      "title": "Área de Baja Mixtura del Usos de Suelo A 2:",
+      "desc": "Corresponde a las áreas y corredores destinados a residencia, servicios y comercios de mediana afluencia. Los usos que resulten de aplicar las disposiciones del Cuadro de Usos del Suelo N° 3.3, de la Ley 6361. En el mismo se referencia si el rubro está permitido en el área de mixtura, la superficie máxima por unidad de uso, si requiere consulta al Consejo \"C\". Asimismo, se indican los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.\n\nLas actividades productivas e industriales se encuentran permitidas en todo el ejido de la Ciudad. Éstas deben dar cumplimiento al Cuadro de Usos del Suelo Industrial 3.11.2, y al Anexo del Decreto N°86/19, reglamentación de la Ley N°2216, en donde se incorporan los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.",
       "afluencia": "Mediana",
       "icons": [
         {
@@ -2405,8 +2405,8 @@
     },
     {
       "id": 3,
-      "title": "Área de Media Mixtura de Usos del Suelo 3:",
-      "desc": "Corresponde a las áreas y corredores destinados a residencia, depósitos siempre que incluyan local de venta y servicios y comercios de mediana afluencia.",
+      "title": "Área de Media Mixtura de Usos del Suelo B 3:",
+      "desc": "Corresponde a las áreas y corredores destinados a residencia, depósitos, equipamientos y servicios y comercios de gran afluencia. Los usos que resulten de aplicar las disposiciones del Cuadro de Usos del Suelo N° 3.3, de la Ley 6361. En el mismo se referencia si el rubro está permitido en el área de mixtura, la superficie máxima por unidad de uso, si requiere consulta al Consejo \"C\". Asimismo, se indican los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.\n\nLas actividades productivas e industriales se encuentran permitidas en todo el ejido de la Ciudad. Éstas deben dar cumplimiento al Cuadro de Usos del Suelo Industrial 3.11.2, y al Anexo del Decreto N°86/19, reglamentación de la Ley N°2216, en donde se incorporan los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.",
       "afluencia": "Mediana",
       "icons": [
         {
@@ -2430,7 +2430,7 @@
     {
       "id": 4,
       "title": "Área de Alta Mixtura de Usos del Suelo 4:",
-      "desc": "Corresponde a las áreas y corredores destinados a residencia, depósitos siempre que incluyan local de venta y servicios y comercios de afluencia metropolitana.",
+      "desc": "Corresponde a las áreas y corredores destinados a residencia, depósitos, equipamiento, servicios y comercios de afluencia masiva. Los usos que resulten de aplicar las disposiciones del Cuadro de Usos del Suelo N° 3.3, de la Ley 6361. En el mismo se referencia si el rubro está permitido en el área de mixtura, la superficie máxima por unidad de uso, si requiere consulta al Consejo \"C\". Asimismo, se indican los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.\n\nLas actividades productivas e industriales se encuentran permitidas en todo el ejido de la Ciudad. Éstas deben dar cumplimiento al Cuadro de Usos del Suelo Industrial 3.11.2, y al Anexo del Decreto N°86/19, reglamentación de la Ley N°2216, en donde se incorporan los requerimientos mínimos de estacionamientos, bicicletas y módulos de Carga y descarga.",
       "afluencia": "Alta",
       "icons": [
         {
@@ -2538,35 +2538,46 @@
     {
       "id": "riesgo_hidrico",
       "title": "Riesgo Hídrico",
-      "subtitle": "La parcela se encuentra afectada por riesgo hídrico"
+      "subtitle": "La parcela se encuentra afectada por riesgo hídrico",
+      "titleReport": "Riesgo Hídrico",
+      "textReport": "Si. 7.2.8.3.1. Compromiso Ambiental en materia de prevención de Riesgo Hídrico: Para la aprobación de obras nuevas cuya superficie cubierta sea de más de doscientos (200) m2 y su altura máxima sea superior a once metros con veinte centímetros (11,20 metros) y se encuentren dentro de los polígonos determinados por el Plano N° 7.2.8.3.1 como áreas de prevención de Riesgo Hídrico deben implementar la ralentización de conformidad al artículo 7.2.8.3.2 y la normativa de edificación que regule la materia. Los subsuelos deberán dar cumplimiento a la normativa de edificación que regule la materia. El Centro Libre de Manzana será absorbente de conformidad al artículo 7.2.2. La implementación de esta herramienta se computará para el cálculo de los incentivos del apartado 7.2.8.2 c) sólo cuando se conjuguen con otras herramientas de Compromiso Ambiental, según se reglamente por el Poder Ejecutivo."
     },
     {
       "id": "aprox_aeroparque",
       "title": "Aproximación Aeroparque",
-      "subtitle": "La parcela se encuentra afectada por aproximación a Aeroparque"
+      "subtitle": "La parcela se encuentra afectada por aproximación a Aeroparque",
+      "titleReport": null
     },
     {
       "id": "lep",
       "title": "LEP",
       "subtitle": "La parcela se encuentra afectada a línea de edificación particularizada (LEP)",
-      "desc": "En las nuevas construcciones que se ejecuten con posterioridad a la afectación de L.E. Particularizada con frente a las calles enumeradas en el Cuadro N° 5.4 deberá respetarse el retiro de frente al eje de calle que en el mismo se indica. La franja de terreno comprendida entre la L.O. y la L.E. resultante del retiro previsto deberá ajustarse a lo dispuesto en el artículo 4.3.1 de este Código."
+      "desc": "En las nuevas construcciones que se ejecuten con posterioridad a la afectación de L.E. Particularizada con frente a las calles enumeradas en el Cuadro N° 5.4 deberá respetarse el retiro de frente al eje de calle que en el mismo se indica. La franja de terreno comprendida entre la L.O. y la L.E. resultante del retiro previsto deberá ajustarse a lo dispuesto en el artículo 4.3.1 de este Código.",
+      "titleReport": "Línea de Edificación Particularizada",
+      "textReport": "Sí"
     },
     {
       "id": "ensanche",
       "title": "Ensanche",
       "subtitle": "La parcela se encuentra afectada a ensanche con declaración de utilidad pública y sujeción a expropiación.",
-      "desc": ""
+      "desc": "",
+      "titleReport": "Ensanche",
+      "textReport": "Sí"
     },
     {
       "id": "apertura",
       "title": "Apertura",
       "subtitle": "La parcela se encuentra afectada a apertura de calle con declaración de utilidad pública y sujeción a expropiación.",
-      "desc": ""
+      "desc": "",
+      "titleReport": "Apertura",
+      "textReport": "Sí"
     },
     {
       "id": "ci_digital",
       "title": "Cinturón Digital",
-      "subtitle": "La parcela se encuentra afectada a cinturón digital."
+      "subtitle": "La parcela se encuentra afectada a cinturón digital.",
+      "titleReport": "Cinturón Digital",
+      "textReport": "Sí"
     }
   ],
   "inspections": [
@@ -2673,7 +2684,7 @@
       "content": [
         {
           "title": "3.6 Anexo II - Piezas de Ajuste",
-          "text": "Se denominan Piezas de Ajuste a aquellos edificios a construir dentro de Áreas de Protección Histórica que articulan diferentes situaciones edilicias con edificios con valor patrimonial y que se encuadran en los tipos enunciados en los artículos 3.6.1, 3.6.2, 3.6.3 y 3.6.4 del presente Anexo II “Áreas Especiales Individualizadas”. Las Piezas de Ajuste son de aplicación en las siguientes Áreas de Protección Histórica: - APH 14- Ámbito Recoleta - APH 16- Pasajes Rivarola y La Piedad y su entorno - APH 30 – Av. Alvear y su entorno - APH 44- Barrancas de Belgrano Las piezas de ajuste son de aplicación en las siguientes zonas de las Áreas de Protección Histórica especificadas a continuación: - Zonas 4, 5, 6, 9 y 10 del APH 1 - Zona de Amortiguación del APH 1 - Zonas 1 y 3 del APH 3-Ámbito Grand Bourg y Palermo Chico - Zonas 2 y 3 del APH 4-Estación Belgrano “R” - Zona 2 del APH 22-Plaza Belgrano y entorno En todos los casos, se debe propender una correcta integración urbana y con el contexto patrimonial del área involucrada, donde el ambiente debe ser objeto de un cuidado especial. Los proyectos de Pieza de Ajuste requieren de la autorización del organismo competente en la supervisión del patrimonio. 3.6.1. Parcela flanqueada por dos edificios consolidados o edificios catalogados de igual altura. En parcelas cuyo frente sobre Línea Oficial sea menor o igual a veintiséis metros (26m) y estén flanqueadas por dos edificios consolidados o catalogados, se completa el tejido igualando la altura del nuevo edificio o fragmento a construir de acuerdo con la altura de los edificios linderos. Se considerarán alturas iguales cuando entre los dos edificios linderos consolidados o catalogados no exista una diferencia mayor a un metro con cuarenta centímetros (1,40m).",
+          "text": "Se denominan Piezas de Ajuste a aquellos edificios a construir dentro de Áreas de Protección Histórica que articulan diferentes situaciones edilicias con edificios con valor patrimonial y que se encuadran en los tipos enunciados en los artículos 3.6.1, 3.6.2, 3.6.3 y 3.6.4 del presente Anexo II \"Áreas Especiales Individualizadas\". Las Piezas de Ajuste son de aplicación en las siguientes Áreas de Protección Histórica: - APH 14- Ámbito Recoleta - APH 16- Pasajes Rivarola y La Piedad y su entorno - APH 30 – Av. Alvear y su entorno - APH 44- Barrancas de Belgrano Las piezas de ajuste son de aplicación en las siguientes zonas de las Áreas de Protección Histórica especificadas a continuación: - Zonas 4, 5, 6, 9 y 10 del APH 1 - Zona de Amortiguación del APH 1 - Zonas 1 y 3 del APH 3-Ámbito Grand Bourg y Palermo Chico - Zonas 2 y 3 del APH 4-Estación Belgrano \"R\" - Zona 2 del APH 22-Plaza Belgrano y entorno En todos los casos, se debe propender una correcta integración urbana y con el contexto patrimonial del área involucrada, donde el ambiente debe ser objeto de un cuidado especial. Los proyectos de Pieza de Ajuste requieren de la autorización del organismo competente en la supervisión del patrimonio. 3.6.1. Parcela flanqueada por dos edificios consolidados o edificios catalogados de igual altura. En parcelas cuyo frente sobre Línea Oficial sea menor o igual a veintiséis metros (26m) y estén flanqueadas por dos edificios consolidados o catalogados, se completa el tejido igualando la altura del nuevo edificio o fragmento a construir de acuerdo con la altura de los edificios linderos. Se considerarán alturas iguales cuando entre los dos edificios linderos consolidados o catalogados no exista una diferencia mayor a un metro con cuarenta centímetros (1,40m).",
           "image": "3_6_Anexo_II__1.PNG"
         },
         {
@@ -2832,7 +2843,7 @@
       "content": [
         {
           "title": "6.4.3.5  Edificabilidad en las parcelas no alcanzadas por la LIB",
-          "text": "Se permite el completamiento de tejido o edificabilidad cuando la altura de alguno de los edificios linderos supere la altura máxima de la parcela a edificar. El edificio debe adosarse equiparando los niveles de techos y terrazas con los niveles correspondientes del edificio lindero, en su altura de fachada y cada uno de sus retiros, en forma independiente de las alturas que tengan los parapetos o muros medianeros entre los volúmenes a adosar. Las alturas existentes se consideran tomadas a nivel de piso terminado (N.P.T.) de los edificios linderos. En todos los casos de completamiento de tejido o edificabilidad en los cuales exista una diferencia de altura, el volumen más alto debe dar cumplimiento a las normas sobre fachadas también en su cara lateral o perpendicular a la L.O. El nuevo edificio debe adosarse en toda su extensión, sin perjuicio del cumplimiento de las dimensiones del Espacio Urbano exigibles. Las Áreas de Protección Histórica y las Urbanizaciones Determinadas se rigen por sus normas especiales. Artículo 79.- Sustitúyese del Título 6 “Normas de Edificabilidad”, del Código Urbanístico aprobado por Ley Nº 6.099, el artículo 6.5.5.1 “Parcelas Flanqueadas por Edificios de Iguales Alturas (Tipo A)”, por el siguiente: 6.5.5.1. Parcelas Flanqueadas por Edificios de Iguales Alturas (Tipo A) En parcelas flanqueadas por edificios existentes de igual altura, se permite el completamiento de tejido en U.S.A.M., U.S.A.A., C.M. y CA. Se consideran edificios de igual altura, cuando la diferencia entre los mismos sea menor o igual a un metro con cuarenta "
+          "text": "Se permite el completamiento de tejido o edificabilidad cuando la altura de alguno de los edificios linderos supere la altura máxima de la parcela a edificar. El edificio debe adosarse equiparando los niveles de techos y terrazas con los niveles correspondientes del edificio lindero, en su altura de fachada y cada uno de sus retiros, en forma independiente de las alturas que tengan los parapetos o muros medianeros entre los volúmenes a adosar. Las alturas existentes se consideran tomadas a nivel de piso terminado (N.P.T.) de los edificios linderos. En todos los casos de completamiento de tejido o edificabilidad en los cuales exista una diferencia de altura, el volumen más alto debe dar cumplimiento a las normas sobre fachadas también en su cara lateral o perpendicular a la L.O. El nuevo edificio debe adosarse en toda su extensión, sin perjuicio del cumplimiento de las dimensiones del Espacio Urbano exigibles. Las Áreas de Protección Histórica y las Urbanizaciones Determinadas se rigen por sus normas especiales. Artículo 79.- Sustitúyese del Título 6 \"Normas de Edificabilidad\", del Código Urbanístico aprobado por Ley Nº 6.099, el artículo 6.5.5.1 \"Parcelas Flanqueadas por Edificios de Iguales Alturas (Tipo A)\", por el siguiente: 6.5.5.1. Parcelas Flanqueadas por Edificios de Iguales Alturas (Tipo A) En parcelas flanqueadas por edificios existentes de igual altura, se permite el completamiento de tejido en U.S.A.M., U.S.A.A., C.M. y CA. Se consideran edificios de igual altura, cuando la diferencia entre los mismos sea menor o igual a un metro con cuarenta "
         },
         {
           "text": "centímetros (1,40m). A1) En el caso de una o más parcelas flanqueadas por edificios de igual altura cuya distancia entre los edificios existentes sobre la LO. sea menor o igual a veintiséis metros (26m), se puede igualar la altura de los mismos en cualquiera de las parcelas intermedias."
@@ -2846,13 +2857,13 @@
           "title": "9.1.3.2.2 Protección Especial Edilicia"
         },
         {
-          "text": "“a. Protección integral: Se encuentran afectados a este nivel aquellos edificios de interés especial cuyo valor de orden histórico y/o arquitectónico los han constituido en hitos urbanos, que los hacen merecedores de una protección integral. Protege la totalidad de cada edificio conservando todas sus características arquitectónicas y sus formas de ocupación del espacio.”"
+          "text": "\"a. Protección integral: Se encuentran afectados a este nivel aquellos edificios de interés especial cuyo valor de orden histórico y/o arquitectónico los han constituido en hitos urbanos, que los hacen merecedores de una protección integral. Protege la totalidad de cada edificio conservando todas sus características arquitectónicas y sus formas de ocupación del espacio.\""
         },
         {
           "text": "b. Protección estructural: Se encuentran afectados a este nivel aquellos edificios de carácter singular y tipológico, que, por su valor histórico-cultural, arquitectónico, urbanístico o simbólico caracterizan su entorno o califican un espacio urbano o son testimonio de la memoria de la comunidad. Protege el exterior del edificio, su tipología, los elementos básicos que definen su forma de articulación y ocupación del espacio, permitiendo modificaciones que no alteren su volumen."
         },
         {
-          "text": "“c. Protección cautelar: Se encuentran afectados a este nivel los edificios cuyo valor reconocido es el de constituir la referencia formal y cultural del área, justificar y dar sentido al conjunto. Protege la imagen característica del área previniendo actuaciones contradictorias en el tejido y la morfología.”"
+          "text": "\"c. Protección cautelar: Se encuentran afectados a este nivel los edificios cuyo valor reconocido es el de constituir la referencia formal y cultural del área, justificar y dar sentido al conjunto. Protege la imagen característica del área previniendo actuaciones contradictorias en el tejido y la morfología.\""
         }
       ]
     },
@@ -2863,7 +2874,7 @@
           "title": "9.1.3.2.2.2 Grados de Intervención "
         },
         {
-          "text": "“En función de los tres niveles de protección definidos en el artículo 9.1.3.2.2 del presente Código se establecen cuatro grados de intervención."
+          "text": "\"En función de los tres niveles de protección definidos en el artículo 9.1.3.2.2 del presente Código se establecen cuatro grados de intervención."
         },
         {
           "text": "Los edificios podrán ser intervenidos según su nivel de protección por los grados de intervención a continuación se indican, de conformidad a la norma que estableció su catalogación."
@@ -2884,7 +2895,7 @@
           "text": "c)  Grado de Intervención 3: Comprende las obras y/o acciones dirigidas a la adecuación y mejora de las condiciones de habitabilidad del edificio mediante la modificación, ampliación, reforma y/o transformación del espacio interior que mantenga las fachadas y cubiertas (…)"
         },
         {
-          "text": "d)  Grado de Intervención 4: Comprende las obras y/o acciones dirigidas a la adecuación y mejora de las condiciones de habitabilidad del edificio mediante la modificación, ampliación y/o reforma del espacio interior y del volumen del edificio.”"
+          "text": "d)  Grado de Intervención 4: Comprende las obras y/o acciones dirigidas a la adecuación y mejora de las condiciones de habitabilidad del edificio mediante la modificación, ampliación y/o reforma del espacio interior y del volumen del edificio.\""
         }
       ]
     },
@@ -2893,7 +2904,7 @@
       "content": [
         {
           "title": "9.1.4. Proximidad de Edificios Catalogados",
-          "text": "En parcelas adyacentes a edificios catalogados se requiere la autorización del Organismo Competente en lo que respecta al tratamiento de volúmenes a construirse, fachadas, medianeras y contexto patrimonial.”"
+          "text": "En parcelas adyacentes a edificios catalogados se requiere la autorización del Organismo Competente en lo que respecta al tratamiento de volúmenes a construirse, fachadas, medianeras y contexto patrimonial.\""
         }
       ]
     },
@@ -2923,7 +2934,16 @@
       "content": [
         {
           "title": "9.1.4.2. Edificabilidad  en  linderos  a  edificios catalogados  con  nivel  de  protección  integral  o estructural.",
-          "text": "“En  parcelas  adyacentes  a  edificios  con  nivel  de  protección  integral  o  estructural,  las  nuevas  construcciones  deben  realizar  un  retiro  lateral  mínimo  de tres metros (3m) de la L.D.P con el edificio protegido, a partir de  la  altura  de  la  fachada  del  mismo.  Dicho  retiro  se considera espacio urbano y debe conformar fachada.”"
+          "text": "\"En  parcelas  adyacentes  a  edificios  con  nivel  de  protección  integral  o  estructural,  las  nuevas  construcciones  deben  realizar  un  retiro  lateral  mínimo  de tres metros (3m) de la L.D.P con el edificio protegido, a partir de  la  altura  de  la  fachada  del  mismo.  Dicho  retiro  se considera espacio urbano y debe conformar fachada.\""
+        }
+      ]
+    },
+    {
+      "id": "6.4.2.3.C",
+      "content": [
+        {
+          "text": "c) Conformación de extensiones del Espacio Libre de Manzana de tipo irregular (EELMI), por retiros laterales y de fondo ante la existencia de edificios consolidados: Es de aplicación para el caso de parcelas que disten menos de la distancia determinada por la prolongación virtual de las L.F.I. concurrentes más nueve metros (9m), hasta una distancia máxima de treinta y cuatro metros (34m) de las prolongaciones de las L.O. concurrentes y el/los edificios linderos se encuentren consolidados y cuenten con un área descubierta existente lateral y/o de fondo. La nueva construcción, debe retirarse de su L.D.P. lateral tres metros (3m) como mínimo, en correspondencia con el área descubierta y retirarse mínimo ocho metros (8m) de la L.D.P. de fondo (d') en el caso de C.A. y C.M. y mínimo seis metros (6m) en el caso de U.S.A.A. y U.S.A.M. Para las parcelas menores a veintidós metros (22m), el retiro de fondo mínimo debe ser de tres metros (3m), si a través de la extensión se vincula al Espacio Libre de Manzana. El área descubierta resultante se considera Espacio Urbano.",
+          "image": "6_4_2_3__3.PNG"
         }
       ]
     }
@@ -2964,6 +2984,7 @@
       "id": "adyacente_catalogado",
       "title": "Adyacente a edificio catalogado",
       "text": "La altura podrá variar si: existe algún edificio adyacente Catalogado (Artículo 3.6 Anexo II) o la altura de los edificios linderos es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).Las pautas generales de intervención se explicitan en el [ART. 9.1.4](articuloId:9.1.4.) y el [ART. 9.1.4.1](articuloId:9.1.4.1.). Si el edificio es lindero a un inmueble con protección CAUTELAR, las pautas se indica en el [ART. 9.1.4.3](articuloId:9.1.4.3.). Si el edificio es lindero a un inmueble con protección ESTRUCTURAL e INTEGRAL, las pautas se indican en el [ART. 9.1.4.2](articuloId:9.1.4.2.)",
+      "reportText": "La altura podrá variar si: existe algún edificio adyacente Catalogado (Artículo 3.6 Anexo II) o la altura de los edificios linderos es mayor a la de la Unidad de Edificabilidad (Artículo 6.5.5).Las pautas generales de intervención se explicitan en el ART. 9.1.4 y el ART. 9.1.4.1. Si el edificio es lindero a un inmueble con protección CAUTELAR, las pautas se indica en el ART. 9.1.4.3. Si el edificio es lindero a un inmueble con protección ESTRUCTURAL e INTEGRAL, las pautas se indican en el ART. 9.1.4.2",
       "article": [
         "9.1.4", 
         "9.1.4.3", 
@@ -2971,8 +2992,9 @@
       ]
     },
     {
-      "id": "coredor_alto",
+      "id": "corredor_alto",
       "title": "Corredor alto",
+      "titleReport": "Corredor Alto | C.A (Ley 6361 Art. 6.2)",
       "text": "Son los corredores centrales. Concentran actividades, modos de transporte y densidad, con un alto grado de consolidación. Sus alturas guardan relación con el ancho de los espacios públicos que enfrentan. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y ocho (38) metros (Ver más en Art. [6.2.1](articuloId:6.2.1)). La altura podrá variar si: existe algún edificio lindero Catalogado ([Artículo 9.1.4](articuloId:9.1.4.)) Proximidad a edificios catalogados Cuerpo principal CUr y ver condiciones del [Artículo 3.6 Pieza de ajuste Anexo II](articuloId:3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad ([Artículo 6.5.5](articuloId:6.5.5))",
       "article": [
         "6.2.1",
@@ -2984,8 +3006,9 @@
       ]
     },
     {
-      "id": "coredor_medios",
+      "id": "corredor_medios",
       "title": "Corredor medio",
+      "titleReport": "Corredor Medio | C.M (Ley 6361 Art. 6.2)",
       "text": "Son los corredores principales. Concentran actividades, modos de transporte y densidades, con un menor grado de consolidación. La edificabilidad máxima se corresponde con una Altura Máxima de treinta y un metros  con veinte centímetros (31.20m). (Ver más en Art. [6.2.2](articuloId:6.2.2)). La altura podrá variar si: existe algún edificio lindero Catalogado ([Artículo 9.1.4](articuloId:9.1.4.)) Proximidad a edificios catalogados Cuerpo principal CUr y ver condiciones del [Artículo 3.6 Pieza de ajuste Anexo II](articuloId:3.6 Anexo II) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad ([Artículo 6.5.5](articuloId:6.5.5))",
       "article": [
         "6.2.2",
@@ -2999,6 +3022,7 @@
     {
       "id": "usaa",
       "title": "Unidades de Sustentabilidad de Altura Alta",
+      "titleReport": "Unidades de Sustentabilidad de Altura Alta | U.S.A.A (Ley 6361 Art. 6.2)",
       "text": "Son las áreas de la Ciudad de menor altura que los corredores, con alturas adecuadas a los espacios públicos de calles y avenidas barriales. Altura Máxima: 22,8 metros. (Ver más en Art. [6.2.3](articuloId:6.2.3)). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos\n. Extensiones vinculadas al Espacio Libre de .Manzana, [6.4.2.3](articuloId:6.4.2.3). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.I.B., [6.4.3.5](articuloId:6.4.3.5)",
       "article": [
         "6.2.3",
@@ -3012,6 +3036,7 @@
     {
       "id": "usam",
       "title": "Unidades de Sustentabilidad de Altura Media",
+      "titleReport": "Unidades de Sustentabilidad de Altura Media | U.S.A.M (Ley 6361 Art. 6.2)",
       "text": "Son las áreas de la ciudad con alturas de escala media, adecuadas para un carácter residencial mixto con cercanía a corredores y centros barriales. La edificabilidad máxima se corresponde con una Altura Máxima de diecisiete metros con veinte centímetros (17,20m). (Ver más en Art. [6.2.4](articuloId:6.2.4)) .La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5)).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos\n. Extensiones vinculadas al Espacio Libre de .Manzana, [6.4.2.3](articuloId:6.4.2.3). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.I.B., [6.4.3.5](articuloId:6.4.3.5)",
       "article": [
         "6.2.4",
@@ -3025,6 +3050,7 @@
     {
       "id": "usab2",
       "title": "Unidades de Sustentabilidad de Altura Baja 2",
+      "titleReport": "Unidades de Sustentabilidad de Altura Baja 2 | U.S.A.B 2 (Ley 6361 Art. 6.2)",
       "text": "Son las áreas de la ciudad de alturas menores, adecuadas para el desarrollo principalmente de actividades residenciales. La edificabilidad máxima se corresponde con una Altura Máxima de  once metros con sesenta centímetros (11,60). (Ver más en Art. [6.2.5](articuloId:6.2.5)). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5)).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos\n. Extensiones vinculadas al Espacio Libre de .Manzana, [6.4.2.3](articuloId:6.4.2.3). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.I.B., [6.4.3.5](articuloId:6.4.3.5)",
       "article": [
         "6.2.5",
@@ -3038,6 +3064,7 @@
     {
       "id": "usab1",
       "title": "Unidades de Sustentabilidad de Altura Baja 1",
+      "titleReport": "Unidades de Sustentabilidad de Altura Baja 1 | U.S.A.B 1 (Ley 6361 Art. 6.2)",
       "text": "Son las áreas de la ciudad de alturas menores, adecuadas para el desarrollo principalmente de actividades residenciales.La edificabilidad máxima se corresponde con una Altura Máxima de nueve (9) metros. (Ver más en Art. [6.2.6](articuloId:6.2.6)). La altura podrá variar si: existe algún edificio lindero Catalogado (Artículo [3.6 Anexo II](articuloId:3.6 Anexo II)) o la altura del edificio lindero es mayor a la de la Unidad de Edificabilidad (Artículo [6.5.5](articuloId:6.5.5)).\n \nSe deberán tener en consideración aquellos retiros o patios que requiera la parcela para tener el área edificable final según los artículos\n. Extensiones vinculadas al Espacio Libre de .Manzana, [6.4.2.3](articuloId:6.4.2.3). Edificabilidad en las parcelas no alcanzadas por la L.F.I., [6.4.2.4](articuloId:6.4.2.4). Edificabilidad en las parcelas no alcanzadas por la L.I.B., [6.4.3.5](articuloId:6.4.3.5)",
       "article": [
         "6.2.6",
@@ -3061,6 +3088,11 @@
       "id": "mixtura_usos",
       "title": "Mixtura de usos",
       "text": "Esta parcela tiene más de un Uso. Requiere de un estudio específico."
+    },
+    {
+      "id": "no_usos",
+      "title": "Usos:",
+      "text": "Resultarán de aplicación los usos permitidos de acuerdo a lo previsto en la normativa específica en el Anexo II del Código Urbanístico."
     },
     {
       "id": "plusvalía_no_calculable",
@@ -3147,6 +3179,12 @@
       "id": "subzona",
       "title": "Sub Área Especial",
       "text": "{{value}}"
+    },
+    {
+      "id": "irregular",
+      "title": "Parcela en area de esquina de extension irregular",
+      "text": "Esta parcela posee edificios consolidados dentro del área de esquina que la hace plausible a una extensión de espacio libre de manzana irregular según el Articulo [6.4.2.3 inciso C](articuloId:6.4.2.3.C)",
+      "article": ["6.4.2.3.C"]
     }
   ],
   "baseLayers": {

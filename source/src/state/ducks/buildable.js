@@ -192,6 +192,10 @@ const clickOnParcel = createAsyncThunk(
       dispatch(alertsActions.addId(id))
       dispatch(alertsActions.addExtraData({ id, value: data.subzona }))
     }
+    if (data?.irregular) {
+      const id = 'irregular'
+      dispatch(alertsActions.addId(id))
+    }
 
     return data
   }

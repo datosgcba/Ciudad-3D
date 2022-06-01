@@ -2937,6 +2937,15 @@
           "text": "\"En  parcelas  adyacentes  a  edificios  con  nivel  de  protección  integral  o  estructural,  las  nuevas  construcciones  deben  realizar  un  retiro  lateral  mínimo  de tres metros (3m) de la L.D.P con el edificio protegido, a partir de  la  altura  de  la  fachada  del  mismo.  Dicho  retiro  se considera espacio urbano y debe conformar fachada.\""
         }
       ]
+    },
+    {
+      "id": "6.4.2.3.C",
+      "content": [
+        {
+          "text": "c) Conformación de extensiones del Espacio Libre de Manzana de tipo irregular (EELMI), por retiros laterales y de fondo ante la existencia de edificios consolidados: Es de aplicación para el caso de parcelas que disten menos de la distancia determinada por la prolongación virtual de las L.F.I. concurrentes más nueve metros (9m), hasta una distancia máxima de treinta y cuatro metros (34m) de las prolongaciones de las L.O. concurrentes y el/los edificios linderos se encuentren consolidados y cuenten con un área descubierta existente lateral y/o de fondo. La nueva construcción, debe retirarse de su L.D.P. lateral tres metros (3m) como mínimo, en correspondencia con el área descubierta y retirarse mínimo ocho metros (8m) de la L.D.P. de fondo (d') en el caso de C.A. y C.M. y mínimo seis metros (6m) en el caso de U.S.A.A. y U.S.A.M. Para las parcelas menores a veintidós metros (22m), el retiro de fondo mínimo debe ser de tres metros (3m), si a través de la extensión se vincula al Espacio Libre de Manzana. El área descubierta resultante se considera Espacio Urbano.",
+          "image": "6_4_2_3__3.PNG"
+        }
+      ]
     }
   ],
   "alerts": [
@@ -3170,6 +3179,12 @@
       "id": "subzona",
       "title": "Sub Área Especial",
       "text": "{{value}}"
+    },
+    {
+      "id": "irregular",
+      "title": "Parcela en area de esquina de extension irregular",
+      "text": "Esta parcela posee edificios consolidados dentro del área de esquina que la hace plausible a una extensión de espacio libre de manzana irregular según el Articulo [6.4.2.3 inciso C](articuloId:6.4.2.3.C)",
+      "article": ["6.4.2.3.C"]
     }
   ],
   "baseLayers": {

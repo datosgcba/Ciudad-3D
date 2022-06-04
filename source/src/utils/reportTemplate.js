@@ -125,7 +125,7 @@ export default async (sections, fileName) => {
           switch (typeData) {
             case 'IMAGE':
               if (textReport) {
-                doc.addImage(textReport, 'JPEG', PAGE_WIDTH / 2 + marginLeft - 75, y, 150, 90)
+                doc.addImage(textReport, 'JPEG', PAGE_WIDTH / 2 + marginLeft - 75, y + 2, 150, 90)
                 y += 90 // le da espacio entre las lineas a los subtile
               }
               break

@@ -14,7 +14,7 @@ import SelectParcel from 'components/Sections/SubSection/SelectParcel'
 
 import icons from 'utils/svgIcons'
 
-import { getUsesLink } from 'utils/configQueries'
+import { getAlert, getUsesLink } from 'utils/configQueries'
 
 import { actions as usesActions } from 'state/ducks/uses'
 
@@ -75,7 +75,7 @@ const Uses = () => {
     <ContainerBar
       type="list"
     >
-      {data
+      {data?.length > 0
         && data.map(({
           id, title, desc, afluencia, iconsData
         }) => (
@@ -106,7 +106,13 @@ const Uses = () => {
           </Typography>
         )
       }
-      { data.length === 0 && !isLoading && <SelectParcel />}
+      { data.length === 0 && !isLoading && !smp && <SelectParcel />}
+      { data.length === 0 && !isLoading && smp
+        && (
+        <Typography variant="body1">
+          {getAlert('no_usos').text}
+        </Typography>
+        )}
       { isLoading && (
         <Typography variant="body1">
           Cargando...

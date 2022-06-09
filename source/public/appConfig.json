@@ -2215,7 +2215,7 @@
     },
     {
       "title": "Superficie de parcela",
-      "fill": "superficie_total",
+      "fill": "superficie_parcela",
       "format": "m²",
       "isNumber": true
     },
@@ -3162,12 +3162,30 @@
     {
       "id": "manzana_atipica",
       "title": "Parcela en Manzana Atípica",
-      "text": "Para consultar los trazados de Línea de Frente Interno o de Basamento en una manzana atípica, se deberá realizar la consulta [Fijación de Línea de Frente Interno](https://www.buenosaires.gob.ar/tramites/fijacion-de-linea-de-frente-interno) vía [TAD](https://lbapw.agip.gob.ar/claveciudad/)."
+      "text": "Para consultar los trazados de Línea de Frente Interno o de Basamento en una manzana atípica, se deberá realizar la consulta [Fijación de Línea de Frente Interno](https://www.buenosaires.gob.ar/tramites/fijacion-de-linea-de-frente-interno) vía [TAD](https://lbapw.agip.gob.ar/claveciudad/).",
+      "titleReport": [{
+        "titleReport": "",
+        "textReport": "Para consultar los trazados de Línea de Frente Interno o de Basamento en una manzana atípica, se deberá realizar la consulta "
+      },
+      {
+        "type": "LINK",
+        "titleReport": "Fijación de Línea de Frente Interno",
+        "textReport": "https://www.buenosaires.gob.ar/tramites/fijacion-de-linea-de-frente-interno"
+      },{
+        "titleReport": "",
+        "textReport": " vía "
+      },
+      {
+        "type": "LINK",
+        "titleReport": "TAD",
+        "textReport": "https://lbapw.agip.gob.ar/claveciudad"
+      }]
     },
     {
       "id": "manzana_atipica_disposicion",
       "title": "Parcela en Manzana Atípica",
-      "text": "Esta manzana posee normativa vigente de acuerdo a [{{value}}](http://base_url_pdf/{{value2}})."
+      "text": "Esta manzana posee normativa vigente de acuerdo a [{{value}}](http://{{value2}}).",
+      "textReport": "Esta manzana posee normativa vigente de acuerdo a "
     },
     {
       "id": "enrase",

@@ -18,7 +18,7 @@ export default async (sections, fileName) => {
     doc.addImage(imgLogo, 'JPEG', 6, 4.5, 20, 20)
     doc.setFont(fontName, 'bold')
     doc.setFontSize(15)
-    doc.text('Información Urbanístico - Ciudad 3D ', 33, 17)
+    doc.text('Certificado Urbanístico - Ciudad 3D ', 33, 17)
     y += 15
     doc.setDrawColor(254, 211, 4) // color de linea
     doc.setLineWidth(0.6) // grosor de la linea

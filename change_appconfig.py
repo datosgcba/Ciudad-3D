@@ -41,8 +41,8 @@ class AppConfig:
         if os.path.exists(APPCONFIG_FILE['custom']):
             os.remove(APPCONFIG_FILE['custom'])
 
-        with open(APPCONFIG_FILE['custom'], 'wt') as dev_file:
-            with open(APPCONFIG_FILE['prod'], 'rt') as prod_file:
+        with open(APPCONFIG_FILE['custom'], mode='wt', encoding='UTF-8') as dev_file:
+            with open(APPCONFIG_FILE['prod'], mode='rt', encoding='UTF-8') as prod_file:
                 for line in prod_file:
                     for key, value in self.config_choices.items():
                         if line.find(globals()[key]['prod']) != -1:
@@ -66,7 +66,7 @@ if __name__ == '__main__':
         elif user_input_type not in MENU:
             print(f'{os.linesep}Opción inválida')
         elif user_input_type == '1' and user_choices:
-            print(f'{os.linesep}Creando archivo de configuración con lo seleccionado...')
+            print(f'Creando archivo de configuracion con lo seleccionado...')
             print(user_choices)
             AppConfig(user_choices)
             print()

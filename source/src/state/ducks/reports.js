@@ -87,6 +87,31 @@ const getData = createAsyncThunk(
 
     const alturaMax = altura_max?.filter((value) => value > 0)
 
+    const atipica = []
+    if (tipica !== 'T' && !disposicio?.length) {
+      const { titleReport } = getAlert('manzana_atipica')
+      atipica.push(...titleReport)
+    }
+    if (tipica !== 'T' && disposicio?.length && pdf?.length) {
+      const { textReport } = getAlert('manzana_atipica_disposicion')
+      atipica.push({
+        titleReport: '',
+        textReport
+      })
+      atipica.push({
+        type: 'LINK',
+        titleReport: disposicio,
+        textReport: getPdfLink(pdf)
+      })
+    }
+    if (tipica !== 'T' && disposicio?.length && !pdf?.length) {
+      const { textReport } = getAlert('manzana_atipica_disposicion')
+      atipica.push({
+        titleReport: '',
+        textReport: `${textReport} ${disposicio}`
+      })
+    }
+
     let usoCatalogado
     switch (proteccion?.toLowerCase()) {
       case 'cautelar':
@@ -247,8 +272,8 @@ const getData = createAsyncThunk(
             value: areaEdificable
           }, {
             name: 'Disposición de Trazado de LFI/LIB particularizadas',
-            value: tipica !== 'T' && disposicio?.length
-              ? getPdfLink(pdf)
+            value: atipica.length
+              ? atipica
               : null
           }, {
             name: 'Afectaciones',

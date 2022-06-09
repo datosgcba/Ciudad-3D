@@ -41,7 +41,8 @@ const Details = ({
             </Link>
           )}
           {format === 'url' && !value[0] && 'Cargando. . .'}
-          {format !== 'url' && `${value[0]} ${format}`}
+          {format !== 'url' && value[0] !== undefined && `${value[0]} ${format}`}
+          {format !== 'url' && value[0] === undefined && 'Cargando. . .'}
         </Typography>
       </Grid>
     </Grid>
@@ -53,8 +54,10 @@ const BasicData = () => {
   const decorators = useFontsStyles()
   const data = useSelector((state) => state.basicData.data)
   const linkImagen = useSelector((state) => state.buildable.data?.link_imagen)
+  const superficieParcela = useSelector((state) => state.buildable.data.superficie_parcela)
   const isSelected = useSelector((state) => state.basicData.isSelected)
   const { photoData } = data
+
   return (
     <ContainerBar type="list">
       {isSelected && (
@@ -65,11 +68,15 @@ const BasicData = () => {
           }, index) => {
             const fills = fill.split(',')
             const value = []
-            if (data[fills[0]]) {
+
+            const valueFill = fill === 'superficie_parcela'
+              ? superficieParcela?.toString()
+              : data[fills[0]]
+            if (valueFill) {
               value.push(
                 isNumber
-                  ? Number.parseFloat(data[fills[0]]).toLocaleString('es-AR')
-                  : data[fills[0]]
+                  ? Number.parseFloat(valueFill).toLocaleString('es-AR')
+                  : valueFill
               )
             }
             if (format === 'url' && linkImagen) {
@@ -79,7 +86,7 @@ const BasicData = () => {
             return (
               <Details
                 // eslint-disable-next-line react/no-array-index-key
-                key={index}
+                key={`${index}_${title}`}
                 classes={classes}
                 decorators={decorators}
                 title={title}

@@ -3184,7 +3184,7 @@
     {
       "id": "manzana_atipica_disposicion",
       "title": "Parcela en Manzana Atípica",
-      "text": "Esta manzana posee normativa vigente de acuerdo a [{{value}}](http://{{value2}}).",
+      "text": "Esta manzana posee normativa vigente de acuerdo a [{{value}}]({{value2}}).",
       "textReport": "Esta manzana posee normativa vigente de acuerdo a "
     },
     {

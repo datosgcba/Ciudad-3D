@@ -26,7 +26,9 @@ const Alert = ({ id, title, text }) => {
 
   const { titleSuffix, value, value2 } = useSelector((state) => state.alerts.extraData[id]) ?? {}
 
-  text.matchAll(
+  const textAux = text?.replace('{{value2}}', value2 ?? '')
+
+  textAux.matchAll(
     /(?:(?<textStart>.*?)\[(?<articulo>[^\]]+)\]\((?<articuloId>articuloId[s]{0,1}:[^)]+)\)|(?<textEnd>.+)$)/gm
   )
 
@@ -34,7 +36,7 @@ const Alert = ({ id, title, text }) => {
 
   const processReplace = (contentText) => contentText.replace('{{value}}', value)
 
-  const matches = text.matchAll(/(?:(?<textStart>.*?)\[(?<link>[^\]]+)\]\((?:(?<articuloId>articuloId[s]{0,1}:[^)]+)|(?<url>http[s]{0,1}:\/\/[^)]+))\)|(?<textEnd>.+)$)/gm)
+  const matches = textAux.matchAll(/(?:(?<textStart>.*?)\[(?<link>[^\]]+)\]\((?:(?<articuloId>articuloId[s]{0,1}:[^)]+)|(?<url>http[s]{0,1}:\/\/[^)]+))\)|(?<textEnd>.+)$)/gm)
 
   // eslint-disable-next-line no-restricted-syntax
   for (const m of matches) {
@@ -71,7 +73,7 @@ const Alert = ({ id, title, text }) => {
         )
       }
       {
-        text && (
+        textAux && (
           <Typography>
             {content}
           </Typography>

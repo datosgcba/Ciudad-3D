@@ -130,11 +130,15 @@ export default async (sections, fileName) => {
               }
               break
             case 'LINK':
+              // eslint-disable-next-line no-case-declarations
+              const widthUnderline = doc.getTextWidth(titleReport)
+              if (xValue + widthUnderline > PAGE_WIDTH) {
+                xValue = newlineX
+                y += 5
+              }
               doc.textWithLink(titleReport, xValue, y, { url: textReport })
               doc.setDrawColor(0, 0, 0) // color de linea
               doc.setLineWidth(0.2) // grosor de la linea
-              // eslint-disable-next-line no-case-declarations
-              const widthUnderline = doc.getTextWidth(titleReport)
               doc.line(xValue, y + 1, xValue + widthUnderline, y + 1)
               xValue += widthUnderline + 1
               break

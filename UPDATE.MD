@@ -1,5 +1,14 @@
 # Ciudad 3D
 
+### Update V1.3.0-RC.1:
+- Correccion de alerta Manzanas Atípicas
+- Actualizacion de alerta Catalogados
+- Mejoras en el rendimiento del mapa
+- Se incorporan datos para Extensiones Irregulares
+- Se incorpora alerta para los casos de parcelas afectadas a Extension Irregulares
+- Se incorporan datos de Plusvalia
+- Modificacion del Documento "Reporte Urbanisitico"
+
 ### Update V1.2.0-RC.1:
 Correccion de bugs reportados por usuarios y se añade boton 2D y 3D.
 

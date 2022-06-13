@@ -1,5 +1,8 @@
 # Ciudad 3D
 
+### Update V1.3.0-RC.1:
+Realizar los mimos pasos del V1.1.6-RC.1
+
 ### Update V1.2.0-RC.1:
 Realizar los mimos pasos del V1.1.6-RC.1
 

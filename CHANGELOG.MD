@@ -1,3 +1,12 @@
+## CHANGELOG V1.3.0-RC.1:
+- [(#5856)](https://sscite-redmine.buenosaires.gob.ar/issues/5856) correccion de alerta Manzanas Atípicas
+- [(#5858)](https://sscite-redmine.buenosaires.gob.ar/issues/5858) actualizacion de alerta Catalogados
+- [(#6034)](https://sscite-redmine.buenosaires.gob.ar/issues/6034) mejoras en el rendimiento del mapa
+- [(#6036)](https://sscite-redmine.buenosaires.gob.ar/issues/6036) se incorporan datos para Extensiones Irregulares
+- [(#6037)](https://sscite-redmine.buenosaires.gob.ar/issues/6037) se incorpora alerta para los casos de parcelas afectadas a Extension Irregulares
+- [(#6038)](https://sscite-redmine.buenosaires.gob.ar/issues/6038) se incorporan datos de Plusvalia
+- [(#6039)](https://sscite-redmine.buenosaires.gob.ar/issues/6039) modificacion del Documento "Reporte Urbanisitico"
+
 ## CHANGELOG V1.2.0-RC.1:
 - [(#5853)](https://sscite-redmine.buenosaires.gob.ar/issues/5853) seccion normativa
 - [(#5854)](https://sscite-redmine.buenosaires.gob.ar/issues/5854) correccion de bugs del despliegue anterior

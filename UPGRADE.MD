@@ -1,21 +1,27 @@
 # Ciudad 3D
 
 ### Update V1.3.0-RC.1:
-Realizar los mimos pasos del V1.1.6-RC.1
+- Dependiendo del ambiente descomentar la línea correspondiente en el archivo de configuración de ruta: `/source/.env`
+
+  - Para QA descomentar la línea 9
+  - Para HML descomentar la línea 12
+  - Para PROD descomentar la línea 15
+
+- Realizar pasos del V1.1.6-RC.1
 
 ### Update V1.2.0-RC.1:
-Realizar los mimos pasos del V1.1.6-RC.1
+Realizar los mismos pasos del V1.1.6-RC.1
 
 ### Update V1.1.6-RC.2:
-Realizar los mimos pasos del V1.1.6-RC.1
+Realizar los mismos pasos del V1.1.6-RC.1
 
 ### Update V1.1.6-RC.1:
 - Ingresar a la carpeta del proyecto:
-        
+
         cd /cur3d
 
 - Actualizar desde git:
-        
+
         git fetch && git fetch --tags
         git checkout develop
         git pull
@@ -48,7 +54,7 @@ Realizar los mimos pasos del V1.1.6-RC.1
 - feat: capa tejido 2d
 - incorporar los datos de Barrio Comuna
 - se optimizo uso de memoria
-- corrige informe PDF, reemplaza strings null por espacio en blanco 
+- corrige informe PDF, reemplaza strings null por espacio en blanco
 
 ### Update V1.1-RC.1:
 - Menu de navegación

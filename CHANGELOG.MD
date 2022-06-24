@@ -6,6 +6,7 @@
 - [(#6037)](https://sscite-redmine.buenosaires.gob.ar/issues/6037) se incorpora alerta para los casos de parcelas afectadas a Extension Irregulares
 - [(#6038)](https://sscite-redmine.buenosaires.gob.ar/issues/6038) se incorporan datos de Plusvalia
 - [(#6039)](https://sscite-redmine.buenosaires.gob.ar/issues/6039) modificacion del Documento "Reporte Urbanisitico"
+- Modificada y dividida la configuracion del appconfig en los diversos ambientes
 
 ## CHANGELOG V1.2.0-RC.1:
 - [(#5853)](https://sscite-redmine.buenosaires.gob.ar/issues/5853) seccion normativa
@@ -14,7 +15,7 @@
 - [(#5861)](https://sscite-redmine.buenosaires.gob.ar/issues/5861) añade boton para cambiar perspectivas del mapa en 2D y 3D
 
 ## CHANGELOG V1.1.6-RC.2:
-- Se corrige cámara de componente DimensionBtn 
+- Se corrige cámara de componente DimensionBtn
 - Se resuelven algunas advertencias y errores
 - Modificacion de alertas
 - Se agregaron links al alerta Adyacente a edificio catalogado
@@ -40,7 +41,7 @@
 ### Tickets 4320
 - appconfig con volumen_edif
 
-### Tickets 3989 
+### Tickets 3989
 - fix: capa tejido 2d por debajo de 3d
 
 ### Tickets 4053

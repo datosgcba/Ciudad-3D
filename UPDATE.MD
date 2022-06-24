@@ -1,10 +1,20 @@
 # Ciudad 3D
 
+### Update V1.3.0-RC.1:
+- Correccion de alerta Manzanas Atípicas
+- Actualizacion de alerta Catalogados
+- Mejoras en el rendimiento del mapa
+- Se incorporan datos para Extensiones Irregulares
+- Se incorpora alerta para los casos de parcelas afectadas a Extension Irregulares
+- Se incorporan datos de Plusvalia
+- Modificacion del Documento "Reporte Urbanisitico"
+- Modificada y dividida la configuracion del appconfig en los diversos ambientes
+
 ### Update V1.2.0-RC.1:
 Correccion de bugs reportados por usuarios y se añade boton 2D y 3D.
 
 ### Update V1.1.6-RC.2:
-- Se corrige cámara de componente DimensionBtn 
+- Se corrige cámara de componente DimensionBtn
 - Se resuelven algunas advertencias y errores
 - Modificacion de alertas
 - Se agregaron links al alerta Adyacente a edificio catalogado
@@ -30,7 +40,7 @@ Correccion de bugs reportados por usuarios y se añade boton 2D y 3D.
 - feat: capa tejido 2d
 - incorporar los datos de Barrio Comuna
 - se optimizo uso de memoria
-- corrige informe PDF, reemplaza strings null por espacio en blanco 
+- corrige informe PDF, reemplaza strings null por espacio en blanco
 
 ### Update V1.1-RC.1:
 - Menu de navegación

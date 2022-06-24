@@ -11,11 +11,9 @@ export default makeStyles((theme) => ({
     border: '1px solid #D9D9D9'
   },
   button: {
-    // padding: 0,
     minWidth: '0 !important'
   },
   card: {
-    height: '103px',
     backgroundColor: '#F5F5F5',
     padding: theme.spacing(1.5),
     marginBottom: theme.spacing(2)

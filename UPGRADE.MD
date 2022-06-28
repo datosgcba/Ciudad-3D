@@ -1,4 +1,7 @@
-# Ciudad 3D
+# UPGRADE Ciudad 3D
+
+## V1.3.0-RC.2:
+- Realizar todos los pasos de la version V1.1.6-RC.1
 
 ### Update V1.3.0-RC.1:
 - Dependiendo del ambiente descomentar la línea correspondiente en el archivo de configuración de ruta: `/source/.env`

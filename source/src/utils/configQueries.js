@@ -6,7 +6,6 @@ const loadAppConfig = async () => {
     return
   }
   const url = process.env.REACT_APP_URL_CONFIG
-    || 'https://epok.buenosaires.gob.ar/cur3d/config/?environment=dev'
   config = await fetch(url).then((data) => data.json())
 }
 // Métodos que devuelven mucha data y puede no ser serializable

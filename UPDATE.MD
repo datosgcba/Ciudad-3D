@@ -1,4 +1,8 @@
-# Ciudad 3D
+# UPDATE Ciudad 3D
+
+## V1.3.0-RC.2:
+- Deshechos cambios que toman la configuracion del appconfig dinámicamente
+- Actualizado appconfig hardcodeado
 
 ### Update V1.3.0-RC.1:
 - Correccion de alerta Manzanas Atípicas

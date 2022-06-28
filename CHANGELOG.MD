@@ -1,3 +1,9 @@
+# CHANGELOG Ciudad 3D
+
+## V1.3.0-RC.2:
+- Deshechos cambios que toman la configuracion del appconfig dinámicamente
+- Actualizado appconfig hardcodeado
+
 ## CHANGELOG V1.3.0-RC.1:
 - [(#5856)](https://sscite-redmine.buenosaires.gob.ar/issues/5856) correccion de alerta Manzanas Atípicas
 - [(#5858)](https://sscite-redmine.buenosaires.gob.ar/issues/5858) actualizacion de alerta Catalogados

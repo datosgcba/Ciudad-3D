@@ -19,10 +19,6 @@ const defaults = {
   // toMarker: mapboxgl.Marker({color:'red'}),
   // marker: mapboxgl.Marker({color:'yellow'}),
   popup: new mapboxgl.Popup(),
-  layers: {
-    apiUrl: 'https://epok.buenosaires.gob.ar/',
-    reverseGeocodeUrl: 'reverseGeocoderLugares'
-  },
   texts: {
     es: {
       loadingLayers: 'Cargando capas...',

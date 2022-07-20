@@ -6,8 +6,18 @@ const loadAppConfig = async () => {
     return
   }
   const url = process.env.REACT_APP_URL_CONFIG
-    || 'https://epok.buenosaires.gob.ar/cur3d/config/?environment=dev'
-  config = await fetch(url).then((data) => data.json())
+  const configEnviroment = await fetch(url).then((data) => data.json())
+  const { urlConfigBase, includes, replaces } = configEnviroment
+  let configBaseText = await fetch(urlConfigBase).then((data) => data.text())
+
+  replaces.forEach(({ key, value }) => {
+    configBaseText = configBaseText.replace(new RegExp(key, 'g'), value)
+  })
+
+  config = {
+    ...JSON.parse(configBaseText),
+    ...includes
+  }
 }
 // Métodos que devuelven mucha data y puede no ser serializable
 const getFullLayerConfig = (idGroup, idLayer) => config.layersGroup

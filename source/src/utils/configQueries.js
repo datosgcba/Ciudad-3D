@@ -5,8 +5,7 @@ const loadAppConfig = async () => {
   if (config !== null) {
     return
   }
-  const url = process.env.REACT_APP_URL_CONFIG
-  const configEnviroment = await fetch(url).then((data) => data.json())
+  const configEnviroment = window.configs
   const { urlConfigBase, includes, replaces } = configEnviroment
   let configBaseText = await fetch(urlConfigBase).then((data) => data.text())
 

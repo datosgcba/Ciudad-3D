@@ -42,6 +42,7 @@
     "build": "env-cmd -f .env react-scripts build",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write \"./**/*.{js,jsx,css,scss,md}\" --ignore-pattern node_modules/",
     "eject": "react-scripts eject"
   },
   "browserslist": {

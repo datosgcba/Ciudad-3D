@@ -19,16 +19,18 @@ const Home = ({ token }) => {
   const classes = useStyles()
 
   const placeLat = useSelector(
-    (state) => state.seeker.place
-      && state.seeker.place.data
-      && state.seeker.place.data.coordenadas
-      && state.seeker.place.data.coordenadas.y
+    (state) =>
+      state.seeker.place &&
+      state.seeker.place.data &&
+      state.seeker.place.data.coordenadas &&
+      state.seeker.place.data.coordenadas.y
   )
   const placeLng = useSelector(
-    (state) => state.seeker.place
-      && state.seeker.place.data
-      && state.seeker.place.data.coordenadas
-      && state.seeker.place.data.coordenadas.x
+    (state) =>
+      state.seeker.place &&
+      state.seeker.place.data &&
+      state.seeker.place.data.coordenadas &&
+      state.seeker.place.data.coordenadas.x
   )
 
   return (
@@ -39,9 +41,7 @@ const Home = ({ token }) => {
         <Parcel />
         {placeLat && placeLng && (
           <>
-            <Marker
-              coords={{ lat: placeLat, lng: placeLng }}
-            />
+            <Marker coords={{ lat: placeLat, lng: placeLng }} />
           </>
         )}
       </Map>

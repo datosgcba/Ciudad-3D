@@ -12,21 +12,21 @@ const LinksNormatives = () => {
   const classes = useStyles()
 
   return (
-    <ContainerBar
-      type="list"
-    >
+    <ContainerBar type="list">
       <Box>
-        {
-          getNormative().find((e) => e.id === sectionSelected).link.map(({ text, url }) => (
+        {getNormative()
+          .find((e) => e.id === sectionSelected)
+          .link.map(({ text, url }) => (
             <Box className={classes.Box}>
               {url !== undefined ? (
                 <Link className={classes.links} href={url} target={url}>
                   {text}
                 </Link>
-              ) : (<Typography className={classes.title}>{text}</Typography>)}
+              ) : (
+                <Typography className={classes.title}>{text}</Typography>
+              )}
             </Box>
-          ))
-        }
+          ))}
       </Box>
     </ContainerBar>
   )

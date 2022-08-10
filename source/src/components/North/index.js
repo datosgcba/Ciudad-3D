@@ -4,10 +4,7 @@ import { actions as mapActions } from 'state/ducks/map'
 
 import { Explore } from '@material-ui/icons'
 
-import {
-  Box,
-  IconButton
-} from '@material-ui/core'
+import { Box, IconButton } from '@material-ui/core'
 
 import useStyles from './styles'
 
@@ -16,16 +13,21 @@ const North = () => {
   const dispatch = useDispatch()
   const cameraPitch = useSelector((state) => state.map.camera?.pitch)
   const cameraBearing = useSelector((state) => state.map.camera?.bearing)
-  const [isNorth, setIsNorth] = useState(cameraPitch === 0 && cameraBearing === 0)
+  const [isNorth, setIsNorth] = useState(
+    cameraPitch === 0 && cameraBearing === 0
+  )
 
   useEffect(() => {
     setIsNorth(cameraPitch === 0 && cameraBearing === 0)
   }, [cameraBearing, cameraPitch])
 
   const handleNorth = () => {
-    dispatch(mapActions.cameraUpdated({
-      pitch: 0, bearing: 0
-    }))
+    dispatch(
+      mapActions.cameraUpdated({
+        pitch: 0,
+        bearing: 0
+      })
+    )
   }
 
   return (

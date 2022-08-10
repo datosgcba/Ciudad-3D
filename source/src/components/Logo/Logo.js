@@ -4,25 +4,10 @@ export default () => (
   <svg viewBox="-25 20 250 150">
     <g>
       <defs>
-        <linearGradient
-          id="grad1"
-          x1="0%"
-          y1="0%"
-          x2="0%"
-          y2="100%"
-        >
-          <stop
-            offset="50%"
-            style={{ stopColor: '#fed304', stopOpacity: 1 }}
-          />
-          <stop
-            offset="70%"
-            style={{ stopColor: '#f2eb9a', stopOpacity: 1 }}
-          />
-          <stop
-            offset="95%"
-            style={{ stopColor: '#0faee8', stopOpacity: 1 }}
-          />
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="50%" style={{ stopColor: '#fed304', stopOpacity: 1 }} />
+          <stop offset="70%" style={{ stopColor: '#f2eb9a', stopOpacity: 1 }} />
+          <stop offset="95%" style={{ stopColor: '#0faee8', stopOpacity: 1 }} />
         </linearGradient>
       </defs>
       <path

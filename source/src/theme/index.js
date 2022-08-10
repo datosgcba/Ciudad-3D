@@ -46,10 +46,7 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: [
-      'Nunito',
-      'Open Sans'
-    ].join(','),
+    fontFamily: ['Nunito', 'Open Sans'].join(','),
     caption: {
       letterSpacing: 0,
       fontSize: '11.5px',
@@ -58,8 +55,7 @@ const theme = createMuiTheme({
     h5: {
       fontSize: '1.5rem'
     },
-    body1: {
-    }
+    body1: {}
   },
   palette: {
     text: {

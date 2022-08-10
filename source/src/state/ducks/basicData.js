@@ -72,10 +72,11 @@ const selectedParcel = createAsyncThunk(
     }
   },
   {
-    condition: ({ lat, lng }, { getState }) => lat !== undefined
-      && lng !== undefined
-      && !getState().basicData.isLoading
-      && !getState().map.isMeasureActive
+    condition: ({ lat, lng }, { getState }) =>
+      lat !== undefined &&
+      lng !== undefined &&
+      !getState().basicData.isLoading &&
+      !getState().map.isMeasureActive
   }
 )
 

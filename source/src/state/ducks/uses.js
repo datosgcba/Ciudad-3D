@@ -19,8 +19,7 @@ const clickOnParcel = createAsyncThunk(
       .filter((d) => d !== undefined)
 
     // Condiciones de alertas
-    const usosCount = data
-      ?.usos?.filter((value) => value > 0).length ?? 0
+    const usosCount = data?.usos?.filter((value) => value > 0).length ?? 0
     if (usosCount > 1) {
       dispatch(alertsActions.addId('mixtura_usos'))
     }

@@ -10,7 +10,7 @@ const clickOnParcel = createAsyncThunk(
     }
     const url = getInspections(smp)
     const response = await fetch(url)
-    const dataState = (await response.json())
+    const dataState = await response.json()
     return dataState
   }
 )

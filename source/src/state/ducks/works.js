@@ -2,18 +2,15 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import { getWorks } from 'utils/apiConfig'
 
-const clickOnParcel = createAsyncThunk(
-  'works/clickOnParcel',
-  async (smp) => {
-    if (smp.length === undefined) {
-      return { smp: 'Invalido' }
-    }
-    const url = getWorks(smp)
-    const response = await fetch(url)
-    const dataState = (await response.json())
-    return dataState
+const clickOnParcel = createAsyncThunk('works/clickOnParcel', async (smp) => {
+  if (smp.length === undefined) {
+    return { smp: 'Invalido' }
   }
-)
+  const url = getWorks(smp)
+  const response = await fetch(url)
+  const dataState = await response.json()
+  return dataState
+})
 
 const works = createSlice({
   name: 'works',

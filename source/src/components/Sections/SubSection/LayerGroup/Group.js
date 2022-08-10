@@ -3,7 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Checkbox, Container, FormControlLabel, Typography, Box, makeStyles, IconButton
+  Checkbox,
+  Container,
+  FormControlLabel,
+  Typography,
+  Box,
+  makeStyles,
+  IconButton
 } from '@material-ui/core'
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
@@ -27,10 +33,19 @@ import { getLayersByLayersGroupId } from 'utils/configQueries'
 import useStyles from './groupStyle'
 
 const GroupItem = ({
-  idGroup, idLayer, title, color, classes, info, link, reference
+  idGroup,
+  idLayer,
+  title,
+  color,
+  classes,
+  info,
+  link,
+  reference
 }) => {
   const dispatch = useDispatch()
-  const isVisible = useSelector((state) => state.map.groups[idGroup][idLayer].isVisible)
+  const isVisible = useSelector(
+    (state) => state.map.groups[idGroup][idLayer].isVisible
+  )
 
   const layerChangeHandler = () => {
     dispatch(actions.toggleLayer({ idGroup, idLayer }))
@@ -39,71 +54,65 @@ const GroupItem = ({
     <ListItem key={idLayer} className={classes.listItem}>
       <FormControlLabel
         className={classes.formControl}
-        control={(
+        control={
           <Checkbox
-            icon={<CheckBoxOutlineBlankIcon fontSize="small" style={{ color: '#717170' }} />}
-            checkedIcon={<CheckBoxIcon fontSize="small" style={{ color: '#333' }} />}
+            icon={
+              <CheckBoxOutlineBlankIcon
+                fontSize="small"
+                style={{ color: '#717170' }}
+              />
+            }
+            checkedIcon={
+              <CheckBoxIcon fontSize="small" style={{ color: '#333' }} />
+            }
             checked={isVisible}
             onChange={layerChangeHandler}
             className={classes.checkBox}
             name={idLayer}
           />
-        )}
+        }
       />
       <Box className={classes.color} style={{ backgroundColor: `${color}` }} />
       <Box className={classes.boxIcons}>
-        <Typography
-          variant="subtitle2"
-        >
+        <Typography variant="subtitle2">
           {title}
-          {
-            isVisible && (
-              <IconButton
-                className={classes.iconButton}
-                target="_blank"
-                href={link}
-              >
-                <CloudDownloadOutlinedIcon
-                  className={classes.downloadIcon}
-                />
-              </IconButton>
-            )
-          }
-          {
-            isVisible && info && (
-              <CustomTooltip
-                className={classes.info}
-                title={info}
-                placement="top"
-              >
-                <InfoOutlinedIcon />
-              </CustomTooltip>
-            )
-          }
-          {
-            isVisible && reference && (
-              <CustomTooltip
-                className={classes.reference}
-                title={
-                  reference.map(({ id, subTitle, color: c }) => (
-                    <ListItem key={id} className={classes.referenceItems}>
-                      <Box className={classes.color} style={{ backgroundColor: `${c}` }} />
-                      <Box className={classes.referenceTitle}>
-                        <Typography
-                          variant="subtitle2"
-                        >
-                          {subTitle}
-                        </Typography>
-                      </Box>
-                    </ListItem>
-                  ))
-                }
-                placement="top"
-              >
-                <ListAltIcon />
-              </CustomTooltip>
-            )
-          }
+          {isVisible && (
+            <IconButton
+              className={classes.iconButton}
+              target="_blank"
+              href={link}
+            >
+              <CloudDownloadOutlinedIcon className={classes.downloadIcon} />
+            </IconButton>
+          )}
+          {isVisible && info && (
+            <CustomTooltip
+              className={classes.info}
+              title={info}
+              placement="top"
+            >
+              <InfoOutlinedIcon />
+            </CustomTooltip>
+          )}
+          {isVisible && reference && (
+            <CustomTooltip
+              className={classes.reference}
+              title={reference.map(({ id, subTitle, color: c }) => (
+                <ListItem key={id} className={classes.referenceItems}>
+                  <Box
+                    className={classes.color}
+                    style={{ backgroundColor: `${c}` }}
+                  />
+                  <Box className={classes.referenceTitle}>
+                    <Typography variant="subtitle2">{subTitle}</Typography>
+                  </Box>
+                </ListItem>
+              ))}
+              placement="top"
+            >
+              <ListAltIcon />
+            </CustomTooltip>
+          )}
         </Typography>
       </Box>
     </ListItem>
@@ -112,24 +121,19 @@ const GroupItem = ({
 
 const GroupItems = ({ idGroup, classes }) => {
   const layersConfig = getLayersByLayersGroupId(idGroup)
-  return (
-    layersConfig
-      .map(({
-        id, title, color, info, link, reference
-      }) => (
-        <GroupItem
-          key={id}
-          idGroup={idGroup}
-          idLayer={id}
-          title={title}
-          color={color}
-          classes={classes}
-          info={info}
-          link={link}
-          reference={reference}
-        />
-      ))
-  )
+  return layersConfig.map(({ id, title, color, info, link, reference }) => (
+    <GroupItem
+      key={id}
+      idGroup={idGroup}
+      idLayer={id}
+      title={title}
+      color={color}
+      classes={classes}
+      info={info}
+      link={link}
+      reference={reference}
+    />
+  ))
 }
 
 const Group = ({ id, title }) => {

@@ -46,14 +46,25 @@ const Map = ({ children }) => {
   useEffect(() => {
     if (isMapReady && cameraLat) {
       mapGL.map.flyTo({
-        center: [cameraLng, cameraLat], zoom: cameraZoom, pitch: cameraPitch, bearing: cameraBearing
+        center: [cameraLng, cameraLat],
+        zoom: cameraZoom,
+        pitch: cameraPitch,
+        bearing: cameraBearing
       })
     } else if (isMapReady) {
       mapGL.map.flyTo({
         pitch: cameraPitch
       })
     }
-  }, [isMapReady, mapGL, cameraLat, cameraLng, cameraZoom, cameraBearing, cameraPitch])
+  }, [
+    isMapReady,
+    mapGL,
+    cameraLat,
+    cameraLng,
+    cameraZoom,
+    cameraBearing,
+    cameraPitch
+  ])
 
   const onFeatureClick = (mapInstance, lngLat, feature) => {
     mapInstance
@@ -62,19 +73,28 @@ const Map = ({ children }) => {
       .then((data) => {
         const { contenido, direccionNormalizada } = data
         const featureInfoString = renderToString(
-          <FeatureInfo contenido={contenido} direccionNormalizada={direccionNormalizada} />
+          <FeatureInfo
+            contenido={contenido}
+            direccionNormalizada={direccionNormalizada}
+          />
         )
         mapInstance.addPopup(lngLat, featureInfoString)
       })
   }
 
-  const onClicked = useCallback(({ lng, lat }) => {
-    const coord = { lng, lat }
-    dispatch(mapActions.clickOnMap(coord))
-  }, [dispatch])
+  const onClicked = useCallback(
+    ({ lng, lat }) => {
+      const coord = { lng, lat }
+      dispatch(mapActions.clickOnMap(coord))
+    },
+    [dispatch]
+  )
 
   useEffect(() => {
-    if (isMapReady && mapGL.isVisibleBaseLayerPrincipal() === capabasePrincipal) {
+    if (
+      isMapReady &&
+      mapGL.isVisibleBaseLayerPrincipal() === capabasePrincipal
+    ) {
       mapGL.toggleBaseLayer()
     }
   }, [capabasePrincipal, mapGL, isMapReady])
@@ -103,13 +123,15 @@ const Map = ({ children }) => {
           const bearing = map.map.getBearing()
           const pitch = map.map.getPitch()
           const zoom = map.map.getZoom()
-          dispatch(mapActions.cameraUpdated({
-            lat,
-            lng,
-            zoom,
-            bearing,
-            pitch
-          }))
+          dispatch(
+            mapActions.cameraUpdated({
+              lat,
+              lng,
+              zoom,
+              bearing,
+              pitch
+            })
+          )
         }
       })
       setMapGL(map)
@@ -119,7 +141,15 @@ const Map = ({ children }) => {
       map.map.addControl(control)
       dispatch(mapActions.initMap(map))
     }
-  }, [isMapReady, defaultMapStyle, cameraLat, cameraLng, cameraZoom, onClicked, dispatch])
+  }, [
+    isMapReady,
+    defaultMapStyle,
+    cameraLat,
+    cameraLng,
+    cameraZoom,
+    onClicked,
+    dispatch
+  ])
 
   const classes = useStyles()
   return (
@@ -135,30 +165,38 @@ const Map = ({ children }) => {
           onClick={() => setCapabasePrincipal(!capabasePrincipal)}
         />
         <Box className={classes.topMenu}>
-          <Seeker onSelectItem={(selectedSuggestion) => {
-            dispatch(seekerActions.placeSelected({ data: { smp: null } }))
-            dispatch(seekerActions.placeSelected(selectedSuggestion))
-            dispatch(seekerActions.coordinatesSelected(selectedSuggestion.data.coordenadas))
-            /*
+          <Seeker
+            onSelectItem={(selectedSuggestion) => {
+              dispatch(seekerActions.placeSelected({ data: { smp: null } }))
+              dispatch(seekerActions.placeSelected(selectedSuggestion))
+              dispatch(
+                seekerActions.coordinatesSelected(
+                  selectedSuggestion.data.coordenadas
+                )
+              )
+              /*
             Se actualiza la camara desde acá
             ya que al elegir lugares o intersecciones
             el autocompleter no trae SMP
            */
-            if (
-              (selectedSuggestion.data.smp === undefined
-                || selectedSuggestion.data.smp === '')
-              && selectedSuggestion.data.coordenadas
-              && selectedSuggestion.data.coordenadas.x && selectedSuggestion.data.coordenadas.y
-            ) {
-              dispatch(mapActions.cameraUpdated({
-                lat: selectedSuggestion.data.coordenadas.y,
-                lng: selectedSuggestion.data.coordenadas.x,
-                zoom: 17,
-                pitch: 60,
-                bearing: 0
-              }))
-            }
-          }}
+              if (
+                (selectedSuggestion.data.smp === undefined ||
+                  selectedSuggestion.data.smp === '') &&
+                selectedSuggestion.data.coordenadas &&
+                selectedSuggestion.data.coordenadas.x &&
+                selectedSuggestion.data.coordenadas.y
+              ) {
+                dispatch(
+                  mapActions.cameraUpdated({
+                    lat: selectedSuggestion.data.coordenadas.y,
+                    lng: selectedSuggestion.data.coordenadas.x,
+                    zoom: 17,
+                    pitch: 60,
+                    bearing: 0
+                  })
+                )
+              }
+            }}
           />
         </Box>
         <Measure />

@@ -10,14 +10,12 @@ const Marker = ({ coords }) => {
   const [marker] = useState(new engine.Marker())
 
   useEffect(() => {
-    marker
-      .setLngLat([coords.lng, coords.lat])
-      .addTo(mapUtils.map)
+    marker.setLngLat([coords.lng, coords.lat]).addTo(mapUtils.map)
     refMarker.current.innerHTML = null
     refMarker.current.appendChild(marker.getElement())
   }, [coords, mapUtils.map, marker, refMarker])
 
-  return (<div ref={refMarker} />)
+  return <div ref={refMarker} />
 }
 
 Marker.propTypes = {

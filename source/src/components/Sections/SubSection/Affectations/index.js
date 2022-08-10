@@ -2,9 +2,7 @@ import React, { useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 
-import {
-  Box, Typography, Grid, makeStyles, Paper
-} from '@material-ui/core'
+import { Box, Typography, Grid, makeStyles, Paper } from '@material-ui/core'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
@@ -17,10 +15,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import useStyles from './styles'
 
-const Details = ({
-  classes, title, subtitle, fill, decorators
-}) => (
-
+const Details = ({ classes, title, subtitle, fill, decorators }) => (
   <Box>
     <Box className={classes.card}>
       <Grid container>
@@ -30,9 +25,7 @@ const Details = ({
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="subtitle2">
-            {subtitle}
-          </Typography>
+          <Typography variant="subtitle2">{subtitle}</Typography>
         </Grid>
         <Grid item xs={12} className={classes.gridItem}>
           <Typography variant="body2" className={classes.gridText}>
@@ -56,13 +49,11 @@ const Affectations = () => {
     dispatch(affectationsActions.clickOnParcel(smp))
   }, [dispatch, smp])
   return (
-    <ContainerBar
-      type="list"
-    >
-      {!isLoading && smp && data
-        && data.map(({
-          id, title, subtitle, desc
-        }) => (
+    <ContainerBar type="list">
+      {!isLoading &&
+        smp &&
+        data &&
+        data.map(({ id, title, subtitle, desc }) => (
           <Details
             key={id}
             classes={classes}
@@ -72,24 +63,24 @@ const Affectations = () => {
             fill={desc}
           />
         ))}
-      { !isLoading && smp && data && data.length === 0 && (
+      {!isLoading && smp && data && data.length === 0 && (
         <Typography variant="body1" className={classes.body1}>
           No posee afectaciones
         </Typography>
       )}
-      { smp && data === null && !isLoading && (
+      {smp && data === null && !isLoading && (
         <Paper className={classes.paper}>
           <Typography variant="body1" className={classes.body1}>
             No hay datos disponibles
           </Typography>
         </Paper>
       )}
-      { isLoading && (
+      {isLoading && (
         <Typography variant="body1" className={classes.body1}>
           Cargando...
         </Typography>
       )}
-      { !isLoading && !smp && <SelectParcel />}
+      {!isLoading && !smp && <SelectParcel />}
     </ContainerBar>
   )
 }

@@ -2,7 +2,14 @@ import React, { useState } from 'react'
 
 import { Autocompleter, Suggester } from '@usig-gcba/autocompleter'
 import {
-  Box, Avatar, IconButton, InputBase, ListItemAvatar, ListItemText, ListItem, Paper
+  Box,
+  Avatar,
+  IconButton,
+  InputBase,
+  ListItemAvatar,
+  ListItemText,
+  ListItem,
+  Paper
 } from '@material-ui/core/'
 import PlaceIcon from '@material-ui/icons/Place'
 import SearchIcon from '@material-ui/icons/Search'
@@ -31,12 +38,14 @@ const Seeker = ({ onSelectItem }) => {
 
   const completeSuggestionsCallback = (sug) => {
     if (sug.length === 0) {
-      setSuggestions([{
-        data: {
-          tipo: 'tipoalerta'
-        },
-        title: 'No se hallaron resultados coincidentes'
-      }])
+      setSuggestions([
+        {
+          data: {
+            tipo: 'tipoalerta'
+          },
+          title: 'No se hallaron resultados coincidentes'
+        }
+      ])
     }
   }
 
@@ -67,15 +76,19 @@ const Seeker = ({ onSelectItem }) => {
       setInputValue(`${selectedSuggestion.title} `)
       setSuggestions([])
       if (selectedSuggestion.type === 'CALLE') {
-        setSuggestions([{
-          data: {
-            tipo: 'tipoalerta'
-          },
-          title: 'El origen indicado es una Calle, por lo tanto debe especificar la altura o bien un cruce para poder continuar con la búsqueda.'
-        }])
+        setSuggestions([
+          {
+            data: {
+              tipo: 'tipoalerta'
+            },
+            title:
+              'El origen indicado es una Calle, por lo tanto debe especificar la altura o bien un cruce para poder continuar con la búsqueda.'
+          }
+        ])
       }
-      Promise.all(Suggester.getSuggestionPromises(selectedSuggestion))
-        .then(() => onSelectItem(selectedSuggestion))
+      Promise.all(
+        Suggester.getSuggestionPromises(selectedSuggestion)
+      ).then(() => onSelectItem(selectedSuggestion))
     }
   }
 
@@ -84,9 +97,7 @@ const Seeker = ({ onSelectItem }) => {
   }
 
   const renderInput = (inputProps) => {
-    const {
-      InputProps, classes: StyleClass, ref, ...other
-    } = inputProps
+    const { InputProps, classes: StyleClass, ref, ...other } = inputProps
 
     return (
       <InputBase
@@ -102,9 +113,7 @@ const Seeker = ({ onSelectItem }) => {
   }
 
   const renderSuggestion = (suggestionProps) => {
-    const {
-      suggestion, index, itemProps, highlightedIndex
-    } = suggestionProps
+    const { suggestion, index, itemProps, highlightedIndex } = suggestionProps
 
     const title = suggestion.alias || suggestion.title || suggestion.nombre
     const subTitle = suggestion.subTitle
@@ -156,9 +165,7 @@ const Seeker = ({ onSelectItem }) => {
           highlightedIndex,
           selectedItem
         }) => {
-          const {
-            onBlur, onFocus, onChange, ...inputProps
-          } = getInputProps({
+          const { onBlur, onFocus, onChange, ...inputProps } = getInputProps({
             placeholder: 'Buscar'
           })
 
@@ -182,13 +189,15 @@ const Seeker = ({ onSelectItem }) => {
               >
                 {suggestions.length !== 0 ? (
                   <Paper className={classes.paper} square>
-                    {suggestions.map((suggestion, index) => renderSuggestion({
-                      suggestion,
-                      index,
-                      itemProps: getItemProps({ item: suggestion.title }),
-                      highlightedIndex,
-                      selectedItem
-                    }))}
+                    {suggestions.map((suggestion, index) =>
+                      renderSuggestion({
+                        suggestion,
+                        index,
+                        itemProps: getItemProps({ item: suggestion.title }),
+                        highlightedIndex,
+                        selectedItem
+                      })
+                    )}
                   </Paper>
                 ) : null}
               </Box>

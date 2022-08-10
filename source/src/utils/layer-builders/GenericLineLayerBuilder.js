@@ -8,7 +8,6 @@ function getLayer(source, coordinateConversion, style) {
       'line-color': style.color ? style.color : '#DD0083',
       'line-opacity': style.opacity ? style.opacity : 1
     }
-
   }
 
   return layer

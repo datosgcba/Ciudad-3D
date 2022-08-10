@@ -2,9 +2,7 @@ import React from 'react'
 
 import PropTypes from 'prop-types'
 
-import {
-  SvgIcon, Typography, CardActionArea
-} from '@material-ui/core'
+import { SvgIcon, Typography, CardActionArea } from '@material-ui/core'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { actions } from 'state/ducks/categories'
@@ -14,17 +12,21 @@ import { actions as alertsActions } from 'state/ducks/alerts'
 import useStyles from './styles'
 
 const Icon = ({ className, path, isSelected }) => (
-  <SvgIcon className={className} component="div" color={isSelected ? 'primary' : 'disabled'}>
-    { path }
+  <SvgIcon
+    className={className}
+    component="div"
+    color={isSelected ? 'primary' : 'disabled'}
+  >
+    {path}
   </SvgIcon>
 )
 
-const Category = ({
-  id, path, title, url
-}) => {
-  const sectionName = useSelector((state) => (state.categories.sectionId.length === 0
-    ? null
-    : state.categories.sectionId[0]))
+const Category = ({ id, path, title, url }) => {
+  const sectionName = useSelector((state) =>
+    state.categories.sectionId.length === 0
+      ? null
+      : state.categories.sectionId[0]
+  )
 
   const dispatch = useDispatch()
 

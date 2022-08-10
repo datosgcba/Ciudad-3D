@@ -32,34 +32,40 @@ import useStyles from './styles'
 
 const ItemValues = ({ children, unit }) => {
   const values = children instanceof Array ? children : [children]
-  return values.map((v, idx) => (
-    `${idx > 0 ? ' | ' : ''} ${v === undefined ? '' : v} ${unit || ''}`
-  ))
+  return values.map(
+    (v, idx) =>
+      `${idx > 0 ? ' | ' : ''} ${v === undefined ? '' : v} ${unit || ''}`
+  )
 }
 const Details = ({
-  classes, title, data, items, isArea,
-  smp, decorators, isEditing, setIsEditing, info, link, valueLink
+  classes,
+  title,
+  data,
+  items,
+  isArea,
+  smp,
+  decorators,
+  isEditing,
+  setIsEditing,
+  info,
+  link,
+  valueLink
 }) => {
   const dispatch = useDispatch()
   const [areaValue, setAreaValue] = useState(0)
 
   const handleOnAreaChange = ({ target: { value } }) => {
-    const isFloat = value[value.length - 1] === ','
-      ?? true
+    const isFloat = value[value.length - 1] === ',' ?? true
     const isEmpty = value === '' ?? true
 
     // eslint-disable-next-line no-nested-ternary
     const newAreaValue = isFloat
       ? value
       : isEmpty
-        ? 0
-        : Number.parseFloat(value.replace(/,/g, '.'))
+      ? 0
+      : Number.parseFloat(value.replace(/,/g, '.'))
 
-    setAreaValue(
-      Number.isNaN(newAreaValue)
-        ? areaValue
-        : newAreaValue
-    )
+    setAreaValue(Number.isNaN(newAreaValue) ? areaValue : newAreaValue)
   }
 
   useEffect(() => {
@@ -76,73 +82,58 @@ const Details = ({
         </Typography>
       </Box>
       <Box className={classes.boxIcons}>
-        {
-          info && (
-            <CustomTooltip
-              className={classes.tooltip}
-              title={info}
-              placement="top"
-            >
-              <InfoOutlinedIcon
-                className={classes.info}
-              />
-            </CustomTooltip>
-          )
-        }
+        {info && (
+          <CustomTooltip
+            className={classes.tooltip}
+            title={info}
+            placement="top"
+          >
+            <InfoOutlinedIcon className={classes.info} />
+          </CustomTooltip>
+        )}
       </Box>
-      {
-        items && items.map(({ label, field, unidad }, idx) => (
+      {items &&
+        items.map(({ label, field, unidad }, idx) => (
           <ListItem key={idx} className={classes.listado}>
             {label}
-            {
-              isArea && isEditing
-                ? (
-                  <TextField
-                    className={classes.input}
-                    value={areaValue.toString().replace(/\./g, ',')}
-                    InputProps={{
-                      endAdornment: <InputAdornment position="end">{unidad}</InputAdornment>
-                    }}
-                    onChange={handleOnAreaChange}
-                  />
-                )
-                : (
-                  <>
-                    <ItemValues unit={unidad}>
-                      {
-                        field
-                          .split('.')
-                          .reduce((p, c) => p && p[c], data)
-                      }
-                    </ItemValues>
-                  </>
-                )
-            }
-            {
-              isArea && (
-                <IconButton
-                  onClick={() => setIsEditing(!isEditing)}
-                  className={classes.button}
-                >
-                  <EditIcon color={isEditing ? 'primary' : 'inherit'} />
-                </IconButton>
-              )
-            }
+            {isArea && isEditing ? (
+              <TextField
+                className={classes.input}
+                value={areaValue.toString().replace(/\./g, ',')}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">{unidad}</InputAdornment>
+                  )
+                }}
+                onChange={handleOnAreaChange}
+              />
+            ) : (
+              <>
+                <ItemValues unit={unidad}>
+                  {field.split('.').reduce((p, c) => p && p[c], data)}
+                </ItemValues>
+              </>
+            )}
+            {isArea && (
+              <IconButton
+                onClick={() => setIsEditing(!isEditing)}
+                className={classes.button}
+              >
+                <EditIcon color={isEditing ? 'primary' : 'inherit'} />
+              </IconButton>
+            )}
           </ListItem>
-        ))
-      }
-      {
-        link && (
-          <Link
-            className={classes.link}
-            href={link}
-            target="_blank"
-            rel="noopener"
-          >
-            {valueLink}
-          </Link>
-        )
-      }
+        ))}
+      {link && (
+        <Link
+          className={classes.link}
+          href={link}
+          target="_blank"
+          rel="noopener"
+        >
+          {valueLink}
+        </Link>
+      )}
     </>
   )
 }
@@ -161,18 +152,23 @@ const Buildable = () => {
     dispatch(buildableActions.clickOnParcel(smp))
   }, [dispatch, smp])
   return (
-    <ContainerBar
-      type="list"
-    >
+    <ContainerBar type="list">
       <Grid container className={classes.grid}>
-        {
-          getBuildable().map(({
-            title, items, isArea, isPlusvalia, large, info, link, valueLink
-          }, index) => {
+        {getBuildable().map(
+          (
+            { title, items, isArea, isPlusvalia, large, info, link, valueLink },
+            index
+          ) => {
             const maxWidth = large === 6 ? 'small' : null
             return (
-              smp && !isLoading && (
-                <Grid key={index} item xs={12} className={`${classes.gridItem} ${classes[maxWidth]} `}>
+              smp &&
+              !isLoading && (
+                <Grid
+                  key={index}
+                  item
+                  xs={12}
+                  className={`${classes.gridItem} ${classes[maxWidth]} `}
+                >
                   <Details
                     // eslint-disable-next-line react/no-array-index-key
                     key={index}
@@ -192,15 +188,11 @@ const Buildable = () => {
                 </Grid>
               )
             )
-          })
-        }
+          }
+        )}
       </Grid>
-      { !smp && !isLoading && <SelectParcel />}
-      { isLoading && (
-        <Typography variant="body1">
-          Cargando...
-        </Typography>
-      )}
+      {!smp && !isLoading && <SelectParcel />}
+      {isLoading && <Typography variant="body1">Cargando...</Typography>}
     </ContainerBar>
   )
 }

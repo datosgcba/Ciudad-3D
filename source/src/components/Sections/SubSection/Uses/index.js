@@ -2,9 +2,7 @@ import React, { useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 
-import {
-  Box, Typography, Grid, makeStyles, Link
-} from '@material-ui/core'
+import { Box, Typography, Grid, makeStyles, Link } from '@material-ui/core'
 import useFontsStyles from 'theme/fontsDecorators'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -21,7 +19,12 @@ import { actions as usesActions } from 'state/ducks/uses'
 import useStyles from './styles'
 
 const Details = ({
-  classes, title, fill, afluencia, iconsData, decorators
+  classes,
+  title,
+  fill,
+  afluencia,
+  iconsData,
+  decorators
 }) => (
   <Box>
     <Box className={classes.card}>
@@ -32,9 +35,7 @@ const Details = ({
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="caption">
-            {fill}
-          </Typography>
+          <Typography variant="caption">{fill}</Typography>
         </Grid>
       </Grid>
     </Box>
@@ -47,12 +48,8 @@ const Details = ({
           <Typography variant="subtitle2" className={decorators.bold}>
             {iconTitle}
           </Typography>
-          <Typography variant="subtitle2">
-            Afluencia
-          </Typography>
-          <Typography variant="subtitle2">
-            {afluencia}
-          </Typography>
+          <Typography variant="subtitle2">Afluencia</Typography>
+          <Typography variant="subtitle2">{afluencia}</Typography>
         </Grid>
       ))}
     </Grid>
@@ -72,13 +69,9 @@ const Uses = () => {
     dispatch(usesActions.clickOnParcel(smp))
   }, [dispatch, smp])
   return (
-    <ContainerBar
-      type="list"
-    >
-      {data?.length > 0
-        && data.map(({
-          id, title, desc, afluencia, iconsData
-        }) => (
+    <ContainerBar type="list">
+      {data?.length > 0 &&
+        data.map(({ id, title, desc, afluencia, iconsData }) => (
           <Details
             key={id}
             classes={classes}
@@ -89,35 +82,28 @@ const Uses = () => {
             iconsData={iconsData}
           />
         ))}
-      {
-        data.length !== 0 && (
-          <Typography variant="body1" className={`${decorators.bold} ${classes.info}`}>
-            Para mayor descripción verificar el cuadro de usos haciendo click
-            {' '}
-            <Link
-              className={classes.link}
-              href={link}
-              target="_blank"
-              rel="noopener"
-              underline="always"
-            >
-              aquí
-            </Link>
-          </Typography>
-        )
-      }
-      { data.length === 0 && !isLoading && !smp && <SelectParcel />}
-      { data.length === 0 && !isLoading && smp
-        && (
-        <Typography variant="body1">
-          {getAlert('no_usos').text}
-        </Typography>
-        )}
-      { isLoading && (
-        <Typography variant="body1">
-          Cargando...
+      {data.length !== 0 && (
+        <Typography
+          variant="body1"
+          className={`${decorators.bold} ${classes.info}`}
+        >
+          Para mayor descripción verificar el cuadro de usos haciendo click{' '}
+          <Link
+            className={classes.link}
+            href={link}
+            target="_blank"
+            rel="noopener"
+            underline="always"
+          >
+            aquí
+          </Link>
         </Typography>
       )}
+      {data.length === 0 && !isLoading && !smp && <SelectParcel />}
+      {data.length === 0 && !isLoading && smp && (
+        <Typography variant="body1">{getAlert('no_usos').text}</Typography>
+      )}
+      {isLoading && <Typography variant="body1">Cargando...</Typography>}
     </ContainerBar>
   )
 }

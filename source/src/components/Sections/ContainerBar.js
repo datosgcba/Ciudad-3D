@@ -22,14 +22,17 @@ const ContainerBar = ({ children, type }) => {
   const lastIndex = sectionId.length - 1
   const selectedOption = sectionId[0].toLowerCase()
 
-  const { title, info } = lastIndex > 0
-    ? getSectionInfo(selectedOption, sectionId[lastIndex]) : { title: null, info: null }
+  const { title, info } =
+    lastIndex > 0
+      ? getSectionInfo(selectedOption, sectionId[lastIndex])
+      : { title: null, info: null }
 
-  const maxHeight = sectionId.length > 1
-    ? '80vh' : '85vh'
+  const maxHeight = sectionId.length > 1 ? '80vh' : '85vh'
 
   return (
-    <Box className={`${classes[type]} ${classes.container} ${classes.responsive}`}>
+    <Box
+      className={`${classes[type]} ${classes.container} ${classes.responsive}`}
+    >
       <Paper elevation={2} className={classes.padding}>
         <HeaderSection
           categoryTitle={categoryTitle}

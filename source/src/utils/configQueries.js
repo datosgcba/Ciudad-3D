@@ -44,6 +44,7 @@ const getLayersByLayersGroupId = (layersGroupId) =>
     .find((l) => l.id === layersGroupId)
     .layers.map(({ id, title, color, index, info, link, reference }) => ({
       id,
+      idGroup: layersGroupId,
       title,
       color,
       index,
@@ -52,6 +53,21 @@ const getLayersByLayersGroupId = (layersGroupId) =>
       reference
     }))
 
+const getVisibleLayers = ({ groups }) => {
+  const groupsValues = Object.values(groups)
+  const visibleGroups = groupsValues
+    .map((g) => Object.keys(g).filter((k) => g[k].isVisible))
+    .flat()
+
+  const visibleLayers = getLayersGroups()
+    .map(({ id }) => {
+      return getLayersByLayersGroupId(id).filter(({ id }) =>
+        visibleGroups.includes(id)
+      )
+    })
+    .flat()
+  return visibleLayers
+}
 const getWorksGroups = () =>
   config.works.map(({ id, title, info, link, columns }) => ({
     id,
@@ -193,6 +209,7 @@ export {
   getBasicData,
   getLayersGroups,
   getLayersByLayersGroupId,
+  getVisibleLayers,
   getBuildable,
   getExplorer,
   getUsesTable,

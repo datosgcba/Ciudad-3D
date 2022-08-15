@@ -33,7 +33,7 @@ import { getLayersByLayersGroupId } from 'utils/configQueries'
 
 import useStyles from './groupStyle'
 
-const GroupItem = ({
+export const GroupItem = ({
   idGroup,
   idLayer,
   title,

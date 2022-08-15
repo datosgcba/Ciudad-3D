@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import { Paper } from '@material-ui/core'
 
+import ActiveLayers from 'components/ActiveLayers'
 import Map from 'components/Map'
 import Marker from 'components/Marker'
 import Parcel from 'components/Parcel'
@@ -38,6 +39,7 @@ const Home = ({ token }) => {
       <Sections />
       <SideBar />
       <Map logged={!!token}>
+        <ActiveLayers />
         <Parcel />
         {placeLat && placeLng && (
           <>

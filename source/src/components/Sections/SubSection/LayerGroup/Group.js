@@ -4,19 +4,20 @@ import PropTypes from 'prop-types'
 
 import {
   Checkbox,
-  Container,
   FormControlLabel,
   Typography,
   Box,
   makeStyles,
-  IconButton
+  IconButton,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  List,
+  ListItem
 } from '@material-ui/core'
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 import ListAltIcon from '@material-ui/icons/ListAlt'
-import Divider from '@material-ui/core/Divider'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
 
 import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
@@ -141,15 +142,18 @@ const Group = ({ id, title }) => {
   const decorators = useFontsStyles()
 
   return (
-    <Container className={`${classes.container} ${classes.responsive}`}>
-      <Typography variant="subtitle2" className={decorators.bold}>
-        {title}
-        <Divider className={classes.divider} />
-      </Typography>
-      <List dense>
-        <GroupItems idGroup={id} classes={classes} />
-      </List>
-    </Container>
+    <Accordion style={{ margin: 5 }}>
+      <AccordionSummary>
+        <Typography variant="subtitle2" className={decorators.bold}>
+          {title}
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails style={{ paddingLeft: 20 }}>
+        <List dense>
+          <GroupItems idGroup={id} classes={classes} />
+        </List>
+      </AccordionDetails>
+    </Accordion>
   )
 }
 

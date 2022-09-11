@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { renderToString } from 'react-dom/server'
 
-import { Container, Box } from '@material-ui/core'
+import { Container, Box, Typography } from '@material-ui/core'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { actions as mapActions } from 'state/ducks/map'
@@ -14,12 +14,51 @@ import Seeker from 'components/Seeker/Seeker'
 import FeatureInfo from 'components/FeatureInfo/FeatureInfo'
 import Measure from 'components/Measure'
 import DimensionBtn from 'components/DimensionBtn'
+
+import useFontsStyles from 'theme/fontsDecorators'
+
 import imgCapaBasePrincipal from 'img/capabase_1.png'
 import imgCapaBaseSecundaria from 'img/capabase_2.png'
+import imgCapaBaseHistory from 'img/capabase_history.png'
 
 import PropTypes from 'prop-types'
 import useStyles from './styles'
 
+const mockupHistory = [...new Array(10).keys()].map((v) => ({
+  title: `${v + 1940}`,
+  url: 'https://tiles.usig.org.ar/history/tiles/1940/{z}/{x}/{y}.pbf'
+}))
+
+const MinimapOption = ({ imageUrl, text, children, ...otherProps }) => {
+  const classes = useStyles()
+  const decorators = useFontsStyles()
+
+  return (
+    <>
+      <Box
+        className={classes.minimapLayer}
+        style={{
+          backgroundImage: imageUrl
+        }}
+        {...otherProps}
+      >
+        <Typography
+          variant="caption"
+          className={[
+            decorators.bold,
+            decorators.white,
+            classes.minimapTitleContainer
+          ]}
+        >
+          {text}
+        </Typography>
+      </Box>
+      {children}
+    </>
+  )
+}
+// background-color: rgba(0, 0, 0, 0.5);
+//     color: white;
 const transformRequest = (url, resourceType) => {
   const token = '7b3ea1f12563ee390a13ab885884e4590cf6de26'
   if (resourceType === 'Tile' && url.endsWith('pbf')) {
@@ -39,7 +78,11 @@ const Map = ({ children }) => {
   const cameraZoom = useSelector((state) => state.map.camera?.zoom)
   const cameraPitch = useSelector((state) => state.map.camera?.pitch)
   const cameraBearing = useSelector((state) => state.map.camera?.bearing)
+
   const [mapGL, setMapGL] = useState(null)
+  const [bottomMenuVisible, setBottomMenuVisible] = useState(false)
+  const [historyMenu, setHistoryMenuVisible] = useState(false)
+
   const dispatch = useDispatch()
   const [capabasePrincipal, setCapabasePrincipal] = useState(true)
 
@@ -152,56 +195,110 @@ const Map = ({ children }) => {
   ])
 
   const classes = useStyles()
+
+  const handlerBottomMenuEnter = () => {
+    setBottomMenuVisible(true)
+  }
+
+  const handlerBottomMenuLeave = () => {
+    setBottomMenuVisible(false)
+    setHistoryMenuVisible(false)
+  }
+
+  const handlerHistoryMenuEnter = () => {
+    setHistoryMenuVisible(true)
+  }
+
+  const handlerHistoryMenuLeave = () => {
+    setHistoryMenuVisible(false)
+  }
+
   return (
     <Container id="map" className={classes.container}>
-      <Box className={classes.bottomMenu}>
-        <Box
-          className={classes.minimapLayer}
-          style={{
-            backgroundImage: capabasePrincipal
-              ? `url(${imgCapaBasePrincipal})`
-              : `url(${imgCapaBaseSecundaria})`
-          }}
+      <Box
+        className={classes.bottomMenu}
+        onMouseEnter={handlerBottomMenuEnter}
+        onMouseLeave={handlerBottomMenuLeave}
+      >
+        <MinimapOption
+          imageUrl={`url(${imgCapaBasePrincipal})`}
           onClick={() => setCapabasePrincipal(!capabasePrincipal)}
+          text={'MAPA'}
         />
-        <Box className={classes.topMenu}>
-          <Seeker
-            onSelectItem={(selectedSuggestion) => {
-              dispatch(seekerActions.placeSelected({ data: { smp: null } }))
-              dispatch(seekerActions.placeSelected(selectedSuggestion))
-              dispatch(
-                seekerActions.coordinatesSelected(
-                  selectedSuggestion.data.coordenadas
-                )
+        {bottomMenuVisible && (
+          <>
+            <MinimapOption
+              imageUrl={`url(${imgCapaBaseSecundaria})`}
+              onClick={() => setCapabasePrincipal(capabasePrincipal)}
+              text={'AEREA'}
+            />
+            <MinimapOption
+              imageUrl={`url(${imgCapaBaseHistory})`}
+              onClick={() => setCapabasePrincipal(!capabasePrincipal)}
+              text={'HISTÓRICA'}
+              onMouseEnter={handlerHistoryMenuEnter}
+              onMouseLeave={handlerHistoryMenuLeave}
+            >
+              <Box
+                className={classes.historyMenu}
+                style={{
+                  top: mockupHistory.length * -35 + 5
+                }}
+                onMouseEnter={handlerHistoryMenuEnter}
+                onMouseLeave={handlerHistoryMenuLeave}
+              >
+                {historyMenu && mockupHistory?.length
+                  ? mockupHistory.map(({ title }) => (
+                      <Typography
+                        variant="caption"
+                        className={classes.historyTitle}
+                      >
+                        {title}
+                      </Typography>
+                    ))
+                  : null}
+              </Box>
+            </MinimapOption>
+          </>
+        )}
+      </Box>
+      <Box className={classes.topMenu}>
+        <Seeker
+          onSelectItem={(selectedSuggestion) => {
+            dispatch(seekerActions.placeSelected({ data: { smp: null } }))
+            dispatch(seekerActions.placeSelected(selectedSuggestion))
+            dispatch(
+              seekerActions.coordinatesSelected(
+                selectedSuggestion.data.coordenadas
               )
-              /*
+            )
+            /*
             Se actualiza la camara desde acá
             ya que al elegir lugares o intersecciones
             el autocompleter no trae SMP
            */
-              if (
-                (selectedSuggestion.data.smp === undefined ||
-                  selectedSuggestion.data.smp === '') &&
-                selectedSuggestion.data.coordenadas &&
-                selectedSuggestion.data.coordenadas.x &&
-                selectedSuggestion.data.coordenadas.y
-              ) {
-                dispatch(
-                  mapActions.cameraUpdated({
-                    lat: selectedSuggestion.data.coordenadas.y,
-                    lng: selectedSuggestion.data.coordenadas.x,
-                    zoom: 17,
-                    pitch: 60,
-                    bearing: 0
-                  })
-                )
-              }
-            }}
-          />
-        </Box>
-        <Measure />
-        <DimensionBtn />
+            if (
+              (selectedSuggestion.data.smp === undefined ||
+                selectedSuggestion.data.smp === '') &&
+              selectedSuggestion.data.coordenadas &&
+              selectedSuggestion.data.coordenadas.x &&
+              selectedSuggestion.data.coordenadas.y
+            ) {
+              dispatch(
+                mapActions.cameraUpdated({
+                  lat: selectedSuggestion.data.coordenadas.y,
+                  lng: selectedSuggestion.data.coordenadas.x,
+                  zoom: 17,
+                  pitch: 60,
+                  bearing: 0
+                })
+              )
+            }
+          }}
+        />
       </Box>
+      <Measure />
+      <DimensionBtn />
       {isMapReady && children}
     </Container>
   )

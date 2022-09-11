@@ -22,7 +22,8 @@ export default makeStyles(() => ({
     bottom: '10px',
     zIndex: 998,
     display: 'inline-flex',
-    flexDirection: 'column-reverse'
+    flexDirection: 'row-reverse',
+    backgroundColor: 'rgba(255, 255, 255, 0.3)'
   },
   minimapLayer: {
     cursor: 'pointer',
@@ -34,21 +35,47 @@ export default makeStyles(() => ({
     backgroundSize: 'cover',
     textAlign: 'center',
     boxSizing: 'border-box',
-    boxShadow: '0 0 5px #000'
+    boxShadow: '2 2 5px #000',
+    border: '2px solid #fff',
+    margin: 5
   },
   minimapTitleContainer: {
     display: 'table',
     width: '100%',
-    background: 'rgba(255,255,255,0.6)',
-    height: '25%',
     padding: 0,
     border: 0,
     position: 'absolute',
-    bottom: '5%',
-    transition: 'bottom .35s ease'
+    top: 'calc(50% - 8px)',
+    transition: 'bottom .35s ease',
+    'text-shadow':
+      '2px 0 #333, -2px 0 #333, 0 2px #333, 0 -2px #333, 1px 1px #333, -1px -1px #333, 1px -1px #333, -1px 1px #333'
   },
   minimapTitle: {
     display: 'table-cell',
     verticalAlign: 'middle'
+  },
+  historyMenu: {
+    display: 'flex',
+    flexDirection: 'column-reverse',
+    color: 'white',
+    position: 'absolute',
+    left: 5
+  },
+  historyTitle: {
+    border: '1px solid white',
+    width: 80,
+    height: 30,
+    marginBottom: 5,
+    fontWeight: 'bold',
+    fontSize: 14,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    '&:hover': {
+      border: '2px solid white',
+      backgroundColor: 'black',
+      cursor: 'pointer'
+    }
   }
 }))

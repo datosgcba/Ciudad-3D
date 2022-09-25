@@ -439,7 +439,7 @@ class MapaInteractivoGL {
   ) {
     this._loadingLayer = true
     const self = this
-    const { id } = options
+    const { id, source: sourceOptions, ...layerOptions } = options
     this.inactivateMarker()
 
     if (!this._layers[id]) {
@@ -451,10 +451,24 @@ class MapaInteractivoGL {
       }
 
       this.showMessage(this.config.texts[this.config.language].loadingLayers)
-      if (this.map.getSource(options.id)) {
-        this.map.removeSource(options.id)
+
+      const { id: sourceId, ...source } =
+        typeof sourceOptions === 'string'
+          ? { id: sourceOptions }
+          : {
+              id,
+              ...sourceOptions
+            }
+
+      if (!this.map.getSource(sourceId)) {
+        this.map.addSource(sourceId, source)
       }
-      this.map.addLayer(options)
+
+      this.map.addLayer({
+        ...layerOptions,
+        id,
+        source: sourceId
+      })
 
       // Change the cursor to a pointer when the mouse is over the places layer.
       this.map.on('mouseenter', id, () => {

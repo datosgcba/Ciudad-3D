@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-var
 var configs = {
   urlConfigBase: 'configBase.json',
+  urlLayers: 'https://epok.buenosaires.gob.ar/mbtiles/',
   includes: {
     urlAPI: 'https://epok.buenosaires.gob.ar',
     urlPhoto: 'https://fotos.usig.buenosaires.gob.ar',

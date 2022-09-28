@@ -217,7 +217,7 @@ const Map = ({ children }) => {
     <Container id="map" className={classes.container}>
       <Box
         className={classes.bottomMenu}
-        onMouseEnter={handlerBottomMenuEnter}
+        //onMouseEnter={handlerBottomMenuEnter}
         onMouseLeave={handlerBottomMenuLeave}
       >
         <MinimapOption

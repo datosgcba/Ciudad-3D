@@ -2179,11 +2179,9 @@
       },
       "history_1": {
         "type": "raster",
-        "tiles": [
-          "https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg"
-        ],
+        "tiles": ["{{urlVectorTile}}parcela/{z}/{x}/{y}.pbf?optimize=true"],
         "minzoom": 10,
-        "maxzoom": 24,
+        "maxzoom": 18,
         "cluster": false
       }
     },
@@ -2192,15 +2190,6 @@
         "id": "baseLayer_principal",
         "type": "raster",
         "source": "capabase_1",
-        "layout": {
-          "visibility": "visible"
-        },
-        "paint": {}
-      },
-      {
-        "id": "historyLayer_1",
-        "type": "raster",
-        "source": "history_1",
         "layout": {
           "visibility": "visible"
         },

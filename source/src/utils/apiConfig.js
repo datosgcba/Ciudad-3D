@@ -23,6 +23,12 @@ const getCapitalGain = (smp) =>
 
 const getUses = (smp) => `${getApiUrl()}/cur3d/mixtura_usos/?smp=${smp}`
 
+const getUsesCategories = () => `${getApiUrl()}/cur3d/categorias`
+
+const getUsesRubros = (idCategory, idMixtura) => `${getApiUrl()}/cur3d/cuadrosdeuso/rubros/?categoria=${idCategory}&mixtura=${idMixtura}`
+
+const getUsesReferences = (idCategory, idMixtura, rubro) => `${getApiUrl()}/cur3d/cuadrosdeuso/referencias/?categoria=${idCategory}&mixtura=${idMixtura}&rubro=${rubro}`
+
 const getAffectations = (smp) => `${getApiUrl()}/cur3d/afectaciones/?smp=${smp}`
 
 const getWorks = (smp) => `${getApiUrl()}/cur3d/obras/?smp=${smp}`
@@ -49,6 +55,9 @@ export {
   getEnrase,
   getCapitalGain,
   getUses,
+  getUsesCategories,
+  getUsesReferences,
+  getUsesRubros,
   getAffectations,
   getWorks,
   getInspections,

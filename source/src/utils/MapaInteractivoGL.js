@@ -160,7 +160,7 @@ class MapaInteractivoGL {
     if (!this._loadingLayers && !this.layersDefs) {
       this._loadingLayers = true
       const layerPromise = fetch(
-        `${this.config.layers.apiUrl}mapainteractivoba/layers/?protocol=https`
+        `${this.config.apiUrl}/mapainteractivoba/layers/?protocol=https`
       )
         .then((res) => res.json())
         .then((layersDefs) => {
@@ -186,10 +186,10 @@ class MapaInteractivoGL {
       layerName.indexOf('.') === -1
         ? this.layersDefs[layerName]
         : {
-            [layerName]: this.layersDefs[layerName.split('.')[0]][
-              layerName.split('.')[1]
-            ]
-          }
+          [layerName]: this.layersDefs[layerName.split('.')[0]][
+            layerName.split('.')[1]
+          ]
+        }
     this.hideMessage()
     const builder =
       this._layerBuilders[layerId] || !layer[layerId].builder
@@ -328,10 +328,10 @@ class MapaInteractivoGL {
       layerName.indexOf('.') === -1
         ? this.layersDefs[layerName]
         : {
-            [layerName]: this.layersDefs[layerName.split('.')[0]][
-              layerName.split('.')[1]
-            ]
-          }
+          [layerName]: this.layersDefs[layerName.split('.')[0]][
+            layerName.split('.')[1]
+          ]
+        }
 
     this._loadingLayer = true
     Object.entries(conf).forEach((layer) => {
@@ -395,10 +395,10 @@ class MapaInteractivoGL {
         layerName.indexOf('.') === -1
           ? this.layersDefs[layerName]
           : {
-              [layerName]: this.layersDefs[layerName.split('.')[0]][
-                layerName.split('.')[1]
-              ]
-            }
+            [layerName]: this.layersDefs[layerName.split('.')[0]][
+              layerName.split('.')[1]
+            ]
+          }
       // if (this.onClickFeature) this.map.removeLayer(this.onClickFeature);
       if (layer) {
         if (this._layers[layerName]) {
@@ -456,9 +456,9 @@ class MapaInteractivoGL {
         typeof sourceOptions === 'string'
           ? { id: sourceOptions }
           : {
-              id,
-              ...sourceOptions
-            }
+            id,
+            ...sourceOptions
+          }
 
       if (!this.map.getSource(sourceId)) {
         this.map.addSource(sourceId, source)
@@ -482,7 +482,7 @@ class MapaInteractivoGL {
 
       if (displayPopup) {
         this._layers[id].popup_template = popupContent
-        this.map.on('click', id, self.addVectorTilePopup.bind(this))
+        self.map.on('click', id, self._onFeatureClick.bind(this))
       }
     }
 
@@ -558,7 +558,7 @@ class MapaInteractivoGL {
   }
 
   getFeatureProps(fid) {
-    return fetch(`${this.config.layers.apiUrl}getObjectContent/?id=${fid}`)
+    return fetch(`${this.config.apiUrl}/getObjectContent/?id=${fid}`)
   }
 
   addMarker(
@@ -588,11 +588,11 @@ class MapaInteractivoGL {
     delete this._markers[id]
   }
 
-  inactivateMarker() {}
+  inactivateMarker() { }
 
-  showMessage(text) {}
+  showMessage(text) { }
 
-  hideMessage() {}
+  hideMessage() { }
 
   getMapa() {
     return this.map

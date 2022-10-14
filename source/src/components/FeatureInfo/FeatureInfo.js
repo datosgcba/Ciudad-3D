@@ -18,9 +18,9 @@ const FeatureInfo = ({ contenido, direccionNormalizada }) => {
       <Box className={classes.markerProperties}>
         {contenido.map((p) =>
           p.nombreId !== 'nombre' &&
-          p.nombreId[0] !== '_' &&
-          p.valor[0] !== '<' &&
-          p.valor !== '' ? (
+            p.nombreId[0] !== '_' &&
+            p.valor[0] !== '<' &&
+            p.valor !== '' ? (
             <Box className={classes.markerProperty} key={p.nombreId}>
               <Box component="span" className={classes.markerPropertiesKey}>
                 {p.nombre}:{' '}
@@ -31,16 +31,6 @@ const FeatureInfo = ({ contenido, direccionNormalizada }) => {
             </Box>
           ) : null
         )}
-      </Box>
-      <Box className={classes.goContainer}>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={comoLlegoURL}
-          style={{ color: '#FFCE38' }}
-        >
-          <DirectionsIcon />
-        </a>
       </Box>
     </Box>
   )

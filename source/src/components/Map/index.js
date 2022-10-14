@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { actions as mapActions } from 'state/ducks/map'
 import { actions as seekerActions } from 'state/ducks/seeker'
 
+import { getApiUrl } from 'utils/configQueries'
+
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
 import Seeker from 'components/Seeker/Seeker'
@@ -175,7 +177,8 @@ const Map = ({ children }) => {
               pitch
             })
           )
-        }
+        },
+        apiUrl: getApiUrl()
       })
       setMapGL(map)
 
@@ -249,13 +252,13 @@ const Map = ({ children }) => {
               >
                 {historyMenu && mockupHistory?.length
                   ? mockupHistory.map(({ title }) => (
-                      <Typography
-                        variant="caption"
-                        className={classes.historyTitle}
-                      >
-                        {title}
-                      </Typography>
-                    ))
+                    <Typography
+                      variant="caption"
+                      className={classes.historyTitle}
+                    >
+                      {title}
+                    </Typography>
+                  ))
                   : null}
               </Box>
             </MinimapOption>

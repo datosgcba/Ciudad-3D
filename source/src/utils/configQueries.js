@@ -101,11 +101,12 @@ const getLayersGroups = () =>
 const getLayersByLayersGroupId = (layersGroupId) =>
   config.layersGroup
     .find((l) => l.id === layersGroupId)
-    .layers.map(({ id, title, color, index, info, link, reference }) => ({
+    .layers.map(({ id, title, color, icon, index, info, link, reference }) => ({
       id,
       idGroup: layersGroupId,
       title,
       color,
+      icon,
       index,
       info,
       link,

@@ -38,6 +38,7 @@ export const GroupItem = ({
   idLayer,
   title,
   color,
+  icon,
   classes,
   info,
   link,
@@ -73,7 +74,8 @@ export const GroupItem = ({
           />
         }
       />
-      <Box className={classes.color} style={{ backgroundColor: `${color}` }} />
+      {!icon && <Box className={classes.color} style={{ backgroundColor: `${color}` }} />}
+      {!!icon && <img src={icon} />}
       <Box className={classes.boxIcons}>
         <Typography variant="subtitle2">
           {title}
@@ -122,13 +124,14 @@ export const GroupItem = ({
 
 const GroupItems = ({ idGroup, classes }) => {
   const layersConfig = getLayersByLayersGroupId(idGroup)
-  return layersConfig.map(({ id, title, color, info, link, reference }) => (
+  return layersConfig.map(({ id, title, color, icon, info, link, reference }) => (
     <GroupItem
       key={id}
       idGroup={idGroup}
       idLayer={id}
       title={title}
       color={color}
+      icon={icon}
       classes={classes}
       info={info}
       link={link}

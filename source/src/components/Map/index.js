@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { actions as mapActions } from 'state/ducks/map'
 import { actions as seekerActions } from 'state/ducks/seeker'
 
-import { getApiUrl } from 'utils/configQueries'
+import { getApiUrl, getFullLayerConfigByIdLayer } from 'utils/configQueries'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'
 
@@ -112,14 +112,27 @@ const Map = ({ children }) => {
   ])
 
   const onFeatureClick = (mapInstance, lngLat, feature) => {
+    const {
+      properties: { Id: featId },
+      layer: { id: idLayer }
+    } = feature
+
+    const fields = JSON.parse(getFullLayerConfigByIdLayer(idLayer).popupContent)
+
     mapInstance
-      .getFeatureProps(feature.properties.Id)
+      .getFeatureProps(featId, fields)
       .then((res) => res.json())
       .then((data) => {
         const { contenido, direccionNormalizada } = data
+
+        const contenidoMostrar =
+          fields?.length > 0
+            ? contenido.filter(({ nombreId }) => fields.includes(nombreId))
+            : contenido
+
         const featureInfoString = renderToString(
           <FeatureInfo
-            contenido={contenido}
+            contenido={contenidoMostrar}
             direccionNormalizada={direccionNormalizada}
           />
         )

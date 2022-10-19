@@ -3,14 +3,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Box } from '@material-ui/core'
-import DirectionsIcon from '@material-ui/icons/Directions'
 
 import useStyles from './styles'
 
-const FeatureInfo = ({ contenido, direccionNormalizada }) => {
+const FeatureInfo = ({ contenido }) => {
   const classes = useStyles()
   const titulo = contenido.filter((p) => p.nombreId === 'nombre')[0].valor
-  const comoLlegoURL = `https://mapa.buenosaires.gob.ar/comollego/?lat=-34.620866&lng=-58.462780&zl=15&modo=transporte&hasta=${direccionNormalizada}`
 
   return (
     <Box className={classes.featureInfo}>
@@ -37,12 +35,10 @@ const FeatureInfo = ({ contenido, direccionNormalizada }) => {
 }
 
 FeatureInfo.propTypes = {
-  contenido: PropTypes.arrayOf(PropTypes.object),
-  direccionNormalizada: PropTypes.string
+  contenido: PropTypes.arrayOf(PropTypes.object)
 }
 
 FeatureInfo.defaultProps = {
-  contenido: [],
-  direccionNormalizada: ''
+  contenido: []
 }
 export default FeatureInfo

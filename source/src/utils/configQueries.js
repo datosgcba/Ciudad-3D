@@ -83,6 +83,15 @@ const getFullLayerConfig = (idGroup, idLayer) =>
     .find((g) => g.id === idGroup)
     .layers.find((l) => l.id === idLayer)
 
+// Métodos que devuelven mucha data y puede no ser serializable, recomendable usar getFullLayerConfig
+const getFullLayerConfigByIdLayer = (idLayer) =>
+  config.layersGroup
+    .flatMap(({ layers }) => layers)
+    .find(({ id, options }) => Array.isArray(options)
+      ? options.some(({ id }) => id === idLayer)
+      : id === idLayer
+    )
+
 // Métodos que retornan data acotada y segura de serializar
 const getCategories = () =>
   config.categories.map(({ id, title, path, url }) => ({
@@ -268,6 +277,7 @@ export {
   getInformation,
   getBasicData,
   getLayersGroups,
+  getFullLayerConfigByIdLayer,
   getLayersByLayersGroupId,
   getVisibleLayers,
   getBuildable,

@@ -159,6 +159,19 @@ const Uses = () => {
           <Grid className={classes.container}>
             <Grid item xs={12}>
               <Typography variant="subtitle2" className={decorators.bold}>
+                Permitido mixtura de usos:
+              </Typography>
+            </Grid>
+            {references?.permitido_mixtura_de_usos?.length > 0 &&
+              references.permitido_mixtura_de_usos.map(({ detalle }) => (
+                <Grid item xs={12}>
+                  <Typography variant="caption">{detalle}</Typography>
+                </Grid>
+              ))}
+          </Grid>
+          <Grid className={classes.container}>
+            <Grid item xs={12}>
+              <Typography variant="subtitle2" className={decorators.bold}>
                 Bicicletas:
               </Typography>
             </Grid>

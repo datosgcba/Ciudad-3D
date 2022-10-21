@@ -25,7 +25,7 @@ export const ActiveLayers = () => {
         >
           <List dense className={classes.list}>
             {visibleLayers.map(
-              ({ id, idGroup, title, color, info, link, reference }) => {
+              ({ id, idGroup, title, color, icon, info, link, reference }) => {
                 return (
                   <GroupItem
                     key={id}
@@ -33,6 +33,7 @@ export const ActiveLayers = () => {
                     idLayer={id}
                     title={title}
                     color={color}
+                    icon={icon}
                     classes={groupClasses}
                     info={info}
                     link={link}

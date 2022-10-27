@@ -18,7 +18,7 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'production') {
-  ReactGA.initialize('UA-190521771-1')
+  ReactGA.initialize('G-F5Z64SNBPV')
   ReactGA.pageview(window.location.pathname + window.location.search)
 } else {
   // eslint-disable-next-line no-console

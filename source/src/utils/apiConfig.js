@@ -33,6 +33,8 @@ const getAffectations = (smp) => `${getApiUrl()}/cur3d/afectaciones/?smp=${smp}`
 
 const getWorks = (smp) => `${getApiUrl()}/cur3d/obras/?smp=${smp}`
 
+const getSade = (smp) => `${getApiUrl()}/cur3d/sade/?smp=${smp}`
+
 const getInspections = (smp) => `${getApiUrl()}/cur3d/inspecciones/?smp=${smp}`
 
 const getPlusvalia = (smp, area = 0) =>
@@ -60,6 +62,7 @@ export {
   getUsesRubros,
   getAffectations,
   getWorks,
+  getSade,
   getInspections,
   getPlusvalia,
   getPhotoData,

@@ -95,9 +95,9 @@ const Works = () => {
   return (
     <ContainerBar type="table">
       <Box className={classes.boxContainer}>
-        {Object.keys(data).length >= 1 &&
-          getWorksGroups().map(({ id, title, info, link, columns }) => (
-            <Box className={classes.boxSubContainer} key={id}>
+        {
+          data?.sade?.map(({ title, columns, dataTable }) => (
+            <Box className={classes.boxSubContainer} key={title}>
               <Box className={classes.title}>
                 <Typography
                   variant="subtitle1"
@@ -105,33 +105,35 @@ const Works = () => {
                 >
                   {title}
                 </Typography>
+                <table border="1" className={classes.table}>
+                  <tbody>
+                    <tr>
+                      {
+                        // Se mapea cada una de las columnas para la tabla
+                        columns.map((column) => (
+                          <th id={column} key={column}>{column}</th>
+                        ))
+                      }
+                    </tr>
+                    {
+                      // Se mapea cada una de las obras para dicha tabla
+                      dataTable.map((row) => (
+                        <tr>
+                          {
+                            // Se mapean los valores de cada obra para cada columna
+                            columns.map((column, idx) => (
+                              <td headers={column} key={column}>{row[idx]}</td>
+                            ))
+                          }
+                        </tr>
+                      ))
+                    }
+                  </tbody>
+                </table>
               </Box>
-              <Box className={classes.boxIcons}>
-                {info && (
-                  <CustomTooltip
-                    className={classes.tooltip}
-                    title={info}
-                    placement="top"
-                  >
-                    <InfoOutlinedIcon className={classes.info} />
-                  </CustomTooltip>
-                )}
-                <IconButton
-                  className={classes.iconButton}
-                  target="_blank"
-                  href={link}
-                >
-                  <CloudDownloadOutlinedIcon className={classes.downloadIcon} />
-                </IconButton>
-              </Box>
-              <GridPanel
-                id={id}
-                columns={columns}
-                data={data}
-                styles={{ ...decorators, ...classes }}
-              />
             </Box>
-          ))}
+          ))
+        }
         {data.length === 0 && <SelectParcel />}
       </Box>
     </ContainerBar>

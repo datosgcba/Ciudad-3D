@@ -95,7 +95,7 @@ const Uses = () => {
   }
 
   const handleRubroChange = (e, value) => {
-    dispatch(usesActions.rubroSelected(value.title))
+    dispatch(usesActions.rubroSelected(value.id))
   }
 
   return (

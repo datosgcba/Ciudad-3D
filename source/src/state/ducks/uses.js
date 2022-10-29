@@ -20,10 +20,10 @@ const categorySelected = createAsyncThunk(
 
 const rubroSelected = createAsyncThunk(
   'uses/rubroSelected',
-  async (rubro, { getState }) => {
+  async (idRubro, { getState }) => {
     const { uses: { data: [{ id: idMixtura, idCategory }] } } = getState()
 
-    const urlReferences = getUsesReferences(idCategory, idMixtura, rubro)
+    const urlReferences = getUsesReferences(idCategory, idMixtura, idRubro)
     const references = await fetch(urlReferences).then((res) => res.json())
 
     return references

@@ -76,12 +76,12 @@ const Uses = () => {
 
   const categories =
     data?.length > 0 &&
-    data[0].usesCategories.map(({ id, nombre: title }) => ({ id: id, title }))
+    data[0].usesCategories.map(({ id, nombre: title }) => ({ id, title }))
 
   const rubros =
     data?.length > 0 &&
     data[0].rubros?.length > 0 &&
-    data[0].rubros.map(({ id, rubro: title }) => ({ id: id, title }))
+    data[0].rubros.map(({ rubro_id: id, rubro: title }) => ({ id, title }))
 
   const references =
     data?.length > 0 && data[0].references ? data[0].references : null

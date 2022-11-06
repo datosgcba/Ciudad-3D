@@ -230,54 +230,59 @@ const Map = ({ children }) => {
   }
 
   return (
-    <Container id="map" className={classes.container}>
-      <Box
-        className={classes.bottomMenu}
-        //onMouseEnter={handlerBottomMenuEnter}
-        onMouseLeave={handlerBottomMenuLeave}
-      >
-        <MinimapOption
-          imageUrl={`url(${imgCapaBasePrincipal})`}
-          onClick={() => setCapabasePrincipal(!capabasePrincipal)}
-          text={'MAPA'}
-        />
-        {bottomMenuVisible && (
-          <>
-            <MinimapOption
-              imageUrl={`url(${imgCapaBaseSecundaria})`}
-              onClick={() => setCapabasePrincipal(capabasePrincipal)}
-              text={'AEREA'}
-            />
-            <MinimapOption
-              imageUrl={`url(${imgCapaBaseHistory})`}
-              onClick={() => setCapabasePrincipal(!capabasePrincipal)}
-              text={'HISTÓRICA'}
-              onMouseEnter={handlerHistoryMenuEnter}
-              onMouseLeave={handlerHistoryMenuLeave}
-            >
-              <Box
-                className={classes.historyMenu}
-                style={{
-                  top: mockupHistory.length * -35 + 5
-                }}
+    <>
+      <Container id="map" className={classes.container}>
+        <Box
+          className={classes.bottomMenu}
+          //onMouseEnter={handlerBottomMenuEnter}
+          onMouseLeave={handlerBottomMenuLeave}
+        >
+          <MinimapOption
+            imageUrl={`url(${imgCapaBasePrincipal})`}
+            onClick={() => setCapabasePrincipal(!capabasePrincipal)}
+            text={'MAPA'}
+          />
+          {bottomMenuVisible && (
+            <>
+              <MinimapOption
+                imageUrl={`url(${imgCapaBaseSecundaria})`}
+                onClick={() => setCapabasePrincipal(capabasePrincipal)}
+                text={'AEREA'}
+              />
+              <MinimapOption
+                imageUrl={`url(${imgCapaBaseHistory})`}
+                onClick={() => setCapabasePrincipal(!capabasePrincipal)}
+                text={'HISTÓRICA'}
                 onMouseEnter={handlerHistoryMenuEnter}
                 onMouseLeave={handlerHistoryMenuLeave}
               >
-                {historyMenu && mockupHistory?.length
-                  ? mockupHistory.map(({ title }) => (
-                    <Typography
-                      variant="caption"
-                      className={classes.historyTitle}
-                    >
-                      {title}
-                    </Typography>
-                  ))
-                  : null}
-              </Box>
-            </MinimapOption>
-          </>
-        )}
-      </Box>
+                <Box
+                  className={classes.historyMenu}
+                  style={{
+                    top: mockupHistory.length * -35 + 5
+                  }}
+                  onMouseEnter={handlerHistoryMenuEnter}
+                  onMouseLeave={handlerHistoryMenuLeave}
+                >
+                  {historyMenu && mockupHistory?.length
+                    ? mockupHistory.map(({ title }) => (
+                        <Typography
+                          variant="caption"
+                          className={classes.historyTitle}
+                        >
+                          {title}
+                        </Typography>
+                      ))
+                    : null}
+                </Box>
+              </MinimapOption>
+            </>
+          )}
+        </Box>
+        <Measure />
+        <DimensionBtn />
+        {isMapReady && children}
+      </Container>
       <Box className={classes.topMenu}>
         <Seeker
           onSelectItem={(selectedSuggestion) => {
@@ -313,10 +318,7 @@ const Map = ({ children }) => {
           }}
         />
       </Box>
-      <Measure />
-      <DimensionBtn />
-      {isMapReady && children}
-    </Container>
+    </>
   )
 }
 

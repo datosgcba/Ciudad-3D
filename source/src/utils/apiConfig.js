@@ -2,7 +2,8 @@ import {
   getApiUrl,
   getPhotoUrl,
   getWsUsigUrl,
-  getPdfUrl
+  getPdfUrl,
+  getCadUrl
 } from './configQueries'
 
 const getParcel = ({ lng, lat }) =>
@@ -49,6 +50,8 @@ const getDataWsUsig = (x, y) => `${getWsUsigUrl()}/datos_utiles?x=${x}&y=${y}`
 
 const getPdfLink = (pdf) => `${getPdfUrl()}/${pdf}`
 
+const getCadLink = (pdf) => `${getCadUrl()}/${pdf}`
+
 export {
   getParcel,
   getParcelBySmp,
@@ -68,5 +71,6 @@ export {
   getPhotoData,
   getPhoto,
   getDataWsUsig,
-  getPdfLink
+  getPdfLink,
+  getCadLink
 }

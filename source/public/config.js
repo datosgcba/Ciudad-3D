@@ -6,7 +6,8 @@ var configs = {
     urlAPI: 'https://epok-qa.gcba.gob.ar',
     urlPhoto: 'https://fotos.usig.buenosaires.gob.ar',
     urlWsUsig: 'https://ws.usig.buenosaires.gob.ar',
-    urlPDF: 'http://ssplan.buenosaires.gov.ar/man_atipicas/imagenes'
+    urlPDF: 'http://ssplan.buenosaires.gov.ar/man_atipicas/imagenes',
+    urlCAD: 'https://site-error.buenosaires.gob.ar/'
   },
   replaces: [
     {

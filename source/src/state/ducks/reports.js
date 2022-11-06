@@ -6,6 +6,7 @@ import {
   getParcelBySmp,
   getBuildable,
   getPdfLink,
+  getCadLink,
   getAffectations,
   getUses,
   getPhoto,
@@ -419,7 +420,7 @@ const reports = createSlice({
   initialState: {},
   extraReducers: {
     [getData.pending]: (draftState, { meta: { arg: smp } }) => {
-      draftState[smp] = { state: 'loading' }
+      draftState[smp] = { state: 'loading', cadLink: getCadLink(smp) }
     },
     [getData.fulfilled]: (
       draftState,

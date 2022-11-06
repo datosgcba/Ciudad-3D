@@ -258,6 +258,8 @@ const getWsUsigUrl = () => config.urlWsUsig
 
 const getPdfUrl = () => config.urlPDF
 
+const getCadUrl = () => config.urlCAD
+
 const getParcelLayer = () => config.parcelLayers
 
 const getBaseLayers = () => config.baseLayers
@@ -298,6 +300,7 @@ export {
   getPhotoUrl,
   getWsUsigUrl,
   getPdfUrl,
+  getCadUrl,
   getParcelLayer,
   getBaseLayers,
   getUsesLink,

@@ -1,5 +1,9 @@
 # Ciudad 3D
 
+### Update V1.4.0-RC1:
+- Variables de entorno controladas a través del archivo source/public/config.js
+- Para el despliegue seguir los mismos pasos de la versión 1.1.6-RC.1
+
 ### Update V1.3.0-RC.1:
 - Dependiendo del ambiente descomentar la línea correspondiente en el archivo de configuración de ruta: `/source/.env`
 

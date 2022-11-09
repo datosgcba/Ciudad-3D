@@ -1,4 +1,5 @@
 ## CHANGELOG V1.4.0-RC1
+- Variables de entorno controladas a través del archivo source/public/config.js
 - Mejora en el menu de capas. Ahora se despliega como un acordeon
 - Incorporación visual de una lista flotante de capas seleccionadas
 - Ahora el menú de capas al volver a hacer clic en el ícono "Capas" se colapsa y desaparece

@@ -1,3 +1,13 @@
+## CHANGELOG V1.4.0-RC1
+- Mejora en el menu de capas. Ahora se despliega como un acordeon
+- Incorporación visual de una lista flotante de capas seleccionadas
+- Ahora el menú de capas al volver a hacer clic en el ícono "Capas" se colapsa y desaparece
+- Armado del menú de capas dinámico. Se controla a través de EPOK
+- Agregas nuevas capas no provenientes del motor de reglas
+- Nueva funcionalidad que muestra los cuadros de uso por SMP consultado
+- Nueva funcionalidad que conecta información del SADE por SMP consultado
+- Nuefa funcionalidad que permite descargar un archivo CAD por SMP consultado
+
 ## CHANGELOG V1.3.0-RC.1:
 - [(#5856)](https://sscite-redmine.buenosaires.gob.ar/issues/5856) correccion de alerta Manzanas Atípicas
 - [(#5858)](https://sscite-redmine.buenosaires.gob.ar/issues/5858) actualizacion de alerta Catalogados

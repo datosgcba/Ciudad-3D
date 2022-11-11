@@ -109,13 +109,13 @@ export const GroupItem = ({
               title={reference.map(
                 ({ id, subTitle, color: c, icon: iconReference }) => (
                   <ListItem key={id} className={classes.referenceItems}>
-                    {!icon && (
+                    {!iconReference && (
                       <Box
                         className={classes.color}
                         style={{ backgroundColor: `${c}` }}
                       />
                     )}
-                    {!!icon && <img src={iconReference} />}
+                    {!!iconReference && <img src={iconReference} />}
                     <Box className={classes.referenceTitle}>
                       <Typography variant="subtitle2">{subTitle}</Typography>
                     </Box>

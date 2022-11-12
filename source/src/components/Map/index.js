@@ -238,7 +238,7 @@ const Map = ({ children }) => {
           onMouseLeave={handlerBottomMenuLeave}
         >
           <MinimapOption
-            imageUrl={`url(${imgCapaBasePrincipal})`}
+            imageUrl={`url(${capabasePrincipal ? imgCapaBasePrincipal : imgCapaBaseSecundaria })`}
             onClick={() => setCapabasePrincipal(!capabasePrincipal)}
             text={'MAPA'}
           />

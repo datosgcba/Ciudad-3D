@@ -131,7 +131,7 @@ const sadeProcess = [
         title: 'Dirección'
       }
     ],
-    filter: ({ trata_acronimo }) => trata_acronimo === 'PLINE' &&
+    filter: ({ trata_acronimo, trata_tipoplano }) => trata_acronimo === 'PLINE' &&
     ['Plano de instalaciones ejecutada sin permiso', 'Regularizacion de instalaciones ejecutada sin permiso', 'Regularizacion de instalaciones en contra'].includes(trata_tipoplano)
   },
   {

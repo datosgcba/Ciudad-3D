@@ -55,44 +55,5 @@ export default makeStyles((theme) => ({
     '& :first-child': {
       marginTop: theme.spacing(0),
     }
-  },
-  table: {
-    width: '100%',
-    overflowX: 'auto',
-    whiteSpace: 'nowrap',
-    borderCollapse: 'collapse',
-    '& thead': {
-      display: 'table-header-group',
-      '& tr': {
-        '& th': {
-          padding: theme.spacing(1.5),
-          textAlign: 'center',
-          borderBottom: '1px solid #E0E0E0',
-          [theme.breakpoints.down('sm')]: {
-            padding: theme.spacing(1),
-            fontSize: '12px'
-          }
-        }
-      }
-    },
-    '& tbody': {
-      display: 'table',
-      width: '100%',
-      '& tr:nth-child(odd)': {
-        backgroundColor: '#F5F5F5'
-      },
-      '& tr': {
-        '& td': {
-          padding: theme.spacing(1),
-          textAlign: 'left',
-          [theme.breakpoints.down('sm')]: {
-            padding: theme.spacing(1),
-            fontSize: '12px'
-          }
-        }
-      },
-    }
   }
-
-
 }))

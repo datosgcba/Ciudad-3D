@@ -32,24 +32,16 @@ import { getWorksGroups } from 'utils/configQueries'
 
 import useStyles from './styles'
 
-const GridPanel = ({ id, columns, data, styles: { bold, tableCell } }) => {
-  const tableData = data[id]
+const GridPanel = ({ columns, tableData, styles: { bold, tableCell } }) => {
   return (
-    <>
-      {tableData.length === 0 && (
-        <TableContainer>
-          <Typography>No posee</Typography>
-        </TableContainer>
-      )}
-      {tableData.length >= 1 && (
         <TableContainer>
           <Table>
             <TableHead>
               <TableRow>
-                {columns.map(({ label, field }) => (
-                  <TableCell key={field} className={tableCell}>
+                {columns.map((column) => (
+                  <TableCell key={column} className={tableCell}>
                     <Typography variant="subtitle2" className={bold}>
-                      {label}
+                      {column}
                     </Typography>
                   </TableCell>
                 ))}
@@ -58,15 +50,15 @@ const GridPanel = ({ id, columns, data, styles: { bold, tableCell } }) => {
             <TableBody styles={{ tableCell }}>
               {
                 // Se mapea cada una de las obras para dicha tabla
-                // Por lo tanto se crea una nueva TableRow por cada obra
-                tableData.map((row, idx) => (
+                // Se mapea cada una de las obras para dicha tabla
+                tableData.map((row) => (
                   // eslint-disable-next-line react/no-array-index-key
-                  <TableRow key={idx}>
+                  <TableRow>
                     {
                       // Se mapean los valores de cada obra para cada columna
-                      columns.map(({ field }) => (
-                        <TableCell key={field} className={tableCell}>
-                          {row[field]}
+                      columns.map((column, idx) => (
+                        <TableCell key={column} className={tableCell}>
+                          {row[idx]}
                         </TableCell>
                       ))
                     }
@@ -76,9 +68,7 @@ const GridPanel = ({ id, columns, data, styles: { bold, tableCell } }) => {
             </TableBody>
           </Table>
         </TableContainer>
-      )}
-    </>
-  )
+      )
 }
 
 const Works = () => {
@@ -96,6 +86,7 @@ const Works = () => {
     <ContainerBar type="table">
       <Box className={classes.boxContainer}>
         {
+          data?.sade?.length >= 1 &&
           data?.sade?.map(({ title, columns, dataTable }) => (
             <Box className={classes.boxSubContainer} key={title}>
               <Box className={classes.title}>
@@ -105,36 +96,22 @@ const Works = () => {
                 >
                   {title}
                 </Typography>
-                <table border="1" className={classes.table}>
-                  <tbody>
-                    <tr>
-                      {
-                        // Se mapea cada una de las columnas para la tabla
-                        columns.map((column) => (
-                          <th id={column} key={column}>{column}</th>
-                        ))
-                      }
-                    </tr>
-                    {
-                      // Se mapea cada una de las obras para dicha tabla
-                      dataTable.map((row) => (
-                        <tr>
-                          {
-                            // Se mapean los valores de cada obra para cada columna
-                            columns.map((column, idx) => (
-                              <td headers={column} key={column}>{row[idx]}</td>
-                            ))
-                          }
-                        </tr>
-                      ))
-                    }
-                  </tbody>
-                </table>
               </Box>
+              <GridPanel
+                columns={columns}
+                tableData={dataTable}
+                styles={{ ...decorators, ...classes }}
+              />
             </Box>
           ))
         }
-        {data.length === 0 && <SelectParcel />}
+        {!smp && <SelectParcel />}
+        {smp && !data?.sade?.length && (
+            <TableContainer>
+              <Typography>No posee</Typography>
+            </TableContainer>
+          )
+        }
       </Box>
     </ContainerBar>
   )

@@ -26,8 +26,9 @@ build_develop:
   stage: build
   script:
     - 'echo Starting build'
-    - 'cd "$CUR3D_DIR"; git fetch'
+    - 'cd "$CUR3D_DIR"; git fetch origin develop'
     - 'git checkout develop'
+    - 'git reset --hard origin/develop'
     - 'git pull origin develop'
 #    - 'ls -la "$CI_PROJECT_DIR"'
     - 'cd "$CUR3D_SRC"; npm run build'

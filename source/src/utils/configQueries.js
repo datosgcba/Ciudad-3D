@@ -5,10 +5,6 @@ const loadAppConfig = async () => {
   if (config !== null) {
     return
   }
-<<<<<<< HEAD
-  const url = process.env.REACT_APP_URL_CONFIG
-  config = await fetch(url).then((data) => data.json())
-=======
   const configEnviroment = window.configs
   const { urlConfigBase, urlLayers, includes, replaces } = configEnviroment
   let configBaseText = await fetch(urlConfigBase).then((data) => data.text())
@@ -30,7 +26,6 @@ const loadAppConfig = async () => {
     layersGroup,
     ...includes
   }
->>>>>>> develop
 }
 
 const getImagesToLoad = () => {

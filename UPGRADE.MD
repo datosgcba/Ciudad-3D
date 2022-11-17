@@ -1,5 +1,8 @@
 # Ciudad 3D
 
+### Update V1.4.0-RC2:
+- Para el despliegue seguir los mismos pasos de la versión V1.4.0-RC1
+
 ### Update V1.4.0-RC1:
 - Variables de entorno controladas a través del archivo source/public/config.js
 - Para el despliegue seguir los mismos pasos de la versión 1.1.6-RC.1

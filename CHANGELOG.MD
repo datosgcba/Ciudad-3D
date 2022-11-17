@@ -1,3 +1,10 @@
+## CHANGELOG V1.4.0-RC2
+- Actualizada versión de React JS de 17.0.2 a 18.2.0
+- Reparado bug en la barra de búsqueda
+- [APPCASENOC-495](https://asijira.buenosaires.gob.ar/browse/APPCASENOC-495) Arreglado icono: img satelital a calles
+- Arreglado estilo de tabla en funcionalidad SADE
+- Modificado titulos de categoria a reportes
+
 ## CHANGELOG V1.4.0-RC1
 - Variables de entorno controladas a través del archivo source/public/config.js
 - Mejora en el menu de capas. Ahora se despliega como un acordeon

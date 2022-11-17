@@ -21,17 +21,23 @@ const DimensionBtn = () => {
 
   const dimensionChange = () => {
     if (Dimension) {
-      dispatch(mapActions.cameraUpdated({
-        pitch: 0
-      }))
+      dispatch(
+        mapActions.cameraUpdated({
+          pitch: 0
+        })
+      )
     } else {
-      dispatch(mapActions.cameraUpdated({
-        pitch: 60
-      }))
+      dispatch(
+        mapActions.cameraUpdated({
+          pitch: 60
+        })
+      )
     }
   }
 
-  const controlGroup = document.querySelector('.mapboxgl-ctrl-top-right .mapboxgl-ctrl-group')
+  const controlGroup = document.querySelector(
+    '.mapboxgl-ctrl-top-right .mapboxgl-ctrl-group'
+  )
   useEffect(() => {
     if (controlGroup) {
       controlGroup.appendChild(refMenu.current)
@@ -46,7 +52,7 @@ const DimensionBtn = () => {
         ref={refMenu}
         onClick={debounce(() => dimensionChange(), 100)}
       >
-        {Dimension ? '2D' : '3D' }
+        {Dimension ? '2D' : '3D'}
       </ButtonBase>
     </>
   )

@@ -19,16 +19,13 @@ const defaults = {
   // toMarker: mapboxgl.Marker({color:'red'}),
   // marker: mapboxgl.Marker({color:'yellow'}),
   popup: new mapboxgl.Popup(),
-  layers: {
-    apiUrl: 'https://epok.buenosaires.gob.ar/',
-    reverseGeocodeUrl: 'reverseGeocoderLugares'
-  },
   texts: {
     es: {
       loadingLayers: 'Cargando capas...',
       loadingMaps: 'Cargando mapas...',
       loadingInformation: 'Cargando información...',
-      errorLoadingInformation: 'Se produjo un error al acceder a la información. Reintente más tarde.'
+      errorLoadingInformation:
+        'Se produjo un error al acceder a la información. Reintente más tarde.'
     },
     en: {
       loadingLayers: 'Loading layers...',
@@ -42,7 +39,11 @@ const defaults = {
 
 class MapaInteractivoGL {
   constructor(options) {
-    this.config = { ...defaults, ...options, params: { ...defaults.params, ...options.params } }
+    this.config = {
+      ...defaults,
+      ...options,
+      params: { ...defaults.params, ...options.params }
+    }
     this.config.supportedLanguages = Object.keys(this.config.texts)
     if (this.config.supportedLanguages.length === 0) {
       this.config.texts = defaults.texts
@@ -86,13 +87,20 @@ class MapaInteractivoGL {
   }
 
   isVisibleBaseLayerPrincipal() {
-    return this.map.getLayoutProperty('baseLayer_principal', 'visibility') === 'visible'
+    return (
+      this.map.getLayoutProperty('baseLayer_principal', 'visibility') ===
+      'visible'
+    )
   }
 
   toggleBaseLayer() {
     if (this.isVisibleBaseLayerPrincipal()) {
       this.map.setLayoutProperty('baseLayer_principal', 'visibility', 'none')
-      this.map.setLayoutProperty('baseLayer_secundario', 'visibility', 'visible')
+      this.map.setLayoutProperty(
+        'baseLayer_secundario',
+        'visibility',
+        'visible'
+      )
     } else {
       this.map.setLayoutProperty('baseLayer_principal', 'visibility', 'visible')
       this.map.setLayoutProperty('baseLayer_secundario', 'visibility', 'none')
@@ -111,7 +119,7 @@ class MapaInteractivoGL {
   }
 
   _onClick(ev) {
-    if (typeof (this.config.onClick) === 'function') {
+    if (typeof this.config.onClick === 'function') {
       this.inactivateMarker()
       this.config.onClick(ev)
     }
@@ -119,31 +127,31 @@ class MapaInteractivoGL {
   }
 
   _onContextMenu(ev) {
-    if (typeof (this.config.onContextMenu) === 'function') {
+    if (typeof this.config.onContextMenu === 'function') {
       this.config.onContextMenu(ev)
     }
   }
 
   _onMoveStart(ev) {
-    if (typeof (this.config.onMoveStart) === 'function') {
+    if (typeof this.config.onMoveStart === 'function') {
       this.config.onMoveStart(ev)
     }
   }
 
   _onMoveEnd(ev) {
-    if (typeof (this.config.onMoveEnd) === 'function') {
+    if (typeof this.config.onMoveEnd === 'function') {
       this.config.onMoveEnd(ev)
     }
   }
 
   _onZoomEnd(ev) {
-    if (typeof (this.config.onZoomEnd) === 'function') {
+    if (typeof this.config.onZoomEnd === 'function') {
       this.config.onZoomEnd(ev)
     }
   }
 
   _onDragEnd(ev) {
-    if (typeof (this.config.onDragEnd) === 'function') {
+    if (typeof this.config.onDragEnd === 'function') {
       this.config.onDragEnd(ev)
     }
   }
@@ -151,12 +159,15 @@ class MapaInteractivoGL {
   _loadLayerDefs() {
     if (!this._loadingLayers && !this.layersDefs) {
       this._loadingLayers = true
-      const layerPromise = fetch(`${this.config.layers.apiUrl}mapainteractivoba/layers/?protocol=https`)
+      const layerPromise = fetch(
+        `${this.config.apiUrl}/mapainteractivoba/layers/?protocol=https`
+      )
         .then((res) => res.json())
         .then((layersDefs) => {
           this._loadingLayers = false
           this.layersDefs = layersDefs
-        }).catch((err) => {
+        })
+        .catch((err) => {
           console.error(err)
         })
       return layerPromise
@@ -171,9 +182,19 @@ class MapaInteractivoGL {
   _addLayer(layerName, layerId, layerGroup, clustering) {
     const sourceId = layerId // uso el mismo id de la capa
     const self = this
-    const layer = layerName.indexOf('.') === -1 ? this.layersDefs[layerName] : { [layerName]: this.layersDefs[layerName.split('.')[0]][layerName.split('.')[1]] }
+    const layer =
+      layerName.indexOf('.') === -1
+        ? this.layersDefs[layerName]
+        : {
+          [layerName]: this.layersDefs[layerName.split('.')[0]][
+            layerName.split('.')[1]
+          ]
+        }
     this.hideMessage()
-    const builder = (this._layerBuilders[layerId] || !layer[layerId].builder) ? layerId : layer[layerId].builder
+    const builder =
+      this._layerBuilders[layerId] || !layer[layerId].builder
+        ? layerId
+        : layer[layerId].builder
     try {
       if (this._layerBuilders[builder]) {
         if (!this._layers[layerName]) {
@@ -183,8 +204,12 @@ class MapaInteractivoGL {
           // borrarlo si ya esta ... ?
           // layerGroup.removeLayer(this._layers[layerName][layerId]);
         }
-        this._layers[layerName][layerId] = this._layerBuilders[builder](sourceId, undefined,
-          layer[layerId].style, layer[layerId].icon)
+        this._layers[layerName][layerId] = this._layerBuilders[builder](
+          sourceId,
+          undefined,
+          layer[layerId].style,
+          layer[layerId].icon
+        )
 
         self.map.addLayer(this._layers[layerName][layerId])
         self.map.on('click', sourceId, this._onFeatureClick.bind(this))
@@ -214,7 +239,7 @@ class MapaInteractivoGL {
                       }, this.Layers[layerName][layerId].options.refresh);
                   }
                   */
-        if (typeof (this.config.onLayerLoaded) === 'function') {
+        if (typeof this.config.onLayerLoaded === 'function') {
           this.config.onLayerLoaded(layerName, layerId)
         }
       } else {
@@ -255,7 +280,7 @@ class MapaInteractivoGL {
     if (self.map.hasImage(id)) return true
 
     if (icon.iconUrl && icon.shadowUrl) {
-      const size = icon.iconSize[0]// asumo que son todos iconos cuadrados
+      const size = icon.iconSize[0] // asumo que son todos iconos cuadrados
 
       const layerIcon = {
         width: size,
@@ -275,13 +300,19 @@ class MapaInteractivoGL {
             context.drawImage(img, 0, 0, size, size)
             self._request_image(icon.iconUrl, (img) => {
               context.drawImage(img, 0, 0, size, size)
-              data = context.getImageData(0, 0, canvas.width, canvas.height).data
+              data = context.getImageData(0, 0, canvas.width, canvas.height)
+                .data
             })
           })
         },
 
         render() {
-          this.data = this.context.getImageData(0, 0, this.width, this.height).data
+          this.data = this.context.getImageData(
+            0,
+            0,
+            this.width,
+            this.height
+          ).data
           return true
         }
       }
@@ -293,7 +324,14 @@ class MapaInteractivoGL {
 
   _loadLayer(layerName, layerGroup, clustering) {
     const self = this
-    const conf = layerName.indexOf('.') === -1 ? this.layersDefs[layerName] : { [layerName]: this.layersDefs[layerName.split('.')[0]][layerName.split('.')[1]] }
+    const conf =
+      layerName.indexOf('.') === -1
+        ? this.layersDefs[layerName]
+        : {
+          [layerName]: this.layersDefs[layerName.split('.')[0]][
+            layerName.split('.')[1]
+          ]
+        }
 
     this._loadingLayer = true
     Object.entries(conf).forEach((layer) => {
@@ -307,7 +345,12 @@ class MapaInteractivoGL {
           this._addSource(layer[0], source)
           if (layer[1].icon) this._createLayerIcon(layer[0], layer[1].icon)
 
-          self._addLayer(layerName, layer[0], layerGroup || self._layerGroup, clustering)
+          self._addLayer(
+            layerName,
+            layer[0],
+            layerGroup || self._layerGroup,
+            clustering
+          )
           break
         case 'wms':
         case 'tms':
@@ -320,7 +363,10 @@ class MapaInteractivoGL {
     if (!this._layers[layerName]) {
       this.inactivateMarker()
       if (this.layersDefs) {
-        const layer = layerName.indexOf('.') === -1 ? this.layersDefs[layerName] : this.layersDefs[layerName.split('.')[0]][layerName.split('.')[1]]
+        const layer =
+          layerName.indexOf('.') === -1
+            ? this.layersDefs[layerName]
+            : this.layersDefs[layerName.split('.')[0]][layerName.split('.')[1]]
         if (layer) {
           if (!this._layers[layerName]) {
             this._layers[layerName] = { ...this._layers[layerName], ...options }
@@ -345,7 +391,14 @@ class MapaInteractivoGL {
 
   removePublicLayer(layerName) {
     if (this.layersDefs) {
-      const layer = layerName.indexOf('.') === -1 ? this.layersDefs[layerName] : { [layerName]: this.layersDefs[layerName.split('.')[0]][layerName.split('.')[1]] }
+      const layer =
+        layerName.indexOf('.') === -1
+          ? this.layersDefs[layerName]
+          : {
+            [layerName]: this.layersDefs[layerName.split('.')[0]][
+              layerName.split('.')[1]
+            ]
+          }
       // if (this.onClickFeature) this.map.removeLayer(this.onClickFeature);
       if (layer) {
         if (this._layers[layerName]) {
@@ -356,9 +409,13 @@ class MapaInteractivoGL {
               try {
                 if (!this._loadingLayer) {
                   if (this._layers[layerName].clustering) {
-                    this._markersClusterLayerGroup.removeLayer(this._layers[layerName][layer[0]])
+                    this._markersClusterLayerGroup.removeLayer(
+                      this._layers[layerName][layer[0]]
+                    )
                   } else {
-                    this._layerGroup.removeLayer(this._layers[layerName][layer[0]])
+                    this._layerGroup.removeLayer(
+                      this._layers[layerName][layer[0]]
+                    )
                   }
                 }
                 clearTimeout(this._layers[layerName].refreshTimeout)
@@ -373,10 +430,16 @@ class MapaInteractivoGL {
     }
   }
 
-  addVectorTileLayer(options, icon, displayPopup = false, popupContent = '', beforeId) {
+  addVectorTileLayer(
+    options,
+    icon,
+    displayPopup = false,
+    popupContent = '',
+    beforeId
+  ) {
     this._loadingLayer = true
     const self = this
-    const { id } = options
+    const { id, source: sourceOptions, ...layerOptions } = options
     this.inactivateMarker()
 
     if (!this._layers[id]) {
@@ -388,10 +451,24 @@ class MapaInteractivoGL {
       }
 
       this.showMessage(this.config.texts[this.config.language].loadingLayers)
-      if (this.map.getSource(options.id)) {
-        this.map.removeSource(options.id)
+
+      const { id: sourceId, ...source } =
+        typeof sourceOptions === 'string'
+          ? { id: sourceOptions }
+          : {
+            id,
+            ...sourceOptions
+          }
+
+      if (!this.map.getSource(sourceId)) {
+        this.map.addSource(sourceId, source)
       }
-      this.map.addLayer(options)
+
+      this.map.addLayer({
+        ...layerOptions,
+        id,
+        source: sourceId
+      })
 
       // Change the cursor to a pointer when the mouse is over the places layer.
       this.map.on('mouseenter', id, () => {
@@ -405,7 +482,7 @@ class MapaInteractivoGL {
 
       if (displayPopup) {
         this._layers[id].popup_template = popupContent
-        this.map.on('click', id, self.addVectorTilePopup.bind(this))
+        self.map.on('click', id, self._onFeatureClick.bind(this))
       }
     }
 
@@ -436,10 +513,7 @@ class MapaInteractivoGL {
     const template = this._layers[id].popup_content
     const content = this._template(template, properties)
 
-    this.popup
-      .setLngLat(e.lngLat)
-      .setHTML(content)
-      .addTo(this.map)
+    this.popup.setLngLat(e.lngLat).setHTML(content).addTo(this.map)
   }
 
   _template(str, data) {
@@ -457,38 +531,50 @@ class MapaInteractivoGL {
   }
 
   addPopup(lngLat, content) {
-    this.popup
-      .setLngLat(lngLat)
-      .setHTML(content)
-      .addTo(this.map)
+    this.popup.setLngLat(lngLat).setHTML(content).addTo(this.map)
   }
 
   _onFeatureClick(e) {
     this.inactivateMarker()
     const layerId = e.target && e.target.options ? e.target.options.layerId : ''
-    const layerName = e.target && e.target.options ? e.target.options.layerName : ''
+    const layerName =
+      e.target && e.target.options ? e.target.options.layerName : ''
 
     if (this.map.getZoom() < this.config.markerZoomInLevel) {
       this.map.flyTo({ center: e.lngLat, zoom: this.config.markerZoomInLevel })
     }
 
     if (e && e.features) {
-      if (typeof (this.config.onFeatureClick) === 'function') {
-        this.config.onFeatureClick.bind(this)(this, e.lngLat, e.features[0], layerId, layerName)
+      if (typeof this.config.onFeatureClick === 'function') {
+        this.config.onFeatureClick.bind(this)(
+          this,
+          e.lngLat,
+          e.features[0],
+          layerId,
+          layerName
+        )
       }
     }
   }
 
   getFeatureProps(fid) {
-    return fetch(`${this.config.layers.apiUrl}getObjectContent/?id=${fid}`)
+    return fetch(`${this.config.apiUrl}/getObjectContent/?id=${fid}`)
   }
 
-  addMarker(latlng, flag, visible = true, draggable = false, goTo, activate = true, clickable = true, options = {}) {
+  addMarker(
+    latlng,
+    flag,
+    visible = true,
+    draggable = false,
+    goTo,
+    activate = true,
+    clickable = true,
+    options = {}
+  ) {
     const self = this
 
     const marker = new mapboxgl.Marker(options)
-    marker
-      .setLngLat(latlng).addTo(this.map)
+    marker.setLngLat(latlng).addTo(this.map)
 
     if (goTo) {
       this.map.flyTo({ center: latlng, zoom: this.config.markerZoomInLevel })

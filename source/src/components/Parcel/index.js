@@ -16,7 +16,9 @@ const Parcel = () => {
 
   return (
     <>
-      {isVisible && geomCoords?.length && <Polygon smpList={smpList} geomCoords={geomCoords} />}
+      {isVisible && geomCoords?.length && (
+        <Polygon smpList={smpList} geomCoords={geomCoords} />
+      )}
     </>
   )
 }

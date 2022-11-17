@@ -8,7 +8,10 @@ const parcelId = 'parcel_layer'
 const Polygon = ({ smpList, geomCoords }) => {
   const mapGL = MapaInteractivoGL()
 
-  const { edif, polygon: { paint, type, layout } } = getParcelLayer()
+  const {
+    edif,
+    polygon: { paint, type, layout }
+  } = getParcelLayer()
   const { id: edifId } = edif
   useEffect(() => {
     mapGL.map.addLayer(edif)
@@ -21,10 +24,11 @@ const Polygon = ({ smpList, geomCoords }) => {
   useEffect(() => {
     const parcel3D = mapGL.map.getLayer(edifId)
     if (parcel3D !== undefined) {
-      mapGL.setFilter(
-        edifId,
-        ['in', ['upcase', ['get', 'smp']], smpList.join(',').toUpperCase()]
-      )
+      mapGL.setFilter(edifId, [
+        'in',
+        ['upcase', ['get', 'smp']],
+        smpList.join(',').toUpperCase()
+      ])
     }
   }, [mapGL, smpList, edifId])
 

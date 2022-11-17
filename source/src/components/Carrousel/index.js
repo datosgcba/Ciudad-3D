@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react'
 import {
-  Box, Typography, Button, makeStyles, useTheme
+  Box,
+  Typography,
+  Button,
+  makeStyles,
+  useTheme
 } from '@material-ui/core'
 import MobileStepper from '@material-ui/core/MobileStepper'
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
@@ -60,15 +64,18 @@ const Carrousel = ({ photos = [] }) => {
       >
         {photos.map((step, index) => (
           <Box key={step.fecha}>
-            <Box style={{
-              position: 'absolute',
-              top: 0,
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              width: '100%',
-              padding: 5
-            }}
+            <Box
+              style={{
+                position: 'absolute',
+                top: 0,
+                backgroundColor: 'rgba(0,0,0,0.5)',
+                width: '100%',
+                padding: 5
+              }}
             >
-              <Typography color="textSecondary">{photos[activeStep]?.fecha}</Typography>
+              <Typography color="textSecondary">
+                {photos[activeStep]?.fecha}
+              </Typography>
             </Box>
             {Math.abs(activeStep - index) <= 2 ? (
               <img className={classes.img} src={step.photo} alt={step.fecha} />
@@ -81,18 +88,30 @@ const Carrousel = ({ photos = [] }) => {
         position="static"
         variant="dots"
         activeStep={activeStep}
-        nextButton={(
-          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+        nextButton={
+          <Button
+            size="small"
+            onClick={handleNext}
+            disabled={activeStep === maxSteps - 1}
+          >
             Siguiente
-            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+            {theme.direction === 'rtl' ? (
+              <KeyboardArrowLeft />
+            ) : (
+              <KeyboardArrowRight />
+            )}
           </Button>
-        )}
-        backButton={(
+        }
+        backButton={
           <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+            {theme.direction === 'rtl' ? (
+              <KeyboardArrowRight />
+            ) : (
+              <KeyboardArrowLeft />
+            )}
             Anterior
           </Button>
-        )}
+        }
       />
     </div>
   )

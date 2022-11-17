@@ -2,9 +2,7 @@ import React from 'react'
 
 import PropTypes from 'prop-types'
 
-import {
-  Box, Typography, Grid, makeStyles, Link
-} from '@material-ui/core'
+import { Box, Typography, Grid, makeStyles, Link } from '@material-ui/core'
 
 import useFontsStyles from 'theme/fontsDecorators'
 
@@ -18,9 +16,7 @@ import { getBasicData } from 'utils/configQueries'
 
 import useStyles from './styles'
 
-const Details = ({
-  classes, decorators, title, value, format
-}) => (
+const Details = ({ classes, decorators, title, value, format }) => (
   <Box className={classes.card}>
     <Grid container>
       <Grid item xs={7}>
@@ -41,7 +37,9 @@ const Details = ({
             </Link>
           )}
           {format === 'url' && !value[0] && 'Cargando. . .'}
-          {format !== 'url' && value[0] !== undefined && `${value[0]} ${format}`}
+          {format !== 'url' &&
+            value[0] !== undefined &&
+            `${value[0]} ${format}`}
           {format !== 'url' && value[0] === undefined && 'Cargando. . .'}
         </Typography>
       </Grid>
@@ -54,7 +52,9 @@ const BasicData = () => {
   const decorators = useFontsStyles()
   const data = useSelector((state) => state.basicData.data)
   const linkImagen = useSelector((state) => state.buildable.data?.link_imagen)
-  const superficieParcela = useSelector((state) => state.buildable.data.superficie_parcela)
+  const superficieParcela = useSelector(
+    (state) => state.buildable.data.superficie_parcela
+  )
   const isSelected = useSelector((state) => state.basicData.isSelected)
   const { photoData } = data
 
@@ -63,15 +63,14 @@ const BasicData = () => {
       {isSelected && (
         <Box>
           {!!photoData?.length && <Carrousel photos={photoData} />}
-          {getBasicData().map(({
-            title, fill, format, isNumber
-          }, index) => {
+          {getBasicData().map(({ title, fill, format, isNumber }, index) => {
             const fills = fill.split(',')
             const value = []
 
-            const valueFill = fill === 'superficie_parcela'
-              ? superficieParcela?.toString()
-              : data[fills[0]]
+            const valueFill =
+              fill === 'superficie_parcela'
+                ? superficieParcela?.toString()
+                : data[fills[0]]
             if (valueFill) {
               value.push(
                 isNumber

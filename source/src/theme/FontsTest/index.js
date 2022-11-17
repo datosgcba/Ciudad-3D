@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 
 import {
-  Typography, Divider, Box, Paper, CardActionArea
+  Typography,
+  Divider,
+  Box,
+  Paper,
+  CardActionArea
 } from '@material-ui/core'
 
 import fontsDecorators from 'theme/fontsDecorators'
@@ -19,7 +23,8 @@ const variants = [
   'body2',
   'caption',
   'button',
-  'overline']
+  'overline'
+]
 
 const testText = 'BCDFG bcdfg aeiou AEIOU áéíóú ñ Ñ 123567890'
 
@@ -48,30 +53,33 @@ export default () => {
           {testText}
         </Typography>
       </Box>
-      {
-        variants.map((variant) => (
-          <CardActionArea
-            key={variant}
-            onClick={() => setVariantSelected(variant)}
-            style={{ backgroundColor: variantSelected === variant ? 'lightblue' : 'white' }}
-          >
-            <Typography variant={variant}>{variant}</Typography>
-            <Divider />
-          </CardActionArea>
-        ))
-      }
-      {
-        decorators.map((decorator) => (
-          <CardActionArea
-            key={decorator}
-            onClick={() => setDecoratorSelected(decorator)}
-            style={{ backgroundColor: decoratorSelected === decorator ? 'lightgreen' : 'lightyellow' }}
-          >
-            <Typography variant="body1" className={classes[decorator]}>{decorator}</Typography>
-            <Divider />
-          </CardActionArea>
-        ))
-      }
+      {variants.map((variant) => (
+        <CardActionArea
+          key={variant}
+          onClick={() => setVariantSelected(variant)}
+          style={{
+            backgroundColor: variantSelected === variant ? 'lightblue' : 'white'
+          }}
+        >
+          <Typography variant={variant}>{variant}</Typography>
+          <Divider />
+        </CardActionArea>
+      ))}
+      {decorators.map((decorator) => (
+        <CardActionArea
+          key={decorator}
+          onClick={() => setDecoratorSelected(decorator)}
+          style={{
+            backgroundColor:
+              decoratorSelected === decorator ? 'lightgreen' : 'lightyellow'
+          }}
+        >
+          <Typography variant="body1" className={classes[decorator]}>
+            {decorator}
+          </Typography>
+          <Divider />
+        </CardActionArea>
+      ))}
     </Paper>
   )
 }

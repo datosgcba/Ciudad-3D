@@ -30,7 +30,9 @@ const Measure = () => {
     }
   }, [isActive])
 
-  const controlGroup = document.querySelector('.mapboxgl-ctrl-top-right .mapboxgl-ctrl-group')
+  const controlGroup = document.querySelector(
+    '.mapboxgl-ctrl-top-right .mapboxgl-ctrl-group'
+  )
   useEffect(() => {
     if (controlGroup) {
       controlGroup.appendChild(refMenu.current)
@@ -43,9 +45,7 @@ const Measure = () => {
 
   return (
     <>
-      { isActive && (
-      <Lines points={coordinates} />
-      ) }
+      {isActive && <Lines points={coordinates} />}
       <ButtonBase ref={refMenu}>
         <Timeline
           color={isActive ? 'primary' : 'inherit'}

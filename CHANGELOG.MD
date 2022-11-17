@@ -1,5 +1,23 @@
 # CHANGELOG Ciudad 3D
 
+## CHANGELOG V1.4.0-RC2
+- Actualizada versión de React JS de 17.0.2 a 18.2.0
+- Reparado bug en la barra de búsqueda
+- [APPCASENOC-495](https://asijira.buenosaires.gob.ar/browse/APPCASENOC-495) Arreglado icono: img satelital a calles
+- Arreglado estilo de tabla en funcionalidad SADE
+- Modificado titulos de categoria a reportes
+
+## CHANGELOG V1.4.0-RC1
+- Variables de entorno controladas a través del archivo source/public/config.js
+- Mejora en el menu de capas. Ahora se despliega como un acordeon
+- Incorporación visual de una lista flotante de capas seleccionadas
+- Ahora el menú de capas al volver a hacer clic en el ícono "Capas" se colapsa y desaparece
+- Armado del menú de capas dinámico. Se controla a través de EPOK
+- Agregas nuevas capas no provenientes del motor de reglas
+- Nueva funcionalidad que muestra los cuadros de uso por SMP consultado
+- Nueva funcionalidad que conecta información del SADE por SMP consultado
+- Nuefa funcionalidad que permite descargar un archivo CAD por SMP consultado
+
 ## V1.3.0-RC.2:
 - Deshechos cambios que toman la configuracion del appconfig dinámicamente
 - Actualizado appconfig hardcodeado

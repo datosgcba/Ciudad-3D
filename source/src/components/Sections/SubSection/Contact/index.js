@@ -8,9 +8,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 
 import ContainerBar from 'components/Sections/ContainerBar'
 
-import {
-  Grid, Typography, Button, TextField
-} from '@material-ui/core'
+import { Grid, Typography, Button, TextField } from '@material-ui/core'
 import useStyles from './styles'
 
 const Contact = () => {
@@ -39,14 +37,20 @@ const Contact = () => {
 
   const validate = () => {
     const values = {}
-    values.nameValue = nameValue !== ''
-      ? ['correct', setErrorName(false)] : ['incorrect', setErrorName(true)]
-    values.emailValue = (/\S+@\S+\.\S+/).test(emailValue)
-      ? ['correct', setErrorMail(false)] : ['incorrect', setErrorMail(true)]
-    values.comentValue = comentValue !== ''
-      ? ['correct', setErrorComent(false)] : ['incorrect', setErrorComent(true)]
+    values.nameValue =
+      nameValue !== ''
+        ? ['correct', setErrorName(false)]
+        : ['incorrect', setErrorName(true)]
+    values.emailValue = /\S+@\S+\.\S+/.test(emailValue)
+      ? ['correct', setErrorMail(false)]
+      : ['incorrect', setErrorMail(true)]
+    values.comentValue =
+      comentValue !== ''
+        ? ['correct', setErrorComent(false)]
+        : ['incorrect', setErrorComent(true)]
     values.captchaValue = captchaValue
-      ? ['correct'] : ['incorrect', setCaptchaValue(false)]
+      ? ['correct']
+      : ['incorrect', setCaptchaValue(false)]
 
     return Object.values(values).every((v) => v[0] === 'correct')
   }
@@ -76,9 +80,7 @@ const Contact = () => {
   const statusEmail = useSelector((state) => state.contact.statusEmail)
 
   return (
-    <ContainerBar
-      type="list"
-    >
+    <ContainerBar type="list">
       <form onSubmit={handleSubmit}>
         <Grid container className={classes.container}>
           <Grid item className={classes.item}>
@@ -102,7 +104,12 @@ const Contact = () => {
               value={emailValue}
               onChange={({ target: { value } }) => emailChange(value)}
               error={errorMail}
-              helperText={errorMail && (emailValue === '' ? 'Ingrese un email' : 'Ingrese un email valido')}
+              helperText={
+                errorMail &&
+                (emailValue === ''
+                  ? 'Ingrese un email'
+                  : 'Ingrese un email valido')
+              }
             />
           </Grid>
           <Grid item className={classes.item}>
@@ -133,52 +140,36 @@ const Contact = () => {
               onChange={(e) => handleCaptcha(e)}
               name="captcha"
             />
-            {
-              captchaValue === false && (
-                <Typography className={classes.required}>
-                  Utilice el captcha
-                </Typography>
-              )
-            }
+            {captchaValue === false && (
+              <Typography className={classes.required}>
+                Utilice el captcha
+              </Typography>
+            )}
           </Grid>
           <Grid item className={classes.item}>
-            <Button
-              variant="contained"
-              type="submit"
-            >
+            <Button variant="contained" type="submit">
               Enviar
             </Button>
           </Grid>
-          {
-            statusEmail === 'sending' && (
-              <Grid item className={classes.item}>
-                <Typography>
-                  ENVIANDO
-                </Typography>
-              </Grid>
-            )
-          }
-          {
-            statusEmail === 'success' && (
-              <Grid item className={classes.item}>
-                <Typography>
-                  ENVIADO CON ÉXITO
-                </Typography>
-              </Grid>
-            )
-          }
-          {
-            statusEmail === 'fail' && (
-              <Grid item className={classes.item}>
-                <Typography className={classes.required}>
-                  ERROR EL ENVIAR
-                </Typography>
-              </Grid>
-            )
-          }
+          {statusEmail === 'sending' && (
+            <Grid item className={classes.item}>
+              <Typography>ENVIANDO</Typography>
+            </Grid>
+          )}
+          {statusEmail === 'success' && (
+            <Grid item className={classes.item}>
+              <Typography>ENVIADO CON ÉXITO</Typography>
+            </Grid>
+          )}
+          {statusEmail === 'fail' && (
+            <Grid item className={classes.item}>
+              <Typography className={classes.required}>
+                ERROR EL ENVIAR
+              </Typography>
+            </Grid>
+          )}
         </Grid>
       </form>
-
     </ContainerBar>
   )
 }

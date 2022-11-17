@@ -3,6 +3,13 @@
 ## V1.3.0-RC.2:
 - Realizar todos los pasos de la version V1.1.6-RC.1
 
+### Update V1.4.0-RC2:
+- Para el despliegue seguir los mismos pasos de la versión V1.4.0-RC1
+
+### Update V1.4.0-RC1:
+- Variables de entorno controladas a través del archivo source/public/config.js
+- Para el despliegue seguir los mismos pasos de la versión 1.1.6-RC.1
+
 ### Update V1.3.0-RC.1:
 - Dependiendo del ambiente descomentar la línea correspondiente en el archivo de configuración de ruta: `/source/.env`
 

@@ -12,10 +12,11 @@ export default makeStyles((theme) => ({
     fontWeight: 'bold'
   },
   markerProperty: {
-    marginTop: '1px'
+    marginTop: '1px',
+    marginBottom: '5px'
   },
   ultimaActualizacion: {
-    fontWeight: 'bold'
+    fontWeight: 'normal'
   },
   goContainer: {
     paddingTop: theme.spacing(2)

@@ -3,8 +3,15 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  Box, Typography, Grid, makeStyles, Link
+  Box,
+  Typography,
+  Grid,
+  makeStyles,
+  Link,
+  TextField
 } from '@material-ui/core'
+import Autocomplete from '@material-ui/lab/Autocomplete'
+
 import useFontsStyles from 'theme/fontsDecorators'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -21,7 +28,12 @@ import { actions as usesActions } from 'state/ducks/uses'
 import useStyles from './styles'
 
 const Details = ({
-  classes, title, fill, afluencia, iconsData, decorators
+  classes,
+  title,
+  fill,
+  afluencia,
+  iconsData,
+  decorators
 }) => (
   <Box>
     <Box className={classes.card}>
@@ -32,9 +44,7 @@ const Details = ({
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="caption">
-            {fill}
-          </Typography>
+          <Typography variant="caption">{fill}</Typography>
         </Grid>
       </Grid>
     </Box>
@@ -47,12 +57,8 @@ const Details = ({
           <Typography variant="subtitle2" className={decorators.bold}>
             {iconTitle}
           </Typography>
-          <Typography variant="subtitle2">
-            Afluencia
-          </Typography>
-          <Typography variant="subtitle2">
-            {afluencia}
-          </Typography>
+          <Typography variant="subtitle2">Afluencia</Typography>
+          <Typography variant="subtitle2">{afluencia}</Typography>
         </Grid>
       ))}
     </Grid>
@@ -68,17 +74,34 @@ const Uses = () => {
   const isLoading = useSelector((state) => state.uses.isLoading)
   const link = getUsesLink()
 
+  const categories =
+    data?.length > 0 &&
+    data[0].usesCategories.map(({ id, nombre: title }) => ({ id, title }))
+
+  const rubros =
+    data?.length > 0 &&
+    data[0].rubros?.length > 0 &&
+    data[0].rubros.map(({ rubro_id: id, rubro: title }) => ({ id, title }))
+
+  const references =
+    data?.length > 0 && data[0].references ? data[0].references : null
+
   useEffect(() => {
     dispatch(usesActions.clickOnParcel(smp))
   }, [dispatch, smp])
+
+  const handleCategoriaChange = (e, value) => {
+    dispatch(usesActions.categorySelected(value.id))
+  }
+
+  const handleRubroChange = (e, value) => {
+    dispatch(usesActions.rubroSelected(value.id))
+  }
+
   return (
-    <ContainerBar
-      type="list"
-    >
-      {data?.length > 0
-        && data.map(({
-          id, title, desc, afluencia, iconsData
-        }) => (
+    <ContainerBar type="list">
+      {data?.length > 0 &&
+        data.map(({ id, title, desc, afluencia, iconsData }) => (
           <Details
             key={id}
             classes={classes}
@@ -89,35 +112,123 @@ const Uses = () => {
             iconsData={iconsData}
           />
         ))}
-      {
-        data.length !== 0 && (
-          <Typography variant="body1" className={`${decorators.bold} ${classes.info}`}>
-            Para mayor descripción verificar el cuadro de usos haciendo click
-            {' '}
-            <Link
-              className={classes.link}
-              href={link}
-              target="_blank"
-              rel="noopener"
-              underline="always"
-            >
-              aquí
-            </Link>
-          </Typography>
-        )
-      }
-      { data.length === 0 && !isLoading && !smp && <SelectParcel />}
-      { data.length === 0 && !isLoading && smp
-        && (
-        <Typography variant="body1">
-          {getAlert('no_usos').text}
-        </Typography>
-        )}
-      { isLoading && (
-        <Typography variant="body1">
-          Cargando...
-        </Typography>
+      {categories?.length > 0 && (
+        <Autocomplete
+          className={classes.combo}
+          limitTags={3}
+          options={categories}
+          // value={value}
+          // onOpen={() => setFocusFilter(true)}
+          // onClose={() => setFocusFilter(false)}
+          getOptionLabel={(option) => option.title}
+          onChange={handleCategoriaChange}
+          renderInput={(params) => (
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            <TextField
+              {...params}
+              variant="outlined"
+              label="Categorias"
+              placeholder="Categoria"
+            />
+          )}
+        />
       )}
+      {rubros?.length > 0 && (
+        <Autocomplete
+          className={classes.combo}
+          limitTags={3}
+          options={rubros}
+          // value={value}
+          // onOpen={() => setFocusFilter(true)}
+          // onClose={() => setFocusFilter(false)}
+          getOptionLabel={(option) => option.title}
+          onChange={handleRubroChange}
+          renderInput={(params) => (
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            <TextField
+              {...params}
+              variant="outlined"
+              label="Rubros"
+              placeholder="rubro"
+            />
+          )}
+        />
+      )}
+      {references !== null && (
+        <Box className={classes.card}>
+          <Grid className={classes.container}>
+            <Grid item xs={12}>
+              <Typography variant="subtitle2" className={decorators.bold}>
+                Permitido mixtura de usos:
+              </Typography>
+            </Grid>
+            {references?.permitido_mixtura_de_usos?.length > 0 &&
+              references.permitido_mixtura_de_usos.map(({ detalle }) => (
+                <Grid item xs={12}>
+                  <Typography variant="caption">{detalle}</Typography>
+                </Grid>
+              ))}
+          </Grid>
+          <Grid className={classes.container}>
+            <Grid item xs={12}>
+              <Typography variant="subtitle2" className={decorators.bold}>
+                Bicicletas:
+              </Typography>
+            </Grid>
+            {references?.bicicletas?.length > 0 &&
+              references.bicicletas.map(({ detalle }) => (
+                <Grid item xs={12}>
+                  <Typography variant="caption">{detalle}</Typography>
+                </Grid>
+              ))}
+          </Grid>
+          <Grid className={classes.container}>
+            <Grid item xs={12}>
+              <Typography variant="subtitle2" className={decorators.bold}>
+                Estacionamientos:
+              </Typography>
+            </Grid>
+            {references?.estacionamientos?.length > 0 &&
+              references.estacionamientos.map(({ detalle }) => (
+                <Grid item xs={12}>
+                  <Typography variant="caption">{detalle}</Typography>
+                </Grid>
+              ))}
+          </Grid>
+          <Grid className={classes.container}>
+            <Grid item xs={12}>
+              <Typography variant="subtitle2" className={decorators.bold}>
+                Carga y Descarga:
+              </Typography>
+            </Grid>
+            {references?.cargaydescarga?.length > 0 &&
+              references.cargaydescarga.map(({ detalle }) => (
+                <Grid item xs={12}>
+                  <Typography variant="caption">{detalle}</Typography>
+                </Grid>
+              ))}
+          </Grid>
+          <Grid className={classes.container}>
+            <Grid item xs={12}>
+              <Typography variant="subtitle2" className={decorators.bold}>
+                Observaciones:
+              </Typography>
+            </Grid>
+            {references?.observaciones?.length > 0 && (
+              <Grid item xs={12}>
+                <Typography variant="caption">
+                  {references.observaciones}
+                </Typography>
+              </Grid>
+            )}
+          </Grid>
+        </Box>
+      )}
+      {data.length === 0 && !isLoading && !smp && <SelectParcel />}
+      {data.length === 0 && !isLoading && smp && (
+        <Typography variant="body1">{getAlert('no_usos').text}</Typography>
+      )}
+      {isLoading && <Typography variant="body1">Cargando...</Typography>}
     </ContainerBar>
   )
 }

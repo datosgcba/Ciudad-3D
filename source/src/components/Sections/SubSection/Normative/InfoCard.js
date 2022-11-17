@@ -9,9 +9,7 @@ import useFontsStyles from 'theme/fontsDecorators'
 import PropTypes from 'prop-types'
 import styles from './styles'
 
-const InfoCard = ({
-  id, title, description, color
-}) => {
+const InfoCard = ({ id, title, description, color }) => {
   const classes = styles()
   const decorators = useFontsStyles()
   const dispatch = useDispatch()

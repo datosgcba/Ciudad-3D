@@ -47,10 +47,7 @@ const Section = () => {
 
   const Selected = isShow && sectionComponents.get(sectionSelected)
   return (
-    <Drawer
-      variant="persistent"
-      open={isShow}
-    >
+    <Drawer variant="persistent" open={isShow}>
       {Selected && <Selected />}
     </Drawer>
   )

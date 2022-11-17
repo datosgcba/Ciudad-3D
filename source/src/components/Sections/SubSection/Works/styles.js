@@ -50,6 +50,10 @@ export default makeStyles((theme) => ({
   },
   title: {
     float: 'left',
-    display: 'inline'
+    display: 'inline',
+    marginTop: theme.spacing(3),
+    '& :first-child': {
+      marginTop: theme.spacing(0),
+    }
   }
 }))

@@ -1,6 +1,4 @@
-import React, {
-  useEffect, useRef, useState, cloneElement
-} from 'react'
+import React, { useEffect, useRef, useState, cloneElement } from 'react'
 import PropTypes from 'prop-types'
 
 import MapaInteractivoGL from 'utils/MapaInteractivoGL'

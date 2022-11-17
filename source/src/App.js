@@ -26,7 +26,7 @@ export default function App({ isAuthenticated }) {
   }
 
   const handleClose = () => {
-    dispatch((actions.isVisibleTour(false)))
+    dispatch(actions.isVisibleTour(false))
   }
 
   useEffect(() => {

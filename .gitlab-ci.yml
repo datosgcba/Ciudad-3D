@@ -1,0 +1,50 @@
+# Runner group on server 10.9.9.142 w/tag
+
+stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  GIT_STRATEGY: clone
+  CUR3D_DIR: '/opt/cur3d/'
+  CUR3D_SRC: '/opt/cur3d/source/'
+
+test_develop:
+  stage: test
+  script:
+    - 'echo Starting test'
+#    - 'cd "$CUR3D_SRC"; npm run lint'
+  tags:
+    - goid-dev
+  only:
+    - develop
+
+build_develop:
+  needs: [test_develop]
+  when: on_success
+  stage: build
+  script:
+    - 'echo Starting build'
+    - 'cd "$CUR3D_DIR"; git fetch origin develop'
+    - 'git checkout develop'
+    - 'git reset --hard origin/develop'
+    - 'git pull origin develop'
+#    - 'ls -la "$CI_PROJECT_DIR"'
+    - 'cd "$CUR3D_SRC"; npm run build'
+  only:
+    - develop
+  tags:
+    - goid-dev
+
+deploy_develop:
+  needs: [build_develop]
+  when: on_success
+  stage: deploy
+  script:
+    - echo "Starting deploy"
+    - "systemctl restart nginx"
+  only:
+    - develop
+  tags:
+    - goid-dev

@@ -4,19 +4,26 @@ Los diferentes entornos están controlados a través del archivo:
 
 [source/public/config.js](source/public/config.js)
 
-Por ahora solo cambia la variable `urlAPI` como se describe a continuación.
+Por ahora solo cambia lo siguiente:
 
 Para QA sustituir:
-
+```
+urlLayers: 'https://epok-qa.gcba.gob.ar/mbtiles/',
 urlAPI: 'https://epok-qa.gcba.gob.ar',
-
+```
 Para HML:
 
+```
+urlLayers: 'http://epok-hml.gcba.gob.ar/mbtiles/',
 urlAPI: 'http://epok-hml.gcba.gob.ar',
+```
 
 Para PRD:
 
+```
+urlLayers: 'https://epok.buenosaires.gob.ar/mbtiles/',
 urlAPI: 'https://epok.buenosaires.gob.ar',
+```
 
 ## V1.3.0-RC.2:
 - Realizar todos los pasos de la version V1.1.6-RC.1

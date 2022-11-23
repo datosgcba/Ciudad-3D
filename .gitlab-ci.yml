@@ -28,10 +28,12 @@ build_develop:
     - 'echo Starting build'
     - 'cd "$CUR3D_DIR"; git fetch origin develop'
     - 'git checkout develop'
+    - 'git clean -fdx'
     - 'git reset --hard origin/develop'
     - 'git pull origin develop'
 #    - 'ls -la "$CI_PROJECT_DIR"'
-    - 'cd "$CUR3D_SRC"; npm run build'
+    - 'cd "$CUR3D_SRC"; yarn'
+    - 'yarn build'
   only:
     - develop
   tags:

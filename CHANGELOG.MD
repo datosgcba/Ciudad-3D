@@ -6,6 +6,7 @@
 - [APPCASENOC-495](https://asijira.buenosaires.gob.ar/browse/APPCASENOC-495) Arreglado icono: img satelital a calles
 - Arreglado estilo de tabla en funcionalidad SADE
 - Modificado titulos de categoria a reportes
+- Modificado el sistema de empaquetamiento. Se dejó de usar **npm** y se implementó **yarn**
 
 ## CHANGELOG V1.4.0-RC1
 - Variables de entorno controladas a través del archivo source/public/config.js

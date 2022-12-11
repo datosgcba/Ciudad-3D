@@ -1,6 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
+  container: {
+    marginBottom: '12px',
+  },
+  combo: {
+    marginBottom: theme.spacing(3)
+  },
   box: {
     border: '1px solid #D9D9D9',
     borderLeftWidth: 3,

@@ -6,27 +6,31 @@ import {
   getExplorerFilters,
   getFullExplorerLayerConfig,
   getBaseLayers,
-  getCamera
+  getCamera,
+  getImagesToLoad,
+  getImagesToMerge
 } from 'utils/configQueries'
-import { mapOnPromise } from 'utils/mapboxUtils'
+import { mapOnPromise, loadImages, mergeImages } from 'utils/maplibreUtils'
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 let mapGL = null
 
 const add = async (layer) => {
-  if (layer.type && (layer.type === 'vectortile' || layer.type === 'custom')) {
-    const options = { ...layer.options }
-    options.id = layer.id
-    const newLayer = mapGL.addVectorTileLayer(
-      options,
+  // if (layer.type && (layer.type === 'vectortile' || layer.type === 'custom')) {
+  const options = Array.isArray(layer.options) ? layer.options : [layer.options]
+
+  options.forEach((option) => {
+    mapGL.addVectorTileLayer(
+      {
+        id: option.id || layer.id,
+        ...option
+      },
       null,
       layer.displayPopup,
       layer.popupContent
     )
-    return newLayer
-  }
-  return mapGL.addPublicLayer(layer.id, { clustering: true })
+  })
 }
 
 const reorderLayers = async (groups, layerId, index) => {
@@ -85,13 +89,22 @@ const toggle = async (layer, isVisible = null, index, groups) => {
       map.getLayoutProperty(layer.id, 'visibility') ?? 'visible'
     const nextVisibility =
       isVisible !== null ? isVisible : visibility === 'none'
-    map.setLayoutProperty(
-      layer.id,
-      'visibility',
-      nextVisibility ? 'visible' : 'none'
+
+    const { options } = layer
+    const internalLayers = Array.isArray(options) ? options : [options]
+    const ids = [layer.id, ...internalLayers.map(({ id }) => id)].filter(
+      (id) => id
     )
+    ids.forEach((id) => {
+      map.setLayoutProperty(
+        id,
+        'visibility',
+        nextVisibility ? 'visible' : 'none'
+      )
+    })
     return reorderLayers(groups, layer.id, index)
   }
+
   return (
     add(layer, map)
       .then(() => mapOnPromise(mapGL.map)('idle'))
@@ -120,7 +133,11 @@ const loadLayers = createAsyncThunk('map/loadLayers', async () => {
     groups[idGroup] = {}
     // devuelve el title, id y color de cada layersGroup.layers
     getLayersByLayersGroupId(idGroup).forEach(
-      ({ id: idLayer, index: idxLayer }) => {
+      async ({ id: idLayer, index: idxLayer }) => {
+        // const layer = await Promise.resolve(
+        //   getFullLayerConfig(idGroup, idLayer)
+        // )
+        // console.log(layer)
         groups[idGroup][idLayer] = {
           processingId: null,
           isVisible: false,
@@ -144,7 +161,19 @@ const initMap = createAsyncThunk(
   async (mapInstance) => {
     mapGL = mapInstance
     const mapOnLoad = mapOnPromise(mapInstance.map)('load')
-    return mapOnLoad.then(() => true).catch(() => false)
+    const imagesToLoad = getImagesToLoad().map(({ id, data }) => ({
+      id,
+      data
+    }))
+    const imagesToMerge = getImagesToMerge()
+
+    return mapOnLoad
+      .then(() => loadImages(mapGL.map, imagesToLoad))
+      .then(() =>
+        imagesToMerge.forEach((images) => mergeImages(mapGL.map, images))
+      )
+      .then(() => true)
+      .catch(() => false)
   },
   {
     condition: () => mapGL === null

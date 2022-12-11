@@ -1,4 +1,60 @@
-# Ciudad 3D
+# UPGRADE Ciudad 3D
+
+### Update V1.4.0-RC2:
+Los diferentes entornos están controlados a través del archivo:
+
+[source/public/config.js](source/public/config.js)
+
+Por ahora solo cambia lo siguiente:
+
+Para QA sustituir:
+```
+urlLayers: 'https://epok-qa.gcba.gob.ar/mbtiles/',
+urlAPI: 'https://epok-qa.gcba.gob.ar',
+```
+Para HML:
+
+```
+urlLayers: 'http://epok-hml.gcba.gob.ar/mbtiles/',
+urlAPI: 'http://epok-hml.gcba.gob.ar',
+```
+
+Para PRD:
+
+```
+urlLayers: 'https://epok.buenosaires.gob.ar/mbtiles/',
+urlAPI: 'https://epok.buenosaires.gob.ar',
+```
+
+**Para el despliegue:**
+
+    sudo npm install --global yarn
+
+    sudo yarn --version
+
+    cd /source
+
+    sudo rm -r node_modules package-lock.json
+
+    sudo yarn
+
+    sudo yarn build
+
+Publicar los archivos estáticos `/source/build` donde se encuentra toda la app optimizada para PRD con un servicio tipo Nginx.
+
+o
+
+Levantar el servidor de producción en el puerto 80 realizando:
+
+    sudo serve -s build -l 80 -C
+
+Si no sirve el comando `serve` instalarlo mediante:
+
+    sudo yarn global add serve
+
+### Update V1.4.0-RC1:
+- Variables de entorno controladas a través del archivo source/public/config.js
+- Para el despliegue seguir los mismos pasos de la versión 1.1.6-RC.1
 
 ### Update V1.3.0-RC.1:
 - Dependiendo del ambiente descomentar la línea correspondiente en el archivo de configuración de ruta: `/source/.env`

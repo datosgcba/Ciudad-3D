@@ -38,6 +38,7 @@ export const GroupItem = ({
   idLayer,
   title,
   color,
+  icon,
   classes,
   info,
   link,
@@ -51,6 +52,7 @@ export const GroupItem = ({
   const layerChangeHandler = () => {
     dispatch(actions.toggleLayer({ idGroup, idLayer }))
   }
+
   return (
     <ListItem key={idLayer} className={classes.listItem}>
       <FormControlLabel
@@ -73,7 +75,13 @@ export const GroupItem = ({
           />
         }
       />
-      <Box className={classes.color} style={{ backgroundColor: `${color}` }} />
+      {!icon && (
+        <Box
+          className={classes.color}
+          style={{ backgroundColor: `${color}` }}
+        />
+      )}
+      {!!icon && <img src={icon} />}
       <Box className={classes.boxIcons}>
         <Typography variant="subtitle2">
           {title}
@@ -98,17 +106,22 @@ export const GroupItem = ({
           {isVisible && reference && (
             <CustomTooltip
               className={classes.reference}
-              title={reference.map(({ id, subTitle, color: c }) => (
-                <ListItem key={id} className={classes.referenceItems}>
-                  <Box
-                    className={classes.color}
-                    style={{ backgroundColor: `${c}` }}
-                  />
-                  <Box className={classes.referenceTitle}>
-                    <Typography variant="subtitle2">{subTitle}</Typography>
-                  </Box>
-                </ListItem>
-              ))}
+              title={reference.map(
+                ({ id, subTitle, color: c, icon: iconReference }) => (
+                  <ListItem key={id} className={classes.referenceItems}>
+                    {!iconReference && (
+                      <Box
+                        className={classes.color}
+                        style={{ backgroundColor: `${c}` }}
+                      />
+                    )}
+                    {!!iconReference && <img src={iconReference} />}
+                    <Box className={classes.referenceTitle}>
+                      <Typography variant="subtitle2">{subTitle}</Typography>
+                    </Box>
+                  </ListItem>
+                )
+              )}
               placement="top"
             >
               <ListAltIcon />
@@ -122,19 +135,22 @@ export const GroupItem = ({
 
 const GroupItems = ({ idGroup, classes }) => {
   const layersConfig = getLayersByLayersGroupId(idGroup)
-  return layersConfig.map(({ id, title, color, info, link, reference }) => (
-    <GroupItem
-      key={id}
-      idGroup={idGroup}
-      idLayer={id}
-      title={title}
-      color={color}
-      classes={classes}
-      info={info}
-      link={link}
-      reference={reference}
-    />
-  ))
+  return layersConfig.map(
+    ({ id, title, color, icon, info, link, reference }) => (
+      <GroupItem
+        key={id}
+        idGroup={idGroup}
+        idLayer={id}
+        title={title}
+        color={color}
+        icon={icon}
+        classes={classes}
+        info={info}
+        link={link}
+        reference={reference}
+      />
+    )
+  )
 }
 
 const Group = ({ id, title }) => {

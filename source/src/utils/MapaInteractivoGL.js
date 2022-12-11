@@ -1,7 +1,7 @@
 // TODO: Corregir errores lint ¿tal vez migrar a componente funcional?
 /* eslint-disable */
 
-import * as mapboxgl from 'mapbox-gl'
+import * as maplibregl from 'maplibre-gl'
 import getLayer from './layer-builders/GenericLineLayerBuilder'
 import genericLine from './layer-builders/GenericLineLayerBuilder'
 import genericPoint from './layer-builders/GenericPointLayerBuilder'
@@ -14,11 +14,11 @@ const defaults = {
     minzoom: 10,
     maxzoom: 18
   },
-  // activeMarker: mapboxgl.Marker({color:'orange'}),
-  // fromMarker: mapboxgl.Marker({color:'green'}),
-  // toMarker: mapboxgl.Marker({color:'red'}),
-  // marker: mapboxgl.Marker({color:'yellow'}),
-  popup: new mapboxgl.Popup(),
+  // activeMarker: maplibregl.Marker({color:'orange'}),
+  // fromMarker: maplibregl.Marker({color:'green'}),
+  // toMarker: maplibregl.Marker({color:'red'}),
+  // marker: maplibregl.Marker({color:'yellow'}),
+  popup: new maplibregl.Popup(),
   texts: {
     es: {
       loadingLayers: 'Cargando capas...',
@@ -55,8 +55,8 @@ class MapaInteractivoGL {
     }
     const params = { ...this.config.params, ...options }
 
-    this.map = new mapboxgl.Map(params)
-    //		this.map.addControl(new mapboxgl.NavigationControl())
+    this.map = new maplibregl.Map(params)
+    //		this.map.addControl(new maplibregl.NavigationControl())
     this._markers = {}
     this.popup = this.config.popup
     this._layers = {}
@@ -160,7 +160,7 @@ class MapaInteractivoGL {
     if (!this._loadingLayers && !this.layersDefs) {
       this._loadingLayers = true
       const layerPromise = fetch(
-        `${this.config.layers.apiUrl}mapainteractivoba/layers/?protocol=https`
+        `${this.config.apiUrl}/mapainteractivoba/layers/?protocol=https`
       )
         .then((res) => res.json())
         .then((layersDefs) => {
@@ -186,10 +186,10 @@ class MapaInteractivoGL {
       layerName.indexOf('.') === -1
         ? this.layersDefs[layerName]
         : {
-            [layerName]: this.layersDefs[layerName.split('.')[0]][
-              layerName.split('.')[1]
-            ]
-          }
+          [layerName]: this.layersDefs[layerName.split('.')[0]][
+            layerName.split('.')[1]
+          ]
+        }
     this.hideMessage()
     const builder =
       this._layerBuilders[layerId] || !layer[layerId].builder
@@ -328,10 +328,10 @@ class MapaInteractivoGL {
       layerName.indexOf('.') === -1
         ? this.layersDefs[layerName]
         : {
-            [layerName]: this.layersDefs[layerName.split('.')[0]][
-              layerName.split('.')[1]
-            ]
-          }
+          [layerName]: this.layersDefs[layerName.split('.')[0]][
+            layerName.split('.')[1]
+          ]
+        }
 
     this._loadingLayer = true
     Object.entries(conf).forEach((layer) => {
@@ -395,10 +395,10 @@ class MapaInteractivoGL {
         layerName.indexOf('.') === -1
           ? this.layersDefs[layerName]
           : {
-              [layerName]: this.layersDefs[layerName.split('.')[0]][
-                layerName.split('.')[1]
-              ]
-            }
+            [layerName]: this.layersDefs[layerName.split('.')[0]][
+              layerName.split('.')[1]
+            ]
+          }
       // if (this.onClickFeature) this.map.removeLayer(this.onClickFeature);
       if (layer) {
         if (this._layers[layerName]) {
@@ -439,7 +439,7 @@ class MapaInteractivoGL {
   ) {
     this._loadingLayer = true
     const self = this
-    const { id } = options
+    const { id, source: sourceOptions, ...layerOptions } = options
     this.inactivateMarker()
 
     if (!this._layers[id]) {
@@ -451,10 +451,24 @@ class MapaInteractivoGL {
       }
 
       this.showMessage(this.config.texts[this.config.language].loadingLayers)
-      if (this.map.getSource(options.id)) {
-        this.map.removeSource(options.id)
+
+      const { id: sourceId, ...source } =
+        typeof sourceOptions === 'string'
+          ? { id: sourceOptions }
+          : {
+            id,
+            ...sourceOptions
+          }
+
+      if (!this.map.getSource(sourceId)) {
+        this.map.addSource(sourceId, source)
       }
-      this.map.addLayer(options)
+
+      this.map.addLayer({
+        ...layerOptions,
+        id,
+        source: sourceId
+      })
 
       // Change the cursor to a pointer when the mouse is over the places layer.
       this.map.on('mouseenter', id, () => {
@@ -468,7 +482,7 @@ class MapaInteractivoGL {
 
       if (displayPopup) {
         this._layers[id].popup_template = popupContent
-        this.map.on('click', id, self.addVectorTilePopup.bind(this))
+        self.map.on('click', id, self._onFeatureClick.bind(this))
       }
     }
 
@@ -544,7 +558,7 @@ class MapaInteractivoGL {
   }
 
   getFeatureProps(fid) {
-    return fetch(`${this.config.layers.apiUrl}getObjectContent/?id=${fid}`)
+    return fetch(`${this.config.apiUrl}/getObjectContent/?id=${fid}`)
   }
 
   addMarker(
@@ -559,7 +573,7 @@ class MapaInteractivoGL {
   ) {
     const self = this
 
-    const marker = new mapboxgl.Marker(options)
+    const marker = new maplibregl.Marker(options)
     marker.setLngLat(latlng).addTo(this.map)
 
     if (goTo) {
@@ -574,18 +588,18 @@ class MapaInteractivoGL {
     delete this._markers[id]
   }
 
-  inactivateMarker() {}
+  inactivateMarker() { }
 
-  showMessage(text) {}
+  showMessage(text) { }
 
-  hideMessage() {}
+  hideMessage() { }
 
   getMapa() {
     return this.map
   }
 
   getMapEngine() {
-    return mapboxgl
+    return maplibregl
   }
 }
 

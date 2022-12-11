@@ -6,23 +6,91 @@ const loadAppConfig = async () => {
     return
   }
   const configEnviroment = window.configs
-  const { urlConfigBase, includes, replaces } = configEnviroment
+  const { urlConfigBase, urlLayers, includes, replaces } = configEnviroment
   let configBaseText = await fetch(urlConfigBase).then((data) => data.text())
 
   replaces.forEach(({ key, value }) => {
     configBaseText = configBaseText.replace(new RegExp(key, 'g'), value)
   })
 
+  const configBase = JSON.parse(configBaseText)
+
+  const configLayers = await fetch(urlLayers).then((data) => data.json())
+
+  const layersGroup = groupLayersByCategory(
+    configLayers.visibilidad.cur3d.mbtiles
+  )
+
   config = {
-    ...JSON.parse(configBaseText),
+    ...configBase,
+    layersGroup,
     ...includes
   }
 }
+
+const getImagesToLoad = () => {
+  const imagesToLoad = config.layersGroup
+    .flatMap(({ layers }) => layers.flatMap(({ images }) => images))
+    .flat()
+    .filter((imageData) => imageData)
+
+  return imagesToLoad
+}
+
+const getImagesToMerge = () => {
+  const imagesToMerge = config.layersGroup
+    .flatMap(({ layers }) =>
+      layers.map(({ images }) =>
+        images?.filter(
+          (imagesItem) => Array.isArray(imagesItem) && imagesItem?.length > 1
+        )
+      )
+    )
+    .filter((images) => images?.length)
+    .flat()
+
+  return imagesToMerge
+}
+
+const groupLayersByCategory = (layers) => {
+  return layers
+    .reduce((layersGroup, { categoria, anio, frontend_config }) => {
+      let auxCategory = layersGroup.find(
+        (category) => category.id === categoria.id
+      )
+      if (!auxCategory) {
+        auxCategory = {
+          id: categoria.id,
+          title: categoria.nombre,
+          layers: []
+        }
+        layersGroup.push(auxCategory)
+      }
+
+      auxCategory.layers.push({
+        ...frontend_config,
+        anio
+      })
+
+      return layersGroup
+    }, [])
+    .filter(({ id, layers }) => id && layers?.length > 0 && layers[0].id)
+}
+
 // Métodos que devuelven mucha data y puede no ser serializable
 const getFullLayerConfig = (idGroup, idLayer) =>
   config.layersGroup
     .find((g) => g.id === idGroup)
     .layers.find((l) => l.id === idLayer)
+
+// Métodos que devuelven mucha data y puede no ser serializable, recomendable usar getFullLayerConfig
+const getFullLayerConfigByIdLayer = (idLayer) =>
+  config.layersGroup
+    .flatMap(({ layers }) => layers)
+    .find(({ id, options }) => Array.isArray(options)
+      ? options.some(({ id }) => id === idLayer)
+      : id === idLayer
+    )
 
 // Métodos que retornan data acotada y segura de serializar
 const getCategories = () =>
@@ -42,11 +110,12 @@ const getLayersGroups = () =>
 const getLayersByLayersGroupId = (layersGroupId) =>
   config.layersGroup
     .find((l) => l.id === layersGroupId)
-    .layers.map(({ id, title, color, index, info, link, reference }) => ({
+    .layers.map(({ id, title, color, icon, index, info, link, reference }) => ({
       id,
       idGroup: layersGroupId,
       title,
       color,
+      icon,
       index,
       info,
       link,
@@ -189,6 +258,8 @@ const getWsUsigUrl = () => config.urlWsUsig
 
 const getPdfUrl = () => config.urlPDF
 
+const getCadUrl = () => config.urlCAD
+
 const getParcelLayer = () => config.parcelLayers
 
 const getBaseLayers = () => config.baseLayers
@@ -208,6 +279,7 @@ export {
   getInformation,
   getBasicData,
   getLayersGroups,
+  getFullLayerConfigByIdLayer,
   getLayersByLayersGroupId,
   getVisibleLayers,
   getBuildable,
@@ -228,10 +300,13 @@ export {
   getPhotoUrl,
   getWsUsigUrl,
   getPdfUrl,
+  getCadUrl,
   getParcelLayer,
   getBaseLayers,
   getUsesLink,
   getCamera,
   getArticlesData,
-  getNormative
+  getNormative,
+  getImagesToLoad,
+  getImagesToMerge
 }

@@ -24,5 +24,8 @@ export default makeStyles(({ spacing }) => ({
   },
   grey333: {
     color: '#333333'
+  },
+  white: {
+    color: '#fff'
   }
 }))

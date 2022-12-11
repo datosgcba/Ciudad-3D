@@ -32,24 +32,16 @@ import { getWorksGroups } from 'utils/configQueries'
 
 import useStyles from './styles'
 
-const GridPanel = ({ id, columns, data, styles: { bold, tableCell } }) => {
-  const tableData = data[id]
+const GridPanel = ({ columns, tableData, styles: { bold, tableCell } }) => {
   return (
-    <>
-      {tableData.length === 0 && (
-        <TableContainer>
-          <Typography>No posee</Typography>
-        </TableContainer>
-      )}
-      {tableData.length >= 1 && (
         <TableContainer>
           <Table>
             <TableHead>
               <TableRow>
-                {columns.map(({ label, field }) => (
-                  <TableCell key={field} className={tableCell}>
+                {columns.map((column) => (
+                  <TableCell key={column} className={tableCell}>
                     <Typography variant="subtitle2" className={bold}>
-                      {label}
+                      {column}
                     </Typography>
                   </TableCell>
                 ))}
@@ -58,15 +50,15 @@ const GridPanel = ({ id, columns, data, styles: { bold, tableCell } }) => {
             <TableBody styles={{ tableCell }}>
               {
                 // Se mapea cada una de las obras para dicha tabla
-                // Por lo tanto se crea una nueva TableRow por cada obra
-                tableData.map((row, idx) => (
+                // Se mapea cada una de las obras para dicha tabla
+                tableData.map((row) => (
                   // eslint-disable-next-line react/no-array-index-key
-                  <TableRow key={idx}>
+                  <TableRow>
                     {
                       // Se mapean los valores de cada obra para cada columna
-                      columns.map(({ field }) => (
-                        <TableCell key={field} className={tableCell}>
-                          {row[field]}
+                      columns.map((column, idx) => (
+                        <TableCell key={column} className={tableCell}>
+                          {row[idx]}
                         </TableCell>
                       ))
                     }
@@ -76,9 +68,7 @@ const GridPanel = ({ id, columns, data, styles: { bold, tableCell } }) => {
             </TableBody>
           </Table>
         </TableContainer>
-      )}
-    </>
-  )
+      )
 }
 
 const Works = () => {
@@ -95,9 +85,10 @@ const Works = () => {
   return (
     <ContainerBar type="table">
       <Box className={classes.boxContainer}>
-        {Object.keys(data).length >= 1 &&
-          getWorksGroups().map(({ id, title, info, link, columns }) => (
-            <Box className={classes.boxSubContainer} key={id}>
+        {
+          data?.sade?.length >= 1 &&
+          data?.sade?.map(({ title, columns, dataTable }) => (
+            <Box className={classes.boxSubContainer} key={title}>
               <Box className={classes.title}>
                 <Typography
                   variant="subtitle1"
@@ -106,33 +97,21 @@ const Works = () => {
                   {title}
                 </Typography>
               </Box>
-              <Box className={classes.boxIcons}>
-                {info && (
-                  <CustomTooltip
-                    className={classes.tooltip}
-                    title={info}
-                    placement="top"
-                  >
-                    <InfoOutlinedIcon className={classes.info} />
-                  </CustomTooltip>
-                )}
-                <IconButton
-                  className={classes.iconButton}
-                  target="_blank"
-                  href={link}
-                >
-                  <CloudDownloadOutlinedIcon className={classes.downloadIcon} />
-                </IconButton>
-              </Box>
               <GridPanel
-                id={id}
                 columns={columns}
-                data={data}
+                tableData={dataTable}
                 styles={{ ...decorators, ...classes }}
               />
             </Box>
-          ))}
-        {data.length === 0 && <SelectParcel />}
+          ))
+        }
+        {!smp && <SelectParcel />}
+        {smp && !data?.sade?.length && (
+            <TableContainer>
+              <Typography>No posee</Typography>
+            </TableContainer>
+          )
+        }
       </Box>
     </ContainerBar>
   )

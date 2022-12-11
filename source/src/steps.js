@@ -103,7 +103,7 @@ export const largeScreenSteps = [
     )
   },
   {
-    selector: '.mapboxgl-ctrl-zoom-in',
+    selector: '.maplibregl-ctrl-zoom-in',
     content: () => (
       <div>
         <p>Acá vas a poder hacer zoom en el mapa.</p>
@@ -111,7 +111,7 @@ export const largeScreenSteps = [
     )
   },
   {
-    selector: '.mapboxgl-ctrl-compass',
+    selector: '.maplibregl-ctrl-compass',
     content: () => (
       <div>
         <p>Acá vas a poder orientar el norte en el mapa.</p>
@@ -119,7 +119,7 @@ export const largeScreenSteps = [
     )
   },
   {
-    selector: '.mapboxgl-ctrl-group button:nth-last-child(1)',
+    selector: '.maplibregl-ctrl-group button:nth-last-child(1)',
     content: () => (
       <div>
         <p>Acá vas a poder medir en el mapa.</p>

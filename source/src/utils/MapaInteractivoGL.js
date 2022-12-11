@@ -1,7 +1,7 @@
 // TODO: Corregir errores lint ¿tal vez migrar a componente funcional?
 /* eslint-disable */
 
-import * as mapboxgl from 'mapbox-gl'
+import * as maplibregl from 'maplibre-gl'
 import getLayer from './layer-builders/GenericLineLayerBuilder'
 import genericLine from './layer-builders/GenericLineLayerBuilder'
 import genericPoint from './layer-builders/GenericPointLayerBuilder'
@@ -14,11 +14,11 @@ const defaults = {
     minzoom: 10,
     maxzoom: 18
   },
-  // activeMarker: mapboxgl.Marker({color:'orange'}),
-  // fromMarker: mapboxgl.Marker({color:'green'}),
-  // toMarker: mapboxgl.Marker({color:'red'}),
-  // marker: mapboxgl.Marker({color:'yellow'}),
-  popup: new mapboxgl.Popup(),
+  // activeMarker: maplibregl.Marker({color:'orange'}),
+  // fromMarker: maplibregl.Marker({color:'green'}),
+  // toMarker: maplibregl.Marker({color:'red'}),
+  // marker: maplibregl.Marker({color:'yellow'}),
+  popup: new maplibregl.Popup(),
   texts: {
     es: {
       loadingLayers: 'Cargando capas...',
@@ -55,8 +55,8 @@ class MapaInteractivoGL {
     }
     const params = { ...this.config.params, ...options }
 
-    this.map = new mapboxgl.Map(params)
-    //		this.map.addControl(new mapboxgl.NavigationControl())
+    this.map = new maplibregl.Map(params)
+    //		this.map.addControl(new maplibregl.NavigationControl())
     this._markers = {}
     this.popup = this.config.popup
     this._layers = {}
@@ -573,7 +573,7 @@ class MapaInteractivoGL {
   ) {
     const self = this
 
-    const marker = new mapboxgl.Marker(options)
+    const marker = new maplibregl.Marker(options)
     marker.setLngLat(latlng).addTo(this.map)
 
     if (goTo) {
@@ -599,7 +599,7 @@ class MapaInteractivoGL {
   }
 
   getMapEngine() {
-    return mapboxgl
+    return maplibregl
   }
 }
 

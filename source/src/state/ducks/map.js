@@ -10,7 +10,7 @@ import {
   getImagesToLoad,
   getImagesToMerge
 } from 'utils/configQueries'
-import { mapOnPromise, loadImages, mergeImages } from 'utils/mapboxUtils'
+import { mapOnPromise, loadImages, mergeImages } from 'utils/maplibreUtils'
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 

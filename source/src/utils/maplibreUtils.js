@@ -2,7 +2,7 @@ import { Height } from '@material-ui/icons'
 import { promisify } from 'util'
 
 /**
- * Esta función los convierte en promesas eventos de mapbox que reciben callbak
+ * Esta función los convierte en promesas eventos de maplibre que reciben callbak
  * Cuando los callbacks reciben parametros, estos son envidos como un array.
  * Esta función debería usarse principalmente dentro de llamadas al middleware
  * @param {*} map
@@ -29,7 +29,7 @@ const mapOnPromise = (map) => {
 
 /**
  * Para las capas custom cuando se indica icon-image se corresponde al id de la imagen
- * mapbox necesita que al agregar las capas sus iconos se referencien por id
+ * maplibre necesita que al agregar las capas sus iconos se referencien por id
  */
 const loadImages = async (map, images) => {
   await Promise.allSettled(

@@ -36,7 +36,7 @@ const DimensionBtn = () => {
   }
 
   const controlGroup = document.querySelector(
-    '.mapboxgl-ctrl-top-right .mapboxgl-ctrl-group'
+    '.maplibregl-ctrl-top-right .maplibregl-ctrl-group'
   )
   useEffect(() => {
     if (controlGroup) {

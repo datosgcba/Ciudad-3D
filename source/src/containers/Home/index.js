@@ -13,7 +13,7 @@ import SideBar from 'components/SideBar'
 
 import { useSelector } from 'react-redux'
 
-import 'mapbox-gl/dist/mapbox-gl.css'
+import 'maplibre-gl/dist/maplibre-gl.css'
 import useStyles from './styles'
 
 const Home = ({ token }) => {
